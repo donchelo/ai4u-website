@@ -341,9 +341,16 @@ const WhyAI4U = () => {
                   mb: { xs: 3, md: 0 }
                 }}
               >
-                <MuiTypography sx={{ color: 'text.secondary' }}>
-                  Foto de Mariano
-                </MuiTypography>
+                <Box
+                  component="img"
+                  src="/assets/images/mariano.jpeg"
+                  alt="Mariano, Fundador de AI4U"
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
               </Paper>
             </Grid>
             
@@ -392,6 +399,10 @@ const WhyAI4U = () => {
               <Box>
                 <IconButton 
                   aria-label="LinkedIn" 
+                  component="a"
+                  href="https://www.linkedin.com/in/mariano3/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{ 
                     color: '#0077B5',
                     bgcolor: 'rgba(0, 119, 181, 0.1)',
