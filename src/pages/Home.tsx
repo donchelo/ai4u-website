@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import { H1, H2, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
@@ -44,13 +43,15 @@ const Home: React.FC = () => {
 
       <section className="text-center">
         <H2 className="mb-6">¿Listo para comenzar?</H2>
-        <Link
-          to="/contact"
+        <a
+          href="https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente?month=2025-03"
           className="ai4u-button inline-block"
-          aria-label="Contactar con AI4U"
+          aria-label="Agendar una reunión con AI4U"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Contáctanos
-        </Link>
+          Agendar reunión
+        </a>
       </section>
     </div>
   );
