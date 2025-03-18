@@ -1,105 +1,155 @@
 import React, { useState } from 'react';
-// Importando mediante require para evitar problemas de TypeScript con @remix-run/router
-const { Link } = require('react-router-dom');
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button,
+  Container,
+  Typography as MuiTypography,
+  useTheme
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import { useColorMode } from '../context/ThemeContext';
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Sobre Nosotros', path: '/about' },
+  { name: 'Servicios', path: '/services' },
+  { name: 'Contacto', path: '/contact' },
+  { name: 'Demo Tema', path: '/theme-demo' }
+];
+
+const Navbar = () => {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const theme = useTheme();
+  const { mode } = useColorMode();
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
-    <nav className="bg-white shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-hot-orange">
-            AI4U
-          </Link>
-          
-          {/* Botón de menú móvil */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
-            aria-label="Toggle menu"
+    <AppBar position="static" color="default" elevation={1} sx={{ backgroundColor: 'background.paper' }}>
+      <Container maxWidth="lg">
+        <Toolbar disableGutters>
+          {/* Logo - Desktop */}
+          <Box
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              textDecoration: 'none',
+            }}
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <MuiTypography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                color: 'primary.main',
+              }}
             >
-              {isMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              AI4U
+            </MuiTypography>
+          </Box>
 
-          {/* Menú de escritorio */}
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="text-erie-black hover:text-hot-orange">
-              Inicio
-            </Link>
-            <Link to="/about" className="text-erie-black hover:text-hot-orange">
-              Sobre Nosotros
-            </Link>
-            <Link to="/services" className="text-erie-black hover:text-hot-orange">
-              Servicios
-            </Link>
-            <Link to="/contact" className="text-erie-black hover:text-hot-orange">
-              Contacto
-            </Link>
-            <Link to="/theme-demo" className="text-moderate-blue hover:text-hot-orange">
-              Demo Tema
-            </Link>
-          </div>
-        </div>
+          {/* Mobile Menu */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="Menu de navegación"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              {anchorElNav ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {navItems.map((item) => (
+                <MenuItem 
+                  key={item.name} 
+                  onClick={handleCloseNavMenu}
+                  component={RouterLink}
+                  to={item.path}
+                >
+                  <MuiTypography textAlign="center">{item.name}</MuiTypography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
 
-        {/* Menú móvil */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4">
-            <div className="flex flex-col space-y-3">
-              <Link 
-                to="/" 
-                className="text-erie-black hover:text-hot-orange"
-                onClick={() => setIsMenuOpen(false)}
+          {/* Logo - Mobile */}
+          <Box
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              textDecoration: 'none',
+            }}
+          >
+            <MuiTypography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                color: 'primary.main',
+              }}
+            >
+              AI4U
+            </MuiTypography>
+          </Box>
+
+          {/* Desktop Menu */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+            {navItems.map((item) => (
+              <Button
+                key={item.name}
+                component={RouterLink}
+                to={item.path}
+                sx={{ 
+                  mx: 1,
+                  color: item.path === '/theme-demo' ? 'secondary.main' : 'text.primary',
+                  '&:hover': {
+                    color: 'primary.main',
+                    backgroundColor: 'transparent',
+                  },
+                }}
               >
-                Inicio
-              </Link>
-              <Link 
-                to="/about" 
-                className="text-erie-black hover:text-hot-orange"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre Nosotros
-              </Link>
-              <Link 
-                to="/services" 
-                className="text-erie-black hover:text-hot-orange"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Servicios
-              </Link>
-              <Link 
-                to="/contact" 
-                className="text-erie-black hover:text-hot-orange"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contacto
-              </Link>
-              <Link 
-                to="/theme-demo" 
-                className="text-moderate-blue hover:text-hot-orange"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Demo Tema
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+                {item.name}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 

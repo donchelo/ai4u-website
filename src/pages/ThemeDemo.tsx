@@ -1,168 +1,162 @@
 import React from 'react';
-import { 
-  WrappedH1 as H1, 
-  WrappedH2 as H2, 
-  WrappedH3 as H3, 
-  WrappedBodyText as BodyText, 
-  WrappedSmallText as SmallText,
-  WrappedCodeText as CodeText,
-  WrappedCard as Card
-} from '../components/ui/TypographyWrapper';
+import { Container, Grid, Box, Paper, Divider, Stack, useTheme } from '@mui/material';
+import { H1, H2, H3, BodyText, SmallText, CodeText } from '../components/ui/Typography';
+import Card from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { useColorMode } from '../context/ThemeContext';
 
-const ThemeDemo: React.FC = () => {
+const ThemeDemo = () => {
+  const theme = useTheme();
+  const { mode, toggleColorMode } = useColorMode();
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-12 text-center">
-        <H1 className="mb-4">AI4U Theme Demo</H1>
+    <Container maxWidth="lg" sx={{ py: 6 }}>
+      <Box sx={{ mb: 6, textAlign: 'center' }}>
+        <H1 sx={{ mb: 2 }}>AI4U Theme Demo</H1>
         <BodyText>Esta página muestra todos los elementos del tema de AI4U.</BodyText>
-      </div>
+      </Box>
+
+      {/* Modo de Color */}
+      <Box sx={{ mb: 6 }}>
+        <H2 sx={{ mb: 2 }}>Modo de Color</H2>
+        <Paper sx={{ p: 3, mb: 3 }}>
+          <BodyText sx={{ mb: 2 }}>Modo actual: <strong>{mode === 'light' ? 'Claro' : 'Oscuro'}</strong></BodyText>
+          <Button onClick={toggleColorMode} variant="primary">
+            Cambiar a modo {mode === 'light' ? 'oscuro' : 'claro'}
+          </Button>
+        </Paper>
+      </Box>
 
       {/* Tipografía */}
-      <section className="mb-12">
-        <H2 className="mb-6">Tipografía</H2>
-        
-        <div className="space-y-4">
-          <div>
-            <H1>Encabezado H1</H1>
-            <p className="text-cadet-gray">Red Hat Display Bold, 48-64px</p>
-          </div>
-          
-          <div>
-            <H2>Encabezado H2</H2>
-            <p className="text-cadet-gray">Red Hat Display Bold, 36-48px</p>
-          </div>
-          
-          <div>
-            <H3>Encabezado H3</H3>
-            <p className="text-cadet-gray">Red Hat Display Semibold, 24-36px</p>
-          </div>
-          
-          <div>
-            <BodyText>Texto de cuerpo. Este es el estilo que se utiliza para la mayoría del contenido en la aplicación.</BodyText>
-            <p className="text-cadet-gray">Red Hat Display Regular, 16-18px</p>
-          </div>
-          
-          <div>
-            <SmallText>Texto pequeño. Utilizado para pies de foto, notas al pie y contenido secundario.</SmallText>
-            <p className="text-cadet-gray">Red Hat Display Light, 14px</p>
-          </div>
-          
-          <div>
-            <CodeText>const code = "Texto para código";</CodeText>
-            <p className="text-cadet-gray">Fira Mono, 14-16px</p>
-          </div>
+      <Box sx={{ mb: 6 }}>
+        <H2 sx={{ mb: 2 }}>Tipografía</H2>
+        <Paper sx={{ p: 3 }}>
+          <Box sx={{ mb: 4 }}>
+            <H1 sx={{ mb: 1 }}>Heading 1</H1>
+            <BodyText sx={{ color: 'text.secondary' }}>Font: {theme.typography.h1.fontFamily}</BodyText>
+          </Box>
 
-          <div>
-            <p className="numeric">0123456789</p>
-            <p className="text-cadet-gray">Números monoespaciados</p>
-          </div>
-        </div>
-      </section>
+          <Box sx={{ mb: 4 }}>
+            <H2 sx={{ mb: 1 }}>Heading 2</H2>
+            <BodyText sx={{ color: 'text.secondary' }}>Font: {theme.typography.h2.fontFamily}</BodyText>
+          </Box>
+
+          <Box sx={{ mb: 4 }}>
+            <H3 sx={{ mb: 1 }}>Heading 3</H3>
+            <BodyText sx={{ color: 'text.secondary' }}>Font: {theme.typography.h3.fontFamily}</BodyText>
+          </Box>
+
+          <Box sx={{ mb: 4 }}>
+            <BodyText sx={{ mb: 1 }}>Body Text</BodyText>
+            <BodyText sx={{ color: 'text.secondary' }}>Font: {theme.typography.body1.fontFamily}</BodyText>
+          </Box>
+
+          <Box sx={{ mb: 4 }}>
+            <SmallText sx={{ mb: 1 }}>Small Text</SmallText>
+            <BodyText sx={{ color: 'text.secondary' }}>Font: {theme.typography.body2.fontFamily}</BodyText>
+          </Box>
+
+          <Box>
+            <CodeText>const exampleCode = "Hello AI4U";</CodeText>
+          </Box>
+        </Paper>
+      </Box>
 
       {/* Colores */}
-      <section className="mb-12">
-        <H2 className="mb-6">Paleta de Colores</H2>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div>
-            <div className="h-24 w-full bg-mint-cream rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Mint Cream</p>
-            <p className="text-sm text-cadet-gray">#EAF4EB</p>
-          </div>
-          
-          <div>
-            <div className="h-24 w-full bg-hot-orange rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Hot Orange</p>
-            <p className="text-sm text-cadet-gray">#FF6E00</p>
-          </div>
-          
-          <div>
-            <div className="h-24 w-full bg-erie-black rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Erie Black</p>
-            <p className="text-sm text-cadet-gray">#171717</p>
-          </div>
-          
-          <div>
-            <div className="h-24 w-full bg-moderate-blue rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Moderate Blue</p>
-            <p className="text-sm text-cadet-gray">#3DAED1</p>
-          </div>
-          
-          <div>
-            <div className="h-24 w-full bg-cadet-gray rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Cadet Gray</p>
-            <p className="text-sm text-cadet-gray">#94989B</p>
-          </div>
-        </div>
-      </section>
+      <Box sx={{ mb: 6 }}>
+        <H2 sx={{ mb: 2 }}>Colores</H2>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'primary.main', color: 'white' }}>
+              <BodyText>Color Primario</BodyText>
+              <SmallText>primary.main</SmallText>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'secondary.main', color: 'white' }}>
+              <BodyText>Color Secundario</BodyText>
+              <SmallText>secondary.main</SmallText>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'text.primary', color: 'white' }}>
+              <BodyText>Texto Principal</BodyText>
+              <SmallText>text.primary</SmallText>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'background.default', border: 1, borderColor: 'divider' }}>
+              <BodyText>Fondo Por Defecto</BodyText>
+              <SmallText>background.default</SmallText>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'background.paper', border: 1, borderColor: 'divider' }}>
+              <BodyText>Fondo de Papel</BodyText>
+              <SmallText>background.paper</SmallText>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 3, bgcolor: 'text.secondary', color: 'white' }}>
+              <BodyText>Texto Secundario</BodyText>
+              <SmallText>text.secondary</SmallText>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
 
       {/* Botones */}
-      <section className="mb-12">
-        <H2 className="mb-6">Botones</H2>
-        
-        <div className="space-y-6">
-          <div className="flex flex-wrap gap-4">
-            <div>
-              <Button variant="primary">Botón Primario</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción principal</p>
-            </div>
-            
-            <div>
-              <Button variant="secondary">Botón Secundario</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción secundaria</p>
-            </div>
-            
-            <div>
-              <Button variant="outline">Botón Outline</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción alternativa</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-wrap gap-4">
-            <div>
-              <Button variant="primary" size="sm">Botón Pequeño</Button>
-            </div>
-            
-            <div>
-              <Button variant="primary" size="md">Botón Mediano</Button>
-            </div>
-            
-            <div>
-              <Button variant="primary" size="lg">Botón Grande</Button>
-            </div>
-          </div>
-          
-          <div className="flex flex-wrap gap-4">
-            <button className="ai4u-button">Botón con clase CSS</button>
-            <button className="ai4u-button-secondary">Botón secundario</button>
-            <button className="ai4u-button-outline">Botón outline</button>
-          </div>
-        </div>
-      </section>
+      <Box sx={{ mb: 6 }}>
+        <H2 sx={{ mb: 2 }}>Botones</H2>
+        <Paper sx={{ p: 3 }}>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 3 }}>
+            <Button variant="primary" size="small">Primario Pequeño</Button>
+            <Button variant="primary">Primario Mediano</Button>
+            <Button variant="primary" size="large">Primario Grande</Button>
+          </Stack>
+
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 3 }}>
+            <Button variant="secondary" size="small">Secundario Pequeño</Button>
+            <Button variant="secondary">Secundario Mediano</Button>
+            <Button variant="secondary" size="large">Secundario Grande</Button>
+          </Stack>
+
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <Button variant="outline" size="small">Outline Pequeño</Button>
+            <Button variant="outline">Outline Mediano</Button>
+            <Button variant="outline" size="large">Outline Grande</Button>
+          </Stack>
+        </Paper>
+      </Box>
 
       {/* Tarjetas */}
-      <section className="mb-12">
-        <H2 className="mb-6">Tarjetas</H2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <H3 className="mb-3">Tarjeta con componente</H3>
-            <BodyText>Esta tarjeta utiliza el componente Card de UI.</BodyText>
-          </Card>
-          
-          <div className="ai4u-card">
-            <h3 className="ai4u-h3 mb-3">Tarjeta con clases</h3>
-            <p className="ai4u-body">Esta tarjeta utiliza las clases CSS predefinidas.</p>
-          </div>
-          
-          <Card className="bg-moderate-blue/10">
-            <H3 className="mb-3">Tarjeta personalizada</H3>
-            <BodyText>Se pueden añadir clases personalizadas para modificar el estilo.</BodyText>
-          </Card>
-        </div>
-      </section>
-    </div>
+      <Box sx={{ mb: 6 }}>
+        <H2 sx={{ mb: 2 }}>Tarjetas</H2>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <H3 sx={{ mb: 2 }}>Tarjeta de ejemplo</H3>
+              <BodyText>Esta es una tarjeta básica que puedes usar para mostrar contenido.</BodyText>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <H3 sx={{ mb: 2 }}>Con botón</H3>
+              <BodyText sx={{ mb: 2 }}>Esta tarjeta contiene un botón de llamada a la acción.</BodyText>
+              <Button variant="primary">Acción</Button>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <H3 sx={{ mb: 2 }}>Con elementos</H3>
+              <BodyText sx={{ mb: 2 }}>Puedes agregar cualquier elemento dentro de una tarjeta.</BodyText>
+              <Divider sx={{ my: 2 }} />
+              <SmallText sx={{ color: 'text.secondary' }}>Información adicional</SmallText>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
 };
 

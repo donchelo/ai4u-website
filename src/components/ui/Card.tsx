@@ -1,15 +1,17 @@
 import React, { ReactNode } from 'react';
+import { Card as MuiCard, CardContent, CardProps as MuiCardProps } from '@mui/material';
 
-interface CardProps {
+interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
-  className?: string;
 }
 
-const Card: React.FC<CardProps> = ({ children, className = '' }) => {
+const Card = ({ children, ...props }: CardProps) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md p-6 border border-mint-cream hover:shadow-lg transition-all ${className}`}>
-      {children}
-    </div>
+    <MuiCard {...props}>
+      <CardContent>
+        {children}
+      </CardContent>
+    </MuiCard>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -6,15 +7,15 @@ interface LayoutProps {
   children?: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
-      <main className="flex-grow">
+      <Box component="main" sx={{ flexGrow: 1 }}>
         {children}
-      </main>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

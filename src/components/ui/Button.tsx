@@ -1,42 +1,47 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'small' | 'medium' | 'large';
   children?: ReactNode;
-  className?: string;
 }
 
-export const Button = ({ 
-  children, 
-  variant = 'primary', 
-  size = 'md', 
-  className = '', 
-  ...props 
+export const Button = ({
+  children,
+  variant = 'primary',
+  size = 'medium',
+  color,
+  ...props
 }: ButtonProps) => {
-  // Base classes
-  let baseClasses = 'font-redhat font-semibold rounded-lg transition-all focus:outline-none';
-  
-  // Variant classes
-  const variantClasses = {
-    primary: 'bg-hot-orange text-white hover:bg-hot-orange/90',
-    secondary: 'bg-moderate-blue text-white hover:bg-moderate-blue/90',
-    outline: 'border-2 border-hot-orange text-hot-orange hover:bg-hot-orange/10',
-  };
-  
-  // Size classes
-  const sizeClasses = {
-    sm: 'px-4 py-2 text-small',
-    md: 'px-6 py-3 text-body',
-    lg: 'px-8 py-4 text-body',
-  };
-  
-  const combinedClasses = `${baseClasses} ${variantClasses[variant as keyof typeof variantClasses]} ${sizeClasses[size as keyof typeof sizeClasses]} ${className}`;
-  
+  // Mapeo de variantes personalizadas a variantes de Material UI
+  let muiVariant: MuiButtonProps['variant'] = 'contained';
+  let muiColor: MuiButtonProps['color'] = 'primary';
+
+  switch (variant) {
+    case 'primary':
+      muiVariant = 'contained';
+      muiColor = 'primary';
+      break;
+    case 'secondary':
+      muiVariant = 'contained';
+      muiColor = 'secondary';
+      break;
+    case 'outline':
+      muiVariant = 'outlined';
+      muiColor = 'primary';
+      break;
+  }
+
   return (
-    <button className={combinedClasses} {...props}>
+    <MuiButton
+      variant={muiVariant}
+      color={color || muiColor}
+      size={size}
+      {...props}
+    >
       {children}
-    </button>
+    </MuiButton>
   );
 };
 

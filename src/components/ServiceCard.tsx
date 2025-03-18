@@ -1,16 +1,20 @@
 import React from 'react';
-import { WrappedCard as Card, WrappedH3 as H3, WrappedBodyText as BodyText } from './ui/TypographyWrapper';
+import Card from './ui/Card';
+import { H3, BodyText } from './ui/Typography';
+import { Box } from '@mui/material';
 
 interface ServiceCardProps {
   title: string;
   description: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description }) => {
+const ServiceCard = ({ title, description }: ServiceCardProps) => {
   return (
     <Card>
-      <H3 className="mb-3">{title}</H3>
-      <BodyText>{description}</BodyText>
+      <Box sx={{ mb: 2 }}>
+        <H3 sx={{ mb: 1 }}>{title}</H3>
+        <BodyText>{description}</BodyText>
+      </Box>
     </Card>
   );
 };

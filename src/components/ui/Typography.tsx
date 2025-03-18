@@ -1,42 +1,48 @@
 import React, { ReactNode } from 'react';
+import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 
-interface TypographyProps {
+interface TypographyExtendedProps extends MuiTypographyProps {
   children?: ReactNode;
-  className?: string;
 }
 
-export const H1: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <h1 className={`font-redhat font-bold text-h1 text-erie-black tracking-heading ${className}`}>
-    {children}
-  </h1>
+// Componentes de tipografía usando Material UI
+export const H1 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h1" {...props} />
 );
 
-export const H2: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <h2 className={`font-redhat font-bold text-h2 text-erie-black tracking-heading ${className}`}>
-    {children}
-  </h2>
+export const H2 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h2" {...props} />
 );
 
-export const H3: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <h3 className={`font-redhat font-semibold text-h3 text-erie-black tracking-heading ${className}`}>
-    {children}
-  </h3>
+export const H3 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h3" {...props} />
 );
 
-export const BodyText: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <p className={`font-redhat font-normal text-body text-erie-black ${className}`}>
-    {children}
-  </p>
+export const BodyText = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="body1" {...props} />
 );
 
-export const SmallText: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <p className={`font-redhat font-light text-small text-erie-black ${className}`}>
-    {children}
-  </p>
+export const SmallText = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="body2" {...props} />
 );
 
-export const CodeText: React.FC<TypographyProps> = ({ children, className = '' }) => (
-  <code className={`font-necto text-code text-erie-black ${className}`}>
-    {children}
-  </code>
-); 
+export const CodeText = (props: TypographyExtendedProps) => (
+  <MuiTypography
+    component="code"
+    fontFamily="monospace"
+    sx={{ 
+      display: 'inline-block',
+      backgroundColor: 'rgba(0,0,0,0.04)',
+      borderRadius: 1,
+      px: 0.5
+    }}
+    {...props}
+  />
+);
+
+// Componente Typography general que permite seleccionar variante
+export const Typography = ({ variant = 'body1', ...props }: TypographyExtendedProps) => {
+  return <MuiTypography variant={variant} {...props} />;
+};
+
+export default Typography; 

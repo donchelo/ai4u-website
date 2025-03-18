@@ -1,67 +1,82 @@
 import React from 'react';
-import { WrappedSmallText as SmallText } from './ui/TypographyWrapper';
-// Importando mediante require para evitar problemas de TypeScript con @remix-run/router
-const { Link } = require('react-router-dom');
+import { Link as RouterLink } from 'react-router-dom';
+import { Container, Grid, Box, Link, Typography as MuiTypography, Divider } from '@mui/material';
+import { SmallText } from './ui/Typography';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-erie-black text-white">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-mint-cream">AI4U</h3>
-            <p className="text-cadet-gray">
+    <Box sx={{ bgcolor: 'text.primary', color: 'background.paper', py: 6 }}>
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
+              AI4U
+            </MuiTypography>
+            <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
               Transformando el futuro con inteligencia artificial.
-            </p>
-          </div>
-          <nav aria-label="Enlaces rápidos">
-            <h3 className="text-lg font-semibold mb-4 text-mint-cream">Enlaces Rápidos</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-cadet-gray hover:text-hot-orange transition-colors">
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-cadet-gray hover:text-hot-orange transition-colors">
-                  Sobre Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-cadet-gray hover:text-hot-orange transition-colors">
-                  Servicios
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-cadet-gray hover:text-hot-orange transition-colors">
-                  Contacto
-                </Link>
-              </li>
-              <li>
-                <Link to="/theme-demo" className="text-cadet-gray hover:text-hot-orange transition-colors">
-                  Demo Tema
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-mint-cream">Contacto</h3>
-            <ul className="space-y-2 text-cadet-gray">
-              <li>info@ai4u.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>Calle Tecnología 123, Madrid</li>
-            </ul>
-          </div>
-        </div>
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center">
-          <SmallText className="text-cadet-gray">
+            </MuiTypography>
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
+              Enlaces Rápidos
+            </MuiTypography>
+            <Box component="nav" aria-label="Enlaces rápidos">
+              <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
+                {[
+                  { name: 'Inicio', path: '/' },
+                  { name: 'Sobre Nosotros', path: '/about' },
+                  { name: 'Servicios', path: '/services' },
+                  { name: 'Contacto', path: '/contact' },
+                  { name: 'Demo Tema', path: '/theme-demo' }
+                ].map((link) => (
+                  <Box component="li" key={link.name} sx={{ mb: 1 }}>
+                    <Link
+                      component={RouterLink}
+                      to={link.path}
+                      sx={{
+                        color: 'text.secondary',
+                        textDecoration: 'none',
+                        '&:hover': { color: 'primary.main' }
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
+              Contacto
+            </MuiTypography>
+            <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
+              {[
+                'info@ai4u.com',
+                '+1 (555) 123-4567',
+                'Calle Tecnología 123, Madrid'
+              ].map((item, index) => (
+                <Box component="li" key={index} sx={{ mb: 1, color: 'text.secondary' }}>
+                  {item}
+                </Box>
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
+        
+        <Divider sx={{ mt: 4, mb: 3, borderColor: 'rgba(255,255,255,0.2)' }} />
+        
+        <Box sx={{ textAlign: 'center' }}>
+          <SmallText sx={{ color: 'text.secondary' }}>
             © {currentYear} AI4U. Todos los derechos reservados.
           </SmallText>
-        </div>
-      </div>
-    </footer>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
