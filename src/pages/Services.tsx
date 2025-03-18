@@ -4,6 +4,7 @@ import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 
 // Industry service case component
 interface IndustryServiceProps {
@@ -241,9 +242,7 @@ const Services: React.FC = () => {
         </BodyText>
         
         <Box sx={{ textAlign: 'center' }}>
-          <Button variant="primary" size="large">
-            AGENDAR DIAGNÓSTICO GRATUITO
-          </Button>
+          <DiagnosticCTA variant="primary" size="large" text="AGENDAR DIAGNÓSTICO GRATUITO" />
           
           <BodyText sx={{ mt: 3, fontStyle: 'italic', color: 'text.secondary' }}>
             Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes

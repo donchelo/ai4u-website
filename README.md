@@ -73,4 +73,37 @@ ai4u-website/
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles. 
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## Componentes UI
+
+### DiagnosticCTA
+
+Un botón CTA (Call to Action) para agendar diagnósticos gratuitos a través de Calendly.
+
+**Uso:**
+
+```jsx
+import { DiagnosticCTA } from './components/ui/DiagnosticCTA';
+
+// Uso básico
+<DiagnosticCTA />
+
+// Personalizado
+<DiagnosticCTA 
+  variant="outline" 
+  size="large" 
+  text="Agenda tu diagnóstico ahora" 
+  showIcon={false} 
+/>
+```
+
+**Props:**
+
+| Propiedad | Tipo | Por defecto | Descripción |
+|-----------|------|-------------|-------------|
+| variant | 'primary' \| 'secondary' \| 'outline' | 'primary' | Estilo visual del botón |
+| size | 'small' \| 'medium' \| 'large' | 'medium' | Tamaño del botón |
+| showIcon | boolean | true | Muestra u oculta el ícono de calendario |
+| text | string | 'Diagnóstico Gratuito' | Texto a mostrar en el botón |
+| className | string | - | Clase CSS adicional | 

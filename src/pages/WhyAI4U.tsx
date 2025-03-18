@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
+import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import VerifiedIcon from '@mui/icons-material/Verified';
@@ -417,6 +418,21 @@ const WhyAI4U = () => {
               </Box>
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      {/* Final CTA Section */}
+      <Box sx={{ py: 8, bgcolor: 'background.paper', textAlign: 'center' }}>
+        <Container maxWidth="md">
+          <H2 sx={{ mb: 3 }}>¿Listo para descubrir cómo AI4U puede transformar tu negocio?</H2>
+          <BodyText sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}>
+            Agenda ahora tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización que liberarán tu tiempo estratégico.
+          </BodyText>
+          <DiagnosticCTA 
+            variant="primary" 
+            size="large" 
+            text="AGENDA TU DIAGNÓSTICO GRATUITO" 
+          />
         </Container>
       </Box>
     </Box>

@@ -7,10 +7,12 @@ import {
   Paper, 
   Avatar, 
   Typography as MuiTypography,
+  Divider
 } from '@mui/material';
-import { H1, H2, BodyText } from '../components/ui/Typography';
+import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 
 const SuccessCases = () => {
   return (
@@ -107,23 +109,19 @@ const SuccessCases = () => {
         </Container>
       </Box>
 
-      {/* Call to Action */}
-      <Box sx={{ py: 8, bgcolor: 'background.default', textAlign: 'center' }}>
-        <Container maxWidth="md">
-          <H2 sx={{ mb: 3 }}>¿Listo para transformar tu presencia digital?</H2>
-          <BodyText sx={{ mb: 4, fontSize: '1.1rem' }}>
-            Únete a las empresas que ya están experimentando el poder de la automatización inteligente con AI4U
+      {/* CTA Section */}
+      <Box sx={{ bgcolor: 'background.paper', py: 8 }}>
+        <Container maxWidth="md" sx={{ textAlign: 'center' }}>
+          <H2 sx={{ mb: 3 }}>¿Listo para ser nuestro próximo caso de éxito?</H2>
+          <BodyText sx={{ mb: 4 }}>
+            Descubre cómo podemos ayudarte a transformar tu negocio con soluciones de IA a medida.
           </BodyText>
-          
-          <Button 
+          <DiagnosticCTA 
             variant="primary" 
-            color="primary" 
             size="large"
-            endIcon={<DoubleArrowIcon />}
-            sx={{ px: 4, py: 1.5, borderRadius: 2 }}
-          >
-            Agenda tu diagnóstico gratuito
-          </Button>
+            text="Agenda tu diagnóstico gratuito"
+            className="px-4 py-1.5 rounded-lg"
+          />
         </Container>
       </Box>
     </Box>

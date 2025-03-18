@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard';
 import { H2, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import HeroSection from '../components/HeroSection';
+import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 
 interface Service {
   id: number;
@@ -72,23 +73,18 @@ const Home = () => {
       </Box>
 
       {/* CTA Section */}
-      <Box sx={{ bgcolor: 'text.primary', color: 'background.paper', py: 10 }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center' }}>
-            <H2 sx={{ mb: 3, color: 'background.default' }}>
-              ¿Listo para transformar tu negocio?
-            </H2>
-            <BodyText sx={{ mb: 4, color: 'text.secondary', maxWidth: 700, mx: 'auto' }}>
-              Descubre cómo nuestras soluciones de inteligencia artificial pueden 
-              ayudarte a alcanzar tus objetivos de negocio.
-            </BodyText>
-            <Button 
-              variant="primary" 
-              size="large"
-            >
-              Solicita una demostración
-            </Button>
-          </Box>
+      <Box sx={{ py: 10, bgcolor: 'background.paper', textAlign: 'center' }}>
+        <Container maxWidth="md">
+          <H2 sx={{ mb: 3 }}>¿Listo para transformar tu negocio con IA?</H2>
+          <BodyText sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}>
+            Agenda un diagnóstico gratuito y descubre cómo podemos ayudarte a implementar
+            soluciones de IA que mejoren la eficiencia y experiencia de tus clientes.
+          </BodyText>
+          <DiagnosticCTA 
+            variant="primary" 
+            size="large" 
+            text="Agenda tu diagnóstico gratuito" 
+          />
         </Container>
       </Box>
     </Box>

@@ -5,6 +5,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';
+import { DiagnosticCTA } from './ui/DiagnosticCTA';
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -49,14 +50,7 @@ const HeroSection = () => {
                   Nuestros Servicios
                 </Button>
               </RouterLink>
-              <Link 
-                href="https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
-              >
-                <Button variant="outline">Agendar diagnóstico gratis</Button>
-              </Link>
+              <DiagnosticCTA variant="outline" text="Agendar diagnóstico gratis" />
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
