@@ -1,6 +1,5 @@
 import React from 'react';
-import Card from './ui/Card';
-import { H3, BodyText } from './ui/Typography';
+import { WrappedCard as Card, WrappedH3 as H3, WrappedBodyText as BodyText } from './ui/TypographyWrapper';
 
 interface ServiceCardProps {
   title: string;

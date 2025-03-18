@@ -10,7 +10,7 @@ import {
 } from '../components/ui/TypographyWrapper';
 import { Button } from '../components/ui/Button';
 
-const ThemeDemo: React.FC = () => {
+const ThemeDemo = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="mb-12 text-center">
@@ -52,11 +52,6 @@ const ThemeDemo: React.FC = () => {
             <CodeText>const code = "Texto para código";</CodeText>
             <p className="text-cadet-gray">Fira Mono, 14-16px</p>
           </div>
-
-          <div>
-            <p className="numeric">0123456789</p>
-            <p className="text-cadet-gray">Números monoespaciados</p>
-          </div>
         </div>
       </section>
 
@@ -66,33 +61,43 @@ const ThemeDemo: React.FC = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <div>
-            <div className="h-24 w-full bg-mint-cream rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Mint Cream</p>
-            <p className="text-sm text-cadet-gray">#EAF4EB</p>
+            <div className="h-24 bg-hot-orange rounded-t-lg"></div>
+            <div className="p-3 border border-t-0 rounded-b-lg">
+              <p className="font-semibold">Hot Orange</p>
+              <p className="text-sm text-cadet-gray">#FF4500</p>
+            </div>
           </div>
           
           <div>
-            <div className="h-24 w-full bg-hot-orange rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Hot Orange</p>
-            <p className="text-sm text-cadet-gray">#FF6E00</p>
+            <div className="h-24 bg-moderate-blue rounded-t-lg"></div>
+            <div className="p-3 border border-t-0 rounded-b-lg">
+              <p className="font-semibold">Moderate Blue</p>
+              <p className="text-sm text-cadet-gray">#5271FF</p>
+            </div>
           </div>
           
           <div>
-            <div className="h-24 w-full bg-erie-black rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Erie Black</p>
-            <p className="text-sm text-cadet-gray">#171717</p>
+            <div className="h-24 bg-erie-black rounded-t-lg"></div>
+            <div className="p-3 border border-t-0 rounded-b-lg">
+              <p className="font-semibold">Erie Black</p>
+              <p className="text-sm text-cadet-gray">#1B1B1B</p>
+            </div>
           </div>
           
           <div>
-            <div className="h-24 w-full bg-moderate-blue rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Moderate Blue</p>
-            <p className="text-sm text-cadet-gray">#3DAED1</p>
+            <div className="h-24 bg-mint-cream rounded-t-lg"></div>
+            <div className="p-3 border border-t-0 rounded-b-lg">
+              <p className="font-semibold">Mint Cream</p>
+              <p className="text-sm text-cadet-gray">#F5FFFA</p>
+            </div>
           </div>
           
           <div>
-            <div className="h-24 w-full bg-cadet-gray rounded-lg border shadow-sm"></div>
-            <p className="mt-2 font-semibold">Cadet Gray</p>
-            <p className="text-sm text-cadet-gray">#94989B</p>
+            <div className="h-24 bg-cadet-gray rounded-t-lg"></div>
+            <div className="p-3 border border-t-0 rounded-b-lg">
+              <p className="font-semibold">Cadet Gray</p>
+              <p className="text-sm text-cadet-gray">#91A3B0</p>
+            </div>
           </div>
         </div>
       </section>
@@ -103,40 +108,31 @@ const ThemeDemo: React.FC = () => {
         
         <div className="space-y-6">
           <div className="flex flex-wrap gap-4">
-            <div>
-              <Button variant="primary">Botón Primario</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción principal</p>
-            </div>
-            
-            <div>
-              <Button variant="secondary">Botón Secundario</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción secundaria</p>
-            </div>
-            
-            <div>
-              <Button variant="outline">Botón Outline</Button>
-              <p className="mt-2 text-sm text-cadet-gray">Acción alternativa</p>
-            </div>
+            <Button variant="primary">Primario</Button>
+            <Button variant="secondary">Secundario</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <div>
-              <Button variant="primary" size="sm">Botón Pequeño</Button>
-            </div>
-            
-            <div>
-              <Button variant="primary" size="md">Botón Mediano</Button>
-            </div>
-            
-            <div>
-              <Button variant="primary" size="lg">Botón Grande</Button>
-            </div>
+            <Button variant="primary" size="sm">Pequeño</Button>
+            <Button variant="primary">Mediano</Button>
+            <Button variant="primary" size="lg">Grande</Button>
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <button className="ai4u-button">Botón con clase CSS</button>
-            <button className="ai4u-button-secondary">Botón secundario</button>
-            <button className="ai4u-button-outline">Botón outline</button>
+            <Button variant="primary" disabled>Deshabilitado</Button>
+            <Button variant="secondary" disabled>Deshabilitado</Button>
+            <Button variant="outline" disabled>Deshabilitado</Button>
+          </div>
+          
+          <div className="flex flex-wrap gap-4">
+            <Button 
+              variant="primary" 
+              className="bg-moderate-blue hover:bg-moderate-blue/80"
+            >
+              Personalizado
+            </Button>
           </div>
         </div>
       </section>
@@ -152,8 +148,8 @@ const ThemeDemo: React.FC = () => {
           </Card>
           
           <div className="ai4u-card">
-            <h3 className="ai4u-h3 mb-3">Tarjeta con clases</h3>
-            <p className="ai4u-body">Esta tarjeta utiliza las clases CSS predefinidas.</p>
+            <H3 className="mb-3">Tarjeta con clase</H3>
+            <BodyText>Esta tarjeta utiliza la clase ai4u-card.</BodyText>
           </div>
           
           <Card className="bg-moderate-blue/10">

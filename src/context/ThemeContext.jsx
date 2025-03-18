@@ -1,23 +1,7 @@
-import React, { createContext, useContext, ReactNode } from 'react';
-
-// Definir la interfaz del tema
-interface Theme {
-  colors: {
-    background: string;
-    action: string;
-    text: string;
-    tech: string;
-    neutral: string;
-  };
-  fonts: {
-    heading: string;
-    body: string;
-    code: string;
-  };
-}
+import React, { createContext, useContext } from 'react';
 
 // Crear el tema AI4U
-const ai4uTheme: Theme = {
+const ai4uTheme = {
   colors: {
     background: 'mint-cream',  // Fondo principal
     action: 'hot-orange',      // CTAs y acciones
@@ -33,13 +17,13 @@ const ai4uTheme: Theme = {
 };
 
 // Crear el contexto
-const ThemeContext = createContext<Theme>(ai4uTheme);
+const ThemeContext = createContext(ai4uTheme);
 
 // Hook personalizado para usar el tema
 export const useTheme = () => useContext(ThemeContext);
 
 // Proveedor del tema
-export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) => {
+export const ThemeProvider = ({ children }) => {
   return (
     <ThemeContext.Provider value={ai4uTheme}>
       {children}

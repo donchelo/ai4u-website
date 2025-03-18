@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { SmallText } from './ui/Typography';
+import { WrappedSmallText as SmallText } from './ui/TypographyWrapper';
+// Importando mediante require para evitar problemas de TypeScript con @remix-run/router
+const { Link } = require('react-router-dom');
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

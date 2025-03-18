@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// Importando mediante require para evitar problemas de TypeScript con @remix-run/router
+const { Link } = require('react-router-dom');
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
