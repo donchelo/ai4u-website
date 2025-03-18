@@ -5,6 +5,9 @@ import { SmallText } from './ui/Typography';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useColorMode } from '../context/ThemeContext';
 
 const Footer = () => {
@@ -83,7 +86,8 @@ const Footer = () => {
               Contacto
             </MuiTypography>
             <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
-              {[
+              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
+                <EmailIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
                 <Link 
                   href="mailto:hola@ai4u.com.co"
                   sx={{
@@ -93,14 +97,20 @@ const Footer = () => {
                   }}
                 >
                   hola@ai4u.com.co
-                </Link>,
-                'Tel: +57 3024906414',
-                'Medellín, Colombia'
-              ].map((item, index) => (
-                <Box component="li" key={index} sx={{ mb: 1, color: theme.palette.text.secondary }}>
-                  {item}
-                </Box>
-              ))}
+                </Link>
+              </Box>
+              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
+                <PhoneIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
+                <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                  +57 3024906414
+                </MuiTypography>
+              </Box>
+              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
+                <LocationOnIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
+                <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                  Medellín, Colombia
+                </MuiTypography>
+              </Box>
             </Box>
           </Grid>
         </Grid>
