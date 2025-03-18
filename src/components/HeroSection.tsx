@@ -1,10 +1,35 @@
-import React from 'react';
-import { Container, Grid, Box, Stack, Link } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Container, Grid, Box, Stack, Link, IconButton } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';
 
 const HeroSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [
+    "/assets/images/hero-image.png",
+    "/assets/images/hero-image2.png",
+    "/assets/images/hero-image3.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 5000); // Cambiar cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <Box sx={{ bgcolor: 'background.default', py: 10 }}>
       <Container maxWidth="lg">
@@ -35,19 +60,101 @@ const HeroSection = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              src="/assets/images/hero-image.png"
-              alt="AI4U soluciones de inteligencia artificial"
-              sx={{
-                width: '100%',
-                height: 'auto',
-                maxHeight: 400,
-                borderRadius: 3,
-                objectFit: 'cover',
-                boxShadow: 3
-              }}
-            />
+            <Box sx={{ position: 'relative' }}>
+              <Box
+                component="img"
+                src={images[currentImage]}
+                alt={`AI4U soluciones de inteligencia artificial (${currentImage + 1}/${images.length})`}
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: 400,
+                  borderRadius: 3,
+                  objectFit: 'cover',
+                  boxShadow: 3,
+                  transition: 'opacity 0.5s ease-in-out'
+                }}
+              />
+              
+              {/* Controles de navegación */}
+              <IconButton 
+                aria-label="imagen anterior"
+                onClick={handlePrev}
+                sx={{
+                  position: 'absolute',
+                  left: 8,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  bgcolor: 'rgba(255,255,255,0.3)',
+                  width: 32,
+                  height: 32,
+                  zIndex: 2,
+                  opacity: 0.6,
+                  transition: 'opacity 0.3s ease, background-color 0.3s ease',
+                  '&:hover': {
+                    opacity: 1,
+                    bgcolor: 'rgba(255,255,255,0.7)',
+                  }
+                }}
+              >
+                <ArrowBackIosNewIcon fontSize="small" />
+              </IconButton>
+              
+              <IconButton 
+                aria-label="imagen siguiente"
+                onClick={handleNext}
+                sx={{
+                  position: 'absolute',
+                  right: 8,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  bgcolor: 'rgba(255,255,255,0.3)',
+                  width: 32,
+                  height: 32,
+                  zIndex: 2,
+                  opacity: 0.6,
+                  transition: 'opacity 0.3s ease, background-color 0.3s ease',
+                  '&:hover': {
+                    opacity: 1,
+                    bgcolor: 'rgba(255,255,255,0.7)',
+                  }
+                }}
+              >
+                <ArrowForwardIosIcon fontSize="small" />
+              </IconButton>
+              
+              {/* Indicadores de posición */}
+              <Stack 
+                direction="row" 
+                spacing={1} 
+                justifyContent="center"
+                sx={{
+                  position: 'absolute',
+                  bottom: 12,
+                  left: 0,
+                  right: 0,
+                  zIndex: 2
+                }}
+              >
+                {images.map((_, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => setCurrentImage(index)}
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      bgcolor: index === currentImage ? 'primary.main' : 'rgba(255,255,255,0.5)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'scale(1.2)',
+                      }
+                    }}
+                  />
+                ))}
+              </Stack>
+            </Box>
           </Grid>
         </Grid>
       </Container>
