@@ -17,11 +17,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useColorMode } from '../context/ThemeContext';
 
 const navItems = [
-  { name: 'Inicio', path: '/' },
-  { name: 'Sobre Nosotros', path: '/about' },
-  { name: 'Servicios', path: '/services' },
-  { name: 'Contacto', path: '/contact' },
-  { name: 'Demo Tema', path: '/theme-demo' }
+  { name: 'Soluciones', path: '/soluciones' },
+  { name: 'Tienda AI', path: '/tienda-ai' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
+  { name: 'Casos de éxito', path: '/casos-de-exito' }
 ];
 
 const Navbar = () => {

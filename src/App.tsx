@@ -12,6 +12,11 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/soluciones" element={<Home />} />
+            <Route path="/tienda-ai" element={<Home />} />
+            <Route path="/blog" element={<Home />} />
+            <Route path="/por-que-ai4u" element={<Home />} />
+            <Route path="/casos-de-exito" element={<Home />} />
             <Route path="/theme-demo" element={<ThemeDemo />} />
           </Routes>
         </Layout>

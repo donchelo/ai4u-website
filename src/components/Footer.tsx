@@ -26,11 +26,11 @@ const Footer = () => {
             <Box component="nav" aria-label="Enlaces rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                 {[
-                  { name: 'Inicio', path: '/' },
-                  { name: 'Sobre Nosotros', path: '/about' },
-                  { name: 'Servicios', path: '/services' },
-                  { name: 'Contacto', path: '/contact' },
-                  { name: 'Demo Tema', path: '/theme-demo' }
+                  { name: 'Soluciones', path: '/soluciones' },
+                  { name: 'Tienda AI', path: '/tienda-ai' },
+                  { name: 'Blog', path: '/blog' },
+                  { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
+                  { name: 'Casos de éxito', path: '/casos-de-exito' }
                 ].map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
                     <Link
