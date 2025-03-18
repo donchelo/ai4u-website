@@ -13,6 +13,7 @@ import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
+import { ServicesButton } from '../components/ui/ServicesButton';
 
 const SuccessCases = () => {
   return (
@@ -116,12 +117,20 @@ const SuccessCases = () => {
           <BodyText sx={{ mb: 4 }}>
             Descubre cómo podemos ayudarte a transformar tu negocio con soluciones de IA a medida.
           </BodyText>
-          <DiagnosticCTA 
-            variant="primary" 
-            size="large"
-            text="Agenda tu diagnóstico gratuito"
-            className="px-4 py-1.5 rounded-lg"
-          />
+          <Stack direction="row" spacing={3} justifyContent="center">
+            <DiagnosticCTA 
+              variant="primary" 
+              size="large"
+              text="Agenda tu diagnóstico gratuito"
+              className="px-4 py-1.5 rounded-lg"
+            />
+            <ServicesButton
+              variant="outline"
+              size="large"
+              text="Explorar soluciones"
+              className="px-4 py-1.5 rounded-lg"
+            />
+          </Stack>
         </Container>
       </Box>
     </Box>

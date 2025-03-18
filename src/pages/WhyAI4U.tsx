@@ -20,6 +20,7 @@ import {
 import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
+import { ServicesButton } from '../components/ui/ServicesButton';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import VerifiedIcon from '@mui/icons-material/Verified';
@@ -309,17 +310,12 @@ const WhyAI4U = () => {
           </Grid>
 
           <Box sx={{ textAlign: 'center', mt: 6 }}>
-            <Button 
+            <ServicesButton 
               variant="primary" 
               size="large"
-              sx={{ 
-                py: 1.5,
-                px: 4,
-                fontSize: 18
-              }}
-            >
-              Comienza Tu Transformación
-            </Button>
+              text="Conoce Nuestras Soluciones"
+              className="py-1.5 px-4 text-lg"
+            />
           </Box>
         </Container>
       </Box>
@@ -428,11 +424,18 @@ const WhyAI4U = () => {
           <BodyText sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}>
             Agenda ahora tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización que liberarán tu tiempo estratégico.
           </BodyText>
-          <DiagnosticCTA 
-            variant="primary" 
-            size="large" 
-            text="AGENDA TU DIAGNÓSTICO GRATUITO" 
-          />
+          <Stack direction="row" spacing={3} justifyContent="center">
+            <DiagnosticCTA 
+              variant="primary" 
+              size="large" 
+              text="AGENDA TU DIAGNÓSTICO GRATUITO" 
+            />
+            <ServicesButton
+              variant="outline"
+              size="large"
+              text="VER SOLUCIONES"
+            />
+          </Stack>
         </Container>
       </Box>
     </Box>

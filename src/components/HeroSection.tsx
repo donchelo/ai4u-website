@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';
 import { DiagnosticCTA } from './ui/DiagnosticCTA';
+import { ServicesButton } from './ui/ServicesButton';
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -45,11 +46,7 @@ const HeroSection = () => {
               para transformar tu negocio y mejorar la experiencia de tus clientes.
             </BodyText>
             <Stack direction="row" spacing={2} flexWrap="wrap">
-              <RouterLink to="/servicios" style={{ textDecoration: 'none' }}>
-                <Button variant="primary">
-                  Nuestros Servicios
-                </Button>
-              </RouterLink>
+              <ServicesButton variant="primary" />
               <DiagnosticCTA variant="outline" text="Agendar diagnóstico gratis" />
             </Stack>
           </Grid>

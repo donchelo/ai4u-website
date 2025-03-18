@@ -134,6 +134,11 @@ const Services: React.FC = () => {
             
             <Box sx={{ textAlign: 'center', mt: 4 }}>
               <BodyText variant="h6" sx={{ fontWeight: 500, mb: 2 }}>Soluciones desde $350.000 COP</BodyText>
+              <DiagnosticCTA 
+                variant="primary" 
+                size="medium" 
+                text="Iniciar con diagnóstico gratuito" 
+              />
             </Box>
           </Grid>
         </Grid>

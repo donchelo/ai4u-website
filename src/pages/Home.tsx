@@ -6,6 +6,7 @@ import { H2, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import HeroSection from '../components/HeroSection';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
+import { ServicesButton } from '../components/ui/ServicesButton';
 
 interface Service {
   id: number;
@@ -60,14 +61,11 @@ const Home = () => {
           </Grid>
 
           <Box sx={{ mt: 6, textAlign: 'center' }}>
-            <RouterLink to="/servicios" style={{ textDecoration: 'none' }}>
-              <Button 
-                variant="outline" 
-                size="medium"
-              >
-                Ver todos nuestros servicios
-              </Button>
-            </RouterLink>
+            <ServicesButton 
+              variant="outline" 
+              size="medium"
+              text="Ver todos nuestros servicios"
+            />
           </Box>
         </Container>
       </Box>
