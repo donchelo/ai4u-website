@@ -44,7 +44,7 @@ const HeroSection = () => {
               para transformar tu negocio y mejorar la experiencia de tus clientes.
             </BodyText>
             <Stack direction="row" spacing={2} flexWrap="wrap">
-              <RouterLink to="/soluciones" style={{ textDecoration: 'none' }}>
+              <RouterLink to="/servicios" style={{ textDecoration: 'none' }}>
                 <Button variant="primary">
                   Nuestros Servicios
                 </Button>

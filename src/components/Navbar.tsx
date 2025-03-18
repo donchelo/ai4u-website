@@ -18,7 +18,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useColorMode } from '../context/ThemeContext';
 
 const navItems = [
-  { name: 'Servicios', path: '/soluciones' },
+  { name: 'Servicios', path: '/servicios' },
   { name: 'Blog', path: '/blog' },
   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
   { name: 'Casos de éxito', path: '/casos-de-exito' }

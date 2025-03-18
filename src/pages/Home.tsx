@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Grid, Box, Typography as MuiTypography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import { H2, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
@@ -56,6 +57,17 @@ const Home = () => {
               </Grid>
             ))}
           </Grid>
+
+          <Box sx={{ mt: 6, textAlign: 'center' }}>
+            <RouterLink to="/servicios" style={{ textDecoration: 'none' }}>
+              <Button 
+                variant="outline" 
+                size="medium"
+              >
+                Ver todos nuestros servicios
+              </Button>
+            </RouterLink>
+          </Box>
         </Container>
       </Box>
 

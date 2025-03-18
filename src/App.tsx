@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import WhyAI4U from './pages/WhyAI4U';
 import ThemeDemo from './pages/ThemeDemo';
 import SuccessCases from './pages/SuccessCases';
+import Services from './pages/Services';
 import ThemeProvider from './context/ThemeContext';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/soluciones" element={<Home />} />
+            <Route path="/servicios" element={<Services />} />
+            <Route path="/soluciones" element={<Services />} />
             <Route path="/tienda-ai" element={<Home />} />
             <Route path="/blog" element={<Home />} />
             <Route path="/por-que-ai4u" element={<WhyAI4U />} />

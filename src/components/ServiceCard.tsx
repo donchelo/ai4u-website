@@ -12,7 +12,7 @@ const ServiceCard = ({ title, description }: ServiceCardProps) => {
   return (
     <Card>
       <Box sx={{ mb: 2 }}>
-        <H3 sx={{ mb: 1 }}>{title}</H3>
+        <H3 sx={{ mb: 1, textAlign: 'center' }}>{title}</H3>
         <BodyText>{description}</BodyText>
       </Box>
     </Card>
