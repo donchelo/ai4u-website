@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Box, Stack, Paper, Typography as MuiTypography, Link } from '@mui/material';
+import { Container, Grid, Box, Stack, Typography as MuiTypography, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';
@@ -35,21 +35,19 @@ const HeroSection = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            {/* Aquí iría una imagen o ilustración */}
-            <Paper 
-              sx={{ 
-                height: 400, 
-                bgcolor: 'secondary.light', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                borderRadius: 3
+            <Box
+              component="img"
+              src="/assets/images/hero-image.png"
+              alt="AI4U soluciones de inteligencia artificial"
+              sx={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: 400,
+                borderRadius: 3,
+                objectFit: 'cover',
+                boxShadow: 3
               }}
-            >
-              <MuiTypography sx={{ color: 'secondary.main', fontWeight: 600 }}>
-                Imagen de IA
-              </MuiTypography>
-            </Paper>
+            />
           </Grid>
         </Grid>
       </Container>
