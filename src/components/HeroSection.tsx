@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Grid, Box, Stack, Paper, Typography as MuiTypography, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';
 
@@ -18,7 +19,11 @@ const HeroSection = () => {
               para transformar tu negocio y mejorar la experiencia de tus clientes.
             </BodyText>
             <Stack direction="row" spacing={2} flexWrap="wrap">
-              <Button variant="primary">Nuestros Servicios</Button>
+              <RouterLink to="/soluciones" style={{ textDecoration: 'none' }}>
+                <Button variant="primary">
+                  Nuestros Servicios
+                </Button>
+              </RouterLink>
               <Link 
                 href="https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente" 
                 target="_blank" 

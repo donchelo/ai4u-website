@@ -17,8 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useColorMode } from '../context/ThemeContext';
 
 const navItems = [
-  { name: 'Soluciones', path: '/soluciones' },
-  { name: 'Tienda AI', path: '/tienda-ai' },
+  { name: 'Servicios', path: '/soluciones' },
   { name: 'Blog', path: '/blog' },
   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
   { name: 'Casos de éxito', path: '/casos-de-exito' }
