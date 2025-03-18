@@ -9,9 +9,16 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', overflow: 'hidden' }}>
       <Navbar />
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box 
+        component="main" 
+        sx={{ 
+          flexGrow: 1,
+          width: '100%', 
+          maxWidth: '100%' 
+        }}
+      >
         {children}
       </Box>
       <Footer />

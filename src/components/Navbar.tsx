@@ -37,6 +37,9 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  // Logo path based on theme mode
+  const logoPath = mode === 'dark' ? '/assets/images/ai4u-logo-dark.png' : '/assets/images/ai4u-logo.png';
+
   return (
     <AppBar position="static" color="default" elevation={1} sx={{ backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
@@ -46,20 +49,22 @@ const Navbar = () => {
             component={RouterLink}
             to="/"
             sx={{
-              mr: 2,
+              mr: 3,
               display: { xs: 'none', md: 'flex' },
               textDecoration: 'none',
+              alignItems: 'center',
             }}
           >
-            <MuiTypography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                color: 'primary.main',
+            <Box
+              component="img"
+              src={logoPath}
+              alt="AI4U Logo"
+              sx={{ 
+                height: 42,
+                width: 'auto',
+                marginLeft: '4px'
               }}
-            >
-              AI4U
-            </MuiTypography>
+            />
           </Box>
 
           {/* Mobile Menu */}
@@ -114,17 +119,19 @@ const Navbar = () => {
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               textDecoration: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            <MuiTypography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                color: 'primary.main',
+            <Box
+              component="img"
+              src={logoPath}
+              alt="AI4U Logo"
+              sx={{ 
+                height: 38,
+                width: 'auto'
               }}
-            >
-              AI4U
-            </MuiTypography>
+            />
           </Box>
 
           {/* Desktop Menu */}
