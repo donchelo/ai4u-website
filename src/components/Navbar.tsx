@@ -16,9 +16,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import HomeIcon from '@mui/icons-material/Home';
 import { useColorMode } from '../context/ThemeContext';
 
 const navItems = [
+  { name: 'Home', path: '/' },
   { name: 'Servicios', path: '/servicios' },
   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
   { name: 'Casos de éxito', path: '/casos-de-exito' }
@@ -46,7 +48,15 @@ const Navbar = () => {
     : '/assets/images/ai4u-logo-for-light-background.png';      // Logo para fondos claros
 
   return (
-    <AppBar position="static" color="default" elevation={1} sx={{ backgroundColor: 'background.paper' }}>
+    <AppBar 
+      position="fixed" 
+      color="default" 
+      elevation={1} 
+      sx={{ 
+        backgroundColor: 'background.paper',
+        zIndex: (theme) => theme.zIndex.drawer + 1 
+      }}
+    >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* Logo - Desktop */}

@@ -8,6 +8,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import HomeIcon from '@mui/icons-material/Home';
 import { useColorMode } from '../context/ThemeContext';
 
 const Footer = () => {
@@ -59,6 +60,7 @@ const Footer = () => {
             <Box component="nav" aria-label="Enlaces rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                 {[
+                  { name: 'Home', path: '/' },
                   { name: 'Servicios', path: '/servicios' },
                   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
                   { name: 'Casos de éxito', path: '/casos-de-exito' }
