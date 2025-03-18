@@ -1,13 +1,20 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Container, Grid, Box, Link, Typography as MuiTypography, Divider, IconButton, Stack } from '@mui/material';
+import { Container, Grid, Box, Link, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from './ui/Typography';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useColorMode } from '../context/ThemeContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const theme = useTheme();
+  const { mode } = useColorMode();
+  const isDarkMode = mode === 'dark';
+
+  // Logo path based on theme mode
+  const logoPath = isDarkMode ? '/assets/images/ai4u-logo-dark.png' : '/assets/images/ai4u-logo.png';
 
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
@@ -16,20 +23,35 @@ const Footer = () => {
   ];
 
   return (
-    <Box sx={{ bgcolor: 'text.primary', color: 'background.paper', py: 6 }}>
+    <Box 
+      sx={{ 
+        bgcolor: theme.palette.mode === 'dark' ? 'background.paper' : 'text.primary',
+        color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.paper',
+        py: 6,
+        borderTop: 1,
+        borderColor: 'divider'
+      }}
+    >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
-              AI4U
-            </MuiTypography>
-            <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Box 
+              component="img"
+              src={logoPath}
+              alt="AI4U Logo"
+              sx={{ 
+                height: 42,
+                width: 'auto',
+                mb: 2
+              }}
+            />
+            <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
               Transformando el futuro con inteligencia artificial.
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.default' }}>
               Enlaces Rápidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces rápidos">
@@ -45,7 +67,7 @@ const Footer = () => {
                       component={RouterLink}
                       to={link.path}
                       sx={{
-                        color: 'text.secondary',
+                        color: theme.palette.text.secondary,
                         textDecoration: 'none',
                         '&:hover': { color: 'primary.main' }
                       }}
@@ -59,7 +81,7 @@ const Footer = () => {
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.default' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.default' }}>
               Contacto
             </MuiTypography>
             <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
@@ -68,7 +90,7 @@ const Footer = () => {
                 'Tel: +57 3024906414',
                 'Medellín, Colombia'
               ].map((item, index) => (
-                <Box component="li" key={index} sx={{ mb: 1, color: 'text.secondary' }}>
+                <Box component="li" key={index} sx={{ mb: 1, color: theme.palette.text.secondary }}>
                   {item}
                 </Box>
               ))}
@@ -76,7 +98,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         
-        <Divider sx={{ mt: 4, mb: 3, borderColor: 'rgba(255,255,255,0.2)' }} />
+        <Divider sx={{ mt: 4, mb: 3, borderColor: theme.palette.divider }} />
         
         <Box sx={{ textAlign: 'center' }}>
           <Stack 
@@ -93,7 +115,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 sx={{ 
-                  color: 'text.secondary',
+                  color: theme.palette.text.secondary,
                   '&:hover': { 
                     color: 'primary.main',
                     transform: 'translateY(-3px)',
@@ -105,7 +127,7 @@ const Footer = () => {
               </IconButton>
             ))}
           </Stack>
-          <SmallText sx={{ color: 'text.secondary' }}>
+          <SmallText sx={{ color: theme.palette.text.secondary }}>
             © {currentYear} AI4U. Todos los derechos reservados.
           </SmallText>
         </Box>

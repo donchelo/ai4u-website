@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
+import { Typography as MuiTypography, TypographyProps as MuiTypographyProps, useTheme } from '@mui/material';
 
 interface TypographyExtendedProps extends MuiTypographyProps {
   children?: ReactNode;
@@ -26,19 +26,25 @@ export const SmallText = (props: TypographyExtendedProps) => (
   <MuiTypography variant="body2" {...props} />
 );
 
-export const CodeText = (props: TypographyExtendedProps) => (
-  <MuiTypography
-    component="code"
-    fontFamily="monospace"
-    sx={{ 
-      display: 'inline-block',
-      backgroundColor: 'rgba(0,0,0,0.04)',
-      borderRadius: 1,
-      px: 0.5
-    }}
-    {...props}
-  />
-);
+export const CodeText = (props: TypographyExtendedProps) => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  
+  return (
+    <MuiTypography
+      component="code"
+      fontFamily="monospace"
+      sx={{ 
+        display: 'inline-block',
+        backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
+        color: isDarkMode ? theme.palette.primary.light : 'inherit',
+        borderRadius: 1,
+        px: 0.5
+      }}
+      {...props}
+    />
+  );
+};
 
 // Componente Typography general que permite seleccionar variante
 export const Typography = ({ variant = 'body1', ...props }: TypographyExtendedProps) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Box, Stack, Typography as MuiTypography, Link } from '@mui/material';
+import { Container, Grid, Box, Stack, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { H1, BodyText } from './ui/Typography';
 import { Button } from './ui/Button';

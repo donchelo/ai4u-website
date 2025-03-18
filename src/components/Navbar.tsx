@@ -9,11 +9,12 @@ import {
   MenuItem,
   Button,
   Container,
-  Typography as MuiTypography,
-  useTheme
+  Typography as MuiTypography
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useColorMode } from '../context/ThemeContext';
 
 const navItems = [
@@ -25,8 +26,7 @@ const navItems = [
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
-  const { mode } = useColorMode();
+  const { mode, toggleColorMode } = useColorMode();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -106,6 +106,15 @@ const Navbar = () => {
                   <MuiTypography textAlign="center">{item.name}</MuiTypography>
                 </MenuItem>
               ))}
+              {/* Theme toggle en menú móvil */}
+              <MenuItem onClick={toggleColorMode}>
+                <MuiTypography textAlign="center" sx={{ display: 'flex', alignItems: 'center' }}>
+                  {mode === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
+                  <Box component="span" sx={{ ml: 1, display: 'flex' }}>
+                    {mode === 'dark' ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
+                  </Box>
+                </MuiTypography>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -152,6 +161,24 @@ const Navbar = () => {
                 {item.name}
               </Button>
             ))}
+            
+            {/* Theme toggle button desktop */}
+            <IconButton 
+              onClick={toggleColorMode} 
+              color="inherit" 
+              size="small"
+              sx={{ 
+                ml: 1,
+                opacity: 0.7,
+                '&:hover': { 
+                  opacity: 1,
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                }
+              }}
+              aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+            >
+              {mode === 'dark' ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

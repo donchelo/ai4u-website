@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useMemo, ReactNode, useEffect } from 'react';
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -28,7 +28,7 @@ const createAI4UTheme = (mode: 'light' | 'dark') => {
       },
       text: {
         primary: mode === 'light' ? AI4U_COLORS.erieBlack : '#ffffff',
-        secondary: AI4U_COLORS.cadetGray,
+        secondary: mode === 'light' ? AI4U_COLORS.cadetGray : '#a0a0a0',
       },
     },
     typography: {
@@ -59,7 +59,25 @@ const createAI4UTheme = (mode: 'light' | 'dark') => {
         styleOverrides: {
           root: {
             borderRadius: 12,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+            boxShadow: mode === 'light' 
+              ? '0 4px 12px rgba(0,0,0,0.05)' 
+              : '0 4px 12px rgba(0,0,0,0.2)',
+          },
+        },
+      },
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            transition: 'all 0.2s ease-in-out',
+          },
+        },
+      },
+      MuiDivider: {
+        styleOverrides: {
+          root: {
+            borderColor: mode === 'light' 
+              ? 'rgba(0,0,0,0.1)' 
+              : 'rgba(255,255,255,0.1)',
           },
         },
       },
@@ -80,7 +98,29 @@ export const ColorModeContext = createContext<ThemeContextType>({
 
 // Proveedor del tema
 export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) => {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  // Inicializa el modo del tema desde localStorage o preferencia del sistema
+  const [mode, setMode] = useState<'light' | 'dark'>(() => {
+    // Revisar si hay preferencia guardada
+    const savedMode = localStorage.getItem('themeMode');
+    if (savedMode) {
+      return savedMode as 'light' | 'dark';
+    }
+    
+    // Si no hay preferencia guardada, detectar preferencia del sistema
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    
+    return 'light';
+  });
+
+  // Persistir el modo de tema en localStorage cuando cambie
+  useEffect(() => {
+    localStorage.setItem('themeMode', mode);
+    
+    // Actualizar atributo data-theme en el elemento raíz para acceso desde CSS
+    document.documentElement.setAttribute('data-theme', mode);
+  }, [mode]);
 
   const colorMode = useMemo(
     () => ({
