@@ -11,10 +11,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
   const { mode } = useColorMode();
-  const isDarkMode = mode === 'dark';
 
-  // Logo path based on theme mode
-  const logoPath = isDarkMode ? '/assets/images/ai4u-logo-dark.png' : '/assets/images/ai4u-logo.png';
+  // Logo para fondos oscuros (footer siempre tiene fondo oscuro)
+  const logoPath = '/assets/images/ai4u-logo-for-dark-background.png';
 
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
@@ -58,7 +57,6 @@ const Footer = () => {
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                 {[
                   { name: 'Servicios', path: '/servicios' },
-                  { name: 'Blog', path: '/blog' },
                   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
                   { name: 'Casos de éxito', path: '/casos-de-exito' }
                 ].map((link) => (

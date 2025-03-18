@@ -9,7 +9,8 @@ import {
   MenuItem,
   Button,
   Container,
-  Typography as MuiTypography
+  Typography as MuiTypography,
+  useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -26,6 +27,7 @@ const navItems = [
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
+  const theme = useTheme();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -35,8 +37,13 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-  // Logo path based on theme mode
-  const logoPath = mode === 'dark' ? '/assets/images/ai4u-logo-dark.png' : '/assets/images/ai4u-logo.png';
+  // Determinar si el fondo es oscuro
+  const isBackgroundDark = theme.palette.mode === 'dark';
+  
+  // Logo para fondo claro u oscuro
+  const logoPath = isBackgroundDark 
+    ? '/assets/images/ai4u-logo-for-dark-background.png'  // Logo para fondos oscuros
+    : '/assets/images/ai4u-logo-for-light-background.png';      // Logo para fondos claros
 
   return (
     <AppBar position="static" color="default" elevation={1} sx={{ backgroundColor: 'background.paper' }}>
