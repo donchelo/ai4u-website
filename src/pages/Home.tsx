@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Grid, Box, Stack, Paper, Typography as MuiTypography } from '@mui/material';
+import { Container, Grid, Box, Typography as MuiTypography } from '@mui/material';
 import ServiceCard from '../components/ServiceCard';
-import { H1, H2, BodyText } from '../components/ui/Typography';
+import { H2, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
+import HeroSection from '../components/HeroSection';
 
 interface Service {
   id: number;
@@ -32,43 +33,7 @@ const Home = () => {
   return (
     <Box>
       {/* Hero Section */}
-      <Box sx={{ bgcolor: 'background.default', py: 10 }}>
-        <Container maxWidth="lg">
-          <Grid container alignItems="center" spacing={4}>
-            <Grid item xs={12} md={6}>
-              <H1 sx={{ mb: 3 }}>
-                Soluciones de IA 
-                <Box component="span" sx={{ color: 'primary.main' }}> para el futuro</Box>
-              </H1>
-              <BodyText sx={{ mb: 4, color: 'text.secondary', maxWidth: 500 }}>
-                En AI4U creamos soluciones innovadoras utilizando inteligencia artificial 
-                para transformar tu negocio y mejorar la experiencia de tus clientes.
-              </BodyText>
-              <Stack direction="row" spacing={2} flexWrap="wrap">
-                <Button variant="primary">Nuestros Servicios</Button>
-                <Button variant="outline">Contactar</Button>
-              </Stack>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              {/* Aquí iría una imagen o ilustración */}
-              <Paper 
-                sx={{ 
-                  height: 400, 
-                  bgcolor: 'secondary.light', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  borderRadius: 3
-                }}
-              >
-                <MuiTypography sx={{ color: 'secondary.main', fontWeight: 600 }}>
-                  Imagen de IA
-                </MuiTypography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      <HeroSection />
 
       {/* Services Section */}
       <Box sx={{ py: 10 }}>
