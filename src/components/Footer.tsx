@@ -84,7 +84,16 @@ const Footer = () => {
             </MuiTypography>
             <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
               {[
-                'hola@ai4u.com.co',
+                <Link 
+                  href="mailto:hola@ai4u.com.co"
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    textDecoration: 'none',
+                    '&:hover': { color: 'primary.main' }
+                  }}
+                >
+                  hola@ai4u.com.co
+                </Link>,
                 'Tel: +57 3024906414',
                 'Medellín, Colombia'
               ].map((item, index) => (
