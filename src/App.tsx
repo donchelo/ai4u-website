@@ -18,7 +18,6 @@ function App() {
             <Route path="/servicios" element={<Services />} />
             <Route path="/soluciones" element={<Services />} />
             <Route path="/tienda-ai" element={<Home />} />
-            <Route path="/blog" element={<Home />} />
             <Route path="/por-que-ai4u" element={<WhyAI4U />} />
             <Route path="/casos-de-exito" element={<SuccessCases />} />
             <Route path="/theme-demo" element={<ThemeDemo />} />
