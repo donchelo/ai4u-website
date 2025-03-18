@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Container, Grid, Box, Link, Typography as MuiTypography, Divider } from '@mui/material';
+import { Container, Grid, Box, Link, Typography as MuiTypography, Divider, IconButton, Stack } from '@mui/material';
 import { SmallText } from './ui/Typography';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
+    { icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
+    { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' }
+  ];
 
   return (
     <Box sx={{ bgcolor: 'text.primary', color: 'background.paper', py: 6 }}>
@@ -56,9 +65,9 @@ const Footer = () => {
             </MuiTypography>
             <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
               {[
-                'info@ai4u.com',
-                '+1 (555) 123-4567',
-                'Calle Tecnología 123, Madrid'
+                'hola@ai4u.com.co',
+                'Tel: +57 3024906414',
+                'Medellín, Colombia'
               ].map((item, index) => (
                 <Box component="li" key={index} sx={{ mb: 1, color: 'text.secondary' }}>
                   {item}
@@ -71,6 +80,32 @@ const Footer = () => {
         <Divider sx={{ mt: 4, mb: 3, borderColor: 'rgba(255,255,255,0.2)' }} />
         
         <Box sx={{ textAlign: 'center' }}>
+          <Stack 
+            direction="row" 
+            spacing={2} 
+            justifyContent="center" 
+            sx={{ mb: 2 }}
+          >
+            {socialLinks.map((social, index) => (
+              <IconButton 
+                key={index} 
+                component="a" 
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                sx={{ 
+                  color: 'text.secondary',
+                  '&:hover': { 
+                    color: 'primary.main',
+                    transform: 'translateY(-3px)',
+                    transition: 'all 0.2s'
+                  }
+                }}
+              >
+                {social.icon}
+              </IconButton>
+            ))}
+          </Stack>
           <SmallText sx={{ color: 'text.secondary' }}>
             © {currentYear} AI4U. Todos los derechos reservados.
           </SmallText>
