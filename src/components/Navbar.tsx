@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -30,6 +30,7 @@ const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -37,6 +38,15 @@ const Navbar = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleNavigate = (path: string) => {
+    handleCloseNavMenu();
+    navigate(path);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // Determinar si el fondo es oscuro
@@ -63,6 +73,12 @@ const Navbar = () => {
           <Box
             component={RouterLink}
             to="/"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            }}
             sx={{
               mr: 3,
               display: { xs: 'none', md: 'flex' },
@@ -115,7 +131,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <MenuItem 
                   key={item.name} 
-                  onClick={handleCloseNavMenu}
+                  onClick={() => handleNavigate(item.path)}
                   component={RouterLink}
                   to={item.path}
                 >
@@ -138,6 +154,12 @@ const Navbar = () => {
           <Box
             component={RouterLink}
             to="/"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            }}
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -163,6 +185,12 @@ const Navbar = () => {
             {navItems.map((item) => (
               <Button
                 key={item.name}
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }}
                 component={RouterLink}
                 to={item.path}
                 sx={{ 

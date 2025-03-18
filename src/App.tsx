@@ -6,12 +6,14 @@ import WhyAI4U from './pages/WhyAI4U';
 import ThemeDemo from './pages/ThemeDemo';
 import SuccessCases from './pages/SuccessCases';
 import Services from './pages/Services';
+import ScrollToTop from './components/ScrollToTop';
 import ThemeProvider from './context/ThemeContext';
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
