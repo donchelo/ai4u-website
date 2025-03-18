@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-primary">
+          <Link to="/" className="text-xl font-bold text-hot-orange">
             AI4U
           </Link>
           
@@ -37,17 +37,20 @@ const Navbar: React.FC = () => {
 
           {/* Menú de escritorio */}
           <div className="hidden md:flex space-x-8">
-            <Link to="/" className="text-gray-600 hover:text-primary">
+            <Link to="/" className="text-erie-black hover:text-hot-orange">
               Inicio
             </Link>
-            <Link to="/about" className="text-gray-600 hover:text-primary">
+            <Link to="/about" className="text-erie-black hover:text-hot-orange">
               Sobre Nosotros
             </Link>
-            <Link to="/services" className="text-gray-600 hover:text-primary">
+            <Link to="/services" className="text-erie-black hover:text-hot-orange">
               Servicios
             </Link>
-            <Link to="/contact" className="text-gray-600 hover:text-primary">
+            <Link to="/contact" className="text-erie-black hover:text-hot-orange">
               Contacto
+            </Link>
+            <Link to="/theme-demo" className="text-moderate-blue hover:text-hot-orange">
+              Demo Tema
             </Link>
           </div>
         </div>
@@ -55,34 +58,41 @@ const Navbar: React.FC = () => {
         {/* Menú móvil */}
         {isMenuOpen && (
           <div className="md:hidden py-4">
-            <div className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                className="text-gray-600 hover:text-primary"
+            <div className="flex flex-col space-y-3">
+              <Link 
+                to="/" 
+                className="text-erie-black hover:text-hot-orange"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
               </Link>
-              <Link
-                to="/about"
-                className="text-gray-600 hover:text-primary"
+              <Link 
+                to="/about" 
+                className="text-erie-black hover:text-hot-orange"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Sobre Nosotros
               </Link>
-              <Link
-                to="/services"
-                className="text-gray-600 hover:text-primary"
+              <Link 
+                to="/services" 
+                className="text-erie-black hover:text-hot-orange"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Servicios
               </Link>
-              <Link
-                to="/contact"
-                className="text-gray-600 hover:text-primary"
+              <Link 
+                to="/contact" 
+                className="text-erie-black hover:text-hot-orange"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contacto
+              </Link>
+              <Link 
+                to="/theme-demo" 
+                className="text-moderate-blue hover:text-hot-orange"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Demo Tema
               </Link>
             </div>
           </div>
