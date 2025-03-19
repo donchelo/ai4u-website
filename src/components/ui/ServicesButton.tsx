@@ -17,7 +17,7 @@ interface ServicesButtonProps {
 export const ServicesButton = ({
   variant = 'primary' as ButtonVariant,
   size = 'medium' as ButtonSize,
-  showIcon = true,
+  showIcon = false,
   text = 'Nuestros Servicios',
   className,
 }: ServicesButtonProps) => {
