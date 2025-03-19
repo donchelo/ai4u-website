@@ -9,6 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import HomeIcon from '@mui/icons-material/Home';
+import XIcon from '@mui/icons-material/X';
 import { useColorMode } from '../context/ThemeContext';
 
 const Footer = () => {
@@ -22,7 +23,8 @@ const Footer = () => {
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
     { icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
-    { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' }
+    { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' },
+    { icon: <XIcon />, url: 'https://x.com/AI4U_' }
   ];
 
   return (
