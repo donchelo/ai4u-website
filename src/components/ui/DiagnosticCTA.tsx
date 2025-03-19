@@ -18,8 +18,8 @@ interface DiagnosticCTAProps {
 export const DiagnosticCTA = ({
   variant = 'primary' as ButtonVariant,
   size = 'medium' as ButtonSize,
-  showIcon = true,
-  text = 'Diagnóstico Gratuito',
+  showIcon = false,
+  text = 'Diagnóstico gratis',
   className,
 }: DiagnosticCTAProps) => {
   return (

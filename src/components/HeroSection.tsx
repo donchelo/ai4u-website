@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Stack, Typography, IconButton, useTheme, useMediaQuery, alpha } from '@mui/material';
+import { Box, Stack, Typography, IconButton, useTheme, useMediaQuery, alpha, Container } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from './ui/Typography';
@@ -36,8 +36,8 @@ const HeroSection = () => {
     <Box 
       sx={{ 
         position: 'relative',
-        height: '100vh',
-        width: '100vw',
+        height: { xs: '100vh', sm: '100vh' },
+        width: '100%',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
@@ -45,7 +45,7 @@ const HeroSection = () => {
         bgcolor: 'background.paper',
       }}
     >
-      {/* Fondo con menos blur y más visible */}
+      {/* Fondo con overlay óptimo */}
       <Box
         sx={{
           position: 'absolute',
@@ -58,8 +58,7 @@ const HeroSection = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: alpha(theme.palette.background.default, 0.4),
-            backdropFilter: 'blur(4px)',
+            backgroundColor: 'rgba(0, 0, 0, 0.65)',
             zIndex: 1
           }
         }}
@@ -78,197 +77,78 @@ const HeroSection = () => {
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
-              opacity: idx === currentImage ? 0.9 : 0,
+              opacity: idx === currentImage ? 1 : 0,
               transition: 'opacity 1.5s ease-in-out',
-              filter: 'saturate(0.8) brightness(0.85)'
+              filter: 'brightness(0.5) contrast(1.1)'
             }}
           />
         ))}
       </Box>
 
-      {/* Contenido del hero a ancho completo de la pantalla */}
-      <Box
-        sx={{
+      {/* Contenido centrado con estilo inspirado en la imagen */}
+      <Container 
+        maxWidth="lg" 
+        sx={{ 
           position: 'relative',
           zIndex: 5,
-          width: '100%',
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          pt: { xs: 8, md: 0 }
         }}
       >
-        {/* Panel semitransparente que abarca todo el ancho */}
-        <Box
+        <Stack
+          direction="column"
+          spacing={{ xs: 3, md: 4 }}
+          alignItems="center"
           sx={{
-            width: '100%',
-            py: { xs: 6, md: 0 },
-            height: { xs: 'auto', md: '100%' },
-            display: 'flex',
-            alignItems: 'center',
-            background: `linear-gradient(to right, 
-              ${alpha(theme.palette.background.paper, 0.7)}, 
-              ${alpha(theme.palette.background.paper, 0.2)}, 
-              transparent)`,
-            position: 'relative',
-            overflow: 'hidden',
+            maxWidth: { xs: '100%', md: '80%', lg: '70%' },
+            textAlign: 'center'
           }}
         >
-          {/* Contenedor del texto ampliado al máximo */}
-          <Box
-            sx={{
-              width: '100%',
-              px: { xs: 3, sm: 4, md: 5, lg: 8 },
+          <H1 
+            sx={{ 
+              color: '#FFFFFF',
+              fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem', lg: '4rem' },
+              fontWeight: 700,
+              lineHeight: 1.2,
+              letterSpacing: '-0.01em',
+              mb: { xs: 1, md: 2 }
             }}
           >
-            <Box 
-              sx={{ 
-                maxWidth: { xs: '100%', md: '85%', lg: '90%', xl: '100%' }
-              }}
-            >
-              <H1 
-                sx={{ 
-                  mb: 3, 
-                  color: 'text.primary',
-                  fontSize: { xs: '2.2rem', sm: '2.7rem', md: '3.8rem', lg: '4.5rem' },
-                  fontWeight: 800,
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.02em',
-                  background: `linear-gradient(120deg, ${theme.palette.text.primary}, ${theme.palette.primary.main})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                La verdadera libertad es decidir en qué gastas tu tiempo
-              </H1>
-              
-              <BodyText 
-                sx={{ 
-                  mb: 3, 
-                  color: 'text.primary', 
-                  fontWeight: 500,
-                  fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.4rem', lg: '1.6rem' },
-                  lineHeight: 1.4
-                }}
-              >
-                Implementamos inteligencia artificial que automatiza tus operaciones y libera tu agenda para el crecimiento estratégico
-              </BodyText>
-              
-              <BodyText 
-                sx={{ 
-                  mb: 5, 
-                  color: 'text.secondary', 
-                  fontSize: { xs: '1rem', sm: '1.1rem', lg: '1.2rem' },
-                  lineHeight: 1.6,
-                  maxWidth: { xs: '100%', xl: '80%' }
-                }}
-              >
-                Nuestros asistentes robóticos transforman el 70% de tareas operativas en tiempo productivo, mejorando resultados mientras reduces costos. Soluciones escalables diseñadas para cada industria.
-              </BodyText>
-              
-              <Stack 
-                direction={{ xs: "column", sm: "row" }} 
-                spacing={{ xs: 2, sm: 3 }} 
-                alignItems={{ xs: "stretch", sm: "center" }}
-                sx={{ mb: 2 }}
-              >
-                <DiagnosticCTA 
-                  variant="primary" 
-                  text="Solicita tu diagnóstico gratuito" 
-                  size="large" 
-                />
-                <Typography 
-                  variant="caption" 
-                  color="text.secondary" 
-                  sx={{ 
-                    fontWeight: 600,
-                    fontSize: { xs: '0.85rem', sm: '0.9rem', lg: '1rem' },
-                    display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' },
-                    flexWrap: 'wrap',
-                    gap: 1.5,
-                    '& > span': {
-                      display: 'inline-flex',
-                      alignItems: 'center'
-                    },
-                    '& > span:not(:last-child)::after': {
-                      content: {xs: 'none', md: '""'},
-                      display: {xs: 'none', md: 'inline-block'},
-                      width: '4px',
-                      height: '4px',
-                      borderRadius: '50%',
-                      backgroundColor: alpha(theme.palette.text.secondary, 0.5),
-                      marginLeft: '12px'
-                    }
-                  }}
-                >
-                  <span>30 minutos</span>
-                  <span>Robot estratégico desde $350.000</span>
-                  <span>ROI medible desde el primer mes</span>
-                </Typography>
-              </Stack>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+            Transforma tiempo operativo en libertad estratégica
+          </H1>
+          
+          <BodyText 
+            sx={{ 
+              color: 'rgba(255, 255, 255, 0.9)',
+              fontWeight: 400,
+              fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
+              lineHeight: 1.6,
+              mb: { xs: 3, md: 4 },
+              maxWidth: '95%'
+            }}
+          >
+            Asistentes robóticos que trabajan 24/7 para que tú decidas cómo invertir tu tiempo más valioso
+          </BodyText>
+          
+          <DiagnosticCTA 
+            variant="primary" 
+            text="Diagnóstico gratis" 
+            size="large"
+            showIcon={false}
+          />
+        </Stack>
+      </Container>
 
-      {/* Controles de navegación más minimalistas */}
-      <IconButton 
-        aria-label="imagen anterior"
-        onClick={handlePrev}
-        sx={{
-          position: 'absolute',
-          left: { xs: 8, md: 20 },
-          top: '50%',
-          transform: 'translateY(-50%)',
-          bgcolor: alpha(theme.palette.background.paper, 0.1),
-          backdropFilter: 'blur(8px)',
-          border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
-          color: theme.palette.text.primary,
-          width: { xs: 40, md: 48 },
-          height: { xs: 40, md: 48 },
-          zIndex: 6,
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            bgcolor: alpha(theme.palette.primary.main, 0.1),
-            transform: 'translateY(-50%) scale(1.05)'
-          },
-          display: { xs: 'none', md: 'flex' }
-        }}
-      >
-        <ArrowBackIosNewIcon fontSize="small" />
-      </IconButton>
-      
-      <IconButton 
-        aria-label="imagen siguiente"
-        onClick={handleNext}
-        sx={{
-          position: 'absolute',
-          right: { xs: 8, md: 20 },
-          top: '50%',
-          transform: 'translateY(-50%)',
-          bgcolor: alpha(theme.palette.background.paper, 0.1),
-          backdropFilter: 'blur(8px)',
-          border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
-          color: theme.palette.text.primary,
-          width: { xs: 40, md: 48 },
-          height: { xs: 40, md: 48 },
-          zIndex: 6,
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            bgcolor: alpha(theme.palette.primary.main, 0.1),
-            transform: 'translateY(-50%) scale(1.05)'
-          },
-          display: { xs: 'none', md: 'flex' }
-        }}
-      >
-        <ArrowForwardIosIcon fontSize="small" />
-      </IconButton>
-      
-      {/* Indicadores de posición más minimalistas */}
+      {/* Controles de navegación minimalistas */}
       <Stack 
         direction="row" 
         spacing={1.5} 
         justifyContent="center"
+        alignItems="center"
         sx={{
           position: 'absolute',
           bottom: 24,
@@ -282,19 +162,17 @@ const HeroSection = () => {
             key={index}
             onClick={() => setCurrentImage(index)}
             sx={{
-              width: 8,
-              height: 8,
-              borderRadius: '2px',
+              width: 24,
+              height: 3,
               bgcolor: index === currentImage 
-                ? theme.palette.primary.main 
-                : alpha(theme.palette.text.primary, 0.3),
+                ? theme.palette.primary.main
+                : 'rgba(255, 255, 255, 0.4)',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               '&:hover': {
-                transform: 'scale(1.2)',
                 bgcolor: index === currentImage 
-                  ? theme.palette.primary.main 
-                  : alpha(theme.palette.text.primary, 0.5),
+                  ? theme.palette.primary.main
+                  : 'rgba(255, 255, 255, 0.6)',
               }
             }}
           />

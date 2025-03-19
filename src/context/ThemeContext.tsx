@@ -51,7 +51,35 @@ const createAI4UTheme = (mode: 'light' | 'dark') => {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: 8,
+            borderRadius: 2,
+            fontWeight: 500,
+            textTransform: 'none',
+            boxShadow: 'none',
+          },
+          containedPrimary: {
+            backgroundColor: 'transparent',
+            color: AI4U_COLORS.hotOrange,
+            border: `1px solid ${AI4U_COLORS.hotOrange}`,
+            '&:hover': {
+              backgroundColor: 'rgba(255, 69, 0, 0.08)',
+              boxShadow: 'none',
+            },
+          },
+          containedSecondary: {
+            backgroundColor: 'transparent',
+            color: AI4U_COLORS.moderateBlue,
+            border: `1px solid ${AI4U_COLORS.moderateBlue}`,
+            '&:hover': {
+              backgroundColor: 'rgba(91, 146, 229, 0.08)',
+              boxShadow: 'none',
+            },
+          },
+          outlined: {
+            borderWidth: '1px',
+            '&:hover': {
+              borderWidth: '1px',
+              boxShadow: 'none',
+            },
           },
         },
       },
