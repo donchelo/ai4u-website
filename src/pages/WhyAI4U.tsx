@@ -401,10 +401,9 @@ const WhyAI4U = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ 
-                    color: '#0077B5',
-                    bgcolor: 'rgba(0, 119, 181, 0.1)',
+                    color: 'text.primary',
                     '&:hover': {
-                      bgcolor: 'rgba(0, 119, 181, 0.2)'
+                      bgcolor: 'rgba(0, 0, 0, 0.05)'
                     },
                     mr: 2
                   }}
