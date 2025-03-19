@@ -24,7 +24,7 @@ const Footer = () => {
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
     { icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
     { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' },
-    { icon: <XIcon />, url: 'https://x.com/AI4U_' }
+    { icon: <XIcon />, url: 'https://x.com/_ai4u_' }
   ];
 
   return (
