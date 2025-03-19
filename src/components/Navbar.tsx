@@ -49,12 +49,9 @@ const Navbar = () => {
       behavior: 'smooth'
     });
   };
-
-  // Determinar si el fondo es oscuro
-  const isBackgroundDark = theme.palette.mode === 'dark';
   
   // Logo para fondo claro u oscuro
-  const logoPath = isBackgroundDark 
+  const logoPath = mode === 'dark' 
     ? '/assets/images/ai4u-logo-for-dark-background.png'  // Logo para fondos oscuros
     : '/assets/images/ai4u-logo-for-light-background.png';      // Logo para fondos claros
 
@@ -217,7 +214,7 @@ const Navbar = () => {
                 opacity: 0.7,
                 '&:hover': { 
                   opacity: 1,
-                  backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                  backgroundColor: 'action.hover'
                 }
               }}
               aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}

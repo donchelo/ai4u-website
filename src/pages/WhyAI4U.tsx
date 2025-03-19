@@ -6,21 +6,16 @@ import {
   Stack, 
   Paper, 
   Avatar, 
-  Typography as MuiTypography, 
-  Card, 
-  CardContent,
   Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Chip,
+  useTheme,
   IconButton
 } from '@mui/material';
 import { H1, H2, H3, BodyText } from '../components/ui/Typography';
+import Card from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 import { ServicesButton } from '../components/ui/ServicesButton';
+import { useColorMode } from '../context/ThemeContext';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import VerifiedIcon from '@mui/icons-material/Verified';
@@ -30,8 +25,12 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import Chip from '@mui/material/Chip';
 
 const WhyAI4U = () => {
+  const theme = useTheme();
+  const { mode } = useColorMode();
+
   return (
     <Box>
       {/* Hero Section */}
@@ -73,6 +72,7 @@ const WhyAI4U = () => {
       <Box sx={{ py: { xs: 6, md: 10 } }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
+            {/* Diagnóstico Gratuito */}
             <Grid item xs={12} md={4}>
               <Card sx={{ 
                 height: '100%', 
@@ -81,37 +81,35 @@ const WhyAI4U = () => {
                 '&:hover': {
                   transform: 'translateY(-5px)',
                   boxShadow: 6,
+                },
+                '& .MuiCardContent-root': {
+                  p: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
                 }
               }}>
-                <CardContent sx={{ p: 4 }}>
-                  <Box 
-                    sx={{ 
-                      mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Avatar 
-                      sx={{ 
-                        bgcolor: 'primary.main',
-                        width: 60,
-                        height: 60,
-                        mb: 2
-                      }}
-                    >
-                      <TimelineIcon fontSize="large" />
-                    </Avatar>
-                  </Box>
-                  <H3 sx={{ mb: 2, textAlign: 'center' }}>Diagnóstico Gratuito</H3>
-                  <Divider sx={{ my: 2 }} />
-                  <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
-                    Evaluamos tu negocio sin costo para identificar oportunidades de automatización.
-                  </BodyText>
-                </CardContent>
+                <Avatar 
+                  sx={{ 
+                    bgcolor: 'white',
+                    width: 60,
+                    height: 60,
+                    mb: 2,
+                    color: 'black',
+                    boxShadow: 1
+                  }}
+                >
+                  <TimelineIcon fontSize="large" />
+                </Avatar>
+                <H3 sx={{ mb: 2, textAlign: 'center' }}>Diagnóstico Gratuito</H3>
+                <Divider sx={{ my: 2, width: '100%' }} />
+                <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
+                  Evaluamos tu negocio sin costo para identificar oportunidades de automatización.
+                </BodyText>
               </Card>
             </Grid>
 
+            {/* Asistentes que Evolucionan */}
             <Grid item xs={12} md={4}>
               <Card sx={{ 
                 height: '100%', 
@@ -120,38 +118,36 @@ const WhyAI4U = () => {
                 '&:hover': {
                   transform: 'translateY(-5px)',
                   boxShadow: 6,
+                },
+                '& .MuiCardContent-root': {
+                  p: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
                 }
               }}>
-                <CardContent sx={{ p: 4 }}>
-                  <Box 
-                    sx={{ 
-                      mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Avatar 
-                      sx={{ 
-                        bgcolor: 'secondary.main',
-                        width: 60,
-                        height: 60,
-                        mb: 2
-                      }}
-                    >
-                      <EmojiObjectsIcon fontSize="large" />
-                    </Avatar>
-                  </Box>
-                  <H3 sx={{ mb: 2, textAlign: 'center' }}>Asistentes que Evolucionan</H3>
-                  <Divider sx={{ my: 2 }} />
-                  <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
-                    A diferencia de otros servicios de automatización, nuestros asistentes aprenden y 
-                    mejoran continuamente. No son simples robots, son tu equipo silencioso 24/7.
-                  </BodyText>
-                </CardContent>
+                <Avatar 
+                  sx={{ 
+                    bgcolor: 'white',
+                    width: 60,
+                    height: 60,
+                    mb: 2,
+                    color: 'black',
+                    boxShadow: 1
+                  }}
+                >
+                  <EmojiObjectsIcon fontSize="large" />
+                </Avatar>
+                <H3 sx={{ mb: 2, textAlign: 'center' }}>Asistentes que Evolucionan</H3>
+                <Divider sx={{ my: 2, width: '100%' }} />
+                <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
+                  A diferencia de otros servicios de automatización, nuestros asistentes aprenden y 
+                  mejoran continuamente. No son simples robots, son tu equipo silencioso 24/7.
+                </BodyText>
               </Card>
             </Grid>
 
+            {/* Resultados Garantizados */}
             <Grid item xs={12} md={4}>
               <Card sx={{ 
                 height: '100%', 
@@ -160,54 +156,50 @@ const WhyAI4U = () => {
                 '&:hover': {
                   transform: 'translateY(-5px)',
                   boxShadow: 6,
+                },
+                '& .MuiCardContent-root': {
+                  p: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
                 }
               }}>
-                <CardContent sx={{ p: 4 }}>
-                  <Box 
-                    sx={{ 
-                      mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <Avatar 
-                      sx={{ 
-                        bgcolor: 'primary.main',
-                        width: 60,
-                        height: 60,
-                        mb: 2
-                      }}
-                    >
-                      <VerifiedIcon fontSize="large" />
-                    </Avatar>
-                  </Box>
-                  <H3 sx={{ mb: 2, textAlign: 'center' }}>Resultados Garantizados</H3>
-                  <Divider sx={{ my: 2 }} />
-                  <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
-                    72 horas para implementación. ROI medible desde el primer mes. Si no ves resultados, 
-                    te devolvemos tu inversión. Así de seguros estamos.
-                  </BodyText>
-                </CardContent>
+                <Avatar 
+                  sx={{ 
+                    bgcolor: 'white',
+                    width: 60,
+                    height: 60,
+                    mb: 2,
+                    color: 'black',
+                    boxShadow: 1
+                  }}
+                >
+                  <VerifiedIcon fontSize="large" />
+                </Avatar>
+                <H3 sx={{ mb: 2, textAlign: 'center' }}>Resultados Garantizados</H3>
+                <Divider sx={{ my: 2, width: '100%' }} />
+                <BodyText sx={{ color: 'text.secondary', textAlign: 'center' }}>
+                  72 horas para implementación. ROI medible desde el primer mes. Si no ves resultados, 
+                  te devolvemos tu inversión. Así de seguros estamos.
+                </BodyText>
               </Card>
             </Grid>
 
+            {/* Enfoque Estratégico */}
             <Grid item xs={12} mt={4}>
-              <Card sx={{ 
+              <Paper sx={{ 
                 boxShadow: 3,
                 p: 4,
-                bgcolor: 'secondary.light',
+                bgcolor: mode === 'light' ? 'rgba(91, 146, 229, 0.08)' : 'rgba(91, 146, 229, 0.05)',
                 borderLeft: 6,
                 borderColor: 'secondary.main',
               }}>
-                <CardContent>
-                  <H3 sx={{ mb: 2 }}>Enfoque Estratégico</H3>
-                  <BodyText sx={{ color: 'text.secondary' }}>
-                    Mientras otros venden automatización, nosotros entregamos libertad estratégica. 
-                    Liberamos el 70% de tu tiempo operativo para que te enfoques en lo que realmente importa.
-                  </BodyText>
-                </CardContent>
-              </Card>
+                <H3 sx={{ mb: 2 }}>Enfoque Estratégico</H3>
+                <BodyText sx={{ color: 'text.secondary' }}>
+                  Mientras otros venden automatización, nosotros entregamos libertad estratégica. 
+                  Liberamos el 70% de tu tiempo operativo para que te enfoques en lo que realmente importa.
+                </BodyText>
+              </Paper>
             </Grid>
           </Grid>
         </Container>
@@ -279,7 +271,9 @@ const WhyAI4U = () => {
                   >
                     <Avatar 
                       sx={{ 
-                        bgcolor: item.color,
+                        bgcolor: 'white',
+                        color: 'black',
+                        boxShadow: 1,
                         mr: 3
                       }}
                     >
@@ -287,7 +281,7 @@ const WhyAI4U = () => {
                     </Avatar>
                     <Box sx={{ flexGrow: 1 }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                        <MuiTypography 
+                        <BodyText 
                           variant="h6" 
                           component="span"
                           sx={{ 
@@ -296,7 +290,7 @@ const WhyAI4U = () => {
                           }}
                         >
                           {item.step}
-                        </MuiTypography>
+                        </BodyText>
                         <H3>{item.title}</H3>
                       </Box>
                       <BodyText sx={{ color: 'text.secondary' }}>
@@ -314,7 +308,6 @@ const WhyAI4U = () => {
               variant="primary" 
               size="large"
               text="Conoce Nuestras Soluciones"
-              className="py-1.5 px-4 text-lg"
             />
           </Box>
         </Container>
@@ -334,7 +327,7 @@ const WhyAI4U = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  bgcolor: 'secondary.light',
+                  bgcolor: mode === 'light' ? 'rgba(91, 146, 229, 0.08)' : 'rgba(91, 146, 229, 0.05)',
                   mb: { xs: 3, md: 0 }
                 }}
               >
@@ -353,7 +346,7 @@ const WhyAI4U = () => {
             
             <Grid item xs={12} md={7}>
               <H2 sx={{ mb: 2 }}>Mariano</H2>
-              <MuiTypography 
+              <BodyText 
                 variant="subtitle1" 
                 sx={{ 
                   mb: 3, 
@@ -365,7 +358,7 @@ const WhyAI4U = () => {
                 마리아노<br />
                 Fundador de AI4U<br />
                 Cofundador de Matt Movilidad
-              </MuiTypography>
+              </BodyText>
               
               <BodyText sx={{ 
                 mb: 4, 
@@ -379,15 +372,16 @@ const WhyAI4U = () => {
                 tecnología y la creatividad.
               </BodyText>
               
-              <Stack direction="row" spacing={2} sx={{ mb: 4 }}>
+              <Stack direction="row" spacing={2} sx={{ mb: 4, flexWrap: 'wrap', gap: 1 }}>
                 {['Startups', 'Movilidad', 'Tecnología', 'Ajedrez', 'Diseño'].map((tag, index) => (
                   <Chip 
                     key={index}
                     label={tag}
                     sx={{ 
-                      bgcolor: 'background.paper',
+                      bgcolor: mode === 'light' ? 'rgba(91, 146, 229, 0.05)' : 'rgba(91, 146, 229, 0.1)',
                       border: '1px solid',
-                      borderColor: 'divider'
+                      borderColor: 'divider',
+                      mb: 1
                     }}
                   />
                 ))}
@@ -401,9 +395,9 @@ const WhyAI4U = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ 
-                    color: 'text.primary',
+                    color: 'primary.main',
                     '&:hover': {
-                      bgcolor: 'rgba(0, 0, 0, 0.05)'
+                      bgcolor: mode === 'light' ? 'rgba(255, 69, 0, 0.08)' : 'rgba(255, 69, 0, 0.05)'
                     },
                     mr: 2
                   }}
@@ -417,13 +411,17 @@ const WhyAI4U = () => {
       </Box>
 
       {/* Final CTA Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.paper', textAlign: 'center' }}>
+      <Box sx={{ 
+        py: 8, 
+        bgcolor: mode === 'light' ? 'rgba(91, 146, 229, 0.05)' : 'rgba(0, 0, 0, 0.2)',
+        textAlign: 'center' 
+      }}>
         <Container maxWidth="md">
           <H2 sx={{ mb: 3 }}>¿Listo para descubrir cómo AI4U puede transformar tu negocio?</H2>
           <BodyText sx={{ mb: 4, maxWidth: 700, mx: 'auto' }}>
             Agenda ahora tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización que liberarán tu tiempo estratégico.
           </BodyText>
-          <Stack direction="row" spacing={3} justifyContent="center">
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="center">
             <DiagnosticCTA 
               variant="primary" 
               size="large" 

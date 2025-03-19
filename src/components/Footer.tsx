@@ -30,8 +30,8 @@ const Footer = () => {
   return (
     <Box 
       sx={{ 
-        bgcolor: theme.palette.mode === 'dark' ? 'background.paper' : 'text.primary',
-        color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.paper',
+        bgcolor: 'text.primary',
+        color: 'background.paper',
         py: 6,
         borderTop: 1,
         borderColor: 'divider'
@@ -50,13 +50,13 @@ const Footer = () => {
                 mb: 2
               }}
             />
-            <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+            <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
               Transformando el futuro con inteligencia artificial.
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.default' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.paper' }}>
               Enlaces Rápidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces rápidos">
@@ -78,7 +78,7 @@ const Footer = () => {
                         });
                       }}
                       sx={{
-                        color: theme.palette.text.secondary,
+                        color: 'text.secondary',
                         textDecoration: 'none',
                         '&:hover': { color: 'primary.main' }
                       }}
@@ -92,16 +92,16 @@ const Footer = () => {
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: theme.palette.mode === 'dark' ? 'text.primary' : 'background.default' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.paper' }}>
               Contacto
             </MuiTypography>
             <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
               <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <EmailIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
+                <EmailIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
                 <Link 
                   href="mailto:hola@ai4u.com.co"
                   sx={{
-                    color: theme.palette.text.secondary,
+                    color: 'text.secondary',
                     textDecoration: 'none',
                     '&:hover': { color: 'primary.main' }
                   }}
@@ -110,14 +110,14 @@ const Footer = () => {
                 </Link>
               </Box>
               <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <PhoneIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
-                <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                <PhoneIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+                <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
                   +57 3024906414
                 </MuiTypography>
               </Box>
               <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <LocationOnIcon fontSize="small" sx={{ mr: 1, color: theme.palette.text.secondary }} />
-                <MuiTypography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                <LocationOnIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+                <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
                   Medellín, Colombia
                 </MuiTypography>
               </Box>
@@ -125,7 +125,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         
-        <Divider sx={{ mt: 4, mb: 3, borderColor: theme.palette.divider }} />
+        <Divider sx={{ mt: 4, mb: 3, borderColor: 'divider' }} />
         
         <Box sx={{ textAlign: 'center' }}>
           <Stack 
@@ -142,7 +142,7 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 sx={{ 
-                  color: theme.palette.text.secondary,
+                  color: 'text.secondary',
                   '&:hover': { 
                     color: 'primary.main',
                     transform: 'translateY(-3px)',
@@ -154,7 +154,7 @@ const Footer = () => {
               </IconButton>
             ))}
           </Stack>
-          <SmallText sx={{ color: theme.palette.text.secondary }}>
+          <SmallText sx={{ color: 'text.secondary' }}>
             © {currentYear} AI4U. Todos los derechos reservados.
           </SmallText>
         </Box>

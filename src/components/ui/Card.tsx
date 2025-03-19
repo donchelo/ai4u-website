@@ -1,13 +1,26 @@
 import React, { ReactNode } from 'react';
-import { Card as MuiCard, CardContent, CardProps as MuiCardProps } from '@mui/material';
+import { Card as MuiCard, CardContent, CardProps as MuiCardProps, useTheme } from '@mui/material';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
+  elevation?: number;
 }
 
-const Card = ({ children, ...props }: CardProps) => {
+const Card = ({ children, elevation = 1, ...props }: CardProps) => {
+  const theme = useTheme();
+  
   return (
-    <MuiCard {...props}>
+    <MuiCard 
+      elevation={elevation}
+      {...props}
+      sx={{ 
+        borderRadius: 2,
+        transition: 'all 0.2s ease-in-out',
+        backgroundColor: 'background.paper',
+        borderColor: 'divider',
+        ...props.sx 
+      }}
+    >
       <CardContent>
         {children}
       </CardContent>

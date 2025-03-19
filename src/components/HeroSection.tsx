@@ -58,7 +58,7 @@ const HeroSection = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+            backgroundColor: alpha(theme.palette.common.black, 0.65),
             zIndex: 1
           }
         }}
@@ -119,7 +119,7 @@ const HeroSection = () => {
           >
             <H1 
               sx={{ 
-                color: '#FFFFFF',
+                color: theme.palette.common.white,
                 fontSize: { xs: '2.5rem', sm: '3rem', md: '3.25rem', lg: '3.75rem' },
                 fontWeight: 700,
                 lineHeight: 1.2,
@@ -132,7 +132,7 @@ const HeroSection = () => {
             
             <BodyText 
               sx={{ 
-                color: 'rgba(255, 255, 255, 0.9)',
+                color: alpha(theme.palette.common.white, 0.9),
                 fontWeight: 500,
                 fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
                 lineHeight: 1.5,
@@ -145,7 +145,7 @@ const HeroSection = () => {
             
             <BodyText 
               sx={{ 
-                color: 'rgba(255, 255, 255, 0.8)',
+                color: alpha(theme.palette.common.white, 0.8),
                 fontWeight: 400,
                 fontSize: { xs: '0.9rem', sm: '1rem' },
                 lineHeight: 1.5,
@@ -172,7 +172,7 @@ const HeroSection = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  color: 'rgba(255, 255, 255, 0.8)',
+                  color: alpha(theme.palette.common.white, 0.8),
                   fontSize: { xs: '0.85rem', sm: '0.9rem' },
                   display: 'flex',
                   alignItems: 'center',
@@ -189,7 +189,7 @@ const HeroSection = () => {
                     width: '4px',
                     height: '4px',
                     borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                    backgroundColor: alpha(theme.palette.common.white, 0.5),
                     margin: '0 8px',
                   }
                 }}
@@ -241,11 +241,11 @@ const HeroSection = () => {
                 position: 'absolute',
                 bottom: '5%',
                 right: '5%',
-                bgcolor: theme.palette.primary.main,
-                color: '#fff',
+                bgcolor: 'primary.main',
+                color: theme.palette.common.white,
                 padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                borderRadius: theme.shape.borderRadius,
+                boxShadow: theme.shadows[3],
                 transform: 'rotate(-5deg)',
                 zIndex: 5
               }}
@@ -283,14 +283,14 @@ const HeroSection = () => {
               width: 24,
               height: 3,
               bgcolor: index === currentImage 
-                ? theme.palette.primary.main
-                : 'rgba(255, 255, 255, 0.4)',
+                ? 'primary.main'
+                : alpha(theme.palette.common.white, 0.4),
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               '&:hover': {
                 bgcolor: index === currentImage 
-                  ? theme.palette.primary.main
-                  : 'rgba(255, 255, 255, 0.6)',
+                  ? 'primary.main'
+                  : alpha(theme.palette.common.white, 0.6),
               }
             }}
           />

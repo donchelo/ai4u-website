@@ -40,7 +40,6 @@ export const SmallText = (props: TypographyExtendedProps) => (
 
 export const CodeText = (props: TypographyExtendedProps) => {
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
   
   return (
     <MuiTypography
@@ -48,10 +47,11 @@ export const CodeText = (props: TypographyExtendedProps) => {
       fontFamily="monospace"
       sx={{ 
         display: 'inline-block',
-        backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
-        color: isDarkMode ? theme.palette.primary.light : 'inherit',
+        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
+        color: theme.palette.mode === 'dark' ? 'primary.light' : 'text.primary',
         borderRadius: 1,
-        px: 0.5
+        px: 0.5,
+        ...props.sx
       }}
       {...props}
     />

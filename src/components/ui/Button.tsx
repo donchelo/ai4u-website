@@ -16,13 +16,13 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   transition: 'all 0.3s ease',
   boxShadow: 'none',
   
-  // Estilos para variante primaria (como en la imagen)
+  // Estilos para variante primaria
   '&.MuiButton-containedPrimary': {
     backgroundColor: 'transparent',
     color: theme.palette.primary.main,
     border: `1px solid ${theme.palette.primary.main}`,
     '&:hover': {
-      backgroundColor: 'rgba(255, 69, 0, 0.08)',
+      backgroundColor: theme.palette.action.hover,
       boxShadow: 'none',
     },
   },
@@ -33,7 +33,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
     color: theme.palette.secondary.main,
     border: `1px solid ${theme.palette.secondary.main}`,
     '&:hover': {
-      backgroundColor: 'rgba(91, 146, 229, 0.08)',
+      backgroundColor: theme.palette.action.hover,
       boxShadow: 'none',
     },
   },
@@ -43,7 +43,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
     backgroundColor: 'transparent',
     borderWidth: '1px',
     '&:hover': {
-      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+      backgroundColor: theme.palette.action.hover,
       borderWidth: '1px',
       boxShadow: 'none',
     },
@@ -62,6 +62,12 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
     padding: '10px 32px',
     fontSize: '1.125rem',
   },
+  
+  // Estilos para estado deshabilitado
+  '&.Mui-disabled': {
+    color: theme.palette.action.disabled,
+    borderColor: theme.palette.action.disabledBackground,
+  }
 }));
 
 export const Button = ({
