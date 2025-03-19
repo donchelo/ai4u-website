@@ -30,16 +30,6 @@ const ThemeDemo = () => {
 
   return (
     <>
-      {/* AppBar de ejemplo */}
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar>
-          <H3 sx={{ flexGrow: 1 }}>AI4U Theme</H3>
-          <IconButton onClick={toggleColorMode} color="primary">
-            {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Box sx={{ mb: 6, textAlign: 'center' }}>
           <H1 sx={{ mb: 2 }}>AI4U Theme Demo</H1>
