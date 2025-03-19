@@ -18,6 +18,18 @@ export const H3 = (props: TypographyExtendedProps) => (
   <MuiTypography variant="h3" {...props} />
 );
 
+export const H4 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h4" {...props} />
+);
+
+export const H5 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h5" {...props} />
+);
+
+export const H6 = (props: TypographyExtendedProps) => (
+  <MuiTypography variant="h6" {...props} />
+);
+
 export const BodyText = (props: TypographyExtendedProps) => (
   <MuiTypography variant="body1" {...props} />
 );

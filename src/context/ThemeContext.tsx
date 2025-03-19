@@ -3,46 +3,88 @@ import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Com
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// Paleta de colores AI4U
+// Paleta de colores AI4U - Orden secuencial: cream, black, orange, blue, gray
 const AI4U_PALETTE = {
+	// 1. Cream - Fondo claro
 	cream: '#FFF8E1',              // Fondo en light mode
+	// 2. Black - Fondo oscuro
 	black: '#121212',              // Fondo en dark mode
+	// 3. Orange - Acción principal
 	orange: '#FF4500',             // Llamados a la acción
+	// 4. Blue - Acento
 	blue: '#5B92E5',               // Detalles y contraste
+	// 5. Gray - Detalles
 	gray: '#91A3B0',               // Detalles y contraste secundario
 };
 
+// Fuentes para código
+const CODE_FONT_FAMILY = '"Necto Mono", monospace';
+
 // Configuración de tipografía
 const typography: TypographyVariantsOptions = {
-	fontFamily: '"Red Hat Display", "Roboto", "Helvetica", "Arial", sans-serif',
+	fontFamily: '"Red Hat Display", sans-serif',
 	h1: {
-		fontWeight: 700,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 900, // Black
+		fontSize: '2.5rem',
 	},
 	h2: {
-		fontWeight: 600,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 700, // Bold
+		fontSize: '2rem',
 	},
 	h3: {
-		fontWeight: 600,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 600, // Semibold
+		fontSize: '1.75rem',
 	},
 	h4: {
-		fontWeight: 600,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 600, // Semibold
+		fontSize: '1.5rem',
 	},
 	h5: {
-		fontWeight: 500,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 500, // Regular
+		fontSize: '1.25rem',
 	},
 	h6: {
-		fontWeight: 500,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 500, // Regular
+		fontSize: '1.1rem',
 	},
 	body1: {
-		fontWeight: 400,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 400, // Regular
+		fontSize: '1rem',
 	},
 	body2: {
-		fontWeight: 400,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 400, // Regular
+		fontSize: '0.875rem',
 	},
 	button: {
-		fontWeight: 600,
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 600, // Semibold
 		textTransform: 'none' as const,
 	},
+	caption: {
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 400, // Regular
+		fontSize: '0.75rem',
+	},
+	overline: {
+		fontFamily: '"Red Hat Display", sans-serif',
+		fontWeight: 500, // Regular
+		fontSize: '0.75rem',
+		textTransform: 'uppercase',
+		letterSpacing: '0.08em',
+	},
+	// Pesos de fuente
+	fontWeightLight: 300,  // Light
+	fontWeightRegular: 400, // Regular
+	fontWeightMedium: 500, // Regular (un poco más pesado)
+	fontWeightBold: 700,   // Bold
 };
 
 // Configuración de componentes
@@ -161,6 +203,19 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
 		styleOverrides: {
 			root: {
 				borderRadius: 4,
+			},
+		},
+	},
+	// Garantizar que los elementos de código usen Necto Mono
+	MuiTypography: {
+		styleOverrides: {
+			root: {
+				'& code': {
+					fontFamily: CODE_FONT_FAMILY,
+					backgroundColor: mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.1)',
+					padding: '2px 4px',
+					borderRadius: 4,
+				},
 			},
 		},
 	},
