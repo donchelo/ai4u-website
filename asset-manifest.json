@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/ai4u-website/static/css/main.fd5e4460.css",
-    "main.js": "/ai4u-website/static/js/main.51be35d9.js",
-    "index.html": "/ai4u-website/index.html",
-    "main.fd5e4460.css.map": "/ai4u-website/static/css/main.fd5e4460.css.map",
-    "main.51be35d9.js.map": "/ai4u-website/static/js/main.51be35d9.js.map"
+    "main.css": "/static/css/main.fd5e4460.css",
+    "main.js": "/static/js/main.51be35d9.js",
+    "index.html": "/index.html",
+    "main.fd5e4460.css.map": "/static/css/main.fd5e4460.css.map",
+    "main.51be35d9.js.map": "/static/js/main.51be35d9.js.map"
   },
   "entrypoints": [
     "static/css/main.fd5e4460.css",
