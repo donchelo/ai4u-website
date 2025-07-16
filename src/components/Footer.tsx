@@ -10,6 +10,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import HomeIcon from '@mui/icons-material/Home';
 import XIcon from '@mui/icons-material/X';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useColorMode } from '../context/ThemeContext';
 
 const Footer = () => {
@@ -110,9 +111,9 @@ const Footer = () => {
                 </Link>
               </Box>
               <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <PhoneIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+                <WhatsAppIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
                 <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
-                  +57 3024906414
+                  WhatsApp: 57 3218175744
                 </MuiTypography>
               </Box>
               <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>

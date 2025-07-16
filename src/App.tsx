@@ -22,7 +22,6 @@ function App() {
             <Route path="/tienda-ai" element={<Home />} />
             <Route path="/por-que-ai4u" element={<WhyAI4U />} />
             <Route path="/casos-de-exito" element={<SuccessCases />} />
-            <Route path="/theme-demo" element={<ThemeDemo />} />
           </Routes>
         </Layout>
       </Router>

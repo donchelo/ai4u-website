@@ -23,8 +23,8 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Servicios', path: '/servicios' },
   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
-  { name: 'Casos de éxito', path: '/casos-de-exito' },
-  { name: 'ThemeDemo', path: '/theme-demo' }
+  { name: 'Casos de éxito', path: '/casos-de-exito' }
+  // { name: 'ThemeDemo', path: '/theme-demo' } // Oculto
 ];
 
 const Navbar = () => {
