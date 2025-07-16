@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './Button';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
-const CALENDLY_URL = 'https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente';
+const CALENDLY_URL = 'https://calendly.com/mgarciap333/ai4u';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline';
 type ButtonSize = 'small' | 'medium' | 'large';
