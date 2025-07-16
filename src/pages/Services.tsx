@@ -5,6 +5,7 @@ import { Button } from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
+import { serviciosAI4U } from '../data/services';
 
 // Industry service case component
 interface IndustryServiceProps {
@@ -149,50 +150,52 @@ const Services: React.FC = () => {
       {/* Our Services Section */}
       <Box sx={{ mb: 8 }}>
         <H2 sx={{ mb: 5, textAlign: 'center' }}>Nuestros servicios</H2>
-        
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <ServiceDetailCard 
-              title="AI Strategist 360"
-              description="Automatización estratégica integral. Analizamos tu negocio 24/7, optimizamos procesos continuamente y generamos dashboards en tiempo real para que tomes decisiones estratégicas basadas en datos."
-              useCases={[
-                "Generación automática de reportes ejecutivos",
-                "Monitoreo continuo de KPIs de negocio",
-                "Identificación proactiva de oportunidades de mejora",
-                "Integración con tus sistemas existentes"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <ServiceDetailCard 
-              title="Lead Booster Meta"
-              description="Potencia tu generación de leads. Automatizamos tus campañas de adquisición de clientes, optimizamos la conversión y hacemos seguimiento automático para que te enfoques solo en cerrar las ventas."
-              useCases={[
-                "Generación automática de campañas en redes sociales",
-                "Seguimiento personalizado de prospectos",
-                "Calificación de leads por potencial de compra",
-                "Optimización continua de embudos de conversión"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <ServiceDetailCard 
-              title="AI 360 Mensual"
-              description="Solución integral de automatización. Implementamos una estrategia completa con soporte prioritario y evolución continua de tus sistemas automatizados."
-              useCases={[
-                "Automatización end-to-end de procesos de negocio",
-                "Integración entre sistemas y plataformas",
-                "Análisis predictivo de tendencias de mercado",
-                "Optimización continua de procesos internos"
-              ]}
-            />
-          </Grid>
+          {serviciosAI4U.map((servicio, idx) => (
+            <Grid item xs={12} md={4} key={idx}>
+              <Paper elevation={2} sx={{ p: 3, borderRadius: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <H3 color="primary" sx={{ mb: 2, textAlign: 'center' }}>{servicio.titulo}</H3>
+                <BodyText sx={{ mb: 1, fontWeight: 600, textAlign: 'center' }}>{servicio.subtitulo}</BodyText>
+                <BodyText sx={{ mb: 2 }}>{servicio.descripcion}</BodyText>
+                <BodyText sx={{ fontWeight: 600, mb: 1 }}>Beneficios:</BodyText>
+                <List dense disablePadding>
+                  {servicio.beneficios.map((b, i) => (
+                    <ListItem disableGutters key={i}><ListItemText primary={b} /></ListItem>
+                  ))}
+                </List>
+                <BodyText sx={{ mt: 2 }}>
+                  <b>Precio:</b> {servicio.precio}<br/>
+                  <b>Tiempo:</b> {servicio.tiempo}
+                </BodyText>
+              </Paper>
+            </Grid>
+          ))}
         </Grid>
       </Box>
 
-      <Divider sx={{ my: 6 }} />
+      {/* ¿Cómo empezar? */}
+      <Box sx={{ mb: 8 }}>
+        <H2 sx={{ mb: 4, textAlign: 'center' }}>¿Cómo empezar?</H2>
+        <List sx={{ maxWidth: 600, mx: 'auto', mb: 2 }}>
+          <ListItem disableGutters><ListItemText primary="1. Diagnóstico Gratuito - 30 minutos" /></ListItem>
+          <ListItem disableGutters><ListItemText primary="2. Plan Personalizado - 24 horas" /></ListItem>
+          <ListItem disableGutters><ListItemText primary="3. Implementación Express - 72 horas" /></ListItem>
+          <ListItem disableGutters><ListItemText primary="4. Resultados Inmediatos - Desde el primer mes" /></ListItem>
+        </List>
+        <BodyText sx={{ textAlign: 'center', mb: 2 }}>
+          <b>Agenda tu diagnóstico gratuito:</b><br/>
+          <a href="https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente" target="_blank" rel="noopener noreferrer">
+            calendly.com/mgarciap333/ai4u-automatizacion-inteligente
+          </a>
+        </BodyText>
+      </Box>
+
+      {/* Garantía y soporte */}
+      <Box sx={{ mb: 8 }}>
+        <BodyText sx={{ textAlign: 'center', fontStyle: 'italic', color: 'text.secondary' }}>
+          Todos nuestros servicios incluyen garantía de satisfacción y soporte técnico especializado.
+        </BodyText>
+      </Box>
 
       {/* Industry Services Section */}
       <Box sx={{ mb: 8 }}>
