@@ -7,13 +7,15 @@ import {
   Paper, 
   Avatar, 
   Typography as MuiTypography,
-  Divider
+  Divider,
+  Link
 } from '@mui/material';
 import { H1, H2, H3, BodyText } from '../components/ui/Typography';
 import { Button } from '../components/ui/Button';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 import { ServicesButton } from '../components/ui/ServicesButton';
+import { clients } from '../data/clients';
 
 const SuccessCases = () => {
   return (
@@ -40,72 +42,116 @@ const SuccessCases = () => {
         </Container>
       </Box>
 
-      {/* Testimonio Principal */}
-      <Box sx={{ py: 8, bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="center" justifyContent="center">
-            <Grid item xs={12} md={10}>
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: { xs: 3, md: 5 }, 
-                  borderRadius: 2, 
-                  border: '1px solid', 
-                  borderColor: 'divider',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-              >
-                <Box sx={{ 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0, 
-                  width: 5, 
-                  height: '100%', 
-                  bgcolor: 'primary.main' 
-                }} />
 
-                <Grid container spacing={4} alignItems="center">
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ textAlign: 'center' }}>
-                      <Box 
-                        component="img" 
-                        src="/assets/images/cases/logo-magdalena.png" 
-                        alt="Logo La Magdalena"
-                        sx={{ 
-                          maxWidth: '80%',
-                          height: 'auto',
-                          mb: 3
-                        }}
-                      />
-                      <H2 variant="subtitle1" sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Chino Romero</H2>
-                      <BodyText sx={{ mb: 2 }}>Director de La Magdalena</BodyText>
-                      <BodyText sx={{ fontWeight: 'medium' }}>Storytelling de Impacto Positivo</BodyText>
-                    </Box>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={8}>
-                    <Box>
-                      <H2 sx={{ mb: 3, fontWeight: 600 }}>Historia de Transformación Digital</H2>
-                      
+      {/* Nuestros Clientes Section */}
+      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <H2 sx={{ mb: 3, fontWeight: 700 }}>
+              Nuestros <Box component="span" sx={{ color: 'primary.main' }}>Clientes</Box>
+            </H2>
+            <BodyText sx={{ fontSize: '1.1rem', maxWidth: '800px', mx: 'auto' }}>
+              En <strong>AI4U</strong>, colaboramos con marcas y organizaciones que apuestan por la transformación digital mediante inteligencia artificial, automatización estratégica y diseño basado en datos.
+            </BodyText>
+          </Box>
+
+          <Divider sx={{ mb: 6, bgcolor: 'primary.main', height: 2, maxWidth: '100px', mx: 'auto' }} />
+
+          <Grid container spacing={4}>
+            {clients.map((client, index) => (
+              <Grid item xs={12} key={client.id}>
+                <Paper 
+                  elevation={0}
+                  sx={{ 
+                    p: { xs: 3, md: 4 }, 
+                    borderRadius: 2,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                      transform: 'translateY(-2px)'
+                    }
+                  }}
+                >
+                  <Grid container spacing={4} alignItems="center">
+                    <Grid item xs={12} md={3}>
                       <Box sx={{ 
-                        borderLeft: '3px solid', 
-                        borderColor: 'primary.main', 
-                        pl: 3, 
-                        mb: 4 
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
                       }}>
-                        <BodyText sx={{ 
-                          fontStyle: 'italic',
-                          fontSize: '1.2rem'
+                        <Box
+                          sx={{
+                            width: '140px',
+                            height: '100px',
+                            bgcolor: 'white',
+                            borderRadius: 1,
+                            border: '1px solid',
+                            borderColor: 'rgba(0,0,0,0.1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            p: 2,
+                            mb: 2
+                          }}
+                        >
+                          <Box 
+                            component="img" 
+                            src={client.logo} 
+                            alt={`Logo ${client.name}`}
+                            sx={{ 
+                              maxWidth: '100%',
+                              maxHeight: '100%',
+                              width: 'auto',
+                              height: 'auto',
+                              objectFit: 'contain'
+                            }}
+                          />
+                        </Box>
+                        <H3 sx={{ 
+                          fontWeight: 'bold', 
+                          fontSize: '1.4rem',
+                          mb: 1
                         }}>
-                          "La combinación de nuestra tienda Shopify y el AI Strategist 360 ha transformado nuestra operación digital. La capacidad de mantener nuestra voz de marca mientras generamos contenido de manera más eficiente nos permite enfocarnos en lo que realmente importa: crear impacto positivo en Latinoamérica."
-                        </BodyText>
+                          {client.name}
+                        </H3>
+                        <Link 
+                          href={client.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{ 
+                            color: 'primary.main',
+                            textDecoration: 'none',
+                            fontSize: '0.9rem',
+                            '&:hover': {
+                              textDecoration: 'underline'
+                            }
+                          }}
+                        >
+                          {client.website.replace('https://www.', '').replace('https://', '')}
+                        </Link>
                       </Box>
-                    </Box>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={9}>
+                      <BodyText sx={{ 
+                        fontSize: '1.1rem',
+                        lineHeight: 1.6,
+                        color: 'text.secondary'
+                      }}>
+                        {client.description}
+                      </BodyText>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Paper>
-            </Grid>
+                </Paper>
+                
+                {index < clients.length - 1 && (
+                  <Divider sx={{ my: 4, bgcolor: 'divider' }} />
+                )}
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
