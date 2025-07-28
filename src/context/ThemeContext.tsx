@@ -330,7 +330,7 @@ export const useColorMode = () => useContext(ColorModeContext);
 
 // Proveedor del tema
 export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) => {
-	// Inicializar modo desde localStorage o preferencia del sistema
+	// Inicializar modo siempre en claro por defecto
 	const [mode, setMode] = useState<PaletteMode>(() => {
 		if (typeof window === 'undefined') return 'light';
 		
@@ -339,9 +339,8 @@ export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) =>
 			return savedMode;
 		}
 		
-		return window.matchMedia?.('(prefers-color-scheme: dark)').matches 
-			? 'dark' 
-			: 'light';
+		// Siempre usar tema claro por defecto, sin importar la preferencia del sistema
+		return 'light';
 	});
 
 	// Persistir el modo en localStorage y actualizar atributo del DOM

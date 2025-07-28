@@ -195,8 +195,8 @@ const HeroSection = () => {
                 }}
               >
                 <span>30 minutos</span>
-                <span>Robot estratégico desde $350.000</span>
-                <span>Implementación inmediata</span>
+                <span>Sin compromiso</span>
+                <span>Resultados inmediatos</span>
               </Typography>
             </Stack>
           </Stack>
@@ -235,28 +235,6 @@ const HeroSection = () => {
               }}
             />
             
-            {/* Badge para el precio */}
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: '5%',
-                right: '5%',
-                bgcolor: 'primary.main',
-                color: theme.palette.common.white,
-                padding: '0.75rem 1rem',
-                borderRadius: theme.shape.borderRadius,
-                boxShadow: theme.shadows[3],
-                transform: 'rotate(-5deg)',
-                zIndex: 5
-              }}
-            >
-              <Typography variant="caption" sx={{ fontWeight: 500, opacity: 0.9, display: 'block' }}>
-                Robot estratégico
-              </Typography>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                $350.000
-              </Typography>
-            </Box>
           </Box>
         </Stack>
       </Container>

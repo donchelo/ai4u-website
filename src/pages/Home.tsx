@@ -45,12 +45,6 @@ const serviceCategories = [
   },
 ];
 
-const robotBenefits = [
-  'Generan ROI desde el primer mes',
-  'Aprenden y evolucionan con tu empresa',
-  'Trabajan 24/7 para tu crecimiento',
-  'Se integran perfectamente con tus sistemas',
-];
 
 const Home = () => {
   return (
@@ -96,9 +90,10 @@ const Home = () => {
               </BodyText>
               <H3 sx={{ mb: 2, color: 'background.paper' }}>¿Qué los hace únicos?</H3>
               <Box component="ul" sx={{ pl: 3, mb: 2, color: 'background.paper' }}>
-                {robotBenefits.map((benefit, idx) => (
-                  <li key={idx} style={{ marginBottom: 8, fontSize: 18 }}>✓ {benefit}</li>
-                ))}
+                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Generan ROI desde el primer mes</li>
+                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Aprenden y evolucionan con tu empresa</li>
+                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Trabajan 24/7 para tu crecimiento</li>
+                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Se integran perfectamente con tus sistemas</li>
               </Box>
               <BodyText sx={{ fontStyle: 'italic', color: 'background.paper' }}>
                 "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
@@ -107,7 +102,7 @@ const Home = () => {
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Box
                 component="img"
-                src="/assets/images/robot-assistant.png"
+                src="/assets/images/robot.png"
                 alt="Robot AI4U"
                 sx={{ width: 300, height: 400, borderRadius: 8, boxShadow: 6, objectFit: 'cover', bgcolor: 'background.paper' }}
               />
