@@ -7,22 +7,16 @@ import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 
 const features = [
   {
-    icon: '⚡',
     title: 'La automatización ya no es opcional',
-    description: 'En 2025, las empresas que no automaticen quedarán atrás. Nuestros asistentes robóticos trabajan 24/7 para mantenerte a la vanguardia, mientras tu competencia sigue atrapada en lo manual.',
-    button: 'Mantente competitivo',
+    description: 'En 2025, las empresas que no automaticen quedarán atrás. Nuestros asistentes robóticos trabajan 24/7 para mantenerte a la vanguardia, mientras tu competencia sigue atrapada en lo manual.'
   },
   {
-    icon: '📈',
     title: 'Libera el 70% de tu tiempo operativo',
-    description: 'Nuestros asistentes robóticos transforman tiempo perdido en oportunidades de crecimiento. ROI medible desde el primer mes, mientras tú te enfocas en decisiones estratégicas que multiplican el valor de tu empresa.',
-    button: 'Calcula tu ROI',
+    description: 'Nuestros asistentes robóticos transforman tiempo perdido en oportunidades de crecimiento. ROI medible desde el primer mes, mientras tú te enfocas en decisiones estratégicas que multiplican el valor de tu empresa.'
   },
   {
-    icon: '🤖',
     title: 'Asistentes que nunca descansan',
-    description: 'Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.',
-    button: 'Conoce más',
+    description: 'Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.'
   },
 ];
 
@@ -67,11 +61,33 @@ const Home = () => {
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
               <Grid item xs={12} md={4} key={idx}>
-                <Card sx={{ textAlign: 'center', py: 4, px: 2, minHeight: 340 }}>
-                  <Box sx={{ fontSize: 48, mb: 2 }}>{feature.icon}</Box>
-                  <H3 sx={{ mb: 1 }}>{feature.title}</H3>
-                  <BodyText sx={{ color: 'text.secondary', mb: 2 }}>{feature.description}</BodyText>
-                  <DiagnosticCTA variant="primary" size="medium" text={feature.button} />
+                <Card 
+                  sx={{ 
+                    py: 4, 
+                    px: 3, 
+                    minHeight: 280,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  <H3 sx={{ 
+                    mb: 2, 
+                    textAlign: 'left',
+                    fontWeight: 600,
+                    lineHeight: 1.3
+                  }}>
+                    {feature.title}
+                  </H3>
+                  <BodyText sx={{ 
+                    color: 'text.secondary', 
+                    textAlign: 'left',
+                    lineHeight: 1.6,
+                    fontSize: '1rem',
+                    flexGrow: 1
+                  }}>
+                    {feature.description}
+                  </BodyText>
                 </Card>
               </Grid>
             ))}
