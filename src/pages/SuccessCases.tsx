@@ -110,13 +110,6 @@ const SuccessCases = () => {
                             }}
                           />
                         </Box>
-                        <H3 sx={{ 
-                          fontWeight: 'bold', 
-                          fontSize: '1.4rem',
-                          mb: 1
-                        }}>
-                          {client.name}
-                        </H3>
                         <Link 
                           href={client.website}
                           target="_blank"
