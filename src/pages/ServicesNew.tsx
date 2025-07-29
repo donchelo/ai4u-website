@@ -332,48 +332,6 @@ const ServicesNew: React.FC = () => {
         )}
       </Box>
 
-      {/* Industry Services Section */}
-      <Box sx={{ mb: 8 }}>
-        <H2 sx={{ mb: 5, textAlign: 'center' }}>Automatización por industria</H2>
-        
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="E-commerce"
-              items={[
-                "Gestión automática de inventario",
-                "Personalización de recomendaciones",
-                "Atención al cliente 24/7 con IA",
-                "Optimización de precios en tiempo real"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="Servicios profesionales"
-              items={[
-                "Automatización de agendamiento",
-                "Generación de propuestas comerciales",
-                "Seguimiento post-servicio",
-                "Análisis de satisfacción de clientes"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="Manufactura"
-              items={[
-                "Predicción de mantenimiento",
-                "Optimización de cadenas de suministro",
-                "Control de calidad automatizado",
-                "Planificación de producción inteligente"
-              ]}
-            />
-          </Grid>
-        </Grid>
-      </Box>
 
       {/* CTA Section */}
       <Box sx={{ py: 6, bgcolor: 'background.paper', borderRadius: 3, boxShadow: 1 }}>

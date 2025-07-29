@@ -172,72 +172,222 @@ const Services: React.FC = () => {
         </Grid>
       </Box>
 
-      {/* ¿Cómo empezar? */}
+      {/* ¿Cómo empezar? - Enhanced Version */}
       <Box sx={{ mb: 8 }}>
-        <H2 sx={{ mb: 4, textAlign: 'center' }}>¿Cómo empezar?</H2>
-        <List sx={{ maxWidth: 600, mx: 'auto', mb: 2 }}>
-          <ListItem disableGutters><ListItemText primary="1. Diagnóstico Gratuito - 30 minutos" /></ListItem>
-          <ListItem disableGutters><ListItemText primary="2. Plan Personalizado - 24 horas" /></ListItem>
-          <ListItem disableGutters><ListItemText primary="3. Implementación Express - 72 horas" /></ListItem>
-          <ListItem disableGutters><ListItemText primary="4. Resultados Inmediatos - Desde el primer mes" /></ListItem>
-        </List>
-        <BodyText sx={{ textAlign: 'center', mb: 2 }}>
-          <b>Agenda tu diagnóstico gratuito:</b><br/>
-          <a href="https://calendly.com/mgarciap333/ai4u-automatizacion-inteligente" target="_blank" rel="noopener noreferrer">
-            calendly.com/mgarciap333/ai4u-automatizacion-inteligente
-          </a>
-        </BodyText>
-      </Box>
-
-      {/* Garantía y soporte */}
-      <Box sx={{ mb: 8 }}>
-        <BodyText sx={{ textAlign: 'center', fontStyle: 'italic', color: 'text.secondary' }}>
-          Todos nuestros servicios incluyen garantía de satisfacción y soporte técnico especializado.
-        </BodyText>
-      </Box>
-
-      {/* Industry Services Section */}
-      <Box sx={{ mb: 8 }}>
-        <H2 sx={{ mb: 5, textAlign: 'center' }}>Automatización por industria</H2>
+        <H2 sx={{ mb: 6, textAlign: 'center' }}>Tu Transformación Digital en 4 Pasos</H2>
         
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="E-commerce"
-              items={[
-                "Gestión automática de inventario",
-                "Personalización de recomendaciones",
-                "Atención al cliente 24/7 con IA",
-                "Optimización de precios en tiempo real"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="Servicios profesionales"
-              items={[
-                "Automatización de agendamiento",
-                "Generación de propuestas comerciales",
-                "Seguimiento post-servicio",
-                "Análisis de satisfacción de clientes"
-              ]}
-            />
-          </Grid>
-          
-          <Grid item xs={12} md={4}>
-            <IndustryService 
-              title="Manufactura"
-              items={[
-                "Predicción de mantenimiento",
-                "Optimización de cadenas de suministro",
-                "Control de calidad automatizado",
-                "Planificación de producción inteligente"
-              ]}
-            />
+        <Grid container spacing={4} justifyContent="center">
+          <Grid item xs={12} md={10}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6} md={3}>
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    p: 3, 
+                    textAlign: 'center', 
+                    borderRadius: 3,
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: 4
+                    }
+                  }}
+                >
+                  <Box 
+                    sx={{ 
+                      width: 60, 
+                      height: 60, 
+                      borderRadius: '50%', 
+                      bgcolor: 'primary.main', 
+                      color: 'white', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 2,
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    1
+                  </Box>
+                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Diagnóstico Gratuito</H3>
+                  <BodyText sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>30 minutos</BodyText>
+                  <BodyText sx={{ fontSize: '0.9rem' }}>
+                    Identificamos oportunidades de automatización y calculamos tu ROI potencial
+                  </BodyText>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} sm={6} md={3}>
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    p: 3, 
+                    textAlign: 'center', 
+                    borderRadius: 3,
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: 4
+                    }
+                  }}
+                >
+                  <Box 
+                    sx={{ 
+                      width: 60, 
+                      height: 60, 
+                      borderRadius: '50%', 
+                      bgcolor: 'secondary.main', 
+                      color: 'white', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 2,
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    2
+                  </Box>
+                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Estrategia Personalizada</H3>
+                  <BodyText sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>24 horas</BodyText>
+                  <BodyText sx={{ fontSize: '0.9rem' }}>
+                    Diseñamos tu hoja de ruta de automatización con prioridades claras
+                  </BodyText>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} sm={6} md={3}>
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    p: 3, 
+                    textAlign: 'center', 
+                    borderRadius: 3,
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: 4
+                    }
+                  }}
+                >
+                  <Box 
+                    sx={{ 
+                      width: 60, 
+                      height: 60, 
+                      borderRadius: '50%', 
+                      bgcolor: 'success.main', 
+                      color: 'white', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 2,
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    3
+                  </Box>
+                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Implementación Express</H3>
+                  <BodyText sx={{ color: 'success.main', fontWeight: 600, mb: 1 }}>72 horas</BodyText>
+                  <BodyText sx={{ fontSize: '0.9rem' }}>
+                    Desplegamos e integramos las soluciones en tu operación actual
+                  </BodyText>
+                </Paper>
+              </Grid>
+              
+              <Grid item xs={12} sm={6} md={3}>
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    p: 3, 
+                    textAlign: 'center', 
+                    borderRadius: 3,
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: 4
+                    }
+                  }}
+                >
+                  <Box 
+                    sx={{ 
+                      width: 60, 
+                      height: 60, 
+                      borderRadius: '50%', 
+                      bgcolor: 'warning.main', 
+                      color: 'white', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 2,
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    4
+                  </Box>
+                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Libertad Estratégica</H3>
+                  <BodyText sx={{ color: 'warning.main', fontWeight: 600, mb: 1 }}>Primer mes</BodyText>
+                  <BodyText sx={{ fontSize: '0.9rem' }}>
+                    Disfrutas de más tiempo para decisiones estratégicas y crecimiento
+                  </BodyText>
+                </Paper>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+        
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
+          <Paper 
+            elevation={2} 
+            sx={{ 
+              p: 4, 
+              maxWidth: 600, 
+              mx: 'auto', 
+              borderRadius: 3,
+              bgcolor: 'primary.main',
+              color: 'white'
+            }}
+          >
+            <H3 sx={{ mb: 2, color: 'white' }}>¡Comienza Tu Transformación Hoy!</H3>
+            <BodyText sx={{ mb: 3, color: 'rgba(255,255,255,0.9)' }}>
+              Agenda tu diagnóstico gratuito y descubre cómo liberar tu tiempo estratégico
+            </BodyText>
+            <DiagnosticCTA 
+              variant="secondary" 
+              size="large" 
+              text="AGENDAR DIAGNÓSTICO GRATUITO" 
+            />
+            <BodyText sx={{ mt: 2, fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>
+              calendly.com/mgarciap333/ai4u-automatizacion-inteligente
+            </BodyText>
+          </Paper>
+        </Box>
       </Box>
+
+      {/* Garantía y soporte - Enhanced */}
+      <Box sx={{ mb: 8 }}>
+        <Paper 
+          elevation={1} 
+          sx={{ 
+            p: 3, 
+            bgcolor: 'background.default', 
+            borderRadius: 3,
+            border: '1px solid',
+            borderColor: 'divider'
+          }}
+        >
+          <BodyText sx={{ textAlign: 'center', fontWeight: 500, color: 'text.primary' }}>
+            🛡️ <strong>Garantía Total:</strong> Todos nuestros servicios incluyen garantía de satisfacción y soporte técnico especializado las 24 horas.
+          </BodyText>
+        </Paper>
+      </Box>
+
 
       {/* CTA Section */}
       <Box sx={{ py: 6, bgcolor: 'background.paper', borderRadius: 3, boxShadow: 1 }}>
