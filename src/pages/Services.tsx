@@ -20,7 +20,7 @@ import { H1, H2, BodyText } from '../components/ui/Typography';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 import ServiceCard from '../components/ServiceCard';
 import ProcessStep from '../components/ui/ProcessStep';
-import { useServices } from '../hooks/useServices';
+import { useServicesContext } from '../context/ServicesContext';
 import { ServiceCategory } from '../types/service';
 import { SERVICE_CONFIG } from '../utils/constants';
 
@@ -30,15 +30,16 @@ import { SERVICE_CONFIG } from '../utils/constants';
 
 const Services: React.FC = () => {
   const { 
-    services, 
-    availableCategories, 
+    services: filteredServices, 
     config,
     stats,
-    setCategory,
+    filters,
+    setCategoryFilter,
     setSearchTerm,
-    setFeaturedOnly,
-    resetFilters
-  } = useServices({ activeOnly: true });
+    setFeaturedFilter,
+    resetFilters,
+    getCategories
+  } = useServicesContext();
 
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -57,7 +58,7 @@ const Services: React.FC = () => {
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
-    setCategory(categoryTabs[newValue].value);
+    setCategoryFilter(categoryTabs[newValue].value);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +70,7 @@ const Services: React.FC = () => {
   const handleFeaturedToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const featured = event.target.checked;
     setShowFeaturedOnly(featured);
-    setFeaturedOnly(featured || undefined);
+    setFeaturedFilter(featured || undefined);
   };
 
   const clearFilters = () => {
@@ -116,7 +117,7 @@ const Services: React.FC = () => {
           </Grid>
           <Grid item xs={6} sm={3}>
             <Paper sx={{ p: 2, textAlign: 'center' }}>
-              <H2 sx={{ color: 'info.main', mb: 0 }}>{availableCategories.length}</H2>
+              <H2 sx={{ color: 'info.main', mb: 0 }}>{getCategories().length}</H2>
               <BodyText variant="caption">Categorías</BodyText>
             </Paper>
           </Grid>
@@ -211,7 +212,7 @@ const Services: React.FC = () => {
                   clickable
                 />
                 <Chip
-                  label={`${services.length} servicios`}
+                  label={`${filteredServices.length} servicios`}
                   color="primary"
                   size="small"
                 />
@@ -243,7 +244,7 @@ const Services: React.FC = () => {
       {/* Services Grid */}
       <Box sx={{ mb: 8 }}>
         <Grid container spacing={4}>
-          {services.map((service) => (
+          {filteredServices.map((service) => (
             <Grid 
               item 
               xs={12} 
@@ -259,7 +260,7 @@ const Services: React.FC = () => {
           ))}
         </Grid>
 
-        {services.length === 0 && (
+        {filteredServices.length === 0 && (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <BodyText sx={{ fontSize: '1.2rem', color: 'text.secondary' }}>
               No se encontraron servicios que coincidan con los filtros seleccionados.

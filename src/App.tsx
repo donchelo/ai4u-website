@@ -1,29 +1,65 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import WhyAI4U from './pages/WhyAI4U';
-import SuccessCases from './pages/SuccessCases';
-import Services from './pages/Services';
 import ScrollToTop from './components/ScrollToTop';
+import LazyPage from './components/LazyPage';
 import ThemeProvider from './context/ThemeContext';
+import ServicesProvider from './context/ServicesContext';
 import { ROUTES } from './utils/constants';
+import { Home, Services, WhyAI4U, SuccessCases } from './pages/lazy';
 
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <ScrollToTop />
-        <Layout>
-          <Routes>
-            <Route path={ROUTES.HOME} element={<Home />} />
-            <Route path={ROUTES.SERVICES} element={<Services />} />
-            <Route path={ROUTES.TIENDA_AI} element={<Home />} />
-            <Route path={ROUTES.WHY_AI4U} element={<WhyAI4U />} />
-            <Route path={ROUTES.SUCCESS_CASES} element={<SuccessCases />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <ServicesProvider>
+        <Router>
+          <ScrollToTop />
+          <Layout>
+            <Routes>
+              <Route 
+                path={ROUTES.HOME} 
+                element={
+                  <LazyPage>
+                    <Home />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.SERVICES} 
+                element={
+                  <LazyPage>
+                    <Services />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.TIENDA_AI} 
+                element={
+                  <LazyPage>
+                    <Home />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.WHY_AI4U} 
+                element={
+                  <LazyPage>
+                    <WhyAI4U />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.SUCCESS_CASES} 
+                element={
+                  <LazyPage>
+                    <SuccessCases />
+                  </LazyPage>
+                } 
+              />
+            </Routes>
+          </Layout>
+        </Router>
+      </ServicesProvider>
     </ThemeProvider>
   );
 }
