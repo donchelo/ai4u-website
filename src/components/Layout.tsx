@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Toolbar } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ChatButton from './ui/ChatButton';
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -23,6 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </Box>
       <Footer />
+      <ChatButton />
     </Box>
   );
 };
