@@ -9,28 +9,27 @@ import {
   MenuItem,
   Button,
   Container,
-  Typography as MuiTypography,
-  useTheme
+  Typography as MuiTypography
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import HomeIcon from '@mui/icons-material/Home';
 import { useColorMode } from '../context/ThemeContext';
+import Logo from './ui/Logo';
+import { ROUTES } from '../utils/constants';
+import { scrollToTop } from '../utils/helpers';
 
 const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Servicios', path: '/servicios' },
-  { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
-  { name: 'Casos de éxito', path: '/casos-de-exito' }
-  // { name: 'ThemeDemo', path: '/theme-demo' } // Oculto
+  { name: 'Home', path: ROUTES.HOME },
+  { name: 'Servicios', path: ROUTES.SERVICES },
+  { name: 'Por qué AI4U?', path: ROUTES.WHY_AI4U },
+  { name: 'Casos de éxito', path: ROUTES.SUCCESS_CASES }
 ];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
-  const theme = useTheme();
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,16 +43,8 @@ const Navbar = () => {
   const handleNavigate = (path: string) => {
     handleCloseNavMenu();
     navigate(path);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollToTop();
   };
-  
-  // Logo para fondo claro u oscuro
-  const logoPath = mode === 'dark' 
-    ? '/assets/images/ai4u-logo-for-dark-background.png'  // Logo para fondos oscuros
-    : '/assets/images/ai4u-logo-for-light-background.png';      // Logo para fondos claros
 
   return (
     <AppBar 
@@ -70,13 +61,7 @@ const Navbar = () => {
           {/* Logo - Desktop */}
           <Box
             component={RouterLink}
-            to="/"
-            onClick={() => {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
-            }}
+            to={ROUTES.HOME}
             sx={{
               mr: 3,
               display: { xs: 'none', md: 'flex' },
@@ -84,16 +69,7 @@ const Navbar = () => {
               alignItems: 'center',
             }}
           >
-            <Box
-              component="img"
-              src={logoPath}
-              alt="AI4U Logo"
-              sx={{ 
-                height: 42,
-                width: 'auto',
-                marginLeft: '4px'
-              }}
-            />
+            <Logo variant="desktop" />
           </Box>
 
           {/* Mobile Menu */}
@@ -151,13 +127,7 @@ const Navbar = () => {
           {/* Logo - Mobile */}
           <Box
             component={RouterLink}
-            to="/"
-            onClick={() => {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
-            }}
+            to={ROUTES.HOME}
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -167,15 +137,7 @@ const Navbar = () => {
               justifyContent: 'center',
             }}
           >
-            <Box
-              component="img"
-              src={logoPath}
-              alt="AI4U Logo"
-              sx={{ 
-                height: 38,
-                width: 'auto'
-              }}
-            />
+            <Logo variant="mobile" />
           </Box>
 
           {/* Desktop Menu */}
@@ -183,17 +145,12 @@ const Navbar = () => {
             {navItems.map((item) => (
               <Button
                 key={item.name}
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                  });
-                }}
+                onClick={() => scrollToTop()}
                 component={RouterLink}
                 to={item.path}
                 sx={{ 
                   mx: 1,
-                  color: item.path === '/theme-demo' ? 'secondary.main' : 'text.primary',
+                  color: 'text.primary',
                   '&:hover': {
                     color: 'primary.main',
                     backgroundColor: 'transparent',

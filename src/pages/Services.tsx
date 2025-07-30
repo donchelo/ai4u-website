@@ -19,42 +19,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import { H1, H2, BodyText } from '../components/ui/Typography';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
 import ServiceCard from '../components/ServiceCard';
+import ProcessStep from '../components/ui/ProcessStep';
 import { useServices } from '../hooks/useServices';
 import { ServiceCategory } from '../types/service';
+import { SERVICE_CONFIG } from '../utils/constants';
 
 
 
-// Process step component
-interface ProcessStepProps {
-  number: number;
-  title: string;
-  description: string;
-}
 
-const ProcessStep: React.FC<ProcessStepProps> = ({ number, title, description }) => (
-  <Box sx={{ display: 'flex', mb: 2 }}>
-    <Box 
-      sx={{ 
-        width: 40, 
-        height: 40, 
-        borderRadius: '50%', 
-        bgcolor: 'primary.main', 
-        color: 'white', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        flexShrink: 0,
-        mr: 2
-      }}
-    >
-      {number}
-    </Box>
-    <Box>
-      <BodyText sx={{ fontWeight: 600 }}>{title}</BodyText>
-      <BodyText color="text.secondary">{description}</BodyText>
-    </Box>
-  </Box>
-);
 
 const Services: React.FC = () => {
   const { 
@@ -160,7 +132,7 @@ const Services: React.FC = () => {
             <Box sx={{ mb: 3 }}>
               <ProcessStep 
                 number={1} 
-                title="Diagnóstico gratuito (30 minutos)" 
+                title={`Diagnóstico gratuito (${SERVICE_CONFIG.DIAGNOSTIC_DURATION} minutos)`}
                 description="Identificamos todas las oportunidades de automatización en tu negocio"
               />
               <ProcessStep 

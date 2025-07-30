@@ -7,6 +7,7 @@ import SuccessCases from './pages/SuccessCases';
 import Services from './pages/Services';
 import ScrollToTop from './components/ScrollToTop';
 import ThemeProvider from './context/ThemeContext';
+import { ROUTES } from './utils/constants';
 
 function App() {
   return (
@@ -15,11 +16,11 @@ function App() {
         <ScrollToTop />
         <Layout>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/servicios" element={<Services />} />
-            <Route path="/tienda-ai" element={<Home />} />
-            <Route path="/por-que-ai4u" element={<WhyAI4U />} />
-            <Route path="/casos-de-exito" element={<SuccessCases />} />
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.SERVICES} element={<Services />} />
+            <Route path={ROUTES.TIENDA_AI} element={<Home />} />
+            <Route path={ROUTES.WHY_AI4U} element={<WhyAI4U />} />
+            <Route path={ROUTES.SUCCESS_CASES} element={<SuccessCases />} />
           </Routes>
         </Layout>
       </Router>
