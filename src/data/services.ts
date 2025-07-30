@@ -8,7 +8,6 @@ export const serviciosAI4U = [
       "Reportes automáticos 24/7",
       "Análisis estratégico instantáneo"
     ],
-    precio: "$4.200.000 COP",
     tiempo: "Listo en 3 días"
   },
   {
@@ -20,7 +19,6 @@ export const serviciosAI4U = [
       "Reduce 70% el tiempo de respuesta",
       "Integración con tu marca"
     ],
-    precio: "$2.800.000 COP",
     tiempo: "Implementación inmediata"
   },
   {
@@ -32,7 +30,6 @@ export const serviciosAI4U = [
       "Leads de alta calidad",
       "Optimización diaria de campañas"
     ],
-    precio: "$1.400.000 COP",
     tiempo: "Setup en 7 días"
   },
   {
@@ -44,7 +41,6 @@ export const serviciosAI4U = [
       "Elimina errores manuales",
       "Envío automático por email"
     ],
-    precio: "$2.500.000 COP",
     tiempo: "Funcional en 5 días"
   },
   {
@@ -56,7 +52,6 @@ export const serviciosAI4U = [
       "Compatible con cualquier ERP",
       "Procesamiento instantáneo"
     ],
-    precio: "$4.200.000 COP",
     tiempo: "Integración en 7 días"
   },
   {
@@ -68,7 +63,6 @@ export const serviciosAI4U = [
       "Reportes diarios listos",
       "Ahorra 15 horas semanales"
     ],
-    precio: "$1.400.000 COP",
     tiempo: "Configuración inmediata"
   },
   {
@@ -80,7 +74,6 @@ export const serviciosAI4U = [
       "Reportes semanales con insights",
       "Identifica patrones y tendencias"
     ],
-    precio: "$1.400.000 COP",
     tiempo: "Activo en 3 días"
   },
   {
@@ -92,7 +85,6 @@ export const serviciosAI4U = [
       "Pagos y envíos configurados",
       "Integración con redes sociales"
     ],
-    precio: "$3.600.000 COP",
     tiempo: "Tienda lista en 14 días"
   },
   {
@@ -104,7 +96,6 @@ export const serviciosAI4U = [
       "Feedback personalizado",
       "Recursos y prompts exclusivos"
     ],
-    precio: "$200.000 COP",
     tiempo: "Sesiones flexibles"
   },
   {
@@ -116,7 +107,6 @@ export const serviciosAI4U = [
       "Crea GPTs personalizados",
       "Multiplica tu productividad"
     ],
-    precio: "$200.000 COP",
     tiempo: "Sesiones personalizadas"
   },
   {
@@ -128,7 +118,6 @@ export const serviciosAI4U = [
       "Material digital incluido",
       "30 días de consultas post-evento"
     ],
-    precio: "$500.000 COP",
     tiempo: "Sesiones programadas"
   },
   {
@@ -140,7 +129,6 @@ export const serviciosAI4U = [
       "Asesoramiento mensual personalizado",
       "Soporte preferencial"
     ],
-    precio: "$4.800.000 COP",
     tiempo: "Servicio continuo"
   }
 ]; 

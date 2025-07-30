@@ -11,7 +11,6 @@ export const services: Service[] = [
       'Reportes automáticos 24/7',
       'Análisis estratégico instantáneo'
     ],
-    price: '$4.200.000 COP',
     deliveryTime: 'Listo en 3 días',
     category: ServiceCategory.AI_ASSISTANT,
     priority: 1,
@@ -36,7 +35,6 @@ export const services: Service[] = [
       'Reduce 70% el tiempo de respuesta',
       'Integración con tu marca'
     ],
-    price: '$3.800.000 COP',
     deliveryTime: 'Implementación inmediata',
     category: ServiceCategory.AI_ASSISTANT,
     priority: 2,
@@ -61,7 +59,6 @@ export const services: Service[] = [
       'Leads de alta calidad',
       'Optimización diaria de campañas'
     ],
-    price: '$1.400.000 COP',
     deliveryTime: 'Setup en 7 días',
     category: ServiceCategory.AUTOMATION,
     priority: 3,
@@ -86,7 +83,6 @@ export const services: Service[] = [
       'Elimina errores manuales',
       'Envío automático por email'
     ],
-    price: '$3.500.000 COP',
     deliveryTime: 'Funcional en 5 días',
     category: ServiceCategory.AUTOMATION,
     priority: 4,
@@ -111,7 +107,6 @@ export const services: Service[] = [
       'Compatible con cualquier ERP',
       'Procesamiento instantáneo'
     ],
-    price: '$4.200.000 COP',
     deliveryTime: 'Integración en 7 días',
     category: ServiceCategory.AUTOMATION,
     priority: 5,
@@ -136,7 +131,6 @@ export const services: Service[] = [
       'Reportes diarios listos',
       'Ahorra 15 horas semanales'
     ],
-    price: '$2.400.000 COP',
     deliveryTime: 'Configuración inmediata',
     category: ServiceCategory.ANALYTICS,
     priority: 6,
@@ -161,7 +155,6 @@ export const services: Service[] = [
       'Reportes semanales con insights',
       'Identifica patrones y tendencias'
     ],
-    price: '$2.400.000 COP',
     deliveryTime: 'Activo en 3 días',
     category: ServiceCategory.ANALYTICS,
     priority: 7,
@@ -186,7 +179,6 @@ export const services: Service[] = [
       'Pagos y envíos configurados',
       'Integración con redes sociales'
     ],
-    price: '$4.600.000 COP',
     deliveryTime: 'Tienda lista en 14 días',
     category: ServiceCategory.ECOMMERCE,
     priority: 8,
@@ -211,7 +203,6 @@ export const services: Service[] = [
       'Feedback personalizado',
       'Recursos y prompts exclusivos'
     ],
-    price: '$200.000 COP',
     deliveryTime: 'Sesiones flexibles',
     category: ServiceCategory.TRAINING,
     priority: 9,
@@ -236,7 +227,6 @@ export const services: Service[] = [
       'Crea GPTs personalizados',
       'Multiplica tu productividad'
     ],
-    price: '$300.000 COP',
     deliveryTime: 'Sesiones personalizadas',
     category: ServiceCategory.TRAINING,
     priority: 10,
@@ -261,7 +251,6 @@ export const services: Service[] = [
       'Material digital incluido',
       '30 días de consultas post-evento'
     ],
-    price: '$500.000 COP',
     deliveryTime: 'Sesiones programadas',
     category: ServiceCategory.TRAINING,
     priority: 11,
@@ -286,7 +275,6 @@ export const services: Service[] = [
       'Asesoramiento mensual personalizado',
       'Soporte preferencial'
     ],
-    price: '$4.800.000 COP',
     deliveryTime: 'Servicio continuo',
     category: ServiceCategory.CONSULTING,
     priority: 12,
@@ -306,7 +294,7 @@ export const services: Service[] = [
 // Configuración por defecto del sistema de servicios
 export const defaultServiceConfig = {
   displaySettings: {
-    showPrices: true,
+    showPrices: false,
     showDeliveryTime: true,
     cardsPerRow: 3,
     showCategories: true

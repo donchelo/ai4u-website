@@ -163,7 +163,6 @@ const Services: React.FC = () => {
                   ))}
                 </List>
                 <BodyText sx={{ mt: 2 }}>
-                  <b>Precio:</b> {servicio.precio}<br/>
                   <b>Tiempo:</b> {servicio.tiempo}
                 </BodyText>
               </Paper>

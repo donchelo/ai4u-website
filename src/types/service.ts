@@ -4,7 +4,7 @@ export interface Service {
   subtitle: string;
   description: string;
   benefits: string[];
-  price: string;
+  price?: string; // Opcional ahora
   deliveryTime: string;
   category: ServiceCategory;
   priority: number; // Para ordenar servicios
