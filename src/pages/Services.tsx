@@ -1,61 +1,28 @@
-import React from 'react';
-import { Container, Grid, Box, Divider, List, ListItem, ListItemIcon, ListItemText, Paper } from '@mui/material';
-import { H1, H2, H3, BodyText } from '../components/ui/Typography';
-import { Button } from '../components/ui/Button';
-import Card from '../components/ui/Card';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import React, { useState } from 'react';
+import { 
+  Container, 
+  Grid, 
+  Box, 
+  Divider, 
+  Paper,
+  Tabs,
+  Tab,
+  TextField,
+  InputAdornment,
+  Chip,
+  Stack,
+  FormGroup,
+  FormControlLabel,
+  Switch
+} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import { H1, H2, BodyText } from '../components/ui/Typography';
 import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
-import { serviciosAI4U } from '../data/services';
+import ServiceCard from '../components/ServiceCard';
+import { useServices } from '../hooks/useServices';
+import { ServiceCategory } from '../types/service';
 
-// Industry service case component
-interface IndustryServiceProps {
-  title: string;
-  items: string[];
-}
 
-const IndustryService: React.FC<IndustryServiceProps> = ({ title, items }) => (
-  <Box sx={{ mb: 4 }}>
-    <H3 sx={{ mb: 2, textAlign: 'center' }}>{title}</H3>
-    <List dense>
-      {items.map((item, index) => (
-        <ListItem key={index} disableGutters>
-          <ListItemIcon sx={{ minWidth: 32 }}>
-            <CheckCircleOutlineIcon color="primary" fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary={item} />
-        </ListItem>
-      ))}
-    </List>
-  </Box>
-);
-
-// Service card with title, description and use cases
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  useCases: string[];
-}
-
-const ServiceDetailCard: React.FC<ServiceCardProps> = ({ title, description, useCases }) => (
-  <Paper elevation={2} sx={{ p: 3, borderRadius: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
-    <H3 color="primary" sx={{ mb: 2, textAlign: 'center' }}>{title}</H3>
-    <BodyText sx={{ mb: 2 }}>{description}</BodyText>
-    
-    <Box sx={{ mt: 'auto' }}>
-      <BodyText sx={{ fontWeight: 600, mb: 1 }}>Casos de uso:</BodyText>
-      <List dense disablePadding>
-        {useCases.map((useCase, index) => (
-          <ListItem key={index} disableGutters>
-            <ListItemIcon sx={{ minWidth: 32 }}>
-              <CheckCircleOutlineIcon color="primary" fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={useCase} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  </Paper>
-);
 
 // Process step component
 interface ProcessStepProps {
@@ -90,6 +57,56 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ number, title, description })
 );
 
 const Services: React.FC = () => {
+  const { 
+    services, 
+    availableCategories, 
+    config,
+    stats,
+    setCategory,
+    setSearchTerm,
+    setFeaturedOnly,
+    resetFilters
+  } = useServices({ activeOnly: true });
+
+  const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [showFeaturedOnly, setShowFeaturedOnly] = useState<boolean>(false);
+
+  // Mapeo de categorías para los tabs
+  const categoryTabs = [
+    { label: 'Todos', value: undefined },
+    { label: 'Asistentes IA', value: ServiceCategory.AI_ASSISTANT },
+    { label: 'Automatización', value: ServiceCategory.AUTOMATION },
+    { label: 'Análisis', value: ServiceCategory.ANALYTICS },
+    { label: 'E-commerce', value: ServiceCategory.ECOMMERCE },
+    { label: 'Capacitación', value: ServiceCategory.TRAINING },
+    { label: 'Consultoría', value: ServiceCategory.CONSULTING }
+  ];
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
+    setCategory(categoryTabs[newValue].value);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchValue(value);
+    setSearchTerm(value || undefined);
+  };
+
+  const handleFeaturedToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const featured = event.target.checked;
+    setShowFeaturedOnly(featured);
+    setFeaturedOnly(featured || undefined);
+  };
+
+  const clearFilters = () => {
+    setSelectedTab(0);
+    setSearchValue('');
+    setShowFeaturedOnly(false);
+    resetFilters();
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
       {/* Hero Section */}
@@ -98,10 +115,40 @@ const Services: React.FC = () => {
           <H1 sx={{ mb: 2 }}>Servicios AI4U</H1>
           <H2 sx={{ mb: 3, fontWeight: 500 }}>Construimos tu infraestructura de IA personalizada</H2>
         </Box>
-        <BodyText sx={{ fontSize: '1.1rem', maxWidth: 800, mx: 'auto' }}>
+        <BodyText sx={{ fontSize: '1.1rem', maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
           En AI4U nos especializamos en crear soluciones de inteligencia artificial adaptadas específicamente a tu negocio. 
           Automatizamos procesos, liberamos tiempo operativo y transformamos ese tiempo en libertad estratégica.
         </BodyText>
+      </Box>
+
+      {/* Stats Section */}
+      <Box sx={{ mb: 6 }}>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={6} sm={3}>
+            <Paper sx={{ p: 2, textAlign: 'center' }}>
+              <H2 sx={{ color: 'primary.main', mb: 0 }}>{stats.total}</H2>
+              <BodyText variant="caption">Servicios Totales</BodyText>
+            </Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper sx={{ p: 2, textAlign: 'center' }}>
+              <H2 sx={{ color: 'success.main', mb: 0 }}>{stats.active}</H2>
+              <BodyText variant="caption">Disponibles</BodyText>
+            </Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper sx={{ p: 2, textAlign: 'center' }}>
+              <H2 sx={{ color: 'warning.main', mb: 0 }}>{stats.featured}</H2>
+              <BodyText variant="caption">Destacados</BodyText>
+            </Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper sx={{ p: 2, textAlign: 'center' }}>
+              <H2 sx={{ color: 'info.main', mb: 0 }}>{availableCategories.length}</H2>
+              <BodyText variant="caption">Categorías</BodyText>
+            </Paper>
+          </Grid>
+        </Grid>
       </Box>
 
       {/* Our Process Section */}
@@ -146,245 +193,115 @@ const Services: React.FC = () => {
 
       <Divider sx={{ my: 6 }} />
 
-      {/* Our Services Section */}
-      <Box sx={{ mb: 8 }}>
-        <H2 sx={{ mb: 5, textAlign: 'center' }}>Nuestros servicios</H2>
-        <Grid container spacing={4}>
-          {serviciosAI4U.map((servicio, idx) => (
-            <Grid item xs={12} md={4} key={idx}>
-              <Paper elevation={2} sx={{ p: 3, borderRadius: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <H3 color="primary" sx={{ mb: 2, textAlign: 'center' }}>{servicio.titulo}</H3>
-                <BodyText sx={{ mb: 1, fontWeight: 600, textAlign: 'center' }}>{servicio.subtitulo}</BodyText>
-                <BodyText sx={{ mb: 2 }}>{servicio.descripcion}</BodyText>
-                <BodyText sx={{ fontWeight: 600, mb: 1 }}>Beneficios:</BodyText>
-                <List dense disablePadding>
-                  {servicio.beneficios.map((b, i) => (
-                    <ListItem disableGutters key={i}><ListItemText primary={b} /></ListItem>
-                  ))}
-                </List>
-                <BodyText sx={{ mt: 2 }}>
-                  <b>Tiempo:</b> {servicio.tiempo}
-                </BodyText>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      {/* ¿Cómo empezar? - Enhanced Version */}
-      <Box sx={{ mb: 8 }}>
-        <H2 sx={{ mb: 6, textAlign: 'center' }}>Tu Transformación Digital en 4 Pasos</H2>
+      {/* Services Filter Section */}
+      <Box sx={{ mb: 4 }}>
+        <H2 sx={{ mb: 4, textAlign: 'center' }}>Nuestros servicios</H2>
         
-        <Grid container spacing={4} justifyContent="center">
-          <Grid item xs={12} md={10}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={3} 
-                  sx={{ 
-                    p: 3, 
-                    textAlign: 'center', 
-                    borderRadius: 3,
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4
-                    }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: 60, 
-                      height: 60, 
-                      borderRadius: '50%', 
-                      bgcolor: 'primary.main', 
-                      color: 'white', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      mx: 'auto',
-                      mb: 2,
-                      fontSize: '1.5rem',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    1
-                  </Box>
-                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Diagnóstico Gratuito</H3>
-                  <BodyText sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>30 minutos</BodyText>
-                  <BodyText sx={{ fontSize: '0.9rem' }}>
-                    Identificamos oportunidades de automatización y calculamos tu ROI potencial
-                  </BodyText>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={3} 
-                  sx={{ 
-                    p: 3, 
-                    textAlign: 'center', 
-                    borderRadius: 3,
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4
-                    }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: 60, 
-                      height: 60, 
-                      borderRadius: '50%', 
-                      bgcolor: 'secondary.main', 
-                      color: 'white', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      mx: 'auto',
-                      mb: 2,
-                      fontSize: '1.5rem',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    2
-                  </Box>
-                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Estrategia Personalizada</H3>
-                  <BodyText sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>24 horas</BodyText>
-                  <BodyText sx={{ fontSize: '0.9rem' }}>
-                    Diseñamos tu hoja de ruta de automatización con prioridades claras
-                  </BodyText>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={3} 
-                  sx={{ 
-                    p: 3, 
-                    textAlign: 'center', 
-                    borderRadius: 3,
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4
-                    }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: 60, 
-                      height: 60, 
-                      borderRadius: '50%', 
-                      bgcolor: 'success.main', 
-                      color: 'white', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      mx: 'auto',
-                      mb: 2,
-                      fontSize: '1.5rem',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    3
-                  </Box>
-                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Implementación Express</H3>
-                  <BodyText sx={{ color: 'success.main', fontWeight: 600, mb: 1 }}>72 horas</BodyText>
-                  <BodyText sx={{ fontSize: '0.9rem' }}>
-                    Desplegamos e integramos las soluciones en tu operación actual
-                  </BodyText>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={3}>
-                <Paper 
-                  elevation={3} 
-                  sx={{ 
-                    p: 3, 
-                    textAlign: 'center', 
-                    borderRadius: 3,
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4
-                    }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: 60, 
-                      height: 60, 
-                      borderRadius: '50%', 
-                      bgcolor: 'warning.main', 
-                      color: 'white', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      mx: 'auto',
-                      mb: 2,
-                      fontSize: '1.5rem',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    4
-                  </Box>
-                  <H3 sx={{ mb: 1, fontSize: '1.1rem' }}>Libertad Estratégica</H3>
-                  <BodyText sx={{ color: 'warning.main', fontWeight: 600, mb: 1 }}>Primer mes</BodyText>
-                  <BodyText sx={{ fontSize: '0.9rem' }}>
-                    Disfrutas de más tiempo para decisiones estratégicas y crecimiento
-                  </BodyText>
-                </Paper>
-              </Grid>
+        {/* Search and Filters */}
+        <Box sx={{ mb: 4 }}>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                placeholder="Buscar servicios..."
+                value={searchValue}
+                onChange={handleSearchChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={showFeaturedOnly}
+                      onChange={handleFeaturedToggle}
+                      color="primary"
+                    />
+                  }
+                  label="Solo destacados"
+                />
+              </FormGroup>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Stack spacing={1} direction="row">
+                <Chip
+                  label="Limpiar filtros"
+                  onClick={clearFilters}
+                  variant="outlined"
+                  size="small"
+                  clickable
+                />
+                <Chip
+                  label={`${services.length} servicios`}
+                  color="primary"
+                  size="small"
+                />
+              </Stack>
             </Grid>
           </Grid>
-        </Grid>
-        
-        <Box sx={{ textAlign: 'center', mt: 6 }}>
-          <Paper 
-            elevation={2} 
-            sx={{ 
-              p: 4, 
-              maxWidth: 600, 
-              mx: 'auto', 
-              borderRadius: 3,
-              bgcolor: 'primary.main',
-              color: 'white'
+        </Box>
+
+        {/* Category Tabs */}
+        <Box sx={{ mb: 4 }}>
+          <Tabs
+            value={selectedTab}
+            onChange={handleTabChange}
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{
+              '& .MuiTabs-scrollButtons': {
+                '&.Mui-disabled': { opacity: 0.3 }
+              }
             }}
           >
-            <H3 sx={{ mb: 2, color: 'white' }}>¡Comienza Tu Transformación Hoy!</H3>
-            <BodyText sx={{ mb: 3, color: 'rgba(255,255,255,0.9)' }}>
-              Agenda tu diagnóstico gratuito y descubre cómo liberar tu tiempo estratégico
-            </BodyText>
-            <DiagnosticCTA 
-              variant="secondary" 
-              size="large" 
-              text="AGENDAR DIAGNÓSTICO GRATUITO" 
-            />
-            <BodyText sx={{ mt: 2, fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>
-              calendly.com/mgarciap333/ai4u-automatizacion-inteligente
-            </BodyText>
-          </Paper>
+            {categoryTabs.map((tab, index) => (
+              <Tab key={index} label={tab.label} />
+            ))}
+          </Tabs>
         </Box>
       </Box>
 
-      {/* Garantía y soporte - Enhanced */}
+      {/* Services Grid */}
       <Box sx={{ mb: 8 }}>
-        <Paper 
-          elevation={1} 
-          sx={{ 
-            p: 3, 
-            bgcolor: 'background.default', 
-            borderRadius: 3,
-            border: '1px solid',
-            borderColor: 'divider'
-          }}
-        >
-          <BodyText sx={{ textAlign: 'center', fontWeight: 500, color: 'text.primary' }}>
-            🛡️ <strong>Garantía Total:</strong> Todos nuestros servicios incluyen garantía de satisfacción y soporte técnico especializado las 24 horas.
-          </BodyText>
-        </Paper>
+        <Grid container spacing={4}>
+          {services.map((service) => (
+            <Grid 
+              item 
+              xs={12} 
+              md={config.displaySettings.cardsPerRow === 4 ? 3 : 4} 
+              key={service.id}
+            >
+              <ServiceCard 
+                service={service}
+                showPrice={config.displaySettings.showPrices}
+                showDeliveryTime={config.displaySettings.showDeliveryTime}
+              />
+            </Grid>
+          ))}
+        </Grid>
+
+        {services.length === 0 && (
+          <Box sx={{ textAlign: 'center', py: 8 }}>
+            <BodyText sx={{ fontSize: '1.2rem', color: 'text.secondary' }}>
+              No se encontraron servicios que coincidan con los filtros seleccionados.
+            </BodyText>
+            <Box sx={{ mt: 2 }}>
+              <Chip
+                label="Limpiar filtros"
+                onClick={clearFilters}
+                color="primary"
+                clickable
+              />
+            </Box>
+          </Box>
+        )}
       </Box>
 
 
@@ -393,7 +310,7 @@ const Services: React.FC = () => {
         <Box sx={{ textAlign: 'center' }}>
           <H2 sx={{ mb: 2 }}>¿Listo para liberar tu tiempo estratégico?</H2>
         </Box>
-        <BodyText sx={{ mb: 4, maxWidth: 800, mx: 'auto' }}>
+        <BodyText sx={{ mb: 4, maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
           Agenda tu diagnóstico gratuito de 30 minutos y descubre cómo podemos transformar tu negocio con IA.
         </BodyText>
         
@@ -409,4 +326,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services; 
+export default Services;

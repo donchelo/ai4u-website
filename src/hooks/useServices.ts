@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import { Service, ServiceCategory, ServiceStatus } from '../types/service';
-import { services, ServiceUtils, defaultServiceConfig } from '../data/servicesNew';
+import { ServiceCategory, ServiceStatus } from '../types/service';
+import { services, ServiceUtils, defaultServiceConfig } from '../data/services';
 
 interface UseServicesProps {
   initialCategory?: ServiceCategory;
