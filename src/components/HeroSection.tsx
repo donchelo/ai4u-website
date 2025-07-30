@@ -100,7 +100,7 @@ const HeroSection = () => {
       >
         <Stack
           direction={{ xs: 'column', md: 'row' }}
-          spacing={{ xs: 4, md: 6 }}
+          spacing={{ xs: 6, md: 6 }}
           alignItems="center"
           justifyContent="space-between"
           sx={{
@@ -111,10 +111,10 @@ const HeroSection = () => {
           <Stack
             direction="column"
             spacing={{ xs: 2.5, md: 3 }}
-            alignItems={{ xs: 'center', md: 'flex-start' }}
+            alignItems={{ xs: 'flex-start', md: 'flex-start' }}
             sx={{
               width: { xs: '100%', md: '55%' },
-              textAlign: { xs: 'center', md: 'left' },
+              textAlign: { xs: 'left', md: 'left' },
             }}
           >
             <H1 
@@ -137,7 +137,8 @@ const HeroSection = () => {
                 fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
                 lineHeight: 1.5,
                 mb: { xs: 1, md: 2 },
-                maxWidth: { xs: '95%', md: '100%' }
+                maxWidth: { xs: '95%', md: '100%' },
+                textAlign: { xs: 'left', md: 'left' }
               }}
             >
               Construimos infraestructura de inteligencia artificial que transforma tu operación empresarial
@@ -150,7 +151,8 @@ const HeroSection = () => {
                 fontSize: { xs: '0.9rem', sm: '1rem' },
                 lineHeight: 1.5,
                 mb: { xs: 2, md: 3 },
-                maxWidth: { xs: '90%', md: '100%' }
+                maxWidth: { xs: '90%', md: '100%' },
+                textAlign: { xs: 'left', md: 'left' }
               }}
             >
               Arquitectura de IA personalizada que automatiza procesos críticos y evoluciona con tu negocio. Implementación rápida, resultados medibles y escalabilidad garantizada.
@@ -159,8 +161,8 @@ const HeroSection = () => {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={3}
-              alignItems={{ xs: 'center', md: 'flex-start' }}
-              alignSelf={{ xs: 'center', md: 'flex-start' }}
+              alignItems={{ xs: 'flex-start', md: 'flex-start' }}
+              alignSelf={{ xs: 'flex-start', md: 'flex-start' }}
             >
               <DiagnosticCTA 
                 variant="primary" 
@@ -202,18 +204,18 @@ const HeroSection = () => {
           </Stack>
           
           {/* Columna de imagen del asistente */}
-          <Box
-            sx={{
-              width: { xs: '70%', sm: '60%', md: '40%' },
-              height: { xs: '240px', sm: '300px', md: '420px' },
-              position: 'relative',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mt: { xs: 1, md: 0 },
-              mb: { xs: 1, md: 0 }
-            }}
-          >
+                      <Box
+              sx={{
+                width: { xs: '80%', sm: '70%', md: '40%' },
+                height: { xs: '280px', sm: '320px', md: '420px' },
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mt: { xs: 2, md: 0 },
+                mb: { xs: 2, md: 0 }
+              }}
+            >
             <Box
               component="img"
               src="/assets/images/robot-assistant.png"

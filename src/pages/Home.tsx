@@ -52,10 +52,10 @@ const Home = () => {
       />
 
       {/* Features Section */}
-      <Box sx={{ py: 10, bgcolor: 'background.default' }}>
+      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 2 }}>¿El trabajo te está robando momentos irreemplazables?</H2>
-          <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mx: 'auto', mb: 6 }}>
+          <BodyText sx={{ color: 'text.secondary', textAlign: 'left', maxWidth: 700, mb: 6 }}>
             Cada minuto atrapado en tareas operativas es un momento que no volverá. Mientras tus competidores automatizan, tú pierdes tiempo valioso que podrías estar invirtiendo en tu familia o en el crecimiento estratégico de tu empresa.
           </BodyText>
           <Grid container spacing={4}>
@@ -63,9 +63,9 @@ const Home = () => {
               <Grid item xs={12} md={4} key={idx}>
                 <Card 
                   sx={{ 
-                    py: 4, 
-                    px: 3, 
-                    minHeight: 280,
+                    py: { xs: 3, md: 4 }, 
+                    px: { xs: 2, md: 3 }, 
+                    minHeight: { xs: 240, md: 280 },
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column'
@@ -96,7 +96,7 @@ const Home = () => {
       </Box>
 
       {/* Robot Section */}
-      <Box sx={{ py: 10, bgcolor: 'primary.dark', color: 'background.paper' }}>
+      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'primary.dark', color: 'background.paper' }}>
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
             <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
@@ -120,7 +120,14 @@ const Home = () => {
                 component="img"
                 src="/assets/images/robot.png"
                 alt="Robot AI4U"
-                sx={{ width: 300, height: 400, borderRadius: 8, boxShadow: 6, objectFit: 'cover', bgcolor: 'background.paper' }}
+                sx={{ 
+                  width: { xs: 250, sm: 300, md: 300 }, 
+                  height: { xs: 333, sm: 400, md: 400 }, 
+                  borderRadius: 8, 
+                  boxShadow: 6, 
+                  objectFit: 'cover', 
+                  bgcolor: 'background.paper' 
+                }}
               />
             </Box>
           </Stack>
@@ -128,17 +135,17 @@ const Home = () => {
       </Box>
 
       {/* Services Section */}
-      <Box sx={{ py: 10, bgcolor: 'background.default' }}>
+      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 2 }}>Servicios</H2>
-          <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mx: 'auto', mb: 6 }}>
+          <BodyText sx={{ color: 'text.secondary', textAlign: 'left', maxWidth: 700, mb: 6 }}>
             Nuestras megacategorías de servicio cubren todas las necesidades de automatización, estrategia y transformación digital para tu empresa.
           </BodyText>
           <Grid container spacing={4}>
             {serviceCategories.map((cat, idx) => (
               <Grid item xs={12} md={3} key={idx}>
-                <Card sx={{ textAlign: 'center', py: 4, px: 2, minHeight: 220 }}>
-                  <H3 sx={{ mb: 1 }}>{cat.title}</H3>
+                <Card sx={{ textAlign: 'left', py: { xs: 3, md: 4 }, px: { xs: 2, md: 2 }, minHeight: { xs: 200, md: 220 } }}>
+                  <H3 sx={{ mb: 1, textAlign: 'center' }}>{cat.title}</H3>
                   <BodyText sx={{ color: 'text.secondary' }}>{cat.description}</BodyText>
                 </Card>
               </Grid>

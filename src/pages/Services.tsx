@@ -81,14 +81,14 @@ const Services: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
       {/* Hero Section */}
       <Box sx={{ mb: 6 }}>
         <Box sx={{ textAlign: 'center' }}>
           <H1 sx={{ mb: 2 }}>Servicios AI4U</H1>
           <H2 sx={{ mb: 3, fontWeight: 500 }}>Construimos tu infraestructura de IA personalizada</H2>
         </Box>
-        <BodyText sx={{ fontSize: '1.1rem', maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
+        <BodyText sx={{ fontSize: '1.1rem', maxWidth: 800, textAlign: 'left' }}>
           En AI4U nos especializamos en crear soluciones de inteligencia artificial adaptadas específicamente a tu negocio. 
           Automatizamos procesos, liberamos tiempo operativo y transformamos ese tiempo en libertad estratégica.
         </BodyText>
@@ -283,7 +283,7 @@ const Services: React.FC = () => {
         <Box sx={{ textAlign: 'center' }}>
           <H2 sx={{ mb: 2 }}>¿Listo para liberar tu tiempo estratégico?</H2>
         </Box>
-        <BodyText sx={{ mb: 4, maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
+        <BodyText sx={{ mb: 4, maxWidth: 800, textAlign: 'left' }}>
           Agenda tu diagnóstico gratuito de 30 minutos y descubre cómo podemos transformar tu negocio con IA.
         </BodyText>
         
