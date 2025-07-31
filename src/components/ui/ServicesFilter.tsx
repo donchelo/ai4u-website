@@ -46,10 +46,10 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
   return (
     <Box sx={{
       p: 4,
-      background: '#FFFFFF',
-      border: '1px solid #E5E5E5',
+      background: theme.palette.background.paper,
+      border: `1px solid ${theme.palette.divider}`,
       borderRadius: 2,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+      boxShadow: theme.shadows[2]
     }}>
       {/* Search and Controls */}
       <Box sx={{ mb: 4 }}>
@@ -63,18 +63,18 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               onChange={onSearchChange}
                              sx={{
                  '& .MuiOutlinedInput-root': {
-                   background: '#FFFFFF',
+                   background: theme.palette.background.paper,
                    borderRadius: 2,
                    transition: 'all 0.3s ease',
                    '&:hover': {
                      '& .MuiOutlinedInput-notchedOutline': {
-                       borderColor: '#000000',
+                       borderColor: theme.palette.primary.main,
                        borderWidth: '1px'
                      }
                    },
                    '&.Mui-focused': {
                      '& .MuiOutlinedInput-notchedOutline': {
-                       borderColor: '#000000',
+                       borderColor: theme.palette.primary.main,
                        borderWidth: '2px'
                      }
                    }
@@ -87,7 +87,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon sx={{ color: '#666666' }} />
+                    <SearchIcon sx={{ color: theme.palette.text.secondary }} />
                   </InputAdornment>
                 ),
               }}
@@ -104,11 +104,11 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               clickable
               icon={<ClearIcon />}
               sx={{
-                background: '#FFFFFF',
-                border: '1px solid #E5E5E5',
+                background: theme.palette.background.paper,
+                border: `1px solid ${theme.palette.divider}`,
                 '&:hover': {
-                  background: '#F8F8F8',
-                  borderColor: '#000000'
+                  background: theme.palette.action.hover,
+                  borderColor: theme.palette.primary.main
                 }
               }}
             />
@@ -116,8 +116,8 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               label={`${filteredCount} servicios`}
               size="small"
               sx={{
-                background: '#000000',
-                color: 'white',
+                background: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
                 fontWeight: 'bold'
               }}
             />
@@ -144,20 +144,20 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               borderRadius: 2,
               mx: 0.5,
               transition: 'all 0.3s ease',
-              color: '#666666',
+              color: theme.palette.text.secondary,
               '&:hover': {
-                background: '#F8F8F8',
-                color: '#000000'
+                background: theme.palette.action.hover,
+                color: theme.palette.text.primary
               },
               '&.Mui-selected': {
-                background: '#F0F0F0',
-                color: '#000000',
+                background: theme.palette.action.selected,
+                color: theme.palette.primary.main,
                 fontWeight: 600
               }
             },
             '& .MuiTabs-indicator': {
               height: 2,
-              background: '#000000'
+              background: theme.palette.primary.main
             }
           }}
         >
@@ -182,9 +182,9 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
                 size="small"
                 onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
                 sx={{
-                  background: '#F0F0F0',
-                  color: '#000000',
-                  border: '1px solid #E5E5E5'
+                  background: theme.palette.action.selected,
+                  color: theme.palette.text.primary,
+                  border: `1px solid ${theme.palette.divider}`
                 }}
               />
           </Stack>

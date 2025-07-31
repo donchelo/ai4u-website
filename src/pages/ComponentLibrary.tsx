@@ -591,7 +591,7 @@ const ComponentLibrary: React.FC = () => {
                     { time: '12 AM', condition: 'Clear', precipitation: 0, temperature: 32 }
                   ]
                 }}
-                theme="red"
+                variant="red"
               />
               <WeatherWidget
                 data={{
@@ -608,7 +608,7 @@ const ComponentLibrary: React.FC = () => {
                     { time: '1 AM', condition: 'Clear', precipitation: 2, temperature: 14 }
                   ]
                 }}
-                theme="dark"
+                variant="dark"
                 showLocationIcon={true}
               />
             </div>

@@ -25,19 +25,19 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
     { 
       value: stats.total, 
       label: 'Servicios', 
-      color: '#000000',
+      color: theme.palette.primary.main,
       description: 'Total disponibles'
     },
     { 
       value: stats.active, 
       label: 'Activos', 
-      color: '#000000',
+      color: theme.palette.secondary.main,
       description: 'Listos para implementar'
     },
     { 
       value: getCategories().length, 
       label: 'Categorías', 
-      color: '#000000',
+      color: theme.palette.text.primary,
       description: 'Especialidades técnicas'
     }
   ];
@@ -50,14 +50,14 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
             <Box sx={{
               p: 4,
               textAlign: 'center',
-              background: '#FFFFFF',
-              border: '1px solid #E5E5E5',
+              background: theme.palette.background.paper,
+              border: `1px solid ${theme.palette.divider}`,
               borderRadius: 2,
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               '&:hover': {
                 transform: 'translateY(-2px)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
-                borderColor: '#D0D0D0'
+                boxShadow: theme.shadows[4],
+                borderColor: theme.palette.primary.main
               }
             }}>
               <H3 sx={{ 

@@ -1,4 +1,16 @@
 import React from 'react';
+import { 
+  Box, 
+  Card, 
+  CardContent, 
+  Typography, 
+  Divider,
+  useTheme,
+  styled
+} from '@mui/material';
+import { 
+  LocationOn as LocationOnIcon 
+} from '@mui/icons-material';
 
 interface WeatherData {
   location: string;
@@ -18,101 +30,202 @@ interface WeatherData {
 
 interface WeatherWidgetProps {
   data: WeatherData;
-  theme?: 'light' | 'dark' | 'red';
+  variant?: 'light' | 'dark' | 'red';
   showLocationIcon?: boolean;
 }
 
+// Styled components
+const StyledCard = styled(Card)<{ weatherVariant?: string }>(({ theme, weatherVariant }) => {
+  let backgroundColor, textColor, borderColor;
+  
+  switch (weatherVariant) {
+    case 'red':
+      backgroundColor = '#EF4444'; // red-500
+      textColor = '#000000';
+      borderColor = '#F87171'; // red-400
+      break;
+    case 'dark':
+      backgroundColor = '#000000';
+      textColor = '#FFFFFF';
+      borderColor = theme.palette.grey[700];
+      break;
+    default:
+      backgroundColor = theme.palette.background.paper;
+      textColor = theme.palette.text.primary;
+      borderColor = theme.palette.divider;
+  }
+
+  return {
+    backgroundColor,
+    color: textColor,
+    borderRadius: theme.spacing(3),
+    maxWidth: 400,
+    margin: '0 auto',
+    border: `1px solid ${borderColor}`,
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+    },
+  };
+});
+
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   data,
-  theme = 'light',
+  variant = 'light',
   showLocationIcon = false
 }) => {
-  const getThemeClasses = () => {
-    switch (theme) {
+  const theme = useTheme();
+
+  const getTextColor = (type: 'primary' | 'secondary') => {
+    switch (variant) {
       case 'red':
-        return {
-          bg: 'bg-red-500',
-          text: 'text-black',
-          secondaryText: 'text-black',
-          border: 'border-red-400'
-        };
+        return '#000000';
       case 'dark':
-        return {
-          bg: 'bg-black',
-          text: 'text-white',
-          secondaryText: 'text-gray-300',
-          border: 'border-gray-700'
-        };
+        return type === 'primary' ? '#FFFFFF' : '#D1D5DB';
       default:
-        return {
-          bg: 'bg-white',
-          text: 'text-gray-900',
-          secondaryText: 'text-gray-600',
-          border: 'border-gray-200'
-        };
+        return type === 'primary' ? theme.palette.text.primary : theme.palette.text.secondary;
     }
   };
 
-  const themeClasses = getThemeClasses();
-
   return (
-    <div className={`${themeClasses.bg} rounded-2xl shadow-lg p-6 max-w-sm mx-auto ${themeClasses.border} border`}>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2">
-            {showLocationIcon && (
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-            )}
-            <h3 className={`text-lg font-semibold ${themeClasses.text}`}>{data.location}</h3>
-          </div>
-        </div>
-        <div className="flex items-center space-x-2">
-          <span className={`text-sm ${themeClasses.secondaryText}`}>00:37</span>
-          <div className="w-2 h-2 bg-current rounded-full"></div>
-        </div>
-      </div>
+    <StyledCard weatherVariant={variant}>
+      <CardContent sx={{ p: 3 }}>
+        {/* Header */}
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          mb: 3 
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {showLocationIcon && (
+                <LocationOnIcon sx={{ 
+                  fontSize: 16, 
+                  color: getTextColor('primary') 
+                }} />
+              )}
+              <Typography variant="h6" sx={{ 
+                fontWeight: 600,
+                color: getTextColor('primary')
+              }}>
+                {data.location}
+              </Typography>
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="body2" sx={{ 
+              color: getTextColor('secondary')
+            }}>
+              00:37
+            </Typography>
+            <Box sx={{ 
+              width: 8, 
+              height: 8, 
+              backgroundColor: 'currentColor', 
+              borderRadius: '50%' 
+            }} />
+          </Box>
+        </Box>
 
-      {/* Current Weather */}
-      <div className="text-center mb-6">
-        <div className={`text-6xl font-bold ${themeClasses.text} mb-2`}>
-          {data.temperature}°
-        </div>
-        <div className={`text-lg ${themeClasses.secondaryText} mb-2`}>
-          {data.condition}
-        </div>
-        <div className={`text-sm ${themeClasses.secondaryText}`}>
-          {data.high}°—{data.low}°
-        </div>
-      </div>
+        {/* Current Weather */}
+        <Box sx={{ textAlign: 'center', mb: 3 }}>
+          <Typography variant="h1" sx={{ 
+            fontSize: '4rem',
+            fontWeight: 700,
+            color: getTextColor('primary'),
+            mb: 1,
+            lineHeight: 1
+          }}>
+            {data.temperature}°
+          </Typography>
+          <Typography variant="h6" sx={{ 
+            color: getTextColor('secondary'),
+            mb: 1
+          }}>
+            {data.condition}
+          </Typography>
+          <Typography variant="body2" sx={{ 
+            color: getTextColor('secondary')
+          }}>
+            {data.high}°—{data.low}°
+          </Typography>
+        </Box>
 
-      {/* Weather Details */}
-      <div className="flex justify-between mb-6">
-        <div className={`text-sm ${themeClasses.secondaryText}`}>
-          Wind: {data.wind} km/h
-        </div>
-        <div className={`text-sm ${themeClasses.secondaryText}`}>
-          Precipitation: {data.precipitation}%
-        </div>
-      </div>
+        {/* Weather Details */}
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          mb: 3 
+        }}>
+          <Typography variant="body2" sx={{ 
+            color: getTextColor('secondary')
+          }}>
+            Wind: {data.wind} km/h
+          </Typography>
+          <Typography variant="body2" sx={{ 
+            color: getTextColor('secondary')
+          }}>
+            Precipitation: {data.precipitation}%
+          </Typography>
+        </Box>
 
-      {/* Hourly Forecast */}
-      <div className="border-t border-current border-opacity-20 pt-4">
-        <h4 className={`text-sm font-semibold mb-3 ${themeClasses.text}`}>Hourly</h4>
-        <div className="space-y-2">
-          {data.hourlyForecast.map((forecast, index) => (
-            <div key={index} className="flex justify-between items-center">
-              <span className={`text-sm ${themeClasses.secondaryText}`}>{forecast.time}</span>
-              <span className={`text-sm ${themeClasses.secondaryText}`}>{forecast.condition}</span>
-              <span className={`text-sm ${themeClasses.secondaryText}`}>{forecast.precipitation}%</span>
-              <span className={`text-sm font-semibold ${themeClasses.text}`}>{forecast.temperature}°</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+        {/* Hourly Forecast */}
+        <Box sx={{ pt: 2 }}>
+          <Divider sx={{ 
+            mb: 2,
+            borderColor: variant === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'
+          }} />
+          <Typography variant="subtitle2" sx={{ 
+            fontWeight: 600,
+            mb: 2,
+            color: getTextColor('primary')
+          }}>
+            Hourly
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            {data.hourlyForecast.map((forecast, index) => (
+              <Box key={index} sx={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center' 
+              }}>
+                <Typography variant="body2" sx={{ 
+                  color: getTextColor('secondary'),
+                  minWidth: '60px'
+                }}>
+                  {forecast.time}
+                </Typography>
+                <Typography variant="body2" sx={{ 
+                  color: getTextColor('secondary'),
+                  flex: 1,
+                  textAlign: 'center'
+                }}>
+                  {forecast.condition}
+                </Typography>
+                <Typography variant="body2" sx={{ 
+                  color: getTextColor('secondary'),
+                  minWidth: '40px',
+                  textAlign: 'center'
+                }}>
+                  {forecast.precipitation}%
+                </Typography>
+                <Typography variant="body2" sx={{ 
+                  fontWeight: 600,
+                  color: getTextColor('primary'),
+                  minWidth: '40px',
+                  textAlign: 'right'
+                }}>
+                  {forecast.temperature}°
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </CardContent>
+    </StyledCard>
   );
 };
 
