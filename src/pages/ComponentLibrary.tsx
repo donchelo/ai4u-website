@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { BRAND_IDENTITY } from '../data/brandIdentity';
-import BudgetCard from '../components/ui/BudgetCard';
-import TransactionCard from '../components/ui/TransactionCard';
-import WeatherWidget from '../components/ui/WeatherWidget';
-import SleepWidget from '../components/ui/SleepWidget';
-import ModelingInterface from '../components/ui/ModelingInterface';
-import { Button } from '../components/ui/Button';
-import Card from '../components/ui/Card';
-import { Typography, H1, H2, H3, H4, BodyText, SmallText } from '../components/ui/Typography';
-import { PageLayout, Section, Container, Grid, Stack } from '../components/ui/Layout';
-import Navigation from '../components/ui/Navigation';
+import { BudgetCard, TransactionCard } from '../components/shared/ui/molecules';
+import { WeatherWidget, SleepWidget, ModelingInterface, Navigation } from '../components/shared/ui/organisms';
+import { Button } from '../components/shared/ui/atoms';
+import { Card } from '../components/shared/ui/molecules';
+import { Typography, H1, H2, H3, H4, BodyText, SmallText } from '../components/shared/ui/atoms';
+import { PageLayout, Section, Container, Grid, Stack } from '../components/shared/ui/layouts/LayoutUtils';
 import { useColorMode } from '../context/ThemeContext';
 
 interface ComponentSection {

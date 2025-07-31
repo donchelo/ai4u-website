@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Grid, Box, Paper, Divider, Stack, useTheme, IconButton, Chip, AppBar, Toolbar } from '@mui/material';
-import { H1, H2, H3, H4, H5, H6, BodyText, SmallText, CodeText } from '../components/ui/Typography';
-import Card from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
+import { H1, H2, H3, H4, H5, H6, BodyText, SmallText, CodeText } from '../components/shared/ui/atoms';
+import { Card } from '../components/shared/ui/molecules';
+import { Button } from '../components/shared/ui/atoms';
 import { useColorMode } from '../context/ThemeContext';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';

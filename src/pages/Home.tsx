@@ -1,9 +1,8 @@
 import React from 'react';
 import { Container, Grid, Box, Stack } from '@mui/material';
-import { H2, H3, BodyText } from '../components/ui/Typography';
-import HeroSection from '../components/HeroSection';
-import Card from '../components/ui/Card';
-import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
+import { H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
+import { HeroSection } from '../components/shared/ui/organisms';
+import { Card, DiagnosticCTA } from '../components/shared/ui/molecules';
 
 const features = [
   {
@@ -54,36 +53,52 @@ const Home = () => {
       {/* Features Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2 }}>¿El trabajo te está robando momentos irreemplazables?</H2>
-          <BodyText sx={{ color: 'text.secondary', textAlign: 'left', maxWidth: 700, mb: 6 }}>
+          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400 }}>
+            ¿El trabajo te está robando momentos irreemplazables?
+          </H2>
+          <BodyText sx={{ 
+            color: 'text.secondary', 
+            textAlign: 'center', 
+            maxWidth: 700, 
+            mb: 6,
+            mx: 'auto',
+            fontSize: '1rem',
+            lineHeight: 1.6
+          }}>
             Cada minuto atrapado en tareas operativas es un momento que no volverá. Mientras tus competidores automatizan, tú pierdes tiempo valioso que podrías estar invirtiendo en tu familia o en el crecimiento estratégico de tu empresa.
           </BodyText>
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
               <Grid item xs={12} md={4} key={idx}>
                 <Card 
+                  variant="light"
                   sx={{ 
-                    py: { xs: 3, md: 4 }, 
-                    px: { xs: 2, md: 3 }, 
-                    minHeight: { xs: 240, md: 280 },
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column'
                   }}
                 >
-                  <H3 sx={{ 
-                    mb: 2, 
-                    textAlign: 'left',
-                    fontWeight: 600,
-                    lineHeight: 1.3
-                  }}>
-                    {feature.title}
-                  </H3>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <GeometricIcon 
+                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
+                      size="small" 
+                      color="rgba(0, 0, 0, 0.3)" 
+                      variant="minimal" 
+                    />
+                    <H3 sx={{ 
+                      ml: 2,
+                      fontWeight: 500,
+                      lineHeight: 1.3,
+                      color: 'text.primary',
+                      fontSize: '1.1rem'
+                    }}>
+                      {feature.title}
+                    </H3>
+                  </Box>
                   <BodyText sx={{ 
                     color: 'text.secondary', 
-                    textAlign: 'left',
                     lineHeight: 1.6,
-                    fontSize: '1rem',
+                    fontSize: '0.95rem',
                     flexGrow: 1
                   }}>
                     {feature.description}
@@ -95,26 +110,86 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Robot Section */}
-      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'primary.dark', color: 'background.paper' }}>
+      {/* Robot Section - Fondo gris oscuro minimalista */}
+      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: '#1a1a1a', color: 'white' }}>
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
             <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
-              <H2 sx={{ mb: 2, color: 'background.paper' }}>Asistentes Robóticos que Transforman tu Empresa</H2>
-              <BodyText sx={{ mb: 4, color: 'background.paper', maxWidth: 600 }}>
+              <H2 sx={{ mb: 2, color: 'white', fontWeight: 300 }}>Asistentes Robóticos que Transforman tu Empresa</H2>
+              <BodyText sx={{ mb: 6, color: 'rgba(255, 255, 255, 0.8)', maxWidth: 600, fontSize: '1.1rem', lineHeight: 1.7 }}>
                 Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
               </BodyText>
-              <H3 sx={{ mb: 2, color: 'background.paper' }}>¿Qué los hace únicos?</H3>
-              <Box component="ul" sx={{ pl: 3, mb: 2, color: 'background.paper' }}>
-                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Generan ROI desde el primer mes</li>
-                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Aprenden y evolucionan con tu empresa</li>
-                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Trabajan 24/7 para tu crecimiento</li>
-                <li style={{ marginBottom: 8, fontSize: 18 }}>✓ Se integran perfectamente con tus sistemas</li>
+              
+              <H3 sx={{ mb: 4, color: 'white', fontWeight: 400, fontSize: '1.2rem' }}>¿Qué los hace únicos?</H3>
+              
+              {/* Lista ultra minimalista con iconos geométricos */}
+              <Stack spacing={4} sx={{ mb: 6, maxWidth: 500 }}>
+                <Stack direction="row" alignItems="center" spacing={3}>
+                  <GeometricIcon 
+                    type="circle" 
+                    size="small" 
+                    color="#B6CA40" 
+                    variant="filled" 
+                  />
+                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem', lineHeight: 1.6 }}>
+                    Generan ROI desde el primer mes
+                  </BodyText>
+                </Stack>
+                
+                <Stack direction="row" alignItems="center" spacing={3}>
+                  <GeometricIcon 
+                    type="dot" 
+                    size="small" 
+                    color="rgba(255, 255, 255, 0.4)" 
+                    variant="minimal" 
+                  />
+                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                    Aprenden y evolucionan con tu empresa
+                  </BodyText>
+                </Stack>
+                
+                <Stack direction="row" alignItems="center" spacing={3}>
+                  <GeometricIcon 
+                    type="dot" 
+                    size="small" 
+                    color="rgba(255, 255, 255, 0.4)" 
+                    variant="minimal" 
+                  />
+                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                    Trabajan 24/7 para tu crecimiento
+                  </BodyText>
+                </Stack>
+                
+                <Stack direction="row" alignItems="center" spacing={3}>
+                  <GeometricIcon 
+                    type="dot" 
+                    size="small" 
+                    color="rgba(255, 255, 255, 0.4)" 
+                    variant="minimal" 
+                  />
+                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                    Se integran perfectamente con tus sistemas
+                  </BodyText>
+                </Stack>
+              </Stack>
+              
+              <Box sx={{ 
+                pl: 4,
+                borderLeft: '1px solid rgba(255, 255, 255, 0.2)',
+                maxWidth: 500
+              }}>
+                <BodyText sx={{ 
+                  fontStyle: 'italic', 
+                  color: 'rgba(255, 255, 255, 0.6)',
+                  fontSize: '1rem',
+                  fontWeight: 300,
+                  lineHeight: 1.6
+                }}>
+                  "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
+                </BodyText>
               </Box>
-              <BodyText sx={{ fontStyle: 'italic', color: 'background.paper' }}>
-                "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
-              </BodyText>
             </Box>
+            
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Box
                 component="img"
@@ -123,10 +198,9 @@ const Home = () => {
                 sx={{ 
                   width: { xs: 250, sm: 300, md: 300 }, 
                   height: { xs: 333, sm: 400, md: 400 }, 
-                  borderRadius: 8, 
-                  boxShadow: 6, 
-                  objectFit: 'cover', 
-                  bgcolor: 'background.paper' 
+                  borderRadius: '4px', 
+                  filter: 'grayscale(0.2)',
+                  objectFit: 'cover'
                 }}
               />
             </Box>
@@ -137,28 +211,75 @@ const Home = () => {
       {/* Services Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2 }}>Servicios</H2>
-          <BodyText sx={{ color: 'text.secondary', textAlign: 'left', maxWidth: 700, mb: 6 }}>
+          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>Servicios</H2>
+          <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mb: 6, mx: 'auto', fontSize: '1rem' }}>
             Nuestras megacategorías de servicio cubren todas las necesidades de automatización, estrategia y transformación digital para tu empresa.
           </BodyText>
           <Grid container spacing={4}>
             {serviceCategories.map((cat, idx) => (
               <Grid item xs={12} md={3} key={idx}>
                 <Card 
-                  variant="primary"
+                  variant={idx === 1 ? "primary" : "light"}
                   sx={{ 
-                    textAlign: 'left', 
-                    py: { xs: 3, md: 4 }, 
-                    px: { xs: 2, md: 2 }, 
-                    minHeight: { xs: 200, md: 220 } 
+                    height: '100%',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column'
                   }}
                 >
-                  <H3 sx={{ mb: 1, textAlign: 'center' }}>{cat.title}</H3>
-                  <BodyText sx={{ color: 'text.secondary' }}>{cat.description}</BodyText>
+                  <Box sx={{ mb: 2 }}>
+                    <GeometricIcon 
+                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
+                      size="medium" 
+                      color={idx === 1 ? "#FF5C00" : "rgba(0, 0, 0, 0.4)"} 
+                      variant={idx === 1 ? "filled" : "minimal"} 
+                    />
+                  </Box>
+                  <H3 sx={{ 
+                    mb: 2, 
+                    color: idx === 1 ? '#FF5C00' : 'text.primary',
+                    fontWeight: idx === 1 ? 600 : 500,
+                    fontSize: '1.2rem'
+                  }}>
+                    {cat.title}
+                  </H3>
+                  <BodyText sx={{ 
+                    color: 'text.secondary', 
+                    fontSize: '0.95rem', 
+                    lineHeight: 1.5,
+                    flexGrow: 1
+                  }}>
+                    {cat.description}
+                  </BodyText>
                 </Card>
               </Grid>
             ))}
           </Grid>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: 'background.paper' }}>
+        <Container maxWidth="md">
+          <Box sx={{ textAlign: 'center' }}>
+            <H2 sx={{ mb: 3, fontWeight: 400 }}>
+              ¿Listo para transformar tu empresa?
+            </H2>
+            <BodyText sx={{ mb: 4, color: 'text.secondary', fontSize: '1.1rem' }}>
+              Descubre cómo nuestros asistentes robóticos pueden liberar tu tiempo y multiplicar tu productividad.
+            </BodyText>
+            <Stack 
+              direction={{ xs: 'column', sm: 'row' }} 
+              spacing={3} 
+              justifyContent="center"
+              alignItems="center"
+            >
+              <DiagnosticCTA />
+              <Button variant="outline" size="large">
+                Explorar soluciones
+              </Button>
+            </Stack>
+          </Box>
         </Container>
       </Box>
     </Box>

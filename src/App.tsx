@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import ScrollToTop from './components/ScrollToTop';
-import LazyPage from './components/LazyPage';
+import { Layout, ScrollToTop, LazyPage } from './components/shared/ui/layouts';
 import ThemeProvider from './context/ThemeContext';
 import ServicesProvider from './context/ServicesContext';
 import { ROUTES } from './utils/constants';

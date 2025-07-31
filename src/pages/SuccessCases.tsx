@@ -10,11 +10,10 @@ import {
   Divider,
   Link
 } from '@mui/material';
-import { H1, H2, H3, BodyText } from '../components/ui/Typography';
-import { Button } from '../components/ui/Button';
+import { H1, H2, H3, BodyText } from '../components/shared/ui/atoms';
+import { Button } from '../components/shared/ui/atoms';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
-import { ServicesButton } from '../components/ui/ServicesButton';
+import { DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
 
 const SuccessCases = () => {

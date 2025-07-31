@@ -8,13 +8,10 @@ import {
   useTheme,
   alpha
 } from '@mui/material';
-import { H1, H2, H3, BodyText } from '../components/ui/Typography';
-import { Button } from '../components/ui/Button';
-import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
-import ServiceCard from '../components/ServiceCard';
-import ProcessStep from '../components/ui/ProcessStep';
-import ServicesFilter from '../components/ui/ServicesFilter';
-import ServicesStats from '../components/ui/ServicesStats';
+import { H1, H2, H3, BodyText } from '../components/shared/ui/atoms';
+import { Button } from '../components/shared/ui/atoms';
+import { DiagnosticCTA, ServiceCard, ProcessStep } from '../components/shared/ui/molecules';
+import { ServicesFilter, ServicesStats } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
 import { ServiceCategory } from '../types/service';
 import { SERVICE_CONFIG } from '../utils/constants';

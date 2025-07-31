@@ -1,10 +1,9 @@
 import React from 'react';
 import { Container, Grid, Box, Typography } from '@mui/material';
-import { H1, H2, BodyText } from '../components/ui/Typography';
-import MetricCard from '../components/ui/MetricCard';
-import Card from '../components/ui/Card';
-import GeometricIcon from '../components/ui/GeometricIcon';
-import { Button } from '../components/ui/Button';
+import { H1, H2, BodyText } from '../components/shared/ui/atoms';
+import { MetricCard, Card } from '../components/shared/ui/molecules';
+import { GeometricIcon } from '../components/shared/ui/atoms';
+import { Button } from '../components/shared/ui/atoms';
 
 const MetricsDemo: React.FC = () => {
   // Datos de ejemplo inspirados en las imágenes compartidas

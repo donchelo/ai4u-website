@@ -10,11 +10,10 @@ import {
   useTheme,
   IconButton
 } from '@mui/material';
-import { H1, H2, H3, BodyText } from '../components/ui/Typography';
-import Card from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
-import { DiagnosticCTA } from '../components/ui/DiagnosticCTA';
-import { ServicesButton } from '../components/ui/ServicesButton';
+import { H1, H2, H3, BodyText } from '../components/shared/ui/atoms';
+import { Card } from '../components/shared/ui/molecules';
+import { Button } from '../components/shared/ui/atoms';
+import { DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
