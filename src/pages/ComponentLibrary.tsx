@@ -48,11 +48,11 @@ const ComponentLibrary: React.FC = () => {
   );
 
   // Componentes de tarjetas
-  const CardExample: React.FC<{ title: string; description: string; icon?: string }> = ({ title, description, icon }) => (
+  const CardExample: React.FC<{ title: string; description: string; icon?: React.ReactNode }> = ({ title, description, icon }) => (
     <div className="p-6 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
       {icon && (
         <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center mb-4">
-          <span className="text-white text-xl">{icon}</span>
+          <div className="text-white">{icon}</div>
         </div>
       )}
       <h3 className="text-lg font-semibold text-gray-800 mb-2">{title}</h3>
@@ -176,17 +176,29 @@ const ComponentLibrary: React.FC = () => {
           <CardExample 
             title="SuperAI Empresarial"
             description="Arquitecturas de IA que transforman operaciones empresariales"
-            icon="🤖"
+            icon={
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            }
           />
           <CardExample 
             title="GPT Personalizado"
             description="Asistentes virtuales adaptados a tus necesidades específicas"
-            icon="💬"
+            icon={
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+              </svg>
+            }
           />
           <CardExample 
             title="Automatización Inteligente"
             description="Procesos optimizados que liberan tu potencial humano"
-            icon="⚡"
+            icon={
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+              </svg>
+            }
           />
         </div>
       ]
@@ -323,46 +335,66 @@ const ComponentLibrary: React.FC = () => {
             <TransactionCard
               title="All Recent Transactions"
               transactions={[
-                {
-                  id: '1',
-                  merchant: 'Gamestop',
-                  category: 'SHOPPING',
-                  amount: 456.0,
-                  time: '09:18 AM',
-                  icon: '⚙️'
-                },
-                {
-                  id: '2',
-                  merchant: 'Force Club',
-                  category: 'FITNESS',
-                  amount: 1260.0,
-                  time: '07:40 PM',
-                  icon: '🏢'
-                },
-                {
-                  id: '3',
-                  merchant: 'Pinnacle',
-                  category: 'EDUCATION',
-                  amount: 280.0,
-                  time: '09:20 AM',
-                  icon: '📚'
-                },
-                {
-                  id: '4',
-                  merchant: 'Bonds',
-                  category: 'INVESTMENTS',
-                  amount: 1340.0,
-                  time: '08:34 PM',
-                  icon: '💰'
-                },
-                {
-                  id: '5',
-                  merchant: 'Elevate',
-                  category: 'HEALTH',
-                  amount: 806.0,
-                  time: '06:34 PM',
-                  icon: '❤️'
-                }
+                                 {
+                   id: '1',
+                   merchant: 'Gamestop',
+                   category: 'SHOPPING',
+                   amount: 456.0,
+                   time: '09:18 AM',
+                   icon: (
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                     </svg>
+                   )
+                 },
+                 {
+                   id: '2',
+                   merchant: 'Force Club',
+                   category: 'FITNESS',
+                   amount: 1260.0,
+                   time: '07:40 PM',
+                   icon: (
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z M15,6.5l-3,3l-3-3L7.5,9l3,3l-3,3L9,16.5l3-3l3,3l1.5-1.5l-3-3l3-3L15,6.5z"/>
+                     </svg>
+                   )
+                 },
+                 {
+                   id: '3',
+                   merchant: 'Pinnacle',
+                   category: 'EDUCATION',
+                   amount: 280.0,
+                   time: '09:20 AM',
+                   icon: (
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12,3L1,9l4,2.18v6L12,21l7-3.82v-6l2-1.09L12,3z M17,15.99l-5,2.73l-5-2.73v-3.72L12,15l5-2.73V15.99z M17,10.99l-5,2.73l-5-2.73V7.27L12,10l5-2.73V10.99z"/>
+                     </svg>
+                   )
+                 },
+                 {
+                   id: '4',
+                   merchant: 'Bonds',
+                   category: 'INVESTMENTS',
+                   amount: 1340.0,
+                   time: '08:34 PM',
+                   icon: (
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M11.8,10.9c-2.27-0.59-3-1.2-3-2.15c0-1.09,1.01-1.85,2.7-1.85c1.78,0,2.44,0.85,2.5,2.1h2.21 c-0.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94,0.42-3.5,1.68-3.5,3.61c0,2.31,1.91,3.46,4.7,4.13c2.5,0.6,3.5,1.48,3.5,2.53 c0,0.69-0.49,1.79-2.7,1.79c-2.06,0-2.87-0.92-2.98-2.1h-2.2c0.12,2.19,1.76,3.42,3.68,3.83V21h3v-2.15c1.95-0.37,3.5-1.5,3.5-3.55 c0-2.84-2.43-3.81-4.7-4.4z"/>
+                     </svg>
+                   )
+                 },
+                 {
+                   id: '5',
+                   merchant: 'Elevate',
+                   category: 'HEALTH',
+                   amount: 806.0,
+                   time: '06:34 PM',
+                   icon: (
+                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z"/>
+                     </svg>
+                   )
+                 }
               ]}
               onShowMore={() => console.log('Show more clicked')}
             />

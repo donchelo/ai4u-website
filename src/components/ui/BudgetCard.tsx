@@ -27,7 +27,9 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-600 text-sm">👤</span>
+            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+            </svg>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-800">{title}</h3>

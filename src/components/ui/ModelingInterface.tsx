@@ -37,27 +37,27 @@ const ModelingInterface: React.FC<ModelingInterfaceProps> = ({
   const [selectedLight, setSelectedLight] = useState('spot');
 
   const forms: Form[] = [
-    { id: 'cube', name: 'Cube', icon: '⬜', isSelected: true },
-    { id: 'sphere', name: 'Sphere', icon: '⭕' },
-    { id: 'cone', name: 'Cone', icon: '🔺' },
-    { id: 'cylinder', name: 'Cylinder', icon: '🔵' },
+    { id: 'cube', name: 'Cube', icon: '□', isSelected: true },
+    { id: 'sphere', name: 'Sphere', icon: '○' },
+    { id: 'cone', name: 'Cone', icon: '△' },
+    { id: 'cylinder', name: 'Cylinder', icon: '●' },
     { id: 'more', name: 'More', icon: '⋯' }
   ];
 
   const tools: Tool[] = [
-    { id: 'render', name: 'Render', icon: '🎨' },
-    { id: 'rotation', name: 'Rotation', icon: '🔄', isSelected: true },
-    { id: 'texture', name: 'Texture', icon: '🎭' },
-    { id: 'polygons', name: 'Polygons', icon: '📐' },
-    { id: 'points', name: 'Points', icon: '🔵' },
-    { id: 'intrude', name: 'Intrude', icon: '⬇️' }
+    { id: 'render', name: 'Render', icon: '◉' },
+    { id: 'rotation', name: 'Rotation', icon: '⟲', isSelected: true },
+    { id: 'texture', name: 'Texture', icon: '◐' },
+    { id: 'polygons', name: 'Polygons', icon: '◢' },
+    { id: 'points', name: 'Points', icon: '●' },
+    { id: 'intrude', name: 'Intrude', icon: '↓' }
   ];
 
   const lightSources: LightSource[] = [
-    { id: 'spot', name: 'Spot', icon: '💡', isSelected: true },
-    { id: 'area', name: 'Area', icon: '🔲' },
-    { id: 'target', name: 'Target', icon: '🎯' },
-    { id: 'sun', name: 'Sun', icon: '☀️' }
+    { id: 'spot', name: 'Spot', icon: '⊙', isSelected: true },
+    { id: 'area', name: 'Area', icon: '◼' },
+    { id: 'target', name: 'Target', icon: '◎' },
+    { id: 'sun', name: 'Sun', icon: '◉' }
   ];
 
   return (
