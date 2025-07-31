@@ -321,7 +321,7 @@ export const ServicesProvider: React.FC<ServicesProviderProps> = ({
     getActiveServices,
     getCategories,
     getTags,
-  }), [state]);
+  }), [state, setCategoryFilter, setStatusFilter, setFeaturedFilter, setSearchTerm, setTagsFilter, resetFilters, updateConfig, getFilteredServices, getServicesByCategory, getFeaturedServices, getActiveServices, getCategories, getTags]);
 
   return (
     <ServicesContext.Provider value={contextValue}>

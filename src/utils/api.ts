@@ -92,7 +92,8 @@ export const sendMessageToMake = async (
       } catch (parseError) {
         console.error('Error parsing JSON, intentando limpiar:', parseError);
         // Intentamos limpiar caracteres de control y parsear de nuevo
-        const cleanedResponse = textResponse.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+        // eslint-disable-next-line no-control-regex
+        const cleanedResponse = textResponse.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
         try {
           data = JSON.parse(cleanedResponse);
           console.log('Respuesta limpiada y parseada:', data);

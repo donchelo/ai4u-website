@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Card as MuiCard, CardContent, CardProps as MuiCardProps, useTheme, styled } from '@mui/material';
+import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;

@@ -6,7 +6,6 @@ import {
   Typography, 
   IconButton, 
   Avatar,
-  Chip,
   useTheme,
   styled
 } from '@mui/material';

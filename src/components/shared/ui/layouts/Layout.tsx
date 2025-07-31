@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Toolbar } from '@mui/material';
 import { Navbar } from '../organisms';
 import { Footer } from '../organisms';
-import { ChatButton } from '../molecules';
 
 interface LayoutProps {
   children?: React.ReactNode;

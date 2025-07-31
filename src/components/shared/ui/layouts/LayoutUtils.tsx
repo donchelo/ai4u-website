@@ -4,11 +4,10 @@ import {
   Container as MuiContainer, 
   Grid as MuiGrid, 
   Stack as MuiStack,
-  Paper,
   useTheme,
   styled
 } from '@mui/material';
-import { H1, H2, H3, BodyText } from '../atoms';
+import { H1, H2, BodyText } from '../atoms';
 
 interface PageLayoutProps {
   children?: ReactNode;
@@ -33,29 +32,7 @@ interface ContainerProps {
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
-// Styled components para glassmorfismo
-const GlassmorphismBox = styled(Box)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.1)',
-  backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.2)',
-  borderRadius: theme.spacing(4),
-  padding: theme.spacing(4),
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    background: 'rgba(255, 255, 255, 0.15)',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-  },
-}));
 
-const FuturisticBox = styled(Box)(({ theme }) => ({
-  background: 'rgba(0, 0, 0, 0.2)',
-  backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.15)',
-  borderRadius: theme.spacing(4),
-  padding: theme.spacing(4),
-  color: '#FFFFFF',
-}));
 
 // Componente Layout principal
 const PageLayout = ({ 

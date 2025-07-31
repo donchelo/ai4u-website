@@ -1,13 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   Box, 
   Fab, 
   Dialog, 
   DialogTitle, 
   DialogContent, 
-  DialogActions, 
   TextField, 
-  Button, 
   Typography, 
   IconButton, 
   Paper,
@@ -26,7 +24,6 @@ type Message = ChatMessage;
 
 const ChatButton: React.FC = () => {
   const theme = useTheme();
-  const { mode } = useColorMode();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
   const [open, setOpen] = useState(false);
@@ -56,7 +53,7 @@ const ChatButton: React.FC = () => {
   // Scroll al final cuando se agregan nuevos mensajes
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   const sendMessage = useCallback(async () => {
     const trimmedInput = inputText.trim();
