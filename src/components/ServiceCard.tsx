@@ -1,16 +1,17 @@
 import React from 'react';
 import {
-  Paper,
   Box,
   Chip,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography
+  Typography,
+  useTheme
 } from '@mui/material';
 import { H3, BodyText } from './ui/Typography';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import StarIcon from '@mui/icons-material/Star';
 import { Service, ServiceStatus } from '../types/service';
 
 interface ServiceCardProps {
@@ -26,6 +27,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   showDeliveryTime = true,
   compact = false 
 }) => {
+  const theme = useTheme();
+
   const getStatusColor = (status: ServiceStatus) => {
     switch (status) {
       case ServiceStatus.ACTIVE: return 'success';
@@ -45,162 +48,240 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   };
 
   return (
-    <Paper 
-      elevation={service.featured ? 4 : 2}
-      sx={{ 
-        p: compact ? 2 : 3, 
-        borderRadius: 3, 
-        height: '100%', 
-        display: 'flex', 
-        flexDirection: 'column',
-        position: 'relative',
-        borderLeft: service.featured ? `4px solid ${service.color}` : 'none',
-        transition: 'all 0.3s ease',
-        '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
+    <Box sx={{
+      height: '100%',
+      position: 'relative',
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        '& .service-card-content': {
+          boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+          borderColor: 'rgba(255, 255, 255, 0.4)'
         }
-      }}
-    >
-      {/* Status Badge */}
-      <Box sx={{ position: 'absolute', top: 12, right: 12 }}>
-        <Chip 
-          label={getStatusText(service.status)}
-          size="small"
-          color={getStatusColor(service.status)}
-          variant={service.status === ServiceStatus.ACTIVE ? 'filled' : 'outlined'}
-        />
-      </Box>
-
+      }
+    }}>
       {/* Featured Badge */}
       {service.featured && (
-        <Box sx={{ position: 'absolute', top: -8, left: 16 }}>
+        <Box sx={{ 
+          position: 'absolute', 
+          top: -12, 
+          left: 16,
+          zIndex: 2
+        }}>
           <Chip 
+            icon={<StarIcon />}
             label="Destacado"
             size="small"
             sx={{ 
-              bgcolor: service.color,
+              background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
               color: 'white',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              '& .MuiChip-icon': {
+                color: 'white'
+              }
             }}
           />
         </Box>
       )}
 
-      {/* Header */}
-      <Box sx={{ mb: 2, mt: service.featured ? 1 : 0 }}>
-        <H3 
-          sx={{ 
-            mb: 1, 
-            textAlign: 'center',
-            color: service.color || 'primary.main'
-          }}
-        >
-          {service.title}
-        </H3>
-        <BodyText 
-          sx={{ 
-            mb: 2, 
-            fontWeight: 600, 
-            textAlign: 'center',
-            color: 'text.secondary'
-          }}
-        >
-          {service.subtitle}
-        </BodyText>
-        
-        {!compact && (
-          <BodyText sx={{ mb: 2, lineHeight: 1.6 }}>
-            {service.description}
-          </BodyText>
-        )}
-      </Box>
-
-      {/* Benefits */}
-      {!compact && (
-        <Box sx={{ mb: 2, flexGrow: 1 }}>
-          <BodyText sx={{ fontWeight: 600, mb: 1 }}>Beneficios:</BodyText>
-          <List dense disablePadding>
-            {service.benefits.map((benefit, index) => (
-              <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                <ListItemIcon sx={{ minWidth: 32 }}>
-                  <CheckCircleOutlineIcon 
-                    sx={{ color: service.color || 'primary.main' }}
-                    fontSize="small" 
-                  />
-                </ListItemIcon>
-                <ListItemText 
-                  primary={benefit}
-                  primaryTypographyProps={{
-                    fontSize: '0.9rem',
-                    lineHeight: 1.4
-                  }}
-                />
-              </ListItem>
-            ))}
-          </List>
+      {/* Main Card Content */}
+      <Box className="service-card-content" sx={{
+        p: compact ? 2.5 : 3,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        background: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        borderRadius: 2,
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '2px',
+          background: service.color,
+          zIndex: 1
+        }
+      }}>
+        {/* Status Badge */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 12, 
+          right: 12,
+          zIndex: 2
+        }}>
+          <Chip 
+            label={getStatusText(service.status)}
+            size="small"
+            color={getStatusColor(service.status)}
+            variant={service.status === ServiceStatus.ACTIVE ? 'filled' : 'outlined'}
+            sx={{
+              background: service.status === ServiceStatus.ACTIVE 
+                ? 'rgba(76, 175, 80, 0.9)' 
+                : 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              fontWeight: 500
+            }}
+          />
         </Box>
-      )}
 
-      {/* Tags */}
-      <Box sx={{ mb: 2 }}>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-          {service.tags.slice(0, compact ? 2 : 4).map((tag, index) => (
-            <Chip
-              key={index}
-              label={tag}
-              size="small"
-              variant="outlined"
+        {/* Header */}
+        <Box sx={{ 
+          mb: 3, 
+          mt: service.featured ? 2 : 0,
+          textAlign: 'center'
+        }}>
+          <H3 sx={{ 
+            mb: 1.5,
+            background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontSize: { xs: '1.3rem', md: '1.5rem' },
+            fontWeight: 700,
+            lineHeight: 1.3
+          }}>
+            {service.title}
+          </H3>
+          <BodyText sx={{ 
+            mb: 2, 
+            fontWeight: 600,
+            color: 'text.secondary',
+            fontSize: '1rem',
+            lineHeight: 1.4
+          }}>
+            {service.subtitle}
+          </BodyText>
+          
+          {!compact && (
+            <BodyText sx={{ 
+              mb: 3, 
+              lineHeight: 1.6,
+              color: 'text.secondary',
+              fontSize: '0.95rem'
+            }}>
+              {service.description}
+            </BodyText>
+          )}
+        </Box>
+
+        {/* Benefits */}
+        {!compact && (
+          <Box sx={{ mb: 3, flexGrow: 1 }}>
+            <BodyText sx={{ 
+              fontWeight: 600, 
+              mb: 2,
+              color: 'text.primary',
+              fontSize: '0.95rem'
+            }}>
+              Beneficios:
+            </BodyText>
+            <List dense disablePadding>
+              {service.benefits.map((benefit, index) => (
+                <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
+                  <ListItemIcon sx={{ minWidth: 28 }}>
+                    <CheckCircleOutlineIcon 
+                      sx={{ 
+                        color: service.color,
+                        fontSize: '1.1rem'
+                      }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText 
+                    primary={benefit}
+                    primaryTypographyProps={{
+                      fontSize: '0.85rem',
+                      lineHeight: 1.5,
+                      color: 'text.secondary'
+                    }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        )}
+
+        {/* Tags */}
+        <Box sx={{ mb: 3 }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            {service.tags.slice(0, compact ? 2 : 4).map((tag, index) => (
+              <Chip
+                key={index}
+                label={tag}
+                size="small"
+                variant="outlined"
+                sx={{ 
+                  fontSize: '0.7rem',
+                  height: 24,
+                  background: 'rgba(255, 255, 255, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  '& .MuiChip-label': { px: 1 },
+                  '&:hover': {
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    borderColor: service.color
+                  }
+                }}
+              />
+            ))}
+            {service.tags.length > (compact ? 2 : 4) && (
+              <Chip
+                label={`+${service.tags.length - (compact ? 2 : 4)}`}
+                size="small"
+                variant="filled"
+                sx={{ 
+                  fontSize: '0.7rem',
+                  height: 24,
+                  background: 'rgba(0, 0, 0, 0.1)',
+                  color: 'text.secondary',
+                  backdropFilter: 'blur(10px)'
+                }}
+              />
+            )}
+          </Box>
+        </Box>
+
+        {/* Price and Time */}
+        <Box sx={{ 
+          mt: 'auto', 
+          pt: 2, 
+          borderTop: '1px solid',
+          borderColor: 'rgba(0, 0, 0, 0.08)'
+        }}>
+          {showPrice && (
+            <Typography 
+              variant="body2" 
               sx={{ 
-                fontSize: '0.75rem',
-                height: 24,
-                '& .MuiChip-label': { px: 1 }
+                fontWeight: 'bold',
+                color: service.color,
+                fontSize: '1.1rem',
+                mb: 0.5
               }}
-            />
-          ))}
-          {service.tags.length > (compact ? 2 : 4) && (
-            <Chip
-              label={`+${service.tags.length - (compact ? 2 : 4)}`}
-              size="small"
-              variant="filled"
+            >
+              {service.price}
+            </Typography>
+          )}
+          {showDeliveryTime && (
+            <Typography 
+              variant="body2" 
               sx={{ 
-                fontSize: '0.75rem',
-                height: 24,
-                bgcolor: 'grey.300',
-                color: 'grey.700'
+                color: 'text.secondary',
+                fontSize: '0.85rem'
               }}
-            />
+            >
+              {service.deliveryTime}
+            </Typography>
           )}
         </Box>
       </Box>
-
-      {/* Price and Time */}
-      <Box sx={{ mt: 'auto', pt: 2, borderTop: '1px solid', borderColor: 'divider' }}>
-        {showPrice && (
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              fontWeight: 'bold',
-              color: service.color || 'primary.main',
-              fontSize: '1.1rem'
-            }}
-          >
-            {service.price}
-          </Typography>
-        )}
-        {showDeliveryTime && (
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: 'text.secondary',
-              mt: 0.5
-            }}
-          >
-            ⏱️ {service.deliveryTime}
-          </Typography>
-        )}
-      </Box>
-    </Paper>
+    </Box>
   );
 };
 
