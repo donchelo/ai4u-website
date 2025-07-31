@@ -68,8 +68,9 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   
   // Estilos para estado deshabilitado
   '&.Mui-disabled': {
-    color: theme.palette.action.disabled,
-    borderColor: theme.palette.action.disabledBackground,
+    color: '#CCCCCC',
+    borderColor: '#F0F0F0',
+    backgroundColor: '#F8F8F8'
   }
 }));
 
