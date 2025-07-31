@@ -79,15 +79,15 @@ Los estilos del chat están en `src/components/ui/ChatButton.tsx` y siguen el te
 
 ## Funcionalidades
 
-- ✅ Botón flotante con isotipo de AI4U
-- ✅ Chat responsivo (pantalla completa en móvil)
-- ✅ Conexión con Make.com
-- ✅ Respuestas de fallback
-- ✅ Scroll automático
-- ✅ Indicador de "escribiendo..."
-- ✅ Soporte para Enter para enviar
-- ✅ Manejo de errores
-- ✅ Sesiones únicas por usuario
+- Botón flotante con isotipo de AI4U
+- Chat responsivo (pantalla completa en móvil)
+- Conexión con Make.com
+- Respuestas de fallback
+- Scroll automático
+- Indicador de "escribiendo..."
+- Soporte para Enter para enviar
+- Manejo de errores
+- Sesiones únicas por usuario
 
 ## Notas Técnicas
 

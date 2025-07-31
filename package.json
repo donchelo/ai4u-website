@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "deploy:full": "echo 🔨 Build iniciado... && npm run build && echo 🚀 Deploy a gh-pages... && npm run deploy && echo ✅ Publicación completada"
+    "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada"
   },
   "eslintConfig": {
     "extends": [

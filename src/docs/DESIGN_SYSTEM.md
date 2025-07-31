@@ -1,6 +1,6 @@
 # AI4U Design System
 
-## 🎨 Filosofía de Diseño
+## Filosofía de Diseño
 
 ### Time is Gold
 Nuestro sistema de diseño se basa en la filosofía de que **el tiempo es el recurso más valioso**. Cada componente está diseñado para maximizar la eficiencia y reducir la fricción en las experiencias de usuario.
@@ -11,7 +11,7 @@ Nuestro sistema de diseño se basa en la filosofía de que **el tiempo es el rec
 3. **Glassmorfismo Funcional**: Transparencias que mejoran la usabilidad
 4. **Consistencia Visual**: Paleta de colores y tipografía coherentes
 
-## 🎨 Paleta de Colores
+## Paleta de Colores
 
 ### Colores Principales
 ```css
@@ -47,7 +47,7 @@ Nuestro sistema de diseño se basa en la filosofía de que **el tiempo es el rec
 - **Cyber Olive**: Naturaleza en tecnología verde
 - **Deep Neural Teal**: Sistemas autónomos, IA
 
-## 📝 Tipografía
+## Tipografía
 
 ### Fuentes
 - **Red Hat Display**: Fuente principal (sans-serif)
@@ -81,25 +81,40 @@ font-weight: 400;
 font-family: monospace;
 ```
 
-## 🧩 Componentes
+## Componentes
 
 ### Botones
+Componente rediseñado con efectos glassmorphism inspirados en interfaces modernas. Cada variante implementa transparencias, blur effects y transiciones suaves.
+
 ```tsx
-// Botón primario
+// Botón primario - Glassmorphism con gradiente Neon Blaze
 <Button variant="primary" size="large">
   Recupera tu tiempo
 </Button>
 
-// Botón secundario
+// Botón secundario - Glassmorphism suave
 <Button variant="secondary" size="medium">
   Conoce más
 </Button>
 
-// Botón outline
+// Botón outline - Borde glassmorphism
 <Button variant="outline" size="small">
   Ver casos
 </Button>
+
+// Botón glass - Glassmorphism puro (nueva variante)
+<Button variant="glass" size="medium">
+  Transparente
+</Button>
 ```
+
+**Características:**
+- Efectos glassmorphism con `backdrop-filter: blur()`
+- Transiciones suaves con `cubic-bezier(0.4, 0, 0.2, 1)`
+- Gradientes y transparencias siguiendo la paleta AI4U
+- Bordes redondeados adaptativos por tamaño
+- Efectos hover con elevación y transformaciones
+- Estados activos y deshabilitados consistentes
 
 ### Tarjetas
 ```tsx
@@ -147,7 +162,7 @@ font-family: monospace;
 </Layout>
 ```
 
-## 🌟 Glassmorfismo
+## Glassmorfismo
 
 ### Principios
 1. **Transparencia Funcional**: No solo decorativa, mejora la usabilidad
@@ -163,27 +178,38 @@ font-family: monospace;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Con gradiente de fondo */
-.glass-with-gradient {
-  position: relative;
-}
-
-.glass-with-gradient::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+/* Botón primario con glassmorphism */
+.glass-button-primary {
   background: linear-gradient(135deg, 
-    rgba(255, 92, 0, 0.1), 
-    rgba(255, 116, 119, 0.2)
+    rgba(255, 92, 0, 0.9), 
+    rgba(255, 116, 119, 0.8)
   );
-  border-radius: inherit;
-  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(255, 92, 0, 0.25), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 92, 0, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Elemento glass puro */
+.glass-pure {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 ```
 
-## 📱 Responsive Design
+## Responsive Design
 
 ### Breakpoints
 ```css
@@ -205,7 +231,7 @@ font-family: monospace;
 </Grid>
 ```
 
-## 🎯 Accesibilidad
+## Accesibilidad
 
 ### WCAG 2.1 AA Compliance
 - **Contraste**: Mínimo 4.5:1 para texto normal
@@ -229,7 +255,7 @@ font-family: monospace;
 </nav>
 ```
 
-## 🚀 Performance
+## Performance
 
 ### Optimizaciones
 1. **Lazy Loading**: Componentes que se cargan bajo demanda
@@ -248,7 +274,7 @@ const OptimizedComponent = React.memo(({ data }) => {
 const LazyComponent = lazy(() => import('./HeavyComponent'));
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Testing Strategy
 1. **Unit Tests**: Componentes individuales
@@ -267,7 +293,7 @@ test('Button renders with correct text', () => {
 });
 ```
 
-## 📚 Documentación
+## Documentación
 
 ### Storybook
 - **Stories**: Ejemplos de uso de cada componente
@@ -294,7 +320,7 @@ export const Primary = () => (
 );
 ```
 
-## 🔧 Configuración
+## Configuración
 
 ### Tailwind Config
 ```javascript
@@ -328,23 +354,23 @@ const createAI4UTheme = (mode: PaletteMode) => {
 };
 ```
 
-## 🎨 Guías de Uso
+## Guías de Uso
 
 ### Do's
-- ✅ Usar la paleta de colores consistente
-- ✅ Aplicar glassmorfismo funcionalmente
-- ✅ Mantener jerarquía tipográfica
-- ✅ Considerar accesibilidad primero
-- ✅ Optimizar para performance
+- Usar la paleta de colores consistente
+- Aplicar glassmorfismo funcionalmente
+- Mantener jerarquía tipográfica
+- Considerar accesibilidad primero
+- Optimizar para performance
 
 ### Don'ts
-- ❌ Usar colores fuera de la paleta
-- ❌ Aplicar glassmorfismo sin propósito
-- ❌ Ignorar responsive design
-- ❌ Olvidar testing
-- ❌ Comprometer accesibilidad
+- No usar colores fuera de la paleta
+- No aplicar glassmorfismo sin propósito
+- No ignorar responsive design
+- No olvidar testing
+- No comprometer accesibilidad
 
-## 🔄 Mantenimiento
+## Mantenimiento
 
 ### Versionado
 - **Semantic Versioning**: MAJOR.MINOR.PATCH

@@ -36,7 +36,7 @@ export const sendMessageToMake = async (
 ): Promise<MakeResponse> => {
   const finalSessionId = sessionId || `session_${Date.now()}`;
 
-  console.log('🚀 Enviando request a Make.com:', {
+  console.log('Enviando request a Make.com:', {
     message,
     sessionId: finalSessionId,
     timestamp: new Date().toISOString(),
@@ -68,7 +68,7 @@ export const sendMessageToMake = async (
     });
 
     if (response.status === 429) {
-      console.error('❌ Rate limit detectado, usando respuesta fallback');
+      console.error('Rate limit detectado, usando respuesta fallback');
       return {
         success: false,
         error: 'rate_limit',
@@ -88,7 +88,7 @@ export const sendMessageToMake = async (
       // Luego intentamos parsearlo como JSON
       try {
         data = JSON.parse(textResponse);
-        console.log('✅ Datos parseados:', data);
+        console.log('Datos parseados:', data);
       } catch (parseError) {
         console.error('💥 Error parsing JSON, intentando limpiar:', parseError);
         // Intentamos limpiar caracteres de control y parsear de nuevo

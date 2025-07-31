@@ -2,11 +2,11 @@
 
 Un sistema de diseño completo y coherente que combina la identidad de marca AI4U con elementos visuales modernos y futuristas.
 
-## 🎨 Filosofía
+## Filosofía
 
 **Time is Gold** - Nuestro sistema se basa en la filosofía de que el tiempo es el recurso más valioso. Cada componente está diseñado para maximizar la eficiencia y reducir la fricción en las experiencias de usuario.
 
-## ✨ Características
+## Características
 
 - **Glassmorfismo Funcional**: Transparencias que mejoran la usabilidad
 - **Paleta de Colores Coherente**: Sistema de colores AI4U bien definido
@@ -17,7 +17,7 @@ Un sistema de diseño completo y coherente que combina la identidad de marca AI4
 - **Performance Optimizada**: Lazy loading y memoización
 - **Documentación Completa**: Storybook + guías de uso
 
-## 🚀 Instalación
+## Instalación
 
 ```bash
 # Clonar el repositorio
@@ -36,7 +36,7 @@ npm run storybook
 npm test
 ```
 
-## 🎨 Paleta de Colores
+## Paleta de Colores
 
 ### Colores Principales
 ```css
@@ -54,22 +54,41 @@ npm test
 --deep-neural-teal: #2B7A78; /* Verde azulado */
 ```
 
-## 🧩 Componentes
+## Componentes
 
 ### Botones
+Componente completamente rediseñado con efectos glassmorphism modernos.
+
 ```tsx
 import { Button } from './components/ui/Button';
 
-// Botón primario
+// Botón primario con glassmorphism
 <Button variant="primary" size="large">
   Recupera tu tiempo
 </Button>
 
-// Botón con glassmorfismo
-<button className="px-8 py-4 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-xl">
-  Glassmorfismo
-</button>
+// Botón secundario glassmorphism
+<Button variant="secondary" size="medium">
+  Conoce más
+</Button>
+
+// Botón outline glassmorphism
+<Button variant="outline" size="small">
+  Ver casos
+</Button>
+
+// Nueva variante glass pura
+<Button variant="glass" size="medium">
+  Transparente
+</Button>
 ```
+
+**Nuevas características:**
+- Efectos glassmorphism con blur y transparencias
+- Gradientes con paleta AI4U (Neon Blaze + Digital Coral)
+- Transiciones suaves con cubic-bezier
+- Bordes redondeados adaptativos
+- Efectos hover con elevación y transformación
 
 ### Navegación
 ```tsx
@@ -97,7 +116,7 @@ import { Layout, Container, Section, Grid } from './components/ui/Layout';
 </Layout>
 ```
 
-## 📚 Documentación
+## Documentación
 
 ### Biblioteca de Componentes
 Visita `/component-library` para ver todos los componentes en acción con ejemplos interactivos.
@@ -113,14 +132,14 @@ Accede a la documentación interactiva de cada componente.
 - [Mejores Prácticas](./src/docs/BEST_PRACTICES.md)
 - [Guía de Accesibilidad](./src/docs/ACCESSIBILITY.md)
 
-## 🎯 Accesibilidad
+## Accesibilidad
 
 ### WCAG 2.1 AA Compliance
-- ✅ Contraste mínimo 4.5:1
-- ✅ Navegación por teclado
-- ✅ Screen readers
-- ✅ Focus visible
-- ✅ ARIA labels
+- Contraste mínimo 4.5:1
+- Navegación por teclado
+- Screen readers
+- Focus visible
+- ARIA labels
 
 ### Implementación
 ```tsx
@@ -133,7 +152,7 @@ Accede a la documentación interactiva de cada componente.
 </Button>
 ```
 
-## 🚀 Performance
+## Performance
 
 ### Optimizaciones
 - **Lazy Loading**: Componentes bajo demanda
@@ -149,7 +168,7 @@ const OptimizedComponent = React.memo(({ data }) => {
 });
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Estrategia de Testing
 - **Unit Tests**: Componentes individuales
@@ -168,7 +187,7 @@ test('Button renders with correct text', () => {
 });
 ```
 
-## 🎨 Glassmorfismo
+## Glassmorfismo
 
 ### Principios
 1. **Transparencia Funcional**: No solo decorativa
@@ -186,7 +205,7 @@ test('Button renders with correct text', () => {
 }
 ```
 
-## 📱 Responsive Design
+## Responsive Design
 
 ### Breakpoints
 ```css
@@ -206,7 +225,7 @@ test('Button renders with correct text', () => {
 </Grid>
 ```
 
-## 🔧 Configuración
+## Configuración
 
 ### Tailwind Config
 ```javascript
@@ -240,23 +259,23 @@ const createAI4UTheme = (mode: PaletteMode) => {
 };
 ```
 
-## 🎨 Guías de Uso
+## Guías de Uso
 
-### Do's ✅
+### Recomendaciones
 - Usar la paleta de colores consistente
 - Aplicar glassmorfismo funcionalmente
 - Mantener jerarquía tipográfica
 - Considerar accesibilidad primero
 - Optimizar para performance
 
-### Don'ts ❌
+### Evitar
 - Usar colores fuera de la paleta
 - Aplicar glassmorfismo sin propósito
 - Ignorar responsive design
 - Olvidar testing
 - Comprometer accesibilidad
 
-## 🔄 Mantenimiento
+## Mantenimiento
 
 ### Versionado
 - **Semantic Versioning**: MAJOR.MINOR.PATCH
