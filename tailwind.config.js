@@ -14,6 +14,7 @@ module.exports = {
         'erie-black': '#171717',
         'moderate-blue': '#3DAED1',
         'cadet-gray': '#94989B',
+        'neon-cyan': '#00F5FF',
       },
       fontFamily: {
         'redhat': ['Red Hat Display', 'sans-serif'],

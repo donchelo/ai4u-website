@@ -103,6 +103,26 @@ const ComponentLibrary: React.FC = () => {
             name="Moderate Blue" 
             description={BRAND_IDENTITY.visualIdentity.colors.usage.moderateBlue}
           />
+          <ColorSwatch 
+            color={BRAND_IDENTITY.visualIdentity.colors.secondary.cadetGray} 
+            name="Cadet Gray" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.cadetGray}
+          />
+          <ColorSwatch 
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.primary} 
+            name="Primary Blue" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.primary}
+          />
+          <ColorSwatch 
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.secondary} 
+            name="Secondary Purple" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.secondary}
+          />
+          <ColorSwatch 
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.neonCyan} 
+            name="Neon Cyan" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.neonCyan}
+          />
         </div>
       ]
     },

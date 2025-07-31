@@ -18,11 +18,19 @@ export const BRAND_IDENTITY = {
         moderateBlue: "#3daed1",
         cadetGray: "#94989b"
       },
+      accent: {
+        primary: "#007AFF",
+        secondary: "#5856D6",
+        neonCyan: "#00F5FF"
+      },
       usage: {
         mintCream: "Color base - claridad y minimalismo",
         erieBlack: "Contraste elegante y sofisticación",
         moderateBlue: "Futuro y tecnología",
-        cadetGray: "Balance y neutralidad"
+        cadetGray: "Balance y neutralidad",
+        primary: "Azul brillante - elementos principales",
+        secondary: "Púrpura azulado - elementos secundarios",
+        neonCyan: "Cyan neón - efectos futuristas y destacados"
       }
     },
     typography: {
