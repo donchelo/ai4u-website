@@ -11,7 +11,7 @@ import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/share
 import { DiagnosticCTA, ServiceCard, ProcessStep, Card, MetricCard } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
-import { ServiceCategory } from '../types/service';
+import { ServiceCategory, ServiceSuperCategory } from '../types/service';
 import { SERVICE_CONFIG } from '../utils/constants';
 
 const Services: React.FC = () => {
@@ -22,6 +22,7 @@ const Services: React.FC = () => {
     stats,
     filters,
     setCategoryFilter,
+    setSuperCategoryFilter,
     setSearchTerm,
     resetFilters,
     getCategories,
@@ -32,7 +33,15 @@ const Services: React.FC = () => {
   const filteredServices = getFilteredServices();
 
   const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [selectedSuperTab, setSelectedSuperTab] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>('');
+
+  // Mapeo de supracategorías
+  const superCategoryTabs = [
+    { label: 'Todos', value: undefined },
+    { label: 'Estrategia', value: ServiceSuperCategory.STRATEGY },
+    { label: 'Operación', value: ServiceSuperCategory.OPERATION }
+  ];
 
   // Mapeo de categorías para los tabs
   const categoryTabs = [
@@ -44,6 +53,11 @@ const Services: React.FC = () => {
     { label: 'Capacitación', value: ServiceCategory.TRAINING },
     { label: 'Consultoría', value: ServiceCategory.CONSULTING }
   ];
+
+  const handleSuperTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedSuperTab(newValue);
+    setSuperCategoryFilter(superCategoryTabs[newValue].value);
+  };
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
@@ -58,6 +72,7 @@ const Services: React.FC = () => {
 
   const clearFilters = () => {
     setSelectedTab(0);
+    setSelectedSuperTab(0);
     setSearchValue('');
     resetFilters();
   };
@@ -107,47 +122,55 @@ const Services: React.FC = () => {
           </Box>
 
           {/* Stats con MetricCards glassmorphism */}
-          <Grid container spacing={4} justifyContent="center">
+          <Grid container spacing={3} justifyContent="center">
             <Grid item xs={12} sm={6} md={3}>
-              <MetricCard
-                title="Servicios"
-                value={stats.total}
-                subtitle="Soluciones disponibles"
-                iconType="square"
-                variant="glass"
-                size="compact"
-              />
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Servicios"
+                  value={stats.total}
+                  subtitle="Soluciones disponibles"
+                  iconType="square"
+                  variant="glass"
+                  size="large"
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <MetricCard
-                title="Categorías"
-                value={getCategories().length}
-                subtitle="Áreas especializadas"
-                iconType="triangle"
-                variant="glass"
-                size="compact"
-              />
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Estrategia"
+                  value={stats.bySuperCategory[ServiceSuperCategory.STRATEGY]}
+                  subtitle="Servicios estratégicos"
+                  iconType="triangle"
+                  variant="primary"
+                  size="large"
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <MetricCard
-                title="ROI promedio"
-                value="300%"
-                subtitle="Retorno en 3 meses"
-                iconType="circle"
-                variant="primary"
-                size="compact"
-              />
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Operación"
+                  value={stats.bySuperCategory[ServiceSuperCategory.OPERATION]}
+                  subtitle="Servicios operativos"
+                  iconType="circle"
+                  variant="accent"
+                  size="large"
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <MetricCard
-                title="Tiempo ahorrado"
-                value="70%"
-                subtitle="Reducción operativa"
-                iconType="arrow-up"
-                variant="glass"
-                size="compact"
-                trend="up"
-              />
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="ROI promedio"
+                  value="300%"
+                  subtitle="Retorno en 3 meses"
+                  iconType="arrow-up"
+                  variant="glass"
+                  size="large"
+                  trend="up"
+                />
+              </Box>
             </Grid>
           </Grid>
         </Container>
@@ -265,6 +288,49 @@ const Services: React.FC = () => {
           }}>
             Nuestros servicios
           </H2>
+          
+          {/* Super Category Tabs */}
+          <Box sx={{ mb: 4 }}>
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              mb: 3 
+            }}>
+              {superCategoryTabs.map((tab, index) => (
+                <Button
+                  key={index}
+                  variant={selectedSuperTab === index ? "primary" : "outline"}
+                  size="medium"
+                  onClick={() => handleSuperTabChange({} as React.SyntheticEvent, index)}
+                  sx={{
+                    mx: 1,
+                    borderRadius: 3,
+                    px: 4,
+                    py: 1.5,
+                    fontWeight: selectedSuperTab === index ? 600 : 500,
+                    background: selectedSuperTab === index 
+                      ? (index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#f5f5f5')
+                      : 'transparent',
+                    color: selectedSuperTab === index 
+                      ? '#FFFFFF' 
+                      : index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#666666',
+                    border: `2px solid ${
+                      selectedSuperTab === index 
+                        ? (index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#e5e5e5')
+                        : index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#e5e5e5'
+                    }`,
+                    '&:hover': {
+                      background: selectedSuperTab === index 
+                        ? (index === 1 ? '#5b5beb' : index === 2 ? '#059669' : '#f0f0f0')
+                        : index === 1 ? '#6366f110' : index === 2 ? '#10b98110' : '#f5f5f5'
+                    }
+                  }}
+                >
+                  {tab.label}
+                </Button>
+              ))}
+            </Box>
+          </Box>
           
           {/* Services Filter Component */}
           <Box sx={{ mb: 6 }}>
