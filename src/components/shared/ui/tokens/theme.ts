@@ -93,17 +93,24 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
       dark: PALETTE_VARIANTS.neonBlaze.dark,
     },
     secondary: {
-      main: AI4U_PALETTE.quantumBlue,
+      main: AI4U_PALETTE.accessibleBlue,
       light: PALETTE_VARIANTS.quantumBlue.light,
       dark: PALETTE_VARIANTS.quantumBlue.dark,
     },
     background: {
       default: mode === 'light' ? AI4U_PALETTE.lightBackground : AI4U_PALETTE.darkBackground,
-      paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkPaper,
+      paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
     },
     text: {
-      primary: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-      secondary: mode === 'light' ? AI4U_PALETTE.techSlate : '#A0A0A0',
+      primary: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.darkTextPrimary,
+      secondary: mode === 'light' ? AI4U_PALETTE.techSlate : AI4U_PALETTE.darkTextSecondary,
+      disabled: mode === 'light' ? '#BDBDBD' : AI4U_PALETTE.darkTextDisabled,
+    },
+    divider: mode === 'light' ? '#E0E0E0' : AI4U_PALETTE.darkDivider,
+    surface: {
+      default: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
+      hover: mode === 'light' ? '#F0F0F0' : AI4U_PALETTE.darkSurfaceHover,
+      paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
     },
   },
 });
