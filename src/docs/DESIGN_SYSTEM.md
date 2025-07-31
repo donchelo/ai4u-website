@@ -117,20 +117,84 @@ Componente rediseñado con efectos glassmorphism inspirados en interfaces modern
 - Estados activos y deshabilitados consistentes
 
 ### Tarjetas
+Sistema de tarjetas completamente rediseñado con glassmorphism, números prominentes e iconos geométricos minimalistas.
+
 ```tsx
-// Tarjeta básica
-<Card>
-  <CardContent>
-    <H3>SuperAI Empresarial</H3>
-    <BodyText>Arquitecturas de IA que transforman operaciones.</BodyText>
-  </CardContent>
+// Tarjeta básica con glassmorphism
+<Card variant="glass">
+  <H3>SuperAI Empresarial</H3>
+  <BodyText>Arquitecturas de IA que transforman operaciones.</BodyText>
 </Card>
 
-// Tarjeta con glassmorfismo
-<div className="relative p-8 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl">
-  {/* Contenido */}
-</div>
+// Tarjeta oscura estilo dashboard
+<Card variant="dark">
+  <H3 sx={{ color: '#FFFFFF' }}>Métricas Avanzadas</H3>
+  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+    Panel de control en tiempo real
+  </BodyText>
+</Card>
+
+// Tarjeta con color primario AI4U
+<Card variant="primary">
+  <H3>Transformación Digital</H3>
+  <BodyText>Soluciones integrales de automatización</BodyText>
+</Card>
+
+// Tarjeta de métricas con números grandes
+<MetricCard
+  title="Tiempo Ahorrado"
+  value="22,900"
+  subtitle="Horas recuperadas este mes"
+  iconType="arrow-up"
+  variant="dark"
+  trend="up"
+  size="large"
+/>
 ```
+
+**Variantes disponibles:**
+- `glass` - Glassmorphism translúcido
+- `dark` - Fondo oscuro con gradiente
+- `light` - Fondo claro con transparencia
+- `primary` - Colores AI4U primarios
+- `accent` - Colores AI4U secundarios
+
+**Componente MetricCard:**
+- Números prominentes con tipografía escalable
+- Iconos geométricos minimalistas
+- Indicadores de tendencia automáticos
+- Tamaños: `compact`, `normal`, `large`
+
+### Iconos Geométricos
+Sistema de iconos minimalistas basado en formas geométricas básicas, eliminando completamente el uso de emojis.
+
+```tsx
+// Iconos básicos
+<GeometricIcon type="circle" size="medium" color="#FF5C00" variant="filled" />
+<GeometricIcon type="square" size="small" color="#B6CA40" variant="outline" />
+<GeometricIcon type="triangle" size="large" color="#1FA9F6" variant="minimal" />
+
+// Iconos direccionales
+<GeometricIcon type="arrow-up" size="medium" color="#FFFFFF" variant="filled" />
+<GeometricIcon type="arrow-right" size="small" color="#000000" variant="minimal" />
+
+// Iconos de acción
+<GeometricIcon type="plus" size="medium" color="#FF5C00" variant="filled" />
+<GeometricIcon type="cross" size="small" color="#FF7477" variant="outline" />
+```
+
+**Tipos disponibles:**
+`arrow-up`, `arrow-down`, `arrow-right`, `arrow-left`, `plus`, `minus`, `circle`, `square`, `triangle`, `cross`, `line`, `dot`
+
+**Variantes:**
+- `filled` - Fondo sólido con color
+- `outline` - Solo borde con fondo transparente  
+- `minimal` - Solo el símbolo sin contenedor
+
+**Tamaños:**
+- `small` - 32px
+- `medium` - 48px  
+- `large` - 64px
 
 ### Navegación
 ```tsx

@@ -141,7 +141,7 @@ it('validates correct email addresses', () => {
 </ThemeProvider>
 ```
 
-## 📊 Métricas de Mejora
+## Métricas de Mejora
 
 ### Antes de la Fase 3:
 - **Estado local** en cada componente

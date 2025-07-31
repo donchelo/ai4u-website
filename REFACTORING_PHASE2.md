@@ -96,7 +96,7 @@
 - Interfaces bien definidas
 - Mejor autocompletado
 
-## 📊 Métricas de Mejora
+## Métricas de Mejora
 
 ### Antes de la Fase 2:
 - **Código duplicado** en logos y process steps

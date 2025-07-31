@@ -83,27 +83,27 @@ export const sendMessageToMake = async (
     try {
       // Primero intentamos obtener el texto de la respuesta
       const textResponse = await response.text();
-      console.log('📄 Respuesta como texto:', textResponse);
+      console.log('Respuesta como texto:', textResponse);
       
       // Luego intentamos parsearlo como JSON
       try {
         data = JSON.parse(textResponse);
         console.log('Datos parseados:', data);
       } catch (parseError) {
-        console.error('💥 Error parsing JSON, intentando limpiar:', parseError);
+        console.error('Error parsing JSON, intentando limpiar:', parseError);
         // Intentamos limpiar caracteres de control y parsear de nuevo
         const cleanedResponse = textResponse.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
         try {
           data = JSON.parse(cleanedResponse);
-          console.log('🧹 Respuesta limpiada y parseada:', data);
+          console.log('Respuesta limpiada y parseada:', data);
         } catch (cleanError) {
-          console.error('💥 Error final parseando JSON:', cleanError);
+          console.error('Error final parseando JSON:', cleanError);
           // Si no podemos parsear, usamos la respuesta de texto directamente
           data = { message: textResponse };
         }
       }
     } catch (textError) {
-      console.error('💥 Error obteniendo texto de respuesta:', textError);
+      console.error('Error obteniendo texto de respuesta:', textError);
       throw new Error('Error al procesar la respuesta del servidor');
     }
     
@@ -114,7 +114,7 @@ export const sendMessageToMake = async (
     };
     
   } catch (error: any) {
-    console.error('💥 Error completo:', error);
+    console.error('Error completo:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Error desconocido',

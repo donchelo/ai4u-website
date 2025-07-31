@@ -66,7 +66,7 @@ const ChatButton: React.FC = () => {
     if (trimmedInput.length > 500) {
       const errorMessage: Message = {
         id: Date.now().toString(),
-        text: '⚠️ El mensaje es demasiado largo. Por favor, mantén tu mensaje bajo 500 caracteres.',
+        text: 'El mensaje es demasiado largo. Por favor, mantén tu mensaje bajo 500 caracteres.',
         isUser: false,
         timestamp: new Date(),
         sessionId
@@ -105,12 +105,12 @@ const ChatButton: React.FC = () => {
         }
       } else if (response.error === 'rate_limit') {
         if (process.env.NODE_ENV === 'development') {
-          console.log('⚠️ Rate limit detectado, usando fallback');
+          console.log('Rate limit detectado, usando fallback');
         }
         botResponse = getFallbackResponse(trimmedInput);
       } else {
         if (process.env.NODE_ENV === 'development') {
-          console.log('⚠️ Sin respuesta válida de Make.com, usando fallback:', response);
+          console.log('Sin respuesta válida de Make.com, usando fallback:', response);
         }
         botResponse = getFallbackResponse(trimmedInput);
       }

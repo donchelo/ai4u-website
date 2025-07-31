@@ -237,17 +237,17 @@ const ComponentLibrary: React.FC = () => {
             <CardExample 
               title="SuperAI Empresarial"
               description="Arquitecturas de IA que transforman operaciones empresariales con precisión y eficiencia."
-              icon="🤖"
+              icon="■"
             />
             <CardExample 
               title="GPT Personalizado"
               description="Asistentes virtuales adaptados a tus necesidades específicas y contexto empresarial."
-              icon="💬"
+              icon="●"
             />
             <CardExample 
               title="Automatización Inteligente"
               description="Procesos optimizados que liberan tu potencial humano para tareas estratégicas."
-              icon="⚡"
+              icon="▲"
             />
           </div>
 
@@ -258,7 +258,7 @@ const ComponentLibrary: React.FC = () => {
               <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
                 <div className="flex items-start space-x-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-neon-blaze rounded-2xl flex items-center justify-center">
-                    <div className="text-white text-2xl">🤖</div>
+                    <div className="text-white text-2xl">■</div>
                   </div>
                   <div className="flex-1">
                     <H3 className="mb-3">SuperAI Empresarial</H3>

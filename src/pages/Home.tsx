@@ -144,7 +144,15 @@ const Home = () => {
           <Grid container spacing={4}>
             {serviceCategories.map((cat, idx) => (
               <Grid item xs={12} md={3} key={idx}>
-                <Card sx={{ textAlign: 'left', py: { xs: 3, md: 4 }, px: { xs: 2, md: 2 }, minHeight: { xs: 200, md: 220 } }}>
+                <Card 
+                  variant="primary"
+                  sx={{ 
+                    textAlign: 'left', 
+                    py: { xs: 3, md: 4 }, 
+                    px: { xs: 2, md: 2 }, 
+                    minHeight: { xs: 200, md: 220 } 
+                  }}
+                >
                   <H3 sx={{ mb: 1, textAlign: 'center' }}>{cat.title}</H3>
                   <BodyText sx={{ color: 'text.secondary' }}>{cat.description}</BodyText>
                 </Card>

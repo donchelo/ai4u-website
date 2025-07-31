@@ -38,10 +38,10 @@
 
 **Resultados:**
 - Build exitoso sin errores
-- ⚠️ Warnings reducidos significativamente
-- 📦 Tamaño del bundle optimizado: 150.65 kB (-12 B)
+- Warnings reducidos significativamente
+- Tamaño del bundle optimizado: 150.65 kB (-12 B)
 
-## 📊 Métricas de Mejora
+## Métricas de Mejora
 
 ### Antes de la Refactorización:
 - **2 sistemas de servicios paralelos**

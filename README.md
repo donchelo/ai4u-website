@@ -90,6 +90,52 @@ import { Button } from './components/ui/Button';
 - Bordes redondeados adaptativos
 - Efectos hover con elevación y transformación
 
+### Tarjetas
+Sistema de tarjetas rediseñado con glassmorphism y números prominentes.
+
+```tsx
+import Card from './components/ui/Card';
+import MetricCard from './components/ui/MetricCard';
+
+// Tarjeta con glassmorphism
+<Card variant="glass">
+  Contenido con efecto de vidrio
+</Card>
+
+// Tarjeta de métricas con números grandes
+<MetricCard
+  title="Procesos Automatizados"
+  value="22,900"
+  subtitle="Sistemas activos"
+  iconType="arrow-up"
+  variant="dark"
+  size="large"
+/>
+```
+
+**Variantes de tarjetas:**
+- `glass` - Efecto glassmorphism translúcido
+- `dark` - Estilo dashboard oscuro
+- `primary` - Colores AI4U primarios
+- `accent` - Colores secundarios
+
+### Iconos Geométricos
+Sistema minimalista sin emojis, basado en formas geométricas.
+
+```tsx
+import GeometricIcon from './components/ui/GeometricIcon';
+
+<GeometricIcon 
+  type="circle" 
+  size="medium" 
+  color="#FF5C00" 
+  variant="filled" 
+/>
+```
+
+**Formas disponibles:**
+Círculos, cuadrados, triángulos, flechas direccionales, símbolos de más/menos, cruces, líneas y puntos.
+
 ### Navegación
 ```tsx
 import Navigation from './components/ui/Navigation';
@@ -290,7 +336,7 @@ const createAI4UTheme = (mode: PaletteMode) => {
 4. **Documentation** actualizada
 5. **Pull Request** con descripción clara
 
-## 📦 Scripts Disponibles
+## Scripts Disponibles
 
 ```bash
 # Desarrollo
@@ -340,11 +386,11 @@ src/
 4. **Push** a la branch (`git push origin feature/AmazingFeature`)
 5. Abre un **Pull Request**
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 - **Red Hat Display**: Fuente principal
 - **Fira Mono**: Fuente monospace
