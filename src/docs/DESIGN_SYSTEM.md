@@ -1,0 +1,364 @@
+# AI4U Design System
+
+## 🎨 Filosofía de Diseño
+
+### Time is Gold
+Nuestro sistema de diseño se basa en la filosofía de que **el tiempo es el recurso más valioso**. Cada componente está diseñado para maximizar la eficiencia y reducir la fricción en las experiencias de usuario.
+
+### Principios Fundamentales
+1. **Automatización Cálida**: Tecnología que libera tiempo sin perder humanidad
+2. **Futurismo Accesible**: Elementos futuristas pero comprensibles
+3. **Glassmorfismo Funcional**: Transparencias que mejoran la usabilidad
+4. **Consistencia Visual**: Paleta de colores y tipografía coherentes
+
+## 🎨 Paleta de Colores
+
+### Colores Principales
+```css
+/* Neon Blaze - Color principal */
+--neon-blaze: #FF5C00;
+/* Digital Coral - Color secundario */
+--digital-coral: #FF7477;
+/* Frost Signal - Color de fondo */
+--frost-signal: #DFF7EB;
+/* Graphene Black - Color oscuro */
+--graphene-black: #0A0A0A;
+```
+
+### Colores Secundarios
+```css
+/* Quantum Blue - Azul tecnológico */
+--quantum-blue: #1FA9F6;
+/* Tech Slate - Gris técnico */
+--tech-slate: #7D848B;
+/* Cyber Olive - Verde lima */
+--cyber-olive: #B6CA40;
+/* Deep Neural Teal - Verde azulado */
+--deep-neural-teal: #2B7A78;
+```
+
+### Uso de Colores
+- **Neon Blaze**: Llamados a la acción, elementos activos
+- **Digital Coral**: Elementos secundarios, wellness
+- **Frost Signal**: Fondos futuristas, elementos fríos
+- **Graphene Black**: Interfaces oscuras, elementos cyber
+- **Quantum Blue**: Datos, conectividad, información
+- **Tech Slate**: Bordes, sliders, elementos técnicos
+- **Cyber Olive**: Naturaleza en tecnología verde
+- **Deep Neural Teal**: Sistemas autónomos, IA
+
+## 📝 Tipografía
+
+### Fuentes
+- **Red Hat Display**: Fuente principal (sans-serif)
+- **Necto Mono**: Fuente secundaria (monospace)
+
+### Jerarquía
+```css
+/* Display Large */
+font-size: clamp(48px, 5vw, 64px);
+font-weight: 900;
+
+/* Display Medium */
+font-size: clamp(36px, 4vw, 48px);
+font-weight: 700;
+
+/* Heading Large */
+font-size: clamp(24px, 3vw, 36px);
+font-weight: 600;
+
+/* Body Large */
+font-size: clamp(16px, 1.1vw, 18px);
+font-weight: 400;
+
+/* Body Regular */
+font-size: 16px;
+font-weight: 400;
+
+/* Caption */
+font-size: 14px;
+font-weight: 400;
+font-family: monospace;
+```
+
+## 🧩 Componentes
+
+### Botones
+```tsx
+// Botón primario
+<Button variant="primary" size="large">
+  Recupera tu tiempo
+</Button>
+
+// Botón secundario
+<Button variant="secondary" size="medium">
+  Conoce más
+</Button>
+
+// Botón outline
+<Button variant="outline" size="small">
+  Ver casos
+</Button>
+```
+
+### Tarjetas
+```tsx
+// Tarjeta básica
+<Card>
+  <CardContent>
+    <H3>SuperAI Empresarial</H3>
+    <BodyText>Arquitecturas de IA que transforman operaciones.</BodyText>
+  </CardContent>
+</Card>
+
+// Tarjeta con glassmorfismo
+<div className="relative p-8 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl">
+  {/* Contenido */}
+</div>
+```
+
+### Navegación
+```tsx
+// Navegación horizontal
+<Navigation 
+  items={navigationItems}
+  variant="horizontal"
+/>
+
+// Navegación tipo tabs
+<Navigation 
+  items={navigationItems}
+  variant="tabs"
+  activeItem="colors"
+/>
+```
+
+### Layout
+```tsx
+// Layout con glassmorfismo
+<Layout variant="glassmorphism" title="Mi Página">
+  <Container>
+    <Section title="Sección Principal">
+      <Grid cols={3}>
+        {/* Contenido */}
+      </Grid>
+    </Section>
+  </Container>
+</Layout>
+```
+
+## 🌟 Glassmorfismo
+
+### Principios
+1. **Transparencia Funcional**: No solo decorativa, mejora la usabilidad
+2. **Blur Contextual**: Aplicar blur según el contexto
+3. **Bordes Sutiles**: Bordes que definen sin ser intrusivos
+4. **Sombras Suaves**: Profundidad sin peso visual
+
+### Implementación
+```css
+/* Elemento glassmorfismo básico */
+.glass-element {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+}
+
+/* Con gradiente de fondo */
+.glass-with-gradient {
+  position: relative;
+}
+
+.glass-with-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 92, 0, 0.1), 
+    rgba(255, 116, 119, 0.2)
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+```
+
+## 📱 Responsive Design
+
+### Breakpoints
+```css
+/* Mobile First */
+@media (min-width: 640px) { /* sm */ }
+@media (min-width: 768px) { /* md */ }
+@media (min-width: 1024px) { /* lg */ }
+@media (min-width: 1280px) { /* xl */ }
+@media (min-width: 1536px) { /* 2xl */ }
+```
+
+### Grid System
+```tsx
+// Grid responsivo
+<Grid cols={3} gap="lg">
+  <div>Columna 1</div>
+  <div>Columna 2</div>
+  <div>Columna 3</div>
+</Grid>
+```
+
+## 🎯 Accesibilidad
+
+### WCAG 2.1 AA Compliance
+- **Contraste**: Mínimo 4.5:1 para texto normal
+- **Navegación por teclado**: Todos los elementos interactivos
+- **Screen readers**: Etiquetas y roles apropiados
+- **Focus visible**: Indicadores de foco claros
+
+### Implementación
+```tsx
+// Botón accesible
+<Button 
+  aria-label="Recuperar tiempo"
+  onClick={handleClick}
+>
+  Recupera tu tiempo
+</Button>
+
+// Navegación accesible
+<nav role="navigation" aria-label="Navegación principal">
+  <Navigation items={items} />
+</nav>
+```
+
+## 🚀 Performance
+
+### Optimizaciones
+1. **Lazy Loading**: Componentes que se cargan bajo demanda
+2. **Memoización**: React.memo para componentes pesados
+3. **Bundle Splitting**: Código dividido por rutas
+4. **Image Optimization**: WebP y lazy loading de imágenes
+
+### Best Practices
+```tsx
+// Componente optimizado
+const OptimizedComponent = React.memo(({ data }) => {
+  return <div>{data}</div>;
+});
+
+// Lazy loading
+const LazyComponent = lazy(() => import('./HeavyComponent'));
+```
+
+## 🧪 Testing
+
+### Testing Strategy
+1. **Unit Tests**: Componentes individuales
+2. **Integration Tests**: Flujos de usuario
+3. **Visual Regression**: Cambios visuales
+4. **Accessibility Tests**: Cumplimiento WCAG
+
+### Ejemplo de Test
+```tsx
+import { render, screen } from '@testing-library/react';
+import { Button } from '../components/ui/Button';
+
+test('Button renders with correct text', () => {
+  render(<Button>Test Button</Button>);
+  expect(screen.getByText('Test Button')).toBeInTheDocument();
+});
+```
+
+## 📚 Documentación
+
+### Storybook
+- **Stories**: Ejemplos de uso de cada componente
+- **Controls**: Interactividad con props
+- **Docs**: Documentación automática
+- **Accessibility**: Tests de accesibilidad
+
+### Ejemplo de Story
+```tsx
+export default {
+  title: 'Components/Button',
+  component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Botón del sistema de diseño AI4U'
+      }
+    }
+  }
+};
+
+export const Primary = () => (
+  <Button variant="primary">Botón Primario</Button>
+);
+```
+
+## 🔧 Configuración
+
+### Tailwind Config
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'neon-blaze': '#FF5C00',
+        'digital-coral': '#FF7477',
+        // ... otros colores
+      },
+      fontFamily: {
+        'redhat': ['Red Hat Display', 'sans-serif'],
+        'necto': ['Fira Mono', 'monospace'],
+      }
+    }
+  }
+};
+```
+
+### Material UI Theme
+```tsx
+const createAI4UTheme = (mode: PaletteMode) => {
+  return createTheme({
+    palette: getPalette(mode),
+    typography,
+    components: getComponentsOverrides(mode),
+    shape: { borderRadius: 8 },
+    shadows: getCustomShadows(),
+  });
+};
+```
+
+## 🎨 Guías de Uso
+
+### Do's
+- ✅ Usar la paleta de colores consistente
+- ✅ Aplicar glassmorfismo funcionalmente
+- ✅ Mantener jerarquía tipográfica
+- ✅ Considerar accesibilidad primero
+- ✅ Optimizar para performance
+
+### Don'ts
+- ❌ Usar colores fuera de la paleta
+- ❌ Aplicar glassmorfismo sin propósito
+- ❌ Ignorar responsive design
+- ❌ Olvidar testing
+- ❌ Comprometer accesibilidad
+
+## 🔄 Mantenimiento
+
+### Versionado
+- **Semantic Versioning**: MAJOR.MINOR.PATCH
+- **Changelog**: Documentar cambios
+- **Breaking Changes**: Comunicar claramente
+- **Migration Guide**: Guías de migración
+
+### Contribución
+1. **Fork** del repositorio
+2. **Feature branch** descriptivo
+3. **Tests** para nuevos componentes
+4. **Documentation** actualizada
+5. **Pull Request** con descripción clara
+
+---
+
+*Este sistema de diseño está en constante evolución. Mantente actualizado con las últimas versiones y contribuye al crecimiento del ecosistema AI4U.* 
