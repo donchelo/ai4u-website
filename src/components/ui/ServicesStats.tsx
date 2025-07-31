@@ -35,12 +35,6 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
       description: 'Listos para implementar'
     },
     { 
-      value: stats.featured, 
-      label: 'Destacados', 
-      color: theme.palette.warning.main,
-      description: 'Más solicitados'
-    },
-    { 
       value: getCategories().length, 
       label: 'Categorías', 
       color: theme.palette.info.main,
@@ -52,7 +46,7 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
     <Box sx={{ mb: 8 }}>
       <Grid container spacing={3} justifyContent="center">
         {statItems.map((stat, index) => (
-          <Grid item xs={6} sm={3} key={index}>
+          <Grid item xs={12} sm={4} key={index}>
             <Box sx={{
               p: 4,
               textAlign: 'center',

@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { H3, BodyText } from './ui/Typography';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import StarIcon from '@mui/icons-material/Star';
 import { Service, ServiceStatus } from '../types/service';
 
 interface ServiceCardProps {
@@ -60,30 +59,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }
       }
     }}>
-      {/* Featured Badge */}
-      {service.featured && (
-        <Box sx={{ 
-          position: 'absolute', 
-          top: -12, 
-          left: 16,
-          zIndex: 2
-        }}>
-          <Chip 
-            icon={<StarIcon />}
-            label="Destacado"
-            size="small"
-            sx={{ 
-              background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
-              color: 'white',
-              fontWeight: 'bold',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-              '& .MuiChip-icon': {
-                color: 'white'
-              }
-            }}
-          />
-        </Box>
-      )}
+
 
       {/* Main Card Content */}
       <Box className="service-card-content" sx={{
@@ -134,8 +110,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
         {/* Header */}
         <Box sx={{ 
-          mb: 3, 
-          mt: service.featured ? 2 : 0,
+          mb: 3,
           textAlign: 'center'
         }}>
           <H3 sx={{ 

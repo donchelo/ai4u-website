@@ -24,8 +24,6 @@ interface ServicesFilterProps {
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   selectedTab: number;
   onTabChange: (event: React.SyntheticEvent, newValue: number) => void;
-  showFeaturedOnly: boolean;
-  onFeaturedToggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClearFilters: () => void;
   filteredCount: number;
   categoryTabs: Array<{
@@ -39,8 +37,6 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
   onSearchChange,
   selectedTab,
   onTabChange,
-  showFeaturedOnly,
-  onFeaturedToggle,
   onClearFilters,
   filteredCount,
   categoryTabs
@@ -113,66 +109,34 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
           </Box>
 
           {/* Controls */}
-          <Stack direction="row" spacing={2} alignItems="center">
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={showFeaturedOnly}
-                    onChange={onFeaturedToggle}
-                    color="primary"
-                    sx={{
-                      '& .MuiSwitch-switchBase.Mui-checked': {
-                        color: 'primary.main',
-                        '&:hover': {
-                          backgroundColor: alpha(theme.palette.primary.main, 0.08)
-                        }
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                        backgroundColor: 'primary.main'
-                      }
-                    }}
-                  />
+          <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-end">
+            <Chip
+              label="Limpiar filtros"
+              onClick={onClearFilters}
+              variant="outlined"
+              size="small"
+              clickable
+              icon={<ClearIcon />}
+              sx={{
+                background: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                '&:hover': {
+                  background: 'rgba(255, 255, 255, 0.8)',
+                  borderColor: 'primary.main'
                 }
-                label="Solo destacados"
-                sx={{
-                  '& .MuiFormControlLabel-label': {
-                    fontSize: '0.9rem',
-                    fontWeight: 500
-                  }
-                }}
-              />
-            </FormGroup>
-
-            <Stack direction="row" spacing={1}>
-              <Chip
-                label="Limpiar filtros"
-                onClick={onClearFilters}
-                variant="outlined"
-                size="small"
-                clickable
-                icon={<ClearIcon />}
-                sx={{
-                  background: 'rgba(255, 255, 255, 0.6)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  '&:hover': {
-                    background: 'rgba(255, 255, 255, 0.8)',
-                    borderColor: 'primary.main'
-                  }
-                }}
-              />
-              <Chip
-                label={`${filteredCount} servicios`}
-                color="primary"
-                size="small"
-                sx={{
-                  background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
-                  color: 'white',
-                  fontWeight: 'bold'
-                }}
-              />
-            </Stack>
+              }}
+            />
+            <Chip
+              label={`${filteredCount} servicios`}
+              color="primary"
+              size="small"
+              sx={{
+                background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
+                color: 'white',
+                fontWeight: 'bold'
+              }}
+            />
           </Stack>
         </Stack>
       </Box>
@@ -226,36 +190,22 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
       </Box>
 
       {/* Active Filters Display */}
-      {(searchValue || showFeaturedOnly) && (
+      {searchValue && (
         <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
           <Stack direction="row" spacing={1} alignItems="center">
             <Box sx={{ fontSize: '0.9rem', color: 'text.secondary', fontWeight: 500 }}>
               Filtros activos:
             </Box>
-            {searchValue && (
-              <Chip
-                label={`Búsqueda: "${searchValue}"`}
-                size="small"
-                onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
-                sx={{
-                  background: 'rgba(31, 169, 246, 0.1)',
-                  color: 'info.main',
-                  border: '1px solid rgba(31, 169, 246, 0.3)'
-                }}
-              />
-            )}
-            {showFeaturedOnly && (
-              <Chip
-                label="Solo destacados"
-                size="small"
-                onDelete={() => onFeaturedToggle({ target: { checked: false } } as React.ChangeEvent<HTMLInputElement>)}
-                sx={{
-                  background: 'rgba(255, 193, 7, 0.1)',
-                  color: 'warning.main',
-                  border: '1px solid rgba(255, 193, 7, 0.3)'
-                }}
-              />
-            )}
+            <Chip
+              label={`Búsqueda: "${searchValue}"`}
+              size="small"
+              onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
+              sx={{
+                background: 'rgba(31, 169, 246, 0.1)',
+                color: 'info.main',
+                border: '1px solid rgba(31, 169, 246, 0.3)'
+              }}
+            />
           </Stack>
         </Box>
       )}

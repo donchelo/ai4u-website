@@ -22,20 +22,22 @@ import { SERVICE_CONFIG } from '../utils/constants';
 const Services: React.FC = () => {
   const theme = useTheme();
   const { 
-    services: filteredServices, 
+    services: allServices,
     config,
     stats,
     filters,
     setCategoryFilter,
     setSearchTerm,
-    setFeaturedFilter,
     resetFilters,
-    getCategories
+    getCategories,
+    getFilteredServices
   } = useServicesContext();
+
+  // Obtener servicios filtrados
+  const filteredServices = getFilteredServices();
 
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>('');
-  const [showFeaturedOnly, setShowFeaturedOnly] = useState<boolean>(false);
 
   // Mapeo de categorías para los tabs
   const categoryTabs = [
@@ -59,16 +61,9 @@ const Services: React.FC = () => {
     setSearchTerm(value || undefined);
   };
 
-  const handleFeaturedToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const featured = event.target.checked;
-    setShowFeaturedOnly(featured);
-    setFeaturedFilter(featured || undefined);
-  };
-
   const clearFilters = () => {
     setSelectedTab(0);
     setSearchValue('');
-    setShowFeaturedOnly(false);
     resetFilters();
   };
 
@@ -219,8 +214,6 @@ const Services: React.FC = () => {
               onSearchChange={handleSearchChange}
               selectedTab={selectedTab}
               onTabChange={handleTabChange}
-              showFeaturedOnly={showFeaturedOnly}
-              onFeaturedToggle={handleFeaturedToggle}
               onClearFilters={clearFilters}
               filteredCount={filteredServices.length}
               categoryTabs={categoryTabs}
