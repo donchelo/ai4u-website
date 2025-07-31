@@ -165,25 +165,39 @@ const ComponentLibrary: React.FC = () => {
       title: 'Botones',
       description: 'Componentes de botones interactivos',
       components: [
-        <div key="buttons" className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ButtonExample 
-            variant="Primary Button"
-            className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-200"
-          >
-            Recupera tu tiempo
-          </ButtonExample>
-          <ButtonExample 
-            variant="Secondary Button"
-            className="px-6 py-3 border-2 border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-50 transition-colors duration-200"
-          >
-            Conoce más
-          </ButtonExample>
-          <ButtonExample 
-            variant="Ghost Button"
-            className="px-6 py-3 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
-          >
-            Ver casos
-          </ButtonExample>
+        <div key="buttons" className="space-y-8">
+          {/* Glass Primary Button */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="relative">
+              <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Primario Glassmorfismo</h4>
+              <button className="px-8 py-4 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-xl text-gray-800 font-semibold hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Recupera tu tiempo
+              </button>
+            </div>
+          </div>
+
+          {/* Glass Secondary Button */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-primary/30 to-neon-cyan/25"></div>
+            <div className="relative">
+              <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Secundario Glassmorfismo</h4>
+              <button className="px-8 py-4 bg-white/10 backdrop-blur-2xl border-2 border-primary/50 text-primary font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300">
+                Conoce más
+              </button>
+            </div>
+          </div>
+
+          {/* Glass Ghost Button */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-secondary/20 to-primary/25"></div>
+            <div className="relative">
+              <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Ghost Glassmorfismo</h4>
+              <button className="px-8 py-4 text-gray-700 font-semibold rounded-xl hover:bg-white/20 hover:text-gray-900 transition-all duration-300 backdrop-blur-sm">
+                Ver casos
+              </button>
+            </div>
+          </div>
         </div>
       ]
     },
@@ -192,34 +206,60 @@ const ComponentLibrary: React.FC = () => {
       title: 'Tarjetas',
       description: 'Componentes de tarjetas para contenido',
       components: [
-        <div key="cards" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <CardExample 
-            title="SuperAI Empresarial"
-            description="Arquitecturas de IA que transforman operaciones empresariales"
-            icon={
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            }
-          />
-          <CardExample 
-            title="GPT Personalizado"
-            description="Asistentes virtuales adaptados a tus necesidades específicas"
-            icon={
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-              </svg>
-            }
-          />
-          <CardExample 
-            title="Automatización Inteligente"
-            description="Procesos optimizados que liberan tu potencial humano"
-            icon={
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
-              </svg>
-            }
-          />
+        <div key="cards" className="space-y-8">
+          {/* Glass Card 1 */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/30 to-neon-cyan/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
+              <div className="flex items-start space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">SuperAI Empresarial</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">Arquitecturas de IA que transforman operaciones empresariales con precisión y eficiencia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Card 2 */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
+              <div className="flex items-start space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">GPT Personalizado</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">Asistentes virtuales adaptados a tus necesidades específicas y contexto empresarial.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Card 3 */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-primary/30 to-secondary/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
+              <div className="flex items-start space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Automatización Inteligente</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">Procesos optimizados que liberan tu potencial humano para tareas estratégicas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       ]
     },
@@ -228,27 +268,39 @@ const ComponentLibrary: React.FC = () => {
       title: 'Elementos Interactivos',
       description: 'Componentes con animaciones y estados',
       components: [
-        <div key="interactive" className="space-y-6">
-          <InteractiveElement title="Progress Bar">
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div className="bg-gradient-to-r from-orange-400 to-orange-600 h-3 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
+        <div key="interactive" className="space-y-8">
+          {/* Glass Progress Bar */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-neon-cyan/30 to-secondary/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+              <h4 className="text-lg font-semibold text-gray-800 mb-6">Barra de Progreso Glassmorfismo</h4>
+              <div className="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
+                <div className="bg-gradient-to-r from-neon-cyan to-primary h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
+              </div>
             </div>
-          </InteractiveElement>
+          </div>
           
-          <InteractiveElement title="Loading Animation">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce"></div>
-              <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-              <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          {/* Glass Loading Animation */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-hot-orange/30 to-neon-cyan/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+              <h4 className="text-lg font-semibold text-gray-800 mb-6">Animación de Carga Glassmorfismo</h4>
+              <div className="flex space-x-3">
+                <div className="w-4 h-4 bg-neon-cyan rounded-full animate-bounce backdrop-blur-sm"></div>
+                <div className="w-4 h-4 bg-primary rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-4 h-4 bg-hot-orange rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.2s' }}></div>
+              </div>
             </div>
-          </InteractiveElement>
+          </div>
           
-          <InteractiveElement title="Hover Card">
-            <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-              <h4 className="font-semibold text-gray-800">Hover me</h4>
-              <p className="text-sm text-gray-600">Efecto de elevación al pasar el mouse</p>
+          {/* Glass Hover Card */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 hover:bg-white/25 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+              <h4 className="text-xl font-bold text-gray-800 mb-3">Hover me</h4>
+              <p className="text-gray-700 text-lg">Efecto de elevación glassmorfismo al pasar el mouse</p>
             </div>
-          </InteractiveElement>
+          </div>
         </div>
       ]
     },
@@ -257,35 +309,296 @@ const ComponentLibrary: React.FC = () => {
       title: 'Elementos Futuristas',
       description: 'Componentes inspirados en las imágenes de referencia',
       components: [
-        <div key="futuristic" className="space-y-6">
-          <FuturisticElement title="Wireframe Grid">
-            <div className="relative w-full h-32 bg-gray-100 rounded-lg overflow-hidden">
-              <div className="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-1 p-2">
-                {Array.from({ length: 32 }, (_, i) => (
-                  <div key={i} className="bg-gray-300 rounded-sm opacity-30"></div>
-                ))}
+        <div key="futuristic" className="space-y-8">
+          {/* Glass Wireframe Grid */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-erie-black/40 via-secondary/20 to-neon-cyan/30"></div>
+            <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-8">
+              <h4 className="text-lg font-semibold text-white mb-6">Wireframe Grid Glassmorfismo</h4>
+              <div className="relative w-full h-40 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 grid grid-cols-8 grid-rows-5 gap-1 p-3">
+                  {Array.from({ length: 40 }, (_, i) => (
+                    <div key={i} className="bg-white/20 rounded-sm backdrop-blur-sm"></div>
+                  ))}
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 border-2 border-neon-cyan/50 rounded-2xl backdrop-blur-sm"></div>
+                </div>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 border-2 border-gray-400 rounded-lg"></div>
+            </div>
+          </div>
+          
+          {/* Glass Binary Code */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/30 to-neon-cyan/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+              <h4 className="text-lg font-semibold text-gray-800 mb-6">Código Binario Glassmorfismo</h4>
+              <div className="font-mono text-sm text-gray-700 leading-relaxed space-y-2">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">10101010 11001100 11110000</div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">01010101 00110011 00001111</div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">11111111 00000000 10101010</div>
               </div>
             </div>
-          </FuturisticElement>
+          </div>
           
-          <FuturisticElement title="Binary Code Decoration">
-            <div className="font-mono text-xs text-gray-600 leading-relaxed">
-              <div>10101010 11001100 11110000</div>
-              <div>01010101 00110011 00001111</div>
-              <div>11111111 00000000 10101010</div>
+          {/* Glass Geometric Shapes */}
+          <div className="relative p-8 rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+              <h4 className="text-lg font-semibold text-gray-800 mb-6">Formas Geométricas Glassmorfismo</h4>
+              <div className="flex space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-2xl transform rotate-45 backdrop-blur-sm"></div>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full backdrop-blur-sm"></div>
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary transform rotate-45 backdrop-blur-sm"></div>
+              </div>
             </div>
-          </FuturisticElement>
-          
-          <FuturisticElement title="Geometric Shapes">
-            <div className="flex space-x-4">
-              <div className="w-12 h-12 bg-orange-500 rounded-lg transform rotate-45"></div>
-              <div className="w-12 h-12 bg-blue-500 rounded-full"></div>
-              <div className="w-12 h-12 bg-gray-500 transform rotate-45"></div>
+          </div>
+        </div>
+      ]
+    },
+    {
+      id: 'glassmorphism',
+      title: 'Glassmorfismo Futurista',
+      description: 'Componentes con efectos de vidrio, transparencias y blur futuristas inspirados en diseño moderno',
+      components: [
+        <div key="glassmorphism" className="space-y-8">
+          {/* Glass Login Card */}
+          <div className="relative">
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Tarjeta de Login Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              {/* Background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-neon-cyan/25"></div>
+              {/* Glass effect */}
+              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-800">AI4U Lab</h2>
+                  <button className="text-primary font-semibold hover:text-secondary transition-colors">Sign up</button>
+                </div>
+                
+                <h1 className="text-4xl font-bold text-gray-900 mb-8">Log in</h1>
+                
+                <button className="w-full mb-6 px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-3">
+                  <span className="text-xl">f</span>
+                  <span>Facebook</span>
+                </button>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">@</div>
+                    <input 
+                      type="email" 
+                      placeholder="e-mail address"
+                      className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                    />
+                  </div>
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">🔑</div>
+                    <input 
+                      type="password" 
+                      placeholder="password"
+                      className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex justify-between items-center mb-6">
+                  <button className="text-primary text-sm hover:underline">I forgot</button>
+                </div>
+                
+                <button className="w-full px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-3">
+                  <span>Log in</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 19l8-8z"/>
+                  </svg>
+                </button>
+                
+                <div className="mt-6 text-xs text-gray-600 space-y-2">
+                  <p>For use by professionals only. Keep out of reach of unauthorized users.</p>
+                  <p>Please use responsibly!</p>
+                </div>
+              </div>
             </div>
-          </FuturisticElement>
+          </div>
+
+          {/* Glass Event Card */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Tarjeta de Evento Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <div className="text-3xl font-bold text-gray-900 mb-2">Thu 24th</div>
+                    <div className="text-xl font-semibold text-gray-800 mb-2">Grand opening</div>
+                    <div className="text-lg text-gray-700 mb-4">New AI4U Store</div>
+                    <div className="text-gray-600 mb-6">18 PM - Tech District 12B</div>
+                    <button className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center space-x-2">
+                      <span>Join in</span>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 19l8-8z"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="w-20 h-20 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-full flex items-center justify-center">
+                    <div className="text-white font-bold text-sm">AI4U</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Product Card */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Tarjeta de Producto Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-erie-black/40 via-secondary/20 to-neon-cyan/30"></div>
+              <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-6">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2">New in</h3>
+                    <div className="text-xl text-white/90 mb-4">AI4U SuperAI</div>
+                    <button className="px-6 py-3 bg-white/20 text-white font-semibold rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm">
+                      Discover
+                    </button>
+                  </div>
+                  <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary rounded-full flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Navigation */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Navegación Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+              <nav className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 flex justify-center space-x-8">
+                <button className="px-6 py-3 bg-white/20 rounded-xl text-gray-800 font-semibold hover:bg-white/30 transition-all duration-300 backdrop-blur-sm">
+                  Inicio
+                </button>
+                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
+                  Servicios
+                </button>
+                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
+                  Casos
+                </button>
+                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
+                  Contacto
+                </button>
+              </nav>
+            </div>
+          </div>
+
+          {/* Glass Stats Card */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Tarjeta de Estadísticas Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-erie-black/60 via-secondary/30 to-neon-cyan/40"></div>
+              <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-8">
+                <div className="grid grid-cols-3 gap-8">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-neon-cyan mb-3">98%</div>
+                    <div className="text-white/80 font-medium">Eficiencia</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-3">24/7</div>
+                    <div className="text-white/80 font-medium">Disponibilidad</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-hot-orange mb-3">5x</div>
+                    <div className="text-white/80 font-medium">Más rápido</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Form */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Formulario Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">Contacto Futurista</h3>
+                <div className="space-y-6">
+                  <div>
+                    <input 
+                      type="text" 
+                      placeholder="Tu nombre"
+                      className="w-full px-6 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <input 
+                      type="email" 
+                      placeholder="Tu email"
+                      className="w-full px-6 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <textarea 
+                      placeholder="Tu mensaje"
+                      rows={4}
+                      className="w-full px-6 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-lg"
+                    ></textarea>
+                  </div>
+                  <button className="w-full px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-3 text-lg">
+                    <span>Enviar Mensaje</span>
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 19l8-8z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Progress Bar */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Barra de Progreso Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
+                <div className="mb-6">
+                  <div className="flex justify-between text-gray-800 font-semibold text-lg">
+                    <span>Procesamiento IA</span>
+                    <span>75%</span>
+                  </div>
+                </div>
+                <div className="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
+                  <div className="bg-gradient-to-r from-neon-cyan to-primary h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Glass Notification */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Notificación Glassmorfismo</h4>
+            <div className="relative p-8 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 flex items-center space-x-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-gray-800">Proceso Completado</h4>
+                  <p className="text-gray-700 text-lg">La automatización se ha ejecutado exitosamente</p>
+                </div>
+                <button className="text-gray-500 hover:text-gray-700 transition-colors">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       ]
     },
