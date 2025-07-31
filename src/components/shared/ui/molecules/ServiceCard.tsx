@@ -46,21 +46,27 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     }
   };
 
+  const getSuperCategoryColor = (superCategory: string) => {
+    return superCategory === 'strategy' ? '#6366f1' : '#10b981';
+  };
+
+  const getSuperCategoryText = (superCategory: string) => {
+    return superCategory === 'strategy' ? 'Estrategia' : 'Operación';
+  };
+
   return (
     <Box sx={{
       height: '100%',
       position: 'relative',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       '&:hover': {
-        transform: 'translateY(-2px)',
+        transform: 'translateY(-4px)',
         '& .service-card-content': {
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-          borderColor: '#D0D0D0'
+          boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
+          borderColor: service.color
         }
       }
     }}>
-
-
       {/* Main Card Content */}
       <Box className="service-card-content" sx={{
         p: compact ? 2.5 : 3,
@@ -69,11 +75,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         flexDirection: 'column',
         position: 'relative',
         background: '#FFFFFF',
-        border: '1px solid #E5E5E5',
-        borderRadius: 2,
+        border: '2px solid #E5E5E5',
+        borderRadius: 3,
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         overflow: 'hidden'
       }}>
+        {/* Gradient Header */}
+        <Box sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 4,
+          background: service.gradient || service.color,
+          borderRadius: '12px 12px 0 0'
+        }} />
+
         {/* Status Badge */}
         <Box sx={{ 
           position: 'absolute', 
@@ -92,7 +109,28 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 : '#FFFFFF',
               border: '1px solid #E5E5E5',
               color: '#666666',
-              fontWeight: 500
+              fontWeight: 500,
+              fontSize: '0.75rem'
+            }}
+          />
+        </Box>
+
+        {/* Super Category Badge */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 12, 
+          left: 12,
+          zIndex: 2
+        }}>
+          <Chip 
+            label={getSuperCategoryText(service.superCategory)}
+            size="small"
+            sx={{
+              background: getSuperCategoryColor(service.superCategory),
+              color: '#FFFFFF',
+              fontWeight: 600,
+              fontSize: '0.7rem',
+              height: 24
             }}
           />
         </Box>
@@ -100,7 +138,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         {/* Header */}
         <Box sx={{ 
           mb: 3,
-          textAlign: 'center'
+          textAlign: 'center',
+          mt: 4
         }}>
           <H3 sx={{ 
             mb: 1.5,
@@ -114,7 +153,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <BodyText sx={{ 
             mb: 2, 
             fontWeight: 600,
-            color: 'text.secondary',
+            color: service.color,
             fontSize: '1rem',
             lineHeight: 1.4
           }}>
@@ -148,12 +187,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               {service.benefits.map((benefit, index) => (
                 <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
                   <ListItemIcon sx={{ minWidth: 28 }}>
-                                       <CheckCircleOutlineIcon 
-                     sx={{ 
-                       color: '#666666',
-                       fontSize: '1.1rem'
-                     }}
-                   />
+                    <CheckCircleOutlineIcon 
+                      sx={{ 
+                        color: service.color,
+                        fontSize: '1.1rem'
+                      }}
+                    />
                   </ListItemIcon>
                   <ListItemText 
                     primary={benefit}
@@ -178,18 +217,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 label={tag}
                 size="small"
                 variant="outlined"
-                                 sx={{ 
-                   fontSize: '0.7rem',
-                   height: 24,
-                   background: '#F8F8F8',
-                   border: '1px solid #E5E5E5',
-                   color: '#666666',
-                   '& .MuiChip-label': { px: 1 },
-                   '&:hover': {
-                     background: '#F0F0F0',
-                     borderColor: '#D0D0D0'
-                   }
-                 }}
+                sx={{ 
+                  fontSize: '0.7rem',
+                  height: 24,
+                  background: `${service.color}10`,
+                  border: `1px solid ${service.color}30`,
+                  color: service.color,
+                  '& .MuiChip-label': { px: 1 },
+                  '&:hover': {
+                    background: `${service.color}20`,
+                    borderColor: service.color
+                  }
+                }}
               />
             ))}
             {service.tags.length > (compact ? 2 : 4) && (

@@ -7,10 +7,12 @@ export interface Service {
   price?: string; // Opcional ahora
   deliveryTime: string;
   category: ServiceCategory;
+  superCategory: ServiceSuperCategory; // Nueva supracategoría
   priority: number; // Para ordenar servicios
   featured: boolean; // Servicios destacados
   icon?: string; // Path al icono del servicio
   color?: string; // Color primario del servicio
+  gradient?: string; // Gradiente del servicio
   tags: string[]; // Etiquetas para filtrado
   status: ServiceStatus;
   metadata: ServiceMetadata;
@@ -21,6 +23,11 @@ export interface ServiceMetadata {
   updatedAt: string;
   version: string;
   author: string;
+}
+
+export enum ServiceSuperCategory {
+  STRATEGY = 'strategy',
+  OPERATION = 'operation'
 }
 
 export enum ServiceCategory {
