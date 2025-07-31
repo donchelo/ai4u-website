@@ -1,4 +1,19 @@
 import React, { ReactNode } from 'react';
+import { 
+  Box, 
+  Paper, 
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Chip,
+  IconButton,
+  useTheme,
+  styled
+} from '@mui/material';
+import { ContentCopy as ContentCopyIcon } from '@mui/icons-material';
 import { H3, H4, BodyText, SmallText, CodeText } from './Typography';
 import { Button } from './Button';
 
@@ -23,73 +38,108 @@ interface CodeBlockProps {
   className?: string;
 }
 
+// Styled components
+const CodeContainer = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#1a1a1a',
+  color: '#f5f5f5',
+  borderRadius: theme.spacing(2),
+  padding: theme.spacing(2),
+  overflow: 'auto',
+}));
+
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'tsx', className = '' }) => {
+  const theme = useTheme();
+
   return (
-    <div className={`bg-gray-900 rounded-lg p-4 overflow-x-auto ${className}`}>
-      <div className="flex items-center justify-between mb-3">
-        <SmallText className="text-gray-400 uppercase tracking-wide">{language}</SmallText>
-        <Button
-          variant="outline"
+    <CodeContainer className={className}>
+      <Box sx={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        mb: 2 
+      }}>
+        <SmallText sx={{ 
+          color: '#9CA3AF',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em'
+        }}>
+          {language}
+        </SmallText>
+        <IconButton
           size="small"
           onClick={() => navigator.clipboard.writeText(code)}
-          className="text-xs"
+          sx={{ color: '#9CA3AF' }}
         >
-          Copiar
-        </Button>
-      </div>
-      <pre className="text-sm text-gray-100 font-mono">
-        <code>{code}</code>
-      </pre>
-    </div>
+          <ContentCopyIcon fontSize="small" />
+        </IconButton>
+      </Box>
+      <Box component="pre" sx={{ 
+        fontSize: '0.875rem',
+        color: '#f5f5f5',
+        fontFamily: 'monospace',
+        margin: 0,
+        whiteSpace: 'pre-wrap'
+      }}>
+        <Box component="code">{code}</Box>
+      </Box>
+    </CodeContainer>
   );
 };
 
 const PropsTable: React.FC<{ props: DocumentationProps['props'] }> = ({ props }) => {
+  const theme = useTheme();
+  
   if (!props || props.length === 0) return null;
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="border-b border-gray-200">
-            <th className="text-left py-2 px-4 font-semibold text-gray-700">Propiedad</th>
-            <th className="text-left py-2 px-4 font-semibold text-gray-700">Tipo</th>
-            <th className="text-left py-2 px-4 font-semibold text-gray-700">Requerido</th>
-            <th className="text-left py-2 px-4 font-semibold text-gray-700">Descripción</th>
-            <th className="text-left py-2 px-4 font-semibold text-gray-700">Default</th>
-          </tr>
-        </thead>
-        <tbody>
+    <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
+      <Table>
+        <TableHead>
+          <TableRow sx={{ backgroundColor: theme.palette.grey[50] }}>
+            <TableCell sx={{ fontWeight: 600 }}>Propiedad</TableCell>
+            <TableCell sx={{ fontWeight: 600 }}>Tipo</TableCell>
+            <TableCell sx={{ fontWeight: 600 }}>Requerido</TableCell>
+            <TableCell sx={{ fontWeight: 600 }}>Descripción</TableCell>
+            <TableCell sx={{ fontWeight: 600 }}>Default</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {props.map((prop, index) => (
-            <tr key={index} className="border-b border-gray-100">
-              <td className="py-2 px-4">
+            <TableRow key={index} sx={{ 
+              '&:hover': { backgroundColor: theme.palette.action.hover }
+            }}>
+              <TableCell>
                 <CodeText>{prop.name}</CodeText>
-              </td>
-              <td className="py-2 px-4">
+              </TableCell>
+              <TableCell>
                 <CodeText>{prop.type}</CodeText>
-              </td>
-              <td className="py-2 px-4">
-                <span className={`px-2 py-1 rounded text-xs font-medium ${
-                  prop.required 
-                    ? 'bg-red-100 text-red-700' 
-                    : 'bg-green-100 text-green-700'
-                }`}>
-                  {prop.required ? 'Sí' : 'No'}
-                </span>
-              </td>
-              <td className="py-2 px-4 text-sm text-gray-600">{prop.description}</td>
-              <td className="py-2 px-4">
+              </TableCell>
+              <TableCell>
+                <Chip
+                  label={prop.required ? 'Sí' : 'No'}
+                  size="small"
+                  color={prop.required ? 'error' : 'success'}
+                  variant="outlined"
+                />
+              </TableCell>
+              <TableCell sx={{ 
+                fontSize: '0.875rem',
+                color: theme.palette.text.secondary
+              }}>
+                {prop.description}
+              </TableCell>
+              <TableCell>
                 {prop.defaultValue ? (
                   <CodeText>{prop.defaultValue}</CodeText>
                 ) : (
-                  <span className="text-gray-400">-</span>
+                  <Box sx={{ color: theme.palette.text.disabled }}>-</Box>
                 )}
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
@@ -101,40 +151,62 @@ export const Documentation: React.FC<DocumentationProps> = ({
   props,
   className = ''
 }) => {
+  const theme = useTheme();
+
   return (
-    <div className={`space-y-8 ${className}`}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }} className={className}>
       {/* Header */}
-      <div className="border-b border-gray-200 pb-6">
-        <H3 className="mb-2">{title}</H3>
-        <BodyText className="text-gray-600">{description}</BodyText>
-      </div>
+      <Box sx={{ 
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        pb: 3
+      }}>
+        <H3 sx={{ mb: 1 }}>{title}</H3>
+        <BodyText sx={{ color: theme.palette.text.secondary }}>
+          {description}
+        </BodyText>
+      </Box>
 
       {/* Preview */}
-      <div className="relative p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl">
-        <div className="mb-4">
-          <H4 className="text-gray-700">Preview</H4>
-        </div>
-        <div className="flex items-center justify-center min-h-[200px]">
+      <Paper sx={{ 
+        position: 'relative',
+        p: 4,
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: 4,
+        overflow: 'hidden'
+      }}>
+        <Box sx={{ mb: 2 }}>
+          <H4 sx={{ color: theme.palette.text.primary }}>Preview</H4>
+        </Box>
+        <Box sx={{ 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: 200,
+          position: 'relative',
+          zIndex: 1
+        }}>
           {children}
-        </div>
-      </div>
+        </Box>
+      </Paper>
 
       {/* Code Example */}
       {codeExample && (
-        <div>
-          <H4 className="mb-4">Código de Ejemplo</H4>
+        <Box>
+          <H4 sx={{ mb: 2 }}>Código de Ejemplo</H4>
           <CodeBlock code={codeExample} />
-        </div>
+        </Box>
       )}
 
       {/* Props Table */}
       {props && props.length > 0 && (
-        <div>
-          <H4 className="mb-4">Propiedades</H4>
+        <Box>
+          <H4 sx={{ mb: 2 }}>Propiedades</H4>
           <PropsTable props={props} />
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
