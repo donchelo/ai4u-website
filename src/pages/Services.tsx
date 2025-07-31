@@ -280,24 +280,133 @@ const Services: React.FC = () => {
           </Box>
         </Container>
 
-        {/* Services Grid */}
+        {/* Services Grid - Horizontal Scroll with Navigation */}
         <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            {filteredServices.map((service) => (
-              <Grid 
-                item 
-                xs={12} 
-                md={config.displaySettings.cardsPerRow === 4 ? 3 : 4} 
-                key={service.id}
+          <Box sx={{ position: 'relative' }}>
+            {/* Navigation Buttons */}
+            <Box sx={{
+              position: 'absolute',
+              top: '50%',
+              left: -20,
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              display: { xs: 'none', md: 'block' }
+            }}>
+              <Button
+                variant="outline"
+                size="small"
+                onClick={() => {
+                  const container = document.getElementById('services-scroll-container');
+                  if (container) {
+                    container.scrollBy({ left: -400, behavior: 'smooth' });
+                  }
+                }}
+                sx={{
+                  minWidth: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  '&:hover': {
+                    background: 'rgba(255, 255, 255, 1)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                  }
+                }}
+                aria-label="Desplazar servicios hacia la izquierda"
               >
-                <ServiceCard 
-                  service={service}
-                  showPrice={config.displaySettings.showPrices}
-                  showDeliveryTime={config.displaySettings.showDeliveryTime}
+                <GeometricIcon
+                  type="arrow-left"
+                  size="small"
+                  color="#666666"
+                  variant="filled"
                 />
-              </Grid>
-            ))}
-          </Grid>
+              </Button>
+            </Box>
+
+            <Box sx={{
+              position: 'absolute',
+              top: '50%',
+              right: -20,
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              display: { xs: 'none', md: 'block' }
+            }}>
+              <Button
+                variant="outline"
+                size="small"
+                onClick={() => {
+                  const container = document.getElementById('services-scroll-container');
+                  if (container) {
+                    container.scrollBy({ left: 400, behavior: 'smooth' });
+                  }
+                }}
+                sx={{
+                  minWidth: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  '&:hover': {
+                    background: 'rgba(255, 255, 255, 1)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                  }
+                }}
+                aria-label="Desplazar servicios hacia la derecha"
+              >
+                <GeometricIcon
+                  type="arrow-right"
+                  size="small"
+                  color="#666666"
+                  variant="filled"
+                />
+              </Button>
+            </Box>
+
+            {/* Scroll Container */}
+            <Box 
+              id="services-scroll-container"
+              sx={{
+                display: 'flex',
+                gap: 3,
+                overflowX: 'auto',
+                pb: 2,
+                px: 1,
+                scrollBehavior: 'smooth',
+                '&::-webkit-scrollbar': {
+                  height: 8,
+                },
+                '&::-webkit-scrollbar-track': {
+                  background: '#f1f1f1',
+                  borderRadius: 4,
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  background: '#c1c1c1',
+                  borderRadius: 4,
+                  '&:hover': {
+                    background: '#a8a8a8',
+                  },
+                },
+              }}
+            >
+              {filteredServices.map((service) => (
+                <Box
+                  key={service.id}
+                  sx={{
+                    minWidth: { xs: 280, sm: 320, md: 350 },
+                    flexShrink: 0,
+                  }}
+                >
+                  <ServiceCard 
+                    service={service}
+                    showPrice={config.displaySettings.showPrices}
+                    showDeliveryTime={config.displaySettings.showDeliveryTime}
+                  />
+                </Box>
+              ))}
+            </Box>
+          </Box>
 
           {filteredServices.length === 0 && (
             <Card variant="glass" sx={{ textAlign: 'center', py: 6 }}>
