@@ -168,7 +168,7 @@ const ComponentLibrary: React.FC = () => {
         <div key="buttons" className="space-y-8">
           {/* Glass Primary Button */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-neon-blaze/25"></div>
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Primario Glassmorfismo</h4>
               <button className="px-8 py-4 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-xl text-gray-800 font-semibold hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -179,7 +179,7 @@ const ComponentLibrary: React.FC = () => {
 
           {/* Glass Secondary Button */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-primary/30 to-neon-cyan/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-primary/30 to-neon-cyan/25"></div>
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Secundario Glassmorfismo</h4>
               <button className="px-8 py-4 bg-white/10 backdrop-blur-2xl border-2 border-primary/50 text-primary font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300">
@@ -190,7 +190,7 @@ const ComponentLibrary: React.FC = () => {
 
           {/* Glass Ghost Button */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-secondary/20 to-primary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-secondary/20 to-neon-blaze/25"></div>
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Ghost Glassmorfismo</h4>
               <button className="px-8 py-4 text-gray-700 font-semibold rounded-xl hover:bg-white/20 hover:text-gray-900 transition-all duration-300 backdrop-blur-sm">
@@ -209,10 +209,10 @@ const ComponentLibrary: React.FC = () => {
         <div key="cards" className="space-y-8">
           {/* Glass Card 1 */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/30 to-neon-cyan/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-secondary/30 to-neon-cyan/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
               <div className="flex items-start space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-neon-blaze rounded-2xl flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
@@ -227,7 +227,7 @@ const ComponentLibrary: React.FC = () => {
 
           {/* Glass Card 2 */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-neon-cyan/30 to-neon-blaze/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
               <div className="flex items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-2xl flex items-center justify-center">
@@ -245,10 +245,10 @@ const ComponentLibrary: React.FC = () => {
 
           {/* Glass Card 3 */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-primary/30 to-secondary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-primary/30 to-digital-coral/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
               <div className="flex items-start space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-blaze to-digital-coral rounded-2xl flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
               </svg>
@@ -271,31 +271,31 @@ const ComponentLibrary: React.FC = () => {
         <div key="interactive" className="space-y-8">
           {/* Glass Progress Bar */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-neon-cyan/30 to-secondary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-neon-cyan/30 to-digital-coral/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
               <h4 className="text-lg font-semibold text-gray-800 mb-6">Barra de Progreso Glassmorfismo</h4>
               <div className="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
-                <div className="bg-gradient-to-r from-neon-cyan to-primary h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
+                <div className="bg-gradient-to-r from-neon-cyan to-neon-blaze h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
               </div>
             </div>
           </div>
           
           {/* Glass Loading Animation */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-hot-orange/30 to-neon-cyan/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-neon-blaze/30 to-deep-neural-teal/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
               <h4 className="text-lg font-semibold text-gray-800 mb-6">Animación de Carga Glassmorfismo</h4>
               <div className="flex space-x-3">
-                <div className="w-4 h-4 bg-neon-cyan rounded-full animate-bounce backdrop-blur-sm"></div>
-                <div className="w-4 h-4 bg-primary rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-4 h-4 bg-hot-orange rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-4 h-4 bg-deep-neural-teal rounded-full animate-bounce backdrop-blur-sm"></div>
+                <div className="w-4 h-4 bg-neon-blaze rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-4 h-4 bg-cyber-olive rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
           
           {/* Glass Hover Card */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-digital-coral/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 hover:bg-white/25 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
               <h4 className="text-xl font-bold text-gray-800 mb-3">Hover me</h4>
               <p className="text-gray-700 text-lg">Efecto de elevación glassmorfismo al pasar el mouse</p>
@@ -322,7 +322,7 @@ const ComponentLibrary: React.FC = () => {
                 ))}
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 border-2 border-neon-cyan/50 rounded-2xl backdrop-blur-sm"></div>
+                  <div className="w-20 h-20 border-2 border-deep-neural-teal/50 rounded-2xl backdrop-blur-sm"></div>
                 </div>
               </div>
             </div>
@@ -330,7 +330,7 @@ const ComponentLibrary: React.FC = () => {
           
           {/* Glass Binary Code */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/30 to-neon-cyan/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-secondary/30 to-neon-cyan/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
               <h4 className="text-lg font-semibold text-gray-800 mb-6">Código Binario Glassmorfismo</h4>
               <div className="font-mono text-sm text-gray-700 leading-relaxed space-y-2">
@@ -343,13 +343,13 @@ const ComponentLibrary: React.FC = () => {
           
           {/* Glass Geometric Shapes */}
           <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-neon-blaze/25"></div>
             <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
               <h4 className="text-lg font-semibold text-gray-800 mb-6">Formas Geométricas Glassmorfismo</h4>
               <div className="flex space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-2xl transform rotate-45 backdrop-blur-sm"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full backdrop-blur-sm"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary transform rotate-45 backdrop-blur-sm"></div>
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-blaze to-digital-coral rounded-full backdrop-blur-sm"></div>
+                <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-neon-blaze transform rotate-45 backdrop-blur-sm"></div>
               </div>
             </div>
           </div>
@@ -424,7 +424,7 @@ const ComponentLibrary: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">Tarjeta de Evento Glassmorfismo</h4>
             <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-neon-cyan/30 to-neon-blaze/25"></div>
               <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6">
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
@@ -461,7 +461,7 @@ const ComponentLibrary: React.FC = () => {
                       Discover
                     </button>
                   </div>
-                  <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-neon-blaze rounded-full flex items-center justify-center">
                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
@@ -475,7 +475,7 @@ const ComponentLibrary: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">Navegación Glassmorfismo</h4>
             <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-digital-coral/25"></div>
               <nav className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 flex justify-center space-x-8">
                 <button className="px-6 py-3 bg-white/20 rounded-xl text-gray-800 font-semibold hover:bg-white/30 transition-all duration-300 backdrop-blur-sm">
                   Inicio
@@ -501,7 +501,7 @@ const ComponentLibrary: React.FC = () => {
               <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-8">
                 <div className="grid grid-cols-3 gap-8">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-neon-cyan mb-3">98%</div>
+                    <div className="text-4xl font-bold text-deep-neural-teal mb-3">98%</div>
                     <div className="text-white/80 font-medium">Eficiencia</div>
                   </div>
                   <div className="text-center">
@@ -509,7 +509,7 @@ const ComponentLibrary: React.FC = () => {
                     <div className="text-white/80 font-medium">Disponibilidad</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-hot-orange mb-3">5x</div>
+                    <div className="text-4xl font-bold text-neon-blaze mb-3">5x</div>
                     <div className="text-white/80 font-medium">Más rápido</div>
                   </div>
                 </div>
@@ -521,7 +521,7 @@ const ComponentLibrary: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">Formulario Glassmorfismo</h4>
             <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-secondary/25"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-mint-cream/30 via-primary/20 to-digital-coral/25"></div>
               <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">Contacto Futurista</h3>
                 <div className="space-y-6">
@@ -561,7 +561,7 @@ const ComponentLibrary: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">Barra de Progreso Glassmorfismo</h4>
             <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-neon-cyan/30 to-neon-blaze/25"></div>
               <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
                 <div className="mb-6">
                   <div className="flex justify-between text-gray-800 font-semibold text-lg">
@@ -570,7 +570,7 @@ const ComponentLibrary: React.FC = () => {
                   </div>
                 </div>
                 <div className="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-neon-cyan to-primary h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
+                  <div className="bg-gradient-to-r from-neon-cyan to-neon-blaze h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
                 </div>
               </div>
             </div>
@@ -580,7 +580,7 @@ const ComponentLibrary: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-4">Notificación Glassmorfismo</h4>
             <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-primary/25"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-hot-orange/20 via-neon-cyan/30 to-neon-blaze/25"></div>
               <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 flex items-center space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-full flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
