@@ -6,7 +6,7 @@ import LazyPage from './components/LazyPage';
 import ThemeProvider from './context/ThemeContext';
 import ServicesProvider from './context/ServicesContext';
 import { ROUTES } from './utils/constants';
-import { Home, Services, WhyAI4U, SuccessCases } from './pages/lazy';
+import { Home, Services, WhyAI4U, SuccessCases, ComponentLibrary } from './pages/lazy';
 
 function App() {
   return (
@@ -53,6 +53,14 @@ function App() {
                 element={
                   <LazyPage>
                     <SuccessCases />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.COMPONENT_LIBRARY} 
+                element={
+                  <LazyPage>
+                    <ComponentLibrary />
                   </LazyPage>
                 } 
               />

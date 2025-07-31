@@ -4,7 +4,8 @@ export const ROUTES = {
   SERVICES: '/servicios',
   WHY_AI4U: '/por-que-ai4u',
   SUCCESS_CASES: '/casos-de-exito',
-  TIENDA_AI: '/tienda-ai'
+  TIENDA_AI: '/tienda-ai',
+  COMPONENT_LIBRARY: '/component-library'
 } as const;
 
 // Configuración de la aplicación

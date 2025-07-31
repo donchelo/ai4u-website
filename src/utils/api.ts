@@ -6,6 +6,12 @@ const MAKE_API_CONFIG = {
   apiToken: process.env.REACT_APP_MAKE_API_TOKEN || '',
 };
 
+// Debug: Verificar variables de entorno (solo en desarrollo)
+if (process.env.NODE_ENV === 'development') {
+  console.log('REACT_APP_MAKE_WEBHOOK_URL:', process.env.REACT_APP_MAKE_WEBHOOK_URL);
+  console.log('MAKE_API_CONFIG.webhookUrl:', MAKE_API_CONFIG.webhookUrl);
+}
+
 // Interfaz para los mensajes
 export interface ChatMessage {
   id: string;
@@ -28,19 +34,16 @@ export const sendMessageToMake = async (
   message: string, 
   sessionId?: string
 ): Promise<MakeResponse> => {
+  const finalSessionId = sessionId || `session_${Date.now()}`;
+
+  console.log('🚀 Enviando request a Make.com:', {
+    message,
+    sessionId: finalSessionId,
+    timestamp: new Date().toISOString(),
+    url: MAKE_API_CONFIG.webhookUrl
+  });
+
   try {
-    if (!MAKE_API_CONFIG.webhookUrl) {
-      throw new Error('Webhook URL no configurada');
-    }
-
-    const payload = {
-      message,
-      sessionId: sessionId || `session_${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      url: window.location.href,
-    };
-
     const response = await fetch(MAKE_API_CONFIG.webhookUrl, {
       method: 'POST',
       headers: {
@@ -49,20 +52,69 @@ export const sendMessageToMake = async (
           'Authorization': `Bearer ${MAKE_API_CONFIG.apiToken}`
         }),
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        message,
+        sessionId: finalSessionId,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        url: window.location.href
+      })
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    console.log('📥 Respuesta de Make.com:', {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries())
+    });
+
+    if (response.status === 429) {
+      console.error('❌ Rate limit detectado, usando respuesta fallback');
+      return {
+        success: false,
+        error: 'rate_limit',
+      };
     }
 
-    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    let data;
+    try {
+      // Primero intentamos obtener el texto de la respuesta
+      const textResponse = await response.text();
+      console.log('📄 Respuesta como texto:', textResponse);
+      
+      // Luego intentamos parsearlo como JSON
+      try {
+        data = JSON.parse(textResponse);
+        console.log('✅ Datos parseados:', data);
+      } catch (parseError) {
+        console.error('💥 Error parsing JSON, intentando limpiar:', parseError);
+        // Intentamos limpiar caracteres de control y parsear de nuevo
+        const cleanedResponse = textResponse.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+        try {
+          data = JSON.parse(cleanedResponse);
+          console.log('🧹 Respuesta limpiada y parseada:', data);
+        } catch (cleanError) {
+          console.error('💥 Error final parseando JSON:', cleanError);
+          // Si no podemos parsear, usamos la respuesta de texto directamente
+          data = { message: textResponse };
+        }
+      }
+    } catch (textError) {
+      console.error('💥 Error obteniendo texto de respuesta:', textError);
+      throw new Error('Error al procesar la respuesta del servidor');
+    }
+    
     return {
       success: true,
+      message: data?.message || data,
       data,
     };
-  } catch (error) {
-    console.error('Error sending message to Make.com:', error);
+    
+  } catch (error: any) {
+    console.error('💥 Error completo:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Error desconocido',

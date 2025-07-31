@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { 
   Box, 
   Fab, 
@@ -42,48 +42,77 @@ const ChatButton: React.FC = () => {
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [lastSentMessage, setLastSentMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = useCallback(() => setOpen(true), []);
+  const handleClose = useCallback(() => setOpen(false), []);
 
   // Función para hacer scroll al final de los mensajes
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   // Scroll al final cuando se agregan nuevos mensajes
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  const sendMessage = async () => {
-    if (!inputText.trim()) return;
+  const sendMessage = useCallback(async () => {
+    const trimmedInput = inputText.trim();
+    if (!trimmedInput || isLoading || trimmedInput === lastSentMessage) return;
+    
+    // Validación de entrada
+    if (trimmedInput.length > 500) {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        text: '⚠️ El mensaje es demasiado largo. Por favor, mantén tu mensaje bajo 500 caracteres.',
+        isUser: false,
+        timestamp: new Date(),
+        sessionId
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputText,
+      text: inputText.trim(),
       isUser: true,
       timestamp: new Date(),
       sessionId
     };
 
     setMessages(prev => [...prev, userMessage]);
+    setLastSentMessage(trimmedInput);
     setInputText('');
     setIsLoading(true);
 
     try {
-      // Intentar enviar a Make.com
-      const response = await sendMessageToMake(inputText, sessionId);
+      const response = await sendMessageToMake(trimmedInput, sessionId);
       
       let botResponse: string;
       
       if (response.success && response.data?.message) {
-        // Respuesta exitosa de Make.com
         botResponse = response.data.message;
+        if (process.env.NODE_ENV === 'development') {
+          console.log('✅ Usando respuesta de Make.com:', response.data.message);
+        }
+      } else if (response.success && response.data && typeof response.data === 'string') {
+        botResponse = response.data;
+        if (process.env.NODE_ENV === 'development') {
+          console.log('✅ Usando respuesta directa de Make.com:', response.data);
+        }
+      } else if (response.error === 'rate_limit') {
+        if (process.env.NODE_ENV === 'development') {
+          console.log('⚠️ Rate limit detectado, usando fallback');
+        }
+        botResponse = getFallbackResponse(trimmedInput);
       } else {
-        // Usar respuesta de fallback
-        botResponse = getFallbackResponse(inputText);
+        if (process.env.NODE_ENV === 'development') {
+          console.log('⚠️ Sin respuesta válida de Make.com, usando fallback:', response);
+        }
+        botResponse = getFallbackResponse(trimmedInput);
       }
 
       const botMessage: Message = {
@@ -98,10 +127,11 @@ const ChatButton: React.FC = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       
-      // Respuesta de error
+      let errorText = 'Lo siento, estoy teniendo problemas técnicos. Por favor, intenta de nuevo en unos momentos.';
+      
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Lo siento, estoy teniendo problemas técnicos. Por favor, intenta de nuevo en unos momentos o contacta directamente con nuestro equipo.',
+        text: errorText,
         isUser: false,
         timestamp: new Date(),
         sessionId
@@ -111,14 +141,14 @@ const ChatButton: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [inputText, isLoading, sessionId, lastSentMessage]);
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
+  const handleKeyPress = useCallback((event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !event.shiftKey && !isLoading) {
       event.preventDefault();
       sendMessage();
     }
-  };
+  }, [sendMessage, isLoading]);
 
   return (
     <>
@@ -302,16 +332,31 @@ const ChatButton: React.FC = () => {
             sx={{
               p: 2,
               borderTop: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
-              display: 'flex',
-              gap: 1,
-              alignItems: 'flex-end',
             }}
           >
+            {/* Contador de caracteres */}
+            {inputText.length > 400 && (
+              <Typography 
+                variant="caption" 
+                color={inputText.length > 500 ? "error" : "warning.main"}
+                sx={{ mb: 1, display: 'block', textAlign: 'right' }}
+              >
+                {inputText.length}/500
+              </Typography>
+            )}
+            
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 1,
+                alignItems: 'flex-end',
+              }}
+            >
             <TextField
               fullWidth
               multiline
               maxRows={4}
-              placeholder="Escribe tu mensaje..."
+              placeholder={isLoading ? "Esperando respuesta..." : "Escribe tu mensaje..."}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
@@ -342,6 +387,7 @@ const ChatButton: React.FC = () => {
             >
               <SendIcon />
             </IconButton>
+            </Box>
           </Box>
         </DialogContent>
       </Dialog>
