@@ -1,4 +1,13 @@
 import React, { ReactNode } from 'react';
+import { 
+  Box, 
+  Container as MuiContainer, 
+  Grid as MuiGrid, 
+  Stack as MuiStack,
+  Paper,
+  useTheme,
+  styled
+} from '@mui/material';
 import { H1, H2, H3, BodyText } from './Typography';
 
 interface PageLayoutProps {
@@ -20,9 +29,33 @@ interface SectionProps {
 interface ContainerProps {
   children?: ReactNode;
   className?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl';
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false;
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
+
+// Styled components para glassmorfismo
+const GlassmorphismBox = styled(Box)(({ theme }) => ({
+  background: 'rgba(255, 255, 255, 0.1)',
+  backdropFilter: 'blur(20px)',
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+  borderRadius: theme.spacing(4),
+  padding: theme.spacing(4),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: 'rgba(255, 255, 255, 0.15)',
+    transform: 'translateY(-2px)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+  },
+}));
+
+const FuturisticBox = styled(Box)(({ theme }) => ({
+  background: 'rgba(0, 0, 0, 0.2)',
+  backdropFilter: 'blur(20px)',
+  border: '1px solid rgba(255, 255, 255, 0.15)',
+  borderRadius: theme.spacing(4),
+  padding: theme.spacing(4),
+  color: '#FFFFFF',
+}));
 
 // Componente Layout principal
 const PageLayout = ({ 
@@ -32,50 +65,86 @@ const PageLayout = ({
   className = '', 
   variant = 'default' 
 }: PageLayoutProps) => {
-  const getLayoutClasses = () => {
+  const theme = useTheme();
+
+  const getLayoutStyles = () => {
     switch (variant) {
       case 'glassmorphism':
-        return "min-h-screen bg-gradient-to-br from-gray-50 to-gray-100";
+        return {
+          minHeight: '100vh',
+          background: 'linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)',
+        };
       case 'futuristic':
-        return "min-h-screen bg-gradient-to-br from-graphene-black to-gray-900 text-white";
+        return {
+          minHeight: '100vh',
+          background: 'linear-gradient(135deg, #0A0A0A 0%, #1f2937 100%)',
+          color: '#FFFFFF',
+        };
       default:
-        return "min-h-screen bg-white";
+        return {
+          minHeight: '100vh',
+          background: '#FFFFFF',
+        };
     }
   };
 
-  const getHeaderClasses = () => {
+  const getHeaderStyles = () => {
     switch (variant) {
       case 'glassmorphism':
-        return "relative bg-white/20 backdrop-blur-xl border-b border-white/30";
+        return {
+          background: 'rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+        };
       case 'futuristic':
-        return "relative bg-black/20 backdrop-blur-xl border-b border-white/15";
+        return {
+          background: 'rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+        };
       default:
-        return "bg-white border-b border-gray-200";
+        return {
+          background: '#FFFFFF',
+          borderBottom: `1px solid ${theme.palette.divider}`,
+        };
     }
   };
 
   return (
-    <div className={`${getLayoutClasses()} ${className}`}>
+    <Box sx={getLayoutStyles()} className={className}>
       {(title || subtitle) && (
-        <header className={getHeaderClasses()}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="text-center">
+        <Box component="header" sx={getHeaderStyles()}>
+          <MuiContainer maxWidth="xl" sx={{ py: 6 }}>
+            <Box sx={{ textAlign: 'center' }}>
               {title && (
-                <H1 className="mb-6 bg-gradient-to-r from-neon-blaze to-digital-coral bg-clip-text text-transparent">
+                <H1 sx={{ 
+                  mb: 3,
+                  background: 'linear-gradient(45deg, #FF5C00 30%, #FF7477 90%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
                   {title}
                 </H1>
               )}
               {subtitle && (
-                <BodyText className="text-xl text-gray-600 max-w-3xl mx-auto">
+                <BodyText sx={{ 
+                  fontSize: '1.25rem',
+                  color: variant === 'futuristic' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
+                  maxWidth: 'md',
+                  mx: 'auto',
+                }}>
                   {subtitle}
                 </BodyText>
               )}
-            </div>
-          </div>
-        </header>
+            </Box>
+          </MuiContainer>
+        </Box>
       )}
-      <main className="flex flex-col">{children}</main>
-    </div>
+      <Box component="main" sx={{ display: 'flex', flexDirection: 'column' }}>
+        {children}
+      </Box>
+    </Box>
   );
 };
 
@@ -87,35 +156,64 @@ const Section = ({
   className = '', 
   variant = 'default' 
 }: SectionProps) => {
-  const getSectionClasses = () => {
+  const theme = useTheme();
+
+  const getSectionStyles = () => {
     switch (variant) {
       case 'glassmorphism':
-        return "relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8";
+        return {
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: theme.spacing(4),
+          padding: theme.spacing(4),
+        };
       case 'futuristic':
-        return "relative bg-black/20 backdrop-blur-xl border border-white/15 rounded-3xl p-8";
+        return {
+          background: 'rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: theme.spacing(4),
+          padding: theme.spacing(4),
+        };
       default:
-        return "bg-white rounded-lg border border-gray-200 p-6";
+        return {
+          background: theme.palette.background.paper,
+          borderRadius: theme.spacing(2),
+          border: `1px solid ${theme.palette.divider}`,
+          padding: theme.spacing(3),
+        };
     }
   };
 
   return (
-    <section className={`${getSectionClasses()} ${className}`}>
+    <Box sx={getSectionStyles()} className={className}>
       {(title || description) && (
-        <div className="mb-8">
+        <Box sx={{ mb: 4 }}>
           {title && (
-            <H2 className="mb-4 bg-gradient-to-r from-neon-blaze to-digital-coral bg-clip-text text-transparent">
+            <H2 sx={{ 
+              mb: 2,
+              background: 'linear-gradient(45deg, #FF5C00 30%, #FF7477 90%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
               {title}
             </H2>
           )}
           {description && (
-            <BodyText className="text-lg text-gray-600 mb-8">
+            <BodyText sx={{ 
+              fontSize: '1.125rem',
+              color: variant === 'futuristic' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
+              mb: 4,
+            }}>
               {description}
             </BodyText>
           )}
-        </div>
+        </Box>
       )}
       {children}
-    </section>
+    </Box>
   );
 };
 
@@ -123,36 +221,28 @@ const Section = ({
 const Container = ({ 
   children, 
   className = '', 
-  maxWidth = '7xl', 
+  maxWidth = 'xl', 
   padding = 'lg' 
 }: ContainerProps) => {
-  const getMaxWidthClasses = () => {
-    switch (maxWidth) {
-      case 'sm': return 'max-w-sm';
-      case 'md': return 'max-w-md';
-      case 'lg': return 'max-w-lg';
-      case 'xl': return 'max-w-xl';
-      case '2xl': return 'max-w-2xl';
-      case '7xl': return 'max-w-7xl';
-      default: return 'max-w-7xl';
-    }
-  };
-
-  const getPaddingClasses = () => {
+  const getPaddingStyles = () => {
     switch (padding) {
-      case 'none': return '';
-      case 'sm': return 'px-4 py-4';
-      case 'md': return 'px-6 py-6';
-      case 'lg': return 'px-4 sm:px-6 lg:px-8 py-8';
-      case 'xl': return 'px-4 sm:px-6 lg:px-8 py-12';
-      default: return 'px-4 sm:px-6 lg:px-8 py-8';
+      case 'none': return {};
+      case 'sm': return { px: 2, py: 2 };
+      case 'md': return { px: 3, py: 3 };
+      case 'lg': return { px: { xs: 2, sm: 3, lg: 4 }, py: 4 };
+      case 'xl': return { px: { xs: 2, sm: 3, lg: 4 }, py: 6 };
+      default: return { px: { xs: 2, sm: 3, lg: 4 }, py: 4 };
     }
   };
 
   return (
-    <div className={`${getMaxWidthClasses()} mx-auto ${getPaddingClasses()} ${className}`}>
+    <MuiContainer 
+      maxWidth={maxWidth} 
+      sx={getPaddingStyles()} 
+      className={className}
+    >
       {children}
-    </div>
+    </MuiContainer>
   );
 };
 
@@ -168,32 +258,36 @@ const Grid = ({
   gap?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 }) => {
-  const getColsClasses = () => {
-    switch (cols) {
-      case 1: return 'grid-cols-1';
-      case 2: return 'grid-cols-1 md:grid-cols-2';
-      case 3: return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
-      case 4: return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4';
-      case 6: return 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6';
-      case 12: return 'grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12';
-      default: return 'grid-cols-1';
-    }
-  };
-
-  const getGapClasses = () => {
+  const getGapStyles = () => {
     switch (gap) {
-      case 'sm': return 'gap-4';
-      case 'md': return 'gap-6';
-      case 'lg': return 'gap-8';
-      case 'xl': return 'gap-12';
-      default: return 'gap-8';
+      case 'sm': return 2;
+      case 'md': return 3;
+      case 'lg': return 4;
+      case 'xl': return 6;
+      default: return 4;
     }
   };
 
   return (
-    <div className={`grid ${getColsClasses()} ${getGapClasses()} ${className}`}>
-      {children}
-    </div>
+    <MuiGrid 
+      container 
+      spacing={getGapStyles()} 
+      className={className}
+    >
+      {React.Children.map(children, (child, index) => (
+        <MuiGrid 
+          item 
+          xs={12} 
+          sm={cols >= 2 ? 6 : 12} 
+          md={cols >= 3 ? 4 : cols >= 2 ? 6 : 12} 
+          lg={cols >= 4 ? 3 : cols >= 3 ? 4 : cols >= 2 ? 6 : 12}
+          xl={cols >= 6 ? 2 : cols >= 4 ? 3 : cols >= 3 ? 4 : cols >= 2 ? 6 : 12}
+          key={index}
+        >
+          {child}
+        </MuiGrid>
+      ))}
+    </MuiGrid>
   );
 };
 
@@ -207,20 +301,23 @@ const Stack = ({
   spacing?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 }) => {
-  const getSpacingClasses = () => {
+  const getSpacingStyles = () => {
     switch (spacing) {
-      case 'sm': return 'space-y-4';
-      case 'md': return 'space-y-6';
-      case 'lg': return 'space-y-8';
-      case 'xl': return 'space-y-12';
-      default: return 'space-y-6';
+      case 'sm': return 2;
+      case 'md': return 3;
+      case 'lg': return 4;
+      case 'xl': return 6;
+      default: return 3;
     }
   };
 
   return (
-    <div className={`${getSpacingClasses()} ${className}`}>
+    <MuiStack 
+      spacing={getSpacingStyles()} 
+      className={className}
+    >
       {children}
-    </div>
+    </MuiStack>
   );
 };
 

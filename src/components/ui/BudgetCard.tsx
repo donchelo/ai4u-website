@@ -1,4 +1,20 @@
 import React from 'react';
+import { 
+  Box, 
+  Card, 
+  CardContent, 
+  Typography, 
+  IconButton, 
+  Avatar,
+  Chip,
+  useTheme,
+  styled
+} from '@mui/material';
+import { 
+  Person as PersonIcon,
+  MoreVert as MoreVertIcon,
+  Add as AddIcon
+} from '@mui/icons-material';
 
 interface BudgetCategory {
   name: string;
@@ -14,6 +30,38 @@ interface BudgetCardProps {
   onAddCategory?: () => void;
 }
 
+// Styled components
+const StyledCard = styled(Card)(({ theme }) => ({
+  borderRadius: theme.spacing(3),
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+  maxWidth: 400,
+  margin: '0 auto',
+  background: theme.palette.background.paper,
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+  },
+}));
+
+const MainCategoryBox = styled(Box)(({ theme }) => ({
+  background: '#FEF3C7', // yellow-400 equivalent
+  borderRadius: theme.spacing(2),
+  padding: theme.spacing(2),
+  position: 'relative',
+  marginBottom: theme.spacing(3),
+}));
+
+const CategoryItem = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: theme.spacing(1.5),
+  background: theme.palette.grey[100],
+  borderRadius: theme.spacing(1),
+  marginBottom: theme.spacing(1.5),
+}));
+
 const BudgetCard: React.FC<BudgetCardProps> = ({
   title,
   subtitle,
@@ -21,75 +69,159 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
   totalAmount,
   onAddCategory
 }) => {
+  const theme = useTheme();
+
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-sm mx-auto">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-            {subtitle && (
-              <p className="text-sm text-gray-500">{subtitle}</p>
-            )}
-          </div>
-        </div>
-        <button className="text-gray-400 hover:text-gray-600">
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Main Category */}
-      <div className="mb-6">
-        <div className="bg-yellow-400 rounded-xl p-4 relative">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-gray-800">FINANCIAL</span>
-            <span className="text-xs font-medium text-gray-800">500.0</span>
-          </div>
-          <div className="flex items-center justify-center mb-2">
-            <button 
-              onClick={onAddCategory}
-              className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-gray-700 transition-colors"
-            >
-              +
-            </button>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-gray-800">BUDGET</span>
-            <span className="text-xs font-medium text-gray-800">500.0</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Categories List */}
-      <div className="space-y-3">
-        {categories.map((category, index) => (
-          <div 
-            key={index}
-            className="flex items-center justify-between p-3 bg-gray-100 rounded-lg"
+    <StyledCard>
+      <CardContent sx={{ p: 3 }}>
+        {/* Header */}
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          mb: 3 
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Avatar sx={{ 
+              bgcolor: theme.palette.grey[200],
+              width: 40,
+              height: 40
+            }}>
+              <PersonIcon sx={{ color: theme.palette.grey[600] }} />
+            </Avatar>
+            <Box>
+              <Typography variant="h6" sx={{ 
+                fontWeight: 600,
+                color: theme.palette.text.primary
+              }}>
+                {title}
+              </Typography>
+              {subtitle && (
+                <Typography variant="body2" sx={{ 
+                  color: theme.palette.text.secondary
+                }}>
+                  {subtitle}
+                </Typography>
+              )}
+            </Box>
+          </Box>
+          <IconButton 
+            size="small"
+            sx={{ color: theme.palette.grey[400] }}
           >
-            <span className="text-sm font-medium text-gray-800">{category.name}</span>
-            <span className="text-sm font-medium text-gray-800">{category.amount.toFixed(1)}</span>
-          </div>
-        ))}
-      </div>
+            <MoreVertIcon />
+          </IconButton>
+        </Box>
 
-      {/* Total */}
-      {totalAmount && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-gray-800">Total</span>
-            <span className="text-lg font-bold text-gray-900">${totalAmount.toFixed(1)}</span>
-          </div>
-        </div>
-      )}
-    </div>
+        {/* Main Category */}
+        <MainCategoryBox>
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between', 
+            mb: 1 
+          }}>
+            <Typography variant="caption" sx={{ 
+              fontWeight: 500,
+              color: theme.palette.text.primary
+            }}>
+              FINANCIAL
+            </Typography>
+            <Typography variant="caption" sx={{ 
+              fontWeight: 500,
+              color: theme.palette.text.primary
+            }}>
+              500.0
+            </Typography>
+          </Box>
+          
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            mb: 1 
+          }}>
+            <IconButton
+              onClick={onAddCategory}
+              sx={{
+                width: 32,
+                height: 32,
+                bgcolor: theme.palette.grey[800],
+                color: '#FFFFFF',
+                '&:hover': {
+                  bgcolor: theme.palette.grey[700],
+                },
+              }}
+            >
+              <AddIcon />
+            </IconButton>
+          </Box>
+          
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between' 
+          }}>
+            <Typography variant="caption" sx={{ 
+              fontWeight: 500,
+              color: theme.palette.text.primary
+            }}>
+              BUDGET
+            </Typography>
+            <Typography variant="caption" sx={{ 
+              fontWeight: 500,
+              color: theme.palette.text.primary
+            }}>
+              500.0
+            </Typography>
+          </Box>
+        </MainCategoryBox>
+
+        {/* Categories List */}
+        <Box sx={{ mb: 2 }}>
+          {categories.map((category, index) => (
+            <CategoryItem key={index}>
+              <Typography variant="body2" sx={{ 
+                fontWeight: 500,
+                color: theme.palette.text.primary
+              }}>
+                {category.name}
+              </Typography>
+              <Typography variant="body2" sx={{ 
+                fontWeight: 500,
+                color: theme.palette.text.primary
+              }}>
+                {category.amount.toFixed(1)}
+              </Typography>
+            </CategoryItem>
+          ))}
+        </Box>
+
+        {/* Total */}
+        {totalAmount && (
+          <Box sx={{ 
+            pt: 2, 
+            borderTop: `1px solid ${theme.palette.divider}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
+            <Typography variant="body2" sx={{ 
+              fontWeight: 600,
+              color: theme.palette.text.primary
+            }}>
+              Total
+            </Typography>
+            <Typography variant="h6" sx={{ 
+              fontWeight: 700,
+              color: theme.palette.text.primary
+            }}>
+              ${totalAmount.toFixed(1)}
+            </Typography>
+          </Box>
+        )}
+      </CardContent>
+    </StyledCard>
   );
 };
 

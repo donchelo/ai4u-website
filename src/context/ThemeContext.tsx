@@ -3,18 +3,24 @@ import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Com
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// Paleta de colores AI4U - Orden secuencial: cream, black, orange, blue, gray
+// Paleta de colores AI4U - Basada en brandIdentity.ts
 const AI4U_PALETTE = {
-	// 1. Cream - Fondo claro
-	cream: '#FFF8E1',              // Fondo en light mode
-	// 2. Black - Fondo oscuro
-	black: '#121212',              // Fondo en dark mode
-	// 3. Orange - Acción principal
-	orange: '#FF4500',             // Llamados a la acción
-	// 4. Blue - Acento
-	blue: '#5B92E5',               // Detalles y contraste
-	// 5. Gray - Detalles
-	gray: '#91A3B0',               // Detalles y contraste secundario
+	// Colores primarios
+	neonBlaze: '#FF5C00',          // Más ácido, más intenso. Ideal para dark UI y botones activos
+	// Colores secundarios
+	digitalCoral: '#FF7477',       // Más limpio y vibrante. Ideal para dashboards humanos o wellness
+	frostSignal: '#DFF7EB',        // Más frío y sintético. Ideal para fondos con estética futurista
+	grapheneBlack: '#0A0A0A',      // Negro profundo, absoluto. Para interfaces con estética cyber
+	quantumBlue: '#1FA9F6',        // Azul eléctrico, más saturado. Transmite data y conectividad
+	// Colores de acento
+	techSlate: '#7D848B',          // Gris técnico con tinte metálico. Para bordes, sliders, skeletons
+	cyberOlive: '#B6CA40',         // Verde lima metálico. Para resaltar naturalezas en tecnología verde
+	deepNeuralTeal: '#2B7A78',     // Más saturado, inspirado en UI de sistemas autónomos
+	// Fondos
+	lightBackground: '#FFFFFF',
+	darkBackground: '#0A0A0A',
+	lightPaper: '#F8F9FA',
+	darkPaper: '#1A1A1A',
 };
 
 // Fuentes para código
@@ -97,40 +103,38 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
 				textTransform: 'none',
 				boxShadow: 'none',
 			},
-			// Botones primarios (naranja) para llamados a la acción
+			// Botones primarios (neon blaze) para llamados a la acción
 			containedPrimary: {
-				backgroundColor: AI4U_PALETTE.orange,
-				color: mode === 'light' ? '#FFFFFF' : AI4U_PALETTE.cream,
-				'&:hover': {
-					backgroundColor: mode === 'light' 
-						? 'rgba(255, 69, 0, 0.9)'
-						: 'rgba(255, 69, 0, 0.8)',
-					boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-				},
-			},
-			// Botones secundarios (azul) para acciones secundarias
-			containedSecondary: {
-				backgroundColor: AI4U_PALETTE.blue,
+				backgroundColor: AI4U_PALETTE.neonBlaze,
 				color: '#FFFFFF',
 				'&:hover': {
-					backgroundColor: 'rgba(91, 146, 229, 0.9)',
-					boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+					backgroundColor: '#E54A00', // Versión más oscura de neon blaze
+					boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
 				},
 			},
-			// Botones terciarios (gris) para acciones menos importantes
+			// Botones secundarios (quantum blue) para acciones secundarias
+			containedSecondary: {
+				backgroundColor: AI4U_PALETTE.quantumBlue,
+				color: '#FFFFFF',
+				'&:hover': {
+					backgroundColor: '#1B8BD6', // Versión más oscura de quantum blue
+					boxShadow: '0 4px 8px rgba(31, 169, 246, 0.3)',
+				},
+			},
+			// Botones terciarios (tech slate) para acciones menos importantes
 			outlined: {
 				borderWidth: '1px',
-				borderColor: mode === 'light' ? AI4U_PALETTE.gray : '#777777',
-				color: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.cream,
+				borderColor: mode === 'light' ? AI4U_PALETTE.techSlate : '#777777',
+				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
 				'&:hover': {
 					borderWidth: '1px',
 					backgroundColor: mode === 'light' 
-						? 'rgba(145, 163, 176, 0.1)' 
-						: 'rgba(145, 163, 176, 0.05)',
+						? 'rgba(125, 132, 139, 0.1)' 
+						: 'rgba(125, 132, 139, 0.05)',
 				},
 			},
 			text: {
-				color: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.cream,
+				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
 				'&:hover': {
 					backgroundColor: mode === 'light' 
 						? 'rgba(0, 0, 0, 0.04)' 
@@ -153,7 +157,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
 		styleOverrides: {
 			root: {
 				transition: 'all 0.2s ease-in-out',
-				color: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.cream,
+				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
 				'&:hover': {
 					backgroundColor: mode === 'light' 
 						? 'rgba(0, 0, 0, 0.04)' 
@@ -161,15 +165,15 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
 				},
 			},
 			colorPrimary: {
-				color: AI4U_PALETTE.orange,
+				color: AI4U_PALETTE.neonBlaze,
 				'&:hover': {
-					backgroundColor: 'rgba(255, 69, 0, 0.08)',
+					backgroundColor: 'rgba(255, 92, 0, 0.08)',
 				},
 			},
 			colorSecondary: {
-				color: AI4U_PALETTE.blue,
+				color: AI4U_PALETTE.quantumBlue,
 				'&:hover': {
-					backgroundColor: 'rgba(91, 146, 229, 0.08)',
+					backgroundColor: 'rgba(31, 169, 246, 0.08)',
 				},
 			},
 		},
@@ -186,7 +190,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
 	MuiPaper: {
 		styleOverrides: {
 			root: {
-				backgroundColor: mode === 'light' ? '#FFFFFF' : '#1E1E1E',
+				backgroundColor: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkPaper,
 			},
 		},
 	},
@@ -226,25 +230,29 @@ const getPalette = (mode: PaletteMode) => ({
 	mode,
 	// Colores principales
 	primary: {
-		main: AI4U_PALETTE.orange, // Llamados a la acción (naranja)
+		main: AI4U_PALETTE.neonBlaze, // Llamados a la acción (neon blaze)
+		light: AI4U_PALETTE.digitalCoral,
+		dark: '#E54A00',
 		contrastText: '#FFFFFF',
 	},
 	secondary: {
-		main: AI4U_PALETTE.blue, // Detalles y contraste (azul)
+		main: AI4U_PALETTE.quantumBlue, // Detalles y contraste (quantum blue)
+		light: '#4FC3F7',
+		dark: AI4U_PALETTE.deepNeuralTeal,
 		contrastText: '#FFFFFF',
 	},
 	// Fondos y textos
 	background: {
-		default: mode === 'light' ? AI4U_PALETTE.cream : AI4U_PALETTE.black, // Fondo según el modo
-		paper: mode === 'light' ? '#FFFFFF' : '#1E1E1E',
+		default: mode === 'light' ? AI4U_PALETTE.lightBackground : AI4U_PALETTE.darkBackground,
+		paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkPaper,
 	},
 	text: {
-		primary: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.cream, // Texto principal según el modo
-		secondary: mode === 'light' ? AI4U_PALETTE.gray : '#A0A0A0', // Texto secundario
+		primary: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
+		secondary: mode === 'light' ? AI4U_PALETTE.techSlate : '#A0A0A0',
 	},
 	// Colores de acción
 	action: {
-		active: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.cream,
+		active: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
 		hover: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
 		selected: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
 		disabled: mode === 'light' ? 'rgba(0, 0, 0, 0.26)' : 'rgba(255, 255, 255, 0.3)',
@@ -258,7 +266,7 @@ const getPalette = (mode: PaletteMode) => ({
 		main: '#4caf50',
 	},
 	info: {
-		main: AI4U_PALETTE.blue,
+		main: AI4U_PALETTE.quantumBlue,
 	},
 	warning: {
 		main: '#ff9800',
