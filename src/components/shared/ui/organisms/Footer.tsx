@@ -18,8 +18,10 @@ const Footer = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
 
-  // Logo para fondos oscuros (footer siempre tiene fondo oscuro)
-  const logoPath = '/assets/images/ai4u-logo-for-dark-background.png';
+  // Logo según el tema (footer siempre tiene fondo oscuro)
+  const logoPath = mode === 'light' 
+    ? '/assets/images/Logo V3 - Crema.png'
+    : '/assets/images/Logo V3 - Negro.png';
 
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
