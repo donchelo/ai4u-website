@@ -70,7 +70,7 @@ const Services: React.FC = () => {
   return (
     <Box sx={{ 
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #FFF8E1 0%, #DFF7EB 50%, #E3F2FD 100%)',
+      background: '#FFFFFF',
       position: 'relative'
     }}>
       {/* Hero Section con Glassmorfismo */}
@@ -79,25 +79,13 @@ const Services: React.FC = () => {
         py: { xs: 8, md: 12 },
         overflow: 'hidden'
       }}>
-        {/* Background Elements */}
-        <Box sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at 20% 80%, rgba(255, 92, 0, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(31, 169, 246, 0.1) 0%, transparent 50%)',
-          zIndex: 0
-        }} />
+
         
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <H1 sx={{ 
               mb: 3,
-              background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#000000',
               fontSize: { xs: 'clamp(2.5rem, 8vw, 4rem)', md: 'clamp(3rem, 6vw, 4.5rem)' },
               fontWeight: 900,
               letterSpacing: '-0.02em'
@@ -135,10 +123,7 @@ const Services: React.FC = () => {
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#000000',
             fontSize: { xs: '2rem', md: '2.5rem' },
             fontWeight: 700
           }}>
@@ -149,11 +134,10 @@ const Services: React.FC = () => {
             <Grid item xs={12} md={8}>
               <Box sx={{
                 p: 4,
-                background: 'rgba(255, 255, 255, 0.9)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                borderRadius: 4,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
+                background: '#FFFFFF',
+                border: '1px solid #E5E5E5',
+                borderRadius: 2,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
               }}>
                 <ProcessStep 
                   number={1} 
@@ -197,10 +181,7 @@ const Services: React.FC = () => {
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#000000',
             fontSize: { xs: '2rem', md: '2.5rem' },
             fontWeight: 700
           }}>
@@ -245,10 +226,9 @@ const Services: React.FC = () => {
               textAlign: 'center', 
               py: 8,
               p: 4,
-              background: 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: 4
+              background: '#FFFFFF',
+              border: '1px solid #E5E5E5',
+              borderRadius: 2
             }}>
               <BodyText sx={{ 
                 fontSize: '1.2rem', 
@@ -269,28 +249,24 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
-      {/* CTA Section con Glassmorfismo */}
+      {/* CTA Section */}
       <Box sx={{ 
         py: 8,
         position: 'relative',
-        background: 'linear-gradient(135deg, rgba(255, 92, 0, 0.05) 0%, rgba(255, 116, 119, 0.05) 100%)'
+        background: '#F8F8F8'
       }}>
         <Container maxWidth="lg">
           <Box sx={{
             p: 6,
-            background: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            borderRadius: 4,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            background: '#FFFFFF',
+            border: '1px solid #E5E5E5',
+            borderRadius: 2,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
             textAlign: 'center'
           }}>
             <H2 sx={{ 
               mb: 3,
-              background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#000000',
               fontSize: { xs: '1.8rem', md: '2.2rem' },
               fontWeight: 700
             }}>

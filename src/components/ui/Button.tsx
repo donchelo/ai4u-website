@@ -16,24 +16,26 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   transition: 'all 0.3s ease',
   boxShadow: 'none',
   
-  // Estilos para variante primaria
+  // Estilos para variante primaria - ULTRA DESTACADO
   '&.MuiButton-containedPrimary': {
-    backgroundColor: 'transparent',
-    color: theme.palette.primary.main,
-    border: `1px solid ${theme.palette.primary.main}`,
+    backgroundColor: '#FF5C00',
+    color: '#FFFFFF',
+    border: 'none',
+    fontWeight: 700,
     '&:hover': {
-      backgroundColor: theme.palette.action.hover,
-      boxShadow: 'none',
+      backgroundColor: '#E54A00',
+      boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
     },
   },
   
   // Estilos para variante secundaria
   '&.MuiButton-containedSecondary': {
-    backgroundColor: 'transparent',
-    color: theme.palette.secondary.main,
-    border: `1px solid ${theme.palette.secondary.main}`,
+    backgroundColor: '#FFFFFF',
+    color: '#000000',
+    border: '1px solid #E5E5E5',
     '&:hover': {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: '#F8F8F8',
+      borderColor: '#D0D0D0',
       boxShadow: 'none',
     },
   },
@@ -41,10 +43,11 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   // Estilos para variante outline
   '&.MuiButton-outlined': {
     backgroundColor: 'transparent',
-    borderWidth: '1px',
+    color: '#000000',
+    border: '1px solid #E5E5E5',
     '&:hover': {
-      backgroundColor: theme.palette.action.hover,
-      borderWidth: '1px',
+      backgroundColor: '#F8F8F8',
+      borderColor: '#D0D0D0',
       boxShadow: 'none',
     },
   },

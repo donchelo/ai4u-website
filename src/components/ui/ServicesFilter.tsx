@@ -46,23 +46,10 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
   return (
     <Box sx={{
       p: 4,
-      background: 'rgba(255, 255, 255, 0.8)',
-      backdropFilter: 'blur(20px)',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      borderRadius: 4,
-      boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-      position: 'relative',
-      overflow: 'hidden',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '2px',
-        background: 'linear-gradient(90deg, #FF5C00 0%, #FF7477 100%)',
-        zIndex: 1
-      }
+      background: '#FFFFFF',
+      border: '1px solid #E5E5E5',
+      borderRadius: 2,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
     }}>
       {/* Search and Controls */}
       <Box sx={{ mb: 4 }}>
@@ -74,34 +61,33 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               placeholder="Buscar servicios por nombre, descripción o tags..."
               value={searchValue}
               onChange={onSearchChange}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: 3,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary.main',
-                      borderWidth: '2px'
-                    }
-                  },
-                  '&.Mui-focused': {
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary.main',
-                      borderWidth: '2px'
-                    }
-                  }
-                },
-                '& .MuiOutlinedInput-input': {
-                  fontSize: '1rem',
-                  padding: '12px 16px'
-                }
-              }}
+                             sx={{
+                 '& .MuiOutlinedInput-root': {
+                   background: '#FFFFFF',
+                   borderRadius: 2,
+                   transition: 'all 0.3s ease',
+                   '&:hover': {
+                     '& .MuiOutlinedInput-notchedOutline': {
+                       borderColor: '#000000',
+                       borderWidth: '1px'
+                     }
+                   },
+                   '&.Mui-focused': {
+                     '& .MuiOutlinedInput-notchedOutline': {
+                       borderColor: '#000000',
+                       borderWidth: '2px'
+                     }
+                   }
+                 },
+                 '& .MuiOutlinedInput-input': {
+                   fontSize: '1rem',
+                   padding: '12px 16px'
+                 }
+               }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon color="primary" />
+                    <SearchIcon sx={{ color: '#666666' }} />
                   </InputAdornment>
                 ),
               }}
@@ -118,21 +104,19 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               clickable
               icon={<ClearIcon />}
               sx={{
-                background: 'rgba(255, 255, 255, 0.6)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
+                background: '#FFFFFF',
+                border: '1px solid #E5E5E5',
                 '&:hover': {
-                  background: 'rgba(255, 255, 255, 0.8)',
-                  borderColor: 'primary.main'
+                  background: '#F8F8F8',
+                  borderColor: '#000000'
                 }
               }}
             />
             <Chip
               label={`${filteredCount} servicios`}
-              color="primary"
               size="small"
               sx={{
-                background: 'linear-gradient(135deg, #FF5C00 0%, #FF7477 100%)',
+                background: '#000000',
                 color: 'white',
                 fontWeight: 'bold'
               }}
@@ -157,26 +141,23 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               fontSize: '0.9rem',
               fontWeight: 500,
               textTransform: 'none',
-              borderRadius: 3,
+              borderRadius: 2,
               mx: 0.5,
               transition: 'all 0.3s ease',
+              color: '#666666',
               '&:hover': {
-                background: 'rgba(255, 92, 0, 0.05)',
-                transform: 'translateY(-1px)'
+                background: '#F8F8F8',
+                color: '#000000'
               },
               '&.Mui-selected': {
-                background: 'rgba(255, 92, 0, 0.1)',
-                color: 'primary.main',
-                fontWeight: 600,
-                '&:hover': {
-                  background: 'rgba(255, 92, 0, 0.15)'
-                }
+                background: '#F0F0F0',
+                color: '#000000',
+                fontWeight: 600
               }
             },
             '& .MuiTabs-indicator': {
-              height: 3,
-              borderRadius: '2px',
-              background: 'linear-gradient(90deg, #FF5C00 0%, #FF7477 100%)'
+              height: 2,
+              background: '#000000'
             }
           }}
         >
@@ -196,16 +177,16 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             <Box sx={{ fontSize: '0.9rem', color: 'text.secondary', fontWeight: 500 }}>
               Filtros activos:
             </Box>
-            <Chip
-              label={`Búsqueda: "${searchValue}"`}
-              size="small"
-              onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
-              sx={{
-                background: 'rgba(31, 169, 246, 0.1)',
-                color: 'info.main',
-                border: '1px solid rgba(31, 169, 246, 0.3)'
-              }}
-            />
+                          <Chip
+                label={`Búsqueda: "${searchValue}"`}
+                size="small"
+                onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
+                sx={{
+                  background: '#F0F0F0',
+                  color: '#000000',
+                  border: '1px solid #E5E5E5'
+                }}
+              />
           </Stack>
         </Box>
       )}

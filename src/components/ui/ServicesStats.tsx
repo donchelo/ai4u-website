@@ -25,19 +25,19 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
     { 
       value: stats.total, 
       label: 'Servicios', 
-      color: theme.palette.primary.main,
+      color: '#000000',
       description: 'Total disponibles'
     },
     { 
       value: stats.active, 
       label: 'Activos', 
-      color: theme.palette.success.main,
+      color: '#000000',
       description: 'Listos para implementar'
     },
     { 
       value: getCategories().length, 
       label: 'Categorías', 
-      color: theme.palette.info.main,
+      color: '#000000',
       description: 'Especialidades técnicas'
     }
   ];
@@ -50,27 +50,14 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
             <Box sx={{
               p: 4,
               textAlign: 'center',
-              background: 'rgba(255, 255, 255, 0.9)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
+              background: '#FFFFFF',
+              border: '1px solid #E5E5E5',
               borderRadius: 2,
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              position: 'relative',
-              overflow: 'hidden',
               '&:hover': {
                 transform: 'translateY(-2px)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                borderColor: 'rgba(255, 255, 255, 0.5)'
-              },
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '2px',
-                background: stat.color,
-                opacity: 0.8
+                boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+                borderColor: '#D0D0D0'
               }
             }}>
               <H3 sx={{ 

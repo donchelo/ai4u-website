@@ -52,10 +52,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       position: 'relative',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       '&:hover': {
-        transform: 'translateY(-4px)',
+        transform: 'translateY(-2px)',
         '& .service-card-content': {
-          boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-          borderColor: 'rgba(255, 255, 255, 0.4)'
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          borderColor: '#D0D0D0'
         }
       }
     }}>
@@ -68,22 +68,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        background: '#FFFFFF',
+        border: '1px solid #E5E5E5',
         borderRadius: 2,
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '2px',
-          background: service.color,
-          zIndex: 1
-        }
+        overflow: 'hidden'
       }}>
         {/* Status Badge */}
         <Box sx={{ 
@@ -99,10 +88,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             variant={service.status === ServiceStatus.ACTIVE ? 'filled' : 'outlined'}
             sx={{
               background: service.status === ServiceStatus.ACTIVE 
-                ? 'rgba(76, 175, 80, 0.9)' 
-                : 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+                ? '#F0F0F0' 
+                : '#FFFFFF',
+              border: '1px solid #E5E5E5',
+              color: '#666666',
               fontWeight: 500
             }}
           />
@@ -115,10 +104,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }}>
           <H3 sx={{ 
             mb: 1.5,
-            background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#000000',
             fontSize: { xs: '1.3rem', md: '1.5rem' },
             fontWeight: 700,
             lineHeight: 1.3
@@ -162,12 +148,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               {service.benefits.map((benefit, index) => (
                 <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
                   <ListItemIcon sx={{ minWidth: 28 }}>
-                    <CheckCircleOutlineIcon 
-                      sx={{ 
-                        color: service.color,
-                        fontSize: '1.1rem'
-                      }}
-                    />
+                                       <CheckCircleOutlineIcon 
+                     sx={{ 
+                       color: '#666666',
+                       fontSize: '1.1rem'
+                     }}
+                   />
                   </ListItemIcon>
                   <ListItemText 
                     primary={benefit}
@@ -192,18 +178,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 label={tag}
                 size="small"
                 variant="outlined"
-                sx={{ 
-                  fontSize: '0.7rem',
-                  height: 24,
-                  background: 'rgba(255, 255, 255, 0.6)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  '& .MuiChip-label': { px: 1 },
-                  '&:hover': {
-                    background: 'rgba(255, 255, 255, 0.8)',
-                    borderColor: service.color
-                  }
-                }}
+                                 sx={{ 
+                   fontSize: '0.7rem',
+                   height: 24,
+                   background: '#F8F8F8',
+                   border: '1px solid #E5E5E5',
+                   color: '#666666',
+                   '& .MuiChip-label': { px: 1 },
+                   '&:hover': {
+                     background: '#F0F0F0',
+                     borderColor: '#D0D0D0'
+                   }
+                 }}
               />
             ))}
             {service.tags.length > (compact ? 2 : 4) && (
@@ -214,9 +200,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 sx={{ 
                   fontSize: '0.7rem',
                   height: 24,
-                  background: 'rgba(0, 0, 0, 0.1)',
-                  color: 'text.secondary',
-                  backdropFilter: 'blur(10px)'
+                  background: '#E5E5E5',
+                  color: '#666666'
                 }}
               />
             )}
@@ -235,7 +220,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               variant="body2" 
               sx={{ 
                 fontWeight: 'bold',
-                color: service.color,
+                color: '#000000',
                 fontSize: '1.1rem',
                 mb: 0.5
               }}
