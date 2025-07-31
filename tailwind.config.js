@@ -7,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#007AFF',
-        secondary: '#5856D6',
-        'mint-cream': '#EAF4EB',
-        'hot-orange': '#FF6E00',
-        'erie-black': '#171717',
-        'moderate-blue': '#3DAED1',
-        'cadet-gray': '#94989B',
-        'neon-cyan': '#00F5FF',
+        'neon-blaze': '#FF5C00',
+        'digital-coral': '#FF7477',
+        'frost-signal': '#DFF7EB',
+        'graphene-black': '#0A0A0A',
+        'quantum-blue': '#1FA9F6',
+        'tech-slate': '#7D848B',
+        'cyber-olive': '#B6CA40',
+        'deep-neural-teal': '#2B7A78',
       },
       fontFamily: {
         'redhat': ['Red Hat Display', 'sans-serif'],

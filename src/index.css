@@ -8,12 +8,12 @@
   }
   
   body {
-    @apply bg-mint-cream text-erie-black antialiased font-redhat;
+    @apply bg-frost-signal text-graphene-black antialiased font-redhat;
   }
 
   /* Mejoras de accesibilidad para el foco */
   *:focus-visible {
-    @apply outline-2 outline-moderate-blue outline-offset-2;
+    @apply outline-2 outline-quantum-blue outline-offset-2;
   }
   
   /* Aplicar números monoespaciados */
@@ -34,44 +34,44 @@
   
   /* Tarjetas con el estilo del tema */
   .ai4u-card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-mint-cream hover:shadow-lg transition-all;
+    @apply bg-white rounded-lg shadow-md p-6 border border-frost-signal hover:shadow-lg transition-all;
   }
   
   /* Botones con el estilo del tema */
   .ai4u-button {
-    @apply bg-hot-orange text-white font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-hot-orange/90 transition-all;
+    @apply bg-neon-blaze text-white font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-neon-blaze/90 transition-all;
   }
   
   .ai4u-button-secondary {
-    @apply bg-moderate-blue text-white font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-moderate-blue/90 transition-all;
+    @apply bg-quantum-blue text-white font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-quantum-blue/90 transition-all;
   }
   
   .ai4u-button-outline {
-    @apply border-2 border-hot-orange text-hot-orange font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-hot-orange/10 transition-all;
+    @apply border-2 border-neon-blaze text-neon-blaze font-redhat font-semibold px-6 py-3 rounded-lg hover:bg-neon-blaze/10 transition-all;
   }
 
   /* Tipografía con el estilo del tema */
   .ai4u-h1 {
-    @apply font-redhat font-bold text-h1 text-erie-black tracking-heading;
+    @apply font-redhat font-bold text-h1 text-graphene-black tracking-heading;
   }
   
   .ai4u-h2 {
-    @apply font-redhat font-bold text-h2 text-erie-black tracking-heading;
+    @apply font-redhat font-bold text-h2 text-graphene-black tracking-heading;
   }
   
   .ai4u-h3 {
-    @apply font-redhat font-semibold text-h3 text-erie-black tracking-heading;
+    @apply font-redhat font-semibold text-h3 text-graphene-black tracking-heading;
   }
   
   .ai4u-body {
-    @apply font-redhat font-normal text-body text-erie-black;
+    @apply font-redhat font-normal text-body text-graphene-black;
   }
   
   .ai4u-small {
-    @apply font-redhat font-light text-small text-erie-black;
+    @apply font-redhat font-light text-small text-graphene-black;
   }
   
   .ai4u-code {
-    @apply font-necto text-code text-erie-black;
+    @apply font-necto text-code text-graphene-black;
   }
 } 

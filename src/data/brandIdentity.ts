@@ -9,28 +9,29 @@ export const BRAND_IDENTITY = {
   visualIdentity: {
     colors: {
       primary: {
-        hotOrange: "#ff6e00",
-        description: "Energía y llamados a la acción"
+        neonBlaze: "#FF5C00",
+        description: "Más ácido, más intenso. Ideal para dark UI y botones activos"
       },
       secondary: {
-        mintCream: "#edf2ed",
-        erieBlack: "#171717",
-        moderateBlue: "#3daed1",
-        cadetGray: "#94989b"
+        digitalCoral: "#FF7477",
+        frostSignal: "#DFF7EB",
+        grapheneBlack: "#0A0A0A",
+        quantumBlue: "#1FA9F6"
       },
       accent: {
-        primary: "#007AFF",
-        secondary: "#5856D6",
-        neonCyan: "#00F5FF"
+        techSlate: "#7D848B",
+        cyberOlive: "#B6CA40",
+        deepNeuralTeal: "#2B7A78"
       },
       usage: {
-        mintCream: "Color base - claridad y minimalismo",
-        erieBlack: "Contraste elegante y sofisticación",
-        moderateBlue: "Futuro y tecnología",
-        cadetGray: "Balance y neutralidad",
-        primary: "Azul brillante - elementos principales",
-        secondary: "Púrpura azulado - elementos secundarios",
-        neonCyan: "Cyan neón - efectos futuristas y destacados"
+        neonBlaze: "Más ácido, más intenso. Ideal para dark UI y botones activos",
+        digitalCoral: "Más limpio y vibrante. Ideal para dashboards humanos o wellness",
+        frostSignal: "Más frío y sintético. Ideal para fondos con estética futurista",
+        grapheneBlack: "Negro profundo, absoluto. Para interfaces con estética cyber",
+        quantumBlue: "Azul eléctrico, más saturado. Transmite data y conectividad",
+        techSlate: "Gris técnico con tinte metálico. Para bordes, sliders, skeletons",
+        cyberOlive: "Verde lima metálico. Para resaltar naturalezas en tecnología verde",
+        deepNeuralTeal: "Más saturado, inspirado en UI de sistemas autónomos"
       }
     },
     typography: {
@@ -120,7 +121,7 @@ export const BRAND_IDENTITY = {
   },
   interactiveElements: {
     buttons: {
-      primary: "Fondo naranja (#ff6e00), texto blanco",
+      primary: "Fondo naranja (#FF5C00), texto blanco",
       secondary: "Borde naranja, texto naranja",
       hover: "Efectos sutiles de transición"
     },

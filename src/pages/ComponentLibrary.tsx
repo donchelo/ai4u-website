@@ -84,44 +84,44 @@ const ComponentLibrary: React.FC = () => {
       components: [
         <div key="colors" className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.primary.hotOrange} 
-            name="Hot Orange" 
-            description={BRAND_IDENTITY.visualIdentity.colors.primary.description}
+            color={BRAND_IDENTITY.visualIdentity.colors.primary.neonBlaze} 
+            name="Neon Blaze" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.neonBlaze}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.secondary.mintCream} 
-            name="Mint Cream" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.mintCream}
+            color={BRAND_IDENTITY.visualIdentity.colors.secondary.digitalCoral} 
+            name="Digital Coral" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.digitalCoral}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.secondary.erieBlack} 
-            name="Erie Black" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.erieBlack}
+            color={BRAND_IDENTITY.visualIdentity.colors.secondary.frostSignal} 
+            name="Frost Signal" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.frostSignal}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.secondary.moderateBlue} 
-            name="Moderate Blue" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.moderateBlue}
+            color={BRAND_IDENTITY.visualIdentity.colors.secondary.grapheneBlack} 
+            name="Graphene Black" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.grapheneBlack}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.secondary.cadetGray} 
-            name="Cadet Gray" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.cadetGray}
+            color={BRAND_IDENTITY.visualIdentity.colors.secondary.quantumBlue} 
+            name="Quantum Blue" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.quantumBlue}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.accent.primary} 
-            name="Primary Blue" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.primary}
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.techSlate} 
+            name="Tech Slate" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.techSlate}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.accent.secondary} 
-            name="Secondary Purple" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.secondary}
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.cyberOlive} 
+            name="Cyber Olive" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.cyberOlive}
           />
           <ColorSwatch 
-            color={BRAND_IDENTITY.visualIdentity.colors.accent.neonCyan} 
-            name="Neon Cyan" 
-            description={BRAND_IDENTITY.visualIdentity.colors.usage.neonCyan}
+            color={BRAND_IDENTITY.visualIdentity.colors.accent.deepNeuralTeal} 
+            name="Deep Neural Teal" 
+            description={BRAND_IDENTITY.visualIdentity.colors.usage.deepNeuralTeal}
           />
         </div>
       ]
@@ -172,7 +172,7 @@ const ComponentLibrary: React.FC = () => {
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Primario Glassmorfismo</h4>
               <button className="px-8 py-4 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-xl text-gray-800 font-semibold hover:bg-white/25 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Recupera tu tiempo
+            Recupera tu tiempo
               </button>
             </div>
           </div>
@@ -183,7 +183,7 @@ const ComponentLibrary: React.FC = () => {
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Secundario Glassmorfismo</h4>
               <button className="px-8 py-4 bg-white/10 backdrop-blur-2xl border-2 border-primary/50 text-primary font-semibold rounded-xl hover:bg-primary/10 transition-all duration-300">
-                Conoce más
+            Conoce más
               </button>
             </div>
           </div>
@@ -194,7 +194,7 @@ const ComponentLibrary: React.FC = () => {
             <div className="relative">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Botón Ghost Glassmorfismo</h4>
               <button className="px-8 py-4 text-gray-700 font-semibold rounded-xl hover:bg-white/20 hover:text-gray-900 transition-all duration-300 backdrop-blur-sm">
-                Ver casos
+            Ver casos
               </button>
             </div>
           </div>
@@ -214,8 +214,8 @@ const ComponentLibrary: React.FC = () => {
               <div className="flex items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-primary rounded-2xl flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">SuperAI Empresarial</h3>
@@ -232,8 +232,8 @@ const ComponentLibrary: React.FC = () => {
               <div className="flex items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-hot-orange to-neon-cyan rounded-2xl flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-                  </svg>
+                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+              </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">GPT Personalizado</h3>
@@ -250,8 +250,8 @@ const ComponentLibrary: React.FC = () => {
               <div className="flex items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
-                  </svg>
+                <path d="M13 2.05v3.03c3.39.49 6 3.77 6 7.27 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+              </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">Automatización Inteligente</h3>
@@ -319,9 +319,9 @@ const ComponentLibrary: React.FC = () => {
                 <div className="absolute inset-0 grid grid-cols-8 grid-rows-5 gap-1 p-3">
                   {Array.from({ length: 40 }, (_, i) => (
                     <div key={i} className="bg-white/20 rounded-sm backdrop-blur-sm"></div>
-                  ))}
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
+                ))}
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-20 h-20 border-2 border-neon-cyan/50 rounded-2xl backdrop-blur-sm"></div>
                 </div>
               </div>
