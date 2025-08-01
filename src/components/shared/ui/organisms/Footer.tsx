@@ -113,7 +113,7 @@ const Footer = () => {
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <PhoneIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <WhatsAppIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   {t('footer.contact.phone')}
                 </MuiTypography>
