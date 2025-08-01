@@ -3,7 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components/shared/ui/layouts';
 import { ThemeProvider, ServicesProvider } from './context';
 import { ROUTES } from './utils/constants';
-import { Home, Services, WhyAI4U, SuccessCases, ComponentLibrary, Gallery } from './pages/lazy';
+import { 
+  Home, 
+  Services, 
+  WhyAI4U, 
+  SuccessCases, 
+  ComponentLibrary, 
+  Gallery,
+  ColorSystemDemo,
+  MigrationDemo,
+  Fase3Demo,
+  MetricsDemo,
+  ThemeDemo
+} from './pages/lazy';
 
 function App() {
   return (
@@ -67,6 +79,47 @@ function App() {
                   element={
                     <LazyPage>
                       <Gallery />
+                    </LazyPage>
+                  } 
+                />
+                {/* Rutas de Demo */}
+                <Route 
+                  path={ROUTES.COLOR_SYSTEM_DEMO} 
+                  element={
+                    <LazyPage>
+                      <ColorSystemDemo />
+                    </LazyPage>
+                  } 
+                />
+                <Route 
+                  path={ROUTES.MIGRATION_DEMO} 
+                  element={
+                    <LazyPage>
+                      <MigrationDemo />
+                    </LazyPage>
+                  } 
+                />
+                <Route 
+                  path={ROUTES.FASE3_DEMO} 
+                  element={
+                    <LazyPage>
+                      <Fase3Demo />
+                    </LazyPage>
+                  } 
+                />
+                <Route 
+                  path={ROUTES.METRICS_DEMO} 
+                  element={
+                    <LazyPage>
+                      <MetricsDemo />
+                    </LazyPage>
+                  } 
+                />
+                <Route 
+                  path={ROUTES.THEME_DEMO} 
+                  element={
+                    <LazyPage>
+                      <ThemeDemo />
                     </LazyPage>
                   } 
                 />
