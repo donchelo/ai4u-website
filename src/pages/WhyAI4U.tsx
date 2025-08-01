@@ -10,10 +10,15 @@ import {
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
+import { useColors } from '../hooks';
 
 const WhyAI4U = () => {
+  const colors = useColors();
+
   return (
-    <Box sx={{ background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)' }}>
+    <Box sx={{ 
+      background: `linear-gradient(135deg, ${colors.helpers.background.primary} 0%, ${colors.helpers.background.secondary} 100%)`
+    }}>
       {/* Hero Section minimalista */}
       <Box sx={{ 
         py: { xs: 8, md: 12 },
@@ -24,13 +29,14 @@ const WhyAI4U = () => {
             mb: 6, 
             fontWeight: 300,
             fontSize: { xs: '2.5rem', md: '3.5rem' },
-            letterSpacing: '-0.02em'
+            letterSpacing: '-0.02em',
+            color: colors.helpers.text.primary
           }}>
-            ¿Por qué <Box component="span" sx={{ color: '#FF5C00' }}>AI4U</Box>?
+            ¿Por qué <Box component="span" sx={{ color: colors.palette.orange }}>AI4U</Box>?
           </H1>
           <BodyText sx={{ 
             mb: 8, 
-            color: 'text.secondary',
+            color: colors.helpers.text.secondary,
             fontSize: '1.2rem',
             lineHeight: 1.6,
             fontWeight: 300,
@@ -53,13 +59,14 @@ const WhyAI4U = () => {
                 <H2 sx={{ 
                   mb: 4, 
                   fontWeight: 300,
-                  fontSize: { xs: '2rem', md: '2.5rem' }
+                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  color: colors.helpers.text.primary
                 }}>
                   La parte humana detrás de la tecnología
                 </H2>
                 <BodyText sx={{ 
                   mb: 6, 
-                  color: 'text.secondary',
+                  color: colors.helpers.text.secondary,
                   fontSize: '1.1rem',
                   lineHeight: 1.7,
                   fontWeight: 300
@@ -71,16 +78,16 @@ const WhyAI4U = () => {
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="circle" size="small" color="#B6CA40" variant="filled" />
-                    <BodyText sx={{ fontSize: '1rem' }}>Fundador de AI4U</BodyText>
+                    <GeometricIcon type="circle" size="small" color={colors.palette.green} variant="filled" />
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Fundador de AI4U</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="triangle" size="small" color="rgba(0,0,0,0.3)" variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem' }}>Cofundador de Matt Movilidad</BodyText>
+                    <GeometricIcon type="triangle" size="small" color={colors.helpers.text.secondary} variant="minimal" />
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Cofundador de Matt Movilidad</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="square" size="small" color="rgba(0,0,0,0.3)" variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem' }}>Especialista en automatización</BodyText>
+                    <GeometricIcon type="square" size="small" color={colors.helpers.text.secondary} variant="minimal" />
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Especialista en automatización</BodyText>
                   </Box>
                 </Stack>
                 
@@ -124,8 +131,8 @@ const WhyAI4U = () => {
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
-                    color: 'white',
+                    background: `linear-gradient(transparent, ${colors.mode === 'light' ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.8)'})`,
+                    color: colors.contrast.text.primary,
                     p: 3,
                     opacity: 0,
                     transition: 'opacity 0.4s ease-in-out',
@@ -138,7 +145,8 @@ const WhyAI4U = () => {
                     fontSize: '0.9rem',
                     fontWeight: 300,
                     textAlign: 'center',
-                    mb: 1
+                    mb: 1,
+                    color: colors.contrast.text.primary
                   }}>
                     Pasa el mouse para ver el efecto pixel art
                   </BodyText>
@@ -146,7 +154,8 @@ const WhyAI4U = () => {
                     fontSize: '0.8rem',
                     fontWeight: 300,
                     textAlign: 'center',
-                    opacity: 0.8
+                    opacity: 0.8,
+                    color: colors.contrast.text.primary
                   }}>
                     Tecnología + Creatividad
                   </BodyText>
@@ -164,7 +173,8 @@ const WhyAI4U = () => {
             mb: 8, 
             textAlign: 'center',
             fontWeight: 300,
-            fontSize: { xs: '2rem', md: '2.5rem' }
+            fontSize: { xs: '2rem', md: '2.5rem' },
+            color: colors.helpers.text.primary
           }}>
             ¿Qué nos hace diferentes?
           </H2>
@@ -175,19 +185,19 @@ const WhyAI4U = () => {
                 title: "Diagnóstico Gratuito",
                 description: "Evaluamos tu negocio sin costo para identificar oportunidades de automatización.",
                 icon: "circle",
-                color: "#B6CA40"
+                color: colors.palette.green
               },
               {
                 title: "Asistentes que Evolucionan", 
                 description: "A diferencia de otros servicios, nuestros asistentes aprenden y mejoran continuamente.",
                 icon: "triangle",
-                color: "rgba(0,0,0,0.3)"
+                color: colors.helpers.text.secondary
               },
               {
                 title: "Resultados Garantizados",
                 description: "72 horas para implementación. ROI medible desde el primer mes.",
                 icon: "square", 
-                color: "rgba(0,0,0,0.3)"
+                color: colors.helpers.text.secondary
               }
             ].map((benefit, idx) => (
               <Grid item xs={12} md={4} key={idx}>
@@ -207,12 +217,13 @@ const WhyAI4U = () => {
                   <H3 sx={{ 
                     mb: 2, 
                     fontSize: '1.3rem',
-                    fontWeight: 500
+                    fontWeight: 500,
+                    color: colors.helpers.text.primary
                   }}>
                     {benefit.title}
                   </H3>
                   <BodyText sx={{ 
-                    color: 'text.secondary',
+                    color: colors.helpers.text.secondary,
                     lineHeight: 1.6,
                     fontSize: '1rem'
                   }}>
@@ -233,13 +244,13 @@ const WhyAI4U = () => {
               <GeometricIcon
                 type="arrow-up"
                 size="large"
-                color="#B6CA40"
+                color={colors.palette.green}
                 variant="filled"
               />
             </Box>
             <H2 sx={{ 
               mb: 4,
-              color: '#FFFFFF',
+              color: colors.contrast.text.primary,
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 300
             }}>
@@ -247,7 +258,7 @@ const WhyAI4U = () => {
             </H2>
             <BodyText sx={{ 
               mb: 6, 
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
               fontSize: '1.1rem',
               lineHeight: 1.6,
               maxWidth: 600,
@@ -273,7 +284,7 @@ const WhyAI4U = () => {
             
             <BodyText sx={{ 
               fontStyle: 'italic', 
-              color: 'rgba(255, 255, 255, 0.6)',
+              color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
               Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes

@@ -9,10 +9,15 @@ import {
 import { H1, H2, H3, BodyText, GeometricIcon } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
+import { useColors } from '../hooks';
 
 const SuccessCases = () => {
+  const colors = useColors();
+
   return (
-    <Box sx={{ background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)' }}>
+    <Box sx={{ 
+      background: `linear-gradient(135deg, ${colors.helpers.background.primary} 0%, ${colors.helpers.background.secondary} 100%)`
+    }}>
       {/* Hero Section - Inspirado en Virgil Abloh */}
       <Box sx={{ 
         py: { xs: 8, md: 12 },
@@ -23,13 +28,14 @@ const SuccessCases = () => {
             mb: 6, 
             fontWeight: 300,
             fontSize: { xs: '2.5rem', md: '3.5rem' },
-            letterSpacing: '-0.02em'
+            letterSpacing: '-0.02em',
+            color: colors.helpers.text.primary
           }}>
-            Casos de <Box component="span" sx={{ color: '#FF5C00' }}>Éxito</Box>
+            Casos de <Box component="span" sx={{ color: colors.palette.orange }}>Éxito</Box>
           </H1>
           <BodyText sx={{ 
             mb: 8, 
-            color: 'text.secondary',
+            color: colors.helpers.text.secondary,
             fontSize: '1.2rem',
             lineHeight: 1.6,
             fontWeight: 300,
@@ -50,9 +56,10 @@ const SuccessCases = () => {
              mb: 8, 
              textAlign: 'center',
              fontWeight: 300,
-             fontSize: { xs: '2rem', md: '2.5rem' }
+             fontSize: { xs: '2rem', md: '2.5rem' },
+             color: colors.helpers.text.primary
            }}>
-             Nuestros <Box component="span" sx={{ color: '#FF5C00' }}>Clientes</Box>
+             Nuestros <Box component="span" sx={{ color: colors.palette.orange }}>Clientes</Box>
            </H2>
            
                        <Box sx={{ 
@@ -70,11 +77,11 @@ const SuccessCases = () => {
               },
               '&::before': {
                 left: 0,
-                background: 'linear-gradient(90deg, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%)'
+                background: `linear-gradient(90deg, ${colors.helpers.background.primary} 1 0%, ${colors.helpers.background.primary} 0 100%)`
               },
               '&::after': {
                 right: 0,
-                background: 'linear-gradient(90deg, rgba(250, 250, 250, 0) 0%, rgba(250, 250, 250, 1) 100%)'
+                background: `linear-gradient(90deg, ${colors.helpers.background.primary} 0 0%, ${colors.helpers.background.primary} 1 100%)`
               }
             }}>
               <Box sx={{ 
@@ -104,14 +111,14 @@ const SuccessCases = () => {
                        textAlign: 'center',
                        position: 'relative',
                        overflow: 'hidden',
-                       background: 'rgba(255, 255, 255, 0.7)',
+                       background: colors.mode === 'light' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
                        backdropFilter: 'blur(20px)',
-                       border: '1px solid rgba(255, 255, 255, 0.3)',
+                       border: colors.mode === 'light' ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid rgba(255, 255, 255, 0.1)',
                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                        '&:hover': {
                          transform: 'translateY(-8px)',
                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-                         background: 'rgba(255, 255, 255, 0.9)',
+                         background: colors.mode === 'light' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)',
                          '& .logo': {
                            transform: 'scale(1.1)',
                          },
@@ -158,7 +165,7 @@ const SuccessCases = () => {
                          rel="noopener noreferrer"
                          className="url"
                          sx={{ 
-                           color: '#FF5C00',
+                           color: colors.palette.orange,
                            textDecoration: 'none',
                            fontSize: '1rem',
                            fontWeight: 500,
@@ -167,7 +174,7 @@ const SuccessCases = () => {
                            mb: 2,
                            display: 'block',
                            '&:hover': {
-                             color: '#FF5C00',
+                             color: colors.palette.orange,
                              textDecoration: 'underline',
                              opacity: 0.8
                            }
@@ -181,7 +188,7 @@ const SuccessCases = () => {
                         <GeometricIcon
                           type={index % 3 === 0 ? "circle" : index % 3 === 1 ? "triangle" : "square"}
                           size="small"
-                          color="rgba(0, 0, 0, 0.15)"
+                          color={colors.helpers.text.secondary}
                           variant="minimal"
                         />
                       </Box>
@@ -201,13 +208,13 @@ const SuccessCases = () => {
               <GeometricIcon
                 type="arrow-up"
                 size="large"
-                color="#B6CA40"
+                color={colors.palette.green}
                 variant="filled"
               />
             </Box>
             <H2 sx={{ 
               mb: 4,
-              color: '#FFFFFF',
+              color: colors.contrast.text.primary,
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 300
             }}>
@@ -215,7 +222,7 @@ const SuccessCases = () => {
             </H2>
             <BodyText sx={{ 
               mb: 6, 
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
               fontSize: '1.1rem',
               lineHeight: 1.6,
               maxWidth: 600,
@@ -240,7 +247,7 @@ const SuccessCases = () => {
             
             <BodyText sx={{ 
               fontStyle: 'italic', 
-              color: 'rgba(255, 255, 255, 0.6)',
+              color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
               Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes
