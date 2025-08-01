@@ -16,7 +16,8 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ClearIcon from '@mui/icons-material/Clear';
-import { Button } from '../atoms';
+import { Button, GeometricIcon } from '../atoms';
+import { useColors } from '../../../../hooks';
 import { ServiceCategory } from '../../../../types/service';
 
 interface ServicesFilterProps {
@@ -42,90 +43,117 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
   categoryTabs
 }) => {
   const theme = useTheme();
+  const colors = useColors();
 
   return (
     <Box sx={{
       p: 4,
-      background: theme.palette.background.paper,
-      border: `1px solid ${theme.palette.divider}`,
-      borderRadius: 2,
-      boxShadow: theme.shadows[2]
+      background: 'rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(20px)',
+      border: `1px solid ${colors.contrast.border}`,
+      borderRadius: 3,
+      boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
     }}>
       {/* Search and Controls */}
       <Box sx={{ mb: 4 }}>
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} alignItems="center">
-          {/* Search Field */}
+          {/* Search Field con glassmorphism */}
           <Box sx={{ flex: 1, width: '100%' }}>
             <TextField
               fullWidth
               placeholder="Buscar servicios por nombre, descripción o tags..."
               value={searchValue}
               onChange={onSearchChange}
-                             sx={{
-                 '& .MuiOutlinedInput-root': {
-                   background: theme.palette.background.paper,
-                   borderRadius: 2,
-                   transition: 'all 0.3s ease',
-                   '&:hover': {
-                     '& .MuiOutlinedInput-notchedOutline': {
-                       borderColor: theme.palette.primary.main,
-                       borderWidth: '1px'
-                     }
-                   },
-                   '&.Mui-focused': {
-                     '& .MuiOutlinedInput-notchedOutline': {
-                       borderColor: theme.palette.primary.main,
-                       borderWidth: '2px'
-                     }
-                   }
-                 },
-                 '& .MuiOutlinedInput-input': {
-                   fontSize: '1rem',
-                   padding: '12px 16px'
-                 }
-               }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(16px)',
+                  borderRadius: 2,
+                  transition: 'all 0.3s ease',
+                  border: `1px solid ${colors.contrast.border}`,
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: colors.palette.orange,
+                      borderWidth: '1px'
+                    }
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: colors.palette.orange,
+                      borderWidth: '2px'
+                    }
+                  }
+                },
+                '& .MuiOutlinedInput-input': {
+                  fontSize: '1rem',
+                  padding: '12px 16px',
+                  color: colors.contrast.text.primary,
+                  '&::placeholder': {
+                    color: colors.contrast.text.secondary,
+                    opacity: 0.7
+                  }
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                  border: 'none'
+                }
+              }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon sx={{ color: theme.palette.text.secondary }} />
+                    <GeometricIcon
+                      type="search"
+                      size="small"
+                      color={colors.contrast.text.secondary}
+                      variant="minimal"
+                    />
                   </InputAdornment>
                 ),
               }}
             />
           </Box>
 
-          {/* Controls */}
+          {/* Controls con glassmorphism */}
           <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-end">
-            <Chip
-              label="Limpiar filtros"
-              onClick={onClearFilters}
-              variant="outlined"
+            <Button
+              variant="glass"
               size="small"
-              clickable
-              icon={<ClearIcon />}
+              onClick={onClearFilters}
+              startIcon={<GeometricIcon type="clear" size="small" color={colors.contrast.text.secondary} variant="minimal" />}
               sx={{
-                background: theme.palette.background.paper,
-                border: `1px solid ${theme.palette.divider}`,
+                borderRadius: 2,
+                px: 2,
+                py: 1,
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(16px)',
+                border: `1px solid ${colors.contrast.border}`,
+                color: colors.contrast.text.secondary,
                 '&:hover': {
-                  background: theme.palette.action.hover,
-                  borderColor: theme.palette.primary.main
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  color: colors.contrast.text.primary
                 }
               }}
-            />
+            >
+              Limpiar filtros
+            </Button>
             <Chip
               label={`${filteredCount} servicios`}
               size="small"
               sx={{
-                background: theme.palette.primary.main,
-                color: theme.palette.primary.contrastText,
-                fontWeight: 'bold'
+                background: `linear-gradient(135deg, ${colors.palette.orange}, ${colors.palette.orange}dd)`,
+                backdropFilter: 'blur(10px)',
+                color: colors.palette.white,
+                fontWeight: 700,
+                border: `1px solid ${colors.palette.orange}60`,
+                '&:hover': {
+                  background: `linear-gradient(135deg, ${colors.palette.orange}ff, ${colors.palette.orange}ee)`,
+                }
               }}
             />
           </Stack>
         </Stack>
       </Box>
 
-      {/* Category Tabs */}
+      {/* Category Tabs con glassmorphism */}
       <Box>
         <Tabs
           value={selectedTab}
@@ -144,20 +172,27 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               borderRadius: 2,
               mx: 0.5,
               transition: 'all 0.3s ease',
-              color: theme.palette.text.secondary,
+              color: colors.contrast.text.secondary,
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(8px)',
+              border: `1px solid transparent`,
               '&:hover': {
-                background: theme.palette.action.hover,
-                color: theme.palette.text.primary
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: colors.contrast.text.primary,
+                border: `1px solid ${colors.contrast.border}`
               },
               '&.Mui-selected': {
-                background: theme.palette.action.selected,
-                color: theme.palette.primary.main,
-                fontWeight: 600
+                background: `linear-gradient(135deg, ${colors.palette.orange}20, ${colors.palette.orange}10)`,
+                color: colors.palette.orange,
+                fontWeight: 600,
+                border: `1px solid ${colors.palette.orange}40`,
+                backdropFilter: 'blur(16px)'
               }
             },
             '& .MuiTabs-indicator': {
               height: 2,
-              background: theme.palette.primary.main
+              background: `linear-gradient(90deg, ${colors.palette.orange}, ${colors.palette.orange}dd)`,
+              borderRadius: 1
             }
           }}
         >
@@ -170,23 +205,28 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
         </Tabs>
       </Box>
 
-      {/* Active Filters Display */}
+      {/* Active Filters Display con glassmorphism */}
       {searchValue && (
-        <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+        <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${colors.contrast.divider}` }}>
           <Stack direction="row" spacing={1} alignItems="center">
-            <Box sx={{ fontSize: '0.9rem', color: 'text.secondary', fontWeight: 500 }}>
+            <Box sx={{ fontSize: '0.9rem', color: colors.contrast.text.secondary, fontWeight: 500 }}>
               Filtros activos:
             </Box>
-                          <Chip
-                label={`Búsqueda: "${searchValue}"`}
-                size="small"
-                onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
-                sx={{
-                  background: theme.palette.action.selected,
-                  color: theme.palette.text.primary,
-                  border: `1px solid ${theme.palette.divider}`
-                }}
-              />
+            <Chip
+              label={`Búsqueda: "${searchValue}"`}
+              size="small"
+              onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
+              sx={{
+                background: `linear-gradient(135deg, ${colors.palette.orange}20, ${colors.palette.orange}10)`,
+                backdropFilter: 'blur(10px)',
+                color: colors.palette.orange,
+                border: `1px solid ${colors.palette.orange}40`,
+                fontWeight: 600,
+                '&:hover': {
+                  background: `linear-gradient(135deg, ${colors.palette.orange}30, ${colors.palette.orange}20)`,
+                }
+              }}
+            />
           </Stack>
         </Box>
       )}

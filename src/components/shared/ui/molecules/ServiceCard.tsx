@@ -9,7 +9,7 @@ import {
   Typography,
   useTheme
 } from '@mui/material';
-import { H3, BodyText } from '../atoms';
+import { H3, BodyText, GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Service, ServiceStatus } from '../../../../types/service';
@@ -32,10 +32,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   const getStatusColor = (status: ServiceStatus) => {
     switch (status) {
-      case ServiceStatus.ACTIVE: return 'success';
-      case ServiceStatus.COMING_SOON: return 'info';
-      case ServiceStatus.DEPRECATED: return 'error';
-      default: return 'default';
+      case ServiceStatus.ACTIVE: return colors.palette.green;
+      case ServiceStatus.COMING_SOON: return colors.palette.orange;
+      case ServiceStatus.DEPRECATED: return colors.palette.gray[500];
+      default: return colors.palette.gray[400];
     }
   };
 
@@ -64,23 +64,26 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       '&:hover': {
         transform: 'translateY(-4px)',
         '& .service-card-content': {
-          boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
-          borderColor: service.color
+          boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+          borderColor: service.color,
+          backdropFilter: 'blur(24px)'
         }
       }
     }}>
-      {/* Main Card Content */}
+      {/* Main Card Content con glassmorphism */}
       <Box className="service-card-content" sx={{
         p: compact ? 2.5 : 3,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        background: colors.contrast.surface,
-        border: `2px solid ${colors.contrast.border}`,
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px)',
+        border: `1px solid ${colors.contrast.border}`,
         borderRadius: 3,
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
       }}>
         {/* Gradient Header */}
         <Box sx={{
@@ -89,11 +92,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           left: 0,
           right: 0,
           height: 4,
-          background: service.gradient || service.color,
+          background: `linear-gradient(90deg, ${service.color}, ${service.color}dd)`,
           borderRadius: '12px 12px 0 0'
         }} />
 
-        {/* Status Badge */}
+        {/* Status Badge con glassmorphism */}
         <Box sx={{ 
           position: 'absolute', 
           top: 12, 
@@ -103,21 +106,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <Chip 
             label={getStatusText(service.status)}
             size="small"
-            color={getStatusColor(service.status)}
-            variant={service.status === ServiceStatus.ACTIVE ? 'filled' : 'outlined'}
             sx={{
-              background: service.status === ServiceStatus.ACTIVE 
-                ? colors.helpers.background.secondary
-                : colors.contrast.surface,
-              border: `1px solid ${colors.contrast.border}`,
-              color: colors.contrast.text.secondary,
-              fontWeight: 500,
-              fontSize: '0.75rem'
+              background: `rgba(${getStatusColor(service.status) === colors.palette.green ? '182, 202, 64' : '255, 92, 0'}, 0.2)`,
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${getStatusColor(service.status)}40`,
+              color: getStatusColor(service.status),
+              fontWeight: 600,
+              fontSize: '0.75rem',
+              '&:hover': {
+                background: `rgba(${getStatusColor(service.status) === colors.palette.green ? '182, 202, 64' : '255, 92, 0'}, 0.3)`,
+              }
             }}
           />
         </Box>
 
-        {/* Super Category Badge */}
+        {/* Super Category Badge con glassmorphism */}
         <Box sx={{ 
           position: 'absolute', 
           top: 12, 
@@ -128,11 +131,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             label={getSuperCategoryText(service.superCategory)}
             size="small"
             sx={{
-              background: getSuperCategoryColor(service.superCategory),
+              background: `rgba(${getSuperCategoryColor(service.superCategory) === colors.palette.orange ? '255, 92, 0' : '182, 202, 64'}, 0.9)`,
+              backdropFilter: 'blur(10px)',
               color: colors.palette.white,
-              fontWeight: 600,
+              fontWeight: 700,
               fontSize: '0.7rem',
-              height: 24
+              height: 24,
+              border: `1px solid ${getSuperCategoryColor(service.superCategory)}60`
             }}
           />
         </Box>
@@ -174,7 +179,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           )}
         </Box>
 
-        {/* Benefits */}
+        {/* Benefits con iconos geométricos */}
         {!compact && (
           <Box sx={{ mb: 3, flexGrow: 1 }}>
             <BodyText sx={{ 
@@ -189,11 +194,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               {service.benefits.map((benefit, index) => (
                 <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
                   <ListItemIcon sx={{ minWidth: 28 }}>
-                    <CheckCircleOutlineIcon 
-                      sx={{ 
-                        color: service.color,
-                        fontSize: '1.1rem'
-                      }}
+                    <GeometricIcon
+                      type="check"
+                      size="small"
+                      color={service.color}
+                      variant="filled"
                     />
                   </ListItemIcon>
                   <ListItemText 
@@ -210,7 +215,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </Box>
         )}
 
-        {/* Footer */}
+        {/* Footer con números prominentes */}
         <Box sx={{ 
           mt: 'auto',
           pt: 2,
@@ -230,13 +235,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               }}>
                 Precio:
               </BodyText>
-              <BodyText sx={{ 
+              <Typography sx={{ 
                 fontWeight: 700,
                 color: service.color,
-                fontSize: '1.1rem'
+                fontSize: '1.2rem',
+                background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
               }}>
                 {service.price}
-              </BodyText>
+              </Typography>
             </Box>
           )}
           

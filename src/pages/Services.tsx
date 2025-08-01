@@ -3,34 +3,27 @@ import {
   Container, 
   Grid, 
   Box, 
-  Divider, 
-  useTheme,
-  alpha
+  Typography
 } from '@mui/material';
-import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, MetricCard } from '../components/shared/ui/molecules';
+import { H1, H2, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
+import { ServiceCard, Card } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
-import { useColorMode } from '../context/ThemeContext';
 import { useLanguage } from '../hooks';
+import { useColors } from '../hooks';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
-import { SERVICE_CONFIG } from '../utils/constants';
 
 const Services: React.FC = () => {
-  const theme = useTheme();
-  const { mode } = useColorMode();
   const { t } = useLanguage();
+  const colors = useColors();
   const { 
-    services: allServices,
     config,
     stats,
-    filters,
     setCategoryFilter,
     setSuperCategoryFilter,
     setSearchTerm,
     resetFilters,
-    getCategories,
     getFilteredServices
   } = useServicesContext();
 
@@ -85,30 +78,47 @@ const Services: React.FC = () => {
   return (
     <Box sx={{ 
       minHeight: '100vh',
-      bgcolor: 'background.default',
+      bgcolor: colors.contrast.background,
       position: 'relative'
     }}>
-      {/* Hero Section minimalista */}
+      {/* Hero Section con glassmorphism */}
       <Box sx={{ 
         position: 'relative',
-        py: { xs: 6, md: 10 },
-        overflow: 'hidden'
+        py: { xs: 8, md: 12 },
+        overflow: 'hidden',
+        background: `linear-gradient(135deg, ${colors.contrast.background}, ${colors.helpers.background.secondary})`
       }}>
+        {/* Background Pattern */}
+        <Box sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.03,
+          background: `radial-gradient(circle at 20% 80%, ${colors.palette.orange} 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, ${colors.palette.green} 0%, transparent 50%)`
+        }} />
+        
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <H1 sx={{ 
               mb: 3,
-              color: 'text.primary',
+              color: colors.contrast.text.primary,
               fontSize: { xs: '2.5rem', md: '3.5rem' },
               fontWeight: 300,
-              letterSpacing: '-0.01em'
+              letterSpacing: '-0.01em',
+              background: `linear-gradient(135deg, ${colors.contrast.text.primary}, ${colors.palette.orange})`,
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
             }}>
               {t('services.hero.title')}
             </H1>
             <H2 sx={{ 
               mb: 4, 
               fontWeight: 400,
-              color: 'text.primary',
+              color: colors.contrast.text.secondary,
               fontSize: { xs: '1.2rem', md: '1.5rem' }
             }}>
               {t('services.hero.subtitle')}
@@ -117,7 +127,7 @@ const Services: React.FC = () => {
               fontSize: '1.1rem', 
               maxWidth: 700, 
               mx: 'auto',
-              color: 'text.secondary',
+              color: colors.contrast.text.secondary,
               lineHeight: 1.6,
               fontWeight: 300
             }}>
@@ -125,57 +135,119 @@ const Services: React.FC = () => {
             </BodyText>
           </Box>
 
-
+          {/* Stats Cards con números prominentes */}
+          <Grid container spacing={3} justifyContent="center" sx={{ mb: 6 }}>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card variant="glass" sx={{ textAlign: 'center', p: 3 }}>
+                <Typography variant="h2" sx={{ 
+                  fontSize: '3rem', 
+                  fontWeight: 700, 
+                  color: colors.palette.orange,
+                  mb: 1
+                }}>
+                  {stats.total}
+                </Typography>
+                <BodyText sx={{ color: colors.contrast.text.secondary }}>
+                  Servicios Disponibles
+                </BodyText>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card variant="glass" sx={{ textAlign: 'center', p: 3 }}>
+                <Typography variant="h2" sx={{ 
+                  fontSize: '3rem', 
+                  fontWeight: 700, 
+                  color: colors.palette.green,
+                  mb: 1
+                }}>
+                  {stats.active}
+                </Typography>
+                <BodyText sx={{ color: colors.contrast.text.secondary }}>
+                  Servicios Activos
+                </BodyText>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card variant="glass" sx={{ textAlign: 'center', p: 3 }}>
+                <Typography variant="h2" sx={{ 
+                  fontSize: '3rem', 
+                  fontWeight: 700, 
+                  color: colors.palette.orange,
+                  mb: 1
+                }}>
+                  {Object.keys(stats.byCategory).length}
+                </Typography>
+                <BodyText sx={{ color: colors.contrast.text.secondary }}>
+                  Categorías
+                </BodyText>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Card variant="glass" sx={{ textAlign: 'center', p: 3 }}>
+                <Typography variant="h2" sx={{ 
+                  fontSize: '3rem', 
+                  fontWeight: 700, 
+                  color: colors.palette.green,
+                  mb: 1
+                }}>
+                  {Object.keys(stats.bySuperCategory).length}
+                </Typography>
+                <BodyText sx={{ color: colors.contrast.text.secondary }}>
+                  Supracategorías
+                </BodyText>
+              </Card>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
-      {/* Services Filter Section - MOVIDO ARRIBA */}
-      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.default' }}>
+      {/* Services Filter Section con glassmorphism */}
+      <Box sx={{ py: 8, position: 'relative', bgcolor: colors.helpers.background.secondary }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            color: 'text.primary',
+            color: colors.contrast.text.primary,
             fontSize: { xs: '1.8rem', md: '2.2rem' },
             fontWeight: 400
           }}>
             {t('services.filter.title')}
           </H2>
           
-          {/* Super Category Tabs */}
+          {/* Super Category Tabs con glassmorphism */}
           <Box sx={{ mb: 4 }}>
             <Box sx={{ 
               display: 'flex', 
               justifyContent: 'center', 
-              mb: 3 
+              mb: 3,
+              gap: 2
             }}>
               {superCategoryTabs.map((tab, index) => (
                 <Button
                   key={index}
-                  variant={selectedSuperTab === index ? "primary" : "outline"}
+                  variant={selectedSuperTab === index ? "primary" : "glass"}
                   size="medium"
                   onClick={() => handleSuperTabChange({} as React.SyntheticEvent, index)}
                   sx={{
-                    mx: 1,
                     borderRadius: 3,
                     px: 4,
                     py: 1.5,
                     fontWeight: selectedSuperTab === index ? 600 : 500,
-                    background: selectedSuperTab === index 
-                      ? (index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.background.paper)
-                      : 'transparent',
-                    color: selectedSuperTab === index 
-                      ? '#FFFFFF' 
-                      : index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.text.secondary,
-                    border: `2px solid ${
-                      selectedSuperTab === index 
-                        ? (index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.divider)
-                        : index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.divider
-                    }`,
-                    '&:hover': {
+                    minWidth: 140,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
                       background: selectedSuperTab === index 
-                        ? (index === 1 ? theme.palette.secondary.dark : index === 2 ? '#A5B839' : theme.palette.action.hover)
-                        : index === 1 ? alpha(theme.palette.secondary.main, 0.1) : index === 2 ? alpha('#B6CA40', 0.1) : theme.palette.action.hover
+                        ? `linear-gradient(135deg, ${colors.palette.orange}20, ${colors.palette.orange}10)`
+                        : 'transparent',
+                      borderRadius: 3,
+                      zIndex: -1
                     }
                   }}
                 >
@@ -202,7 +274,7 @@ const Services: React.FC = () => {
         {/* Services Grid - Horizontal Scroll with Navigation */}
         <Container maxWidth="lg">
           <Box sx={{ position: 'relative' }}>
-            {/* Navigation Buttons */}
+            {/* Navigation Buttons con glassmorphism */}
             <Box sx={{
               position: 'absolute',
               top: '50%',
@@ -212,7 +284,7 @@ const Services: React.FC = () => {
               display: { xs: 'none', md: 'block' }
             }}>
               <Button
-                variant="outline"
+                variant="glass"
                 size="small"
                 onClick={() => {
                   const container = document.getElementById('services-scroll-container');
@@ -224,12 +296,12 @@ const Services: React.FC = () => {
                   minWidth: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: theme.palette.background.paper,
-                  border: `1px solid ${theme.palette.divider}`,
-                  boxShadow: theme.shadows[2],
+                  backdropFilter: 'blur(20px)',
+                  border: `1px solid ${colors.contrast.border}`,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
                   '&:hover': {
-                    background: theme.palette.background.default,
-                    boxShadow: theme.shadows[4],
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.25)',
                   }
                 }}
                 aria-label={t('services.filter.navigation.left')}
@@ -237,7 +309,7 @@ const Services: React.FC = () => {
                 <GeometricIcon
                   type="arrow-left"
                   size="small"
-                  color={theme.palette.text.secondary}
+                  color={colors.contrast.text.secondary}
                   variant="filled"
                 />
               </Button>
@@ -252,7 +324,7 @@ const Services: React.FC = () => {
               display: { xs: 'none', md: 'block' }
             }}>
               <Button
-                variant="outline"
+                variant="glass"
                 size="small"
                 onClick={() => {
                   const container = document.getElementById('services-scroll-container');
@@ -264,12 +336,12 @@ const Services: React.FC = () => {
                   minWidth: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: theme.palette.background.paper,
-                  border: `1px solid ${theme.palette.divider}`,
-                  boxShadow: theme.shadows[2],
+                  backdropFilter: 'blur(20px)',
+                  border: `1px solid ${colors.contrast.border}`,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
                   '&:hover': {
-                    background: theme.palette.background.default,
-                    boxShadow: theme.shadows[4],
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.25)',
                   }
                 }}
                 aria-label={t('services.filter.navigation.right')}
@@ -277,7 +349,7 @@ const Services: React.FC = () => {
                 <GeometricIcon
                   type="arrow-right"
                   size="small"
-                  color={theme.palette.text.secondary}
+                  color={colors.contrast.text.secondary}
                   variant="filled"
                 />
               </Button>
@@ -297,14 +369,14 @@ const Services: React.FC = () => {
                   height: 8,
                 },
                 '&::-webkit-scrollbar-track': {
-                  background: theme.palette.action.hover,
+                  background: colors.helpers.state.hover,
                   borderRadius: 4,
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  background: theme.palette.divider,
+                  background: colors.contrast.divider,
                   borderRadius: 4,
                   '&:hover': {
-                    background: theme.palette.text.secondary,
+                    background: colors.contrast.text.secondary,
                   },
                 },
               }}
@@ -331,18 +403,19 @@ const Services: React.FC = () => {
             <Card variant="glass" sx={{ 
               textAlign: 'center', 
               py: 6,
-              bgcolor: 'background.paper',
-              border: `1px solid ${theme.palette.divider}`
+              mt: 4,
+              backdropFilter: 'blur(20px)',
+              border: `1px solid ${colors.contrast.border}`
             }}>
               <GeometricIcon
                 type="cross"
                 size="large"
-                color={theme.palette.text.disabled}
+                color={colors.contrast.text.disabled}
                 variant="minimal"
               />
               <BodyText sx={{ 
                 fontSize: '1.1rem', 
-                color: 'text.secondary',
+                color: colors.contrast.text.secondary,
                 mb: 3,
                 mt: 2
               }}>
@@ -360,24 +433,38 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
+      {/* Divider con glassmorphism */}
       <Box sx={{ py: 2 }}>
         <Container maxWidth="lg">
           <Box sx={{ 
             height: '1px', 
-            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
+            background: `linear-gradient(90deg, transparent, ${colors.contrast.divider}, transparent)`,
             mx: 'auto',
-            width: '60%'
+            width: '60%',
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: -1,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 4,
+              height: 4,
+              borderRadius: '50%',
+              background: colors.palette.orange,
+              boxShadow: `0 0 8px ${colors.palette.orange}40`
+            }
           }} />
         </Container>
       </Box>
 
-      {/* Our Process Section */}
-      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
+      {/* Our Process Section con glassmorphism */}
+      <Box sx={{ py: 8, position: 'relative', bgcolor: colors.contrast.background }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            color: 'text.primary',
+            color: colors.contrast.text.primary,
             fontSize: { xs: '1.8rem', md: '2.2rem' },
             fontWeight: 400
           }}>
@@ -386,7 +473,12 @@ const Services: React.FC = () => {
           
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={10}>
-              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
+              <Card variant="glass" sx={{ 
+                p: 0, 
+                bgcolor: 'transparent',
+                border: `1px solid ${colors.contrast.border}`,
+                backdropFilter: 'blur(20px)'
+              }}>
                 <Box sx={{ p: 4 }}>
                   <Grid container spacing={4}>
                     {[
@@ -394,25 +486,29 @@ const Services: React.FC = () => {
                         number: 1,
                         title: t('services.process.steps.0.title'),
                         description: t('services.process.steps.0.description'),
-                        color: "#B6CA40"
+                        color: colors.palette.green,
+                        icon: "circle"
                       },
                       {
                         number: 2,
                         title: t('services.process.steps.1.title'),
                         description: t('services.process.steps.1.description'),
-                        color: theme.palette.secondary.main
+                        color: colors.palette.orange,
+                        icon: "square"
                       },
                       {
                         number: 3,
                         title: t('services.process.steps.2.title'),
                         description: t('services.process.steps.2.description'),
-                        color: "#FF6B35"
+                        color: colors.palette.orange,
+                        icon: "triangle"
                       },
                       {
                         number: 4,
                         title: t('services.process.steps.3.title'),
                         description: t('services.process.steps.3.description'),
-                        color: "#1a1a1a"
+                        color: colors.palette.green,
+                        icon: "arrow-right"
                       }
                     ].map((step, idx) => (
                       <Grid item xs={12} sm={6} key={idx}>
@@ -426,18 +522,12 @@ const Services: React.FC = () => {
                       </Grid>
                     ))}
                   </Grid>
-                  
-
                 </Box>
               </Card>
             </Grid>
           </Grid>
         </Container>
       </Box>
-
-
-
-
     </Box>
   );
 };

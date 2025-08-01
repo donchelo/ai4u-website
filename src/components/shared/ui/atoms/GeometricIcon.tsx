@@ -3,7 +3,7 @@ import { Box, styled } from '@mui/material';
 import { useColors } from '../../../../hooks';
 
 interface GeometricIconProps {
-  type: 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
+  type: 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot' | 'search' | 'clear' | 'check';
   size?: 'small' | 'medium' | 'large';
   color?: string;
   variant?: 'filled' | 'outline' | 'minimal';
@@ -122,6 +122,12 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
         return <span {...iconProps}>—</span>;
       case 'dot':
         return <span {...iconProps}>•</span>;
+      case 'search':
+        return <span {...iconProps}>🔍</span>;
+      case 'clear':
+        return <span {...iconProps}>✕</span>;
+      case 'check':
+        return <span {...iconProps}>✓</span>;
       default:
         return <span {...iconProps}>○</span>;
     }
