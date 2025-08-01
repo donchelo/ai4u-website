@@ -251,6 +251,72 @@ export const translations: Record<Language, Translations> = {
           }
         ]
       },
+      stats: {
+        title: 'Nuestros números hablan por sí solos',
+        metrics: {
+          services: {
+            title: 'Servicios',
+            subtitle: 'Soluciones disponibles',
+            value: '25+'
+          },
+          strategy: {
+            title: 'Estrategia',
+            subtitle: 'Servicios estratégicos',
+            value: '12'
+          },
+          operation: {
+            title: 'Operación',
+            subtitle: 'Servicios operativos',
+            value: '13'
+          },
+          roi: {
+            title: 'ROI promedio',
+            subtitle: 'Retorno en 3 meses',
+            value: '300%'
+          },
+          timeSaved: {
+            title: 'Tiempo ahorrado',
+            subtitle: 'Reducción de tareas manuales',
+            value: '85%'
+          },
+          satisfiedClients: {
+            title: 'Clientes satisfechos',
+            subtitle: 'Tasa de retención',
+            value: '100%'
+          },
+          implementation: {
+            title: 'Implementación',
+            subtitle: 'Días promedio',
+            value: '30'
+          }
+        }
+      },
+      impact: {
+        title: 'Impacto real en nuestros clientes',
+        metrics: {
+          hoursSaved: {
+            title: 'Horas ahorradas',
+            subtitle: 'Por cliente al mes',
+            value: '1200+'
+          },
+          automatedProcesses: {
+            title: 'Procesos automatizados',
+            subtitle: 'De tareas repetitivas',
+            value: '95%'
+          },
+          responseTime: {
+            title: 'Tiempo de respuesta',
+            subtitle: 'Reducción en atención al cliente',
+            value: '80%'
+          },
+          averageROI: {
+            title: 'ROI promedio',
+            subtitle: 'Retorno de inversión',
+            value: '300%'
+          }
+        }
+      },
+
       cta: {
         title: '¿Listo para liberar tu tiempo estratégico?',
         subtitle: 'Agenda tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización que liberarán tu tiempo estratégico. Sin compromiso, personalizado a tu negocio.',
@@ -549,10 +615,12 @@ export const translations: Record<Language, Translations> = {
           }
         ]
       },
+
       cta: {
         title: 'Ready to free your strategic time?',
         subtitle: 'Schedule your free 30-minute diagnosis and discover how we can transform your business with AI.',
-        disclaimer: 'No commitment • Personalized to your business • Results from the first month'
+        disclaimer: 'No commitment • Personalized to your business • Results from the first month',
+        viewSolutionsButton: 'VIEW SOLUTIONS'
       }
     },
     
@@ -591,6 +659,71 @@ export const translations: Record<Language, Translations> = {
             description: '72 hours for implementation. Measurable ROI from the first month.'
           }
         ]
+      },
+      stats: {
+        title: 'Our numbers speak for themselves',
+        metrics: {
+          services: {
+            title: 'Services',
+            subtitle: 'Available solutions',
+            value: '25+'
+          },
+          strategy: {
+            title: 'Strategy',
+            subtitle: 'Strategic services',
+            value: '12'
+          },
+          operation: {
+            title: 'Operation',
+            subtitle: 'Operational services',
+            value: '13'
+          },
+          roi: {
+            title: 'Average ROI',
+            subtitle: 'Return in 3 months',
+            value: '300%'
+          },
+          timeSaved: {
+            title: 'Time saved',
+            subtitle: 'Reduction in manual tasks',
+            value: '85%'
+          },
+          satisfiedClients: {
+            title: 'Satisfied clients',
+            subtitle: 'Retention rate',
+            value: '100%'
+          },
+          implementation: {
+            title: 'Implementation',
+            subtitle: 'Average days',
+            value: '30'
+          }
+        }
+      },
+      impact: {
+        title: 'Real impact on our clients',
+        metrics: {
+          hoursSaved: {
+            title: 'Hours saved',
+            subtitle: 'Per client per month',
+            value: '1200+'
+          },
+          automatedProcesses: {
+            title: 'Automated processes',
+            subtitle: 'Of repetitive tasks',
+            value: '95%'
+          },
+          responseTime: {
+            title: 'Response time',
+            subtitle: 'Reduction in customer service',
+            value: '80%'
+          },
+          averageROI: {
+            title: 'Average ROI',
+            subtitle: 'Return on investment',
+            value: '300%'
+          }
+        }
       },
       cta: {
         title: 'Ready to free your strategic time?',
