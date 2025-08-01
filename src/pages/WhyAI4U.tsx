@@ -11,9 +11,11 @@ import {
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
+import { useLanguage } from '../hooks';
 
 const WhyAI4U = () => {
   const colors = useColors();
+  const { t } = useLanguage();
 
   return (
     <Box sx={{ 
@@ -43,9 +45,7 @@ const WhyAI4U = () => {
             maxWidth: 700,
             mx: 'auto'
           }}>
-            Somos el único servicio de automatización que combina asistentes robóticos evolutivos 
-            con resultados garantizados en 72 horas. No solo automatizamos tareas - transformamos 
-            el tiempo perdido en libertad estratégica.
+            {t('whyAI4U.hero.description')}
           </BodyText>
         </Container>
       </Box>
@@ -62,7 +62,7 @@ const WhyAI4U = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   color: colors.helpers.text.primary
                 }}>
-                  La parte humana detrás de la tecnología
+                  {t('whyAI4U.mariano.title')}
                 </H2>
                 <BodyText sx={{ 
                   mb: 6, 
@@ -71,23 +71,21 @@ const WhyAI4U = () => {
                   lineHeight: 1.7,
                   fontWeight: 300
                 }}>
-                  Detrás de cada automatización hay una mente humana que entiende tu negocio. 
-                  Mariano, fundador de AI4U, combina experiencia en startups, movilidad y tecnología 
-                  para crear soluciones que realmente funcionan.
+                  {t('whyAI4U.mariano.description')}
                 </BodyText>
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="circle" size="small" color={colors.palette.green} variant="filled" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Fundador de AI4U</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.0')}</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="triangle" size="small" color={colors.helpers.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Cofundador de Matt Movilidad</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.1')}</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="square" size="small" color={colors.helpers.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>Especialista en automatización</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.2')}</BodyText>
                   </Box>
                 </Stack>
                 
@@ -107,7 +105,7 @@ const WhyAI4U = () => {
                     rel: 'noopener noreferrer'
                   }}
                 >
-                  Conectar en LinkedIn
+                  {t('whyAI4U.mariano.linkedinButton')}
                 </Button>
               </Box>
             </Grid>
@@ -117,7 +115,7 @@ const WhyAI4U = () => {
                 <PixelArtImage
                   src="/assets/images/mariano.jpeg"
                   pixelArtSrc="/assets/images/mariano-pixel-art.png"
-                  alt="Mariano, Fundador de AI4U"
+                  alt={t('whyAI4U.mariano.imageAlt')}
                   sx={{
                     width: '100%',
                     height: { xs: 400, md: 500 },
@@ -148,7 +146,7 @@ const WhyAI4U = () => {
                     mb: 1,
                     color: colors.contrast.text.primary
                   }}>
-                    Pasa el mouse para ver el efecto pixel art
+                    {t('whyAI4U.mariano.hoverText')}
                   </BodyText>
                   <BodyText sx={{ 
                     fontSize: '0.8rem',
@@ -157,7 +155,7 @@ const WhyAI4U = () => {
                     opacity: 0.8,
                     color: colors.contrast.text.primary
                   }}>
-                    Tecnología + Creatividad
+                    {t('whyAI4U.mariano.hoverSubtext')}
                   </BodyText>
                 </Box>
               </Card>
@@ -176,26 +174,26 @@ const WhyAI4U = () => {
             fontSize: { xs: '2rem', md: '2.5rem' },
             color: colors.helpers.text.primary
           }}>
-            ¿Qué nos hace diferentes?
+            {t('whyAI4U.benefits.title')}
           </H2>
 
           <Grid container spacing={6}>
             {[
               {
-                title: "Diagnóstico Gratuito",
-                description: "Evaluamos tu negocio sin costo para identificar oportunidades de automatización.",
+                title: t('whyAI4U.benefits.items.0.title'),
+                description: t('whyAI4U.benefits.items.0.description'),
                 icon: "circle",
                 color: colors.palette.green
               },
               {
-                title: "Asistentes que Evolucionan", 
-                description: "A diferencia de otros servicios, nuestros asistentes aprenden y mejoran continuamente.",
+                title: t('whyAI4U.benefits.items.1.title'),
+                description: t('whyAI4U.benefits.items.1.description'),
                 icon: "triangle",
                 color: colors.helpers.text.secondary
               },
               {
-                title: "Resultados Garantizados",
-                description: "72 horas para implementación. ROI medible desde el primer mes.",
+                title: t('whyAI4U.benefits.items.2.title'),
+                description: t('whyAI4U.benefits.items.2.description'),
                 icon: "square", 
                 color: colors.helpers.text.secondary
               }
@@ -254,7 +252,7 @@ const WhyAI4U = () => {
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 300
             }}>
-              ¿Listo para liberar tu tiempo estratégico?
+              {t('whyAI4U.cta.title')}
             </H2>
             <BodyText sx={{ 
               mb: 6, 
@@ -264,8 +262,7 @@ const WhyAI4U = () => {
               maxWidth: 600,
               mx: 'auto'
             }}>
-              Agenda tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización 
-              que liberarán tu tiempo estratégico. Sin compromiso, personalizado a tu negocio.
+              {t('whyAI4U.cta.subtitle')}
             </BodyText>
             
             <Stack 
@@ -278,7 +275,7 @@ const WhyAI4U = () => {
               <ServicesButton
                 variant="outline"
                 size="large"
-                text="VER SOLUCIONES"
+                text={t('whyAI4U.cta.viewSolutionsButton')}
               />
             </Stack>
             
@@ -287,7 +284,7 @@ const WhyAI4U = () => {
               color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
-              Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes
+              {t('whyAI4U.cta.disclaimer')}
             </BodyText>
           </Card>
         </Container>

@@ -8,16 +8,19 @@ import {
   alpha
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
-import { DiagnosticCTA, ServiceCard, ProcessStep, Card, MetricCard } from '../components/shared/ui/molecules';
+import { DiagnosticCTA, ServiceCard, Card, MetricCard } from '../components/shared/ui/molecules';
+import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
 import { useColorMode } from '../context/ThemeContext';
+import { useLanguage } from '../hooks';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
 import { SERVICE_CONFIG } from '../utils/constants';
 
 const Services: React.FC = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
+  const { t } = useLanguage();
   const { 
     services: allServices,
     config,
@@ -38,22 +41,22 @@ const Services: React.FC = () => {
   const [selectedSuperTab, setSelectedSuperTab] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  // Mapeo de supracategorías
+  // Mapeo de supracategorías con traducciones
   const superCategoryTabs = [
-    { label: 'Todos', value: undefined },
-    { label: 'Estrategia', value: ServiceSuperCategory.STRATEGY },
-    { label: 'Operación', value: ServiceSuperCategory.OPERATION }
+    { label: t('services.filter.superCategories.0.label'), value: undefined },
+    { label: t('services.filter.superCategories.1.label'), value: ServiceSuperCategory.STRATEGY },
+    { label: t('services.filter.superCategories.2.label'), value: ServiceSuperCategory.OPERATION }
   ];
 
-  // Mapeo de categorías para los tabs
+  // Mapeo de categorías para los tabs con traducciones
   const categoryTabs = [
-    { label: 'Todos', value: undefined },
-    { label: 'Asistentes IA', value: ServiceCategory.AI_ASSISTANT },
-    { label: 'Automatización', value: ServiceCategory.AUTOMATION },
-    { label: 'Análisis', value: ServiceCategory.ANALYTICS },
-    { label: 'E-commerce', value: ServiceCategory.ECOMMERCE },
-    { label: 'Capacitación', value: ServiceCategory.TRAINING },
-    { label: 'Consultoría', value: ServiceCategory.CONSULTING }
+    { label: t('services.filter.categories.0.label'), value: undefined },
+    { label: t('services.filter.categories.1.label'), value: ServiceCategory.AI_ASSISTANT },
+    { label: t('services.filter.categories.2.label'), value: ServiceCategory.AUTOMATION },
+    { label: t('services.filter.categories.3.label'), value: ServiceCategory.ANALYTICS },
+    { label: t('services.filter.categories.4.label'), value: ServiceCategory.ECOMMERCE },
+    { label: t('services.filter.categories.5.label'), value: ServiceCategory.TRAINING },
+    { label: t('services.filter.categories.6.label'), value: ServiceCategory.CONSULTING }
   ];
 
   const handleSuperTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -100,7 +103,7 @@ const Services: React.FC = () => {
               fontWeight: 300,
               letterSpacing: '-0.01em'
             }}>
-              Servicios AI4U
+              {t('services.hero.title')}
             </H1>
             <H2 sx={{ 
               mb: 4, 
@@ -108,7 +111,7 @@ const Services: React.FC = () => {
               color: 'text.primary',
               fontSize: { xs: '1.2rem', md: '1.5rem' }
             }}>
-              Construimos tu infraestructura de IA personalizada
+              {t('services.hero.subtitle')}
             </H2>
             <BodyText sx={{ 
               fontSize: '1.1rem', 
@@ -118,19 +121,31 @@ const Services: React.FC = () => {
               lineHeight: 1.6,
               fontWeight: 300
             }}>
-              En AI4U nos especializamos en crear soluciones de inteligencia artificial adaptadas específicamente a tu negocio. 
-              Automatizamos procesos, liberamos tiempo operativo y transformamos ese tiempo en libertad estratégica.
+              {t('services.hero.description')}
             </BodyText>
           </Box>
 
-          {/* Stats con MetricCards glassmorphism */}
-          <Grid container spacing={3} justifyContent="center">
+          {/* Stats con MetricCards glassmorphism - NÚMEROS GIGANTES */}
+          <Box sx={{ mb: 6 }}>
+            <H2 sx={{ 
+              mb: 4, 
+              textAlign: 'center',
+              color: 'text.primary',
+              fontSize: { xs: '1.5rem', md: '2rem' },
+              fontWeight: 400,
+              opacity: 0.8
+            }}>
+              {t('services.stats.title')}
+            </H2>
+          </Box>
+          
+          <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title="Servicios"
+                  title={t('services.stats.metrics.0.title')}
                   value={stats.total}
-                  subtitle="Soluciones disponibles"
+                  subtitle={t('services.stats.metrics.0.subtitle')}
                   iconType="square"
                   variant="glass"
                   size="large"
@@ -140,9 +155,9 @@ const Services: React.FC = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title="Estrategia"
+                  title={t('services.stats.metrics.1.title')}
                   value={stats.bySuperCategory[ServiceSuperCategory.STRATEGY]}
-                  subtitle="Servicios estratégicos"
+                  subtitle={t('services.stats.metrics.1.subtitle')}
                   iconType="triangle"
                   variant="primary"
                   size="large"
@@ -152,9 +167,9 @@ const Services: React.FC = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title="Operación"
+                  title={t('services.stats.metrics.2.title')}
                   value={stats.bySuperCategory[ServiceSuperCategory.OPERATION]}
-                  subtitle="Servicios operativos"
+                  subtitle={t('services.stats.metrics.2.subtitle')}
                   iconType="circle"
                   variant="accent"
                   size="large"
@@ -164,9 +179,9 @@ const Services: React.FC = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title="ROI promedio"
-                  value="300%"
-                  subtitle="Retorno en 3 meses"
+                  title={t('services.stats.metrics.3.title')}
+                  value={t('services.stats.metrics.3.value')}
+                  subtitle={t('services.stats.metrics.3.subtitle')}
                   iconType="arrow-up"
                   variant="glass"
                   size="large"
@@ -175,115 +190,53 @@ const Services: React.FC = () => {
               </Box>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
-
-      {/* Our Process Section */}
-      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
-          <H2 sx={{ 
-            mb: 6, 
-            textAlign: 'center',
-            color: 'text.primary',
-            fontSize: { xs: '1.8rem', md: '2.2rem' },
-            fontWeight: 400
-          }}>
-            Nuestro proceso
-          </H2>
           
-          <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} md={10}>
-              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
-                <Box sx={{ p: 4 }}>
-                  <Grid container spacing={4}>
-                    {[
-                      {
-                        number: 1,
-                        title: `Diagnóstico gratuito (${SERVICE_CONFIG.DIAGNOSTIC_DURATION} minutos)`,
-                        description: "Identificamos todas las oportunidades de automatización en tu negocio",
-                        icon: "circle"
-                      },
-                      {
-                        number: 2,
-                        title: "Definición de prioridades",
-                        description: "Establecemos qué procesos automatizar primero según tu ROI",
-                        icon: "triangle"
-                      },
-                      {
-                        number: 3,
-                        title: "Presupuesto personalizado",
-                        description: "Adaptamos las soluciones a tu capacidad de inversión",
-                        icon: "square"
-                      },
-                      {
-                        number: 4,
-                        title: "Implementación",
-                        description: "Desarrollamos e integramos las soluciones en tu negocio",
-                        icon: "arrow-right"
-                      }
-                    ].map((step, idx) => (
-                      <Grid item xs={12} sm={6} key={idx}>
-                        <Box sx={{ 
-                          display: 'flex', 
-                          alignItems: 'flex-start', 
-                          gap: 3,
-                          p: 2
-                        }}>
-                          <GeometricIcon
-                            type={step.icon as any}
-                            size="medium"
-                            color={idx === 0 ? "#B6CA40" : theme.palette.text.secondary}
-                            variant={idx === 0 ? "filled" : "minimal"}
-                          />
-                          <Box sx={{ flex: 1 }}>
-                            <H3 sx={{ 
-                              mb: 1, 
-                              fontSize: '1.1rem', 
-                              fontWeight: 500,
-                              color: 'text.primary'
-                            }}>
-                              {step.title}
-                            </H3>
-                            <BodyText sx={{ 
-                              color: 'text.secondary', 
-                              fontSize: '0.95rem',
-                              lineHeight: 1.5
-                            }}>
-                              {step.description}
-                            </BodyText>
-                          </Box>
-                        </Box>
-                      </Grid>
-                    ))}
-                  </Grid>
-                  
-                  <Box sx={{ 
-                    textAlign: 'center', 
-                    mt: 6, 
-                    pt: 4, 
-                    borderTop: `1px solid ${theme.palette.divider}` 
-                  }}>
-                    <DiagnosticCTA />
-                  </Box>
+          {/* Métricas adicionales con números gigantes */}
+          <Box sx={{ mt: 8 }}>
+            <Grid container spacing={4} justifyContent="center">
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('services.stats.metrics.4.title')}
+                    value={t('services.stats.metrics.4.value')}
+                    subtitle={t('services.stats.metrics.4.subtitle')}
+                    iconType="arrow-up"
+                    variant="glass"
+                    size="large"
+                    trend="up"
+                  />
                 </Box>
-              </Card>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('services.stats.metrics.5.title')}
+                    value={t('services.stats.metrics.5.value')}
+                    subtitle={t('services.stats.metrics.5.subtitle')}
+                    iconType="circle"
+                    variant="primary"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('services.stats.metrics.6.title')}
+                    value={t('services.stats.metrics.6.value')}
+                    subtitle={t('services.stats.metrics.6.subtitle')}
+                    iconType="triangle"
+                    variant="accent"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Container>
       </Box>
 
-      <Box sx={{ py: 2 }}>
-        <Container maxWidth="lg">
-          <Box sx={{ 
-            height: '1px', 
-            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
-            mx: 'auto',
-            width: '60%'
-          }} />
-        </Container>
-      </Box>
-
-      {/* Services Filter Section */}
+      {/* Services Filter Section - MOVIDO ARRIBA */}
       <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
@@ -293,7 +246,7 @@ const Services: React.FC = () => {
             fontSize: { xs: '1.8rem', md: '2.2rem' },
             fontWeight: 400
           }}>
-            Nuestros servicios
+            {t('services.filter.title')}
           </H2>
           
           {/* Super Category Tabs */}
@@ -386,7 +339,7 @@ const Services: React.FC = () => {
                     boxShadow: theme.shadows[4],
                   }
                 }}
-                aria-label="Desplazar servicios hacia la izquierda"
+                aria-label={t('services.filter.navigation.left')}
               >
                 <GeometricIcon
                   type="arrow-left"
@@ -426,7 +379,7 @@ const Services: React.FC = () => {
                     boxShadow: theme.shadows[4],
                   }
                 }}
-                aria-label="Desplazar servicios hacia la derecha"
+                aria-label={t('services.filter.navigation.right')}
               >
                 <GeometricIcon
                   type="arrow-right"
@@ -500,17 +453,171 @@ const Services: React.FC = () => {
                 mb: 3,
                 mt: 2
               }}>
-                No se encontraron servicios que coincidan con los filtros seleccionados.
+                {t('services.filter.noResults.title')}
               </BodyText>
               <Button
                 variant="outline"
                 onClick={clearFilters}
                 size="medium"
               >
-                Limpiar filtros
+                {t('services.filter.noResults.clearButton')}
               </Button>
             </Card>
           )}
+        </Container>
+      </Box>
+
+      <Box sx={{ py: 2 }}>
+        <Container maxWidth="lg">
+          <Box sx={{ 
+            height: '1px', 
+            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
+            mx: 'auto',
+            width: '60%'
+          }} />
+        </Container>
+      </Box>
+
+      {/* Our Process Section */}
+      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+          <H2 sx={{ 
+            mb: 6, 
+            textAlign: 'center',
+            color: 'text.primary',
+            fontSize: { xs: '1.8rem', md: '2.2rem' },
+            fontWeight: 400
+          }}>
+            {t('services.process.title')}
+          </H2>
+          
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} md={10}>
+              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
+                <Box sx={{ p: 4 }}>
+                  <Grid container spacing={4}>
+                    {[
+                      {
+                        number: 1,
+                        title: t('services.process.steps.0.title'),
+                        description: t('services.process.steps.0.description'),
+                        color: "#B6CA40"
+                      },
+                      {
+                        number: 2,
+                        title: t('services.process.steps.1.title'),
+                        description: t('services.process.steps.1.description'),
+                        color: theme.palette.secondary.main
+                      },
+                      {
+                        number: 3,
+                        title: t('services.process.steps.2.title'),
+                        description: t('services.process.steps.2.description'),
+                        color: "#FF6B35"
+                      },
+                      {
+                        number: 4,
+                        title: t('services.process.steps.3.title'),
+                        description: t('services.process.steps.3.description'),
+                        color: "#1a1a1a"
+                      }
+                    ].map((step, idx) => (
+                      <Grid item xs={12} sm={6} key={idx}>
+                        <ProcessStep
+                          number={step.number}
+                          title={step.title}
+                          description={step.description}
+                          color={step.color}
+                          size="large"
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                  
+                  <Box sx={{ 
+                    textAlign: 'center', 
+                    mt: 6, 
+                    pt: 4, 
+                    borderTop: `1px solid ${theme.palette.divider}` 
+                  }}>
+                    <DiagnosticCTA />
+                  </Box>
+                </Box>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Estadísticas adicionales con números gigantes */}
+      <Box sx={{ 
+        py: 8, 
+        position: 'relative', 
+        bgcolor: 'background.paper',
+        overflow: 'hidden'
+      }}>
+        <Container maxWidth="lg">
+          <H2 sx={{ 
+            mb: 6, 
+            textAlign: 'center',
+            color: 'text.primary',
+            fontSize: { xs: '1.8rem', md: '2.2rem' },
+            fontWeight: 400
+          }}>
+            {t('services.impact.title')}
+          </H2>
+          
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title={t('services.impact.metrics.0.title')}
+                  value={t('services.impact.metrics.0.value')}
+                  subtitle={t('services.impact.metrics.0.subtitle')}
+                  iconType="arrow-up"
+                  variant="glass"
+                  size="large"
+                  trend="up"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title={t('services.impact.metrics.1.title')}
+                  value={t('services.impact.metrics.1.value')}
+                  subtitle={t('services.impact.metrics.1.subtitle')}
+                  iconType="circle"
+                  variant="primary"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title={t('services.impact.metrics.2.title')}
+                  value={t('services.impact.metrics.2.value')}
+                  subtitle={t('services.impact.metrics.2.subtitle')}
+                  iconType="triangle"
+                  variant="accent"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title={t('services.impact.metrics.3.title')}
+                  value={t('services.impact.metrics.3.value')}
+                  subtitle={t('services.impact.metrics.3.subtitle')}
+                  iconType="arrow-up"
+                  variant="glass"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
@@ -541,7 +648,7 @@ const Services: React.FC = () => {
               fontSize: { xs: '1.6rem', md: '2rem' },
               fontWeight: 400
             }}>
-              ¿Listo para liberar tu tiempo estratégico?
+              {t('services.cta.title')}
             </H2>
             <BodyText sx={{ 
               mb: 6, 
@@ -551,7 +658,7 @@ const Services: React.FC = () => {
               color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)',
               lineHeight: 1.6
             }}>
-              Agenda tu diagnóstico gratuito de 30 minutos y descubre cómo podemos transformar tu negocio con IA.
+              {t('services.cta.subtitle')}
             </BodyText>
             
             <Box sx={{ mb: 4 }}>
@@ -563,7 +670,7 @@ const Services: React.FC = () => {
               color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
-              Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes
+              {t('services.cta.disclaimer')}
             </BodyText>
           </Card>
         </Container>

@@ -1,134 +1,145 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components/shared/ui/layouts';
-import { ThemeProvider, ServicesProvider } from './context';
+import { ThemeProvider, ServicesProvider, LanguageProvider } from './context';
 import { ROUTES } from './utils/constants';
 import { 
   Home, 
   Services, 
   WhyAI4U, 
-  SuccessCases, 
+  UseCases, 
   ComponentLibrary, 
   Gallery,
   ColorSystemDemo,
   MigrationDemo,
   Fase3Demo,
   MetricsDemo,
-  ThemeDemo
+  ThemeDemo,
+  InternationalizationDemo
 } from './pages/lazy';
 
 function App() {
   return (
-    <ThemeProvider>
-      <ServicesProvider>
-        <BasicLoadingWrapper>
-          <Router>
-            <ScrollToTop />
-            <Layout>
-              <Routes>
-                <Route 
-                  path={ROUTES.HOME} 
-                  element={
-                    <LazyPage>
-                      <Home />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.SERVICES} 
-                  element={
-                    <LazyPage>
-                      <Services />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.TIENDA_AI} 
-                  element={
-                    <LazyPage>
-                      <Home />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.WHY_AI4U} 
-                  element={
-                    <LazyPage>
-                      <WhyAI4U />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.SUCCESS_CASES} 
-                  element={
-                    <LazyPage>
-                      <SuccessCases />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.COMPONENT_LIBRARY} 
-                  element={
-                    <LazyPage>
-                      <ComponentLibrary />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.GALLERY} 
-                  element={
-                    <LazyPage>
-                      <Gallery />
-                    </LazyPage>
-                  } 
-                />
-                {/* Rutas de Demo */}
-                <Route 
-                  path={ROUTES.COLOR_SYSTEM_DEMO} 
-                  element={
-                    <LazyPage>
-                      <ColorSystemDemo />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.MIGRATION_DEMO} 
-                  element={
-                    <LazyPage>
-                      <MigrationDemo />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.FASE3_DEMO} 
-                  element={
-                    <LazyPage>
-                      <Fase3Demo />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.METRICS_DEMO} 
-                  element={
-                    <LazyPage>
-                      <MetricsDemo />
-                    </LazyPage>
-                  } 
-                />
-                <Route 
-                  path={ROUTES.THEME_DEMO} 
-                  element={
-                    <LazyPage>
-                      <ThemeDemo />
-                    </LazyPage>
-                  } 
-                />
-              </Routes>
-            </Layout>
-          </Router>
-        </BasicLoadingWrapper>
-      </ServicesProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <ServicesProvider>
+          <BasicLoadingWrapper>
+            <Router>
+              <ScrollToTop />
+              <Layout>
+                <Routes>
+                  <Route 
+                    path={ROUTES.HOME} 
+                    element={
+                      <LazyPage>
+                        <Home />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.SERVICES} 
+                    element={
+                      <LazyPage>
+                        <Services />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.TIENDA_AI} 
+                    element={
+                      <LazyPage>
+                        <Home />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.WHY_AI4U} 
+                    element={
+                      <LazyPage>
+                        <WhyAI4U />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.SUCCESS_CASES} 
+                    element={
+                      <LazyPage>
+                        <UseCases />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.COMPONENT_LIBRARY} 
+                    element={
+                      <LazyPage>
+                        <ComponentLibrary />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.GALLERY} 
+                    element={
+                      <LazyPage>
+                        <Gallery />
+                      </LazyPage>
+                    } 
+                  />
+                  {/* Rutas de Demo */}
+                  <Route 
+                    path={ROUTES.COLOR_SYSTEM_DEMO} 
+                    element={
+                      <LazyPage>
+                        <ColorSystemDemo />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.MIGRATION_DEMO} 
+                    element={
+                      <LazyPage>
+                        <MigrationDemo />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.FASE3_DEMO} 
+                    element={
+                      <LazyPage>
+                        <Fase3Demo />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.METRICS_DEMO} 
+                    element={
+                      <LazyPage>
+                        <MetricsDemo />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.THEME_DEMO} 
+                    element={
+                      <LazyPage>
+                        <ThemeDemo />
+                      </LazyPage>
+                    } 
+                  />
+                  <Route 
+                    path={ROUTES.I18N_DEMO} 
+                    element={
+                      <LazyPage>
+                        <InternationalizationDemo />
+                      </LazyPage>
+                    } 
+                  />
+                </Routes>
+              </Layout>
+            </Router>
+          </BasicLoadingWrapper>
+        </ServicesProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

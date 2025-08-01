@@ -3,7 +3,7 @@ export const ROUTES = {
   HOME: '/',
   SERVICES: '/servicios',
   WHY_AI4U: '/por-que-ai4u',
-  SUCCESS_CASES: '/casos-de-exito',
+  SUCCESS_CASES: '/casos-de-uso',
   TIENDA_AI: '/tienda-ai',
   COMPONENT_LIBRARY: '/component-library',
   GALLERY: '/Gallery',
@@ -12,7 +12,8 @@ export const ROUTES = {
   MIGRATION_DEMO: '/migration-demo',
   FASE3_DEMO: '/fase3-demo',
   METRICS_DEMO: '/metrics-demo',
-  THEME_DEMO: '/theme-demo'
+  THEME_DEMO: '/theme-demo',
+  I18N_DEMO: '/i18n-demo'
 } as const;
 
 // Configuración de la aplicación
@@ -21,7 +22,7 @@ export const APP_CONFIG = {
   DESCRIPTION: 'Construimos tu infraestructura de IA personalizada',
   CONTACT: {
     EMAIL: 'contacto@ai4u.com.co',
-    PHONE: '+57 300 123 4567',
+    PHONE: '+57 321 817 5744',
     CALENDLY: 'calendly.com/mgarciap333/ai4u-automatizacion-inteligente'
   },
   SOCIAL: {

@@ -5,13 +5,17 @@ import {
   CardContent, 
   Typography, 
   Divider,
-  useTheme,
-  styled
+  IconButton
 } from '@mui/material';
 import { 
-  LocationOn as LocationOnIcon 
+  LocationOn as LocationOnIcon,
+  Refresh as RefreshIcon,
+  WbSunny as SunIcon,
+  Cloud as CloudIcon,
+  Opacity as RainIcon
 } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
+import { H1, H3, H4, BodyText, SmallText } from '../atoms';
 
 interface WeatherData {
   location: string;
@@ -31,69 +35,106 @@ interface WeatherData {
 
 interface WeatherWidgetProps {
   data: WeatherData;
-  variant?: 'light' | 'dark' | 'red';
+  variant?: 'glass' | 'dark' | 'primary' | 'accent';
   showLocationIcon?: boolean;
+  onRefresh?: () => void;
 }
-
-// Styled components
-const StyledCard = styled(Card)<{ weatherVariant?: string }>(({ theme, weatherVariant }) => {
-  let backgroundColor, textColor, borderColor;
-  
-  switch (weatherVariant) {
-    case 'red':
-      backgroundColor = '#EF4444'; // red-500
-      textColor = '#000000';
-      borderColor = '#F87171'; // red-400
-      break;
-    case 'dark':
-      backgroundColor = '#000000';
-      textColor = '#FFFFFF';
-      borderColor = theme.palette.grey[700];
-      break;
-    default:
-      backgroundColor = theme.palette.background.paper;
-      textColor = theme.palette.text.primary;
-      borderColor = theme.palette.divider;
-  }
-
-  return {
-    backgroundColor,
-    color: textColor,
-    borderRadius: theme.spacing(3),
-    maxWidth: 400,
-    margin: '0 auto',
-    border: `1px solid ${borderColor}`,
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-      transform: 'translateY(-2px)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
-      backgroundColor: weatherVariant === 'dark' ? '#1a1a1a' : backgroundColor,
-    },
-  };
-});
 
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   data,
-  variant = 'light',
-  showLocationIcon = false
+  variant = 'glass',
+  showLocationIcon = false,
+  onRefresh = undefined
 }) => {
-  const theme = useTheme();
   const colors = useColors();
 
-  const getTextColor = (type: 'primary' | 'secondary') => {
+  // Configuración de variantes según el sistema AI4U
+  const getVariantStyles = () => {
     switch (variant) {
-      case 'red':
-        return '#000000';
       case 'dark':
-        return type === 'primary' ? colors.helpers.text.highContrast : colors.helpers.text.mediumContrast;
-      default:
-        return type === 'primary' ? colors.helpers.text.highContrast : colors.helpers.text.mediumContrast;
+        return {
+          card: {
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      case 'primary':
+        return {
+          card: {
+            background: `linear-gradient(135deg, ${colors.palette.orange}15, ${colors.palette.orange}25)`,
+            backdropFilter: 'blur(20px)',
+            border: `1px solid ${colors.palette.orange}30`,
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      case 'accent':
+        return {
+          card: {
+            background: `linear-gradient(135deg, ${colors.palette.green}15, ${colors.palette.green}25)`,
+            backdropFilter: 'blur(20px)',
+            border: `1px solid ${colors.palette.green}30`,
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      default: // glass
+        return {
+          card: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.25)'
+          }
+        };
     }
   };
 
+  const getWeatherIcon = (condition: string) => {
+    const conditionLower = condition.toLowerCase();
+    if (conditionLower.includes('clear') || conditionLower.includes('sunny')) {
+      return <SunIcon />;
+    } else if (conditionLower.includes('cloud') || conditionLower.includes('overcast')) {
+      return <CloudIcon />;
+    } else if (conditionLower.includes('rain') || conditionLower.includes('precipitation')) {
+      return <RainIcon />;
+    }
+    return <SunIcon />;
+  };
+
+  const variantStyles = getVariantStyles();
+
   return (
-    <StyledCard weatherVariant={variant}>
+    <Card
+      sx={{
+        borderRadius: 4,
+        maxWidth: 400,
+        margin: '0 auto',
+        transition: 'all 0.3s ease',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+        },
+        ...variantStyles.card
+      }}
+    >
       <CardContent sx={{ p: 3 }}>
         {/* Header */}
         <Box sx={{ 
@@ -102,133 +143,200 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           justifyContent: 'space-between', 
           mb: 3 
         }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              {showLocationIcon && (
-                <LocationOnIcon sx={{ 
-                  fontSize: 16, 
-                  color: getTextColor('primary') 
-                }} />
-              )}
-              <Typography variant="h6" sx={{ 
-                fontWeight: 600,
-                color: getTextColor('primary')
-              }}>
-                {data.location}
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2" sx={{ 
-              color: getTextColor('secondary')
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            {showLocationIcon && (
+              <LocationOnIcon sx={{ 
+                fontSize: 20, 
+                color: colors.helpers.text.primary 
+              }} />
+            )}
+            <H4 sx={{ 
+              color: colors.helpers.text.primary,
+              fontWeight: 600
             }}>
-              00:37
-            </Typography>
-            <Box sx={{ 
-              width: 8, 
-              height: 8, 
-              backgroundColor: 'currentColor', 
-              borderRadius: '50%' 
-            }} />
+              {data.location}
+            </H4>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <SmallText sx={{ 
+              color: colors.helpers.text.secondary
+            }}>
+              Actualizado ahora
+            </SmallText>
+            {onRefresh && (
+              <IconButton
+                size="small"
+                onClick={onRefresh}
+                sx={{
+                  color: colors.helpers.text.secondary,
+                  '&:hover': {
+                    background: colors.helpers.state.hover,
+                    color: colors.palette.orange
+                  }
+                }}
+              >
+                <RefreshIcon />
+              </IconButton>
+            )}
           </Box>
         </Box>
 
         {/* Current Weather */}
-        <Box sx={{ textAlign: 'center', mb: 3 }}>
-          <Typography variant="h1" sx={{ 
-            fontSize: '4rem',
+        <Box sx={{ 
+          textAlign: 'center', 
+          mb: 4,
+          p: 3,
+          borderRadius: 3,
+          ...variantStyles.surface,
+          backdropFilter: 'blur(10px)'
+        }}>
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            mb: 2
+          }}>
+            {getWeatherIcon(data.condition)}
+          </Box>
+          <H1 sx={{ 
+            fontSize: '3.5rem',
             fontWeight: 700,
-            color: getTextColor('primary'),
+            color: colors.helpers.text.primary,
             mb: 1,
             lineHeight: 1
           }}>
             {data.temperature}°
-          </Typography>
-          <Typography variant="h6" sx={{ 
-            color: getTextColor('secondary'),
-            mb: 1
+          </H1>
+          <H4 sx={{ 
+            color: colors.helpers.text.primary,
+            mb: 1,
+            fontWeight: 600
           }}>
             {data.condition}
-          </Typography>
-          <Typography variant="body2" sx={{ 
-            color: getTextColor('secondary')
+          </H4>
+          <BodyText sx={{ 
+            color: colors.helpers.text.secondary,
+            fontWeight: 500
           }}>
-            {data.high}°—{data.low}°
-          </Typography>
+            Máx {data.high}° — Mín {data.low}°
+          </BodyText>
         </Box>
 
         {/* Weather Details */}
         <Box sx={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
-          mb: 3 
+          mb: 4,
+          p: 2.5,
+          borderRadius: 3,
+          ...variantStyles.surface,
+          backdropFilter: 'blur(10px)'
         }}>
-          <Typography variant="body2" sx={{ 
-            color: getTextColor('secondary')
-          }}>
-            Wind: {data.wind} km/h
-          </Typography>
-          <Typography variant="body2" sx={{ 
-            color: getTextColor('secondary')
-          }}>
-            Precipitation: {data.precipitation}%
-          </Typography>
+          <Box sx={{ textAlign: 'center' }}>
+            <SmallText sx={{ 
+              color: colors.helpers.text.secondary,
+              mb: 0.5,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5
+            }}>
+              Viento
+            </SmallText>
+            <H4 sx={{ 
+              color: colors.helpers.text.primary,
+              fontWeight: 600
+            }}>
+              {data.wind} km/h
+            </H4>
+          </Box>
+          <Box sx={{ textAlign: 'center' }}>
+            <SmallText sx={{ 
+              color: colors.helpers.text.secondary,
+              mb: 0.5,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5
+            }}>
+              Lluvia
+            </SmallText>
+            <H4 sx={{ 
+              color: colors.helpers.text.primary,
+              fontWeight: 600
+            }}>
+              {data.precipitation}%
+            </H4>
+          </Box>
         </Box>
 
         {/* Hourly Forecast */}
         <Box sx={{ pt: 2 }}>
           <Divider sx={{ 
-            mb: 2,
-            borderColor: variant === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'
+            mb: 3,
+            borderColor: colors.helpers.border.secondary + '40'
           }} />
-          <Typography variant="subtitle2" sx={{ 
+          <H4 sx={{ 
             fontWeight: 600,
-            mb: 2,
-            color: getTextColor('primary')
+            mb: 3,
+            color: colors.helpers.text.primary
           }}>
-            Hourly
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            Pronóstico por Hora
+          </H4>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {data.hourlyForecast.map((forecast, index) => (
               <Box key={index} sx={{ 
                 display: 'flex', 
                 justifyContent: 'space-between', 
-                alignItems: 'center' 
+                alignItems: 'center',
+                p: 2,
+                borderRadius: 2,
+                background: variantStyles.surface.background,
+                border: variantStyles.surface.border,
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  background: colors.helpers.state.hover,
+                  transform: 'translateX(4px)'
+                }
               }}>
-                <Typography variant="body2" sx={{ 
-                  color: getTextColor('secondary'),
-                  minWidth: '60px'
-                }}>
-                  {forecast.time}
-                </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: getTextColor('secondary'),
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  {getWeatherIcon(forecast.condition)}
+                  <SmallText sx={{ 
+                    color: colors.helpers.text.secondary,
+                    minWidth: '60px',
+                    fontWeight: 500
+                  }}>
+                    {forecast.time}
+                  </SmallText>
+                </Box>
+                <BodyText sx={{ 
+                  color: colors.helpers.text.secondary,
                   flex: 1,
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  fontWeight: 500
                 }}>
                   {forecast.condition}
-                </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: getTextColor('secondary'),
-                  minWidth: '40px',
-                  textAlign: 'center'
-                }}>
-                  {forecast.precipitation}%
-                </Typography>
-                <Typography variant="body2" sx={{ 
-                  fontWeight: 600,
-                  color: getTextColor('primary'),
-                  minWidth: '40px',
-                  textAlign: 'right'
-                }}>
-                  {forecast.temperature}°
-                </Typography>
+                </BodyText>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <SmallText sx={{ 
+                    color: colors.helpers.text.secondary,
+                    minWidth: '40px',
+                    textAlign: 'center'
+                  }}>
+                    {forecast.precipitation}%
+                  </SmallText>
+                  <H4 sx={{ 
+                    fontWeight: 600,
+                    color: colors.helpers.text.primary,
+                    minWidth: '50px',
+                    textAlign: 'right'
+                  }}>
+                    {forecast.temperature}°
+                  </H4>
+                </Box>
               </Box>
             ))}
           </Box>
         </Box>
       </CardContent>
-    </StyledCard>
+    </Card>
   );
 };
 
