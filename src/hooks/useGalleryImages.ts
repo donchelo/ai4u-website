@@ -27,10 +27,13 @@ const getImageTitle = (filename: string): string => {
     'cases/logo-hua-naturals.png': 'Caso de Éxito - HUA Naturals',
     'cases/logo-magdalena.png': 'Caso de Éxito - Magdalena',
     'cases/logo-true.png': 'Caso de Éxito - True',
-    'gallery/ai4u-logo.png': 'Logo AI4U - Galería',
-    'gallery/robot.png': 'Robot AI4U - Galería',
-    'gallery/hero-image.png': 'Imagen Hero - Galería',
   };
+
+  // Para imágenes de la carpeta gallery, generar título automáticamente
+  if (filename.startsWith('gallery/')) {
+    const name = filename.replace('gallery/', '').replace(/\.[^/.]+$/, '');
+    return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
 
   return titles[filename] || `Imagen ${filename}`;
 };
@@ -54,61 +57,57 @@ const getImageDescription = (filename: string): string => {
     'cases/logo-hua-naturals.png': 'HUA Naturals - Proyecto de éxito',
     'cases/logo-magdalena.png': 'Magdalena - Caso de estudio',
     'cases/logo-true.png': 'True - Cliente satisfecho',
-    'gallery/ai4u-logo.png': 'Logo AI4U - Galería',
-    'gallery/robot.png': 'Robot AI4U - Galería',
-    'gallery/hero-image.png': 'Imagen Hero - Galería',
   };
+
+  // Para imágenes de la carpeta gallery, generar descripción automáticamente
+  if (filename.startsWith('gallery/')) {
+    const name = filename.replace('gallery/', '').replace(/\.[^/.]+$/, '');
+    return `Imagen de la galería AI4U: ${name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}`;
+  }
 
   return descriptions[filename] || 'Imagen de la galería AI4U';
 };
 
+// Función para detectar automáticamente imágenes en la carpeta gallery
+const getGalleryImages = (): string[] => {
+  // Lista de imágenes conocidas en la carpeta gallery
+  const knownGalleryImages: string[] = [
+    'gallery/hero-image.png',
+    'gallery/hero-image3.png',
+  ];
+
+  // 🔧 INSTRUCCIONES PARA AGREGAR NUEVAS IMÁGENES:
+  // 1. Coloca tu imagen en: assets/images/gallery/
+  // 2. Descomenta la línea correspondiente aquí (quita los //)
+  // 
+  // Ejemplos:
+  // 'gallery/mi-nueva-imagen.jpg',
+  // 'gallery/proyecto-ai4u.png',
+  // 'gallery/equipo-trabajo.jpeg',
+  // 'gallery/evento-tecnologia.jpg',
+
+  return knownGalleryImages;
+};
+
 // Función para cargar imágenes dinámicamente
 const loadGalleryImages = (): GalleryImage[] => {
-  // Lista de imágenes disponibles en el proyecto
-  const imageFiles = [
-    'ai4u-logo.png',
-    'ai4u-logo-dark.png',
-    'ai4u-logo-for-dark-background.png',
-    'ai4u-logo-for-light-background.png',
-    'hero-image.png',
-    'hero-image2.png',
-    'hero-image3.png',
-    'robot-assistant.png',
-    'robot.png',
-    'mariano.jpeg',
-    'Logo V3 - Crema.png',
-    'Logo V3 - Negro.png',
+  // Imágenes de prueba directas
+  return [
+    {
+      id: 'gallery-1',
+      src: '/assets/images/gallery/hero-image.png',
+      alt: 'Hero Image',
+      title: 'Hero Image',
+      description: 'Imagen hero de AI4U'
+    },
+    {
+      id: 'gallery-2',
+      src: '/assets/images/gallery/hero-image3.png',
+      alt: 'Hero Image 3',
+      title: 'Hero Image 3',
+      description: 'Imagen hero 3 de AI4U'
+    }
   ];
-
-  // Imágenes de casos de éxito
-  const caseImages = [
-    'cases/logo-eafit.png',
-    'cases/logo-hua-naturals.png',
-    'cases/logo-magdalena.png',
-    'cases/logo-true.png',
-  ];
-
-  // Imágenes de la galería específica
-  const galleryImages = [
-    'gallery/ai4u-logo.png',
-    'gallery/robot.png',
-    'gallery/hero-image.png',
-  ];
-
-  // Combinar todas las imágenes
-  const allImages = [...imageFiles, ...caseImages, ...galleryImages];
-
-  return allImages.map((filename, index) => {
-    const basePath = '/assets/images/';
-    
-    return {
-      id: `gallery-${index}`,
-      src: `${basePath}${filename}`,
-      alt: `Imagen ${index + 1} de la galería AI4U`,
-      title: getImageTitle(filename),
-      description: getImageDescription(filename),
-    };
-  });
 };
 
 export const useGalleryImages = () => {
@@ -122,14 +121,11 @@ export const useGalleryImages = () => {
         setIsLoading(true);
         setError(null);
         
-        // Simular carga asíncrona
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
+        // Cargar imágenes directamente
         const galleryImages = loadGalleryImages();
         setImages(galleryImages);
       } catch (err) {
         setError('Error al cargar las imágenes de la galería');
-        console.error('Error loading gallery images:', err);
       } finally {
         setIsLoading(false);
       }

@@ -103,16 +103,24 @@ const GalleryPage: React.FC = () => {
           Galería Automática
         </BodyText>
         <BodyText color="text.secondary">
-          Esta galería se actualiza automáticamente cuando agregas nuevas imágenes 
-          a la carpeta del proyecto. El sistema detecta y muestra todas las imágenes 
-          disponibles con navegación fluida y efectos visuales optimizados.
+          Esta galería muestra las imágenes principales del proyecto AI4U y las imágenes 
+          que agregues a la carpeta gallery. Para agregar nuevas imágenes:
         </BodyText>
         <BodyText color="text.secondary" sx={{ mt: 2 }}>
-          Para agregar nuevas imágenes, simplemente colócalas en la carpeta 
-          <code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '4px' }}>
+          <strong>Paso 1:</strong> Coloca tus imágenes en la carpeta 
+          <code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>
             assets/images/gallery/
           </code>
-          y aparecerán automáticamente en la galería.
+        </BodyText>
+        <BodyText color="text.secondary" sx={{ mt: 1 }}>
+          <strong>Paso 2:</strong> Agrega los nombres de archivo en la función 
+          <code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>
+            getGalleryImages()
+          </code>
+          en el archivo useGalleryImages.ts
+        </BodyText>
+        <BodyText color="text.secondary" sx={{ mt: 1 }}>
+          <strong>Ejemplo:</strong> Si agregas 'mi-foto.jpg', añade 'gallery/mi-foto.jpg' al array
         </BodyText>
       </Box>
     </Container>

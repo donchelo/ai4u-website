@@ -6,7 +6,7 @@ export const ROUTES = {
   SUCCESS_CASES: '/casos-de-exito',
   TIENDA_AI: '/tienda-ai',
   COMPONENT_LIBRARY: '/component-library',
-  GALLERY: '/galeria'
+  GALLERY: '/Gallery'
 } as const;
 
 // Configuración de la aplicación
