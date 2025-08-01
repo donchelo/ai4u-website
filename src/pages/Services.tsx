@@ -8,7 +8,7 @@ import {
   alpha
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
-import { DiagnosticCTA, ServiceCard, Card, MetricCard } from '../components/shared/ui/molecules';
+import { ServiceCard, Card, MetricCard } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
@@ -427,14 +427,7 @@ const Services: React.FC = () => {
                     ))}
                   </Grid>
                   
-                  <Box sx={{ 
-                    textAlign: 'center', 
-                    mt: 6, 
-                    pt: 4, 
-                    borderTop: `1px solid ${theme.palette.divider}` 
-                  }}>
-                    <DiagnosticCTA />
-                  </Box>
+
                 </Box>
               </Card>
             </Grid>
@@ -444,60 +437,7 @@ const Services: React.FC = () => {
 
 
 
-      {/* CTA Section */}
-      <Box sx={{ 
-        py: 8,
-        position: 'relative',
-        bgcolor: mode === 'dark' ? 'background.default' : '#1a1a1a'
-      }}>
-        <Container maxWidth="lg">
-          <Card variant="dark" sx={{ 
-            textAlign: 'center', 
-            p: 6,
-            bgcolor: mode === 'dark' ? 'background.paper' : '#2a2a2a',
-            border: `1px solid ${mode === 'dark' ? theme.palette.divider : 'rgba(255, 255, 255, 0.1)'}`
-          }}>
-            <Box sx={{ mb: 3 }}>
-              <GeometricIcon
-                type="arrow-up"
-                size="large"
-                color="#B6CA40"
-                variant="filled"
-              />
-            </Box>
-            <H2 sx={{ 
-              mb: 3,
-              color: mode === 'dark' ? 'text.primary' : '#FFFFFF',
-              fontSize: { xs: '1.6rem', md: '2rem' },
-              fontWeight: 400
-            }}>
-              {t('services.cta.title')}
-            </H2>
-            <BodyText sx={{ 
-              mb: 6, 
-              maxWidth: 600, 
-              mx: 'auto',
-              fontSize: '1rem',
-              color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)',
-              lineHeight: 1.6
-            }}>
-              {t('services.cta.subtitle')}
-            </BodyText>
-            
-            <Box sx={{ mb: 4 }}>
-              <DiagnosticCTA />
-            </Box>
-            
-            <BodyText sx={{ 
-              fontStyle: 'italic', 
-              color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
-              fontSize: '0.9rem'
-            }}>
-              {t('services.cta.disclaimer')}
-            </BodyText>
-          </Card>
-        </Container>
-      </Box>
+
     </Box>
   );
 };

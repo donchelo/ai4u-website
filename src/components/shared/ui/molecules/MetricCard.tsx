@@ -20,7 +20,7 @@ interface MetricCardProps {
 }
 
 // Styled component para el valor de la métrica - NÚMEROS GIGANTES
-const MetricValue = styled(Typography)<{ metricSize: string }>(({ metricSize, theme }) => ({
+const MetricValue = styled(Typography)<{ metricSize: string; isDarkMode?: boolean }>(({ metricSize, isDarkMode, theme }) => ({
   fontSize: metricSize === 'compact' 
     ? '3.5rem' 
     : metricSize === 'large' 
@@ -32,7 +32,9 @@ const MetricValue = styled(Typography)<{ metricSize: string }>(({ metricSize, th
   letterSpacing: '-0.03em',
   margin: 0,
   padding: 0,
-  background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+  background: isDarkMode 
+    ? 'linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%)'
+    : 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -66,6 +68,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     onClick
   } = props;
   const colors = useColors();
+  const isDarkMode = colors.mode === 'dark';
 
   const getTrendColor = () => {
     switch (trend) {
@@ -131,12 +134,21 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
       }}>
         <MetricValue
           metricSize={size}
+          isDarkMode={isDarkMode}
           sx={{
             color: getVariantTextColor(),
             textShadow: size === 'large' 
-              ? '0 12px 24px rgba(0,0,0,0.2), 0 4px 8px rgba(182, 202, 64, 0.3)' 
-              : '0 6px 12px rgba(0,0,0,0.15)',
-            filter: size === 'large' ? 'drop-shadow(0 8px 16px rgba(0,0,0,0.15))' : 'none',
+              ? isDarkMode
+                ? '0 12px 24px rgba(255,255,255,0.1), 0 4px 8px rgba(182, 202, 64, 0.2)' 
+                : '0 12px 24px rgba(0,0,0,0.2), 0 4px 8px rgba(182, 202, 64, 0.3)' 
+              : isDarkMode
+                ? '0 6px 12px rgba(255,255,255,0.08)' 
+                : '0 6px 12px rgba(0,0,0,0.15)',
+            filter: size === 'large' 
+              ? isDarkMode 
+                ? 'drop-shadow(0 8px 16px rgba(255,255,255,0.1))' 
+                : 'drop-shadow(0 8px 16px rgba(0,0,0,0.15))' 
+              : 'none',
             transform: size === 'large' ? 'scale(1.1)' : 'scale(1)',
             transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             position: 'relative',
@@ -154,8 +166,12 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             '&:hover': {
               transform: size === 'large' ? 'scale(1.15)' : 'scale(1.05)',
               textShadow: size === 'large' 
-                ? '0 16px 32px rgba(0,0,0,0.25), 0 8px 16px rgba(182, 202, 64, 0.4)' 
-                : '0 8px 16px rgba(0,0,0,0.2)',
+                ? isDarkMode
+                  ? '0 16px 32px rgba(255,255,255,0.15), 0 8px 16px rgba(182, 202, 64, 0.3)' 
+                  : '0 16px 32px rgba(0,0,0,0.25), 0 8px 16px rgba(182, 202, 64, 0.4)' 
+                : isDarkMode
+                  ? '0 8px 16px rgba(255,255,255,0.12)' 
+                  : '0 8px 16px rgba(0,0,0,0.2)',
               '&::after': {
                 opacity: 1,
                 width: size === 'large' ? '90%' : '70%',
