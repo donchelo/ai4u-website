@@ -70,33 +70,10 @@ const getImageDescription = (filename: string): string => {
 
 // Función para detectar automáticamente imágenes en la carpeta gallery
 const getGalleryImages = (): string[] => {
-  // Lista de imágenes conocidas en la carpeta gallery
+  // Lista actualizada con el contenido real de la carpeta gallery
   const knownGalleryImages: string[] = [
-    'gallery/hero-image.png',
-    'gallery/hero-image3.png',
-    'gallery/AI4U (1).png',
-    'gallery/AI4U (2).png',
-    'gallery/AI4U (3).png',
-    'gallery/AI4U (4).png',
-    'gallery/AI4U (5).png',
-    'gallery/AI4U (6).png',
-    'gallery/AI4U (7).png',
-    'gallery/AI4U (8).png',
-    'gallery/AI4U (9).png',
-    'gallery/AI4U (10).png',
-    'gallery/AI4U (11).png',
-    'gallery/AI4U (12).png',
-    'gallery/AI4U (13).png',
-    'gallery/AI4U (14).png',
-    'gallery/AI4U (15).png',
-    'gallery/AI4U (16).png',
-    'gallery/AI4U (17).png',
-    'gallery/AI4U (18).png',
-    // Nuevas imágenes AI4U 4rt
     'gallery/AI4U 4rt (1).png',
     'gallery/AI4U 4rt (2).png',
-    'gallery/AI4U 4rt (3).png',
-    'gallery/AI4U 4rt (4).png',
     'gallery/AI4U 4rt (5).png',
     'gallery/AI4U 4rt (6).png',
     'gallery/AI4U 4rt (7).png',
