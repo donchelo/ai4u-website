@@ -93,20 +93,125 @@ export const translations: Record<Language, Translations> = {
       }
     },
     
-    // Servicios
+    // Services Page
     services: {
-      title: 'Nuestros Servicios',
-      superAI: {
-        title: 'SuperAI Empresarial',
-        description: 'Arquitecturas integrales de IA para transformar operaciones'
+      hero: {
+        title: 'Servicios AI4U',
+        subtitle: 'Construimos tu infraestructura de IA personalizada',
+        description: 'En AI4U nos especializamos en crear soluciones de inteligencia artificial adaptadas específicamente a tu negocio. Automatizamos procesos, liberamos tiempo operativo y transformamos ese tiempo en libertad estratégica.'
       },
-      gptCustom: {
-        title: 'GPT Personalizado',
-        description: 'Soluciones de IA adaptadas a tus necesidades específicas'
+      stats: {
+        title: 'Nuestros números hablan por sí solos',
+        metrics: [
+          {
+            title: 'Servicios',
+            subtitle: 'Soluciones disponibles'
+          },
+          {
+            title: 'Estrategia',
+            subtitle: 'Servicios estratégicos'
+          },
+          {
+            title: 'Operación',
+            subtitle: 'Servicios operativos'
+          },
+          {
+            title: 'ROI promedio',
+            subtitle: 'Retorno en 3 meses',
+            value: '300%'
+          },
+          {
+            title: 'Tiempo ahorrado',
+            subtitle: 'Reducción de tareas manuales',
+            value: '85%'
+          },
+          {
+            title: 'Clientes satisfechos',
+            subtitle: 'Tasa de retención',
+            value: '100%'
+          },
+          {
+            title: 'Implementación',
+            subtitle: 'Días promedio',
+            value: '30'
+          }
+        ]
       },
-      automation: {
-        title: 'Automatización Inteligente',
-        description: 'Optimiza procesos con IA avanzada'
+      filter: {
+        title: 'Nuestros servicios',
+        superCategories: [
+          { label: 'Todos' },
+          { label: 'Estrategia' },
+          { label: 'Operación' }
+        ],
+        categories: [
+          { label: 'Todos' },
+          { label: 'Asistentes IA' },
+          { label: 'Automatización' },
+          { label: 'Análisis' },
+          { label: 'E-commerce' },
+          { label: 'Capacitación' },
+          { label: 'Consultoría' }
+        ],
+        noResults: {
+          title: 'No se encontraron servicios que coincidan con los filtros seleccionados.',
+          clearButton: 'Limpiar filtros'
+        },
+        navigation: {
+          left: 'Desplazar servicios hacia la izquierda',
+          right: 'Desplazar servicios hacia la derecha'
+        }
+      },
+      process: {
+        title: 'Nuestro proceso',
+        steps: [
+          {
+            title: 'Diagnóstico gratuito (30 minutos)',
+            description: 'Identificamos todas las oportunidades de automatización en tu negocio'
+          },
+          {
+            title: 'Definición de prioridades',
+            description: 'Establecemos qué procesos automatizar primero según tu ROI'
+          },
+          {
+            title: 'Presupuesto personalizado',
+            description: 'Adaptamos las soluciones a tu capacidad de inversión'
+          },
+          {
+            title: 'Implementación',
+            description: 'Desarrollamos e integramos las soluciones en tu negocio'
+          }
+        ]
+      },
+      impact: {
+        title: 'Impacto real en nuestros clientes',
+        metrics: [
+          {
+            title: 'Horas ahorradas',
+            subtitle: 'Por cliente al mes',
+            value: '1200+'
+          },
+          {
+            title: 'Procesos automatizados',
+            subtitle: 'De tareas repetitivas',
+            value: '95%'
+          },
+          {
+            title: 'Tiempo de respuesta',
+            subtitle: 'Soporte garantizado',
+            value: '24h'
+          },
+          {
+            title: 'Escalabilidad',
+            subtitle: 'Crecimiento sin límites',
+            value: '∞'
+          }
+        ]
+      },
+      cta: {
+        title: '¿Listo para liberar tu tiempo estratégico?',
+        subtitle: 'Agenda tu diagnóstico gratuito de 30 minutos y descubre cómo podemos transformar tu negocio con IA.',
+        disclaimer: 'Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes'
       }
     },
     
@@ -221,20 +326,125 @@ export const translations: Record<Language, Translations> = {
       }
     },
     
-    // Services
+    // Services Page
     services: {
-      title: 'Our Services',
-      superAI: {
-        title: 'Enterprise SuperAI',
-        description: 'Comprehensive AI architectures to transform operations'
+      hero: {
+        title: 'AI4U Services',
+        subtitle: 'We build your personalized AI infrastructure',
+        description: 'At AI4U we specialize in creating artificial intelligence solutions specifically adapted to your business. We automate processes, free up operational time and transform that time into strategic freedom.'
       },
-      gptCustom: {
-        title: 'Custom GPT',
-        description: 'AI solutions tailored to your specific needs'
+      stats: {
+        title: 'Our numbers speak for themselves',
+        metrics: [
+          {
+            title: 'Services',
+            subtitle: 'Available solutions'
+          },
+          {
+            title: 'Strategy',
+            subtitle: 'Strategic services'
+          },
+          {
+            title: 'Operation',
+            subtitle: 'Operational services'
+          },
+          {
+            title: 'Average ROI',
+            subtitle: 'Return in 3 months',
+            value: '300%'
+          },
+          {
+            title: 'Time saved',
+            subtitle: 'Reduction in manual tasks',
+            value: '85%'
+          },
+          {
+            title: 'Satisfied clients',
+            subtitle: 'Retention rate',
+            value: '100%'
+          },
+          {
+            title: 'Implementation',
+            subtitle: 'Average days',
+            value: '30'
+          }
+        ]
       },
-      automation: {
-        title: 'Intelligent Automation',
-        description: 'Optimize processes with advanced AI'
+      filter: {
+        title: 'Our services',
+        superCategories: [
+          { label: 'All' },
+          { label: 'Strategy' },
+          { label: 'Operation' }
+        ],
+        categories: [
+          { label: 'All' },
+          { label: 'AI Assistants' },
+          { label: 'Automation' },
+          { label: 'Analytics' },
+          { label: 'E-commerce' },
+          { label: 'Training' },
+          { label: 'Consulting' }
+        ],
+        noResults: {
+          title: 'No services found matching the selected filters.',
+          clearButton: 'Clear filters'
+        },
+        navigation: {
+          left: 'Scroll services to the left',
+          right: 'Scroll services to the right'
+        }
+      },
+      process: {
+        title: 'Our process',
+        steps: [
+          {
+            title: 'Free diagnosis (30 minutes)',
+            description: 'We identify all automation opportunities in your business'
+          },
+          {
+            title: 'Priority definition',
+            description: 'We establish which processes to automate first according to your ROI'
+          },
+          {
+            title: 'Personalized budget',
+            description: 'We adapt solutions to your investment capacity'
+          },
+          {
+            title: 'Implementation',
+            description: 'We develop and integrate solutions in your business'
+          }
+        ]
+      },
+      impact: {
+        title: 'Real impact on our clients',
+        metrics: [
+          {
+            title: 'Hours saved',
+            subtitle: 'Per client per month',
+            value: '1200+'
+          },
+          {
+            title: 'Automated processes',
+            subtitle: 'Of repetitive tasks',
+            value: '95%'
+          },
+          {
+            title: 'Response time',
+            subtitle: 'Guaranteed support',
+            value: '24h'
+          },
+          {
+            title: 'Scalability',
+            subtitle: 'Unlimited growth',
+            value: '∞'
+          }
+        ]
+      },
+      cta: {
+        title: 'Ready to free your strategic time?',
+        subtitle: 'Schedule your free 30-minute diagnosis and discover how we can transform your business with AI.',
+        disclaimer: 'No commitment • Personalized to your business • Results from the first month'
       }
     },
     
