@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, styled } from '@mui/material';
+import { useColors } from '../../../../hooks';
 
 interface GeometricIconProps {
   type: 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
@@ -9,36 +10,37 @@ interface GeometricIconProps {
   onClick?: () => void;
 }
 
-const IconContainer = styled(Box)<{ 
-  iconSize?: string;
-  isClickable?: boolean;
-}>(({ theme, iconSize, isClickable }) => {
+const IconContainer = styled(Box)<{ iconSize: string; isClickable: boolean }>(({ theme, iconSize, isClickable }) => {
   const sizeMap = {
-    small: '32px',
-    medium: '48px',
-    large: '64px'
+    small: {
+      width: 24,
+      height: 24,
+      borderRadius: 4,
+    },
+    medium: {
+      width: 32,
+      height: 32,
+      borderRadius: 6,
+    },
+    large: {
+      width: 48,
+      height: 48,
+      borderRadius: 8,
+    },
   };
-  
-  const size = sizeMap[iconSize as keyof typeof sizeMap] || sizeMap.medium;
-  
+
   return {
-    width: size,
-    height: size,
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    ...sizeMap[iconSize as keyof typeof sizeMap],
     cursor: isClickable ? 'pointer' : 'default',
+    transition: 'all 0.2s ease',
     userSelect: 'none',
-    ...(isClickable && {
-      '&:hover': {
-        transform: 'scale(1.05)',
-      },
-      '&:active': {
-        transform: 'scale(0.95)',
-      },
-    }),
+    '&:hover': isClickable ? {
+      transform: 'scale(1.1)',
+      boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+    } : {},
+    '&:active': {
+      transform: 'scale(0.95)',
+    },
   };
 });
 
@@ -46,10 +48,13 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
   const {
     type,
     size = 'medium',
-    color = '#000000',
+    color,
     variant = 'filled',
     onClick
   } = props;
+  
+  const colors = useColors();
+  const iconColor = color || colors.contrast.text.primary;
   
   const getIconStyles = () => {
     const baseStyles = {
@@ -66,20 +71,20 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
         return {
           ...baseStyles,
           backgroundColor: 'transparent',
-          border: `2px solid ${color}`,
-          color: color,
+          border: `2px solid ${iconColor}`,
+          color: iconColor,
         };
       case 'minimal':
         return {
           ...baseStyles,
           backgroundColor: 'transparent',
-          color: color,
+          color: iconColor,
         };
       default: // filled
         return {
           ...baseStyles,
-          backgroundColor: color,
-          color: color === '#FFFFFF' ? '#000000' : '#FFFFFF',
+          backgroundColor: iconColor,
+          color: iconColor === colors.palette.white ? colors.palette.black : colors.palette.white,
           border: 'none',
         };
     }

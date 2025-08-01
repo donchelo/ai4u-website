@@ -16,6 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useColorMode } from '../../../../context/ThemeContext';
+import { useColors } from '../../../../hooks';
 import { Logo } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
@@ -31,6 +32,7 @@ const navItems = [
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
+  const colors = useColors();
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -53,7 +55,8 @@ const Navbar = () => {
       color="default" 
       elevation={1} 
       sx={{ 
-        backgroundColor: 'background.paper',
+        backgroundColor: colors.contrast.surface,
+        borderBottom: `1px solid ${colors.contrast.border}`,
         zIndex: (theme) => theme.zIndex.drawer + 1 
       }}
     >
@@ -81,7 +84,12 @@ const Navbar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{
+                color: colors.contrast.text.primary,
+                '&:hover': {
+                  backgroundColor: colors.helpers.state.hover,
+                },
+              }}
             >
               {anchorElNav ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
@@ -101,6 +109,11 @@ const Navbar = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                '& .MuiPaper-root': {
+                  backgroundColor: colors.contrast.surface,
+                  border: `1px solid ${colors.contrast.border}`,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+                },
               }}
             >
               {navItems.map((item) => (
@@ -109,12 +122,28 @@ const Navbar = () => {
                   onClick={() => handleNavigate(item.path)}
                   component={RouterLink}
                   to={item.path}
+                  sx={{
+                    color: colors.contrast.text.primary,
+                    '&:hover': {
+                      backgroundColor: colors.helpers.state.hover,
+                      color: colors.palette.orange,
+                    },
+                  }}
                 >
                   <MuiTypography textAlign="center">{item.name}</MuiTypography>
                 </MenuItem>
               ))}
               {/* Theme toggle en menú móvil */}
-              <MenuItem onClick={toggleColorMode}>
+              <MenuItem 
+                onClick={toggleColorMode}
+                sx={{
+                  color: colors.contrast.text.primary,
+                  '&:hover': {
+                    backgroundColor: colors.helpers.state.hover,
+                    color: colors.palette.orange,
+                  },
+                }}
+              >
                 <MuiTypography textAlign="center" sx={{ display: 'flex', alignItems: 'center' }}>
                   {mode === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
                   <Box component="span" sx={{ ml: 1, display: 'flex' }}>
@@ -151,10 +180,12 @@ const Navbar = () => {
                 to={item.path}
                 sx={{ 
                   mx: 1,
-                  color: 'text.primary',
+                  color: colors.contrast.text.primary,
+                  fontWeight: 500,
+                  textTransform: 'none',
                   '&:hover': {
-                    color: 'primary.main',
-                    backgroundColor: 'transparent',
+                    color: colors.palette.orange,
+                    backgroundColor: colors.helpers.state.hover,
                   },
                 }}
               >
@@ -165,14 +196,15 @@ const Navbar = () => {
             {/* Theme toggle button desktop */}
             <IconButton 
               onClick={toggleColorMode} 
-              color="inherit" 
               size="small"
               sx={{ 
                 ml: 1,
+                color: colors.contrast.text.secondary,
                 opacity: 0.7,
                 '&:hover': { 
                   opacity: 1,
-                  backgroundColor: 'action.hover'
+                  backgroundColor: colors.helpers.state.hover,
+                  color: colors.palette.orange,
                 }
               }}
               aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}

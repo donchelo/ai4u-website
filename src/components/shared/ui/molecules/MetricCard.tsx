@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Typography, styled } from '@mui/material';
-import Card from './Card';
+import { Card, Box, Typography, styled } from '@mui/material';
 import { GeometricIcon } from '../atoms';
+import { useColors } from '../../../../hooks';
+import { alpha } from '@mui/material/styles';
 
 type IconType = 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
 type CardVariant = 'glass' | 'dark' | 'light' | 'primary' | 'accent';
@@ -18,35 +19,16 @@ interface MetricCardProps {
   onClick?: () => void;
 }
 
-const MetricValue = styled(Typography)<{ metricSize?: string }>(({ theme, metricSize }) => {
-  const sizeMap = {
-    compact: {
-      fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-      lineHeight: 0.8,
-      fontWeight: 900,
-    },
-    normal: {
-      fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-      lineHeight: 0.9,
-      fontWeight: 800,
-    },
-    large: {
-      fontSize: 'clamp(3rem, 8vw, 6rem)',
-      lineHeight: 0.7,
-      fontWeight: 900,
-    }
-  };
-
-  return {
-    fontFamily: '"Red Hat Display", sans-serif',
-    fontWeight: 900,
-    letterSpacing: '-0.03em',
-    textAlign: 'center',
-    width: '100%',
-    wordBreak: 'break-word',
-    ...(sizeMap[metricSize as keyof typeof sizeMap] || sizeMap.normal),
-  };
-});
+// Styled component para el valor de la métrica
+const MetricValue = styled(Typography)<{ metricSize: string }>(({ metricSize }) => ({
+  fontSize: metricSize === 'compact' ? '2.5rem' : metricSize === 'large' ? '4.5rem' : '3.5rem',
+  fontWeight: 700,
+  lineHeight: 1,
+  fontFamily: '"Red Hat Display", sans-serif',
+  letterSpacing: '-0.02em',
+  margin: 0,
+  padding: 0,
+}));
 
 const MetricCard: React.FC<MetricCardProps> = (props) => {
   const {
@@ -55,28 +37,30 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     subtitle,
     icon,
     iconType = 'circle',
-    variant = 'glass',
+    variant = 'light',
     trend = 'neutral',
     size = 'normal',
     onClick
   } = props;
+  const colors = useColors();
+
   const getTrendColor = () => {
     switch (trend) {
       case 'up':
-        return '#B6CA40'; // cyber-olive
+        return colors.palette.green;
       case 'down':
-        return '#FF7477'; // digital-coral
+        return colors.palette.orange;
       default:
-        return '#7D848B'; // tech-slate
+        return colors.contrast.text.secondary;
     }
   };
 
   const getVariantTextColor = () => {
     switch (variant) {
       case 'dark':
-        return '#FFFFFF';
+        return colors.palette.white;
       default:
-        return '#0A0A0A';
+        return colors.contrast.text.primary;
     }
   };
 
@@ -138,7 +122,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             fontWeight: 600,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: variant === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)',
+            color: variant === 'dark' ? alpha(colors.palette.white, 0.8) : alpha(colors.contrast.text.primary, 0.7),
             fontFamily: '"Red Hat Display", sans-serif',
           }}
         >
@@ -160,33 +144,15 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         <Typography
           variant="body2"
           sx={{
-            fontSize: size === 'compact' ? '0.8rem' : '0.875rem',
-            fontWeight: 400,
-            color: variant === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
-            fontFamily: '"Red Hat Display", sans-serif',
+            fontSize: size === 'compact' ? '0.75rem' : '0.875rem',
+            color: variant === 'dark' ? alpha(colors.palette.white, 0.6) : colors.contrast.text.secondary,
+            lineHeight: 1.4,
+            maxWidth: '80%',
             textAlign: 'center',
           }}
         >
           {subtitle}
         </Typography>
-      )}
-
-      {/* Trend indicator */}
-      {trend !== 'neutral' && (
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 12,
-            right: 12,
-          }}
-        >
-          <GeometricIcon
-            type={trend === 'up' ? 'arrow-up' : 'arrow-down'}
-            size="small"
-            color={getTrendColor()}
-            variant="minimal"
-          />
-        </Box>
       )}
     </Card>
   );

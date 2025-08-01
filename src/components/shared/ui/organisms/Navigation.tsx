@@ -8,6 +8,7 @@ import {
   styled 
 } from '@mui/material';
 import { H4, BodyText } from '../atoms';
+import { useColors } from '../../../../hooks';
 
 interface NavigationItem {
   id: string;
@@ -53,6 +54,7 @@ const Navigation = ({
   className = ''
 }: NavigationProps) => {
   const theme = useTheme();
+  const colors = useColors();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const handleItemClick = (item: NavigationItem) => {
@@ -84,13 +86,13 @@ const Navigation = ({
           fontSize: '0.875rem',
           whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: '#FF5C00',
-            color: '#FFFFFF',
+            background: colors.palette.orange,
+            color: colors.palette.white,
             boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {
-            color: 'text.secondary',
+            color: colors.contrast.text.secondary,
             '&:hover': {
-              color: 'text.primary',
+              color: colors.contrast.text.primary,
               background: 'rgba(255, 255, 255, 0.2)',
             },
           }),
@@ -99,21 +101,24 @@ const Navigation = ({
       case 'vertical':
         return {
           ...baseStyles,
+          width: '100%',
+          justifyContent: 'flex-start',
           py: 1.5,
           px: 2,
           borderRadius: 1,
           fontSize: '0.875rem',
-          justifyContent: 'flex-start',
-          width: '100%',
           ...(isActive ? {
-            background: 'rgba(255, 92, 0, 0.1)',
-            color: '#FF5C00',
-            borderLeft: `4px solid #FF5C00`,
+            background: colors.palette.orange,
+            color: colors.palette.white,
+            borderLeft: `4px solid ${colors.palette.orange}`,
+            boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {
-            color: 'text.secondary',
+            color: colors.contrast.text.secondary,
+            borderLeft: `4px solid transparent`,
             '&:hover': {
-              color: 'text.primary',
-              background: 'rgba(255, 255, 255, 0.1)',
+              color: colors.contrast.text.primary,
+              background: colors.helpers.state.hover,
+              borderLeft: `4px solid ${colors.palette.orange}`,
             },
           }),
         };
@@ -123,16 +128,18 @@ const Navigation = ({
           ...baseStyles,
           py: 1,
           px: 2,
-          borderRadius: 1,
+          borderRadius: 2,
           fontSize: '0.875rem',
+          whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: '#FF5C00',
-            color: '#FFFFFF',
+            background: colors.palette.orange,
+            color: colors.palette.white,
+            boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {
-            color: 'text.secondary',
+            color: colors.contrast.text.secondary,
             '&:hover': {
-              color: 'text.primary',
-              background: 'rgba(255, 255, 255, 0.1)',
+              color: colors.contrast.text.primary,
+              background: colors.helpers.state.hover,
             },
           }),
         };
@@ -144,74 +151,63 @@ const Navigation = ({
       case 'tabs':
         return {
           display: 'flex',
-          gap: 2,
-          overflowX: 'auto',
-          py: 2,
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
+          gap: 1,
+          p: 1,
+          borderRadius: 3,
+          background: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(20px)',
+          border: `1px solid ${colors.contrast.border}`,
         };
+      
       case 'vertical':
         return {
           display: 'flex',
-          flexDirection: 'column',
-          gap: 1,
+          flexDirection: 'column' as const,
+          gap: 0.5,
+          width: '100%',
         };
+      
       default: // horizontal
         return {
           display: 'flex',
-          gap: 2,
+          gap: 1,
+          alignItems: 'center',
+          flexWrap: 'wrap' as const,
         };
     }
   };
 
-  return (
-    <Box sx={getContainerStyles()} className={className}>
-      {variant === 'tabs' ? (
-        <Tabs 
-          value={activeItem || false} 
-          onChange={(_, newValue) => {
-            const item = items.find(i => i.id === newValue);
-            if (item) handleItemClick(item);
-          }}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{
-            '& .MuiTabs-indicator': {
-              backgroundColor: '#FF5C00',
-            },
-            '& .MuiTab-root': {
-              color: 'text.secondary',
-              fontWeight: 600,
-              textTransform: 'none',
-              minWidth: 'auto',
-              '&.Mui-selected': {
-                color: '#FF5C00',
-              },
-            },
-          }}
-        >
-          {items.map((item) => (
-            <Tab 
-              key={item.id} 
-              label={item.label} 
-              value={item.id}
-            />
-          ))}
-        </Tabs>
-      ) : (
-        items.map((item) => (
+  if (variant === 'tabs') {
+    return (
+      <Box sx={getContainerStyles()} className={className}>
+        {items.map((item) => (
           <Button
             key={item.id}
             onClick={() => handleItemClick(item)}
+            sx={getButtonStyles(item)}
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
-            sx={getButtonStyles(item)}
           >
             {item.label}
           </Button>
-        ))
-      )}
+        ))}
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={getContainerStyles()} className={className}>
+      {items.map((item) => (
+        <Button
+          key={item.id}
+          onClick={() => handleItemClick(item)}
+          sx={getButtonStyles(item)}
+          onMouseEnter={() => setHoveredItem(item.id)}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          {item.label}
+        </Button>
+      ))}
     </Box>
   );
 };

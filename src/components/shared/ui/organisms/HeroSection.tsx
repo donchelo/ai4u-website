@@ -4,9 +4,11 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
+import { useColors } from '../../../../hooks';
 
 const HeroSection = () => {
   const theme = useTheme();
+  const colors = useColors();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [currentImage, setCurrentImage] = useState(0);
@@ -42,7 +44,7 @@ const HeroSection = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'background.paper',
+        bgcolor: colors.contrast.background,
       }}
     >
       {/* Fondo con overlay óptimo */}
@@ -58,7 +60,7 @@ const HeroSection = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: alpha(theme.palette.common.black, 0.65),
+            backgroundColor: alpha(colors.palette.black, 0.65),
             zIndex: 1
           }
         }}
@@ -119,7 +121,7 @@ const HeroSection = () => {
           >
             <H1 
               sx={{ 
-                color: theme.palette.common.white,
+                color: colors.palette.white,
                 fontSize: { xs: '2.5rem', sm: '3rem', md: '3.25rem', lg: '3.75rem' },
                 fontWeight: 700,
                 lineHeight: 1.2,
@@ -132,7 +134,7 @@ const HeroSection = () => {
             
             <BodyText 
               sx={{ 
-                color: alpha(theme.palette.common.white, 0.9),
+                color: alpha(colors.palette.white, 0.9),
                 fontWeight: 500,
                 fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
                 lineHeight: 1.5,
@@ -146,7 +148,7 @@ const HeroSection = () => {
             
             <BodyText 
               sx={{ 
-                color: alpha(theme.palette.common.white, 0.8),
+                color: alpha(colors.palette.white, 0.8),
                 fontWeight: 400,
                 fontSize: { xs: '0.9rem', sm: '1rem' },
                 lineHeight: 1.5,
@@ -174,7 +176,7 @@ const HeroSection = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  color: alpha(theme.palette.common.white, 0.8),
+                  color: alpha(colors.palette.white, 0.8),
                   fontSize: { xs: '0.85rem', sm: '0.9rem' },
                   display: 'flex',
                   alignItems: 'center',
@@ -191,7 +193,7 @@ const HeroSection = () => {
                     width: '4px',
                     height: '4px',
                     borderRadius: '50%',
-                    backgroundColor: alpha(theme.palette.common.white, 0.5),
+                    backgroundColor: alpha(colors.palette.white, 0.5),
                     margin: '0 8px',
                   }
                 }}
@@ -202,80 +204,138 @@ const HeroSection = () => {
               </Typography>
             </Stack>
           </Stack>
-          
-          {/* Columna de imagen del asistente */}
-                      <Box
+
+          {/* Columna de imagen - Alineada a la derecha */}
+          <Box
+            sx={{
+              width: { xs: '100%', md: '40%' },
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+            }}
+          >
+            {/* Imagen principal con glassmorfismo */}
+            <Box
               sx={{
-                width: { xs: '80%', sm: '70%', md: '40%' },
-                height: { xs: '280px', sm: '320px', md: '420px' },
                 position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mt: { xs: 2, md: 0 },
-                mb: { xs: 2, md: 0 }
+                width: '100%',
+                maxWidth: '400px',
+                height: 'auto',
+                borderRadius: '24px',
+                overflow: 'hidden',
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(20px)',
+                border: `1px solid ${alpha(colors.palette.white, 0.2)}`,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)',
+                },
               }}
             >
-            <Box
-              component="img"
-              src="/assets/images/robot-assistant.png"
-              alt="Asistente de IA empresarial"
-              sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 0 20px rgba(32, 166, 210, 0.4))',
-                animation: 'float 4s ease-in-out infinite',
-                '@keyframes float': {
-                  '0%, 100%': {
-                    transform: 'translateY(0)'
-                  },
-                  '50%': {
-                    transform: 'translateY(-15px)'
-                  }
-                }
-              }}
-            />
-            
+              <Box
+                component="img"
+                src={images[currentImage]}
+                alt="Hero Image"
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  borderRadius: '24px',
+                }}
+              />
+            </Box>
           </Box>
         </Stack>
       </Container>
 
-      {/* Controles de navegación minimalistas */}
-      <Stack 
-        direction="row" 
-        spacing={1.5} 
-        justifyContent="center"
-        alignItems="center"
+      {/* Controles de navegación */}
+      {!isMobile && (
+        <>
+          <IconButton
+            onClick={handlePrev}
+            sx={{
+              position: 'absolute',
+              left: '2rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              backgroundColor: alpha(colors.palette.white, 0.1),
+              color: colors.palette.white,
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${alpha(colors.palette.white, 0.2)}`,
+              width: '48px',
+              height: '48px',
+              zIndex: 10,
+              '&:hover': {
+                backgroundColor: alpha(colors.palette.white, 0.2),
+                transform: 'translateY(-50%) scale(1.1)',
+              },
+            }}
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+
+          <IconButton
+            onClick={handleNext}
+            sx={{
+              position: 'absolute',
+              right: '2rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              backgroundColor: alpha(colors.palette.white, 0.1),
+              color: colors.palette.white,
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${alpha(colors.palette.white, 0.2)}`,
+              width: '48px',
+              height: '48px',
+              zIndex: 10,
+              '&:hover': {
+                backgroundColor: alpha(colors.palette.white, 0.2),
+                transform: 'translateY(-50%) scale(1.1)',
+              },
+            }}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
+        </>
+      )}
+
+      {/* Indicadores de posición */}
+      <Box
         sx={{
           position: 'absolute',
-          bottom: 24,
-          left: 0,
-          right: 0,
-          zIndex: 6
+          bottom: '2rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: 1,
+          zIndex: 10,
         }}
       >
         {images.map((_, index) => (
           <Box
             key={index}
-            onClick={() => setCurrentImage(index)}
             sx={{
-              width: 24,
-              height: 3,
-              bgcolor: index === currentImage 
-                ? 'primary.main'
-                : alpha(theme.palette.common.white, 0.4),
+              width: '12px',
+              height: '12px',
+              borderRadius: '50%',
+              backgroundColor: index === currentImage 
+                ? colors.palette.white 
+                : alpha(colors.palette.white, 0.3),
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               '&:hover': {
-                bgcolor: index === currentImage 
-                  ? 'primary.main'
-                  : alpha(theme.palette.common.white, 0.6),
-              }
+                backgroundColor: index === currentImage 
+                  ? colors.palette.white 
+                  : alpha(colors.palette.white, 0.5),
+              },
             }}
+            onClick={() => setCurrentImage(index)}
           />
         ))}
-      </Stack>
+      </Box>
     </Box>
   );
 };

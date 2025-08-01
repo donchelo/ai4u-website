@@ -1,17 +1,15 @@
 import React from 'react';
-import { 
-  Box, 
-  Card, 
-  CardContent, 
-  Typography, 
-  IconButton, 
+import {
+  Card,
+  CardContent,
+  Box,
+  Typography,
   Avatar,
+  IconButton,
   Chip,
-  Button,
-  useTheme,
   styled
 } from '@mui/material';
-import { 
+import {
   Person as PersonIcon,
   MoreVert as MoreVertIcon,
   ShoppingCart as ShoppingCartIcon,
@@ -21,6 +19,7 @@ import {
   Favorite as FavoriteIcon,
   AttachMoney as AttachMoneyIcon
 } from '@mui/icons-material';
+import { useColors } from '../../../../hooks';
 
 interface Transaction {
   id: string;
@@ -38,31 +37,24 @@ interface TransactionCardProps {
   onShowMore?: () => void;
 }
 
-// Styled components
 const StyledCard = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(3),
-  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-  maxWidth: 400,
-  margin: '0 auto',
-  background: theme.palette.background.paper,
+  borderRadius: 16,
+  boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
   transition: 'all 0.3s ease',
   '&:hover': {
     transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
   },
 }));
 
 const TransactionItem = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: theme.spacing(1.5),
-  padding: theme.spacing(1.5),
-  background: theme.palette.grey[50],
-  borderRadius: theme.spacing(1),
-  marginBottom: theme.spacing(2),
-  transition: 'all 0.2s ease',
-  '&:hover': {
-    background: theme.palette.grey[100],
+  gap: 12,
+  padding: '12px 0',
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  '&:last-child': {
+    borderBottom: 'none',
   },
 }));
 
@@ -72,17 +64,17 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
   transactions,
   onShowMore
 }) => {
-  const theme = useTheme();
+  const colors = useColors();
 
   const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: { bg: string; text: string } } = {
+    const categoryColors: { [key: string]: { bg: string; text: string } } = {
       'SHOPPING': { bg: '#DBEAFE', text: '#1E40AF' },
       'FITNESS': { bg: '#D1FAE5', text: '#065F46' },
       'EDUCATION': { bg: '#E9D5FF', text: '#7C3AED' },
       'INVESTMENTS': { bg: '#FEF3C7', text: '#D97706' },
       'HEALTH': { bg: '#FEE2E2', text: '#DC2626' }
     };
-    return colors[category] || { bg: '#F3F4F6', text: '#374151' };
+    return categoryColors[category] || { bg: colors.contrast.surface, text: colors.contrast.text.secondary };
   };
 
   const getCategoryIcon = (category: string) => {
@@ -108,22 +100,22 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <Avatar sx={{ 
-              bgcolor: theme.palette.grey[200],
+              bgcolor: colors.contrast.surface,
               width: 40,
               height: 40
             }}>
-              <PersonIcon sx={{ color: theme.palette.grey[600] }} />
+              <PersonIcon sx={{ color: colors.contrast.text.secondary }} />
             </Avatar>
             <Box>
               <Typography variant="h6" sx={{ 
                 fontWeight: 600,
-                color: theme.palette.text.primary
+                color: colors.contrast.text.primary
               }}>
                 {title}
               </Typography>
               {subtitle && (
                 <Typography variant="body2" sx={{ 
-                  color: theme.palette.text.secondary
+                  color: colors.contrast.text.secondary
                 }}>
                   {subtitle}
                 </Typography>
@@ -132,7 +124,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           </Box>
           <IconButton 
             size="small"
-            sx={{ color: theme.palette.grey[400] }}
+            sx={{ color: colors.contrast.text.disabled }}
           >
             <MoreVertIcon />
           </IconButton>
@@ -149,10 +141,10 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                 <Avatar sx={{ 
                   width: 40, 
                   height: 40,
-                  bgcolor: '#FFFFFF',
+                  bgcolor: colors.contrast.surface,
                   boxShadow: 1
                 }}>
-                  <Box sx={{ color: theme.palette.grey[600] }}>
+                  <Box sx={{ color: colors.contrast.text.secondary }}>
                     {transaction.icon || getCategoryIcon(transaction.category)}
                   </Box>
                 </Avatar>
@@ -166,17 +158,18 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                   }}>
                     <Typography variant="subtitle2" sx={{ 
                       fontWeight: 600,
-                      color: theme.palette.text.primary
+                      color: colors.contrast.text.primary
                     }}>
                       {transaction.merchant}
                     </Typography>
                     <Typography variant="subtitle2" sx={{ 
-                      fontWeight: 700,
-                      color: theme.palette.text.primary
+                      fontWeight: 600,
+                      color: colors.contrast.text.primary
                     }}>
-                      ${transaction.amount.toFixed(1)}
+                      ${transaction.amount.toFixed(2)}
                     </Typography>
                   </Box>
+                  
                   <Box sx={{ 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -187,14 +180,17 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                       label={transaction.category}
                       size="small"
                       sx={{
-                        bgcolor: categoryColors.bg,
+                        backgroundColor: categoryColors.bg,
                         color: categoryColors.text,
                         fontSize: '0.75rem',
                         height: 20,
+                        '& .MuiChip-label': {
+                          px: 1,
+                        },
                       }}
                     />
                     <Typography variant="caption" sx={{ 
-                      color: theme.palette.text.secondary
+                      color: colors.contrast.text.secondary
                     }}>
                       {transaction.time}
                     </Typography>
@@ -208,20 +204,17 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
         {/* Show More Button */}
         {onShowMore && (
           <Box sx={{ textAlign: 'center' }}>
-            <Button
+            <IconButton
               onClick={onShowMore}
               sx={{
-                textTransform: 'none',
-                fontWeight: 500,
-                color: theme.palette.text.secondary,
+                color: colors.palette.orange,
                 '&:hover': {
-                  color: theme.palette.text.primary,
-                  background: 'transparent',
+                  backgroundColor: colors.helpers.state.hover,
                 },
               }}
             >
-              SHOW MORE
-            </Button>
+              <MoreVertIcon />
+            </IconButton>
           </Box>
         )}
       </CardContent>

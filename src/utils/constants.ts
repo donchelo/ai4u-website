@@ -6,7 +6,13 @@ export const ROUTES = {
   SUCCESS_CASES: '/casos-de-exito',
   TIENDA_AI: '/tienda-ai',
   COMPONENT_LIBRARY: '/component-library',
-  GALLERY: '/Gallery'
+  GALLERY: '/Gallery',
+  // Rutas de demo
+  COLOR_SYSTEM_DEMO: '/color-system-demo',
+  MIGRATION_DEMO: '/migration-demo',
+  FASE3_DEMO: '/fase3-demo',
+  METRICS_DEMO: '/metrics-demo',
+  THEME_DEMO: '/theme-demo'
 } as const;
 
 // Configuración de la aplicación
