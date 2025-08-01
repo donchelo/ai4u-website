@@ -188,7 +188,7 @@ const GalleryFrame: React.FC<GalleryFrameProps> = ({
         </Box>
       )}
 
-      {/* Controles de navegación */}
+      {/* Controles de navegación - solo si showNavigation es true */}
       {showNavigation && (
         <>
           <IconButton
@@ -246,31 +246,31 @@ const GalleryFrame: React.FC<GalleryFrameProps> = ({
               }}
             />
           </IconButton>
+
+          {/* Indicador de galería - solo si showNavigation es true */}
+          <Box
+            onClick={() => navigate('/gallery')}
+            sx={{
+              position: 'absolute',
+              top: 8,
+              right: 8,
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              color: 'white',
+              padding: '4px 8px',
+              borderRadius: '4px',
+              fontSize: '0.7rem',
+              fontWeight: 500,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              },
+            }}
+          >
+            {currentImageIndex + 1}/{images.length}
+          </Box>
         </>
       )}
-
-      {/* Indicador de galería */}
-      <Box
-        onClick={() => navigate('/gallery')}
-        sx={{
-          position: 'absolute',
-          top: 8,
-          right: 8,
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          color: 'white',
-          padding: '4px 8px',
-          borderRadius: '4px',
-          fontSize: '0.7rem',
-          fontWeight: 500,
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-          '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          },
-        }}
-      >
-        {currentImageIndex + 1}/{images.length}
-      </Box>
     </Box>
   );
 };

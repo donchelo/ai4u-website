@@ -197,7 +197,7 @@ const Home = () => {
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <GalleryFrame
                 interval={4000}
-                showNavigation={true}
+                showNavigation={false}
                 showTitle={false}
                 frameStyle="glass"
                 size="medium"
