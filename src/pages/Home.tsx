@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Grid, Box, Stack } from '@mui/material';
+import { Container, Grid, Box, Stack, useTheme } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, GalleryFrame } from '../components/shared/ui/molecules';
+import { useColorMode } from '../context/ThemeContext';
 
 const features = [
   {
@@ -38,8 +39,10 @@ const serviceCategories = [
   },
 ];
 
-
 const Home = () => {
+  const theme = useTheme();
+  const { mode } = useColorMode();
+
   return (
     <Box>
       {/* Hero Section */}
@@ -53,7 +56,7 @@ const Home = () => {
       {/* Features Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400 }}>
+          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>
             ¿El trabajo te está robando momentos irreemplazables?
           </H2>
           <BodyText sx={{ 
@@ -75,14 +78,21 @@ const Home = () => {
                   sx={{ 
                     height: '100%',
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    bgcolor: 'background.paper',
+                    border: `1px solid ${theme.palette.divider}`,
+                    '&:hover': {
+                      boxShadow: theme.shadows[4],
+                      transform: 'translateY(-2px)',
+                      transition: 'all 0.3s ease'
+                    }
                   }}
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
                       size="small" 
-                      color="rgba(0, 0, 0, 0.3)" 
+                      color={theme.palette.text.secondary}
                       variant="minimal" 
                     />
                     <H3 sx={{ 
@@ -110,21 +120,49 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Robot Section - Fondo gris oscuro minimalista */}
-      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: '#1a1a1a', color: 'white' }}>
+      {/* Robot Section - Fondo oscuro con contraste automático */}
+      <Box sx={{ 
+        py: { xs: 6, md: 10 }, 
+        bgcolor: mode === 'dark' ? 'background.default' : '#1a1a1a', 
+        color: mode === 'dark' ? 'text.primary' : 'white' 
+      }}>
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
             <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
-              <H2 sx={{ mb: 2, color: 'white', fontWeight: 300 }}>Asistentes Robóticos que Transforman tu Empresa</H2>
-              <BodyText sx={{ mb: 6, color: 'rgba(255, 255, 255, 0.8)', maxWidth: 600, fontSize: '1.1rem', lineHeight: 1.7 }}>
+              <H2 sx={{ 
+                mb: 2, 
+                color: mode === 'dark' ? 'text.primary' : 'white', 
+                fontWeight: 300 
+              }}>
+                Asistentes Robóticos que Transforman tu Empresa
+              </H2>
+              <BodyText sx={{ 
+                mb: 6, 
+                color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)', 
+                maxWidth: 600, 
+                fontSize: '1.1rem', 
+                lineHeight: 1.7 
+              }}>
                 Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
               </BodyText>
               
-              <BodyText sx={{ mb: 4, color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.9rem', fontStyle: 'italic' }}>
+              <BodyText sx={{ 
+                mb: 4, 
+                color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)', 
+                fontSize: '0.9rem', 
+                fontStyle: 'italic' 
+              }}>
                 Vista previa de nuestra galería de proyectos y casos de éxito
               </BodyText>
               
-              <H3 sx={{ mb: 4, color: 'white', fontWeight: 400, fontSize: '1.2rem' }}>¿Qué los hace únicos?</H3>
+              <H3 sx={{ 
+                mb: 4, 
+                color: mode === 'dark' ? 'text.primary' : 'white', 
+                fontWeight: 400, 
+                fontSize: '1.2rem' 
+              }}>
+                ¿Qué los hace únicos?
+              </H3>
               
               {/* Lista ultra minimalista con iconos geométricos */}
               <Stack spacing={4} sx={{ mb: 6, maxWidth: 500 }}>
@@ -135,7 +173,11 @@ const Home = () => {
                     color="#B6CA40" 
                     variant="filled" 
                   />
-                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem', lineHeight: 1.6 }}>
+                  <BodyText sx={{ 
+                    color: mode === 'dark' ? 'text.primary' : 'rgba(255, 255, 255, 0.9)', 
+                    fontSize: '1rem', 
+                    lineHeight: 1.6 
+                  }}>
                     Generan ROI desde el primer mes
                   </BodyText>
                 </Stack>
@@ -144,10 +186,14 @@ const Home = () => {
                   <GeometricIcon 
                     type="dot" 
                     size="small" 
-                    color="rgba(255, 255, 255, 0.4)" 
+                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
                     variant="minimal" 
                   />
-                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                  <BodyText sx={{ 
+                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
+                    fontSize: '1rem', 
+                    lineHeight: 1.6 
+                  }}>
                     Aprenden y evolucionan con tu empresa
                   </BodyText>
                 </Stack>
@@ -156,10 +202,14 @@ const Home = () => {
                   <GeometricIcon 
                     type="dot" 
                     size="small" 
-                    color="rgba(255, 255, 255, 0.4)" 
+                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
                     variant="minimal" 
                   />
-                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                  <BodyText sx={{ 
+                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
+                    fontSize: '1rem', 
+                    lineHeight: 1.6 
+                  }}>
                     Trabajan 24/7 para tu crecimiento
                   </BodyText>
                 </Stack>
@@ -168,10 +218,14 @@ const Home = () => {
                   <GeometricIcon 
                     type="dot" 
                     size="small" 
-                    color="rgba(255, 255, 255, 0.4)" 
+                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
                     variant="minimal" 
                   />
-                  <BodyText sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1rem', lineHeight: 1.6 }}>
+                  <BodyText sx={{ 
+                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
+                    fontSize: '1rem', 
+                    lineHeight: 1.6 
+                  }}>
                     Se integran perfectamente con tus sistemas
                   </BodyText>
                 </Stack>
@@ -179,12 +233,12 @@ const Home = () => {
               
               <Box sx={{ 
                 pl: 4,
-                borderLeft: '1px solid rgba(255, 255, 255, 0.2)',
+                borderLeft: `1px solid ${mode === 'dark' ? 'divider' : 'rgba(255, 255, 255, 0.2)'}`,
                 maxWidth: 500
               }}>
                 <BodyText sx={{ 
                   fontStyle: 'italic', 
-                  color: 'rgba(255, 255, 255, 0.6)',
+                  color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
                   fontSize: '1rem',
                   fontWeight: 300,
                   lineHeight: 1.6
@@ -223,27 +277,34 @@ const Home = () => {
                     height: '100%',
                     textAlign: 'center',
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    bgcolor: idx === 1 ? 'primary.main' : 'background.paper',
+                    border: `1px solid ${idx === 1 ? 'primary.main' : theme.palette.divider}`,
+                    '&:hover': {
+                      boxShadow: theme.shadows[4],
+                      transform: 'translateY(-2px)',
+                      transition: 'all 0.3s ease'
+                    }
                   }}
                 >
                   <Box sx={{ mb: 2 }}>
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
                       size="medium" 
-                      color={idx === 1 ? "#FF5C00" : "rgba(0, 0, 0, 0.4)"} 
+                      color={idx === 1 ? "#FFFFFF" : theme.palette.text.secondary} 
                       variant={idx === 1 ? "filled" : "minimal"} 
                     />
                   </Box>
                   <H3 sx={{ 
                     mb: 2, 
-                    color: idx === 1 ? '#FF5C00' : 'text.primary',
+                    color: idx === 1 ? '#FFFFFF' : 'text.primary',
                     fontWeight: idx === 1 ? 600 : 500,
                     fontSize: '1.2rem'
                   }}>
                     {cat.title}
                   </H3>
                   <BodyText sx={{ 
-                    color: 'text.secondary', 
+                    color: idx === 1 ? 'rgba(255, 255, 255, 0.9)' : 'text.secondary', 
                     fontSize: '0.95rem', 
                     lineHeight: 1.5,
                     flexGrow: 1
@@ -261,7 +322,7 @@ const Home = () => {
       <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
-            <H2 sx={{ mb: 3, fontWeight: 400 }}>
+            <H2 sx={{ mb: 3, fontWeight: 400, color: 'text.primary' }}>
               ¿Listo para transformar tu empresa?
             </H2>
             <BodyText sx={{ mb: 4, color: 'text.secondary', fontSize: '1.1rem' }}>
