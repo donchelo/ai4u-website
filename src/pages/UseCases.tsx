@@ -93,15 +93,17 @@ const UseCases = () => {
                      <Box>
                        <H3 sx={{ 
                          mb: 1,
-                         fontWeight: 400,
-                         fontSize: '1.5rem',
-                         color: colors.helpers.text.primary
+                         fontWeight: 700,
+                         fontSize: { xs: '3rem', sm: '4rem', md: '5rem', lg: '6rem' },
+                         lineHeight: 0.9,
+                         color: colors.helpers.text.primary,
+                         letterSpacing: '-0.02em'
                        }}>
                          {t('successCases.metrics.items.0.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
-                         fontSize: '0.9rem',
+                         fontSize: { xs: '0.9rem', sm: '1rem' },
                          fontWeight: 300
                        }}>
                          {t('successCases.metrics.items.0.description')}
@@ -121,15 +123,17 @@ const UseCases = () => {
                      <Box>
                        <H3 sx={{ 
                          mb: 1,
-                         fontWeight: 400,
-                         fontSize: '1.5rem',
-                         color: colors.helpers.text.primary
+                         fontWeight: 700,
+                         fontSize: { xs: '3rem', sm: '4rem', md: '5rem', lg: '6rem' },
+                         lineHeight: 0.9,
+                         color: colors.helpers.text.primary,
+                         letterSpacing: '-0.02em'
                        }}>
                          {t('successCases.metrics.items.1.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
-                         fontSize: '0.9rem',
+                         fontSize: { xs: '0.9rem', sm: '1rem' },
                          fontWeight: 300
                        }}>
                          {t('successCases.metrics.items.1.description')}
@@ -149,15 +153,17 @@ const UseCases = () => {
                      <Box>
                        <H3 sx={{ 
                          mb: 1,
-                         fontWeight: 400,
-                         fontSize: '1.5rem',
-                         color: colors.helpers.text.primary
+                         fontWeight: 700,
+                         fontSize: { xs: '3rem', sm: '4rem', md: '5rem', lg: '6rem' },
+                         lineHeight: 0.9,
+                         color: colors.helpers.text.primary,
+                         letterSpacing: '-0.02em'
                        }}>
                          {t('successCases.metrics.items.2.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
-                         fontSize: '0.9rem',
+                         fontSize: { xs: '0.9rem', sm: '1rem' },
                          fontWeight: 300
                        }}>
                          {t('successCases.metrics.items.2.description')}
