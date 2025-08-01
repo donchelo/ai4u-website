@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, IconButton, useTheme } from '@mui/material';
-import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight, Close, ZoomIn } from '@mui/icons-material';
 import { AI4U_PALETTE, SHADOW_TOKENS, TRANSITION_TOKENS } from '../tokens';
 import { H2, BodyText } from '../atoms';
 
@@ -9,7 +9,7 @@ import { H2, BodyText } from '../atoms';
 const GalleryContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '100%',
-  padding: '2rem 0',
+  padding: '3rem 0',
   backgroundColor: AI4U_PALETTE.lightBackground,
   overflow: 'hidden',
   '&.dark': {
@@ -20,8 +20,8 @@ const GalleryContainer = styled(Box)(({ theme }) => ({
 // Estilos para el contenedor de imágenes con scroll horizontal
 const ImageScrollContainer = styled(Box)({
   display: 'flex',
-  gap: '1.5rem',
-  padding: '0 2rem',
+  gap: '2rem',
+  padding: '0 3rem',
   overflowX: 'auto',
   scrollBehavior: 'smooth',
   scrollbarWidth: 'none',
@@ -32,32 +32,55 @@ const ImageScrollContainer = styled(Box)({
 });
 
 // Estilos para cada imagen de la galería
-const GalleryImage = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  minWidth: '300px',
+const GalleryImage = styled('img')(({ theme }) => ({
+  width: '500px',
   height: '400px',
-  borderRadius: '12px',
-  overflow: 'hidden',
-  boxShadow: SHADOW_TOKENS.ai4u.card,
-  transition: TRANSITION_TOKENS.common.card,
+  objectFit: 'cover',
+  borderRadius: '16px',
   cursor: 'pointer',
-  
+  transition: TRANSITION_TOKENS.common.hover,
+  boxShadow: SHADOW_TOKENS.lg,
   '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: SHADOW_TOKENS.lg,
-  },
-  
-  '& img': {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    transition: TRANSITION_TOKENS.common.hover,
-  },
-  
-  '&:hover img': {
-    transform: 'scale(1.05)',
+    transform: 'scale(1.02)',
+    boxShadow: SHADOW_TOKENS.xl,
   },
 }));
+
+const ModalImage = styled('img')({
+  maxWidth: '90vw',
+  maxHeight: '90vh',
+  objectFit: 'contain',
+  borderRadius: '8px',
+});
+
+const ModalContent = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: AI4U_PALETTE.lightPaper,
+  borderRadius: '16px',
+  padding: '20px',
+  boxShadow: SHADOW_TOKENS.lg,
+  outline: 'none',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '16px',
+}));
+
+const ModalOverlay = styled(Box)({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  zIndex: 1300,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
 
 // Estilos para los botones de navegación
 const NavigationButton = styled(IconButton)(({ theme }) => ({
@@ -146,12 +169,13 @@ const Gallery: React.FC<GalleryProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(autoScroll);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   // Función para hacer scroll a una imagen específica
   const scrollToImage = (index: number) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const imageWidth = 300 + 24; // ancho de imagen + gap
+      const imageWidth = 500 + 24; // ancho de imagen + gap
       container.scrollTo({
         left: index * imageWidth,
         behavior: 'smooth',
@@ -190,7 +214,7 @@ const Gallery: React.FC<GalleryProps> = ({
 
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
-      const imageWidth = 300 + 24;
+      const imageWidth = 500 + 24;
       const newIndex = Math.round(scrollLeft / imageWidth);
       setCurrentIndex(newIndex);
     };
@@ -202,6 +226,18 @@ const Gallery: React.FC<GalleryProps> = ({
   // Pausar auto-scroll al hacer hover
   const handleMouseEnter = () => setIsAutoScrolling(false);
   const handleMouseLeave = () => setIsAutoScrolling(autoScroll);
+
+  const handleImageClick = (image: GalleryImage) => {
+    setSelectedImage(image);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
+
+  const handleModalImageClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
 
   if (!images || images.length === 0) {
     return (
@@ -215,80 +251,132 @@ const Gallery: React.FC<GalleryProps> = ({
   }
 
   return (
-    <GalleryContainer 
-      className={`${className} ${theme.palette.mode === 'dark' ? 'dark' : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Título de la sección */}
-      <Box textAlign="center" mb={4}>
-        <H2 color="primary" gutterBottom>
-          {title}
-        </H2>
-        <BodyText color="text.secondary">
-          {subtitle}
-        </BodyText>
-      </Box>
+    <>
+      <GalleryContainer
+        className={`${className} ${theme.palette.mode === 'dark' ? 'dark' : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Título de la sección */}
+        <Box textAlign="center" mb={4}>
+          <H2 color="primary" gutterBottom>
+            {title}
+          </H2>
+          <BodyText color="text.secondary">
+            {subtitle}
+          </BodyText>
+        </Box>
 
-      {/* Contenedor de imágenes con scroll */}
-      <Box position="relative">
-        <ImageScrollContainer ref={scrollContainerRef}>
-          {images.map((image, index) => (
-            <GalleryImage key={image.id}>
-              <img src={image.src} alt={image.alt} />
-              {(image.title || image.description) && (
-                <ImageOverlay>
-                  {image.title && (
-                    <BodyText variant="h6" sx={{ fontWeight: 'bold', mb: 0.5 }}>
-                      {image.title}
-                    </BodyText>
-                  )}
-                  {image.description && (
-                    <BodyText variant="body2" sx={{ opacity: 0.9 }}>
-                      {image.description}
-                    </BodyText>
-                  )}
-                </ImageOverlay>
-              )}
-            </GalleryImage>
-          ))}
-        </ImageScrollContainer>
+        {/* Contenedor de imágenes con scroll */}
+        <Box position="relative">
+          <ImageScrollContainer ref={scrollContainerRef}>
+            {images.map((image, index) => (
+              <Box
+                key={image.id}
+                                 sx={{
+                   display: 'flex',
+                   flexDirection: 'column',
+                   alignItems: 'center',
+                   gap: 1,
+                   minWidth: '520px',
+                   padding: '24px',
+                 }}
+              >
+                                 <Box position="relative">
+                   <GalleryImage
+                     src={image.src}
+                     alt={image.alt}
+                     onClick={() => handleImageClick(image)}
+                   />
+                   <IconButton
+                     size="small"
+                     sx={{
+                       position: 'absolute',
+                       top: '8px',
+                       right: '8px',
+                       backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                       '&:hover': {
+                         backgroundColor: 'rgba(255, 255, 255, 1)',
+                       },
+                     }}
+                     onClick={() => handleImageClick(image)}
+                   >
+                     <ZoomIn fontSize="small" />
+                   </IconButton>
+                 </Box>
+              </Box>
+            ))}
+          </ImageScrollContainer>
 
-        {/* Botones de navegación */}
-        {showNavigation && images.length > 1 && (
-          <>
-            <NavigationButton
-              className="prev"
-              onClick={handlePrev}
-              size="large"
-            >
-              <ChevronLeft />
-            </NavigationButton>
-            <NavigationButton
-              className="next"
-              onClick={handleNext}
-              size="large"
-            >
-              <ChevronRight />
-            </NavigationButton>
-          </>
+          {/* Botones de navegación */}
+          {showNavigation && images.length > 1 && (
+            <>
+              <NavigationButton
+                className="prev"
+                onClick={handlePrev}
+                size="large"
+              >
+                <ChevronLeft />
+              </NavigationButton>
+              <NavigationButton
+                className="next"
+                onClick={handleNext}
+                size="large"
+              >
+                <ChevronRight />
+              </NavigationButton>
+            </>
+          )}
+        </Box>
+
+        {/* Indicador de progreso */}
+        {showProgress && images.length > 1 && (
+          <ProgressIndicator>
+            {images.map((_, index) => (
+              <ProgressDot
+                key={index}
+                active={index === currentIndex}
+                onClick={() => scrollToImage(index)}
+                sx={{ cursor: 'pointer' }}
+              />
+            ))}
+          </ProgressIndicator>
         )}
-      </Box>
+      </GalleryContainer>
 
-      {/* Indicador de progreso */}
-      {showProgress && images.length > 1 && (
-        <ProgressIndicator>
-          {images.map((_, index) => (
-            <ProgressDot
-              key={index}
-              active={index === currentIndex}
-              onClick={() => scrollToImage(index)}
-              sx={{ cursor: 'pointer' }}
-            />
-          ))}
-        </ProgressIndicator>
+      {/* Modal para imagen en tamaño completo */}
+      {selectedImage && (
+        <ModalOverlay onClick={handleCloseModal}>
+                       <ModalContent onClick={handleModalImageClick}>
+               <Box
+                 sx={{
+                   display: 'flex',
+                   justifyContent: 'flex-end',
+                   width: '100%',
+                   marginBottom: 2,
+                 }}
+               >
+                 <IconButton
+                   onClick={handleCloseModal}
+                   sx={{
+                     color: AI4U_PALETTE.grapheneBlack,
+                     '&:hover': {
+                       backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                     },
+                   }}
+                 >
+                   <Close />
+                 </IconButton>
+               </Box>
+               
+               <ModalImage
+                 src={selectedImage.src}
+                 alt={selectedImage.alt}
+               />
+          </ModalContent>
+        </ModalOverlay>
       )}
-    </GalleryContainer>
+    </>
   );
 };
 
