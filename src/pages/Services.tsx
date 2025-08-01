@@ -8,7 +8,8 @@ import {
   alpha
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
-import { DiagnosticCTA, ServiceCard, ProcessStep, Card, MetricCard } from '../components/shared/ui/molecules';
+import { DiagnosticCTA, ServiceCard, Card, MetricCard } from '../components/shared/ui/molecules';
+import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
 import { useColorMode } from '../context/ThemeContext';
@@ -123,8 +124,21 @@ const Services: React.FC = () => {
             </BodyText>
           </Box>
 
-          {/* Stats con MetricCards glassmorphism */}
-          <Grid container spacing={3} justifyContent="center">
+          {/* Stats con MetricCards glassmorphism - NÚMEROS GIGANTES */}
+          <Box sx={{ mb: 6 }}>
+            <H2 sx={{ 
+              mb: 4, 
+              textAlign: 'center',
+              color: 'text.primary',
+              fontSize: { xs: '1.5rem', md: '2rem' },
+              fontWeight: 400,
+              opacity: 0.8
+            }}>
+              Nuestros números hablan por sí solos
+            </H2>
+          </Box>
+          
+          <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
@@ -175,6 +189,49 @@ const Services: React.FC = () => {
               </Box>
             </Grid>
           </Grid>
+          
+          {/* Métricas adicionales con números gigantes */}
+          <Box sx={{ mt: 8 }}>
+            <Grid container spacing={4} justifyContent="center">
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title="Tiempo ahorrado"
+                    value="85%"
+                    subtitle="Reducción de tareas manuales"
+                    iconType="arrow-up"
+                    variant="glass"
+                    size="large"
+                    trend="up"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title="Clientes satisfechos"
+                    value="100%"
+                    subtitle="Tasa de retención"
+                    iconType="circle"
+                    variant="primary"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title="Implementación"
+                    value="30"
+                    subtitle="Días promedio"
+                    iconType="triangle"
+                    variant="accent"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </Box>
 
@@ -201,58 +258,35 @@ const Services: React.FC = () => {
                         number: 1,
                         title: `Diagnóstico gratuito (${SERVICE_CONFIG.DIAGNOSTIC_DURATION} minutos)`,
                         description: "Identificamos todas las oportunidades de automatización en tu negocio",
-                        icon: "circle"
+                        color: "#B6CA40"
                       },
                       {
                         number: 2,
                         title: "Definición de prioridades",
                         description: "Establecemos qué procesos automatizar primero según tu ROI",
-                        icon: "triangle"
+                        color: theme.palette.secondary.main
                       },
                       {
                         number: 3,
                         title: "Presupuesto personalizado",
                         description: "Adaptamos las soluciones a tu capacidad de inversión",
-                        icon: "square"
+                        color: "#FF6B35"
                       },
                       {
                         number: 4,
                         title: "Implementación",
                         description: "Desarrollamos e integramos las soluciones en tu negocio",
-                        icon: "arrow-right"
+                        color: "#1a1a1a"
                       }
                     ].map((step, idx) => (
                       <Grid item xs={12} sm={6} key={idx}>
-                        <Box sx={{ 
-                          display: 'flex', 
-                          alignItems: 'flex-start', 
-                          gap: 3,
-                          p: 2
-                        }}>
-                          <GeometricIcon
-                            type={step.icon as any}
-                            size="medium"
-                            color={idx === 0 ? "#B6CA40" : theme.palette.text.secondary}
-                            variant={idx === 0 ? "filled" : "minimal"}
-                          />
-                          <Box sx={{ flex: 1 }}>
-                            <H3 sx={{ 
-                              mb: 1, 
-                              fontSize: '1.1rem', 
-                              fontWeight: 500,
-                              color: 'text.primary'
-                            }}>
-                              {step.title}
-                            </H3>
-                            <BodyText sx={{ 
-                              color: 'text.secondary', 
-                              fontSize: '0.95rem',
-                              lineHeight: 1.5
-                            }}>
-                              {step.description}
-                            </BodyText>
-                          </Box>
-                        </Box>
+                        <ProcessStep
+                          number={step.number}
+                          title={step.title}
+                          description={step.description}
+                          color={step.color}
+                          size="large"
+                        />
                       </Grid>
                     ))}
                   </Grid>
@@ -511,6 +545,78 @@ const Services: React.FC = () => {
               </Button>
             </Card>
           )}
+        </Container>
+      </Box>
+
+      {/* Estadísticas adicionales con números gigantes */}
+      <Box sx={{ 
+        py: 8, 
+        position: 'relative', 
+        bgcolor: 'background.paper',
+        overflow: 'hidden'
+      }}>
+        <Container maxWidth="lg">
+          <H2 sx={{ 
+            mb: 6, 
+            textAlign: 'center',
+            color: 'text.primary',
+            fontSize: { xs: '1.8rem', md: '2.2rem' },
+            fontWeight: 400
+          }}>
+            Impacto real en nuestros clientes
+          </H2>
+          
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Horas ahorradas"
+                  value="1200+"
+                  subtitle="Por cliente al mes"
+                  iconType="arrow-up"
+                  variant="glass"
+                  size="large"
+                  trend="up"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Procesos automatizados"
+                  value="95%"
+                  subtitle="De tareas repetitivas"
+                  iconType="circle"
+                  variant="primary"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Tiempo de respuesta"
+                  value="24h"
+                  subtitle="Soporte garantizado"
+                  iconType="triangle"
+                  variant="accent"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <MetricCard
+                  title="Escalabilidad"
+                  value="∞"
+                  subtitle="Crecimiento sin límites"
+                  iconType="arrow-up"
+                  variant="glass"
+                  size="large"
+                />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 

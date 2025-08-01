@@ -19,15 +19,38 @@ interface MetricCardProps {
   onClick?: () => void;
 }
 
-// Styled component para el valor de la métrica
-const MetricValue = styled(Typography)<{ metricSize: string }>(({ metricSize }) => ({
-  fontSize: metricSize === 'compact' ? '2.5rem' : metricSize === 'large' ? '4.5rem' : '3.5rem',
-  fontWeight: 700,
-  lineHeight: 1,
+// Styled component para el valor de la métrica - NÚMEROS GIGANTES
+const MetricValue = styled(Typography)<{ metricSize: string }>(({ metricSize, theme }) => ({
+  fontSize: metricSize === 'compact' 
+    ? '3.5rem' 
+    : metricSize === 'large' 
+      ? '6rem' 
+      : '4.5rem',
+  fontWeight: 900,
+  lineHeight: 0.8,
   fontFamily: '"Red Hat Display", sans-serif',
-  letterSpacing: '-0.02em',
+  letterSpacing: '-0.03em',
   margin: 0,
   padding: 0,
+  background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  textFillColor: 'transparent',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: metricSize === 'compact' 
+      ? '2.5rem' 
+      : metricSize === 'large' 
+        ? '4rem' 
+        : '3.5rem',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: metricSize === 'compact' 
+      ? '2rem' 
+      : metricSize === 'large' 
+        ? '3.5rem' 
+        : '3rem',
+  }
 }));
 
 const MetricCard: React.FC<MetricCardProps> = (props) => {
@@ -79,27 +102,64 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         alignItems: 'center',
         textAlign: 'center',
         p: size === 'compact' ? 3 : size === 'large' ? 5 : 4,
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: size === 'large' 
+            ? 'linear-gradient(135deg, rgba(182, 202, 64, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+            : 'none',
+          zIndex: 0,
+        }
       }}
     >
-      {/* Main metric value - GIANT AND PROMINENT */}
+      {/* Main metric value - NÚMEROS GIGANTES Y PROMINENTES */}
       <Box sx={{ 
         flex: 1, 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
-        mb: 2
+        mb: 2,
+        position: 'relative',
+        zIndex: 1,
+        width: '100%'
       }}>
         <MetricValue
           metricSize={size}
           sx={{
             color: getVariantTextColor(),
-            textShadow: size === 'large' ? '0 8px 16px rgba(0,0,0,0.15)' : '0 4px 8px rgba(0,0,0,0.1)',
-            filter: size === 'large' ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' : 'none',
-            transform: size === 'large' ? 'scale(1.05)' : 'scale(1)',
-            transition: 'all 0.3s ease',
+            textShadow: size === 'large' 
+              ? '0 12px 24px rgba(0,0,0,0.2), 0 4px 8px rgba(182, 202, 64, 0.3)' 
+              : '0 6px 12px rgba(0,0,0,0.15)',
+            filter: size === 'large' ? 'drop-shadow(0 8px 16px rgba(0,0,0,0.15))' : 'none',
+            transform: size === 'large' ? 'scale(1.1)' : 'scale(1)',
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            position: 'relative',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: '-8px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: size === 'large' ? '80%' : '60%',
+              height: '2px',
+              background: 'linear-gradient(90deg, transparent, #B6CA40, transparent)',
+              opacity: 0.6,
+            },
             '&:hover': {
-              transform: size === 'large' ? 'scale(1.1)' : 'scale(1.02)',
-              textShadow: size === 'large' ? '0 12px 24px rgba(0,0,0,0.2)' : '0 6px 12px rgba(0,0,0,0.15)',
+              transform: size === 'large' ? 'scale(1.15)' : 'scale(1.05)',
+              textShadow: size === 'large' 
+                ? '0 16px 32px rgba(0,0,0,0.25), 0 8px 16px rgba(182, 202, 64, 0.4)' 
+                : '0 8px 16px rgba(0,0,0,0.2)',
+              '&::after': {
+                opacity: 1,
+                width: size === 'large' ? '90%' : '70%',
+              }
             }
           }}
         >
@@ -114,6 +174,8 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         justifyContent: 'center',
         gap: 1,
         mb: 1,
+        position: 'relative',
+        zIndex: 1,
       }}>
         <Typography
           variant="caption"
@@ -149,6 +211,8 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             lineHeight: 1.4,
             maxWidth: '80%',
             textAlign: 'center',
+            position: 'relative',
+            zIndex: 1,
           }}
         >
           {subtitle}
