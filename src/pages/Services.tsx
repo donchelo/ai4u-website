@@ -11,11 +11,13 @@ import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/share
 import { DiagnosticCTA, ServiceCard, ProcessStep, Card, MetricCard } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
+import { useColorMode } from '../context/ThemeContext';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
 import { SERVICE_CONFIG } from '../utils/constants';
 
 const Services: React.FC = () => {
   const theme = useTheme();
+  const { mode } = useColorMode();
   const { 
     services: allServices,
     config,
@@ -80,7 +82,7 @@ const Services: React.FC = () => {
   return (
     <Box sx={{ 
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)',
+      bgcolor: 'background.default',
       position: 'relative'
     }}>
       {/* Hero Section minimalista */}
@@ -93,7 +95,7 @@ const Services: React.FC = () => {
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <H1 sx={{ 
               mb: 3,
-              color: '#000000',
+              color: 'text.primary',
               fontSize: { xs: '2.5rem', md: '3.5rem' },
               fontWeight: 300,
               letterSpacing: '-0.01em'
@@ -177,12 +179,12 @@ const Services: React.FC = () => {
       </Box>
 
       {/* Our Process Section */}
-      <Box sx={{ py: 8, position: 'relative' }}>
+      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            color: '#000000',
+            color: 'text.primary',
             fontSize: { xs: '1.8rem', md: '2.2rem' },
             fontWeight: 400
           }}>
@@ -191,7 +193,7 @@ const Services: React.FC = () => {
           
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={10}>
-              <Card variant="glass" sx={{ p: 0 }}>
+              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
                 <Box sx={{ p: 4 }}>
                   <Grid container spacing={4}>
                     {[
@@ -230,7 +232,7 @@ const Services: React.FC = () => {
                           <GeometricIcon
                             type={step.icon as any}
                             size="medium"
-                            color={idx === 0 ? "#B6CA40" : "rgba(0, 0, 0, 0.3)"}
+                            color={idx === 0 ? "#B6CA40" : theme.palette.text.secondary}
                             variant={idx === 0 ? "filled" : "minimal"}
                           />
                           <Box sx={{ flex: 1 }}>
@@ -255,7 +257,12 @@ const Services: React.FC = () => {
                     ))}
                   </Grid>
                   
-                  <Box sx={{ textAlign: 'center', mt: 6, pt: 4, borderTop: '1px solid rgba(0,0,0,0.1)' }}>
+                  <Box sx={{ 
+                    textAlign: 'center', 
+                    mt: 6, 
+                    pt: 4, 
+                    borderTop: `1px solid ${theme.palette.divider}` 
+                  }}>
                     <DiagnosticCTA />
                   </Box>
                 </Box>
@@ -269,7 +276,7 @@ const Services: React.FC = () => {
         <Container maxWidth="lg">
           <Box sx={{ 
             height: '1px', 
-            background: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent)',
+            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
             mx: 'auto',
             width: '60%'
           }} />
@@ -277,12 +284,12 @@ const Services: React.FC = () => {
       </Box>
 
       {/* Services Filter Section */}
-      <Box sx={{ py: 8, position: 'relative' }}>
+      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
             mb: 6, 
             textAlign: 'center',
-            color: '#000000',
+            color: 'text.primary',
             fontSize: { xs: '1.8rem', md: '2.2rem' },
             fontWeight: 400
           }}>
@@ -309,20 +316,20 @@ const Services: React.FC = () => {
                     py: 1.5,
                     fontWeight: selectedSuperTab === index ? 600 : 500,
                     background: selectedSuperTab === index 
-                      ? (index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#f5f5f5')
+                      ? (index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.background.paper)
                       : 'transparent',
                     color: selectedSuperTab === index 
                       ? '#FFFFFF' 
-                      : index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#666666',
+                      : index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.text.secondary,
                     border: `2px solid ${
                       selectedSuperTab === index 
-                        ? (index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#e5e5e5')
-                        : index === 1 ? '#6366f1' : index === 2 ? '#10b981' : '#e5e5e5'
+                        ? (index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.divider)
+                        : index === 1 ? theme.palette.secondary.main : index === 2 ? '#B6CA40' : theme.palette.divider
                     }`,
                     '&:hover': {
                       background: selectedSuperTab === index 
-                        ? (index === 1 ? '#5b5beb' : index === 2 ? '#059669' : '#f0f0f0')
-                        : index === 1 ? '#6366f110' : index === 2 ? '#10b98110' : '#f5f5f5'
+                        ? (index === 1 ? theme.palette.secondary.dark : index === 2 ? '#A5B839' : theme.palette.action.hover)
+                        : index === 1 ? alpha(theme.palette.secondary.main, 0.1) : index === 2 ? alpha('#B6CA40', 0.1) : theme.palette.action.hover
                     }
                   }}
                 >
@@ -371,12 +378,12 @@ const Services: React.FC = () => {
                   minWidth: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  background: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[2],
                   '&:hover': {
-                    background: 'rgba(255, 255, 255, 1)',
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                    background: theme.palette.background.default,
+                    boxShadow: theme.shadows[4],
                   }
                 }}
                 aria-label="Desplazar servicios hacia la izquierda"
@@ -384,7 +391,7 @@ const Services: React.FC = () => {
                 <GeometricIcon
                   type="arrow-left"
                   size="small"
-                  color="#666666"
+                  color={theme.palette.text.secondary}
                   variant="filled"
                 />
               </Button>
@@ -411,12 +418,12 @@ const Services: React.FC = () => {
                   minWidth: 40,
                   height: 40,
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  background: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[2],
                   '&:hover': {
-                    background: 'rgba(255, 255, 255, 1)',
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                    background: theme.palette.background.default,
+                    boxShadow: theme.shadows[4],
                   }
                 }}
                 aria-label="Desplazar servicios hacia la derecha"
@@ -424,7 +431,7 @@ const Services: React.FC = () => {
                 <GeometricIcon
                   type="arrow-right"
                   size="small"
-                  color="#666666"
+                  color={theme.palette.text.secondary}
                   variant="filled"
                 />
               </Button>
@@ -444,14 +451,14 @@ const Services: React.FC = () => {
                   height: 8,
                 },
                 '&::-webkit-scrollbar-track': {
-                  background: '#f1f1f1',
+                  background: theme.palette.action.hover,
                   borderRadius: 4,
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  background: '#c1c1c1',
+                  background: theme.palette.divider,
                   borderRadius: 4,
                   '&:hover': {
-                    background: '#a8a8a8',
+                    background: theme.palette.text.secondary,
                   },
                 },
               }}
@@ -475,11 +482,16 @@ const Services: React.FC = () => {
           </Box>
 
           {filteredServices.length === 0 && (
-            <Card variant="glass" sx={{ textAlign: 'center', py: 6 }}>
+            <Card variant="glass" sx={{ 
+              textAlign: 'center', 
+              py: 6,
+              bgcolor: 'background.paper',
+              border: `1px solid ${theme.palette.divider}`
+            }}>
               <GeometricIcon
                 type="cross"
                 size="large"
-                color="rgba(0, 0, 0, 0.3)"
+                color={theme.palette.text.disabled}
                 variant="minimal"
               />
               <BodyText sx={{ 
@@ -505,10 +517,16 @@ const Services: React.FC = () => {
       {/* CTA Section */}
       <Box sx={{ 
         py: 8,
-        position: 'relative'
+        position: 'relative',
+        bgcolor: mode === 'dark' ? 'background.default' : '#1a1a1a'
       }}>
         <Container maxWidth="lg">
-          <Card variant="dark" sx={{ textAlign: 'center', p: 6 }}>
+          <Card variant="dark" sx={{ 
+            textAlign: 'center', 
+            p: 6,
+            bgcolor: mode === 'dark' ? 'background.paper' : '#2a2a2a',
+            border: `1px solid ${mode === 'dark' ? theme.palette.divider : 'rgba(255, 255, 255, 0.1)'}`
+          }}>
             <Box sx={{ mb: 3 }}>
               <GeometricIcon
                 type="arrow-up"
@@ -519,7 +537,7 @@ const Services: React.FC = () => {
             </Box>
             <H2 sx={{ 
               mb: 3,
-              color: '#FFFFFF',
+              color: mode === 'dark' ? 'text.primary' : '#FFFFFF',
               fontSize: { xs: '1.6rem', md: '2rem' },
               fontWeight: 400
             }}>
@@ -530,7 +548,7 @@ const Services: React.FC = () => {
               maxWidth: 600, 
               mx: 'auto',
               fontSize: '1rem',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)',
               lineHeight: 1.6
             }}>
               Agenda tu diagnóstico gratuito de 30 minutos y descubre cómo podemos transformar tu negocio con IA.
@@ -542,7 +560,7 @@ const Services: React.FC = () => {
             
             <BodyText sx={{ 
               fontStyle: 'italic', 
-              color: 'rgba(255, 255, 255, 0.6)',
+              color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
               Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Container, Grid, Box, Link, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Container, Grid, Box, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
 import { useColors } from '../../../../hooks';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -19,6 +19,7 @@ const Footer = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
   const colors = useColors();
+  const navigate = useNavigate();
 
   // Logo según el tema (footer siempre tiene fondo oscuro)
   const logoPath = mode === 'light' 
@@ -73,10 +74,10 @@ const Footer = () => {
                   { name: 'Casos de éxito', path: '/casos-de-exito' }
                 ].map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
-                    <Link
-                      component={RouterLink}
-                      to={link.path}
+                    <Box
+                      component="a"
                       onClick={() => {
+                        navigate(link.path);
                         window.scrollTo({
                           top: 0,
                           behavior: 'smooth'
@@ -85,11 +86,13 @@ const Footer = () => {
                       sx={{
                         color: colors.contrast.text.secondary,
                         textDecoration: 'none',
+                        cursor: 'pointer',
+                        display: 'block',
                         '&:hover': { color: colors.palette.orange }
                       }}
                     >
                       {link.name}
-                    </Link>
+                    </Box>
                   </Box>
                 ))}
               </Box>
@@ -104,7 +107,7 @@ const Footer = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <EmailIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  info@ai4u.com.co
+                  hola@ai4u.com.co
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
