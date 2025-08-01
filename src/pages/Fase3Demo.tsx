@@ -266,7 +266,6 @@ const Fase3Demo = () => {
             <ServiceCard 
               service={mockService}
               showPrice={true}
-              showDeliveryTime={true}
               compact={false}
             />
           </Grid>
@@ -275,7 +274,6 @@ const Fase3Demo = () => {
             <ServiceCard 
               service={mockService}
               showPrice={true}
-              showDeliveryTime={true}
               compact={true}
             />
           </Grid>

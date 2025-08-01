@@ -17,14 +17,12 @@ import { Service, ServiceStatus } from '../../../../types/service';
 interface ServiceCardProps {
   service: Service;
   showPrice?: boolean;
-  showDeliveryTime?: boolean;
   compact?: boolean;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ 
   service, 
   showPrice = true, 
-  showDeliveryTime = true,
   compact = false 
 }) => {
   const theme = useTheme();
@@ -96,29 +94,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           borderRadius: '12px 12px 0 0'
         }} />
 
-        {/* Status Badge con glassmorphism */}
-        <Box sx={{ 
-          position: 'absolute', 
-          top: 12, 
-          right: 12,
-          zIndex: 2
-        }}>
-          <Chip 
-            label={getStatusText(service.status)}
-            size="small"
-            sx={{
-              background: `rgba(${getStatusColor(service.status) === colors.palette.green ? '182, 202, 64' : '255, 92, 0'}, 0.2)`,
-              backdropFilter: 'blur(10px)',
-              border: `1px solid ${getStatusColor(service.status)}40`,
-              color: getStatusColor(service.status),
-              fontWeight: 600,
-              fontSize: '0.75rem',
-              '&:hover': {
-                background: `rgba(${getStatusColor(service.status) === colors.palette.green ? '182, 202, 64' : '255, 92, 0'}, 0.3)`,
-              }
-            }}
-          />
-        </Box>
+
 
         {/* Super Category Badge con glassmorphism */}
         <Box sx={{ 
@@ -249,28 +225,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             </Box>
           )}
           
-          {showDeliveryTime && (
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center'
-            }}>
-              <BodyText sx={{ 
-                fontWeight: 600,
-                color: colors.contrast.text.primary,
-                fontSize: '0.9rem'
-              }}>
-                Entrega:
-              </BodyText>
-              <BodyText sx={{ 
-                fontWeight: 600,
-                color: colors.contrast.text.secondary,
-                fontSize: '0.9rem'
-              }}>
-                {service.deliveryTime}
-              </BodyText>
-            </Box>
-          )}
+
         </Box>
       </Box>
     </Box>

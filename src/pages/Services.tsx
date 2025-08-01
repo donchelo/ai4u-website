@@ -392,7 +392,6 @@ const Services: React.FC = () => {
                   <ServiceCard 
                     service={service}
                     showPrice={config.displaySettings.showPrices}
-                    showDeliveryTime={config.displaySettings.showDeliveryTime}
                   />
                 </Box>
               ))}

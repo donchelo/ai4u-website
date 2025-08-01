@@ -202,7 +202,6 @@ const MigrationDemo = () => {
               <ServiceCard 
                 service={mockService}
                 showPrice={true}
-                showDeliveryTime={true}
                 compact={false}
               />
             </Grid>
@@ -210,7 +209,6 @@ const MigrationDemo = () => {
               <ServiceCard 
                 service={mockService}
                 showPrice={true}
-                showDeliveryTime={true}
                 compact={true}
               />
             </Grid>
