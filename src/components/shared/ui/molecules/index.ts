@@ -8,3 +8,4 @@ export { default as MetricCard } from './MetricCard';
 export { default as Card } from './Card';
 export { default as DiagnosticCTA } from './DiagnosticCTA';
 export { default as ServiceCard } from './ServiceCard';
+export { default as Gallery } from './Gallery';

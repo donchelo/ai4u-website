@@ -4,7 +4,7 @@ import { Layout, ScrollToTop, LazyPage } from './components/shared/ui/layouts';
 import ThemeProvider from './context/ThemeContext';
 import ServicesProvider from './context/ServicesContext';
 import { ROUTES } from './utils/constants';
-import { Home, Services, WhyAI4U, SuccessCases, ComponentLibrary } from './pages/lazy';
+import { Home, Services, WhyAI4U, SuccessCases, ComponentLibrary, Gallery } from './pages/lazy';
 
 function App() {
   return (
@@ -59,6 +59,14 @@ function App() {
                 element={
                   <LazyPage>
                     <ComponentLibrary />
+                  </LazyPage>
+                } 
+              />
+              <Route 
+                path={ROUTES.GALLERY} 
+                element={
+                  <LazyPage>
+                    <Gallery />
                   </LazyPage>
                 } 
               />
