@@ -6,19 +6,23 @@ import {
   Typography, 
   IconButton, 
   Avatar,
-  useTheme,
-  styled
+  Chip,
+  Divider
 } from '@mui/material';
 import { 
   Person as PersonIcon,
   MoreVert as MoreVertIcon,
-  Add as AddIcon
+  Add as AddIcon,
+  AccountBalance as AccountBalanceIcon
 } from '@mui/icons-material';
+import { useColors } from '../../../../hooks';
+import { H3, H4, BodyText, SmallText } from '../atoms';
 
 interface BudgetCategory {
   name: string;
   amount: number;
   color?: string;
+  icon?: React.ReactNode;
 }
 
 interface BudgetCardProps {
@@ -27,51 +31,94 @@ interface BudgetCardProps {
   categories: BudgetCategory[];
   totalAmount?: number;
   onAddCategory?: () => void;
+  variant?: 'glass' | 'dark' | 'primary' | 'accent';
 }
-
-// Styled components
-const StyledCard = styled(Card)(({ theme }) => ({
-  borderRadius: theme.spacing(3),
-  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-  maxWidth: 400,
-  margin: '0 auto',
-  background: theme.palette.background.paper,
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-  },
-}));
-
-const MainCategoryBox = styled(Box)(({ theme }) => ({
-  background: '#FEF3C7', // yellow-400 equivalent
-  borderRadius: theme.spacing(2),
-  padding: theme.spacing(2),
-  position: 'relative',
-  marginBottom: theme.spacing(3),
-}));
-
-const CategoryItem = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: theme.spacing(1.5),
-  background: theme.palette.grey[100],
-  borderRadius: theme.spacing(1),
-  marginBottom: theme.spacing(1.5),
-}));
 
 const BudgetCard: React.FC<BudgetCardProps> = ({
   title,
-  subtitle,
+  subtitle = '',
   categories,
-  totalAmount,
-  onAddCategory
+  totalAmount = 0,
+  onAddCategory = () => {},
+  variant = 'glass'
 }) => {
-  const theme = useTheme();
+  const colors = useColors();
+
+  // Configuración de variantes según el sistema AI4U
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'dark':
+        return {
+          card: {
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      case 'primary':
+        return {
+          card: {
+            background: `linear-gradient(135deg, ${colors.palette.orange}15, ${colors.palette.orange}25)`,
+            backdropFilter: 'blur(20px)',
+            border: `1px solid ${colors.palette.orange}30`,
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      case 'accent':
+        return {
+          card: {
+            background: `linear-gradient(135deg, ${colors.palette.green}15, ${colors.palette.green}25)`,
+            backdropFilter: 'blur(20px)',
+            border: `1px solid ${colors.palette.green}30`,
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }
+        };
+      default: // glass
+        return {
+          card: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: colors.helpers.text.highContrast
+          },
+          surface: {
+            background: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.25)'
+          }
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
 
   return (
-    <StyledCard>
+    <Card
+      sx={{
+        borderRadius: 4,
+        maxWidth: 400,
+        margin: '0 auto',
+        transition: 'all 0.3s ease',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+        },
+        ...variantStyles.card
+      }}
+    >
       <CardContent sx={{ p: 3 }}>
         {/* Header */}
         <Box sx={{ 
@@ -80,147 +127,200 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
           justifyContent: 'space-between', 
           mb: 3 
         }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Avatar sx={{ 
-              bgcolor: theme.palette.grey[200],
-              width: 40,
-              height: 40
+              width: 48,
+              height: 48,
+              background: variantStyles.surface.background,
+              border: variantStyles.surface.border,
+              backdropFilter: 'blur(10px)'
             }}>
-              <PersonIcon sx={{ color: theme.palette.grey[600] }} />
+              <AccountBalanceIcon sx={{ 
+                color: colors.helpers.text.primary,
+                fontSize: 24
+              }} />
             </Avatar>
             <Box>
-              <Typography variant="h6" sx={{ 
-                fontWeight: 600,
-                color: theme.palette.text.primary
+              <H4 sx={{ 
+                color: colors.helpers.text.primary,
+                mb: 0.5
               }}>
                 {title}
-              </Typography>
+              </H4>
               {subtitle && (
-                <Typography variant="body2" sx={{ 
-                  color: theme.palette.text.secondary
+                <SmallText sx={{ 
+                  color: colors.helpers.text.secondary
                 }}>
                   {subtitle}
-                </Typography>
+                </SmallText>
               )}
             </Box>
           </Box>
           <IconButton 
             size="small"
-            sx={{ color: theme.palette.grey[400] }}
+            sx={{ 
+              color: colors.helpers.text.secondary,
+              '&:hover': {
+                background: colors.helpers.state.hover
+              }
+            }}
           >
             <MoreVertIcon />
           </IconButton>
         </Box>
 
-        {/* Main Category */}
-        <MainCategoryBox>
+        {/* Main Budget Section */}
+        <Box sx={{ 
+          p: 3,
+          borderRadius: 3,
+          mb: 3,
+          ...variantStyles.surface,
+          backdropFilter: 'blur(10px)'
+        }}>
           <Box sx={{ 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-between', 
-            mb: 1 
+            mb: 2 
           }}>
-            <Typography variant="caption" sx={{ 
-              fontWeight: 500,
-              color: theme.palette.text.primary
+            <SmallText sx={{ 
+              fontWeight: 600,
+              color: colors.helpers.text.primary,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5
             }}>
-              FINANCIAL
-            </Typography>
-            <Typography variant="caption" sx={{ 
-              fontWeight: 500,
-              color: theme.palette.text.primary
+              Presupuesto Total
+            </SmallText>
+            <H3 sx={{ 
+              color: colors.helpers.text.primary,
+              fontWeight: 700
             }}>
-              500.0
-            </Typography>
+              ${totalAmount?.toFixed(1) || '0.0'}
+            </H3>
           </Box>
           
           <Box sx={{ 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            mb: 1 
+            mb: 2 
           }}>
             <IconButton
               onClick={onAddCategory}
               sx={{
-                width: 32,
-                height: 32,
-                bgcolor: theme.palette.grey[800],
-                color: '#FFFFFF',
+                width: 40,
+                height: 40,
+                background: colors.palette.orange,
+                color: colors.palette.white,
                 '&:hover': {
-                  bgcolor: theme.palette.grey[700],
+                  background: '#E54A00',
+                  transform: 'scale(1.05)'
                 },
+                transition: 'all 0.2s ease'
               }}
             >
               <AddIcon />
             </IconButton>
           </Box>
           
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between' 
+          <SmallText sx={{ 
+            textAlign: 'center',
+            color: colors.helpers.text.secondary,
+            textTransform: 'uppercase',
+            letterSpacing: 0.5
           }}>
-            <Typography variant="caption" sx={{ 
-              fontWeight: 500,
-              color: theme.palette.text.primary
-            }}>
-              BUDGET
-            </Typography>
-            <Typography variant="caption" sx={{ 
-              fontWeight: 500,
-              color: theme.palette.text.primary
-            }}>
-              500.0
-            </Typography>
-          </Box>
-        </MainCategoryBox>
+            Agregar Categoría
+          </SmallText>
+        </Box>
 
         {/* Categories List */}
-        <Box sx={{ mb: 2 }}>
+        <Box sx={{ mb: 3 }}>
           {categories.map((category, index) => (
-            <CategoryItem key={index}>
-              <Typography variant="body2" sx={{ 
-                fontWeight: 500,
-                color: theme.palette.text.primary
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                p: 2,
+                mb: 1.5,
+                borderRadius: 2,
+                background: variantStyles.surface.background,
+                border: variantStyles.surface.border,
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  background: colors.helpers.state.hover,
+                  transform: 'translateX(4px)'
+                }
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                {category.icon && (
+                  <Box sx={{ 
+                    width: 32,
+                    height: 32,
+                    borderRadius: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: colors.palette.orange + '20',
+                    color: colors.palette.orange
+                  }}>
+                    {category.icon}
+                  </Box>
+                )}
+                <BodyText sx={{ 
+                  fontWeight: 600,
+                  color: colors.helpers.text.primary
+                }}>
+                  {category.name}
+                </BodyText>
+              </Box>
+              <H4 sx={{ 
+                fontWeight: 700,
+                color: colors.helpers.text.primary
               }}>
-                {category.name}
-              </Typography>
-              <Typography variant="body2" sx={{ 
-                fontWeight: 500,
-                color: theme.palette.text.primary
-              }}>
-                {category.amount.toFixed(1)}
-              </Typography>
-            </CategoryItem>
+                ${category.amount.toFixed(1)}
+              </H4>
+            </Box>
           ))}
         </Box>
 
-        {/* Total */}
+        {/* Total Summary */}
         {totalAmount && (
-          <Box sx={{ 
-            pt: 2, 
-            borderTop: `1px solid ${theme.palette.divider}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}>
-            <Typography variant="body2" sx={{ 
-              fontWeight: 600,
-              color: theme.palette.text.primary
+          <>
+            <Divider sx={{ 
+              mb: 3,
+              borderColor: colors.helpers.border.secondary + '40'
+            }} />
+            <Box sx={{ 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              p: 2,
+              borderRadius: 2,
+              background: variantStyles.surface.background,
+              border: variantStyles.surface.border,
+              backdropFilter: 'blur(10px)'
             }}>
-              Total
-            </Typography>
-            <Typography variant="h6" sx={{ 
-              fontWeight: 700,
-              color: theme.palette.text.primary
-            }}>
-              ${totalAmount.toFixed(1)}
-            </Typography>
-          </Box>
+              <H4 sx={{ 
+                fontWeight: 600,
+                color: colors.helpers.text.primary
+              }}>
+                Total Disponible
+              </H4>
+              <H3 sx={{ 
+                fontWeight: 700,
+                color: colors.palette.orange
+              }}>
+                ${totalAmount.toFixed(1)}
+              </H3>
+            </Box>
+          </>
         )}
       </CardContent>
-    </StyledCard>
+    </Card>
   );
 };
 
