@@ -22,7 +22,7 @@ export const APP_CONFIG = {
   DESCRIPTION: 'Construimos tu infraestructura de IA personalizada',
   CONTACT: {
     EMAIL: 'contacto@ai4u.com.co',
-    PHONE: '+57 300 123 4567',
+    PHONE: '+57 321 817 5744',
     CALENDLY: 'calendly.com/mgarciap333/ai4u-automatizacion-inteligente'
   },
   SOCIAL: {

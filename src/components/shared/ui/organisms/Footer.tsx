@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Grid, Box, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
 import { useColors } from '../../../../hooks';
+import { useLanguage } from '../../../../hooks';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -20,6 +21,7 @@ const Footer = () => {
   const { mode } = useColorMode();
   const colors = useColors();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   // Logo según el tema (footer siempre tiene fondo oscuro)
   const logoPath = mode === 'light' 
@@ -57,21 +59,21 @@ const Footer = () => {
               }}
             />
             <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-              Transformando el futuro con inteligencia artificial.
+              {t('footer.tagline')}
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
-              Enlaces Rápidos
+              {t('footer.quickLinks.title')}
             </MuiTypography>
-            <Box component="nav" aria-label="Enlaces rápidos">
+            <Box component="nav" aria-label={t('footer.quickLinks.title')}>
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                 {[
-                  { name: 'Home', path: '/' },
-                  { name: 'Servicios', path: '/servicios' },
-                  { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
-                  { name: 'Casos de uso', path: '/casos-de-uso' }
+                  { name: t('footer.quickLinks.links.0.name'), path: t('footer.quickLinks.links.0.path') },
+                  { name: t('footer.quickLinks.links.1.name'), path: t('footer.quickLinks.links.1.path') },
+                  { name: t('footer.quickLinks.links.2.name'), path: t('footer.quickLinks.links.2.path') },
+                  { name: t('footer.quickLinks.links.3.name'), path: t('footer.quickLinks.links.3.path') }
                 ].map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
                     <Box
@@ -101,25 +103,25 @@ const Footer = () => {
           
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
-              Contacto
+              {t('footer.contact.title')}
             </MuiTypography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <EmailIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  hola@ai4u.com.co
+                  {t('footer.contact.email')}
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <PhoneIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  +57 300 123 4567
+                  {t('footer.contact.phone')}
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <LocationOnIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  Medellín, Colombia
+                  {t('footer.contact.location')}
                 </MuiTypography>
               </Box>
             </Stack>
@@ -136,7 +138,7 @@ const Footer = () => {
           gap: 2
         }}>
           <SmallText sx={{ color: colors.contrast.text.secondary }}>
-            © {currentYear} AI4U. Todos los derechos reservados.
+            {t('footer.copyright').replace('{year}', currentYear.toString())}
           </SmallText>
           
           <Stack direction="row" spacing={1}>

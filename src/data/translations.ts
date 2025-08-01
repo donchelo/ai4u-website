@@ -215,11 +215,119 @@ export const translations: Record<Language, Translations> = {
       }
     },
     
+    // WhyAI4U Page
+    whyAI4U: {
+      hero: {
+        title: '¿Por qué AI4U?',
+        description: 'Somos el único servicio de automatización que combina asistentes robóticos evolutivos con resultados garantizados en 72 horas. No solo automatizamos tareas - transformamos el tiempo perdido en libertad estratégica.'
+      },
+      mariano: {
+        title: 'La parte humana detrás de la tecnología',
+        description: 'Detrás de cada automatización hay una mente humana que entiende tu negocio. Mariano, fundador de AI4U, combina experiencia en startups, movilidad y tecnología para crear soluciones que realmente funcionan.',
+        credentials: [
+          'Fundador de AI4U',
+          'Cofundador de Matt Movilidad',
+          'Especialista en automatización'
+        ],
+        linkedinButton: 'Conectar en LinkedIn',
+        imageAlt: 'Mariano, Fundador de AI4U',
+        hoverText: 'Pasa el mouse para ver el efecto pixel art',
+        hoverSubtext: 'Tecnología + Creatividad'
+      },
+      benefits: {
+        title: '¿Qué nos hace diferentes?',
+        items: [
+          {
+            title: 'Diagnóstico Gratuito',
+            description: 'Evaluamos tu negocio sin costo para identificar oportunidades de automatización.'
+          },
+          {
+            title: 'Asistentes que Evolucionan',
+            description: 'A diferencia de otros servicios, nuestros asistentes aprenden y mejoran continuamente.'
+          },
+          {
+            title: 'Resultados Garantizados',
+            description: '72 horas para implementación. ROI medible desde el primer mes.'
+          }
+        ]
+      },
+      cta: {
+        title: '¿Listo para liberar tu tiempo estratégico?',
+        subtitle: 'Agenda tu diagnóstico gratuito de 30 minutos y descubre oportunidades de automatización que liberarán tu tiempo estratégico. Sin compromiso, personalizado a tu negocio.',
+        disclaimer: 'Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes',
+        viewSolutionsButton: 'VER SOLUCIONES'
+      }
+    },
+    
+    // Gallery Page
+    gallery: {
+      loading: 'Cargando galería...',
+      error: 'Error al cargar las imágenes',
+      noImages: 'No hay imágenes disponibles',
+      navigation: {
+        previous: 'Imagen anterior',
+        next: 'Imagen siguiente',
+        play: 'Reproducir automáticamente',
+        pause: 'Pausar reproducción automática'
+      },
+      controls: {
+        imageCounter: 'Imagen {current} de {total}',
+        keyboard: {
+          arrows: 'Usa las flechas para navegar',
+          space: 'Presiona espacio para pausar/reproducir'
+        }
+      }
+    },
+    
+    // Success Cases Page
+    successCases: {
+      hero: {
+        title: 'Casos de Uso',
+        description: 'Transformamos ideas en resultados. Cada logo representa una historia de innovación, automatización y crecimiento estratégico.'
+      },
+      metrics: {
+        title: 'Resultados que Hablan',
+        description: 'Nuestras soluciones de IA han transformado empresas de todos los tamaños, generando resultados medibles y crecimiento sostenible.',
+        items: [
+          {
+            value: '95%',
+            description: 'Reducción en tiempo de procesamiento'
+          },
+          {
+            value: '300%',
+            description: 'Incremento en productividad'
+          },
+          {
+            value: '24/7',
+            description: 'Operación continua sin interrupciones'
+          }
+        ]
+      },
+      clients: {
+        title: 'Casos de Uso Reales',
+        visitSite: 'Visitar sitio →'
+      }
+    },
+    
     // Footer
     footer: {
-      copyright: '© 2024 AI4U. Todos los derechos reservados.',
-      privacy: 'Política de Privacidad',
-      terms: 'Términos de Servicio'
+      tagline: 'Transformando el futuro con inteligencia artificial.',
+      quickLinks: {
+        title: 'Enlaces Rápidos',
+        links: [
+          { name: 'Home', path: '/' },
+          { name: 'Servicios', path: '/servicios' },
+          { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
+          { name: 'Casos de uso', path: '/casos-de-uso' }
+        ]
+      },
+      contact: {
+        title: 'Contacto',
+        email: 'hola@ai4u.com.co',
+        phone: '+57 321 817 5744',
+        location: 'Medellín, Colombia'
+      },
+      copyright: '© {year} AI4U. Todos los derechos reservados.'
     },
     
     // Botones
@@ -448,11 +556,119 @@ export const translations: Record<Language, Translations> = {
       }
     },
     
+    // WhyAI4U Page
+    whyAI4U: {
+      hero: {
+        title: 'Why AI4U?',
+        description: 'We are the only automation service that combines evolutionary robotic assistants with guaranteed results in 72 hours. We don\'t just automate tasks - we transform wasted time into strategic freedom.'
+      },
+      mariano: {
+        title: 'The human part behind the technology',
+        description: 'Behind every automation there is a human mind that understands your business. Mariano, founder of AI4U, combines experience in startups, mobility and technology to create solutions that really work.',
+        credentials: [
+          'Founder of AI4U',
+          'Co-founder of Matt Movilidad',
+          'Automation specialist'
+        ],
+        linkedinButton: 'Connect on LinkedIn',
+        imageAlt: 'Mariano, Founder of AI4U',
+        hoverText: 'Hover to see pixel art effect',
+        hoverSubtext: 'Technology + Creativity'
+      },
+      benefits: {
+        title: 'What makes us different?',
+        items: [
+          {
+            title: 'Free Diagnosis',
+            description: 'We evaluate your business at no cost to identify automation opportunities.'
+          },
+          {
+            title: 'Evolving Assistants',
+            description: 'Unlike other services, our assistants learn and improve continuously.'
+          },
+          {
+            title: 'Guaranteed Results',
+            description: '72 hours for implementation. Measurable ROI from the first month.'
+          }
+        ]
+      },
+      cta: {
+        title: 'Ready to free your strategic time?',
+        subtitle: 'Schedule your free 30-minute diagnosis and discover automation opportunities that will free your strategic time. No commitment, personalized to your business.',
+        disclaimer: 'No commitment • Personalized to your business • Results from the first month',
+        viewSolutionsButton: 'VIEW SOLUTIONS'
+      }
+    },
+    
+    // Gallery Page
+    gallery: {
+      loading: 'Loading gallery...',
+      error: 'Error loading images',
+      noImages: 'No images available',
+      navigation: {
+        previous: 'Previous image',
+        next: 'Next image',
+        play: 'Play automatically',
+        pause: 'Pause automatic playback'
+      },
+      controls: {
+        imageCounter: 'Image {current} of {total}',
+        keyboard: {
+          arrows: 'Use arrow keys to navigate',
+          space: 'Press space to pause/play'
+        }
+      }
+    },
+    
+    // Success Cases Page
+    successCases: {
+      hero: {
+        title: 'Use Cases',
+        description: 'We transform ideas into results. Each logo represents a story of innovation, automation and strategic growth.'
+      },
+      metrics: {
+        title: 'Results that Speak',
+        description: 'Our AI solutions have transformed companies of all sizes, generating measurable results and sustainable growth.',
+        items: [
+          {
+            value: '95%',
+            description: 'Reduction in processing time'
+          },
+          {
+            value: '300%',
+            description: 'Increase in productivity'
+          },
+          {
+            value: '24/7',
+            description: 'Continuous operation without interruptions'
+          }
+        ]
+      },
+      clients: {
+        title: 'Real Use Cases',
+        visitSite: 'Visit site →'
+      }
+    },
+    
     // Footer
     footer: {
-      copyright: '© 2024 AI4U. All rights reserved.',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service'
+      tagline: 'Transforming the future with artificial intelligence.',
+      quickLinks: {
+        title: 'Quick Links',
+        links: [
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: 'Why AI4U?', path: '/why-ai4u' },
+          { name: 'Use Cases', path: '/use-cases' }
+        ]
+      },
+      contact: {
+        title: 'Contact',
+        email: 'hello@ai4u.com.co',
+        phone: '+57 321 817 5744',
+        location: 'Medellín, Colombia'
+      },
+      copyright: '© {year} AI4U. All rights reserved.'
     },
     
     // Buttons

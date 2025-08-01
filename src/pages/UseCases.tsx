@@ -10,9 +10,11 @@ import { H1, H2, H3, BodyText, GeometricIcon } from '../components/shared/ui/ato
 import { Card, DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
 import { useColors } from '../hooks';
+import { useLanguage } from '../hooks';
 
 const UseCases = () => {
   const colors = useColors();
+  const { t } = useLanguage();
 
   return (
     <Box sx={{ 
@@ -42,8 +44,7 @@ const UseCases = () => {
             maxWidth: 700,
             mx: 'auto'
           }}>
-            Transformamos ideas en resultados. Cada logo representa una historia de innovación, 
-            automatización y crecimiento estratégico.
+            {t('successCases.hero.description')}
           </BodyText>
         </Container>
       </Box>
@@ -74,8 +75,7 @@ const UseCases = () => {
                    lineHeight: 1.6,
                    fontWeight: 300
                  }}>
-                   Nuestras soluciones de IA han transformado empresas de todos los tamaños, 
-                   generando resultados medibles y crecimiento sostenible.
+                   {t('successCases.metrics.description')}
                  </BodyText>
                </Box>
              </Grid>
@@ -97,14 +97,14 @@ const UseCases = () => {
                          fontSize: '1.5rem',
                          color: colors.helpers.text.primary
                        }}>
-                         95%
+                         {t('successCases.metrics.items.0.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
                          fontSize: '0.9rem',
                          fontWeight: 300
                        }}>
-                         Reducción en tiempo de procesamiento
+                         {t('successCases.metrics.items.0.description')}
                        </BodyText>
                      </Box>
                    </Stack>
@@ -125,14 +125,14 @@ const UseCases = () => {
                          fontSize: '1.5rem',
                          color: colors.helpers.text.primary
                        }}>
-                         300%
+                         {t('successCases.metrics.items.1.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
                          fontSize: '0.9rem',
                          fontWeight: 300
                        }}>
-                         Incremento en productividad
+                         {t('successCases.metrics.items.1.description')}
                        </BodyText>
                      </Box>
                    </Stack>
@@ -153,14 +153,14 @@ const UseCases = () => {
                          fontSize: '1.5rem',
                          color: colors.helpers.text.primary
                        }}>
-                         24/7
+                         {t('successCases.metrics.items.2.value')}
                        </H3>
                        <BodyText sx={{ 
                          color: colors.helpers.text.secondary,
                          fontSize: '0.9rem',
                          fontWeight: 300
                        }}>
-                         Operación continua sin interrupciones
+                         {t('successCases.metrics.items.2.description')}
                        </BodyText>
                      </Box>
                    </Stack>
@@ -268,7 +268,7 @@ const UseCases = () => {
                         fontSize: '0.8rem',
                         fontWeight: 500
                       }}>
-                        Visitar sitio →
+                        {t('successCases.clients.visitSite')}
                       </Box>
                     </Box>
                   </Card>

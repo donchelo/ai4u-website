@@ -7,6 +7,7 @@ import {
   useTheme
 } from '@mui/material';
 import { useColors } from '../../../../hooks';
+import { useLanguage } from '../../../../hooks';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -38,6 +39,7 @@ const Gallery: React.FC<GalleryProps> = ({
   const [isTransitioning, setIsTransitioning] = useState(false);
   const theme = useTheme();
   const colors = useColors();
+  const { t } = useLanguage();
 
   const getRandomIndex = () => {
     let newIndex;
@@ -114,7 +116,7 @@ const Gallery: React.FC<GalleryProps> = ({
               color: colors.contrast.text.secondary,
             }}
           >
-            No hay imágenes disponibles
+            {t('gallery.noImages')}
           </Box>
         </Box>
       </Container>
@@ -179,6 +181,7 @@ const Gallery: React.FC<GalleryProps> = ({
               {/* Botón anterior */}
               <IconButton
                 onClick={previousImage}
+                aria-label={t('gallery.navigation.previous')}
                 sx={{
                   position: 'absolute',
                   left: '1rem',
@@ -213,6 +216,7 @@ const Gallery: React.FC<GalleryProps> = ({
               {/* Botón siguiente */}
               <IconButton
                 onClick={nextImage}
+                aria-label={t('gallery.navigation.next')}
                 sx={{
                   position: 'absolute',
                   right: '1rem',
@@ -271,6 +275,7 @@ const Gallery: React.FC<GalleryProps> = ({
               >
                 <IconButton
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  aria-label={isAutoScrolling ? t('gallery.navigation.pause') : t('gallery.navigation.play')}
                   sx={{
                     color: 'white',
                     padding: '4px',
