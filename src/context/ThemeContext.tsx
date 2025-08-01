@@ -2,26 +2,7 @@ import React, { createContext, useContext, useState, useMemo, ReactNode, useEffe
 import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Components, Shadows } from '@mui/material/styles';
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
-// Paleta de colores AI4U - Basada en brandIdentity.ts
-const AI4U_PALETTE = {
-	// Colores primarios
-	neonBlaze: '#FF5C00',          // Más ácido, más intenso. Ideal para dark UI y botones activos
-	// Colores secundarios
-	digitalCoral: '#FF7477',       // Más limpio y vibrante. Ideal para dashboards humanos o wellness
-	frostSignal: '#DFF7EB',        // Más frío y sintético. Ideal para fondos con estética futurista
-	grapheneBlack: '#0A0A0A',      // Negro profundo, absoluto. Para interfaces con estética cyber
-	quantumBlue: '#1FA9F6',        // Azul eléctrico, más saturado. Transmite data y conectividad
-	// Colores de acento
-	techSlate: '#7D848B',          // Gris técnico con tinte metálico. Para bordes, sliders, skeletons
-	cyberOlive: '#B6CA40',         // Verde lima metálico. Para resaltar naturalezas en tecnología verde
-	deepNeuralTeal: '#2B7A78',     // Más saturado, inspirado en UI de sistemas autónomos
-	// Fondos
-	lightBackground: '#FFFFFF',
-	darkBackground: '#0A0A0A',
-	lightPaper: '#F8F9FA',
-	darkPaper: '#1A1A1A',
-};
+import { AI4U_PALETTE, CONTRAST_PAIRS, COMPONENT_VARIANTS } from '../components/shared/ui/tokens/palette';
 
 // Fuentes para código
 const CODE_FONT_FAMILY = '"Necto Mono", monospace';
@@ -31,249 +12,253 @@ const typography: TypographyVariantsOptions = {
 	fontFamily: '"Red Hat Display", sans-serif',
 	h1: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 900, // Black
+		fontWeight: 900,
 		fontSize: '2.5rem',
 	},
 	h2: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 700, // Bold
+		fontWeight: 700,
 		fontSize: '2rem',
 	},
 	h3: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600, // Semibold
+		fontWeight: 600,
 		fontSize: '1.75rem',
 	},
 	h4: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600, // Semibold
+		fontWeight: 600,
 		fontSize: '1.5rem',
 	},
 	h5: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500, // Regular
+		fontWeight: 500,
 		fontSize: '1.25rem',
 	},
 	h6: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500, // Regular
+		fontWeight: 500,
 		fontSize: '1.1rem',
 	},
 	body1: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400, // Regular
+		fontWeight: 400,
 		fontSize: '1rem',
 	},
 	body2: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400, // Regular
+		fontWeight: 400,
 		fontSize: '0.875rem',
 	},
 	button: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600, // Semibold
+		fontWeight: 600,
 		textTransform: 'none' as const,
 	},
 	caption: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400, // Regular
+		fontWeight: 400,
 		fontSize: '0.75rem',
 	},
 	overline: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500, // Regular
+		fontWeight: 500,
 		fontSize: '0.75rem',
 		textTransform: 'uppercase',
 		letterSpacing: '0.08em',
 	},
-	// Pesos de fuente
-	fontWeightLight: 300,  // Light
-	fontWeightRegular: 400, // Regular
-	fontWeightMedium: 500, // Regular (un poco más pesado)
-	fontWeightBold: 700,   // Bold
 };
 
-// Configuración de componentes
-const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => ({
-	MuiButton: {
-		styleOverrides: {
-			root: {
-				borderRadius: 4,
-				fontWeight: 500,
-				textTransform: 'none',
-				boxShadow: 'none',
-			},
-			// Botones primarios (neon blaze) para llamados a la acción
-			containedPrimary: {
-				backgroundColor: AI4U_PALETTE.neonBlaze,
-				color: '#FFFFFF',
-				'&:hover': {
-					backgroundColor: '#E54A00', // Versión más oscura de neon blaze
-					boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+// Configuración de componentes con contraste garantizado
+const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
+	const contrast = CONTRAST_PAIRS[mode];
+	const buttonColors = COMPONENT_VARIANTS.button;
+	
+	return {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: 8,
+					fontWeight: 600,
+					textTransform: 'none',
+					boxShadow: 'none',
+					transition: 'all 0.2s ease-in-out',
 				},
-			},
-			// Botones secundarios (quantum blue) para acciones secundarias
-			containedSecondary: {
-				backgroundColor: AI4U_PALETTE.quantumBlue,
-				color: '#FFFFFF',
-				'&:hover': {
-					backgroundColor: '#1B8BD6', // Versión más oscura de quantum blue
-					boxShadow: '0 4px 8px rgba(31, 169, 246, 0.3)',
+				// Botones primarios (naranja)
+				containedPrimary: {
+					backgroundColor: buttonColors.primary.background,
+					color: buttonColors.primary.text,
+					'&:hover': {
+						backgroundColor: buttonColors.primary.hover,
+						boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+					},
 				},
-			},
-			// Botones terciarios (tech slate) para acciones menos importantes
-			outlined: {
-				borderWidth: '1px',
-				borderColor: mode === 'light' ? AI4U_PALETTE.techSlate : '#777777',
-				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-				'&:hover': {
-					borderWidth: '1px',
-					backgroundColor: mode === 'light' 
-						? 'rgba(125, 132, 139, 0.1)' 
-						: 'rgba(125, 132, 139, 0.05)',
+				// Botones secundarios (gris)
+				containedSecondary: {
+					backgroundColor: mode === 'light' ? buttonColors.secondary.background : AI4U_PALETTE.gray[800],
+					color: mode === 'light' ? buttonColors.secondary.text : AI4U_PALETTE.white,
+					'&:hover': {
+						backgroundColor: mode === 'light' ? buttonColors.secondary.hover : AI4U_PALETTE.gray[700],
+						boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+					},
 				},
-			},
-			text: {
-				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-				'&:hover': {
-					backgroundColor: mode === 'light' 
-						? 'rgba(0, 0, 0, 0.04)' 
-						: 'rgba(255, 255, 255, 0.05)',
+				// Botones outline
+				outlined: {
+					borderWidth: '2px',
+					borderColor: buttonColors.outline.border,
+					color: buttonColors.outline.text,
+					backgroundColor: buttonColors.outline.background,
+					'&:hover': {
+						backgroundColor: buttonColors.outline.hover,
+						borderWidth: '2px',
+					},
 				},
-			},
-		},
-	},
-	MuiCard: {
-		styleOverrides: {
-			root: {
-				borderRadius: 12,
-				boxShadow: mode === 'light' 
-					? '0 4px 12px rgba(0,0,0,0.05)' 
-					: '0 4px 12px rgba(0,0,0,0.2)',
-			},
-		},
-	},
-	MuiIconButton: {
-		styleOverrides: {
-			root: {
-				transition: 'all 0.2s ease-in-out',
-				color: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-				'&:hover': {
-					backgroundColor: mode === 'light' 
-						? 'rgba(0, 0, 0, 0.04)' 
-						: 'rgba(255, 255, 255, 0.05)',
-				},
-			},
-			colorPrimary: {
-				color: AI4U_PALETTE.neonBlaze,
-				'&:hover': {
-					backgroundColor: 'rgba(255, 92, 0, 0.08)',
-				},
-			},
-			colorSecondary: {
-				color: AI4U_PALETTE.quantumBlue,
-				'&:hover': {
-					backgroundColor: 'rgba(31, 169, 246, 0.08)',
+				// Botones de texto
+				text: {
+					color: contrast.text.primary,
+					'&:hover': {
+						backgroundColor: mode === 'light' 
+							? 'rgba(0, 0, 0, 0.04)' 
+							: 'rgba(255, 255, 255, 0.08)',
+					},
 				},
 			},
 		},
-	},
-	MuiDivider: {
-		styleOverrides: {
-			root: {
-				borderColor: mode === 'light' 
-					? 'rgba(0,0,0,0.1)' 
-					: 'rgba(255,255,255,0.1)',
-			},
-		},
-	},
-	MuiPaper: {
-		styleOverrides: {
-			root: {
-				backgroundColor: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkPaper,
-			},
-		},
-	},
-	MuiAppBar: {
-		styleOverrides: {
-			root: {
-				boxShadow: mode === 'light' 
-					? '0 1px 3px rgba(0,0,0,0.1)' 
-					: '0 1px 3px rgba(0,0,0,0.3)',
-			},
-		},
-	},
-	MuiChip: {
-		styleOverrides: {
-			root: {
-				borderRadius: 4,
-			},
-		},
-	},
-	// Garantizar que los elementos de código usen Necto Mono
-	MuiTypography: {
-		styleOverrides: {
-			root: {
-				'& code': {
-					fontFamily: CODE_FONT_FAMILY,
-					backgroundColor: mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.1)',
-					padding: '2px 4px',
-					borderRadius: 4,
+		MuiCard: {
+			styleOverrides: {
+				root: {
+					borderRadius: 12,
+					backgroundColor: contrast.surface,
+					border: `1px solid ${contrast.border}`,
+					boxShadow: mode === 'light' 
+						? '0 4px 12px rgba(0,0,0,0.05)' 
+						: '0 4px 12px rgba(0,0,0,0.2)',
 				},
 			},
 		},
-	},
-});
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					transition: 'all 0.2s ease-in-out',
+					color: contrast.text.primary,
+					'&:hover': {
+						backgroundColor: mode === 'light' 
+							? 'rgba(0, 0, 0, 0.04)' 
+							: 'rgba(255, 255, 255, 0.08)',
+					},
+				},
+				colorPrimary: {
+					color: AI4U_PALETTE.orange,
+					'&:hover': {
+						backgroundColor: 'rgba(255, 92, 0, 0.08)',
+					},
+				},
+			},
+		},
+		MuiDivider: {
+			styleOverrides: {
+				root: {
+					borderColor: contrast.divider,
+				},
+			},
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					backgroundColor: contrast.surface,
+				},
+			},
+		},
+		MuiAppBar: {
+			styleOverrides: {
+				root: {
+					backgroundColor: contrast.background,
+					boxShadow: mode === 'light' 
+						? '0 1px 3px rgba(0,0,0,0.1)' 
+						: '0 1px 3px rgba(0,0,0,0.3)',
+				},
+			},
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					borderRadius: 8,
+					backgroundColor: contrast.surface,
+					border: `1px solid ${contrast.border}`,
+					color: contrast.text.primary,
+				},
+			},
+		},
+		MuiTypography: {
+			styleOverrides: {
+				root: {
+					color: contrast.text.primary,
+					'& code': {
+						fontFamily: CODE_FONT_FAMILY,
+						backgroundColor: mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.1)',
+						padding: '2px 4px',
+						borderRadius: 4,
+					},
+				},
+			},
+		},
+	};
+};
 
-// Configuración de paleta
-const getPalette = (mode: PaletteMode) => ({
-	mode,
-	// Colores principales
-	primary: {
-		main: AI4U_PALETTE.neonBlaze, // Llamados a la acción (neon blaze)
-		light: AI4U_PALETTE.digitalCoral,
-		dark: '#E54A00',
-		contrastText: '#FFFFFF',
-	},
-	secondary: {
-		main: AI4U_PALETTE.quantumBlue, // Detalles y contraste (quantum blue)
-		light: '#4FC3F7',
-		dark: AI4U_PALETTE.deepNeuralTeal,
-		contrastText: '#FFFFFF',
-	},
-	// Fondos y textos
-	background: {
-		default: mode === 'light' ? AI4U_PALETTE.lightBackground : AI4U_PALETTE.darkBackground,
-		paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkPaper,
-	},
-	text: {
-		primary: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-		secondary: mode === 'light' ? AI4U_PALETTE.techSlate : '#A0A0A0',
-	},
-	// Colores de acción
-	action: {
-		active: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.lightBackground,
-		hover: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
-		selected: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
-		disabled: mode === 'light' ? 'rgba(0, 0, 0, 0.26)' : 'rgba(255, 255, 255, 0.3)',
-		disabledBackground: mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
-	},
-	// Colores de error/éxito/info/advertencia
-	error: {
-		main: '#f44336',
-	},
-	success: {
-		main: '#4caf50',
-	},
-	info: {
-		main: AI4U_PALETTE.quantumBlue,
-	},
-	warning: {
-		main: '#ff9800',
-	},
-	// Divisores
-	divider: mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
-});
+// Configuración de paleta con contraste automático
+const getPalette = (mode: PaletteMode) => {
+	const contrast = CONTRAST_PAIRS[mode];
+	
+	return {
+		mode,
+		// Colores principales
+		primary: {
+			main: AI4U_PALETTE.orange,
+			light: '#FF7C33',
+			dark: '#E54A00',
+			contrastText: AI4U_PALETTE.white,
+		},
+		secondary: {
+			main: AI4U_PALETTE.gray[600],
+			light: AI4U_PALETTE.gray[400],
+			dark: AI4U_PALETTE.gray[800],
+			contrastText: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+		},
+		// Fondos y textos con contraste garantizado
+		background: {
+			default: contrast.background,
+			paper: contrast.surface,
+		},
+		text: {
+			primary: contrast.text.primary,
+			secondary: contrast.text.secondary,
+			disabled: contrast.text.disabled,
+		},
+		// Colores de acción
+		action: {
+			active: contrast.text.primary,
+			hover: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
+			selected: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
+			disabled: contrast.text.disabled,
+			disabledBackground: mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
+		},
+		// Colores semánticos
+		error: {
+			main: AI4U_PALETTE.error,
+		},
+		success: {
+			main: AI4U_PALETTE.success,
+		},
+		info: {
+			main: AI4U_PALETTE.info,
+		},
+		warning: {
+			main: AI4U_PALETTE.warning,
+		},
+		// Divisores
+		divider: contrast.divider,
+	};
+};
 
 // Sombras personalizadas
 const getCustomShadows = (): Shadows => {

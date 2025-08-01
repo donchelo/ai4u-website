@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
+import { useColors } from '../../../../hooks';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
@@ -109,12 +110,52 @@ const Card = ({
   showContent = true,
   ...props 
 }: CardProps) => {
+  const colors = useColors();
+
+  // Aplicar colores del sistema según el modo
+  const getCardStyles = () => {
+    switch (variant) {
+      case 'glass':
+        return {
+          background: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+          color: colors.palette.white,
+        };
+      case 'dark':
+        return {
+          background: colors.mode === 'dark' ? colors.contrast.surface : 'linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.9))',
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.contrast.border}`,
+        };
+      case 'primary':
+        return {
+          background: `linear-gradient(135deg, ${colors.palette.orange}15, ${colors.palette.orange}10)`,
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.palette.orange}30`,
+        };
+      case 'accent':
+        return {
+          background: `linear-gradient(135deg, ${colors.palette.green}15, ${colors.palette.green}10)`,
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.palette.green}30`,
+        };
+      default: // light
+        return {
+          background: colors.contrast.surface,
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.contrast.border}`,
+        };
+    }
+  };
+
   return (
     <StyledCard 
       cardVariant={variant}
       elevation={0}
       {...props}
       sx={{ 
+        ...getCardStyles(),
         ...props.sx 
       }}
     >

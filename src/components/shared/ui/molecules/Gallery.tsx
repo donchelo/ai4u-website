@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Container, useTheme, IconButton } from '@mui/material';
-import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-import { AI4U_PALETTE } from '../tokens';
+import React, { useState, useEffect, useCallback } from 'react';
+import { 
+  Container, 
+  Box, 
+  IconButton, 
+  Typography,
+  useTheme
+} from '@mui/material';
+import { useColors } from '../../../../hooks';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 interface GalleryImage {
   id: string;
@@ -24,80 +33,65 @@ const Gallery: React.FC<GalleryProps> = ({
   scrollInterval = 5000,
   className = '',
 }) => {
-  const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(autoScroll);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const theme = useTheme();
+  const colors = useColors();
 
-  // Función para obtener un índice aleatorio
   const getRandomIndex = () => {
-    if (images.length === 0) return 0;
-    return Math.floor(Math.random() * images.length);
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * images.length);
+    } while (newIndex === currentImageIndex && images.length > 1);
+    return newIndex;
   };
 
-  // Función para cambiar a la siguiente imagen
   const nextImage = () => {
-    if (images.length === 0) return;
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
       setIsTransitioning(false);
-    }, 300);
+    }, 200);
   };
 
-  // Función para cambiar a la imagen anterior
   const previousImage = () => {
-    if (images.length === 0) return;
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
       setIsTransitioning(false);
-    }, 300);
+    }, 200);
   };
 
-  // Función para manejar navegación con teclado
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (images.length <= 1) return;
-    
-    switch (event.key) {
-      case 'ArrowLeft':
-        event.preventDefault();
-        previousImage();
-        break;
-      case 'ArrowRight':
-        event.preventDefault();
-        nextImage();
-        break;
-      default:
-        break;
+    if (event.key === 'ArrowLeft') {
+      previousImage();
+    } else if (event.key === 'ArrowRight') {
+      nextImage();
+    } else if (event.key === ' ') {
+      event.preventDefault();
+      setIsAutoScrolling(!isAutoScrolling);
     }
   };
 
-  // Auto-scroll automático
   useEffect(() => {
-    if (!autoScroll || images.length === 0) return;
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentImageIndex, isAutoScrolling]);
+
+  useEffect(() => {
+    if (!isAutoScrolling || images.length <= 1) return;
 
     const interval = setInterval(() => {
-      nextImage();
+      setCurrentImageIndex(getRandomIndex());
     }, scrollInterval);
 
     return () => clearInterval(interval);
-  }, [images, autoScroll, scrollInterval]);
-
-  // Efecto para establecer la primera imagen aleatoria
-  useEffect(() => {
-    if (images.length > 0 && currentImageIndex === 0) {
-      setCurrentImageIndex(getRandomIndex());
-    }
-  }, [images]);
-
-  // Efecto para escuchar eventos de teclado
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [images, currentImageIndex]);
+  }, [isAutoScrolling, scrollInterval, images.length]);
 
   if (!images || images.length === 0) {
     return (
@@ -105,19 +99,19 @@ const Gallery: React.FC<GalleryProps> = ({
         <Box 
           textAlign="center" 
           sx={{
-            background: `linear-gradient(135deg, ${AI4U_PALETTE.lightBackground} 0%, ${AI4U_PALETTE.lightPaper} 100%)`,
+            background: `linear-gradient(135deg, ${colors.contrast.surface} 0%, ${colors.contrast.background} 100%)`,
             borderRadius: '24px',
             padding: '4rem 2rem',
             boxShadow: '0 8px 32px rgba(0,0,0,0.05)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
+            border: `1px solid ${colors.contrast.border}`,
           }}
         >
           <Box
             sx={{
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 600,
-              color: 'text.secondary',
+              color: colors.contrast.text.secondary,
             }}
           >
             No hay imágenes disponibles
@@ -213,7 +207,7 @@ const Gallery: React.FC<GalleryProps> = ({
                   e.currentTarget.style.opacity = '0';
                 }}
               >
-                <ChevronLeft sx={{ fontSize: '1.5rem' }} />
+                <NavigateBeforeIcon />
               </IconButton>
 
               {/* Botón siguiente */}
@@ -247,10 +241,10 @@ const Gallery: React.FC<GalleryProps> = ({
                   e.currentTarget.style.opacity = '0';
                 }}
               >
-                <ChevronRight sx={{ fontSize: '1.5rem' }} />
+                <NavigateNextIcon />
               </IconButton>
 
-              {/* Indicador sutil de posición */}
+              {/* Controles de reproducción */}
               <Box
                 sx={{
                   position: 'absolute',
@@ -258,7 +252,13 @@ const Gallery: React.FC<GalleryProps> = ({
                   left: '50%',
                   transform: 'translateX(-50%)',
                   display: 'flex',
-                  gap: '0.5rem',
+                  gap: 1,
+                  alignItems: 'center',
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '24px',
+                  padding: '0.5rem 1rem',
                   opacity: 0,
                   transition: 'opacity 0.3s ease',
                 }}
@@ -269,38 +269,71 @@ const Gallery: React.FC<GalleryProps> = ({
                   e.currentTarget.style.opacity = '0';
                 }}
               >
-                {images.map((_, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      backgroundColor: index === currentImageIndex 
-                        ? 'rgba(255, 255, 255, 0.9)' 
-                        : 'rgba(255, 255, 255, 0.3)',
-                      transition: 'all 0.3s ease',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        backgroundColor: index === currentImageIndex 
-                          ? 'rgba(255, 255, 255, 1)' 
-                          : 'rgba(255, 255, 255, 0.5)',
-                      },
-                    }}
-                    onClick={() => {
-                      setIsTransitioning(true);
-                      setTimeout(() => {
-                        setCurrentImageIndex(index);
-                        setIsTransitioning(false);
-                      }, 300);
-                    }}
-                  />
-                ))}
+                <IconButton
+                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  sx={{
+                    color: 'white',
+                    padding: '4px',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    },
+                  }}
+                >
+                  {isAutoScrolling ? <PauseIcon /> : <PlayArrowIcon />}
+                </IconButton>
+                
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: 'white',
+                    fontSize: '0.75rem',
+                    fontWeight: 500,
+                    minWidth: '60px',
+                    textAlign: 'center',
+                  }}
+                >
+                  {currentImageIndex + 1} / {images.length}
+                </Typography>
               </Box>
             </>
           )}
         </Box>
       </Box>
+
+      {/* Información de la imagen */}
+      {currentImage.title && (
+        <Box
+          sx={{
+            textAlign: 'center',
+            mt: 3,
+            px: 2,
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: colors.contrast.text.primary,
+              fontWeight: 600,
+              mb: 1,
+            }}
+          >
+            {currentImage.title}
+          </Typography>
+          {currentImage.description && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: colors.contrast.text.secondary,
+                maxWidth: '600px',
+                mx: 'auto',
+                lineHeight: 1.6,
+              }}
+            >
+              {currentImage.description}
+            </Typography>
+          )}
+        </Box>
+      )}
     </Container>
   );
 };

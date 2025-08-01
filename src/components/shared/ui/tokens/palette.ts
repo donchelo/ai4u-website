@@ -1,55 +1,135 @@
-// Paleta de colores AI4U - Tokens de diseño
+// Sistema de colores AI4U - Unificado y con garantías de contraste
 export const AI4U_PALETTE = {
-  // Colores primarios
-  neonBlaze: '#FF5C00',          // Más ácido, más intenso. Ideal para dark UI y botones activos
-  // Colores secundarios
-  digitalCoral: '#FF7477',       // Más limpio y vibrante. Ideal para dashboards humanos o wellness
-  frostSignal: '#DFF7EB',        // Más frío y sintético. Ideal para fondos con estética futurista
-  grapheneBlack: '#0A0A0A',      // Negro profundo, absoluto. Para interfaces con estética cyber
-  quantumBlue: '#0D47A1',        // Azul más oscuro y saturado para mejor contraste con texto blanco
-  // Colores de acento
-  techSlate: '#7D848B',          // Gris técnico con tinte metálico. Para bordes, sliders, skeletons
-  cyberOlive: '#B6CA40',         // Verde lima metálico. Para resaltar naturalezas en tecnología verde
-  deepNeuralTeal: '#2B7A78',     // Más saturado, inspirado en UI de sistemas autónomos
-  // Fondos optimizados para contraste
-  lightBackground: '#FFFFFF',
-  darkBackground: '#0A0A0A',
-  lightPaper: '#F8F9FA',
-  darkPaper: '#1A1A1A',
-  // Nuevos colores para mejor contraste en dark theme
-  darkTextPrimary: '#FFFFFF',    // Blanco puro para texto principal en dark
-  darkTextSecondary: '#E0E0E0',  // Gris claro para texto secundario en dark
-  darkTextDisabled: '#9E9E9E',   // Gris medio para texto deshabilitado en dark
-  darkDivider: '#424242',        // Gris oscuro para divisores en dark
-  darkSurface: '#121212',        // Superficie oscura para cards y elementos
-  darkSurfaceHover: '#1E1E1E',   // Superficie oscura para hover states
-  // Colores optimizados para accesibilidad (daltonismo)
-  accessibleBlue: '#1E3A8A',      // Azul oscuro con mejor contraste para daltonicos
-  accessibleGreen: '#059669',     // Verde oscuro para daltonicos
-  accessibleRed: '#DC2626',       // Rojo oscuro para daltonicos
-  accessibleYellow: '#D97706',    // Amarillo oscuro para daltonicos
-  highContrastText: '#000000',    // Texto negro para máximo contraste
-  highContrastBackground: '#FFFFFF', // Fondo blanco para máximo contraste
+  // Colores base (solo estos se usan directamente)
+  white: '#FFFFFF',
+  black: '#000000',
+  gray: {
+    50: '#FAFAFA',
+    100: '#F5F5F5', 
+    200: '#EEEEEE',
+    300: '#E0E0E0',
+    400: '#BDBDBD',
+    500: '#9E9E9E',
+    600: '#757575',
+    700: '#616161',
+    800: '#424242',
+    900: '#212121',
+  },
+  
+  // Colores de marca (acentos limitados)
+  orange: '#FF5C00',
+  green: '#B6CA40',
+  
+  // Colores semánticos (para estados)
+  error: '#DC2626',
+  success: '#059669', 
+  warning: '#D97706',
+  info: '#1E3A8A',
 } as const;
 
-// Colores derivados
-export const PALETTE_VARIANTS = {
-  neonBlaze: {
-    light: '#FF7C33',
-    main: AI4U_PALETTE.neonBlaze,
-    dark: '#E54A00',
+// Sistema de contraste automático
+export const CONTRAST_PAIRS = {
+  // Fondos claros → Texto oscuro
+  light: {
+    background: AI4U_PALETTE.white,
+    surface: AI4U_PALETTE.gray[50],
+    text: {
+      primary: AI4U_PALETTE.black,
+      secondary: AI4U_PALETTE.gray[700],
+      disabled: AI4U_PALETTE.gray[500],
+    },
+    border: AI4U_PALETTE.gray[200],
+    divider: AI4U_PALETTE.gray[300],
   },
-  quantumBlue: {
-    light: '#1976D2', 
-    main: AI4U_PALETTE.quantumBlue,
-    dark: '#0D47A1',
-  },
-  digitalCoral: {
-    light: '#FF9499',
-    main: AI4U_PALETTE.digitalCoral,
-    dark: '#FF5458',
+  
+  // Fondos oscuros → Texto claro  
+  dark: {
+    background: AI4U_PALETTE.black,
+    surface: AI4U_PALETTE.gray[900],
+    text: {
+      primary: AI4U_PALETTE.white,
+      secondary: AI4U_PALETTE.gray[300],
+      disabled: AI4U_PALETTE.gray[500],
+    },
+    border: AI4U_PALETTE.gray[800],
+    divider: AI4U_PALETTE.gray[700],
   },
 } as const;
+
+// Variantes de componentes con contraste garantizado
+export const COMPONENT_VARIANTS = {
+  // Botones
+  button: {
+    primary: {
+      background: AI4U_PALETTE.orange,
+      text: AI4U_PALETTE.white,
+      hover: '#E54A00',
+    },
+    secondary: {
+      background: AI4U_PALETTE.gray[200],
+      text: AI4U_PALETTE.black,
+      hover: AI4U_PALETTE.gray[300],
+    },
+    outline: {
+      background: 'transparent',
+      text: AI4U_PALETTE.orange,
+      border: AI4U_PALETTE.orange,
+      hover: AI4U_PALETTE.gray[50],
+    },
+  },
+  
+  // Cards
+  card: {
+    light: {
+      background: AI4U_PALETTE.white,
+      text: AI4U_PALETTE.black,
+      border: AI4U_PALETTE.gray[200],
+    },
+    dark: {
+      background: AI4U_PALETTE.gray[900],
+      text: AI4U_PALETTE.white,
+      border: AI4U_PALETTE.gray[800],
+    },
+    accent: {
+      background: AI4U_PALETTE.orange,
+      text: AI4U_PALETTE.white,
+      border: AI4U_PALETTE.orange,
+    },
+  },
+} as const;
+
+// Hook para obtener colores con contraste automático
+export const useContrastColors = (mode: 'light' | 'dark') => {
+  return CONTRAST_PAIRS[mode];
+};
+
+// Hook para obtener variantes de componentes
+export const useComponentColors = (mode: 'light' | 'dark') => {
+  const contrast = useContrastColors(mode);
+  
+  return {
+    ...contrast,
+    components: {
+      button: {
+        ...COMPONENT_VARIANTS.button,
+        // Ajustar botones secundarios según el modo
+        secondary: mode === 'light' 
+          ? COMPONENT_VARIANTS.button.secondary
+          : {
+              background: AI4U_PALETTE.gray[800],
+              text: AI4U_PALETTE.white,
+              hover: AI4U_PALETTE.gray[700],
+            },
+      },
+      card: {
+        ...COMPONENT_VARIANTS.card,
+        default: mode === 'light' 
+          ? COMPONENT_VARIANTS.card.light
+          : COMPONENT_VARIANTS.card.dark,
+      },
+    },
+  };
+};
 
 export type PaletteColor = keyof typeof AI4U_PALETTE;
-export type PaletteVariant = keyof typeof PALETTE_VARIANTS;
+export type ContrastMode = keyof typeof CONTRAST_PAIRS;

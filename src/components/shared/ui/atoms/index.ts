@@ -6,3 +6,5 @@ export { default as GeometricIcon } from './GeometricIcon';
 export { default as ImagePreloader } from './ImagePreloader';
 export { default as LoadingScreen } from './LoadingScreen';
 export { default as LazyImage } from './LazyImage';
+export { default as PixelArtImage } from './PixelArtImage';
+export { default as PixelArtFilter } from './PixelArtFilter';

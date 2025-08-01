@@ -8,7 +8,7 @@ import {
   IconButton,
   Typography
 } from '@mui/material';
-import { H1, H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
+import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton } from '../components/shared/ui/molecules';
 
 const WhyAI4U = () => {
@@ -84,24 +84,73 @@ const WhyAI4U = () => {
                   </Box>
                 </Stack>
                 
-                <Button variant="outline" size="large">
+                <Button 
+                  variant="outline" 
+                  size="large"
+                  component="a"
+                  href="https://www.linkedin.com/in/mariano3/"
+                  sx={{
+                    textDecoration: 'none',
+                    '&:hover': {
+                      textDecoration: 'none',
+                    }
+                  }}
+                  {...{
+                    target: '_blank',
+                    rel: 'noopener noreferrer'
+                  }}
+                >
                   Conectar en LinkedIn
                 </Button>
               </Box>
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <Card variant="glass" sx={{ p: 0, overflow: 'hidden' }}>
-                <Box
-                  component="img"
+              <Card variant="glass" sx={{ p: 0, overflow: 'hidden', position: 'relative' }}>
+                <PixelArtImage
                   src="/assets/images/mariano.jpeg"
+                  pixelArtSrc="/assets/images/mariano-pixel-art.png"
                   alt="Mariano, Fundador de AI4U"
                   sx={{
                     width: '100%',
                     height: { xs: 400, md: 500 },
-                    objectFit: 'cover'
                   }}
+                  transitionDuration={0.4}
                 />
+                
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                    color: 'white',
+                    p: 3,
+                    opacity: 0,
+                    transition: 'opacity 0.4s ease-in-out',
+                    '&:hover': {
+                      opacity: 1,
+                    },
+                  }}
+                >
+                  <BodyText sx={{ 
+                    fontSize: '0.9rem',
+                    fontWeight: 300,
+                    textAlign: 'center',
+                    mb: 1
+                  }}>
+                    Pasa el mouse para ver el efecto pixel art
+                  </BodyText>
+                  <BodyText sx={{ 
+                    fontSize: '0.8rem',
+                    fontWeight: 300,
+                    textAlign: 'center',
+                    opacity: 0.8
+                  }}>
+                    Tecnología + Creatividad
+                  </BodyText>
+                </Box>
               </Card>
             </Grid>
           </Grid>

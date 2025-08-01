@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box, Container, useTheme, CircularProgress, Alert } from '@mui/material';
 import { Gallery } from '../components/shared/ui/molecules';
-import { AI4U_PALETTE } from '../components/shared/ui/tokens';
+import { useColors } from '../hooks';
 import { useGalleryImages } from '../hooks/useGalleryImages';
 
 const GalleryPage: React.FC = () => {
   const theme = useTheme();
+  const colors = useColors();
   const { images, isLoading, error, reload } = useGalleryImages();
 
   return (
@@ -13,7 +14,7 @@ const GalleryPage: React.FC = () => {
       {/* Estado de carga */}
       {isLoading && (
         <Box display="flex" justifyContent="center" alignItems="center" py={8}>
-          <CircularProgress size={60} sx={{ color: AI4U_PALETTE.neonBlaze }} />
+          <CircularProgress size={60} sx={{ color: colors.palette.orange }} />
         </Box>
       )}
 

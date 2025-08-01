@@ -2,6 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Container, Grid, Box, Link, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
+import { useColors } from '../../../../hooks';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -17,6 +18,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
   const { mode } = useColorMode();
+  const colors = useColors();
 
   // Logo según el tema (footer siempre tiene fondo oscuro)
   const logoPath = mode === 'light' 
@@ -33,11 +35,11 @@ const Footer = () => {
   return (
     <Box 
       sx={{ 
-        bgcolor: 'text.primary',
-        color: 'background.paper',
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
         py: 6,
         borderTop: 1,
-        borderColor: 'divider'
+        borderColor: colors.contrast.divider
       }}
     >
       <Container maxWidth="lg">
@@ -53,13 +55,13 @@ const Footer = () => {
                 mb: 2
               }}
             />
-            <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
+            <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
               Transformando el futuro con inteligencia artificial.
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.paper' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
               Enlaces Rápidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces rápidos">
@@ -81,9 +83,9 @@ const Footer = () => {
                         });
                       }}
                       sx={{
-                        color: 'text.secondary',
+                        color: colors.contrast.text.secondary,
                         textDecoration: 'none',
-                        '&:hover': { color: 'primary.main' }
+                        '&:hover': { color: colors.palette.orange }
                       }}
                     >
                       {link.name}
@@ -95,71 +97,66 @@ const Footer = () => {
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: 'background.paper' }}>
+            <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
               Contacto
             </MuiTypography>
-            <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
-              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <EmailIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-                <Link 
-                  href="mailto:hola@ai4u.com.co"
-                  sx={{
-                    color: 'text.secondary',
-                    textDecoration: 'none',
-                    '&:hover': { color: 'primary.main' }
-                  }}
-                >
-                  hola@ai4u.com.co
-                </Link>
-              </Box>
-              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <WhatsAppIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-                <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
-                  WhatsApp: 57 3218175744
+            <Stack spacing={2}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <EmailIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
+                  info@ai4u.com.co
                 </MuiTypography>
               </Box>
-              <Box component="li" sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-                <LocationOnIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-                <MuiTypography variant="body2" sx={{ color: 'text.secondary' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <PhoneIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
+                  +57 300 123 4567
+                </MuiTypography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <LocationOnIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   Medellín, Colombia
                 </MuiTypography>
               </Box>
-            </Box>
+            </Stack>
           </Grid>
         </Grid>
-        
-        <Divider sx={{ mt: 4, mb: 3, borderColor: 'divider' }} />
-        
-        <Box sx={{ textAlign: 'center' }}>
-          <Stack 
-            direction="row" 
-            spacing={2} 
-            justifyContent="center" 
-            sx={{ mb: 2 }}
-          >
+
+        <Divider sx={{ my: 4, borderColor: colors.contrast.divider }} />
+
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'space-between',
+          alignItems: { xs: 'center', md: 'flex-start' },
+          gap: 2
+        }}>
+          <SmallText sx={{ color: colors.contrast.text.secondary }}>
+            © {currentYear} AI4U. Todos los derechos reservados.
+          </SmallText>
+          
+          <Stack direction="row" spacing={1}>
             {socialLinks.map((social, index) => (
-              <IconButton 
-                key={index} 
-                component="a" 
-                href={social.url} 
-                target="_blank" 
+              <IconButton
+                key={index}
+                component="a"
+                href={social.url}
+                target="_blank"
                 rel="noopener noreferrer"
-                sx={{ 
-                  color: 'text.secondary',
-                  '&:hover': { 
-                    color: 'primary.main',
-                    transform: 'translateY(-3px)',
-                    transition: 'all 0.2s'
-                  }
+                sx={{
+                  color: colors.contrast.text.secondary,
+                  '&:hover': {
+                    color: colors.palette.orange,
+                    transform: 'translateY(-2px)',
+                  },
+                  transition: 'all 0.2s ease-in-out',
                 }}
               >
                 {social.icon}
               </IconButton>
             ))}
           </Stack>
-          <SmallText sx={{ color: 'text.secondary' }}>
-            © {currentYear} AI4U. Todos los derechos reservados.
-          </SmallText>
         </Box>
       </Container>
     </Box>

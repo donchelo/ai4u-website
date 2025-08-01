@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
+import { useColors } from '../../../../hooks';
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'glass';
@@ -127,9 +128,56 @@ export const Button = ({
   color,
   ...props
 }: ButtonProps) => {
+  const colors = useColors();
+
   // Mapeo de variantes personalizadas a variantes de Material UI
   let muiVariant: MuiButtonProps['variant'] = 'contained';
   let muiColor: MuiButtonProps['color'] = 'primary';
+
+  // Aplicar colores del sistema según el modo
+  const getButtonStyles = () => {
+    switch (variant) {
+      case 'primary':
+        return {
+          background: `linear-gradient(135deg, ${colors.palette.orange}, ${colors.palette.orange}dd)`,
+          color: colors.palette.white,
+          border: `1px solid ${colors.palette.orange}40`,
+          '&:hover': {
+            background: `linear-gradient(135deg, ${colors.palette.orange}ff, ${colors.palette.orange}ee)`,
+          },
+        };
+      case 'secondary':
+        return {
+          background: colors.mode === 'light' ? colors.helpers.background.secondary : colors.palette.gray[800],
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.contrast.border}`,
+          '&:hover': {
+            background: colors.mode === 'light' ? colors.palette.gray[300] : colors.palette.gray[700],
+          },
+        };
+      case 'outline':
+        return {
+          background: 'transparent',
+          color: colors.palette.orange,
+          border: `2px solid ${colors.palette.orange}`,
+          '&:hover': {
+            background: `${colors.palette.orange}10`,
+          },
+        };
+      case 'glass':
+        return {
+          background: 'rgba(255, 255, 255, 0.1)',
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.contrast.border}`,
+          backdropFilter: 'blur(24px)',
+          '&:hover': {
+            background: 'rgba(255, 255, 255, 0.2)',
+          },
+        };
+      default:
+        return {};
+    }
+  };
 
   switch (variant) {
     case 'primary':
@@ -156,6 +204,7 @@ export const Button = ({
       color={color || muiColor}
       size={size}
       disableElevation
+      sx={getButtonStyles()}
       {...props}
     >
       {children}

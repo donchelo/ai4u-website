@@ -1,5 +1,5 @@
 // Configuración principal del tema AI4U
-import { AI4U_PALETTE, PALETTE_VARIANTS } from './palette';
+import { AI4U_PALETTE, CONTRAST_PAIRS, COMPONENT_VARIANTS } from './palette';
 import { TYPOGRAPHY_TOKENS, TEXT_VARIANTS } from './typography';
 import { SPACING_TOKENS } from './spacing';
 
@@ -72,7 +72,8 @@ export const BREAKPOINT_TOKENS = {
 // Tema completo de tokens
 export const AI4U_DESIGN_TOKENS = {
   palette: AI4U_PALETTE,
-  paletteVariants: PALETTE_VARIANTS,
+  contrast: CONTRAST_PAIRS,
+  components: COMPONENT_VARIANTS,
   typography: TYPOGRAPHY_TOKENS,
   textVariants: TEXT_VARIANTS,
   spacing: SPACING_TOKENS,
@@ -88,29 +89,29 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
   colors: {
     mode,
     primary: {
-      main: AI4U_PALETTE.neonBlaze,
-      light: PALETTE_VARIANTS.neonBlaze.light,
-      dark: PALETTE_VARIANTS.neonBlaze.dark,
+      main: AI4U_PALETTE.orange,
+      light: '#FF7C33',
+      dark: '#E54A00',
     },
     secondary: {
-      main: AI4U_PALETTE.accessibleBlue,
-      light: PALETTE_VARIANTS.quantumBlue.light,
-      dark: PALETTE_VARIANTS.quantumBlue.dark,
+      main: AI4U_PALETTE.green,
+      light: '#C4D55A',
+      dark: '#9BA832',
     },
     background: {
-      default: mode === 'light' ? AI4U_PALETTE.lightBackground : AI4U_PALETTE.darkBackground,
-      paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
+      default: CONTRAST_PAIRS[mode].background,
+      paper: CONTRAST_PAIRS[mode].surface,
     },
     text: {
-      primary: mode === 'light' ? AI4U_PALETTE.grapheneBlack : AI4U_PALETTE.darkTextPrimary,
-      secondary: mode === 'light' ? AI4U_PALETTE.techSlate : AI4U_PALETTE.darkTextSecondary,
-      disabled: mode === 'light' ? '#BDBDBD' : AI4U_PALETTE.darkTextDisabled,
+      primary: CONTRAST_PAIRS[mode].text.primary,
+      secondary: CONTRAST_PAIRS[mode].text.secondary,
+      disabled: CONTRAST_PAIRS[mode].text.disabled,
     },
-    divider: mode === 'light' ? '#E0E0E0' : AI4U_PALETTE.darkDivider,
+    divider: CONTRAST_PAIRS[mode].divider,
     surface: {
-      default: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
-      hover: mode === 'light' ? '#F0F0F0' : AI4U_PALETTE.darkSurfaceHover,
-      paper: mode === 'light' ? AI4U_PALETTE.lightPaper : AI4U_PALETTE.darkSurface,
+      default: CONTRAST_PAIRS[mode].surface,
+      hover: mode === 'light' ? '#F0F0F0' : '#1E1E1E',
+      paper: CONTRAST_PAIRS[mode].surface,
     },
   },
 });
