@@ -16,24 +16,27 @@ import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useColorMode } from '../../../../context/ThemeContext';
+import { useLanguage } from '../../../../context';
 import { useColors } from '../../../../hooks';
-import { Logo } from '../atoms';
+import { Logo, LanguageToggle } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
-
-const navItems = [
-  { name: 'Home', path: ROUTES.HOME },
-  { name: 'Servicios', path: ROUTES.SERVICES },
-  { name: 'Por qué AI4U?', path: ROUTES.WHY_AI4U },
-  { name: 'Casos de uso', path: ROUTES.SUCCESS_CASES },
-  { name: 'Galería', path: ROUTES.GALLERY }
-];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
+  const { t } = useLanguage();
   const colors = useColors();
   const navigate = useNavigate();
+
+  // Items de navegación con traducciones
+  const navItems = [
+    { name: t('nav.home'), path: ROUTES.HOME },
+    { name: t('nav.services'), path: ROUTES.SERVICES },
+    { name: t('nav.whyAI4U'), path: ROUTES.WHY_AI4U },
+    { name: t('nav.successCases'), path: ROUTES.SUCCESS_CASES },
+    { name: t('nav.gallery'), path: ROUTES.GALLERY }
+  ];
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -171,7 +174,7 @@ const Navbar = () => {
           </Box>
 
           {/* Desktop Menu */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
             {navItems.map((item) => (
               <Button
                 key={item.name}
@@ -192,6 +195,11 @@ const Navbar = () => {
                 {item.name}
               </Button>
             ))}
+            
+            {/* Language toggle button desktop */}
+            <Box sx={{ ml: 1 }}>
+              <LanguageToggle variant="icon" size="small" />
+            </Box>
             
             {/* Theme toggle button desktop */}
             <IconButton 

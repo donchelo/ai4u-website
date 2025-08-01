@@ -5,10 +5,24 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
+import { useLanguage } from '../../../../context';
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  customTitle?: string;
+  customSubtitle?: string;
+  primaryButtonText?: string;
+  secondaryButtonText?: string;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  customTitle,
+  customSubtitle,
+  primaryButtonText,
+  secondaryButtonText
+}) => {
   const theme = useTheme();
   const colors = useColors();
+  const { t } = useLanguage();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [currentImage, setCurrentImage] = useState(0);
@@ -33,6 +47,12 @@ const HeroSection = () => {
   const handleNext = () => {
     setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
+
+  // Usar props personalizadas o traducciones por defecto
+  const title = customTitle || t('hero.title');
+  const subtitle = customSubtitle || t('hero.subtitle');
+  const primaryText = primaryButtonText || t('hero.cta');
+  const secondaryText = secondaryButtonText || t('buttons.learnMore');
 
   return (
     <Box 
@@ -129,7 +149,7 @@ const HeroSection = () => {
                 mb: { xs: 1, md: 1.5 }
               }}
             >
-              La verdadera libertad es decidir en qué gastas tu tiempo
+              {title}
             </H1>
             
             <BodyText 
@@ -143,7 +163,7 @@ const HeroSection = () => {
                 textAlign: { xs: 'left', md: 'left' }
               }}
             >
-              Construimos infraestructura de inteligencia artificial que transforma tu operación empresarial
+              {subtitle}
             </BodyText>
             
             <BodyText 
@@ -168,7 +188,7 @@ const HeroSection = () => {
             >
               <DiagnosticCTA 
                 variant="primary" 
-                text="Solicita tu diagnóstico gratuito" 
+                text={primaryText} 
                 size="large"
                 showIcon={false}
               />
@@ -198,9 +218,9 @@ const HeroSection = () => {
                   }
                 }}
               >
-                <span>30 minutos</span>
-                <span>Sin compromiso</span>
-                <span>Resultados inmediatos</span>
+                <span>{t('hero.time')}</span>
+                <span>{t('hero.no_commitment')}</span>
+                <span>{t('hero.immediate_results')}</span>
               </Typography>
             </Stack>
           </Stack>

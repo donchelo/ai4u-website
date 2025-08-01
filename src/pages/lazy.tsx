@@ -13,4 +13,5 @@ export const ColorSystemDemo = lazy(() => import('./ColorSystemDemo'));
 export const MigrationDemo = lazy(() => import('./MigrationDemo'));
 export const Fase3Demo = lazy(() => import('./Fase3Demo'));
 export const MetricsDemo = lazy(() => import('./MetricsDemo'));
-export const ThemeDemo = lazy(() => import('./ThemeDemo')); 
+export const ThemeDemo = lazy(() => import('./ThemeDemo'));
+export const InternationalizationDemo = lazy(() => import('./InternationalizationDemo')); 

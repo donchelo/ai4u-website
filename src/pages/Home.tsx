@@ -4,60 +4,72 @@ import { H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, GalleryFrame } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
-
-const features = [
-  {
-    title: 'La automatización ya no es opcional',
-    description: 'En 2025, las empresas que no automaticen quedarán atrás. Nuestros asistentes robóticos trabajan 24/7 para mantenerte a la vanguardia, mientras tu competencia sigue atrapada en lo manual.'
-  },
-  {
-    title: 'Libera el 70% de tu tiempo operativo',
-    description: 'Nuestros asistentes robóticos transforman tiempo perdido en oportunidades de crecimiento. ROI medible desde el primer mes, mientras tú te enfocas en decisiones estratégicas que multiplican el valor de tu empresa.'
-  },
-  {
-    title: 'Asistentes que nunca descansan',
-    description: 'Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.'
-  },
-];
-
-const serviceCategories = [
-  {
-    title: 'Estrategia',
-    description: 'Acompañamiento estratégico continuo, diagnóstico y planificación empresarial con IA para transformar tu negocio desde la raíz.'
-  },
-  {
-    title: 'Automatizaciones',
-    description: 'Implementación de asistentes robóticos, chatbots y sistemas automáticos que trabajan 24/7 para liberar tu tiempo y potenciar tu empresa.'
-  },
-  {
-    title: 'Educación',
-    description: 'Capacitación y formación en inteligencia artificial y automatización para que tu equipo evolucione junto a la tecnología.'
-  },
-  {
-    title: 'Transformación Digital',
-    description: 'Integración de soluciones digitales y automatizadas para llevar tu empresa al siguiente nivel de eficiencia y competitividad.'
-  },
-];
+import { useLanguage } from '../hooks';
 
 const Home = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
+  const { t } = useLanguage();
+
+  // Obtener traducciones para las features
+  const features = [
+    {
+      title: t('home.features.items.0.title'),
+      description: t('home.features.items.0.description')
+    },
+    {
+      title: t('home.features.items.1.title'),
+      description: t('home.features.items.1.description')
+    },
+    {
+      title: t('home.features.items.2.title'),
+      description: t('home.features.items.2.description')
+    },
+  ];
+
+  // Obtener traducciones para las categorías de servicios
+  const serviceCategories = [
+    {
+      title: t('home.services.categories.0.title'),
+      description: t('home.services.categories.0.description')
+    },
+    {
+      title: t('home.services.categories.1.title'),
+      description: t('home.services.categories.1.description')
+    },
+    {
+      title: t('home.services.categories.2.title'),
+      description: t('home.services.categories.2.description')
+    },
+    {
+      title: t('home.services.categories.3.title'),
+      description: t('home.services.categories.3.description')
+    },
+  ];
+
+  // Obtener traducciones para las características del robot
+  const robotFeatures = [
+    t('home.robot.features.0'),
+    t('home.robot.features.1'),
+    t('home.robot.features.2'),
+    t('home.robot.features.3'),
+  ];
 
   return (
     <Box>
       {/* Hero Section */}
       <HeroSection 
-        customTitle="¡Tu tiempo es oro!"
-        customSubtitle="Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa: tu familia y el crecimiento estratégico de tu empresa."
-        primaryButtonText="Recupera tu tiempo familiar"
-        secondaryButtonText="Calcula tu ROI"
+        customTitle={t('hero.customTitle')}
+        customSubtitle={t('hero.customSubtitle')}
+        primaryButtonText={t('hero.primaryButtonText')}
+        secondaryButtonText={t('hero.secondaryButtonText')}
       />
 
       {/* Features Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>
-            ¿El trabajo te está robando momentos irreemplazables?
+            {t('home.features.title')}
           </H2>
           <BodyText sx={{ 
             color: 'text.secondary', 
@@ -68,7 +80,7 @@ const Home = () => {
             fontSize: '1rem',
             lineHeight: 1.6
           }}>
-            Cada minuto atrapado en tareas operativas es un momento que no volverá. Mientras tus competidores automatizan, tú pierdes tiempo valioso que podrías estar invirtiendo en tu familia o en el crecimiento estratégico de tu empresa.
+            {t('home.features.subtitle')}
           </BodyText>
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
@@ -134,7 +146,7 @@ const Home = () => {
                 color: mode === 'dark' ? 'text.primary' : 'white', 
                 fontWeight: 300 
               }}>
-                Asistentes Robóticos que Transforman tu Empresa
+                {t('home.robot.title')}
               </H2>
               <BodyText sx={{ 
                 mb: 6, 
@@ -143,7 +155,7 @@ const Home = () => {
                 fontSize: '1.1rem', 
                 lineHeight: 1.7 
               }}>
-                Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
+                {t('home.robot.subtitle')}
               </BodyText>
               
               <BodyText sx={{ 
@@ -152,7 +164,7 @@ const Home = () => {
                 fontSize: '0.9rem', 
                 fontStyle: 'italic' 
               }}>
-                Vista previa de nuestra galería de proyectos y casos de uso
+                {t('home.robot.preview')}
               </BodyText>
               
               <H3 sx={{ 
@@ -161,74 +173,28 @@ const Home = () => {
                 fontWeight: 400, 
                 fontSize: '1.2rem' 
               }}>
-                ¿Qué los hace únicos?
+                {t('home.robot.uniqueTitle')}
               </H3>
               
               {/* Lista ultra minimalista con iconos geométricos */}
               <Stack spacing={4} sx={{ mb: 6, maxWidth: 500 }}>
-                <Stack direction="row" alignItems="center" spacing={3}>
-                  <GeometricIcon 
-                    type="circle" 
-                    size="small" 
-                    color="#B6CA40" 
-                    variant="filled" 
-                  />
-                  <BodyText sx={{ 
-                    color: mode === 'dark' ? 'text.primary' : 'rgba(255, 255, 255, 0.9)', 
-                    fontSize: '1rem', 
-                    lineHeight: 1.6 
-                  }}>
-                    Generan ROI desde el primer mes
-                  </BodyText>
-                </Stack>
-                
-                <Stack direction="row" alignItems="center" spacing={3}>
-                  <GeometricIcon 
-                    type="dot" 
-                    size="small" 
-                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
-                    variant="minimal" 
-                  />
-                  <BodyText sx={{ 
-                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
-                    fontSize: '1rem', 
-                    lineHeight: 1.6 
-                  }}>
-                    Aprenden y evolucionan con tu empresa
-                  </BodyText>
-                </Stack>
-                
-                <Stack direction="row" alignItems="center" spacing={3}>
-                  <GeometricIcon 
-                    type="dot" 
-                    size="small" 
-                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
-                    variant="minimal" 
-                  />
-                  <BodyText sx={{ 
-                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
-                    fontSize: '1rem', 
-                    lineHeight: 1.6 
-                  }}>
-                    Trabajan 24/7 para tu crecimiento
-                  </BodyText>
-                </Stack>
-                
-                <Stack direction="row" alignItems="center" spacing={3}>
-                  <GeometricIcon 
-                    type="dot" 
-                    size="small" 
-                    color={mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)'} 
-                    variant="minimal" 
-                  />
-                  <BodyText sx={{ 
-                    color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.7)', 
-                    fontSize: '1rem', 
-                    lineHeight: 1.6 
-                  }}>
-                    Se integran perfectamente con tus sistemas
-                  </BodyText>
-                </Stack>
+                {robotFeatures.map((feature, idx) => (
+                  <Stack key={idx} direction="row" alignItems="center" spacing={3}>
+                    <GeometricIcon 
+                      type={idx === 0 ? "circle" : "dot"} 
+                      size="small" 
+                      color={idx === 0 ? "#B6CA40" : (mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)')} 
+                      variant={idx === 0 ? "filled" : "minimal"} 
+                    />
+                    <BodyText sx={{ 
+                      color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.7)'), 
+                      fontSize: '1rem', 
+                      lineHeight: 1.6 
+                    }}>
+                      {feature}
+                    </BodyText>
+                  </Stack>
+                ))}
               </Stack>
               
               <Box sx={{ 
@@ -243,7 +209,7 @@ const Home = () => {
                   fontWeight: 300,
                   lineHeight: 1.6
                 }}>
-                  "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
+                  "{t('home.robot.quote')}"
                 </BodyText>
               </Box>
             </Box>
@@ -264,9 +230,11 @@ const Home = () => {
       {/* Services Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>Servicios</H2>
+          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>
+            {t('home.services.title')}
+          </H2>
           <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mb: 6, mx: 'auto', fontSize: '1rem' }}>
-            Nuestras megacategorías de servicio cubren todas las necesidades de automatización, estrategia y transformación digital para tu empresa.
+            {t('home.services.subtitle')}
           </BodyText>
           <Grid container spacing={4}>
             {serviceCategories.map((cat, idx) => (
@@ -323,10 +291,10 @@ const Home = () => {
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
             <H2 sx={{ mb: 3, fontWeight: 400, color: 'text.primary' }}>
-              ¿Listo para transformar tu empresa?
+              {t('home.cta.title')}
             </H2>
             <BodyText sx={{ mb: 4, color: 'text.secondary', fontSize: '1.1rem' }}>
-              Descubre cómo nuestros asistentes robóticos pueden liberar tu tiempo y multiplicar tu productividad.
+              {t('home.cta.subtitle')}
             </BodyText>
             <Stack 
               direction={{ xs: 'column', sm: 'row' }} 
@@ -336,7 +304,7 @@ const Home = () => {
             >
               <DiagnosticCTA />
               <Button variant="outline" size="large">
-                Explorar soluciones
+                {t('home.cta.exploreButton')}
               </Button>
             </Stack>
           </Box>

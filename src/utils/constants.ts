@@ -12,7 +12,8 @@ export const ROUTES = {
   MIGRATION_DEMO: '/migration-demo',
   FASE3_DEMO: '/fase3-demo',
   METRICS_DEMO: '/metrics-demo',
-  THEME_DEMO: '/theme-demo'
+  THEME_DEMO: '/theme-demo',
+  I18N_DEMO: '/i18n-demo'
 } as const;
 
 // Configuración de la aplicación
