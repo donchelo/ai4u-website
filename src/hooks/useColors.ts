@@ -54,6 +54,12 @@ export const useColors = () => {
         secondary: contrast.text.secondary,
         disabled: contrast.text.disabled,
         accent: '#FF5C00',
+        // Garantizar contraste mínimo
+        highContrast: mode === 'light' ? '#000000' : '#FFFFFF',
+        mediumContrast: mode === 'light' ? '#333333' : '#F0F0F0',
+        // Contraste máximo para modo dark
+        darkHighContrast: mode === 'dark' ? '#FFFFFF' : '#000000',
+        darkMediumContrast: mode === 'dark' ? '#E8E8E8' : '#333333',
       },
       
       // Para bordes
@@ -65,8 +71,8 @@ export const useColors = () => {
       
       // Para estados
       state: {
-        hover: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
-        selected: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
+        hover: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.25)',
+        selected: mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.35)',
         disabled: mode === 'light' ? 'rgba(0, 0, 0, 0.26)' : 'rgba(255, 255, 255, 0.3)',
       },
     },

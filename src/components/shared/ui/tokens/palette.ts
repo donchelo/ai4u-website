@@ -25,6 +25,18 @@ export const AI4U_PALETTE = {
   success: '#059669', 
   warning: '#D97706',
   info: '#1E3A8A',
+  
+  // Colores de contraste garantizado
+  contrast: {
+    light: {
+      text: '#000000',
+      background: '#FFFFFF',
+    },
+    dark: {
+      text: '#FFFFFF',
+      background: '#000000',
+    },
+  },
 } as const;
 
 // Sistema de contraste automático
@@ -48,7 +60,7 @@ export const CONTRAST_PAIRS = {
     surface: AI4U_PALETTE.gray[900],
     text: {
       primary: AI4U_PALETTE.white,
-      secondary: AI4U_PALETTE.gray[300],
+      secondary: AI4U_PALETTE.gray[100],
       disabled: AI4U_PALETTE.gray[500],
     },
     border: AI4U_PALETTE.gray[800],

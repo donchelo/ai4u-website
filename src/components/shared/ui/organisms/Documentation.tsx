@@ -16,6 +16,7 @@ import {
 import { ContentCopy as ContentCopyIcon } from '@mui/icons-material';
 import { H3, H4, BodyText, SmallText, CodeText } from '../atoms';
 import { Button } from '../atoms';
+import { useColors } from '../../../../hooks';
 
 interface DocumentationProps {
   title: string;
@@ -45,10 +46,15 @@ const CodeContainer = styled(Paper)(({ theme }) => ({
   borderRadius: theme.spacing(2),
   padding: theme.spacing(2),
   overflow: 'auto',
+  '&:hover': {
+    backgroundColor: '#3a3a3a',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+  },
 }));
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'tsx', className = '' }) => {
   const theme = useTheme();
+  const colors = useColors();
 
   return (
     <CodeContainer className={className}>
@@ -59,7 +65,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'tsx', className
         mb: 2 
       }}>
         <SmallText sx={{ 
-          color: '#9CA3AF',
+          color: colors.helpers.text.mediumContrast,
           textTransform: 'uppercase',
           letterSpacing: '0.05em'
         }}>
@@ -68,14 +74,14 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'tsx', className
         <IconButton
           size="small"
           onClick={() => navigator.clipboard.writeText(code)}
-          sx={{ color: '#9CA3AF' }}
+          sx={{ color: colors.helpers.text.mediumContrast }}
         >
           <ContentCopyIcon fontSize="small" />
         </IconButton>
       </Box>
       <Box component="pre" sx={{ 
         fontSize: '0.875rem',
-        color: '#f5f5f5',
+        color: colors.helpers.text.highContrast,
         fontFamily: 'monospace',
         margin: 0,
         whiteSpace: 'pre-wrap'

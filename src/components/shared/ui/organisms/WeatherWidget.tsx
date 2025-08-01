@@ -11,6 +11,7 @@ import {
 import { 
   LocationOn as LocationOnIcon 
 } from '@mui/icons-material';
+import { useColors } from '../../../../hooks';
 
 interface WeatherData {
   location: string;
@@ -66,7 +67,8 @@ const StyledCard = styled(Card)<{ weatherVariant?: string }>(({ theme, weatherVa
     transition: 'all 0.3s ease',
     '&:hover': {
       transform: 'translateY(-2px)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+      backgroundColor: weatherVariant === 'dark' ? '#1a1a1a' : backgroundColor,
     },
   };
 });
@@ -77,15 +79,16 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   showLocationIcon = false
 }) => {
   const theme = useTheme();
+  const colors = useColors();
 
   const getTextColor = (type: 'primary' | 'secondary') => {
     switch (variant) {
       case 'red':
         return '#000000';
       case 'dark':
-        return type === 'primary' ? '#FFFFFF' : '#D1D5DB';
+        return type === 'primary' ? colors.helpers.text.highContrast : colors.helpers.text.mediumContrast;
       default:
-        return type === 'primary' ? theme.palette.text.primary : theme.palette.text.secondary;
+        return type === 'primary' ? colors.helpers.text.highContrast : colors.helpers.text.mediumContrast;
     }
   };
 

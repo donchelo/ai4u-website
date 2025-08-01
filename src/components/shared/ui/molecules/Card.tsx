@@ -31,10 +31,11 @@ const StyledCard = styled(MuiCard)<{ cardVariant?: string }>(({ theme, cardVaria
         border: '1px solid rgba(255, 255, 255, 0.25)',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
         color: '#FFFFFF', // Texto blanco para máximo contraste en glass
+        fontWeight: '600', // Texto más grueso para mejor legibilidad
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'rgba(255, 255, 255, 0.22)',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+          background: 'rgba(255, 255, 255, 0.35)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.7)',
         },
       };
     
@@ -45,11 +46,12 @@ const StyledCard = styled(MuiCard)<{ cardVariant?: string }>(({ theme, cardVaria
         backdropFilter: 'blur(16px)',
         border: '1px solid rgba(255, 255, 255, 0.15)',
         color: '#FFFFFF',
+        fontWeight: '600', // Texto más grueso para mejor legibilidad
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(45, 45, 45, 0.9))',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+          background: 'linear-gradient(135deg, rgba(60, 60, 60, 0.95), rgba(75, 75, 75, 0.9))',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.45)',
         },
       };
     

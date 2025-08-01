@@ -12,6 +12,7 @@ import {
   Wifi as WifiIcon,
   Bluetooth as BluetoothIcon
 } from '@mui/icons-material';
+import { useColors } from '../../../../hooks';
 
 interface SleepData {
   totalHours: number;
@@ -40,7 +41,8 @@ const StyledCard = styled(Card)(({ theme }) => ({
   transition: 'all 0.3s ease',
   '&:hover': {
     transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.6)',
+    backgroundColor: '#4B5563', // gray-600 para mejor contraste en hover
   },
 }));
 
@@ -58,6 +60,7 @@ const SleepWidget: React.FC<SleepWidgetProps> = ({
   time
 }) => {
   const theme = useTheme();
+  const colors = useColors();
 
   return (
     <StyledCard>
@@ -71,7 +74,7 @@ const SleepWidget: React.FC<SleepWidgetProps> = ({
         }}>
           <Box>
             <Typography variant="body2" sx={{ 
-              color: '#9CA3AF', // gray-400
+              color: colors.helpers.text.mediumContrast,
               mb: 0.5
             }}>
               {date}
@@ -85,7 +88,7 @@ const SleepWidget: React.FC<SleepWidgetProps> = ({
           </Box>
           <Box sx={{ textAlign: 'right' }}>
             <Typography variant="body2" sx={{ 
-              color: '#9CA3AF' // gray-400
+              color: colors.helpers.text.mediumContrast
             }}>
               43
             </Typography>

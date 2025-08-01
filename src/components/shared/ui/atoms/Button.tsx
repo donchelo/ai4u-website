@@ -46,9 +46,9 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
     backdropFilter: 'blur(20px)',
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.25)',
+      background: 'rgba(255, 255, 255, 0.5)',
       transform: 'translateY(-2px)',
-      boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+      boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
     },
     '&:active': {
       transform: 'translateY(0px)',
@@ -81,9 +81,9 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
     backdropFilter: 'blur(24px)',
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.2)',
+      background: 'rgba(255, 255, 255, 0.45)',
       transform: 'translateY(-2px)',
-      boxShadow: '0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+      boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.7)',
     },
     '&:active': {
       transform: 'translateY(0px)',
