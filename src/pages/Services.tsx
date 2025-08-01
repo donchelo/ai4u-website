@@ -235,89 +235,7 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Our Process Section */}
-      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
-          <H2 sx={{ 
-            mb: 6, 
-            textAlign: 'center',
-            color: 'text.primary',
-            fontSize: { xs: '1.8rem', md: '2.2rem' },
-            fontWeight: 400
-          }}>
-            Nuestro proceso
-          </H2>
-          
-          <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} md={10}>
-              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
-                <Box sx={{ p: 4 }}>
-                  <Grid container spacing={4}>
-                    {[
-                      {
-                        number: 1,
-                        title: `Diagnóstico gratuito (${SERVICE_CONFIG.DIAGNOSTIC_DURATION} minutos)`,
-                        description: "Identificamos todas las oportunidades de automatización en tu negocio",
-                        color: "#B6CA40"
-                      },
-                      {
-                        number: 2,
-                        title: "Definición de prioridades",
-                        description: "Establecemos qué procesos automatizar primero según tu ROI",
-                        color: theme.palette.secondary.main
-                      },
-                      {
-                        number: 3,
-                        title: "Presupuesto personalizado",
-                        description: "Adaptamos las soluciones a tu capacidad de inversión",
-                        color: "#FF6B35"
-                      },
-                      {
-                        number: 4,
-                        title: "Implementación",
-                        description: "Desarrollamos e integramos las soluciones en tu negocio",
-                        color: "#1a1a1a"
-                      }
-                    ].map((step, idx) => (
-                      <Grid item xs={12} sm={6} key={idx}>
-                        <ProcessStep
-                          number={step.number}
-                          title={step.title}
-                          description={step.description}
-                          color={step.color}
-                          size="large"
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
-                  
-                  <Box sx={{ 
-                    textAlign: 'center', 
-                    mt: 6, 
-                    pt: 4, 
-                    borderTop: `1px solid ${theme.palette.divider}` 
-                  }}>
-                    <DiagnosticCTA />
-                  </Box>
-                </Box>
-              </Card>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      <Box sx={{ py: 2 }}>
-        <Container maxWidth="lg">
-          <Box sx={{ 
-            height: '1px', 
-            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
-            mx: 'auto',
-            width: '60%'
-          }} />
-        </Container>
-      </Box>
-
-      {/* Services Filter Section */}
+      {/* Services Filter Section - MOVIDO ARRIBA */}
       <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
@@ -545,6 +463,88 @@ const Services: React.FC = () => {
               </Button>
             </Card>
           )}
+        </Container>
+      </Box>
+
+      <Box sx={{ py: 2 }}>
+        <Container maxWidth="lg">
+          <Box sx={{ 
+            height: '1px', 
+            background: `linear-gradient(90deg, transparent, ${theme.palette.divider}, transparent)`,
+            mx: 'auto',
+            width: '60%'
+          }} />
+        </Container>
+      </Box>
+
+      {/* Our Process Section */}
+      <Box sx={{ py: 8, position: 'relative', bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+          <H2 sx={{ 
+            mb: 6, 
+            textAlign: 'center',
+            color: 'text.primary',
+            fontSize: { xs: '1.8rem', md: '2.2rem' },
+            fontWeight: 400
+          }}>
+            Nuestro proceso
+          </H2>
+          
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} md={10}>
+              <Card variant="glass" sx={{ p: 0, bgcolor: 'background.default', border: `1px solid ${theme.palette.divider}` }}>
+                <Box sx={{ p: 4 }}>
+                  <Grid container spacing={4}>
+                    {[
+                      {
+                        number: 1,
+                        title: `Diagnóstico gratuito (${SERVICE_CONFIG.DIAGNOSTIC_DURATION} minutos)`,
+                        description: "Identificamos todas las oportunidades de automatización en tu negocio",
+                        color: "#B6CA40"
+                      },
+                      {
+                        number: 2,
+                        title: "Definición de prioridades",
+                        description: "Establecemos qué procesos automatizar primero según tu ROI",
+                        color: theme.palette.secondary.main
+                      },
+                      {
+                        number: 3,
+                        title: "Presupuesto personalizado",
+                        description: "Adaptamos las soluciones a tu capacidad de inversión",
+                        color: "#FF6B35"
+                      },
+                      {
+                        number: 4,
+                        title: "Implementación",
+                        description: "Desarrollamos e integramos las soluciones en tu negocio",
+                        color: "#1a1a1a"
+                      }
+                    ].map((step, idx) => (
+                      <Grid item xs={12} sm={6} key={idx}>
+                        <ProcessStep
+                          number={step.number}
+                          title={step.title}
+                          description={step.description}
+                          color={step.color}
+                          size="large"
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                  
+                  <Box sx={{ 
+                    textAlign: 'center', 
+                    mt: 6, 
+                    pt: 4, 
+                    borderTop: `1px solid ${theme.palette.divider}` 
+                  }}>
+                    <DiagnosticCTA />
+                  </Box>
+                </Box>
+              </Card>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
