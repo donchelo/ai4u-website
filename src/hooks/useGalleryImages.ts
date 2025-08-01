@@ -74,40 +74,86 @@ const getGalleryImages = (): string[] => {
   const knownGalleryImages: string[] = [
     'gallery/hero-image.png',
     'gallery/hero-image3.png',
+    'gallery/AI4U (1).png',
+    'gallery/AI4U (2).png',
+    'gallery/AI4U (3).png',
+    'gallery/AI4U (4).png',
+    'gallery/AI4U (5).png',
+    'gallery/AI4U (6).png',
+    'gallery/AI4U (7).png',
+    'gallery/AI4U (8).png',
+    'gallery/AI4U (9).png',
+    'gallery/AI4U (10).png',
+    'gallery/AI4U (11).png',
+    'gallery/AI4U (12).png',
+    'gallery/AI4U (13).png',
+    'gallery/AI4U (14).png',
+    'gallery/AI4U (15).png',
+    'gallery/AI4U (16).png',
+    'gallery/AI4U (17).png',
+    'gallery/AI4U (18).png',
+    // Nuevas imágenes AI4U 4rt
+    'gallery/AI4U 4rt (1).png',
+    'gallery/AI4U 4rt (2).png',
+    'gallery/AI4U 4rt (3).png',
+    'gallery/AI4U 4rt (4).png',
+    'gallery/AI4U 4rt (5).png',
+    'gallery/AI4U 4rt (6).png',
+    'gallery/AI4U 4rt (7).png',
+    'gallery/AI4U 4rt (8).png',
+    'gallery/AI4U 4rt (9).png',
+    'gallery/AI4U 4rt (10).png',
+    'gallery/AI4U 4rt (11).png',
+    'gallery/AI4U 4rt (12).png',
+    'gallery/AI4U 4rt (13).png',
+    'gallery/AI4U 4rt (14).png',
+    'gallery/AI4U 4rt (15).png',
+    'gallery/AI4U 4rt (16).png',
+    'gallery/AI4U 4rt (17).png',
+    'gallery/AI4U 4rt (18).png',
+    'gallery/AI4U 4rt (19).png',
+    'gallery/AI4U 4rt (20).png',
+    'gallery/AI4U 4rt (21).png',
+    'gallery/AI4U 4rt (22).png',
+    'gallery/AI4U 4rt (23).png',
+    'gallery/AI4U 4rt (24).png',
+    'gallery/AI4U 4rt (25).png',
+    'gallery/AI4U 4rt (26).png',
+    'gallery/AI4U 4rt (27).png',
+    'gallery/AI4U 4rt (28).png',
+    'gallery/AI4U 4rt (29).png',
+    'gallery/AI4U 4rt (30).png',
+    'gallery/AI4U 4rt (31).png',
+    'gallery/AI4U 4rt (32).png',
+    'gallery/AI4U 4rt (33).png',
+    'gallery/AI4U 4rt (34).png',
+    'gallery/AI4U 4rt (35).png',
+    'gallery/AI4U 4rt (36).png',
+    'gallery/AI4U 4rt (37).png',
+    'gallery/AI4U 4rt (38).png',
+    'gallery/AI4U 4rt (39).png',
   ];
-
-  // 🔧 INSTRUCCIONES PARA AGREGAR NUEVAS IMÁGENES:
-  // 1. Coloca tu imagen en: assets/images/gallery/
-  // 2. Descomenta la línea correspondiente aquí (quita los //)
-  // 
-  // Ejemplos:
-  // 'gallery/mi-nueva-imagen.jpg',
-  // 'gallery/proyecto-ai4u.png',
-  // 'gallery/equipo-trabajo.jpeg',
-  // 'gallery/evento-tecnologia.jpg',
 
   return knownGalleryImages;
 };
 
 // Función para cargar imágenes dinámicamente
 const loadGalleryImages = (): GalleryImage[] => {
-  // Imágenes de prueba directas
-  return [
-    {
-      id: 'gallery-1',
-      src: '/assets/images/gallery/hero-image.png',
-      alt: 'Hero Image',
-      title: 'Hero Image',
-      description: 'Imagen hero de AI4U'
-    },
-    {
-      id: 'gallery-2',
-      src: '/assets/images/gallery/hero-image3.png',
-      alt: 'Hero Image 3',
-      title: 'Hero Image 3',
-      description: 'Imagen hero 3 de AI4U'
-    }
-  ];
+  // Cargar todas las imágenes de gallery
+  const galleryImages = getGalleryImages();
+  
+  return galleryImages.map((filename, index) => {
+    const basePath = '/assets/images/';
+    const fullPath = `${basePath}${filename}`;
+    
+    return {
+      id: `gallery-${index}`,
+      src: fullPath,
+      alt: `Imagen ${index + 1} de la galería AI4U`,
+      title: getImageTitle(filename),
+      description: getImageDescription(filename),
+    };
+  });
 };
 
 export const useGalleryImages = () => {

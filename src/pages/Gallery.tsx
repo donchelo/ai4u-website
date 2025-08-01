@@ -87,42 +87,6 @@ const GalleryPage: React.FC = () => {
           showProgress={true}
         />
       )}
-
-      {/* Información adicional */}
-      <Box 
-        mt={6} 
-        textAlign="center"
-        sx={{
-          background: `linear-gradient(135deg, ${AI4U_PALETTE.frostSignal} 0%, ${AI4U_PALETTE.lightPaper} 100%)`,
-          borderRadius: '16px',
-          padding: '2rem',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-        }}
-      >
-        <BodyText variant="h6" color="text.primary" gutterBottom>
-          Galería Automática
-        </BodyText>
-        <BodyText color="text.secondary">
-          Esta galería muestra las imágenes principales del proyecto AI4U y las imágenes 
-          que agregues a la carpeta gallery. Para agregar nuevas imágenes:
-        </BodyText>
-        <BodyText color="text.secondary" sx={{ mt: 2 }}>
-          <strong>Paso 1:</strong> Coloca tus imágenes en la carpeta 
-          <code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>
-            assets/images/gallery/
-          </code>
-        </BodyText>
-        <BodyText color="text.secondary" sx={{ mt: 1 }}>
-          <strong>Paso 2:</strong> Agrega los nombres de archivo en la función 
-          <code style={{ background: '#f0f0f0', padding: '2px 6px', borderRadius: '4px', margin: '0 4px' }}>
-            getGalleryImages()
-          </code>
-          en el archivo useGalleryImages.ts
-        </BodyText>
-        <BodyText color="text.secondary" sx={{ mt: 1 }}>
-          <strong>Ejemplo:</strong> Si agregas 'mi-foto.jpg', añade 'gallery/mi-foto.jpg' al array
-        </BodyText>
-      </Box>
     </Container>
   );
 };
