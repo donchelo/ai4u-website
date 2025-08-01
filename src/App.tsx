@@ -7,7 +7,7 @@ import {
   Home, 
   Services, 
   WhyAI4U, 
-  SuccessCases, 
+  UseCases, 
   ComponentLibrary, 
   Gallery,
   ColorSystemDemo,
@@ -62,7 +62,7 @@ function App() {
                   path={ROUTES.SUCCESS_CASES} 
                   element={
                     <LazyPage>
-                      <SuccessCases />
+                      <UseCases />
                     </LazyPage>
                   } 
                 />

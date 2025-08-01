@@ -71,7 +71,7 @@ const Footer = () => {
                   { name: 'Home', path: '/' },
                   { name: 'Servicios', path: '/servicios' },
                   { name: 'Por qué AI4U?', path: '/por-que-ai4u' },
-                  { name: 'Casos de éxito', path: '/casos-de-exito' }
+                  { name: 'Casos de uso', path: '/casos-de-uso' }
                 ].map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
                     <Box

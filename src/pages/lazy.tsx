@@ -4,7 +4,7 @@ import { lazy } from 'react';
 export const Home = lazy(() => import('./Home'));
 export const Services = lazy(() => import('./Services'));
 export const WhyAI4U = lazy(() => import('./WhyAI4U'));
-export const SuccessCases = lazy(() => import('./SuccessCases'));
+export const UseCases = lazy(() => import('./UseCases'));
 export const ComponentLibrary = lazy(() => import('./ComponentLibrary'));
 export const Gallery = lazy(() => import('./Gallery'));
 

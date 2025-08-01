@@ -152,7 +152,7 @@ const Home = () => {
                 fontSize: '0.9rem', 
                 fontStyle: 'italic' 
               }}>
-                Vista previa de nuestra galería de proyectos y casos de éxito
+                Vista previa de nuestra galería de proyectos y casos de uso
               </BodyText>
               
               <H3 sx={{ 
