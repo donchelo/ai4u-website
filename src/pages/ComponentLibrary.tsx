@@ -12,11 +12,21 @@ interface ComponentSection {
   id: string;
   title: string;
   description: string;
+  category: string;
   components: React.ReactNode[];
 }
 
+interface DemoPage {
+  id: string;
+  title: string;
+  description: string;
+  path: string;
+  category: string;
+}
+
 const ComponentLibrary: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('colors');
+  const [activeSection, setActiveSection] = useState<string>('overview');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
   const { mode } = useColorMode();
 
   // Componente de muestra de color mejorado con glassmorfismo
@@ -65,27 +75,119 @@ const ComponentLibrary: React.FC = () => {
     </div>
   );
 
-  // Componente de elemento interactivo mejorado
-  const InteractiveElement: React.FC<{ title: string; children?: React.ReactNode }> = ({ title, children }) => (
-    <div className="relative p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-      <H4 className="text-gray-600 mb-4">{title}</H4>
-      {children}
-    </div>
-  );
+  // Páginas de demo disponibles
+  const demoPages: DemoPage[] = [
+    {
+      id: 'color-system',
+      title: 'Sistema de Colores',
+      description: 'Demo del sistema de colores unificado con contraste automático',
+      path: '/color-system-demo',
+      category: 'design-system'
+    },
+    {
+      id: 'theme-demo',
+      title: 'Tema AI4U',
+      description: 'Demo completo del tema refactorizado de AI4U',
+      path: '/theme-demo',
+      category: 'design-system'
+    },
+    {
+      id: 'metrics-demo',
+      title: 'Métricas y Estadísticas',
+      description: 'Demo de componentes de métricas y estadísticas',
+      path: '/metrics-demo',
+      category: 'components'
+    },
+    {
+      id: 'migration-demo',
+      title: 'Migración de Colores',
+      description: 'Demo del proceso de migración del sistema de colores',
+      path: '/migration-demo',
+      category: 'design-system'
+    },
+    {
+      id: 'fase3-demo',
+      title: 'Fase 3 - Nuevas Funcionalidades',
+      description: 'Demo de las nuevas funcionalidades de la fase 3',
+      path: '/fase3-demo',
+      category: 'features'
+    }
+  ];
 
-  // Componente de elemento futurista mejorado
-  const FuturisticElement: React.FC<{ title: string; children?: React.ReactNode }> = ({ title, children }) => (
-    <div className="relative p-8 bg-gradient-to-br from-gray-50/50 to-gray-100/50 backdrop-blur-xl border border-white/30 rounded-3xl">
-      <H4 className="text-gray-700 mb-4">{title}</H4>
-      {children}
-    </div>
-  );
+  // Categorías disponibles
+  const categories = [
+    { id: 'all', name: 'Todos', count: demoPages.length },
+    { id: 'design-system', name: 'Sistema de Diseño', count: demoPages.filter(p => p.category === 'design-system').length },
+    { id: 'components', name: 'Componentes', count: demoPages.filter(p => p.category === 'components').length },
+    { id: 'features', name: 'Funcionalidades', count: demoPages.filter(p => p.category === 'features').length }
+  ];
 
   const sections: ComponentSection[] = [
+    {
+      id: 'overview',
+      title: 'Vista General',
+      description: 'Acceso rápido a todas las demos y componentes disponibles',
+      category: 'overview',
+      components: [
+        <div key="overview" className="space-y-8">
+          {/* Navegación por categorías */}
+          <div className="space-y-6">
+            <H3 className="text-gray-800">Categorías de Demos</H3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`p-4 rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
+                    activeCategory === category.id
+                      ? 'bg-white/25 border-white/30 shadow-xl'
+                      : 'bg-white/10 border-white/20 hover:bg-white/20'
+                  }`}
+                >
+                  <H4 className="text-gray-800 mb-2">{category.name}</H4>
+                  <SmallText className="text-gray-600">{category.count} demos</SmallText>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Lista de demos filtradas */}
+          <div className="space-y-6">
+            <H3 className="text-gray-800">Demos Disponibles</H3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {demoPages
+                .filter(page => activeCategory === 'all' || page.category === activeCategory)
+                .map((page) => (
+                  <div
+                    key={page.id}
+                    className="relative p-6 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    onClick={() => window.location.href = page.path}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-neon-blaze to-digital-coral rounded-xl flex items-center justify-center">
+                        <span className="text-white text-lg">▶</span>
+                      </div>
+                      <span className="text-xs px-2 py-1 bg-white/20 rounded-full text-gray-600">
+                        {page.category}
+                      </span>
+                    </div>
+                    <H4 className="mb-3 text-gray-800">{page.title}</H4>
+                    <BodyText className="text-gray-600 mb-4">{page.description}</BodyText>
+                    <div className="flex items-center text-neon-blaze text-sm font-medium">
+                      Ver demo →
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      ]
+    },
     {
       id: 'colors',
       title: 'Paleta de Colores AI4U',
       description: 'Sistema de colores principal y secundarios de la marca',
+      category: 'design-system',
       components: [
         <div key="colors" className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <ColorSwatch 
@@ -135,6 +237,7 @@ const ComponentLibrary: React.FC = () => {
       id: 'typography',
       title: 'Sistema Tipográfico',
       description: 'Jerarquía tipográfica usando Red Hat Display y Necto Mono',
+      category: 'design-system',
       components: [
         <div key="typography" className="space-y-6">
           <TypographyExample 
@@ -174,6 +277,7 @@ const ComponentLibrary: React.FC = () => {
       id: 'buttons',
       title: 'Sistema de Botones',
       description: 'Componentes de botones con variantes y estados',
+      category: 'components',
       components: [
         <div key="buttons" className="space-y-8">
           {/* Botones del sistema */}
@@ -226,6 +330,7 @@ const ComponentLibrary: React.FC = () => {
       id: 'cards',
       title: 'Sistema de Tarjetas',
       description: 'Componentes de tarjetas con glassmorfismo y efectos',
+      category: 'components',
       components: [
         <div key="cards" className="space-y-8">
           {/* Tarjetas del sistema */}
@@ -268,254 +373,10 @@ const ComponentLibrary: React.FC = () => {
       ]
     },
     {
-      id: 'interactive',
-      title: 'Elementos Interactivos',
-      description: 'Componentes con animaciones y estados interactivos',
-      components: [
-        <div key="interactive" className="space-y-8">
-          {/* Barra de progreso glassmorfismo */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-digital-coral/30 to-quantum-blue/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
-              <H4 className="text-gray-800 mb-6">Barra de Progreso Glassmorfismo</H4>
-              <div className="w-full bg-white/20 rounded-full h-4 overflow-hidden backdrop-blur-sm">
-                <div className="bg-gradient-to-r from-neon-cyan to-neon-blaze h-4 rounded-full transition-all duration-1000" style={{ width: '75%' }}></div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Animación de carga */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-digital-coral/20 via-neon-blaze/30 to-deep-neural-teal/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
-              <H4 className="text-gray-800 mb-6">Animación de Carga Glassmorfismo</H4>
-              <div className="flex space-x-3">
-                <div className="w-4 h-4 bg-deep-neural-teal rounded-full animate-bounce backdrop-blur-sm"></div>
-                <div className="w-4 h-4 bg-neon-blaze rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-4 h-4 bg-cyber-olive rounded-full animate-bounce backdrop-blur-sm" style={{ animationDelay: '0.2s' }}></div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Tarjeta con hover */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-frost-signal/30 via-neon-blaze/20 to-digital-coral/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 hover:bg-white/25 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-              <H4 className="mb-3">Hover me</H4>
-              <BodyText>Efecto de elevación glassmorfismo al pasar el mouse</BodyText>
-            </div>
-          </div>
-        </div>
-      ]
-    },
-    {
-      id: 'futuristic',
-      title: 'Elementos Futuristas',
-      description: 'Componentes inspirados en diseño futurista y tecnológico',
-      components: [
-        <div key="futuristic" className="space-y-8">
-          {/* Grid wireframe */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-graphene-black/40 via-quantum-blue/20 to-neon-cyan/30"></div>
-            <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-8">
-              <H4 className="text-white mb-6">Wireframe Grid Glassmorfismo</H4>
-              <div className="relative w-full h-40 rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 grid grid-cols-8 grid-rows-5 gap-1 p-3">
-                  {Array.from({ length: 40 }, (_, i) => (
-                    <div key={i} className="bg-white/20 rounded-sm backdrop-blur-sm"></div>
-                  ))}
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 border-2 border-deep-neural-teal/50 rounded-2xl backdrop-blur-sm"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Código binario */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-digital-coral/30 to-quantum-blue/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
-              <H4 className="text-gray-800 mb-6">Código Binario Glassmorfismo</H4>
-              <div className="font-mono text-sm text-gray-700 leading-relaxed space-y-2">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">10101010 11001100 11110000</div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">01010101 00110011 00001111</div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">11111111 00000000 10101010</div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Formas geométricas */}
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-digital-coral/30 to-quantum-blue/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
-              <H4 className="text-gray-800 mb-6">Formas Geométricas Glassmorfismo</H4>
-              <div className="flex space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-blaze to-digital-coral rounded-2xl transform rotate-45 backdrop-blur-sm"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-quantum-blue to-cyber-olive rounded-full backdrop-blur-sm"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-deep-neural-teal to-neon-blaze transform rotate-45 backdrop-blur-sm"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ]
-    },
-    {
-      id: 'glassmorphism',
-      title: 'Glassmorfismo Futurista',
-      description: 'Componentes con efectos de vidrio, transparencias y blur futuristas',
-      components: [
-        <div key="glassmorphism" className="space-y-8">
-          {/* Login Card */}
-          <div className="relative">
-            <H4 className="text-gray-800 mb-4">Tarjeta de Login Glassmorfismo</H4>
-            <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-frost-signal/30 via-neon-blaze/20 to-quantum-blue/25"></div>
-              <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8 shadow-2xl">
-                <div className="flex justify-between items-center mb-6">
-                  <H2 className="text-gray-800">AI4U Lab</H2>
-                  <button className="text-neon-blaze font-semibold hover:text-digital-coral transition-colors">Sign up</button>
-                </div>
-                
-                <H1 className="mb-8">Log in</H1>
-                
-                <button className="w-full mb-6 px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-3">
-                  <span className="text-xl">f</span>
-                  <span>Facebook</span>
-                </button>
-                
-                <div className="space-y-4 mb-6">
-                  <div className="relative">
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">@</div>
-                    <input 
-                      type="email" 
-                      placeholder="e-mail address"
-                      className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-neon-blaze/50 focus:border-neon-blaze/50"
-                    />
-                  </div>
-                  <div className="relative">
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">🔑</div>
-                    <input 
-                      type="password" 
-                      placeholder="password"
-                      className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl text-gray-800 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-neon-blaze/50 focus:border-neon-blaze/50"
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex justify-between items-center mb-6">
-                  <button className="text-neon-blaze text-sm hover:underline">I forgot</button>
-                </div>
-                
-                <button className="w-full px-6 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-3">
-                  <span>Log in</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 19l8-8z"/>
-                  </svg>
-                </button>
-                
-                <div className="mt-6 text-xs text-gray-600 space-y-2">
-                  <p>For use by professionals only. Keep out of reach of unauthorized users.</p>
-                  <p>Please use responsibly!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Card */}
-          <div>
-            <H4 className="text-gray-800 mb-4">Tarjeta de Estadísticas Glassmorfismo</H4>
-            <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-graphene-black/60 via-quantum-blue/30 to-neon-cyan/40"></div>
-              <div className="relative bg-black/20 backdrop-blur-2xl border border-white/15 rounded-3xl p-8">
-                <div className="grid grid-cols-3 gap-8">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-deep-neural-teal mb-3">98%</div>
-                    <div className="text-white/80 font-medium">Eficiencia</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-neon-blaze mb-3">24/7</div>
-                    <div className="text-white/80 font-medium">Disponibilidad</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-digital-coral mb-3">5x</div>
-                    <div className="text-white/80 font-medium">Más rápido</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <H4 className="text-gray-800 mb-4">Navegación Glassmorfismo</H4>
-            <div className="relative p-8 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-frost-signal/30 via-neon-blaze/20 to-digital-coral/25"></div>
-              <nav className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-6 flex justify-center space-x-8">
-                <button className="px-6 py-3 bg-white/20 rounded-xl text-gray-800 font-semibold hover:bg-white/30 transition-all duration-300 backdrop-blur-sm">
-                  Inicio
-                </button>
-                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
-                  Servicios
-                </button>
-                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
-                  Casos
-                </button>
-                <button className="px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 hover:bg-white/10 rounded-xl transition-all duration-300">
-                  Contacto
-                </button>
-              </nav>
-            </div>
-          </div>
-        </div>
-      ]
-    },
-    {
-      id: 'brand',
-      title: 'Identidad de Marca',
-      description: 'Elementos clave de la identidad de AI4U',
-      components: [
-        <div key="brand" className="space-y-6">
-          <div className="relative p-8 rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-blaze/20 via-digital-coral/30 to-quantum-blue/25"></div>
-            <div className="relative bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl p-8">
-              <H3 className="mb-4">Filosofía: Time is Gold</H3>
-              <BodyText className="mb-4">{BRAND_IDENTITY.brandIdentity.mission}</BodyText>
-              <SmallText className="text-gray-600">{BRAND_IDENTITY.brandIdentity.essence}</SmallText>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="relative p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-              <H4 className="mb-4">Personalidad de Marca</H4>
-              <div className="flex flex-wrap gap-2">
-                {BRAND_IDENTITY.brandVoice.personality.map((trait, index) => (
-                  <span key={index} className="px-3 py-1 bg-neon-blaze/20 text-neon-blaze rounded-full text-sm backdrop-blur-sm">
-                    {trait}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <div className="relative p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-              <H4 className="mb-4">Segmentos Cliente</H4>
-              <div className="space-y-2">
-                {Object.entries(BRAND_IDENTITY.customerSegments.messaging).map(([segment, message]) => (
-                  <div key={segment} className="text-sm">
-                    <span className="font-medium text-gray-700 capitalize">{segment}:</span>
-                    <span className="text-gray-600 ml-2">{message}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      ]
-    },
-    {
       id: 'mobile-ui',
       title: 'Componentes Mobile UI',
       description: 'Componentes especializados para interfaces móviles',
+      category: 'components',
       components: [
         <div key="mobile-ui" className="space-y-8">
           {/* Budget Card */}
@@ -642,11 +503,18 @@ const ComponentLibrary: React.FC = () => {
     }
   ];
 
-  const navigationItems = sections.map(section => ({
-    id: section.id,
-    label: section.title,
-    onClick: () => setActiveSection(section.id)
-  }));
+  const navigationItems = [
+    { id: 'overview', label: 'Vista General', onClick: () => setActiveSection('overview') },
+    { id: 'design-system', label: 'Sistema de Diseño', onClick: () => setActiveSection('design-system') },
+    { id: 'components', label: 'Componentes', onClick: () => setActiveSection('components') }
+  ];
+
+  const filteredSections = sections.filter(section => {
+    if (activeSection === 'overview') return section.id === 'overview';
+    if (activeSection === 'design-system') return section.category === 'design-system';
+    if (activeSection === 'components') return section.category === 'components';
+    return true;
+  });
 
   return (
     <PageLayout 
@@ -670,10 +538,10 @@ const ComponentLibrary: React.FC = () => {
         <Container padding="xl">
           <Stack spacing="xl" children={
             <>
-              {sections.map((section) => (
+              {filteredSections.map((section) => (
                 <div
                   key={section.id}
-                  className={`${activeSection === section.id ? 'block' : 'hidden'}`}
+                  className={`${activeSection === section.id || (activeSection === 'design-system' && section.category === 'design-system') || (activeSection === 'components' && section.category === 'components') ? 'block' : 'hidden'}`}
                 >
                   <Section
                     title={section.title}
