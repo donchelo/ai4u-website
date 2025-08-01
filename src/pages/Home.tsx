@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Box, Stack } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, GalleryFrame } from '../components/shared/ui/molecules';
 
 const features = [
   {
@@ -120,6 +120,10 @@ const Home = () => {
                 Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
               </BodyText>
               
+              <BodyText sx={{ mb: 4, color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.9rem', fontStyle: 'italic' }}>
+                Vista previa de nuestra galería de proyectos y casos de éxito
+              </BodyText>
+              
               <H3 sx={{ mb: 4, color: 'white', fontWeight: 400, fontSize: '1.2rem' }}>¿Qué los hace únicos?</H3>
               
               {/* Lista ultra minimalista con iconos geométricos */}
@@ -191,17 +195,12 @@ const Home = () => {
             </Box>
             
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Box
-                component="img"
-                src="/assets/images/robot.png"
-                alt="Robot AI4U"
-                sx={{ 
-                  width: { xs: 250, sm: 300, md: 300 }, 
-                  height: { xs: 333, sm: 400, md: 400 }, 
-                  borderRadius: '4px', 
-                  filter: 'grayscale(0.2)',
-                  objectFit: 'cover'
-                }}
+              <GalleryFrame
+                interval={4000}
+                showNavigation={true}
+                showTitle={false}
+                frameStyle="glass"
+                size="medium"
               />
             </Box>
           </Stack>

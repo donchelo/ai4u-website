@@ -9,3 +9,4 @@ export { default as Card } from './Card';
 export { default as DiagnosticCTA } from './DiagnosticCTA';
 export { default as ServiceCard } from './ServiceCard';
 export { default as Gallery } from './Gallery';
+export { default as GalleryFrame } from './GalleryFrame';
