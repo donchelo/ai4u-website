@@ -11,7 +11,7 @@ export const translations: Record<Language, Translations> = {
       home: 'Inicio',
       services: 'Servicios',
       whyAI4U: '¿Por qué AI4U?',
-      successCases: 'Casos de Éxito',
+      successCases: 'Casos de uso',
       gallery: 'Galería',
       contact: 'Contacto'
     },
