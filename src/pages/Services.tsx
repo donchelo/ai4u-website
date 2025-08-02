@@ -1,0 +1,296 @@
+import React, { useState } from 'react';
+import { 
+  Container, 
+  Grid, 
+  Box, 
+  Typography,
+  Stack,
+  Chip,
+  Divider
+} from '@mui/material';
+import { H1, H2, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
+import { ServiceCard, Card, DiagnosticCTA } from '../components/shared/ui/molecules';
+import { ProcessStep } from '../components/shared/ui/molecules';
+import { ServicesFilter } from '../components/shared/ui/organisms';
+import { useServicesContext } from '../context/ServicesContext';
+import { useLanguage } from '../hooks';
+import { useColors } from '../hooks';
+import { ServiceCategory, ServiceSuperCategory } from '../types/service';
+
+const Services: React.FC = () => {
+  const { t } = useLanguage();
+  const colors = useColors();
+  const { 
+    config,
+    stats,
+    setCategoryFilter,
+    setSuperCategoryFilter,
+    setSearchTerm,
+    resetFilters,
+    getFilteredServices
+  } = useServicesContext();
+
+  const filteredServices = getFilteredServices();
+  const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [selectedSuperTab, setSelectedSuperTab] = useState<number>(0);
+  const [searchValue, setSearchValue] = useState<string>('');
+
+  const superCategoryTabs = [
+    { label: t('services.filter.superCategories.0.label'), value: undefined },
+    { label: t('services.filter.superCategories.1.label'), value: ServiceSuperCategory.STRATEGY },
+    { label: t('services.filter.superCategories.2.label'), value: ServiceSuperCategory.OPERATION }
+  ];
+
+  const categoryTabs = [
+    { label: t('services.filter.categories.0.label'), value: undefined },
+    { label: t('services.filter.categories.1.label'), value: ServiceCategory.AI_ASSISTANT },
+    { label: t('services.filter.categories.2.label'), value: ServiceCategory.AUTOMATION },
+    { label: t('services.filter.categories.3.label'), value: ServiceCategory.ANALYTICS },
+    { label: t('services.filter.categories.4.label'), value: ServiceCategory.ECOMMERCE },
+    { label: t('services.filter.categories.5.label'), value: ServiceCategory.TRAINING },
+    { label: t('services.filter.categories.6.label'), value: ServiceCategory.CONSULTING }
+  ];
+
+  const handleSuperTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedSuperTab(newValue);
+    setSuperCategoryFilter(superCategoryTabs[newValue].value);
+  };
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
+    setCategoryFilter(categoryTabs[newValue].value);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchValue(value);
+    setSearchTerm(value || undefined);
+  };
+
+  const clearFilters = () => {
+    setSelectedTab(0);
+    setSelectedSuperTab(0);
+    setSearchValue('');
+    resetFilters();
+  };
+
+  return (
+    <Box sx={{ minHeight: '100vh', bgcolor: colors.contrast.background }}>
+      {/* Hero Section */}
+      <Box sx={{ py: { xs: 4, md: 6 } }}>
+        <Container maxWidth="lg">
+          <Stack spacing={3} alignItems="center" textAlign="center">
+            <H1 sx={{ 
+              fontSize: { xs: '2rem', md: '2.5rem' },
+              fontWeight: 400
+            }}>
+              Servicios
+            </H1>
+            <H2 sx={{ 
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: colors.contrast.text.secondary,
+              fontWeight: 400
+            }}>
+              Encuentra la solución que necesitas
+            </H2>
+            
+            {/* Stats */}
+            <Stack direction="row" spacing={4} justifyContent="center" flexWrap="wrap">
+              <Box textAlign="center">
+                <Typography variant="h5" sx={{ color: colors.palette.orange, fontWeight: 600 }}>
+                  {stats.total}
+                </Typography>
+                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
+                  Servicios
+                </BodyText>
+              </Box>
+              <Box textAlign="center">
+                <Typography variant="h5" sx={{ color: colors.palette.green, fontWeight: 600 }}>
+                  {stats.active}
+                </Typography>
+                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
+                  Activos
+                </BodyText>
+              </Box>
+              <Box textAlign="center">
+                <Typography variant="h5" sx={{ color: colors.palette.orange, fontWeight: 600 }}>
+                  {Object.keys(stats.byCategory).length}
+                </Typography>
+                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
+                  Categorías
+                </BodyText>
+              </Box>
+              <Box textAlign="center">
+                <Typography variant="h5" sx={{ color: colors.palette.green, fontWeight: 600 }}>
+                  {Object.keys(stats.bySuperCategory).length}
+                </Typography>
+                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
+                  Tipos
+                </BodyText>
+              </Box>
+            </Stack>
+          </Stack>
+        </Container>
+      </Box>
+
+      {/* Services Section */}
+      <Box sx={{ py: 4, bgcolor: colors.helpers.background.secondary }}>
+        <Container maxWidth="xl">
+          <Grid container spacing={3}>
+            {/* Filters Sidebar */}
+            <Grid item xs={12} md={3}>
+              <Card variant="glass" sx={{ p: 3, position: 'sticky', top: 20 }}>
+                <Stack spacing={3}>
+                  <H2 sx={{ fontSize: '1.2rem', fontWeight: 500 }}>
+                    Filtros
+                  </H2>
+                  
+                  {/* Super Categories */}
+                  <Box>
+                    <BodyText sx={{ mb: 2, fontSize: '0.9rem', fontWeight: 500 }}>
+                      Tipo de servicio
+                    </BodyText>
+                    <Stack spacing={1}>
+                      {superCategoryTabs.map((tab, index) => (
+                        <Button
+                          key={index}
+                          variant={selectedSuperTab === index ? "primary" : "outline"}
+                          size="small"
+                          onClick={() => handleSuperTabChange({} as React.SyntheticEvent, index)}
+                          sx={{
+                            justifyContent: 'flex-start',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          {tab.label}
+                        </Button>
+                      ))}
+                    </Stack>
+                  </Box>
+                  
+                  {/* Services Filter */}
+                  <ServicesFilter
+                    searchValue={searchValue}
+                    onSearchChange={handleSearchChange}
+                    selectedTab={selectedTab}
+                    onTabChange={handleTabChange}
+                    onClearFilters={clearFilters}
+                    filteredCount={filteredServices.length}
+                    categoryTabs={categoryTabs}
+                  />
+                </Stack>
+              </Card>
+            </Grid>
+            
+            {/* Services Grid */}
+            <Grid item xs={12} md={9}>
+              {filteredServices.length > 0 ? (
+                <Box sx={{ overflowX: 'auto' }}>
+                  <Grid container spacing={2}>
+                    {filteredServices.map((service) => (
+                      <Grid item xs={12} sm={6} lg={4} key={service.id}>
+                        <ServiceCard 
+                          service={service}
+                          showPrice={config.displaySettings.showPrices}
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
+              ) : (
+                <Card variant="glass" sx={{ textAlign: 'center', py: 6 }}>
+                  <GeometricIcon
+                    type="cross"
+                    size="large"
+                    color={colors.contrast.text.disabled}
+                    variant="minimal"
+                  />
+                  <BodyText sx={{ mt: 2, mb: 3 }}>
+                    {t('services.filter.noResults.title')}
+                  </BodyText>
+                  <Button variant="outline" onClick={clearFilters}>
+                    {t('services.filter.noResults.clearButton')}
+                  </Button>
+                </Card>
+              )}
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      <Divider />
+
+      {/* Process Section */}
+      <Box sx={{ py: 6 }}>
+        <Container maxWidth="lg">
+          <Stack spacing={4} alignItems="center">
+            <H2 sx={{ textAlign: 'center', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+              {t('services.process.title')}
+            </H2>
+            
+            <Grid container spacing={3}>
+              {[
+                {
+                  number: 1,
+                  title: t('services.process.steps.0.title'),
+                  description: t('services.process.steps.0.description'),
+                  color: colors.palette.green
+                },
+                {
+                  number: 2,
+                  title: t('services.process.steps.1.title'),
+                  description: t('services.process.steps.1.description'),
+                  color: colors.palette.orange
+                },
+                {
+                  number: 3,
+                  title: t('services.process.steps.2.title'),
+                  description: t('services.process.steps.2.description'),
+                  color: colors.palette.orange
+                },
+                {
+                  number: 4,
+                  title: t('services.process.steps.3.title'),
+                  description: t('services.process.steps.3.description'),
+                  color: colors.palette.green
+                }
+              ].map((step, idx) => (
+                <Grid item xs={12} sm={6} key={idx}>
+                  <ProcessStep
+                    number={step.number}
+                    title={step.title}
+                    description={step.description}
+                    color={step.color}
+                    size="large"
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.helpers.background.secondary }}>
+        <Container maxWidth="md">
+          <Stack spacing={3} alignItems="center" textAlign="center">
+            <H2 sx={{ fontSize: { xs: '1.5rem', md: '1.8rem' } }}>
+              ¿Necesitas ayuda?
+            </H2>
+            <BodyText sx={{ maxWidth: 500 }}>
+              Agenda una consulta gratuita de 30 minutos
+            </BodyText>
+            <DiagnosticCTA 
+              variant="primary"
+              size="medium"
+              showIcon={true}
+              text="Agendar consulta"
+            />
+          </Stack>
+        </Container>
+      </Box>
+    </Box>
+  );
+};
+
+export default Services;
