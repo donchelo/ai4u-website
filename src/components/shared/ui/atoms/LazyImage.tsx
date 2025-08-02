@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Skeleton, useTheme } from '@mui/material';
 import { useLazyImage } from '../../../../hooks';
+import { usePWA } from '../../../../hooks/usePWA';
 
 interface LazyImageProps {
   src: string;
@@ -10,6 +11,7 @@ interface LazyImageProps {
   sx?: any;
   skeletonHeight?: string | number;
   skeletonWidth?: string | number;
+  priority?: boolean;
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
@@ -20,9 +22,11 @@ const LazyImage: React.FC<LazyImageProps> = ({
   sx = {},
   skeletonHeight,
   skeletonWidth,
+  priority = false,
 }) => {
   const theme = useTheme();
-  const { imgRef, isLoaded, isInView, error } = useLazyImage(src);
+  const { isPWA } = usePWA();
+  const { imgRef, isLoaded, isInView, error } = useLazyImage(src, { priority });
 
   const skeletonSx = {
     bgcolor: theme.palette.mode === 'dark' 
@@ -52,12 +56,13 @@ const LazyImage: React.FC<LazyImageProps> = ({
         />
       )}
 
-      {/* Imagen real */}
+      {/* Imagen optimizada */}
       {isInView && (
         <Box
           component="img"
           src={src}
           alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
           sx={{
             width: '100%',
             height: '100%',
@@ -65,6 +70,11 @@ const LazyImage: React.FC<LazyImageProps> = ({
             opacity: isLoaded ? 1 : 0,
             transition: 'opacity 0.3s ease-in-out',
             display: isLoaded ? 'block' : 'none',
+            // Optimizaciones específicas para PWA
+            ...(isPWA && {
+              imageRendering: 'auto',
+              touchAction: 'manipulation',
+            }),
           }}
           onLoad={() => {
             // El hook maneja el estado de carga

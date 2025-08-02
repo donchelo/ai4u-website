@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 interface UseLazyImageOptions {
   threshold?: number;
   rootMargin?: string;
+  priority?: boolean;
 }
 
 export const useLazyImage = (
@@ -12,11 +13,21 @@ export const useLazyImage = (
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [error, setError] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const { threshold = 0.1, rootMargin = '50px' } = options;
+  const { threshold = 0.1, rootMargin = '50px', priority = false } = options;
 
   useEffect(() => {
+    // Optimizar para diferentes densidades de píxeles
+    const pixelRatio = window.devicePixelRatio || 1;
+    setImageSrc(src);
+
+    if (priority) {
+      setIsInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -37,7 +48,7 @@ export const useLazyImage = (
     return () => {
       observer.disconnect();
     };
-  }, [threshold, rootMargin]);
+  }, [threshold, rootMargin, priority, src]);
 
   useEffect(() => {
     if (!isInView) return;
@@ -54,13 +65,14 @@ export const useLazyImage = (
       setIsLoaded(false);
     };
 
-    img.src = src;
-  }, [src, isInView]);
+    img.src = imageSrc;
+  }, [imageSrc, isInView]);
 
   return {
     imgRef,
     isLoaded,
     isInView,
     error,
+    imageSrc,
   };
 }; 

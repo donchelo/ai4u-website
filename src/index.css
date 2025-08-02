@@ -75,3 +75,34 @@
     @apply font-necto text-code text-graphene-black;
   }
 } 
+
+/* Optimizaciones para imágenes en PWA */
+img {
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimizaciones específicas para dispositivos de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Optimizaciones para PWA */
+@media (display-mode: standalone) {
+  img {
+    image-rendering: auto;
+  }
+}
+
+/* Prevenir zoom en imágenes en PWA */
+@media (display-mode: standalone) {
+  img {
+    touch-action: manipulation;
+  }
+} 

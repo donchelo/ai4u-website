@@ -5,4 +5,5 @@ export { useWindowSize } from './useWindowSize';
 export { useColors, useComponentVariant, useContrastPair } from './useColors';
 export { useColorMode } from '../context/ThemeContext';
 export { useLanguage } from '../context';
-export { useTranslation, useTranslations, useSectionTranslations } from './useTranslations'; 
+export { useTranslation, useTranslations, useSectionTranslations } from './useTranslations';
+export { usePWA } from './usePWA'; 
