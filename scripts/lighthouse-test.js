@@ -1,4 +1,4 @@
-const lighthouse = require('lighthouse');
+const lighthouse = require('lighthouse').default || require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 const fs = require('fs');
 const path = require('path');
@@ -30,7 +30,7 @@ async function runLighthouse() {
     console.log(`📊 Analizando: ${URL}`);
     
     // Ejecutar Lighthouse
-    const runnerResult = await lighthouse(URL, options);
+    const runnerResult = await lighthouse(URL, options, null);
     const reportJson = runnerResult.lhr;
 
     // Guardar reporte completo
