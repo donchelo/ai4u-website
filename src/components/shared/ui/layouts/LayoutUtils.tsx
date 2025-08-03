@@ -4,8 +4,7 @@ import {
   Container as MuiContainer, 
   Grid as MuiGrid, 
   Stack as MuiStack,
-  useTheme,
-  styled
+  useTheme
 } from '@mui/material';
 import { H1, H2, BodyText } from '../atoms';
 

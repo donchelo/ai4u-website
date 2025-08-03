@@ -66,7 +66,7 @@ const GalleryFrame: React.FC<GalleryFrameProps> = ({
     if (images.length > 0 && currentImageIndex === 0) {
       setCurrentImageIndex(getRandomIndex());
     }
-  }, [images]);
+  }, [images, currentImageIndex, getRandomIndex]);
 
   if (isLoading || images.length === 0) {
     return (

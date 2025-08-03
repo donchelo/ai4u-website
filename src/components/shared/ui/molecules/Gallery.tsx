@@ -83,7 +83,7 @@ const Gallery: React.FC<GalleryProps> = ({
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentImageIndex, isAutoScrolling]);
+  }, [handleKeyDown]);
 
   useEffect(() => {
     if (!isAutoScrolling || images.length <= 1) return;
@@ -93,7 +93,7 @@ const Gallery: React.FC<GalleryProps> = ({
     }, scrollInterval);
 
     return () => clearInterval(interval);
-  }, [isAutoScrolling, scrollInterval, images.length]);
+  }, [isAutoScrolling, scrollInterval, images.length, getRandomIndex]);
 
   if (!images || images.length === 0) {
     return (

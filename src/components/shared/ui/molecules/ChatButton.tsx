@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
-import { useColorMode } from '../../../../context/ThemeContext';
+
 import { sendMessageToMake, getFallbackResponse, generateSessionId, ChatMessage } from '../../../../utils/api';
 
 // Usar la interfaz ChatMessage de la API
