@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box } from '@mui/material';
 import { BRAND_IDENTITY } from '../data/brandIdentity';
 import { BudgetCard, TransactionCard } from '../components/shared/ui/molecules';
 import { WeatherWidget, SleepWidget, ModelingInterface, Navigation } from '../components/shared/ui/organisms';
@@ -31,48 +32,131 @@ const ComponentLibrary: React.FC = () => {
 
   // Componente de muestra de color mejorado con glassmorfismo
   const ColorSwatch: React.FC<{ color: string; name: string; description: string }> = ({ color, name, description }) => (
-    <div className="relative p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 transition-all duration-300 hover:shadow-xl">
-      <div className="flex flex-col items-center">
-        <div 
-          className="w-20 h-20 rounded-2xl mb-4 shadow-lg border border-white/30"
-          style={{ backgroundColor: color }}
-        />
-        <H4 className="text-center mb-2">{name}</H4>
-        <SmallText className="text-center text-gray-600 mb-3">{description}</SmallText>
-        <code className="text-xs bg-black/20 text-white px-3 py-1 rounded-lg backdrop-blur-sm">{color}</code>
-      </div>
-    </div>
+    <Box
+      sx={{
+        position: 'relative',
+        p: 3,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+        }
+      }}
+    >
+      <Box
+        sx={{
+          width: 80,
+          height: 80,
+          borderRadius: 2,
+          mb: 2,
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+          backgroundColor: color
+        }}
+      />
+      <H4 sx={{ textAlign: 'center', mb: 1 }}>{name}</H4>
+      <SmallText sx={{ textAlign: 'center', color: 'text.secondary', mb: 2 }}>{description}</SmallText>
+      <Box
+        component="code"
+        sx={{
+          fontSize: '0.75rem',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          color: 'white',
+          px: 1.5,
+          py: 0.5,
+          borderRadius: 1,
+          backdropFilter: 'blur(4px)'
+        }}
+      >
+        {color}
+      </Box>
+    </Box>
   );
 
   // Componente de tipografía mejorado
   const TypographyExample: React.FC<{ variant: string; text: string; className?: string }> = ({ variant, text, className = "" }) => (
-    <div className="relative p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-      <H4 className="text-gray-600 mb-3">{variant}</H4>
-      <div className={className}>{text}</div>
-    </div>
+    <Box
+      sx={{
+        position: 'relative',
+        p: 3,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: 2
+      }}
+    >
+      <H4 sx={{ color: 'text.secondary', mb: 2 }}>{variant}</H4>
+      <Box className={className}>{text}</Box>
+    </Box>
   );
 
   // Componente de botón mejorado
   const ButtonExample: React.FC<{ variant: string; children?: React.ReactNode; className?: string }> = ({ variant, children, className = "" }) => (
-    <div className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-      <H4 className="text-gray-600 mb-4">{variant}</H4>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        p: 3,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: 2
+      }}
+    >
+      <H4 sx={{ color: 'text.secondary', mb: 2 }}>{variant}</H4>
       <Button variant="primary" className={className}>
         {children}
       </Button>
-    </div>
+    </Box>
   );
 
   // Componente de tarjeta mejorado
   const CardExample: React.FC<{ title: string; description: string; icon?: React.ReactNode }> = ({ title, description, icon }) => (
-    <div className="relative p-8 bg-white/15 backdrop-blur-2xl border border-white/25 rounded-3xl shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-300">
+    <Box
+      sx={{
+        position: 'relative',
+        p: 4,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(24px)',
+        border: '1px solid rgba(255, 255, 255, 0.25)',
+        borderRadius: 3,
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+          boxShadow: '0 16px 48px rgba(0, 0, 0, 0.15)',
+          transform: 'translateY(-8px)'
+        }
+      }}
+    >
       {icon && (
-        <div className="w-16 h-16 bg-gradient-to-br from-neon-blaze to-digital-coral rounded-2xl flex items-center justify-center mb-6">
-          <div className="text-white text-2xl">{icon}</div>
-        </div>
+        <Box
+          sx={{
+            width: 64,
+            height: 64,
+            background: 'linear-gradient(135deg, #FF5C00, #FF7477)',
+            borderRadius: 2,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mb: 3,
+            color: 'white',
+            fontSize: '1.5rem'
+          }}
+        >
+          {icon}
+        </Box>
       )}
-      <H3 className="mb-4">{title}</H3>
-      <BodyText className="text-gray-700">{description}</BodyText>
-    </div>
+      <H3 sx={{ mb: 2 }}>{title}</H3>
+      <BodyText sx={{ color: 'text.secondary' }}>{description}</BodyText>
+    </Box>
   );
 
   // Páginas de demo disponibles

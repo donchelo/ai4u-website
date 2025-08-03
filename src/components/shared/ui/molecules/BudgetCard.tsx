@@ -3,14 +3,11 @@ import {
   Box, 
   Card, 
   CardContent, 
-  Typography, 
   IconButton, 
   Avatar,
-  Chip,
   Divider
 } from '@mui/material';
 import { 
-  Person as PersonIcon,
   MoreVert as MoreVertIcon,
   Add as AddIcon,
   AccountBalance as AccountBalanceIcon

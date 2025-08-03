@@ -61,9 +61,11 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
           <Box sx={{ flex: 1, width: '100%' }}>
             <TextField
               fullWidth
+              label="Buscar servicios"
               placeholder="Buscar servicios por nombre, descripción o tags..."
               value={searchValue}
               onChange={onSearchChange}
+              aria-label="Campo de búsqueda de servicios"
               sx={{
                 '& .MuiOutlinedInput-root': {
                   background: 'rgba(255, 255, 255, 0.1)',

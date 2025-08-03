@@ -73,7 +73,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
     }
   };
 
-  const { circleSize, fontSize, titleSize, descriptionSize } = getSizeStyles();
+  const { circleSize, titleSize, descriptionSize } = getSizeStyles();
 
   return (
     <Box 

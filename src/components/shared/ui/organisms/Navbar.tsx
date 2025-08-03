@@ -9,7 +9,8 @@ import {
   MenuItem,
   Button,
   Container,
-  Typography as MuiTypography
+  Typography as MuiTypography,
+  styled
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -21,6 +22,43 @@ import { useColors } from '../../../../hooks';
 import { Logo, LanguageToggle } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
+
+// Styled components para mejor performance
+const StyledNavButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'colors'
+})<{ colors: ReturnType<typeof useColors> }>(({ colors }) => ({
+  marginX: '4px',
+  color: colors.contrast.text.primary,
+  fontWeight: 500,
+  textTransform: 'none',
+  '&:hover': {
+    color: colors.palette.orange,
+    backgroundColor: colors.helpers.state.hover,
+  },
+}));
+
+const StyledThemeIconButton = styled(IconButton, {
+  shouldForwardProp: (prop) => prop !== 'colors'
+})<{ colors: ReturnType<typeof useColors> }>(({ colors }) => ({
+  marginLeft: '8px',
+  color: colors.contrast.text.secondary,
+  opacity: 0.7,
+  '&:hover': {
+    opacity: 1,
+    backgroundColor: colors.helpers.state.hover,
+    color: colors.palette.orange,
+  }
+}));
+
+const StyledDesktopMenuBox = styled(Box)(({ theme }) => ({
+  flexGrow: 1,
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  display: 'none',
+  [theme.breakpoints.up('md')]: {
+    display: 'flex',
+  },
+}));
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -69,6 +107,7 @@ const Navbar = () => {
           <Box
             component={RouterLink}
             to={ROUTES.HOME}
+            aria-label="Ir a página principal - AI4U Logo"
             sx={{
               mr: 3,
               display: { xs: 'none', md: 'flex' },
@@ -139,6 +178,7 @@ const Navbar = () => {
               {/* Theme toggle en menú móvil */}
               <MenuItem 
                 onClick={toggleColorMode}
+                aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
                 sx={{
                   color: colors.contrast.text.primary,
                   '&:hover': {
@@ -161,6 +201,7 @@ const Navbar = () => {
           <Box
             component={RouterLink}
             to={ROUTES.HOME}
+            aria-label="Ir a página principal - AI4U Logo"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -174,7 +215,7 @@ const Navbar = () => {
           </Box>
 
           {/* Desktop Menu */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
+          <StyledDesktopMenuBox>
             {navItems.map((item) => (
               <Button
                 key={item.name}
@@ -202,24 +243,15 @@ const Navbar = () => {
             </Box>
             
             {/* Theme toggle button desktop */}
-            <IconButton 
+            <StyledThemeIconButton
               onClick={toggleColorMode} 
               size="small"
-              sx={{ 
-                ml: 1,
-                color: colors.contrast.text.secondary,
-                opacity: 0.7,
-                '&:hover': { 
-                  opacity: 1,
-                  backgroundColor: colors.helpers.state.hover,
-                  color: colors.palette.orange,
-                }
-              }}
+              colors={colors}
               aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             >
               {mode === 'dark' ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
-            </IconButton>
-          </Box>
+            </StyledThemeIconButton>
+          </StyledDesktopMenuBox>
         </Toolbar>
       </Container>
     </AppBar>

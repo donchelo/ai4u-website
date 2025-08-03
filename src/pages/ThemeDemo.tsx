@@ -339,21 +339,31 @@ const ThemeDemo = () => {
           <H3 sx={{ mb: 3 }}>Iconos</H3>
           <Paper sx={{ p: 4 }}>
             <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap>
-              <IconButton color="default">
+              <IconButton color="default" aria-label="Información">
                 <InfoIcon />
               </IconButton>
-              <IconButton color="primary">
+              <IconButton color="primary" aria-label="Favorito">
                 <FavoriteIcon />
               </IconButton>
-              <IconButton color="secondary">
+              <IconButton color="secondary" aria-label="Compartir">
                 <ShareIcon />
               </IconButton>
-              <IconButton disabled>
+              <IconButton disabled aria-label="Información (deshabilitado)">
                 <InfoIcon />
               </IconButton>
               {mode === 'light' ? 
-                <IconButton onClick={toggleColorMode}><DarkModeIcon /></IconButton> : 
-                <IconButton onClick={toggleColorMode}><LightModeIcon /></IconButton>
+                <IconButton 
+                  onClick={toggleColorMode}
+                  aria-label="Cambiar a modo oscuro"
+                >
+                  <DarkModeIcon />
+                </IconButton> : 
+                <IconButton 
+                  onClick={toggleColorMode}
+                  aria-label="Cambiar a modo claro"
+                >
+                  <LightModeIcon />
+                </IconButton>
               }
             </Stack>
           </Paper>

@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { H3, BodyText, GeometricIcon, SEOHead } from '../atoms';
 import { useColors } from '../../../../hooks';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Service, ServiceStatus } from '../../../../types/service';
 import { getServiceStructuredData } from '../../../../utils/seo';
 
