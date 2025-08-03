@@ -4,8 +4,21 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
+  important: '#root', // Ensures Tailwind utilities have higher specificity than MUI
+  corePlugins: {
+    // Disable conflicting utilities that overlap with MUI
+    preflight: false, // Disables Tailwind's CSS reset to avoid conflicts with MUI
+  },
   theme: {
     extend: {
+      // Align breakpoints with MUI theme
+      screens: {
+        xs: '0px',      // MUI xs: 0
+        sm: '600px',    // MUI sm: 600  
+        md: '960px',    // MUI md: 960
+        lg: '1280px',   // MUI lg: 1280
+        xl: '1920px',   // MUI xl: 1920
+      },
       colors: {
         'neon-blaze': '#FF5C00',
         'digital-coral': '#FF7477',

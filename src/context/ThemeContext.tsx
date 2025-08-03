@@ -2,7 +2,37 @@ import React, { createContext, useContext, useState, useMemo, ReactNode, useEffe
 import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Components, Shadows } from '@mui/material/styles';
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { AI4U_PALETTE, CONTRAST_PAIRS, COMPONENT_VARIANTS } from '../components/shared/ui/tokens/palette';
+
+// Consolidated AI4U Color System - Single source of truth
+const AI4U_COLORS = {
+  // Primary brand colors
+  orange: '#FF5C00',
+  green: '#B6CA40',
+  
+  // Base colors
+  white: '#FFFFFF',
+  black: '#0A0A0A',
+  
+  // Gray scale
+  gray: {
+    50: '#FAFAFA',
+    100: '#F5F5F5',
+    200: '#EEEEEE',
+    300: '#E0E0E0',
+    400: '#BDBDBD',
+    500: '#9E9E9E',
+    600: '#757575',
+    700: '#616161',
+    800: '#424242',
+    900: '#212121',
+  },
+  
+  // Semantic colors
+  error: '#DC2626',
+  success: '#059669',
+  warning: '#D97706',
+  info: '#1E3A8A',
+} as const;
 
 // Fuentes para código
 const CODE_FONT_FAMILY = '"Necto Mono", monospace';
@@ -69,10 +99,9 @@ const typography: TypographyVariantsOptions = {
 	},
 };
 
-// Configuración de componentes con contraste garantizado
+// Configuración de componentes simplificada
 const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
-	const contrast = CONTRAST_PAIRS[mode];
-	const buttonColors = COMPONENT_VARIANTS.button;
+	const isLight = mode === 'light';
 	
 	return {
 		MuiButton: {
@@ -84,40 +113,34 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					boxShadow: 'none',
 					transition: 'all 0.2s ease-in-out',
 				},
-				// Botones primarios (naranja)
 				containedPrimary: {
-					backgroundColor: buttonColors.primary.background,
-					color: buttonColors.primary.text,
+					backgroundColor: AI4U_COLORS.orange,
+					color: AI4U_COLORS.white,
 					'&:hover': {
-						backgroundColor: buttonColors.primary.hover,
+						backgroundColor: '#E54A00',
 						boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
 					},
 				},
-				// Botones secundarios (gris)
 				containedSecondary: {
-					backgroundColor: mode === 'light' ? buttonColors.secondary.background : AI4U_PALETTE.gray[800],
-					color: mode === 'light' ? buttonColors.secondary.text : AI4U_PALETTE.white,
+					backgroundColor: isLight ? AI4U_COLORS.gray[200] : AI4U_COLORS.gray[800],
+					color: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 					'&:hover': {
-						backgroundColor: mode === 'light' ? buttonColors.secondary.hover : AI4U_PALETTE.gray[700],
-						boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+						backgroundColor: isLight ? AI4U_COLORS.gray[300] : AI4U_COLORS.gray[700],
 					},
 				},
-				// Botones outline
 				outlined: {
 					borderWidth: '2px',
-					borderColor: buttonColors.outline.border,
-					color: buttonColors.outline.text,
-					backgroundColor: buttonColors.outline.background,
+					borderColor: AI4U_COLORS.orange,
+					color: AI4U_COLORS.orange,
 					'&:hover': {
-						backgroundColor: buttonColors.outline.hover,
+						backgroundColor: 'rgba(255, 92, 0, 0.08)',
 						borderWidth: '2px',
 					},
 				},
-				// Botones de texto
 				text: {
-					color: contrast.text.primary,
+					color: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 					'&:hover': {
-						backgroundColor: mode === 'light' 
+						backgroundColor: isLight 
 							? 'rgba(0, 0, 0, 0.04)' 
 							: 'rgba(255, 255, 255, 0.08)',
 					},
@@ -128,9 +151,9 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					borderRadius: 12,
-					backgroundColor: contrast.surface,
-					border: `1px solid ${contrast.border}`,
-					boxShadow: mode === 'light' 
+					backgroundColor: isLight ? AI4U_COLORS.white : AI4U_COLORS.gray[900],
+					border: `1px solid ${isLight ? AI4U_COLORS.gray[200] : AI4U_COLORS.gray[800]}`,
+					boxShadow: isLight 
 						? '0 4px 12px rgba(0,0,0,0.05)' 
 						: '0 4px 12px rgba(0,0,0,0.2)',
 				},
@@ -140,15 +163,15 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					transition: 'all 0.2s ease-in-out',
-					color: contrast.text.primary,
+					color: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 					'&:hover': {
-						backgroundColor: mode === 'light' 
+						backgroundColor: isLight 
 							? 'rgba(0, 0, 0, 0.04)' 
 							: 'rgba(255, 255, 255, 0.08)',
 					},
 				},
 				colorPrimary: {
-					color: AI4U_PALETTE.orange,
+					color: AI4U_COLORS.orange,
 					'&:hover': {
 						backgroundColor: 'rgba(255, 92, 0, 0.08)',
 					},
@@ -158,22 +181,22 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiDivider: {
 			styleOverrides: {
 				root: {
-					borderColor: contrast.divider,
+					borderColor: isLight ? AI4U_COLORS.gray[300] : AI4U_COLORS.gray[700],
 				},
 			},
 		},
 		MuiPaper: {
 			styleOverrides: {
 				root: {
-					backgroundColor: contrast.surface,
+					backgroundColor: isLight ? AI4U_COLORS.white : AI4U_COLORS.gray[900],
 				},
 			},
 		},
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					backgroundColor: contrast.background,
-					boxShadow: mode === 'light' 
+					backgroundColor: isLight ? AI4U_COLORS.white : AI4U_COLORS.black,
+					boxShadow: isLight 
 						? '0 1px 3px rgba(0,0,0,0.1)' 
 						: '0 1px 3px rgba(0,0,0,0.3)',
 				},
@@ -183,19 +206,19 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					borderRadius: 8,
-					backgroundColor: contrast.surface,
-					border: `1px solid ${contrast.border}`,
-					color: contrast.text.primary,
+					backgroundColor: isLight ? AI4U_COLORS.gray[50] : AI4U_COLORS.gray[900],
+					border: `1px solid ${isLight ? AI4U_COLORS.gray[200] : AI4U_COLORS.gray[800]}`,
+					color: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 				},
 			},
 		},
 		MuiTypography: {
 			styleOverrides: {
 				root: {
-					color: contrast.text.primary,
+					color: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 					'& code': {
 						fontFamily: CODE_FONT_FAMILY,
-						backgroundColor: mode === 'light' ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.1)',
+						backgroundColor: isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.1)',
 						padding: '2px 4px',
 						borderRadius: 4,
 					},
@@ -205,58 +228,45 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 	};
 };
 
-// Configuración de paleta con contraste automático
+// Configuración de paleta simplificada
 const getPalette = (mode: PaletteMode) => {
-	const contrast = CONTRAST_PAIRS[mode];
+	const isLight = mode === 'light';
 	
 	return {
 		mode,
-		// Colores principales
 		primary: {
-			main: AI4U_PALETTE.orange,
+			main: AI4U_COLORS.orange,
 			light: '#FF7C33',
 			dark: '#E54A00',
-			contrastText: AI4U_PALETTE.white,
+			contrastText: AI4U_COLORS.white,
 		},
 		secondary: {
-			main: AI4U_PALETTE.gray[600],
-			light: AI4U_PALETTE.gray[400],
-			dark: AI4U_PALETTE.gray[800],
-			contrastText: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+			main: AI4U_COLORS.gray[600],
+			light: AI4U_COLORS.gray[400],
+			dark: AI4U_COLORS.gray[800],
+			contrastText: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
 		},
-		// Fondos y textos con contraste garantizado
 		background: {
-			default: contrast.background,
-			paper: contrast.surface,
+			default: isLight ? AI4U_COLORS.white : AI4U_COLORS.black,
+			paper: isLight ? AI4U_COLORS.gray[50] : AI4U_COLORS.gray[900],
 		},
 		text: {
-			primary: contrast.text.primary,
-			secondary: contrast.text.secondary,
-			disabled: contrast.text.disabled,
+			primary: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
+			secondary: isLight ? AI4U_COLORS.gray[700] : AI4U_COLORS.gray[100],
+			disabled: AI4U_COLORS.gray[500],
 		},
-		// Colores de acción
 		action: {
-			active: contrast.text.primary,
-			hover: mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
-			selected: mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
-			disabled: contrast.text.disabled,
-			disabledBackground: mode === 'light' ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
+			active: isLight ? AI4U_COLORS.black : AI4U_COLORS.white,
+			hover: isLight ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
+			selected: isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
+			disabled: AI4U_COLORS.gray[500],
+			disabledBackground: isLight ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
 		},
-		// Colores semánticos
-		error: {
-			main: AI4U_PALETTE.error,
-		},
-		success: {
-			main: AI4U_PALETTE.success,
-		},
-		info: {
-			main: AI4U_PALETTE.info,
-		},
-		warning: {
-			main: AI4U_PALETTE.warning,
-		},
-		// Divisores
-		divider: contrast.divider,
+		error: { main: AI4U_COLORS.error },
+		success: { main: AI4U_COLORS.success },
+		info: { main: AI4U_COLORS.info },
+		warning: { main: AI4U_COLORS.warning },
+		divider: isLight ? AI4U_COLORS.gray[300] : AI4U_COLORS.gray[700],
 	};
 };
 
