@@ -162,9 +162,9 @@ const BasicLoadingWrapper = ({ children }: BasicLoadingWrapperProps) => {
   }
 
   return (
-    <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
+    <Box sx={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
       {children}
-    </div>
+    </Box>
   );
 };
 

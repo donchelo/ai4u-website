@@ -5,17 +5,9 @@ import {
   InputAdornment,
   Chip,
   Stack,
-  FormGroup,
-  FormControlLabel,
-  Switch,
   Tabs,
-  Tab,
-  useTheme,
-  alpha
+  Tab
 } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import ClearIcon from '@mui/icons-material/Clear';
 import { Button, GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
 import { ServiceCategory } from '../../../../types/service';
@@ -42,7 +34,6 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
   filteredCount,
   categoryTabs
 }) => {
-  const theme = useTheme();
   const colors = useColors();
 
   return (
