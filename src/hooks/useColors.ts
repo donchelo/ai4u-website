@@ -3,25 +3,8 @@ import { useTheme } from '@mui/material/styles';
 import { useColorMode } from '../context/ThemeContext';
 import { useContrastColors, useComponentColors } from '../components/shared/ui/tokens/palette';
 
-// Static palette object - doesn't change, so it can be outside the hook
-const STATIC_PALETTE = {
-  white: '#FFFFFF',
-  black: '#000000',
-  orange: '#FF5C00',
-  green: '#B6CA40',
-  gray: {
-    50: '#FAFAFA',
-    100: '#F5F5F5',
-    200: '#EEEEEE',
-    300: '#E0E0E0',
-    400: '#BDBDBD',
-    500: '#9E9E9E',
-    600: '#757575',
-    700: '#616161',
-    800: '#424242',
-    900: '#212121',
-  },
-} as const;
+// Import palette from single source of truth
+import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 
 // Hook principal para el sistema de colores AI4U - Optimized with memoization
 export const useColors = () => {
@@ -36,7 +19,7 @@ export const useColors = () => {
     mode,
     
     // Colores base - use static reference
-    palette: STATIC_PALETTE,
+    palette: AI4U_PALETTE,
     
     // Colores con contraste automático
     contrast,
