@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import { Box, Skeleton, Container, Stack, useTheme } from '@mui/material';
 import { Logo } from '../atoms';
 
-const BasicLoadingWrapper = ({ children }: any) => {
+interface BasicLoadingWrapperProps {
+  children?: ReactNode;
+}
+
+const BasicLoadingWrapper = ({ children }: BasicLoadingWrapperProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const theme = useTheme();
 

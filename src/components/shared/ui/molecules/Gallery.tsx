@@ -3,8 +3,7 @@ import {
   Container, 
   Box, 
   IconButton, 
-  Typography,
-  useTheme
+  Typography
 } from '@mui/material';
 import { useColors } from '../../../../hooks';
 import { useLanguage } from '../../../../hooks';
@@ -37,17 +36,16 @@ const Gallery: React.FC<GalleryProps> = ({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(autoScroll);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const theme = useTheme();
   const colors = useColors();
   const { t } = useLanguage();
 
-  const getRandomIndex = () => {
+  const getRandomIndex = useCallback(() => {
     let newIndex;
     do {
       newIndex = Math.floor(Math.random() * images.length);
     } while (newIndex === currentImageIndex && images.length > 1);
     return newIndex;
-  };
+  }, [currentImageIndex, images.length]);
 
   const nextImage = () => {
     setIsTransitioning(true);
@@ -69,7 +67,7 @@ const Gallery: React.FC<GalleryProps> = ({
     }, 200);
   };
 
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === 'ArrowLeft') {
       previousImage();
     } else if (event.key === 'ArrowRight') {
@@ -78,7 +76,7 @@ const Gallery: React.FC<GalleryProps> = ({
       event.preventDefault();
       setIsAutoScrolling(!isAutoScrolling);
     }
-  };
+  }, [isAutoScrolling]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Skeleton, useTheme } from '@mui/material';
+import { Box, Skeleton, useTheme, SxProps, Theme } from '@mui/material';
 import { useLazyImage } from '../../../../hooks';
 import { usePWA } from '../../../../hooks/usePWA';
 
@@ -8,7 +8,7 @@ interface LazyImageProps {
   alt: string;
   width?: string | number;
   height?: string | number;
-  sx?: any;
+  sx?: SxProps<Theme>;
   skeletonHeight?: string | number;
   skeletonWidth?: string | number;
   priority?: boolean;
