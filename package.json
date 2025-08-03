@@ -26,7 +26,9 @@
     "deploy": "gh-pages -d build",
     "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada",
     "optimize-images": "node scripts/optimize-images.js",
-    "build:optimized": "npm run optimize-images && npm run build"
+    "build:optimized": "npm run optimize-images && npm run build",
+    "lighthouse": "node scripts/lighthouse-test.js",
+    "test:performance": "npm start & timeout 10 && npm run lighthouse"
   },
   "eslintConfig": {
     "extends": [
@@ -73,9 +75,11 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/react-router-dom": "^5.3.3",
+    "chrome-launcher": "^1.2.0",
     "gh-pages": "^6.3.0",
     "imagemin": "^9.0.1",
     "imagemin-webp": "^8.0.0",
+    "lighthouse": "^12.8.1",
     "react-app-rewired": "^2.2.1"
   }
 }
