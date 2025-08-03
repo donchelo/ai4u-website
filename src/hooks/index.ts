@@ -7,4 +7,6 @@ export { useColorMode } from '../context/ThemeContext';
 export { useLanguage } from '../context';
 export { useTranslation, useTranslations, useSectionTranslations } from './useTranslations';
 export { useErrorHandler } from './useErrorHandler';
-export { usePWA } from './usePWA'; 
+export { usePWA } from './usePWA';
+export { usePerformanceMonitoring } from './usePerformanceMonitoring';
+export { useErrorTracking } from '../utils/errorTracking'; 

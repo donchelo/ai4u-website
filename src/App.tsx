@@ -5,6 +5,7 @@ import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components
 import { ErrorBoundary } from './components/shared/ui/molecules';
 import { ThemeProvider, ServicesProvider, LanguageProvider } from './context';
 import { ROUTES } from './utils/constants';
+import './utils/errorTracking';
 import { 
   Home, 
   Services, 
