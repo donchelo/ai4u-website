@@ -24,7 +24,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada"
+    "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build:optimized": "npm run optimize-images && npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +74,8 @@
     "@types/react-dom": "^18.2.0",
     "@types/react-router-dom": "^5.3.3",
     "gh-pages": "^6.3.0",
+    "imagemin": "^9.0.1",
+    "imagemin-webp": "^8.0.0",
     "react-app-rewired": "^2.2.1"
   }
 }
