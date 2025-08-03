@@ -11,3 +11,5 @@ export { default as PixelArtFilter } from './PixelArtFilter';
 export { default as LanguageToggle } from './LanguageToggle';
 export { default as SEOHead } from './SEOHead';
 export { default as OptimizedImage } from './OptimizedImage';
+export { default as ContextualLink } from './ContextualLink';
+export { default as NavigationDot } from './NavigationDot';

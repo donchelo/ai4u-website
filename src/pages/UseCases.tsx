@@ -6,20 +6,24 @@ import {
   Stack
 } from '@mui/material';
 import { H1, H2, H3, BodyText, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { Card, DiagnosticCTA } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
 import { useColors } from '../hooks';
 import { useLanguage } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
+import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const UseCases = () => {
   const colors = useColors();
   const { t } = useLanguage();
   const metaTags = getPageMetaTags('cases');
+  
+  // Obtener enlaces contextuales para la página Cases
+  const relatedLinks = getRelatedLinks('/casos-de-uso');
 
   return (
     <Box sx={{ 
-      background: `linear-gradient(135deg, ${colors.helpers.background.primary} 0%, ${colors.helpers.background.secondary} 100%)`
+      background: `linear-gradient(135deg, ${colors.contrast.background} 0%, ${colors.contrast.surface} 100%)`
     }}>
       {/* SEO Head */}
       <SEOHead
@@ -40,13 +44,13 @@ const UseCases = () => {
             fontWeight: 300,
             fontSize: { xs: '2.5rem', md: '4rem' },
             letterSpacing: '-0.02em',
-            color: colors.helpers.text.primary
+            color: colors.contrast.text.primary
           }}>
             {t('successCases.hero.title')}
           </H1>
           <BodyText sx={{ 
             mb: 10, 
-            color: colors.helpers.text.secondary,
+            color: colors.contrast.text.secondary,
             fontSize: '1.2rem',
             lineHeight: 1.6,
             fontWeight: 300,
@@ -123,7 +127,7 @@ const UseCases = () => {
                     </Box>
                     
                     <BodyText sx={{ 
-                      color: colors.helpers.text.secondary,
+                      color: colors.contrast.text.secondary,
                       fontSize: '0.9rem',
                       fontWeight: 500,
                       textAlign: 'center',
@@ -156,13 +160,13 @@ const UseCases = () => {
                   mb: 4,
                   fontWeight: 300,
                   fontSize: { xs: '2rem', md: '2.5rem' },
-                  color: colors.helpers.text.primary
+                  color: colors.contrast.text.primary
                 }}>
                   {t('successCases.metrics.title')}
                 </H2>
                 <BodyText sx={{ 
                   mb: 6,
-                  color: colors.helpers.text.secondary,
+                  color: colors.contrast.text.secondary,
                   fontSize: '1.1rem',
                   lineHeight: 1.6,
                   fontWeight: 300
@@ -189,13 +193,13 @@ const UseCases = () => {
                           fontWeight: 700,
                           fontSize: { xs: '3rem', sm: '4rem', md: '5rem' },
                           lineHeight: 0.9,
-                          color: colors.helpers.text.primary,
+                          color: colors.contrast.text.primary,
                           letterSpacing: '-0.02em'
                         }}>
                           {t(`successCases.metrics.items.${index}.value`)}
                         </H3>
                         <BodyText sx={{ 
-                          color: colors.helpers.text.secondary,
+                          color: colors.contrast.text.secondary,
                           fontSize: { xs: '0.9rem', sm: '1rem' },
                           fontWeight: 300
                         }}>
@@ -219,12 +223,12 @@ const UseCases = () => {
               mb: 3,
               fontWeight: 300,
               fontSize: { xs: '2rem', md: '2.5rem' },
-              color: colors.helpers.text.primary
+              color: colors.contrast.text.primary
             }}>
               ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.orange }}>caso de éxito</Box>?
             </H2>
             <BodyText sx={{ 
-              color: colors.helpers.text.secondary,
+              color: colors.contrast.text.secondary,
               fontSize: '1.1rem',
               lineHeight: 1.6,
               maxWidth: 600,
@@ -236,6 +240,15 @@ const UseCases = () => {
           <DiagnosticCTA />
         </Container>
       </Box>
+
+      {/* Enlaces Relacionados - SEO Internal Linking */}
+      <Container maxWidth="lg">
+        <RelatedPages 
+          pages={relatedLinks}
+          title="Explora más sobre nuestro trabajo:"
+          variant="horizontal"
+        />
+      </Container>
     </Box>
   );
 };
