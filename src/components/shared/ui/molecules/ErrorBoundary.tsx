@@ -4,7 +4,7 @@ import { H2, BodyText } from '../atoms';
 import { RefreshOutlined as RefreshIcon } from '@mui/icons-material';
 
 interface ErrorBoundaryProps {
-  children: ReactNode;
+  children?: ReactNode;
   fallback?: ReactNode;
   onError?: (error: Error, errorInfo: ErrorInfo) => void;
 }

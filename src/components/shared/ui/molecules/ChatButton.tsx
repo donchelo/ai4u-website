@@ -124,7 +124,7 @@ const ChatButton: React.FC = () => {
     } catch (error) {
       console.error('Error sending message:', error);
       
-      let errorText = 'Lo siento, estoy teniendo problemas técnicos. Por favor, intenta de nuevo en unos momentos.';
+      const errorText = 'Lo siento, estoy teniendo problemas técnicos. Por favor, intenta de nuevo en unos momentos.';
       
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
