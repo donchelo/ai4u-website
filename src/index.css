@@ -47,19 +47,20 @@ body {
 }
 
 /* Component Styles - Migrated from Tailwind */
+/* Note: These breakpoints align with MUI's default breakpoints (sm: 600px, lg: 1024px) */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) { /* MUI sm breakpoint */
   .container {
     padding: 0 1.5rem;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) { /* MUI lg breakpoint */
   .container {
     padding: 0 2rem;
   }

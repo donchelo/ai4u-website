@@ -196,9 +196,9 @@ const ChatButton: React.FC = () => {
         fullScreen={isMobile}
         PaperProps={{
           sx: {
-            borderRadius: isMobile ? 0 : 2,
-            height: isMobile ? '100%' : '70vh',
-            maxHeight: isMobile ? '100%' : '600px',
+            borderRadius: { xs: 0, sm: 2 }, // Use theme breakpoint instead of isMobile
+            height: { xs: '100%', sm: '70vh' },
+            maxHeight: { xs: '100%', sm: '600px' }, // Use responsive sx instead of conditional logic
           }
         }}
       >

@@ -1,37 +1,42 @@
+import { useMemo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { useColorMode } from '../context/ThemeContext';
 import { useContrastColors, useComponentColors } from '../components/shared/ui/tokens/palette';
 
-// Hook principal para el sistema de colores AI4U
+// Static palette object - doesn't change, so it can be outside the hook
+const STATIC_PALETTE = {
+  white: '#FFFFFF',
+  black: '#000000',
+  orange: '#FF5C00',
+  green: '#B6CA40',
+  gray: {
+    50: '#FAFAFA',
+    100: '#F5F5F5',
+    200: '#EEEEEE',
+    300: '#E0E0E0',
+    400: '#BDBDBD',
+    500: '#9E9E9E',
+    600: '#757575',
+    700: '#616161',
+    800: '#424242',
+    900: '#212121',
+  },
+} as const;
+
+// Hook principal para el sistema de colores AI4U - Optimized with memoization
 export const useColors = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
   const contrast = useContrastColors(mode);
   const componentColors = useComponentColors(mode);
 
-  return {
+  // Memoize the entire color object to prevent recreation on every render
+  return useMemo(() => ({
     // Modo actual
     mode,
     
-    // Colores base
-    palette: {
-      white: '#FFFFFF',
-      black: '#000000',
-      orange: '#FF5C00',
-      green: '#B6CA40',
-      gray: {
-        50: '#FAFAFA',
-        100: '#F5F5F5',
-        200: '#EEEEEE',
-        300: '#E0E0E0',
-        400: '#BDBDBD',
-        500: '#9E9E9E',
-        600: '#757575',
-        700: '#616161',
-        800: '#424242',
-        900: '#212121',
-      },
-    },
+    // Colores base - use static reference
+    palette: STATIC_PALETTE,
     
     // Colores con contraste automático
     contrast,
@@ -39,7 +44,7 @@ export const useColors = () => {
     // Variantes de componentes
     components: componentColors.components,
     
-    // Helpers para uso común
+    // Helpers para uso común - memoized
     helpers: {
       // Para fondos
       background: {
@@ -79,28 +84,30 @@ export const useColors = () => {
     
     // Acceso directo al tema MUI
     theme,
-  };
+  }), [mode, contrast, componentColors.components, theme]);
 };
 
-// Hook específico para componentes con variantes
+// Hook específico para componentes con variantes - Optimized with memoization
 export const useComponentVariant = (componentType: 'button' | 'card', variant: string) => {
   const { components } = useColors();
   
-  switch (componentType) {
-    case 'button':
-      return components.button[variant as keyof typeof components.button];
-    case 'card':
-      return components.card[variant as keyof typeof components.card];
-    default:
-      return null;
-  }
+  return useMemo(() => {
+    switch (componentType) {
+      case 'button':
+        return components.button[variant as keyof typeof components.button];
+      case 'card':
+        return components.card[variant as keyof typeof components.card];
+      default:
+        return null;
+    }
+  }, [components, componentType, variant]);
 };
 
-// Hook para obtener colores de contraste específicos
+// Hook para obtener colores de contraste específicos - Optimized with memoization
 export const useContrastPair = () => {
   const { mode, contrast } = useColors();
   
-  return {
+  return useMemo(() => ({
     mode,
     // Fondo claro → Texto oscuro
     light: {
@@ -112,5 +119,5 @@ export const useContrastPair = () => {
       background: mode === 'dark' ? contrast.background : '#000000',
       text: mode === 'dark' ? contrast.text.primary : '#FFFFFF',
     },
-  };
+  }), [mode, contrast]);
 }; 

@@ -142,7 +142,7 @@ const Gallery: React.FC<GalleryProps> = ({
           sx={{
             position: 'relative',
             width: '100%',
-            maxWidth: '1200px',
+            maxWidth: { xs: '100%', lg: '1200px' }, // Use theme breakpoints instead of hardcoded values
             height: 'auto',
             borderRadius: '16px',
             overflow: 'hidden',
@@ -329,7 +329,7 @@ const Gallery: React.FC<GalleryProps> = ({
               variant="body2"
               sx={{
                 color: colors.contrast.text.secondary,
-                maxWidth: '600px',
+                maxWidth: { xs: '100%', sm: '600px' }, // Use theme breakpoints
                 mx: 'auto',
                 lineHeight: 1.6,
               }}

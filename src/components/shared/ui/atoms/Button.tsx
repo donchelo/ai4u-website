@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
+import { Theme } from '@mui/material/styles';
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'glass';
@@ -8,15 +8,99 @@ interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   children?: ReactNode;
 }
 
+// Optimized styled component with proper memoization and performance
+const StyledButton = styled(MuiButton, {
+  shouldForwardProp: (prop) => prop !== 'customVariant',
+})<{ customVariant?: ButtonProps['variant'] }>(({ theme, customVariant, size }) => {
+  const isLight = theme.palette.mode === 'light';
+  
+  // Base styles - memoized through styled components
+  const baseStyles = {
+    borderRadius: size === 'small' ? theme.spacing(1.5) : size === 'large' ? theme.spacing(2.5) : theme.spacing(2),
+    fontWeight: 600,
+    textTransform: 'none' as const,
+    fontFamily: '"Red Hat Display", sans-serif',
+    transition: theme.transitions.create(['transform', 'box-shadow', 'background-color'], {
+      duration: theme.transitions.duration.standard,
+      easing: theme.transitions.easing.easeInOut,
+    }),
+    '&:hover': {
+      transform: 'translateY(-2px)',
+    },
+    '&:active': {
+      transform: 'translateY(0px)',
+    },
+  };
+
+  // Variant-specific styles using theme tokens
+  switch (customVariant) {
+    case 'primary':
+      return {
+        ...baseStyles,
+        background: `linear-gradient(135deg, ${theme.palette.primary.main}, #FF7477)`,
+        color: theme.palette.primary.contrastText,
+        boxShadow: `0 4px 20px ${theme.palette.primary.main}30`,
+        '&:hover': {
+          ...baseStyles['&:hover'],
+          background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
+          boxShadow: `0 8px 25px ${theme.palette.primary.main}60`,
+        },
+      };
+    
+    case 'secondary':
+      return {
+        ...baseStyles,
+        backgroundColor: isLight 
+          ? theme.palette.background.paper 
+          : `${theme.palette.common.white}10`,
+        color: theme.palette.text.primary,
+        border: `1px solid ${isLight ? theme.palette.divider : `${theme.palette.common.white}20`}`,
+        backdropFilter: 'blur(10px)',
+        '&:hover': {
+          ...baseStyles['&:hover'],
+          backgroundColor: isLight 
+            ? theme.palette.common.white 
+            : `${theme.palette.common.white}20`,
+        },
+      };
+    
+    case 'outline':
+      return {
+        ...baseStyles,
+        backgroundColor: 'transparent',
+        color: theme.palette.primary.main,
+        border: `2px solid ${theme.palette.primary.main}`,
+        '&:hover': {
+          ...baseStyles['&:hover'],
+          backgroundColor: `${theme.palette.primary.main}10`,
+          borderColor: theme.palette.primary.main,
+        },
+      };
+    
+    case 'glass':
+      return {
+        ...baseStyles,
+        backgroundColor: `${theme.palette.common.white}10`,
+        color: theme.palette.text.primary,
+        border: `1px solid ${isLight ? theme.palette.divider : `${theme.palette.common.white}20`}`,
+        backdropFilter: 'blur(20px)',
+        '&:hover': {
+          ...baseStyles['&:hover'],
+          backgroundColor: `${theme.palette.common.white}20`,
+        },
+      };
+    
+    default:
+      return baseStyles;
+  }
+});
+
 export const Button = ({
   children,
   variant = 'primary',
   size = 'medium',
   ...props
 }: ButtonProps) => {
-  const theme = useTheme();
-  const isLight = theme.palette.mode === 'light';
-
   // Map custom variants to MUI variants
   const getMuiVariant = (): MuiButtonProps['variant'] => {
     switch (variant) {
@@ -26,90 +110,16 @@ export const Button = ({
     }
   };
 
-  // Get styles for each variant using sx prop
-  const getSxStyles = () => {
-    const baseStyles = {
-      borderRadius: size === 'small' ? 1.5 : size === 'large' ? 2.5 : 2,
-      fontWeight: 600,
-      textTransform: 'none',
-      fontFamily: '"Red Hat Display", sans-serif',
-      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-      '&:hover': {
-        transform: 'translateY(-2px)',
-      },
-      '&:active': {
-        transform: 'translateY(0px)',
-      },
-    };
-
-    switch (variant) {
-      case 'primary':
-        return {
-          ...baseStyles,
-          background: 'linear-gradient(135deg, #FF5C00, #FF7477)',
-          color: '#FFFFFF',
-          boxShadow: '0 4px 20px rgba(255, 92, 0, 0.3)',
-          '&:hover': {
-            ...baseStyles['&:hover'],
-            background: 'linear-gradient(135deg, #FF5C00, #FF5C00)',
-            boxShadow: '0 8px 25px rgba(255, 92, 0, 0.4)',
-          },
-        };
-      
-      case 'secondary':
-        return {
-          ...baseStyles,
-          backgroundColor: isLight ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.1)',
-          color: isLight ? '#0A0A0A' : '#FFFFFF',
-          border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.2)'}`,
-          backdropFilter: 'blur(10px)',
-          '&:hover': {
-            ...baseStyles['&:hover'],
-            backgroundColor: isLight ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.2)',
-          },
-        };
-      
-      case 'outline':
-        return {
-          ...baseStyles,
-          backgroundColor: 'transparent',
-          color: '#FF5C00',
-          border: '2px solid #FF5C00',
-          '&:hover': {
-            ...baseStyles['&:hover'],
-            backgroundColor: 'rgba(255, 92, 0, 0.1)',
-            borderColor: '#FF5C00',
-          },
-        };
-      
-      case 'glass':
-        return {
-          ...baseStyles,
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          color: isLight ? '#0A0A0A' : '#FFFFFF',
-          border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.2)'}`,
-          backdropFilter: 'blur(20px)',
-          '&:hover': {
-            ...baseStyles['&:hover'],
-            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          },
-        };
-      
-      default:
-        return baseStyles;
-    }
-  };
-
   return (
-    <MuiButton
+    <StyledButton
       variant={getMuiVariant()}
       size={size}
-      sx={getSxStyles()}
+      customVariant={variant}
       disableElevation
       {...props}
     >
       {children}
-    </MuiButton>
+    </StyledButton>
   );
 };
 

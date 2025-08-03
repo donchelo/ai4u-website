@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
-import { useColors } from '../../../../hooks';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
@@ -9,97 +8,114 @@ interface CardProps extends Omit<MuiCardProps, 'variant'> {
   showContent?: boolean;
 }
 
-// Componente Card rediseñado con glassmorphism y estilos minimalistas
-const StyledCard = styled(MuiCard)<{ cardVariant?: string }>(({ theme, cardVariant }) => {
+// Optimized Card component with consolidated styling logic and proper theme integration
+const StyledCard = styled(MuiCard, {
+  shouldForwardProp: (prop) => prop !== 'cardVariant',
+})<{ cardVariant?: CardProps['variant'] }>(({ theme, cardVariant }) => {
+  const isLight = theme.palette.mode === 'light';
+  
+  // Base styles using theme tokens for consistency
   const baseStyles = {
-    borderRadius: '24px',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    borderRadius: theme.spacing(3), // 24px with theme consistency
+    transition: theme.transitions.create(['transform', 'box-shadow', 'background'], {
+      duration: theme.transitions.duration.standard,
+      easing: theme.transitions.easing.easeInOut,
+    }),
     position: 'relative' as const,
     overflow: 'hidden' as const,
-    fontFamily: '"Red Hat Display", sans-serif',
+    fontFamily: theme.typography.fontFamily,
     '&:hover': {
       transform: 'translateY(-4px)',
     },
   };
 
+  // Consolidated variant logic using theme palette
   switch (cardVariant) {
     case 'glass':
       return {
         ...baseStyles,
-        background: 'rgba(255, 255, 255, 0.15)',
+        background: `${theme.palette.common.white}15`,
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.25)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-        color: '#FFFFFF', // Texto blanco para máximo contraste en glass
-        fontWeight: '600', // Texto más grueso para mejor legibilidad
+        border: `1px solid ${theme.palette.common.white}25`,
+        boxShadow: `0 8px 32px ${theme.palette.common.black}12, inset 0 1px 0 ${theme.palette.common.white}40`,
+        color: theme.palette.common.white,
+        fontWeight: 600,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'rgba(255, 255, 255, 0.35)',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.7)',
+          background: `${theme.palette.common.white}35`,
+          boxShadow: `0 12px 40px ${theme.palette.common.black}25, inset 0 1px 0 ${theme.palette.common.white}70`,
         },
       };
     
     case 'dark':
       return {
         ...baseStyles,
-        background: 'linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.9))',
+        background: isLight 
+          ? 'linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.9))'
+          : theme.palette.background.paper,
         backdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255, 255, 255, 0.15)',
-        color: '#FFFFFF',
-        fontWeight: '600', // Texto más grueso para mejor legibilidad
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        border: `1px solid ${isLight ? `${theme.palette.common.white}15` : theme.palette.divider}`,
+        color: isLight ? theme.palette.common.white : theme.palette.text.primary,
+        fontWeight: 600,
+        boxShadow: `0 8px 32px ${theme.palette.common.black}40, inset 0 1px 0 ${theme.palette.common.white}10`,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'linear-gradient(135deg, rgba(60, 60, 60, 0.95), rgba(75, 75, 75, 0.9))',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.45)',
+          background: isLight 
+            ? 'linear-gradient(135deg, rgba(60, 60, 60, 0.95), rgba(75, 75, 75, 0.9))'
+            : theme.palette.action.hover,
+          boxShadow: `0 12px 40px ${theme.palette.common.black}80, inset 0 1px 0 ${theme.palette.common.white}45`,
         },
       };
     
     case 'primary':
       return {
         ...baseStyles,
-        background: 'linear-gradient(135deg, rgba(255, 92, 0, 0.15), rgba(255, 116, 119, 0.1))',
+        background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.primary.main}10)`,
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 92, 0, 0.2)',
-        boxShadow: '0 8px 32px rgba(255, 92, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-        color: '#000000', // Texto negro para máximo contraste en primary
-        fontWeight: '600', // Texto más grueso para mejor legibilidad
+        border: `1px solid ${theme.palette.primary.main}20`,
+        boxShadow: `0 8px 32px ${theme.palette.primary.main}15, inset 0 1px 0 ${theme.palette.common.white}20`,
+        color: theme.palette.text.primary,
+        fontWeight: 600,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'linear-gradient(135deg, rgba(255, 92, 0, 0.2), rgba(255, 116, 119, 0.15))',
-          boxShadow: '0 12px 40px rgba(255, 92, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+          background: `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.primary.main}15)`,
+          boxShadow: `0 12px 40px ${theme.palette.primary.main}25, inset 0 1px 0 ${theme.palette.common.white}30`,
         },
       };
     
     case 'accent':
       return {
         ...baseStyles,
-        background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(30, 58, 138, 0.1))',
+        background: `linear-gradient(135deg, ${theme.palette.success.main}15, ${theme.palette.info.main}10)`,
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(5, 150, 105, 0.3)',
-        boxShadow: '0 8px 32px rgba(5, 150, 105, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-        color: '#000000', // Texto negro para máximo contraste en accent
-        fontWeight: '500', // Texto medio para mejor legibilidad
+        border: `1px solid ${theme.palette.success.main}30`,
+        boxShadow: `0 8px 32px ${theme.palette.success.main}15, inset 0 1px 0 ${theme.palette.common.white}20`,
+        color: theme.palette.text.primary,
+        fontWeight: 500,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(30, 58, 138, 0.15))',
-          boxShadow: '0 12px 40px rgba(5, 150, 105, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+          background: `linear-gradient(135deg, ${theme.palette.success.main}20, ${theme.palette.info.main}15)`,
+          boxShadow: `0 12px 40px ${theme.palette.success.main}25, inset 0 1px 0 ${theme.palette.common.white}30`,
         },
       };
     
     default: // light
       return {
         ...baseStyles,
-        background: 'rgba(255, 255, 255, 0.9)',
+        background: isLight 
+          ? `${theme.palette.common.white}90`
+          : theme.palette.background.paper,
         backdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255, 255, 255, 0.4)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6)',
-        color: '#000000', // Texto negro para máximo contraste en cards claras
-        fontWeight: '500', // Texto medio para mejor legibilidad
+        border: `1px solid ${theme.palette.divider}`,
+        boxShadow: `0 8px 32px ${theme.palette.common.black}08, inset 0 1px 0 ${theme.palette.common.white}60`,
+        color: theme.palette.text.primary,
+        fontWeight: 500,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: 'rgba(255, 255, 255, 0.95)',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+          background: isLight 
+            ? theme.palette.common.white
+            : theme.palette.action.hover,
+          boxShadow: `0 12px 40px ${theme.palette.common.black}12, inset 0 1px 0 ${theme.palette.common.white}80`,
         },
       };
   }
@@ -112,60 +128,17 @@ const Card = ({
   showContent = true,
   ...props 
 }: CardProps) => {
-  const colors = useColors();
-
-  // Aplicar colores del sistema según el modo
-  const getCardStyles = () => {
-    switch (variant) {
-      case 'glass':
-        return {
-          background: 'rgba(255, 255, 255, 0.15)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.25)',
-          color: colors.palette.white,
-        };
-      case 'dark':
-        return {
-          background: colors.mode === 'dark' ? colors.contrast.surface : 'linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.9))',
-          color: colors.contrast.text.primary,
-          border: `1px solid ${colors.contrast.border}`,
-        };
-      case 'primary':
-        return {
-          background: `linear-gradient(135deg, ${colors.palette.orange}15, ${colors.palette.orange}10)`,
-          color: colors.contrast.text.primary,
-          border: `1px solid ${colors.palette.orange}30`,
-        };
-      case 'accent':
-        return {
-          background: `linear-gradient(135deg, ${colors.palette.green}15, ${colors.palette.green}10)`,
-          color: colors.contrast.text.primary,
-          border: `1px solid ${colors.palette.green}30`,
-        };
-      default: // light
-        return {
-          background: colors.contrast.surface,
-          color: colors.contrast.text.primary,
-          border: `1px solid ${colors.contrast.border}`,
-        };
-    }
-  };
-
   return (
     <StyledCard 
       cardVariant={variant}
       elevation={0}
       {...props}
-      sx={{ 
-        ...getCardStyles(),
-        ...props.sx 
-      }}
     >
       {showContent ? (
         <CardContent sx={{
-          padding: '24px',
+          padding: 3, // Use theme spacing instead of hardcoded values
           '&:last-child': {
-            paddingBottom: '24px'
+            paddingBottom: 3
           }
         }}>
           {children}
