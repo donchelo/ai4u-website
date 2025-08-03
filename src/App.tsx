@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components/shared/ui/layouts';
+import { ErrorBoundary } from './components/shared/ui/molecules';
 import { ThemeProvider, ServicesProvider, LanguageProvider } from './context';
 import { ROUTES } from './utils/constants';
 import { 
@@ -21,12 +22,13 @@ import {
 
 function App() {
   return (
-    <HelmetProvider>
-      <LanguageProvider>
-        <ThemeProvider>
-          <ServicesProvider>
-            <BasicLoadingWrapper>
-              <Router>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <ServicesProvider>
+              <BasicLoadingWrapper>
+                <Router>
                 <ScrollToTop />
                 <Layout>
                   <Routes>
@@ -137,12 +139,13 @@ function App() {
                     />
                   </Routes>
                 </Layout>
-              </Router>
-            </BasicLoadingWrapper>
-          </ServicesProvider>
-        </ThemeProvider>
-      </LanguageProvider>
-    </HelmetProvider>
+                </Router>
+              </BasicLoadingWrapper>
+            </ServicesProvider>
+          </ThemeProvider>
+        </LanguageProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 

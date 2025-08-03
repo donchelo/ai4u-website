@@ -32,7 +32,17 @@
       "react-app/jest"
     ],
     "rules": {
-      "import/first": "off"
+      "import/first": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "react-hooks/exhaustive-deps": "warn",
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/aria-props": "error",
+      "jsx-a11y/aria-proptypes": "error",
+      "prefer-const": "error",
+      "no-var": "error",
+      "no-console": "warn",
+      "no-debugger": "error"
     }
   },
   "browserslist": {
