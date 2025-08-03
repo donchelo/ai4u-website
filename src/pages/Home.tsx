@@ -1,15 +1,20 @@
 import React from 'react';
 import { Container, Grid, Box, Stack, useTheme } from '@mui/material';
-import { H2, H3, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
+import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, GalleryFrame } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
 import { useLanguage } from '../hooks';
+import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 
 const Home = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
   const { t } = useLanguage();
+
+  // Obtener meta tags optimizados para la página de inicio
+  const metaTags = getPageMetaTags('home');
+  const structuredData = getHomeStructuredData();
 
   // Obtener traducciones para las features
   const features = [
@@ -57,6 +62,15 @@ const Home = () => {
 
   return (
     <Box>
+      {/* SEO Head con meta tags optimizados */}
+      <SEOHead
+        title={metaTags.title}
+        description={metaTags.description}
+        keywords={metaTags.keywords}
+        canonical="https://ai4u.com.co"
+        structuredData={structuredData}
+      />
+
       {/* Hero Section */}
       <HeroSection 
         customTitle={t('hero.customTitle')}

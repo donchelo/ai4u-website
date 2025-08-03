@@ -8,19 +8,31 @@ import {
   IconButton,
   Typography
 } from '@mui/material';
-import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage } from '../components/shared/ui/atoms';
+import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, MetricCard } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { useLanguage } from '../hooks';
+import { getPageMetaTags } from '../utils/seo';
 
 const WhyAI4U = () => {
   const colors = useColors();
   const { t } = useLanguage();
 
+  // Obtener meta tags optimizados para la página "Por qué AI4U"
+  const metaTags = getPageMetaTags('why');
+
   return (
     <Box sx={{ 
       background: `linear-gradient(135deg, ${colors.helpers.background.primary} 0%, ${colors.helpers.background.secondary} 100%)`
     }}>
+      {/* SEO Head con meta tags optimizados */}
+      <SEOHead
+        title={metaTags.title}
+        description={metaTags.description}
+        keywords={metaTags.keywords}
+        canonical="https://ai4u.com.co/por-que-ai4u"
+      />
+
       {/* Hero Section minimalista */}
       <Box sx={{ 
         py: { xs: 8, md: 12 },
@@ -466,8 +478,6 @@ const WhyAI4U = () => {
           </Card>
         </Container>
       </Box>
-
-
     </Box>
   );
 };

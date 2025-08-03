@@ -7,6 +7,37 @@
     <!-- Viewport optimizado para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     
+    <!-- Meta tags básicos SEO -->
+    <title>AI4U - Inteligencia Artificial para tu Negocio | Soluciones de IA Personalizada</title>
+    <meta name="description" content="AI4U - Soluciones de Inteligencia Artificial personalizadas para tu negocio. Automatización inteligente, GPT personalizado, SuperAI empresarial. Recupera tu tiempo con IA." />
+    <meta name="keywords" content="inteligencia artificial, IA, automatización, GPT personalizado, SuperAI, AI empresarial, Colombia, automatización inteligente, chatbot, machine learning" />
+    <meta name="author" content="AI4U" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ai4u.com.co" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ai4u.com.co" />
+    <meta property="og:title" content="AI4U - Inteligencia Artificial para tu Negocio" />
+    <meta property="og:description" content="Soluciones de Inteligencia Artificial personalizadas para tu negocio. Automatización inteligente, GPT personalizado, SuperAI empresarial." />
+    <meta property="og:image" content="%PUBLIC_URL%/assets/images/ai4u-logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="AI4U" />
+    <meta property="og:locale" content="es_CO" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ai4u.com.co" />
+    <meta property="twitter:title" content="AI4U - Inteligencia Artificial para tu Negocio" />
+    <meta property="twitter:description" content="Soluciones de Inteligencia Artificial personalizadas para tu negocio. Automatización inteligente, GPT personalizado, SuperAI empresarial." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/assets/images/ai4u-logo.png" />
+    <meta property="twitter:site" content="@ai4u_co" />
+    <meta property="twitter:creator" content="@ai4u_co" />
+    
     <!-- Meta tags para PWA -->
     <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,15 +53,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/assets/images/robot-assistant.png" />
     <link rel="apple-touch-icon" sizes="167x167" href="%PUBLIC_URL%/assets/images/robot-assistant.png" />
     
-    <meta
-      name="description"
-      content="AI4U - Soluciones de Inteligencia Artificial para tu negocio"
-    />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
-    <!-- Preconnect para fuentes -->
+    <!-- Preconnect para fuentes y recursos externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;900&family=Fira+Mono&display=swap" rel="stylesheet">
     
     <!-- Google tag (gtag.js) -->
@@ -39,10 +68,44 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-44D5SE9KCR');
+      gtag('config', 'G-44D5SE9KCR', {
+        page_title: 'AI4U - Inteligencia Artificial para tu Negocio',
+        page_location: window.location.href
+      });
     </script>
     
-    <title>AI4U - Inteligencia Artificial para tu Negocio</title>
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AI4U",
+      "url": "https://ai4u.com.co",
+      "logo": "https://ai4u.com.co/assets/images/ai4u-logo.png",
+      "description": "Soluciones de Inteligencia Artificial personalizadas para tu negocio",
+      "foundingDate": "2023",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO",
+        "addressRegion": "Colombia"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-321-817-5744",
+        "contactType": "customer service",
+        "email": "contacto@ai4u.com.co"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/ai4u",
+        "https://twitter.com/ai4u_co",
+        "https://instagram.com/ai4u_co"
+      ],
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Colombia"
+      }
+    }
+    </script>
   </head>
   <body>
     <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>

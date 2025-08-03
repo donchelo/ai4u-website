@@ -8,14 +8,15 @@ import {
   Chip,
   Divider
 } from '@mui/material';
-import { H1, H2, BodyText, Button, GeometricIcon } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, DiagnosticCTA } from '../components/shared/ui/molecules';
+import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
+import { ServiceCard, Card, DiagnosticCTA, Breadcrumb } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
 import { useLanguage } from '../hooks';
 import { useColors } from '../hooks';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
+import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
 
 const Services: React.FC = () => {
   const { t } = useLanguage();
@@ -29,6 +30,10 @@ const Services: React.FC = () => {
     resetFilters,
     getFilteredServices
   } = useServicesContext();
+
+  // Obtener meta tags optimizados para la página de servicios
+  const metaTags = getPageMetaTags('services');
+  const structuredData = getServicesStructuredData();
 
   const filteredServices = getFilteredServices();
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -76,6 +81,24 @@ const Services: React.FC = () => {
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: colors.contrast.background }}>
+      {/* SEO Head con meta tags optimizados */}
+      <SEOHead
+        title={metaTags.title}
+        description={metaTags.description}
+        keywords={metaTags.keywords}
+        canonical="https://ai4u.com.co/servicios"
+        structuredData={structuredData}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <Container maxWidth="lg" sx={{ pt: 2 }}>
+        <Breadcrumb
+          items={[
+            { name: 'Servicios', path: '/servicios', current: true }
+          ]}
+        />
+      </Container>
+
       {/* Hero Section */}
       <Box sx={{ py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">

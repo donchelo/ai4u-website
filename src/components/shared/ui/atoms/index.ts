@@ -9,3 +9,4 @@ export { default as LazyImage } from './LazyImage';
 export { default as PixelArtImage } from './PixelArtImage';
 export { default as PixelArtFilter } from './PixelArtFilter';
 export { default as LanguageToggle } from './LanguageToggle';
+export { default as SEOHead } from './SEOHead';
