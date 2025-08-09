@@ -144,8 +144,8 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     serviceName: 'SuperAI Empresarial',
     description: 'Arquitectura integral de IA que transforma recursos operativos en ventaja estratégica',
     relatedCases: [
-      { client: 'TRUE', sector: 'Fashion & Technology', slug: 'fashion-technology' },
-      { client: 'HUA Naturals', sector: 'Beauty & Wellness', slug: 'beauty-wellness' }
+      { client: 'TRUE', sector: 'Fashion', slug: 'fashion' },
+      { client: 'HUA Naturals', sector: 'Wellness', slug: 'wellness' }
     ],
     relatedServices: ['gpt-personalizado', 'automatizacion-inteligente']
   },
@@ -155,7 +155,7 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     description: 'Modelos de lenguaje entrenados específicamente para tu industria y procesos',
     relatedCases: [
       { client: 'EAFIT', sector: 'Educación Superior', slug: 'educacion-superior' },
-      { client: 'HUA Naturals', sector: 'Beauty & Wellness', slug: 'beauty-wellness' }
+      { client: 'HUA Naturals', sector: 'Wellness', slug: 'wellness' }
     ],
     relatedServices: ['superai-empresarial', 'chatbots-avanzados']
   },
@@ -164,8 +164,8 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     serviceName: 'Automatización Inteligente',
     description: 'Procesos automatizados que se adaptan y aprenden de tu operación',
     relatedCases: [
-      { client: 'La Magdalena', sector: 'Retail & E-commerce', slug: 'retail-ecommerce' },
-      { client: 'TRUE', sector: 'Fashion & Technology', slug: 'fashion-technology' }
+      { client: 'La Magdalena', sector: 'Impact Storytelling', slug: 'impact-storytelling' },
+      { client: 'TRUE', sector: 'Fashion', slug: 'fashion' }
     ],
     relatedServices: ['superai-empresarial', 'machine-learning']
   },
@@ -174,7 +174,7 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     serviceName: 'Chatbots Avanzados',
     description: 'Asistentes conversacionales que entienden contexto y generan valor real',
     relatedCases: [
-      { client: 'HUA Naturals', sector: 'Beauty & Wellness', slug: 'beauty-wellness' }
+      { client: 'HUA Naturals', sector: 'Wellness', slug: 'wellness' }
     ],
     relatedServices: ['gpt-personalizado', 'automatizacion-inteligente']
   }

@@ -12,21 +12,21 @@ export const clients: Client[] = [
     name: 'La Magdalena',
     website: 'https://www.lamagdalena.com.co',
     logo: '/assets/images/cases/logo-magdalena.png',
-    sector: 'Retail & E-commerce'
+    sector: 'Impact Storytelling'
   },
   {
     id: 'true',
     name: 'TRUE',
     website: 'https://www.trueshop.co',
     logo: '/assets/images/cases/logo-true.png',
-    sector: 'Fashion & Technology'
+    sector: 'Fashion'
   },
   {
     id: 'hua-naturals',
     name: 'HUA Naturals',
     website: 'https://www.huanaturals.com',
     logo: '/assets/images/cases/logo-hua-naturals.png',
-    sector: 'Beauty & Wellness'
+    sector: 'Wellness'
   },
   {
     id: 'EAFIT',

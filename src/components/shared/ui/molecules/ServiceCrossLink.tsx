@@ -26,7 +26,7 @@ interface ServiceCrossLinkProps {
  * <ServiceCrossLink 
  *   serviceName="SuperAI Empresarial"
  *   serviceSlug="superai-empresarial"
- *   caseStudy={{ client: "TRUE", sector: "Fashion", slug: "fashion-technology" }}
+ *   caseStudy={{ client: "TRUE", sector: "Fashion", slug: "fashion" }}
  * />
  */
 const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
