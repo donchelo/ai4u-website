@@ -9,7 +9,7 @@ import {
   Divider
 } from '@mui/material';
 import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, DiagnosticCTA, Breadcrumb } from '../components/shared/ui/molecules';
+import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
@@ -17,6 +17,7 @@ import { useLanguage } from '../hooks';
 import { useColors } from '../hooks';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
 import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
+import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Services: React.FC = () => {
   const { t } = useLanguage();
@@ -34,6 +35,9 @@ const Services: React.FC = () => {
   // Obtener meta tags optimizados para la página de servicios
   const metaTags = getPageMetaTags('services');
   const structuredData = getServicesStructuredData();
+  
+  // Obtener enlaces contextuales para la página Services
+  const relatedLinks = getRelatedLinks('/servicios');
 
   const filteredServices = getFilteredServices();
   const [selectedTab, setSelectedTab] = useState<number>(0);
@@ -157,7 +161,7 @@ const Services: React.FC = () => {
       </Box>
 
       {/* Services Section */}
-      <Box sx={{ py: 4, bgcolor: colors.helpers.background.secondary }}>
+      <Box sx={{ py: 4, bgcolor: colors.contrast.surface }}>
         <Container maxWidth="xl">
           <Grid container spacing={3}>
             {/* Filters Sidebar */}
@@ -294,7 +298,7 @@ const Services: React.FC = () => {
       </Box>
 
       {/* CTA Section */}
-      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.helpers.background.secondary }}>
+      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.contrast.surface }}>
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
             <H2 sx={{ fontSize: { xs: '1.5rem', md: '1.8rem' } }}>
@@ -312,6 +316,15 @@ const Services: React.FC = () => {
           </Stack>
         </Container>
       </Box>
+
+      {/* Enlaces Relacionados - SEO Internal Linking */}
+      <Container maxWidth="lg">
+        <RelatedPages 
+          pages={relatedLinks}
+          title="También podrías estar interesado en:"
+          variant="horizontal"
+        />
+      </Container>
     </Box>
   );
 };

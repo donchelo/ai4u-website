@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../atoms';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { analytics } from '../../../../utils/analytics';
 
 const CALENDLY_URL = 'https://calendly.com/mgarciap333/ai4u';
 
@@ -26,7 +27,10 @@ export const DiagnosticCTA = ({
     <Button
       variant={variant as ButtonVariant}
       size={size as ButtonSize}
-      onClick={() => window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer')}
+      onClick={() => {
+        analytics.trackConsultationRequest('calendly', 'diagnostic');
+        window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+      }}
       startIcon={showIcon ? <CalendarMonthIcon /> : undefined}
       className={className}
     >

@@ -6,11 +6,11 @@ const MAKE_API_CONFIG = {
   apiToken: process.env.REACT_APP_MAKE_API_TOKEN || '',
 };
 
+import { logger } from './logger';
+
 // Debug: Verificar variables de entorno (solo en desarrollo)
-if (process.env.NODE_ENV === 'development') {
-  console.log('REACT_APP_MAKE_WEBHOOK_URL:', process.env.REACT_APP_MAKE_WEBHOOK_URL);
-  console.log('MAKE_API_CONFIG.webhookUrl:', MAKE_API_CONFIG.webhookUrl);
-}
+logger.log('REACT_APP_MAKE_WEBHOOK_URL:', process.env.REACT_APP_MAKE_WEBHOOK_URL);
+logger.log('MAKE_API_CONFIG.webhookUrl:', MAKE_API_CONFIG.webhookUrl);
 
 // Interfaz para los mensajes
 export interface ChatMessage {
@@ -36,7 +36,7 @@ export const sendMessageToMake = async (
 ): Promise<MakeResponse> => {
   const finalSessionId = sessionId || `session_${Date.now()}`;
 
-  console.log('Enviando request a Make.com:', {
+  logger.log('Enviando request a Make.com:', {
     message,
     sessionId: finalSessionId,
     timestamp: new Date().toISOString(),
@@ -61,14 +61,14 @@ export const sendMessageToMake = async (
       })
     });
 
-    console.log('📥 Respuesta de Make.com:', {
+    logger.log('📥 Respuesta de Make.com:', {
       status: response.status,
       statusText: response.statusText,
       headers: Object.fromEntries(response.headers.entries())
     });
 
     if (response.status === 429) {
-      console.error('Rate limit detectado, usando respuesta fallback');
+      logger.error('Rate limit detectado, usando respuesta fallback');
       return {
         success: false,
         error: 'rate_limit',
@@ -83,28 +83,28 @@ export const sendMessageToMake = async (
     try {
       // Primero intentamos obtener el texto de la respuesta
       const textResponse = await response.text();
-      console.log('Respuesta como texto:', textResponse);
+      logger.log('Respuesta como texto:', textResponse);
       
       // Luego intentamos parsearlo como JSON
       try {
         data = JSON.parse(textResponse);
-        console.log('Datos parseados:', data);
+        logger.log('Datos parseados:', data);
       } catch (parseError) {
-        console.error('Error parsing JSON, intentando limpiar:', parseError);
+        logger.error('Error parsing JSON, intentando limpiar:', parseError);
         // Intentamos limpiar caracteres de control y parsear de nuevo
         // eslint-disable-next-line no-control-regex
         const cleanedResponse = textResponse.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
         try {
           data = JSON.parse(cleanedResponse);
-          console.log('Respuesta limpiada y parseada:', data);
+          logger.log('Respuesta limpiada y parseada:', data);
         } catch (cleanError) {
-          console.error('Error final parseando JSON:', cleanError);
+          logger.error('Error final parseando JSON:', cleanError);
           // Si no podemos parsear, usamos la respuesta de texto directamente
           data = { message: textResponse };
         }
       }
     } catch (textError) {
-      console.error('Error obteniendo texto de respuesta:', textError);
+      logger.error('Error obteniendo texto de respuesta:', textError);
       throw new Error('Error al procesar la respuesta del servidor');
     }
     
@@ -115,7 +115,7 @@ export const sendMessageToMake = async (
     };
     
   } catch (error: any) {
-    console.error('Error completo:', error);
+    logger.error('Error completo:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Error desconocido',

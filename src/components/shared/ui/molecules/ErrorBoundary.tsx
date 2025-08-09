@@ -2,6 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { Box, Button, Container, Alert, AlertTitle } from '@mui/material';
 import { H2, BodyText } from '../atoms';
 import { RefreshOutlined as RefreshIcon } from '@mui/icons-material';
+import { errorTracker } from '../../../../utils/errorTracking';
 
 interface ErrorBoundaryProps {
   children?: ReactNode;
@@ -41,20 +42,21 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Log error details
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
     // Update state with error info
     this.setState({ errorInfo });
+    
+    // Send error to our tracking system
+    errorTracker.captureError({
+      message: error.message,
+      stack: error.stack,
+      componentStack: errorInfo.componentStack,
+      errorBoundary: true,
+      timestamp: new Date().toISOString()
+    });
     
     // Call optional error callback
     if (this.props.onError) {
       this.props.onError(error, errorInfo);
-    }
-
-    // In production, you might want to send this to an error reporting service
-    if (process.env.NODE_ENV === 'production') {
-      // Example: Sentry.captureException(error, { contexts: { react: errorInfo } });
     }
   }
 

@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
-import { Theme } from '@mui/material/styles';
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'glass';

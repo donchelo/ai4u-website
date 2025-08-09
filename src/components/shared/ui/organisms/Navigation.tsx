@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { 
   Box, 
   Button, 
-  Tabs, 
-  Tab, 
-  useTheme, 
   styled 
 } from '@mui/material';
-import { H4, BodyText } from '../atoms';
 import { useColors } from '../../../../hooks';
 
 interface NavigationItem {
@@ -53,7 +49,6 @@ const Navigation = ({
   variant = 'horizontal',
   className = ''
 }: NavigationProps) => {
-  const theme = useTheme();
   const colors = useColors();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 

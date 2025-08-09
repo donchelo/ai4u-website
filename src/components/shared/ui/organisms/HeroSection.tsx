@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Stack, Typography, IconButton, useTheme, useMediaQuery, alpha, Container } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { H1, BodyText } from '../atoms';
+import { H1, BodyText, LazyImage } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
 import { useLanguage } from '../../../../context';
@@ -86,24 +86,22 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         }}
       >
         {images.map((img, idx) => (
-          <Box
-            key={idx}
-            component="img"
-            src={img}
-            alt={`Background ${idx + 1}`}
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              opacity: idx === currentImage ? 1 : 0,
-              transition: 'opacity 1.5s ease-in-out',
-              filter: 'brightness(0.5) contrast(1.1)'
-            }}
-          />
+          <Box key={idx} sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+            <LazyImage
+              src={img}
+              alt={`Background ${idx + 1}`}
+              priority={idx === 0} // Primera imagen como prioritaria
+              sx={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                opacity: idx === currentImage ? 1 : 0,
+                transition: 'opacity 1.5s ease-in-out',
+                filter: 'brightness(0.5) contrast(1.1)'
+              }}
+            />
+          </Box>
         ))}
       </Box>
 
@@ -255,10 +253,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 },
               }}
             >
-              <Box
-                component="img"
+              <LazyImage
                 src={images[currentImage]}
-                alt="Hero Image"
+                alt="Hero Image" 
+                priority={true} // Hero image siempre prioritaria
                 sx={{
                   width: '100%',
                   height: 'auto',

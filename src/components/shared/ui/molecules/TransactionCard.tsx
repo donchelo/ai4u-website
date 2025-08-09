@@ -3,14 +3,12 @@ import {
   Card,
   CardContent,
   Box,
-  Typography,
   Avatar,
   IconButton,
   Chip,
   Divider
 } from '@mui/material';
 import {
-  Person as PersonIcon,
   MoreVert as MoreVertIcon,
   ShoppingCart as ShoppingCartIcon,
   FitnessCenter as FitnessCenterIcon,
@@ -21,7 +19,7 @@ import {
   Receipt as ReceiptIcon
 } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
-import { H3, H4, BodyText, SmallText } from '../atoms';
+import { H3, H4, SmallText } from '../atoms';
 
 interface Transaction {
   id: string;

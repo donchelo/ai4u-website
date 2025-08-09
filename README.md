@@ -1,4 +1,41 @@
-# AI4U Design System
+# AI4U Website & Framework de Agentes
+
+Un sistema completo que combina la identidad de marca AI4U con elementos visuales modernos y futuristas, **plus** un framework revolucionario de 37 agentes especializados para desarrollo humanístico.
+
+## 🤖 Framework de Agentes AI4U
+
+**¡NUEVO!** Hemos implementado un framework completo de 37 agentes especializados que embodican la filosofía humanística de AI4U: **"No reemplazamos, potenciamos"**.
+
+### **Agentes Personalizados AI4U** ⭐
+- **rapid-prototyper**: Arquitecturas integrales en 3 días con stack AI4U
+- **brand-guardian**: Protege identidad visual y messaging humanístico
+- **content-creator**: Narrativas que humanizan la automatización
+
+### **Acceso Rápido**
+```bash
+# Documentación completa
+📖 agents/AI4U_AGENTS_USAGE_GUIDE.md
+
+# Referencia de identidad
+🎯 agents/AI4U_BRAND_IDENTITY.md
+
+# Directorio completo
+📁 agents/
+├── engineering/     (6 agentes)
+├── design/          (5 agentes)
+├── marketing/       (7 agentes)
+├── product/         (3 agentes)
+├── studio-operations/ (5 agentes)
+├── project-management/ (3 agentes)
+├── testing/         (5 agentes)
+└── bonus/           (2 agentes)
+```
+
+**Total: 37 agentes especializados, 3 personalizados para AI4U**
+
+---
+
+## 🎨 AI4U Design System
 
 Un sistema de diseño completo y coherente que combina la identidad de marca AI4U con elementos visuales modernos y futuristas.
 

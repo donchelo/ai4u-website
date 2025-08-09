@@ -92,23 +92,11 @@ const ChatButton: React.FC = () => {
       
       if (response.success && response.data?.message) {
         botResponse = response.data.message;
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Usando respuesta de Make.com:', response.data.message);
-        }
       } else if (response.success && response.data && typeof response.data === 'string') {
         botResponse = response.data;
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Usando respuesta directa de Make.com:', response.data);
-        }
       } else if (response.error === 'rate_limit') {
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Rate limit detectado, usando fallback');
-        }
         botResponse = getFallbackResponse(trimmedInput);
       } else {
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Sin respuesta válida de Make.com, usando fallback:', response);
-        }
         botResponse = getFallbackResponse(trimmedInput);
       }
 

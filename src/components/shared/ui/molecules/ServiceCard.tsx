@@ -6,8 +6,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  useTheme
+  Typography
 } from '@mui/material';
 import { H3, BodyText, GeometricIcon, SEOHead } from '../atoms';
 import { useColors } from '../../../../hooks';
@@ -25,7 +24,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   showPrice = true, 
   compact = false 
 }) => {
-  const theme = useTheme();
   const colors = useColors();
 
   // Generar structured data específico para este servicio

@@ -19,8 +19,6 @@ export const useLazyImage = (
   const { threshold = 0.1, rootMargin = '50px', priority = false } = options;
 
   useEffect(() => {
-    // Optimizar para diferentes densidades de píxeles
-    const pixelRatio = window.devicePixelRatio || 1;
     setImageSrc(src);
 
     if (priority) {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, IconButton, Tooltip } from '@mui/material';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Box, Typography, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useGalleryImages } from '../../../../hooks';
 import { BodyText } from '../atoms';
@@ -25,10 +25,10 @@ const GalleryFrame: React.FC<GalleryFrameProps> = ({
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Función para obtener un índice aleatorio
-  const getRandomIndex = () => {
+  const getRandomIndex = useCallback(() => {
     if (images.length === 0) return 0;
     return Math.floor(Math.random() * images.length);
-  };
+  }, [images.length]);
 
   // Función para cambiar a la siguiente imagen
   const nextImage = () => {

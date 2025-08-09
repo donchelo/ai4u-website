@@ -9,10 +9,11 @@ import {
   Typography
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
-import { Card, DiagnosticCTA, ServicesButton, MetricCard } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { useLanguage } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
+import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const WhyAI4U = () => {
   const colors = useColors();
@@ -20,10 +21,13 @@ const WhyAI4U = () => {
 
   // Obtener meta tags optimizados para la página "Por qué AI4U"
   const metaTags = getPageMetaTags('why');
+  
+  // Obtener enlaces contextuales para la página Why AI4U
+  const relatedLinks = getRelatedLinks('/por-que-ai4u');
 
   return (
     <Box sx={{ 
-      background: `linear-gradient(135deg, ${colors.helpers.background.primary} 0%, ${colors.helpers.background.secondary} 100%)`
+      background: `linear-gradient(135deg, ${colors.contrast.background} 0%, ${colors.contrast.surface} 100%)`
     }}>
       {/* SEO Head con meta tags optimizados */}
       <SEOHead
@@ -44,13 +48,13 @@ const WhyAI4U = () => {
             fontWeight: 300,
             fontSize: { xs: '2.5rem', md: '3.5rem' },
             letterSpacing: '-0.02em',
-            color: colors.helpers.text.primary
+            color: colors.contrast.text.primary
           }}>
             ¿Por qué <Box component="span" sx={{ color: colors.palette.orange }}>AI4U</Box>?
           </H1>
           <BodyText sx={{ 
             mb: 8, 
-            color: colors.helpers.text.secondary,
+            color: colors.contrast.text.secondary,
             fontSize: '1.2rem',
             lineHeight: 1.6,
             fontWeight: 300,
@@ -72,13 +76,13 @@ const WhyAI4U = () => {
                   mb: 4, 
                   fontWeight: 300,
                   fontSize: { xs: '2rem', md: '2.5rem' },
-                  color: colors.helpers.text.primary
+                  color: colors.contrast.text.primary
                 }}>
                   {t('whyAI4U.mariano.title')}
                 </H2>
                 <BodyText sx={{ 
                   mb: 6, 
-                  color: colors.helpers.text.secondary,
+                  color: colors.contrast.text.secondary,
                   fontSize: '1.1rem',
                   lineHeight: 1.7,
                   fontWeight: 300
@@ -89,15 +93,15 @@ const WhyAI4U = () => {
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="circle" size="small" color={colors.palette.green} variant="filled" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.0')}</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.0')}</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="triangle" size="small" color={colors.helpers.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.1')}</BodyText>
+                    <GeometricIcon type="triangle" size="small" color={colors.contrast.text.secondary} variant="minimal" />
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.1')}</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="square" size="small" color={colors.helpers.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.helpers.text.primary }}>{t('whyAI4U.mariano.credentials.2')}</BodyText>
+                    <GeometricIcon type="square" size="small" color={colors.contrast.text.secondary} variant="minimal" />
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.2')}</BodyText>
                   </Box>
                 </Stack>
                 
@@ -184,7 +188,7 @@ const WhyAI4U = () => {
             textAlign: 'center',
             fontWeight: 300,
             fontSize: { xs: '2rem', md: '2.5rem' },
-            color: colors.helpers.text.primary
+            color: colors.contrast.text.primary
           }}>
             {t('whyAI4U.benefits.title')}
           </H2>
@@ -201,13 +205,13 @@ const WhyAI4U = () => {
                 title: t('whyAI4U.benefits.items.1.title'),
                 description: t('whyAI4U.benefits.items.1.description'),
                 icon: "triangle",
-                color: colors.helpers.text.secondary
+                color: colors.contrast.text.secondary
               },
               {
                 title: t('whyAI4U.benefits.items.2.title'),
                 description: t('whyAI4U.benefits.items.2.description'),
                 icon: "square", 
-                color: colors.helpers.text.secondary
+                color: colors.contrast.text.secondary
               }
             ].map((benefit, idx) => (
               <Grid item xs={12} md={4} key={idx}>
@@ -228,12 +232,12 @@ const WhyAI4U = () => {
                     mb: 2, 
                     fontSize: '1.3rem',
                     fontWeight: 500,
-                    color: colors.helpers.text.primary
+                    color: colors.contrast.text.primary
                   }}>
                     {benefit.title}
                   </H3>
                   <BodyText sx={{ 
-                    color: colors.helpers.text.secondary,
+                    color: colors.contrast.text.secondary,
                     lineHeight: 1.6,
                     fontSize: '1rem'
                   }}>
@@ -254,7 +258,7 @@ const WhyAI4U = () => {
             textAlign: 'center',
             fontWeight: 300,
             fontSize: { xs: '2rem', md: '2.5rem' },
-            color: colors.helpers.text.primary
+            color: colors.contrast.text.primary
           }}>
             {t('whyAI4U.stats.title')}
           </H2>
@@ -364,7 +368,7 @@ const WhyAI4U = () => {
             textAlign: 'center',
             fontWeight: 300,
             fontSize: { xs: '2rem', md: '2.5rem' },
-            color: colors.helpers.text.primary
+            color: colors.contrast.text.primary
           }}>
             {t('whyAI4U.impact.title')}
           </H2>
@@ -478,6 +482,15 @@ const WhyAI4U = () => {
           </Card>
         </Container>
       </Box>
+
+      {/* Enlaces Relacionados - SEO Internal Linking */}
+      <Container maxWidth="lg">
+        <RelatedPages 
+          pages={relatedLinks}
+          title="Conoce más sobre nuestro trabajo:"
+          variant="vertical"
+        />
+      </Container>
     </Box>
   );
 };

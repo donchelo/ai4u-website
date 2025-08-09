@@ -348,8 +348,8 @@ export const translations: Record<Language, Translations> = {
     // Success Cases Page
     successCases: {
       hero: {
-        title: 'Casos de Uso',
-        description: 'Transformamos ideas en resultados. Cada logo representa una historia de innovación, automatización y crecimiento estratégico.'
+        title: 'Nuestros Clientes',
+        description: 'Empresas líderes que confían en AI4U para su transformación digital. Cada logo representa una alianza exitosa en innovación y automatización.'
       },
       metrics: {
         title: 'Resultados que Hablan',
@@ -357,21 +357,22 @@ export const translations: Record<Language, Translations> = {
         items: [
           {
             value: '95%',
-            description: 'Reducción en tiempo de procesamiento'
+            description: 'Reducción en tiempo operativo'
           },
           {
             value: '300%',
-            description: 'Incremento en productividad'
+            description: 'Incremento en eficiencia'
           },
           {
             value: '24/7',
-            description: 'Operación continua sin interrupciones'
+            description: 'Automatización continua'
           }
         ]
       },
       clients: {
-        title: 'Casos de Uso Reales',
-        visitSite: 'Visitar sitio →'
+        title: 'Empresas que Confían en AI4U',
+        subtitle: 'Conoce las organizaciones que han transformado sus procesos con nuestras soluciones',
+        visitSite: 'Visitar sitio web'
       }
     },
     
@@ -756,8 +757,8 @@ export const translations: Record<Language, Translations> = {
     // Success Cases Page
     successCases: {
       hero: {
-        title: 'Use Cases',
-        description: 'We transform ideas into results. Each logo represents a story of innovation, automation and strategic growth.'
+        title: 'Our Clients',
+        description: 'Leading companies that trust AI4U for their digital transformation. Each logo represents a successful partnership in innovation and automation.'
       },
       metrics: {
         title: 'Results that Speak',
@@ -765,21 +766,22 @@ export const translations: Record<Language, Translations> = {
         items: [
           {
             value: '95%',
-            description: 'Reduction in processing time'
+            description: 'Reduction in operational time'
           },
           {
             value: '300%',
-            description: 'Increase in productivity'
+            description: 'Increase in efficiency'
           },
           {
             value: '24/7',
-            description: 'Continuous operation without interruptions'
+            description: 'Continuous automation'
           }
         ]
       },
       clients: {
-        title: 'Real Use Cases',
-        visitSite: 'Visit site →'
+        title: 'Companies that Trust AI4U',
+        subtitle: 'Meet the organizations that have transformed their processes with our solutions',
+        visitSite: 'Visit website'
       }
     },
     

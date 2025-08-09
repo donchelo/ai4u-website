@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import { Box, Skeleton, Container, Stack, useTheme } from '@mui/material';
 import { Logo } from '../atoms';
 
-const BasicLoadingWrapper = ({ children }: any) => {
+interface BasicLoadingWrapperProps {
+  children?: ReactNode;
+}
+
+const BasicLoadingWrapper = ({ children }: BasicLoadingWrapperProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const theme = useTheme();
 
@@ -158,9 +162,9 @@ const BasicLoadingWrapper = ({ children }: any) => {
   }
 
   return (
-    <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
+    <Box sx={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
       {children}
-    </div>
+    </Box>
   );
 };
 

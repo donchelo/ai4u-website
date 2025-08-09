@@ -2,19 +2,40 @@ import React from 'react';
 import { Container, Grid, Box, Stack, useTheme } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA, GalleryFrame } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, GalleryFrame, RelatedPages } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
 import { useLanguage } from '../hooks';
+import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
+import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
+import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Home = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
   const { t } = useLanguage();
+  
+  // Monitoreo automático de performance para la página de inicio
+  usePerformanceMonitoring('home', {
+    lcp: 2000, // Home debe cargar rápido (2s)
+    fcp: 1500  // First paint crítico (1.5s)
+  });
+
+  // Error tracking para componentes críticos
+  const { captureError, addContext } = useErrorTracking();
+  
+  // Agregar contexto útil para debugging
+  React.useEffect(() => {
+    addContext('page', 'home');
+    addContext('userAgent', navigator.userAgent.substring(0, 100));
+  }, [addContext]);
 
   // Obtener meta tags optimizados para la página de inicio
   const metaTags = getPageMetaTags('home');
   const structuredData = getHomeStructuredData();
+  
+  // Obtener enlaces contextuales para la página Home
+  const relatedLinks = getRelatedLinks('/');
 
   // Obtener traducciones para las features
   const features = [
@@ -324,6 +345,15 @@ const Home = () => {
           </Box>
         </Container>
       </Box>
+
+      {/* Enlaces Relacionados - SEO Internal Linking */}
+      <Container maxWidth="lg">
+        <RelatedPages 
+          pages={relatedLinks}
+          title="Continúa explorando:"
+          variant="horizontal"
+        />
+      </Container>
     </Box>
   );
 };

@@ -5,6 +5,7 @@ import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components
 import { ErrorBoundary } from './components/shared/ui/molecules';
 import { ThemeProvider, ServicesProvider, LanguageProvider } from './context';
 import { ROUTES } from './utils/constants';
+import './utils/errorTracking';
 import { 
   Home, 
   Services, 
@@ -29,8 +30,8 @@ function App() {
             <ServicesProvider>
               <BasicLoadingWrapper>
                 <Router>
-                <ScrollToTop />
-                <Layout>
+                  <ScrollToTop />
+                  <Layout>
                   <Routes>
                     <Route 
                       path={ROUTES.HOME} 
@@ -138,7 +139,7 @@ function App() {
                       } 
                     />
                   </Routes>
-                </Layout>
+                  </Layout>
                 </Router>
               </BasicLoadingWrapper>
             </ServicesProvider>

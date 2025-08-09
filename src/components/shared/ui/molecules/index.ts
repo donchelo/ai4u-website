@@ -13,3 +13,5 @@ export { default as GalleryFrame } from './GalleryFrame';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Button } from '../atoms/Button';
+export { default as RelatedPages } from './RelatedPages';
+export { default as ServiceCrossLink } from './ServiceCrossLink';
