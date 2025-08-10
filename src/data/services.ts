@@ -313,6 +313,35 @@ export const services: Service[] = [
       author: 'AI4U Team'
     }
   }
+  ,
+  {
+    id: 'data-entry-automatico',
+    title: 'Data Entry Automático',
+    subtitle: 'Ingreso automático de datos donde quieras',
+    description: 'Recibe información en cualquier formato (PDF, imágenes, correos, Excel) y la ingresa a tu plataforma preferida. Automatización operativa completa con validaciones y trazabilidad.',
+    benefits: [
+      'Elimina errores de digitación',
+      'Procesa PDF, imágenes (OCR), correos y Excel',
+      'Integración con ERP/CRM/Sheets/Notion/HubSpot',
+      'Ahorra horas operativas cada día',
+      'Validaciones y trazabilidad en tiempo real'
+    ],
+    deliveryTime: 'Listo en 7 días',
+    category: ServiceCategory.AUTOMATION,
+    superCategory: ServiceSuperCategory.OPERATION,
+    priority: 6,
+    featured: false,
+    color: '#22c55e',
+    gradient: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+    tags: ['ocr', 'pdf', 'imágenes', 'correo', 'excel', 'erp', 'crm', 'integración'],
+    status: ServiceStatus.ACTIVE,
+    metadata: {
+      createdAt: '2025-08-09',
+      updatedAt: '2025-08-09',
+      version: '1.0',
+      author: 'AI4U Team'
+    }
+  }
 ];
 
 // Configuración por defecto del sistema de servicios
