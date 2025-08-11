@@ -94,14 +94,7 @@ const Services: React.FC = () => {
         structuredData={structuredData}
       />
 
-      {/* Breadcrumb Navigation */}
-      <Container maxWidth="lg" sx={{ pt: 2 }}>
-        <Breadcrumb
-          items={[
-            { name: 'Servicios', path: '/servicios', current: true }
-          ]}
-        />
-      </Container>
+      {/* Breadcrumb eliminado para hero limpio */}
 
       {/* Hero Premium para Servicios: destacar Fashion Agent y Data Entry */}
       <ServicesPremiumHero 
