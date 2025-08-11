@@ -13,9 +13,16 @@ export interface Service {
   icon?: string; // Path al icono del servicio
   color?: string; // Color primario del servicio
   gradient?: string; // Gradiente del servicio
+  media?: ServiceMedia; // Media opcional para destacar (gif/poster)
   tags: string[]; // Etiquetas para filtrado
   status: ServiceStatus;
   metadata: ServiceMetadata;
+}
+
+export interface ServiceMedia {
+  video?: string; // Ruta a un mp4 corto destacando el servicio
+  gif?: string; // Ruta a un gif corto destacando el servicio
+  poster?: string; // Imagen estática de respaldo (fallback)
 }
 
 export interface ServiceMetadata {

@@ -11,7 +11,7 @@ import {
 import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
-import { ServicesFilter } from '../components/shared/ui/organisms';
+import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
 import { useLanguage } from '../hooks';
 import { useColors } from '../hooks';
@@ -103,62 +103,12 @@ const Services: React.FC = () => {
         />
       </Container>
 
-      {/* Hero Section */}
-      <Box sx={{ py: { xs: 4, md: 6 } }}>
-        <Container maxWidth="lg">
-          <Stack spacing={3} alignItems="center" textAlign="center">
-            <H1 sx={{ 
-              fontSize: { xs: '2rem', md: '2.5rem' },
-              fontWeight: 400
-            }}>
-              Servicios
-            </H1>
-            <H2 sx={{ 
-              fontSize: { xs: '1rem', md: '1.2rem' },
-              color: colors.contrast.text.secondary,
-              fontWeight: 400
-            }}>
-              Encuentra la solución que necesitas
-            </H2>
-            
-            {/* Stats */}
-            <Stack direction="row" spacing={4} justifyContent="center" flexWrap="wrap">
-              <Box textAlign="center">
-                <Typography variant="h5" sx={{ color: colors.palette.orange, fontWeight: 600 }}>
-                  {stats.total}
-                </Typography>
-                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
-                  Servicios
-                </BodyText>
-              </Box>
-              <Box textAlign="center">
-                <Typography variant="h5" sx={{ color: colors.palette.green, fontWeight: 600 }}>
-                  {stats.active}
-                </Typography>
-                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
-                  Activos
-                </BodyText>
-              </Box>
-              <Box textAlign="center">
-                <Typography variant="h5" sx={{ color: colors.palette.orange, fontWeight: 600 }}>
-                  {Object.keys(stats.byCategory).length}
-                </Typography>
-                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
-                  Categorías
-                </BodyText>
-              </Box>
-              <Box textAlign="center">
-                <Typography variant="h5" sx={{ color: colors.palette.green, fontWeight: 600 }}>
-                  {Object.keys(stats.bySuperCategory).length}
-                </Typography>
-                <BodyText sx={{ fontSize: '0.8rem', color: colors.contrast.text.secondary }}>
-                  Tipos
-                </BodyText>
-              </Box>
-            </Stack>
-          </Stack>
-        </Container>
-      </Box>
+      {/* Hero Premium para Servicios: destacar Fashion Agent y Data Entry */}
+      <ServicesPremiumHero 
+        title="Fashion Agent"
+        subtitle="De figurines a fotos reales de ecommerce con modelos personalizados. Ahorra en fotos, confección y tiempos."
+        maxItems={2}
+      />
 
       {/* Services Section */}
       <Box sx={{ py: 4, bgcolor: colors.contrast.surface }}>
@@ -215,7 +165,7 @@ const Services: React.FC = () => {
                 <Box sx={{ overflowX: 'auto' }}>
                   <Grid container spacing={2}>
                     {filteredServices.map((service) => (
-                      <Grid item xs={12} sm={6} lg={4} key={service.id}>
+                      <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
                         <ServiceCard 
                           service={service}
                           showPrice={config.displaySettings.showPrices}

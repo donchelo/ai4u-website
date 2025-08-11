@@ -2,6 +2,7 @@
 export { default as Navigation } from './Navigation';
 export { default as Footer } from './Footer';
 export { default as HeroSection } from './HeroSection';
+export { default as ServicesPremiumHero } from './ServicesPremiumHero';
 export { default as SleepWidget } from './SleepWidget';
 export { default as WeatherWidget } from './WeatherWidget';
 export { default as ServicesFilter } from './ServicesFilter';

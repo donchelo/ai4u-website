@@ -15,7 +15,7 @@ export const services: Service[] = [
     category: ServiceCategory.AI_ASSISTANT,
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 1,
-    featured: true,
+    featured: false,
     color: '#6366f1',
     gradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
     tags: ['estrategia', 'reportes', 'ejecutivo', 'análisis'],
@@ -41,7 +41,7 @@ export const services: Service[] = [
     category: ServiceCategory.AI_ASSISTANT,
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 2,
-    featured: true,
+    featured: false,
     color: '#10b981',
     gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
     tags: ['chatbot', 'whatsapp', 'atención', 'automatización'],
@@ -119,7 +119,7 @@ export const services: Service[] = [
     category: ServiceCategory.AUTOMATION,
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 5,
-    featured: true,
+    featured: false,
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
     tags: ['erp', 'pedidos', 'documentos', 'integración'],
@@ -197,7 +197,7 @@ export const services: Service[] = [
     category: ServiceCategory.ECOMMERCE,
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 8,
-    featured: true,
+    featured: false,
     color: '#ec4899',
     gradient: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
     tags: ['shopify', 'ecommerce', 'tienda', 'desarrollo'],
@@ -301,7 +301,7 @@ export const services: Service[] = [
     category: ServiceCategory.CONSULTING,
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 12,
-    featured: true,
+    featured: false,
     color: '#64748b',
     gradient: 'linear-gradient(135deg, #64748b 0%, #475569 100%)',
     tags: ['consultoría', 'continua', 'actualizaciones', 'soporte'],
@@ -330,7 +330,11 @@ export const services: Service[] = [
     category: ServiceCategory.AUTOMATION,
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 6,
-    featured: false,
+    featured: true,
+    media: {
+      video: '/assets/videos/data-entry-automatico.mp4',
+      poster: '/assets/images/data-entry-automatico-poster.jpg'
+    },
     color: '#22c55e',
     gradient: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
     tags: ['ocr', 'pdf', 'imágenes', 'correo', 'excel', 'erp', 'crm', 'integración'],
@@ -338,6 +342,37 @@ export const services: Service[] = [
     metadata: {
       createdAt: '2025-08-09',
       updatedAt: '2025-08-09',
+      version: '1.0',
+      author: 'AI4U Team'
+    }
+  }
+  ,
+  {
+    id: 'fashion-agent',
+    title: 'Fashion Agent',
+    subtitle: 'De figurines a fotos reales de ecommerce con modelos personalizados',
+    description: 'Convierte tus diseños o figurines en fotos de producto realistas listas para ecommerce, con modelos personalizados y variaciones de fondo. Ahorra costos de confección, fotografía y tiempos de producción.',
+    benefits: [
+      'Fotos listas para ecommerce en horas',
+      'Ahorro en confección y fotografía',
+      'Modelos personalizados y consistentes',
+    ],
+    deliveryTime: 'Resultados en 24-48 horas',
+    category: ServiceCategory.AUTOMATION,
+    superCategory: ServiceSuperCategory.OPERATION,
+    priority: 2,
+    featured: true,
+    media: {
+      video: '/assets/videos/fashion-agent.mp4',
+      poster: '/assets/images/fashion-agent-poster.jpg'
+    },
+    color: '#0ea5e9',
+    gradient: 'linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)',
+    tags: ['fashion', 'ecommerce', 'imágenes', 'modelos', 'generative ai'],
+    status: ServiceStatus.ACTIVE,
+    metadata: {
+      createdAt: '2025-08-11',
+      updatedAt: '2025-08-11',
       version: '1.0',
       author: 'AI4U Team'
     }

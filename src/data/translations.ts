@@ -95,6 +95,10 @@ export const translations: Record<Language, Translations> = {
     
     // Services Page
     services: {
+      premiumHero: {
+        title: 'Productos premium',
+        subtitle: 'Soluciones de mayor impacto con soporte prioritario y resultados acelerados.',
+      },
       hero: {
         title: 'Servicios AI4U',
         subtitle: 'Construimos tu infraestructura de IA personalizada',
@@ -507,6 +511,10 @@ export const translations: Record<Language, Translations> = {
         title: 'AI4U Services',
         subtitle: 'We build your personalized AI infrastructure',
         description: 'At AI4U we specialize in creating artificial intelligence solutions specifically adapted to your business. We automate processes, free up operational time and transform that time into strategic freedom.'
+      },
+      premiumHero: {
+        title: 'Premium products',
+        subtitle: 'Higher impact solutions with priority support and accelerated results.',
       },
       stats: {
         title: 'Our numbers speak for themselves',
