@@ -37,34 +37,7 @@ const WhyAI4U = () => {
         canonical="https://ai4u.com.co/por-que-ai4u"
       />
 
-      {/* Hero Section minimalista */}
-      <Box sx={{ 
-        py: { xs: 8, md: 12 },
-        textAlign: 'center'
-      }}>
-        <Container maxWidth="md">
-          <H1 sx={{ 
-            mb: 6, 
-            fontWeight: 300,
-            fontSize: { xs: '2.5rem', md: '3.5rem' },
-            letterSpacing: '-0.02em',
-            color: colors.contrast.text.primary
-          }}>
-            ¿Por qué <Box component="span" sx={{ color: colors.palette.orange }}>AI4U</Box>?
-          </H1>
-          <BodyText sx={{ 
-            mb: 8, 
-            color: colors.contrast.text.secondary,
-            fontSize: '1.2rem',
-            lineHeight: 1.6,
-            fontWeight: 300,
-            maxWidth: 700,
-            mx: 'auto'
-          }}>
-            {t('whyAI4U.hero.description')}
-          </BodyText>
-        </Container>
-      </Box>
+
 
       {/* Mariano Section - Destacado como la parte humana */}
       <Box sx={{ py: { xs: 8, md: 12 } }}>
@@ -331,18 +304,7 @@ const WhyAI4U = () => {
                   />
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <MetricCard
-                    title={t('whyAI4U.stats.metrics.satisfiedClients.title')}
-                    value={t('whyAI4U.stats.metrics.satisfiedClients.value')}
-                    subtitle={t('whyAI4U.stats.metrics.satisfiedClients.subtitle')}
-                    iconType="circle"
-                    variant="primary"
-                    size="large"
-                  />
-                </Box>
-              </Grid>
+
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard

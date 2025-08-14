@@ -28,7 +28,8 @@ export const translations: Record<Language, Translations> = {
       customTitle: '¡Tu tiempo es oro!',
       customSubtitle: 'Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa: tu familia y el crecimiento estratégico de tu empresa.',
       primaryButtonText: 'Recupera tu tiempo familiar',
-      secondaryButtonText: 'Calcula tu ROI'
+      secondaryButtonText: 'Calcula tu ROI',
+      humanElement: 'La parte humana detrás de la tecnología'
     },
     
     // Home Features
@@ -129,11 +130,7 @@ export const translations: Record<Language, Translations> = {
             subtitle: 'Reducción de tareas manuales',
             value: '85%'
           },
-          {
-            title: 'Clientes satisfechos',
-            subtitle: 'Tasa de retención',
-            value: '100%'
-          },
+
           {
             title: 'Implementación',
             subtitle: 'Días promedio',
@@ -221,10 +218,6 @@ export const translations: Record<Language, Translations> = {
     
     // WhyAI4U Page
     whyAI4U: {
-      hero: {
-        title: '¿Por qué AI4U?',
-        description: 'Somos el único servicio de automatización que combina asistentes robóticos evolutivos con resultados garantizados en 72 horas. No solo automatizamos tareas - transformamos el tiempo perdido en libertad estratégica.'
-      },
       mariano: {
         title: 'La parte humana detrás de la tecnología',
         description: 'Detrás de cada automatización hay una mente humana que entiende tu negocio. Mariano, fundador de AI4U, combina experiencia en startups, movilidad y tecnología para crear soluciones que realmente funcionan.',
@@ -283,11 +276,7 @@ export const translations: Record<Language, Translations> = {
             subtitle: 'Reducción de tareas manuales',
             value: '85%'
           },
-          satisfiedClients: {
-            title: 'Clientes satisfechos',
-            subtitle: 'Tasa de retención',
-            value: '100%'
-          },
+
           implementation: {
             title: 'Implementación',
             subtitle: 'Días promedio',
@@ -440,7 +429,8 @@ export const translations: Record<Language, Translations> = {
       customTitle: 'Your time is gold!',
       customSubtitle: 'While others waste 70% of their day on operational tasks, our robotic assistants work 24/7 so you can invest your time in what really matters: your family and the strategic growth of your company.',
       primaryButtonText: 'Recover your family time',
-      secondaryButtonText: 'Calculate your ROI'
+      secondaryButtonText: 'Calculate your ROI',
+      humanElement: 'The human part behind the technology'
     },
     
     // Home Features
@@ -541,11 +531,7 @@ export const translations: Record<Language, Translations> = {
             subtitle: 'Reduction in manual tasks',
             value: '85%'
           },
-          {
-            title: 'Satisfied clients',
-            subtitle: 'Retention rate',
-            value: '100%'
-          },
+
           {
             title: 'Implementation',
             subtitle: 'Average days',
@@ -697,11 +683,7 @@ export const translations: Record<Language, Translations> = {
             subtitle: 'Reduction in manual tasks',
             value: '85%'
           },
-          satisfiedClients: {
-            title: 'Satisfied clients',
-            subtitle: 'Retention rate',
-            value: '100%'
-          },
+
           implementation: {
             title: 'Implementation',
             subtitle: 'Average days',

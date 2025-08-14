@@ -175,7 +175,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 textAlign: { xs: 'left', md: 'left' }
               }}
             >
-              Arquitectura de IA personalizada que automatiza procesos críticos y evoluciona con tu negocio. Implementación rápida, resultados medibles y escalabilidad garantizada.
+              {t('hero.humanElement')}
             </BodyText>
             
             <Stack
