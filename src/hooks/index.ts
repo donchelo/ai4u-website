@@ -9,4 +9,9 @@ export { useTranslation, useTranslations, useSectionTranslations } from './useTr
 export { useErrorHandler } from './useErrorHandler';
 export { usePWA } from './usePWA';
 export { usePerformanceMonitoring } from './usePerformanceMonitoring';
-export { useErrorTracking } from '../utils/errorTracking'; 
+export { useErrorTracking } from '../utils/errorTracking';
+export { 
+  useImageOptimization, 
+  useImagePreloader, 
+  useImageOptimizationInfo 
+} from './useImageOptimization'; 

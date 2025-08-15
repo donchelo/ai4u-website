@@ -26,7 +26,7 @@ export const clients: Client[] = [
     name: 'HUA Naturals',
     website: 'https://www.huanaturals.com',
     logo: '/assets/images/cases/logo-hua-naturals.png',
-    sector: 'Wellness'
+    sector: 'Reality-Hacking'
   },
   {
     id: 'EAFIT',
