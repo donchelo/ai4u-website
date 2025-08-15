@@ -107,15 +107,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
           {/* Service Thumbnail */}
           <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
+            width: '100%',
             mb: 3,
             mt: 2
           }}>
             <ServiceThumbnail
               serviceId={service.id}
               serviceColor={service.color}
-              size="medium"
+              size="full-width"
               customThumbnail={service.thumbnail}
             />
           </Box>

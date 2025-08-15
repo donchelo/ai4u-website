@@ -5,7 +5,7 @@ import { useColors } from '../../../../hooks';
 interface ServiceThumbnailProps {
   serviceId: string;
   serviceColor?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'full-width';
   className?: string;
   customThumbnail?: string; // Path al thumbnail personalizado
 }
@@ -22,7 +22,8 @@ const ServiceThumbnail = ({
   const sizeMap = {
     small: { width: 80, height: 80 },
     medium: { width: 120, height: 120 },
-    large: { width: 160, height: 160 }
+    large: { width: 160, height: 160 },
+    'full-width': { width: '100%', height: 'auto', aspectRatio: '1/1' }
   };
 
   const currentSize = sizeMap[size];
@@ -71,11 +72,13 @@ const ServiceThumbnail = ({
           position: 'relative',
           border: `1px solid ${color}20`,
           transition: 'all 0.3s ease',
-          '&:hover': {
-            transform: 'scale(1.02)',
-            boxShadow: `0 8px 25px ${color}30`,
-            borderColor: `${color}40`
-          }
+          ...(size !== 'full-width' && {
+            '&:hover': {
+              transform: 'scale(1.02)',
+              boxShadow: `0 8px 25px ${color}30`,
+              borderColor: `${color}40`
+            }
+          })
         }}
       >
         <img
@@ -120,11 +123,13 @@ const ServiceThumbnail = ({
         alignItems: 'center',
         justifyContent: 'center',
         transition: 'all 0.3s ease',
-        '&:hover': {
-          transform: 'scale(1.02)',
-          boxShadow: `0 8px 25px ${color}30`,
-          borderColor: `${color}40`
-        }
+        ...(size !== 'full-width' && {
+          '&:hover': {
+            transform: 'scale(1.02)',
+            boxShadow: `0 8px 25px ${color}30`,
+            borderColor: `${color}40`
+          }
+        })
       }}
     >
       <svg
