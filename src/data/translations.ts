@@ -97,8 +97,9 @@ export const translations: Record<Language, Translations> = {
     // Services Page
     services: {
       premiumHero: {
-        title: 'Productos premium',
-        subtitle: 'Soluciones de mayor impacto con soporte prioritario y resultados acelerados.',
+        title: 'Destacados',
+        subtitle: 'Nuestras soluciones más populares y de mayor impacto',
+        description: 'Productos premium con soporte prioritario y resultados acelerados.',
       },
       hero: {
         title: 'Servicios AI4U',
@@ -165,6 +166,7 @@ export const translations: Record<Language, Translations> = {
       },
       process: {
         title: 'Nuestro proceso',
+        subtitle: 'Un proceso simple y efectivo para transformar tu negocio',
         steps: [
           {
             title: 'Diagnóstico gratuito (30 minutos)',
@@ -526,8 +528,9 @@ export const translations: Record<Language, Translations> = {
         description: 'At AI4U we specialize in creating artificial intelligence solutions specifically adapted to your business. We automate processes, free up operational time and transform that time into strategic freedom.'
       },
       premiumHero: {
-        title: 'Premium products',
-        subtitle: 'Higher impact solutions with priority support and accelerated results.',
+        title: 'Featured',
+        subtitle: 'Our most popular and high-impact solutions',
+        description: 'Premium products with priority support and accelerated results.',
       },
       stats: {
         title: 'Our numbers speak for themselves',
@@ -589,6 +592,7 @@ export const translations: Record<Language, Translations> = {
       },
       process: {
         title: 'Our process',
+        subtitle: 'A simple and effective process to transform your business',
         steps: [
           {
             title: 'Free diagnosis (30 minutes)',

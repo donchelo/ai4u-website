@@ -10,31 +10,38 @@ interface ProcessStepProps extends Omit<BoxProps, 'component'> {
   size?: 'small' | 'medium' | 'large';
 }
 
-// Styled component para números gigantes en los pasos del proceso
+// Styled component para números gigantes minimalistas
 const StepNumber = styled(Typography)<{ stepSize: string }>(({ stepSize, theme }) => ({
   fontSize: stepSize === 'small' 
-    ? '1.5rem' 
+    ? '3rem' 
     : stepSize === 'large' 
-      ? '3.5rem' 
-      : '2.5rem',
+      ? '8rem' 
+      : '5rem',
   fontWeight: 900,
   lineHeight: 0.8,
   fontFamily: '"Red Hat Display", sans-serif',
-  letterSpacing: '-0.02em',
-  textShadow: '0 4px 8px rgba(0,0,0,0.2)',
+  letterSpacing: '-0.05em',
+  color: theme.palette.text.primary,
+  [theme.breakpoints.down('md')]: {
+    fontSize: stepSize === 'small' 
+      ? '2.5rem' 
+      : stepSize === 'large' 
+        ? '6rem' 
+        : '4rem',
+  },
   [theme.breakpoints.down('sm')]: {
     fontSize: stepSize === 'small' 
-      ? '1.2rem' 
+      ? '2rem' 
       : stepSize === 'large' 
-        ? '2.8rem' 
-        : '2rem',
+        ? '5rem' 
+        : '3.5rem',
   },
   [theme.breakpoints.down('xs')]: {
     fontSize: stepSize === 'small' 
-      ? '1rem' 
+      ? '1.8rem' 
       : stepSize === 'large' 
-        ? '2.5rem' 
-        : '1.8rem',
+        ? '4rem' 
+        : '3rem',
   }
 }));
 
@@ -51,29 +58,29 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
     switch (size) {
       case 'small':
         return {
-          circleSize: 48,
-          fontSize: '1.5rem',
-          titleSize: '0.9rem',
-          descriptionSize: '0.8rem'
+          numberSize: 80,
+          fontSize: '3rem',
+          titleSize: '1.1rem',
+          descriptionSize: '0.9rem'
         };
       case 'large':
         return {
-          circleSize: 100,
-          fontSize: '3.5rem',
-          titleSize: '1.2rem',
-          descriptionSize: '1rem'
+          numberSize: 160,
+          fontSize: '8rem',
+          titleSize: '1.6rem',
+          descriptionSize: '1.2rem'
         };
       default:
         return {
-          circleSize: 64,
-          fontSize: '2.5rem',
-          titleSize: '1rem',
-          descriptionSize: '0.875rem'
+          numberSize: 120,
+          fontSize: '5rem',
+          titleSize: '1.3rem',
+          descriptionSize: '1rem'
         };
     }
   };
 
-  const { circleSize, titleSize, descriptionSize } = getSizeStyles();
+  const { numberSize, titleSize, descriptionSize } = getSizeStyles();
 
   return (
     <Box 
@@ -87,41 +94,19 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
     >
       <Box 
         sx={{ 
-          width: circleSize, 
-          height: circleSize, 
-          borderRadius: '50%', 
-          background: `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`,
-          color: 'white', 
+          width: numberSize, 
+          height: numberSize, 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'center',
           flexShrink: 0,
-          mr: 3,
+          mr: 4,
           position: 'relative',
-          boxShadow: `0 8px 24px ${color}40`,
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          '&:hover': {
-            transform: 'scale(1.05)',
-            boxShadow: `0 12px 32px ${color}60`,
-          },
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: '-2px',
-            left: '-2px',
-            right: '-2px',
-            bottom: '-2px',
-            borderRadius: '50%',
-            background: `linear-gradient(135deg, ${color} 0%, transparent 50%, ${color} 100%)`,
-            zIndex: -1,
-            opacity: 0.3,
-          }
         }}
       >
         <StepNumber
           stepSize={size}
           sx={{
-            color: 'white',
             textAlign: 'center',
             fontWeight: 900,
           }}
@@ -129,14 +114,15 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
           {number}
         </StepNumber>
       </Box>
-      <Box sx={{ flex: 1, pt: size === 'large' ? 1 : 0 }}>
+      <Box sx={{ flex: 1, pt: size === 'large' ? 3 : size === 'medium' ? 2 : 1 }}>
         <BodyText 
           sx={{ 
-            fontWeight: 600, 
+            fontWeight: 700, 
             fontSize: titleSize,
-            mb: 1,
+            mb: 1.5,
             color: 'text.primary',
-            lineHeight: 1.3
+            lineHeight: 1.2,
+            letterSpacing: '-0.01em'
           }}
         >
           {title}
@@ -145,8 +131,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
           color="text.secondary" 
           sx={{ 
             fontSize: descriptionSize,
-            lineHeight: 1.5,
-            opacity: 0.8
+            lineHeight: 1.6,
+            opacity: 0.85,
+            fontWeight: 400
           }}
         >
           {description}

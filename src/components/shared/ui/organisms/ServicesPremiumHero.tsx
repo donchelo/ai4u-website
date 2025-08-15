@@ -4,6 +4,7 @@ import { H3, BodyText, LazyImage, Button } from '../atoms';
 import { Card } from '../molecules';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
+import { useLanguage } from '../../../../context';
 import { useServicesContext } from '../../../../context/ServicesContext';
 
 interface ServicesPremiumHeroProps {
@@ -18,6 +19,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
   maxItems = 3,
 }) => {
   const colors = useColors();
+  const { t } = useLanguage();
   const { getFeaturedServices } = useServicesContext();
 
   // Destacados ordenados por prioridad
@@ -41,16 +43,31 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
       <Container maxWidth="lg">
         {featuredSorted.length > 0 && (
           <Box sx={{ position: 'relative', zIndex: 1 }}>
-            {/* Selector de servicios destacados */}
+            {/* Título minimalista de servicios destacados */}
+            <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 4 } }}>
+              <Typography
+                variant="h3"
+                sx={{
+                  color: colors.contrast.text.primary,
+                  fontWeight: 600,
+                  fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  fontFamily: '"Red Hat Display", sans-serif',
+                  letterSpacing: '-0.01em'
+                }}
+              >
+                {t('services.premiumHero.title')}
+              </Typography>
+            </Box>
+
+            {/* Selector minimalista de servicios destacados */}
             <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: 1.5,
+                gap: 1,
                 mb: { xs: 3, md: 4 },
                 overflowX: 'auto',
-                p: 1,
                 position: 'relative',
                 zIndex: 2,
               }}
@@ -61,6 +78,12 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   variant={idx === activeIndex ? 'primary' : 'glass'}
                   size="small"
                   onClick={() => setActiveIndex(idx)}
+                  sx={{
+                    minWidth: 'auto',
+                    px: 2,
+                    py: 1,
+                    fontSize: '0.875rem'
+                  }}
                 >
                   {service.title}
                 </Button>

@@ -208,14 +208,29 @@ const Services: React.FC = () => {
       <Divider />
 
       {/* Process Section */}
-      <Box sx={{ py: 6, position: 'relative', zIndex: 1 }}>
-        <Container maxWidth="lg">
-          <Stack spacing={4} alignItems="center">
-            <H2 sx={{ textAlign: 'center', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
-              {t('services.process.title')}
-            </H2>
+      <Box sx={{ py: { xs: 8, md: 12 }, position: 'relative', zIndex: 1, bgcolor: colors.contrast.surface }}>
+        <Container maxWidth="xl">
+          <Stack spacing={6} alignItems="center">
+            <Box sx={{ textAlign: 'center', mb: 2 }}>
+              <H2 sx={{ 
+                fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
+                fontWeight: 700,
+                letterSpacing: '-0.02em',
+                mb: 2
+              }}>
+                {t('services.process.title')}
+              </H2>
+              <BodyText sx={{ 
+                fontSize: { xs: '1.1rem', md: '1.25rem' },
+                color: colors.contrast.text.secondary,
+                maxWidth: 600,
+                mx: 'auto'
+              }}>
+                {t('services.process.subtitle')}
+              </BodyText>
+            </Box>
             
-            <Grid container spacing={3}>
+            <Grid container spacing={{ xs: 4, md: 6 }} sx={{ mt: 2 }}>
               {[
                 {
                   number: 1,
@@ -227,13 +242,13 @@ const Services: React.FC = () => {
                   number: 2,
                   title: t('services.process.steps.1.title'),
                   description: t('services.process.steps.1.description'),
-                  color: colors.palette.orange
+                  color: colors.palette.green
                 },
                 {
                   number: 3,
                   title: t('services.process.steps.2.title'),
                   description: t('services.process.steps.2.description'),
-                  color: colors.palette.orange
+                  color: colors.palette.green
                 },
                 {
                   number: 4,

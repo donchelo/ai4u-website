@@ -69,7 +69,7 @@ export const useImageOptimization = (
           setImageMapping(mapping);
         }
       } catch (error) {
-        console.warn('No se pudo cargar el mapeo de imágenes:', error);
+        // console.warn('No se pudo cargar el mapeo de imágenes:', error);
       }
     };
 
@@ -269,7 +269,7 @@ export const useImageOptimizationInfo = (imageName: string) => {
           }
         }
       } catch (error) {
-        console.warn('No se pudo cargar información de optimización:', error);
+        // console.warn('No se pudo cargar información de optimización:', error);
       }
     };
 

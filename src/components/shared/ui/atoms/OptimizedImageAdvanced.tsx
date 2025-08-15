@@ -37,7 +37,6 @@ export const OptimizedImageAdvanced: React.FC<OptimizedImageAdvancedProps> = ({
   className
 }) => {
   const theme = useTheme();
-  const colors = useColors();
   
   const {
     src,
