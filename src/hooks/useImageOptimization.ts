@@ -215,11 +215,11 @@ export const useImagePreloader = (imageNames: string[]) => {
       return new Promise<void>((resolve) => {
         const img = new Image();
         img.onload = () => {
-          setLoadedImages(prev => new Set([...prev, imageName]));
+          setLoadedImages(prev => new Set(Array.from(prev).concat(imageName)));
           resolve();
         };
         img.onerror = () => {
-          setLoadedImages(prev => new Set([...prev, imageName]));
+          setLoadedImages(prev => new Set(Array.from(prev).concat(imageName)));
           resolve();
         };
         img.src = `/assets/images/${imageName}.jpg`;
@@ -261,7 +261,7 @@ export const useImageOptimizationInfo = (imageName: string) => {
           if (imageInfo) {
             setInfo({
               originalSize: imageInfo.original ? 
-                (await fetch(`/assets/images/${imageInfo.original}`)).headers.get('content-length') : undefined,
+                parseInt((await fetch(`/assets/images/${imageInfo.original}`)).headers.get('content-length') || '0', 10) : undefined,
               webpSize: imageInfo.formats?.webp?.size,
               savings: imageInfo.formats?.webp?.savings,
               sizes: imageInfo.sizes
