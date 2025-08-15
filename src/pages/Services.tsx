@@ -9,7 +9,7 @@ import {
   Divider
 } from '@mui/material';
 import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages } from '../components/shared/ui/molecules';
+import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages, SuperCategoryFilter, FilterStats } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
@@ -122,40 +122,23 @@ const Services: React.FC = () => {
           <Grid container spacing={3}>
             {/* Filters Sidebar */}
             <Grid item xs={12} md={3}>
-              <Card variant="glass" sx={{ 
-                p: 3, 
+              <Box sx={{ 
                 position: 'sticky', 
                 top: 20, 
                 zIndex: 3,
                 height: 'fit-content'
               }}>
                 <Stack spacing={3}>
-                  <H2 sx={{ fontSize: '1.2rem', fontWeight: 500 }}>
-                    Filtros
-                  </H2>
-                  
-                  {/* Super Categories */}
-                  <Box>
-                    <BodyText sx={{ mb: 2, fontSize: '0.9rem', fontWeight: 500 }}>
-                      Tipo de servicio
-                    </BodyText>
-                    <Stack spacing={1}>
-                      {superCategoryTabs.map((tab, index) => (
-                        <Button
-                          key={index}
-                          variant={selectedSuperTab === index ? "primary" : "outline"}
-                          size="small"
-                          onClick={() => handleSuperTabChange({} as React.SyntheticEvent, index)}
-                          sx={{
-                            justifyContent: 'flex-start',
-                            fontSize: '0.9rem'
-                          }}
-                        >
-                          {tab.label}
-                        </Button>
-                      ))}
-                    </Stack>
-                  </Box>
+                  {/* Super Categories Filter */}
+                  <SuperCategoryFilter
+                    selectedValue={superCategoryTabs[selectedSuperTab].value}
+                    onValueChange={(value) => {
+                      const index = superCategoryTabs.findIndex(tab => tab.value === value);
+                      setSelectedSuperTab(index >= 0 ? index : 0);
+                      setSuperCategoryFilter(value);
+                    }}
+                    options={superCategoryTabs}
+                  />
                   
                   {/* Services Filter */}
                   <ServicesFilter
@@ -168,11 +151,22 @@ const Services: React.FC = () => {
                     categoryTabs={categoryTabs}
                   />
                 </Stack>
-              </Card>
+              </Box>
             </Grid>
             
             {/* Services Grid */}
             <Grid item xs={12} md={9}>
+              {/* Filter Stats */}
+              <FilterStats
+                totalCount={stats.total}
+                filteredCount={filteredServices.length}
+                activeFilters={[
+                  ...(searchValue ? [`Búsqueda: "${searchValue}"`] : []),
+                  ...(selectedSuperTab > 0 ? [superCategoryTabs[selectedSuperTab].label] : []),
+                  ...(selectedTab > 0 ? [categoryTabs[selectedTab].label] : [])
+                ]}
+              />
+              
               {filteredServices.length > 0 ? (
                 <Box sx={{ 
                   position: 'relative', 

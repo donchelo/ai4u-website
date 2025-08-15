@@ -15,3 +15,5 @@ export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Button } from '../atoms/Button';
 export { default as RelatedPages } from './RelatedPages';
 export { default as ServiceCrossLink } from './ServiceCrossLink';
+export { default as SuperCategoryFilter } from './SuperCategoryFilter';
+export { default as FilterStats } from './FilterStats';
