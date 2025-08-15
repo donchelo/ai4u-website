@@ -9,7 +9,13 @@ module.exports = function override(config, env) {
   });
 
   // Permite que los archivos JSX tengan prioridad sobre los tsx
-  config.resolve.extensions = ['.jsx', '.js', '.tsx', '.ts', '.json'];
+  config.resolve.extensions = ['.jsx', '.js', '.tsx', '.ts', '.json', '.mjs'];
+  
+  // Configurar webpack para manejar archivos .mjs
+  config.resolve.extensionAlias = {
+    '.mjs': ['.mjs', '.js'],
+    '.js': ['.js', '.mjs']
+  };
 
   return config;
 }; 
