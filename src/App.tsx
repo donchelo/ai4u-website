@@ -18,7 +18,8 @@ import {
   Fase3Demo,
   MetricsDemo,
   ThemeDemo,
-  InternationalizationDemo
+  InternationalizationDemo,
+  ServiceThumbnailsDemo
 } from './pages/lazy';
 
 function App() {
@@ -135,6 +136,14 @@ function App() {
                       element={
                         <LazyPage>
                           <InternationalizationDemo />
+                        </LazyPage>
+                      } 
+                    />
+                    <Route 
+                      path={ROUTES.SERVICE_THUMBNAILS_DEMO} 
+                      element={
+                        <LazyPage>
+                          <ServiceThumbnailsDemo />
                         </LazyPage>
                       } 
                     />

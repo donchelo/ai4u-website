@@ -20,6 +20,7 @@ export const Fase3Demo = lazy(() => import('./Fase3Demo'));
 export const MetricsDemo = lazy(() => import('./MetricsDemo'));
 export const ThemeDemo = lazy(() => import('./ThemeDemo'));
 export const InternationalizationDemo = lazy(() => import('./InternationalizationDemo'));
+export const ServiceThumbnailsDemo = lazy(() => import('./ServiceThumbnailsDemo'));
 
 // Preloading para páginas críticas
 export const preloadHome = () => import('./Home');

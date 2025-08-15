@@ -335,6 +335,7 @@ export const services: Service[] = [
       video: '/assets/videos/data-entry-automatico.mp4',
       poster: '/assets/images/data-entry-automatico-poster.jpg'
     },
+    thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.jpg',
     color: '#22c55e',
     gradient: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
     tags: ['ocr', 'pdf', 'imágenes', 'correo', 'excel', 'erp', 'crm', 'integración'],
@@ -366,6 +367,7 @@ export const services: Service[] = [
       video: '/assets/videos/fashion-agent.mp4',
       poster: '/assets/images/fashion-agent-poster.jpg'
     },
+    thumbnail: '/assets/images/services-thumbnails/fashion-agent.jpg',
     color: '#0ea5e9',
     gradient: 'linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)',
     tags: ['fashion', 'ecommerce', 'imágenes', 'modelos', 'generative ai'],

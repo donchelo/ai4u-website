@@ -13,3 +13,4 @@ export { default as SEOHead } from './SEOHead';
 export { default as OptimizedImage } from './OptimizedImage';
 export { default as ContextualLink } from './ContextualLink';
 export { default as NavigationDot } from './NavigationDot';
+export { default as ServiceThumbnail } from './ServiceThumbnail';

@@ -14,6 +14,7 @@ export interface Service {
   color?: string; // Color primario del servicio
   gradient?: string; // Gradiente del servicio
   media?: ServiceMedia; // Media opcional para destacar (gif/poster)
+  thumbnail?: string; // Path al thumbnail personalizado del servicio
   tags: string[]; // Etiquetas para filtrado
   status: ServiceStatus;
   metadata: ServiceMetadata;

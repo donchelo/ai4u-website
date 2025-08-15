@@ -8,7 +8,7 @@ import {
   ListItemText,
   Typography
 } from '@mui/material';
-import { H3, BodyText, GeometricIcon, SEOHead } from '../atoms';
+import { H3, BodyText, GeometricIcon, SEOHead, ServiceThumbnail } from '../atoms';
 import { useColors } from '../../../../hooks';
 import { Service, ServiceStatus } from '../../../../types/service';
 import { getServiceStructuredData } from '../../../../utils/seo';
@@ -102,6 +102,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             borderRadius: '12px 12px 0 0'
           }} />
 
+          {/* Service Thumbnail */}
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            mb: 3,
+            mt: 2
+          }}>
+            <ServiceThumbnail
+              serviceId={service.id}
+              serviceColor={service.color}
+              size="medium"
+              customThumbnail={service.thumbnail}
+            />
+          </Box>
+
           {/* Super Category Badge con glassmorphism */}
           <Box sx={{ 
             position: 'absolute', 
@@ -128,7 +143,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <Box sx={{ 
             mb: 3,
             textAlign: 'center',
-            mt: 4
+            mt: 1
           }}>
             <H3 sx={{ 
               mb: 1.5,

@@ -13,7 +13,8 @@ export const ROUTES = {
   FASE3_DEMO: '/fase3-demo',
   METRICS_DEMO: '/metrics-demo',
   THEME_DEMO: '/theme-demo',
-  I18N_DEMO: '/i18n-demo'
+  I18N_DEMO: '/i18n-demo',
+  SERVICE_THUMBNAILS_DEMO: '/service-thumbnails-demo'
 } as const;
 
 // Configuración de la aplicación
