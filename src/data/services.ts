@@ -20,6 +20,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
     tags: ['estrategia', 'reportes', 'ejecutivo', 'análisis'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/estratega-ejecutivo.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -46,6 +47,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
     tags: ['chatbot', 'whatsapp', 'atención', 'automatización'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/chatbot-inteligente.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -72,6 +74,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
     tags: ['leads', 'marketing', 'meta ads', 'generación'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/cazador-leads.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -98,6 +101,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
     tags: ['cotizaciones', 'automatización', 'voz', 'email'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/cotizador-automatico.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -124,6 +128,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
     tags: ['erp', 'pedidos', 'documentos', 'integración'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/gestor-pedidos.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -150,6 +155,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
     tags: ['redes sociales', 'análisis', 'competencia', 'tendencias'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/investigador-digital.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -176,6 +182,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #84cc16 0%, #65a30d 100%)',
     tags: ['sentimientos', 'comentarios', 'insights', 'patrones'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/analista-comentarios.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -202,6 +209,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)',
     tags: ['shopify', 'ecommerce', 'tienda', 'desarrollo'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/the-builder.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -228,6 +236,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
     tags: ['midjourney', 'capacitación', 'imágenes', 'prompts'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/the-artist.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -254,6 +263,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #a855f7 0%, #9333ea 100%)',
     tags: ['chatgpt', 'gpts', 'prompts', 'productividad'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/the-mentor.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -280,6 +290,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)',
     tags: ['presencial', 'grupal', 'líderes', 'intensiva'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/the-master.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -306,6 +317,7 @@ export const services: Service[] = [
     gradient: 'linear-gradient(135deg, #64748b 0%, #475569 100%)',
     tags: ['consultoría', 'continua', 'actualizaciones', 'soporte'],
     status: ServiceStatus.ACTIVE,
+    thumbnail: '/assets/images/services-thumbnails/asesoria-estrategica-continua.png',
     metadata: {
       createdAt: '2024-01-01',
       updatedAt: '2024-01-15',
@@ -335,7 +347,7 @@ export const services: Service[] = [
       video: '/assets/videos/data-entry-automatico.mp4',
       poster: '/assets/images/data-entry-automatico-poster.jpg'
     },
-    thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.jpg',
+    thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
     color: '#22c55e',
     gradient: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
     tags: ['ocr', 'pdf', 'imágenes', 'correo', 'excel', 'erp', 'crm', 'integración'],
@@ -367,7 +379,7 @@ export const services: Service[] = [
       video: '/assets/videos/fashion-agent.mp4',
       poster: '/assets/images/fashion-agent-poster.jpg'
     },
-    thumbnail: '/assets/images/services-thumbnails/fashion-agent.jpg',
+    thumbnail: '/assets/images/services-thumbnails/fashion-agent.png',
     color: '#0ea5e9',
     gradient: 'linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)',
     tags: ['fashion', 'ecommerce', 'imágenes', 'modelos', 'generative ai'],
