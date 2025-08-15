@@ -34,5 +34,19 @@ export const clients: Client[] = [
     website: 'https://www.eafit.edu.co',
     logo: '/assets/images/cases/logo-eafit.png',
     sector: 'Educación Superior'
+  },
+  {
+    id: 'tamaprint',
+    name: 'Tamaprint',
+    website: 'https://www.tamaprint.com',
+    logo: '/assets/images/cases/logo-tamaprint.png',
+    sector: 'Manufactura'
+  },
+  {
+    id: 'flexoimpresos',
+    name: 'Flexoimpresos',
+    website: 'https://www.flexoimpresos.com.co',
+    logo: '/assets/images/cases/logo-flexoimpresos.png',
+    sector: 'Manufactura'
   }
 ];
