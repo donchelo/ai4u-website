@@ -84,7 +84,12 @@ const Services: React.FC = () => {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: colors.contrast.background }}>
+    <Box sx={{ 
+      minHeight: '100vh', 
+      bgcolor: colors.contrast.background,
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
       {/* SEO Head con meta tags optimizados */}
       <SEOHead
         title={metaTags.title}
@@ -97,19 +102,33 @@ const Services: React.FC = () => {
       {/* Breadcrumb eliminado para hero limpio */}
 
       {/* Hero Premium para Servicios: destacar Fashion Agent y Data Entry */}
-      <ServicesPremiumHero 
-        title="Fashion Agent"
-        subtitle="De figurines a fotos reales de ecommerce con modelos personalizados. Ahorra en fotos, confección y tiempos."
-        maxItems={2}
-      />
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
+        <ServicesPremiumHero 
+          title="Fashion Agent"
+          subtitle="De figurines a fotos reales de ecommerce con modelos personalizados. Ahorra en fotos, confección y tiempos."
+          maxItems={2}
+        />
+      </Box>
 
       {/* Services Section */}
-      <Box sx={{ py: 4, bgcolor: colors.contrast.surface }}>
+      <Box sx={{ 
+        py: 4, 
+        bgcolor: colors.contrast.surface, 
+        mt: 4,
+        position: 'relative',
+        zIndex: 2
+      }}>
         <Container maxWidth="xl">
           <Grid container spacing={3}>
             {/* Filters Sidebar */}
             <Grid item xs={12} md={3}>
-              <Card variant="glass" sx={{ p: 3, position: 'sticky', top: 20 }}>
+              <Card variant="glass" sx={{ 
+                p: 3, 
+                position: 'sticky', 
+                top: 20, 
+                zIndex: 3,
+                height: 'fit-content'
+              }}>
                 <Stack spacing={3}>
                   <H2 sx={{ fontSize: '1.2rem', fontWeight: 500 }}>
                     Filtros
@@ -155,7 +174,11 @@ const Services: React.FC = () => {
             {/* Services Grid */}
             <Grid item xs={12} md={9}>
               {filteredServices.length > 0 ? (
-                <Box sx={{ overflowX: 'auto' }}>
+                <Box sx={{ 
+                  position: 'relative', 
+                  zIndex: 2,
+                  minHeight: '400px'
+                }}>
                   <Grid container spacing={2}>
                     {filteredServices.map((service) => (
                       <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
@@ -191,7 +214,7 @@ const Services: React.FC = () => {
       <Divider />
 
       {/* Process Section */}
-      <Box sx={{ py: 6 }}>
+      <Box sx={{ py: 6, position: 'relative', zIndex: 1 }}>
         <Container maxWidth="lg">
           <Stack spacing={4} alignItems="center">
             <H2 sx={{ textAlign: 'center', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
@@ -241,7 +264,7 @@ const Services: React.FC = () => {
       </Box>
 
       {/* CTA Section */}
-      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.contrast.surface }}>
+      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.contrast.surface, position: 'relative', zIndex: 1 }}>
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
             <H2 sx={{ fontSize: { xs: '1.5rem', md: '1.8rem' } }}>

@@ -67,8 +67,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         height: '100%',
         position: 'relative',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 2,
         '&:hover': {
           transform: 'translateY(-4px)',
+          zIndex: 3,
           '& .service-card-content': {
             boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
             borderColor: colors.contrast.border,
@@ -89,7 +91,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           borderRadius: 3,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+          boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+          zIndex: 1
         }}>
           {/* Subtle Header */}
           <Box sx={{

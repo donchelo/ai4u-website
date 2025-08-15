@@ -32,12 +32,15 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
         bgcolor: colors.contrast.background,
         borderBottom: `1px solid ${alpha(colors.contrast.border, 0.4)}`,
         py: { xs: 4, md: 6 },
-        px: { xs: 2, md: 0 }
+        px: { xs: 2, md: 0 },
+        zIndex: 1,
+        mb: 4,
+        overflow: 'hidden'
       }}
     >
       <Container maxWidth="lg">
         {featuredSorted.length > 0 && (
-          <Box>
+          <Box sx={{ position: 'relative', zIndex: 1 }}>
             {/* Selector de servicios destacados */}
             <Box
               sx={{
@@ -85,7 +88,8 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     width: '100%',
                     position: 'relative',
                     boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                    border: `2px solid ${activeService.color}`
+                    border: `2px solid ${activeService.color}`,
+                    zIndex: 1
                   }}
                 >
                   {/* Media destacada con padding interno */}
@@ -180,7 +184,9 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   display: 'flex', 
                   flexDirection: 'column',
                   height: { xs: 'auto', md: 550 },
-                  minHeight: { xs: 'auto', md: 550 }
+                  minHeight: { xs: 'auto', md: 550 },
+                  position: 'relative',
+                  zIndex: 1
                 }}>
                   {/* Título y descripción */}
                   <Box sx={{ mb: 4 }}>
@@ -296,7 +302,9 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       borderRadius: 3,
                       background: alpha(activeService.color, 0.08),
                       border: `2px solid ${alpha(activeService.color, 0.3)}`,
-                      flexShrink: 0
+                      flexShrink: 0,
+                      position: 'relative',
+                      zIndex: 1
                     }}>
                       <Typography
                         sx={{
