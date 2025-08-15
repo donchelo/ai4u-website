@@ -132,13 +132,13 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               label={`${filteredCount} servicios`}
               size="small"
               sx={{
-                background: `linear-gradient(135deg, ${colors.palette.orange}, ${colors.palette.orange}dd)`,
+                background: colors.contrast.surface,
                 backdropFilter: 'blur(10px)',
-                color: colors.palette.white,
-                fontWeight: 700,
-                border: `1px solid ${colors.palette.orange}60`,
+                color: colors.contrast.text.primary,
+                fontWeight: 600,
+                border: `1px solid ${colors.contrast.border}`,
                 '&:hover': {
-                  background: `linear-gradient(135deg, ${colors.palette.orange}ff, ${colors.palette.orange}ee)`,
+                  background: colors.contrast.background,
                 }
               }}
             />
@@ -175,16 +175,16 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
                 border: `1px solid ${colors.contrast.border}`
               },
               '&.Mui-selected': {
-                background: `linear-gradient(135deg, ${colors.palette.orange}20, ${colors.palette.orange}10)`,
-                color: colors.palette.orange,
+                background: colors.contrast.background,
+                color: colors.contrast.text.primary,
                 fontWeight: 600,
-                border: `1px solid ${colors.palette.orange}40`,
+                border: `1px solid ${colors.contrast.border}`,
                 backdropFilter: 'blur(16px)'
               }
             },
             '& .MuiTabs-indicator': {
               height: 2,
-              background: `linear-gradient(90deg, ${colors.palette.orange}, ${colors.palette.orange}dd)`,
+              background: colors.contrast.border,
               borderRadius: 1
             }
           }}

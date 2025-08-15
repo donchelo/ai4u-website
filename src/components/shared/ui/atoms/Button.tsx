@@ -36,13 +36,14 @@ const StyledButton = styled(MuiButton, {
     case 'primary':
       return {
         ...baseStyles,
-        background: `linear-gradient(135deg, ${theme.palette.primary.main}, #FF7477)`,
-        color: theme.palette.primary.contrastText,
-        boxShadow: `0 4px 20px ${theme.palette.primary.main}30`,
+        background: theme.palette.background.paper,
+        color: theme.palette.text.primary,
+        border: `1px solid ${theme.palette.divider}`,
+        boxShadow: `0 2px 8px rgba(0,0,0,0.1)`,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.main})`,
-          boxShadow: `0 8px 25px ${theme.palette.primary.main}60`,
+          background: theme.palette.common.white,
+          boxShadow: `0 4px 12px rgba(0,0,0,0.15)`,
         },
       };
     

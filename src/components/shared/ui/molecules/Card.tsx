@@ -70,32 +70,32 @@ const StyledCard = styled(MuiCard, {
     case 'primary':
       return {
         ...baseStyles,
-        background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.primary.main}10)`,
+        background: theme.palette.background.paper,
         backdropFilter: 'blur(20px)',
-        border: `1px solid ${theme.palette.primary.main}20`,
-        boxShadow: `0 8px 32px ${theme.palette.primary.main}15, inset 0 1px 0 ${theme.palette.common.white}20`,
+        border: `1px solid ${theme.palette.divider}`,
+        boxShadow: `0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 ${theme.palette.common.white}20`,
         color: theme.palette.text.primary,
         fontWeight: 600,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.primary.main}15)`,
-          boxShadow: `0 12px 40px ${theme.palette.primary.main}25, inset 0 1px 0 ${theme.palette.common.white}30`,
+          background: theme.palette.common.white,
+          boxShadow: `0 12px 40px rgba(0,0,0,0.12), inset 0 1px 0 ${theme.palette.common.white}30`,
         },
       };
     
     case 'accent':
       return {
         ...baseStyles,
-        background: `linear-gradient(135deg, ${theme.palette.success.main}15, ${theme.palette.info.main}10)`,
+        background: theme.palette.background.paper,
         backdropFilter: 'blur(20px)',
-        border: `1px solid ${theme.palette.success.main}30`,
-        boxShadow: `0 8px 32px ${theme.palette.success.main}15, inset 0 1px 0 ${theme.palette.common.white}20`,
+        border: `1px solid ${theme.palette.divider}`,
+        boxShadow: `0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 ${theme.palette.common.white}20`,
         color: theme.palette.text.primary,
         fontWeight: 500,
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: `linear-gradient(135deg, ${theme.palette.success.main}20, ${theme.palette.info.main}15)`,
-          boxShadow: `0 12px 40px ${theme.palette.success.main}25, inset 0 1px 0 ${theme.palette.common.white}30`,
+          background: theme.palette.common.white,
+          boxShadow: `0 12px 40px rgba(0,0,0,0.12), inset 0 1px 0 ${theme.palette.common.white}30`,
         },
       };
     

@@ -71,7 +71,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           transform: 'translateY(-4px)',
           '& .service-card-content': {
             boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
-            borderColor: service.color,
+            borderColor: colors.contrast.border,
             backdropFilter: 'blur(24px)'
           }
         }
@@ -91,14 +91,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           overflow: 'hidden',
           boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
         }}>
-          {/* Gradient Header */}
+          {/* Subtle Header */}
           <Box sx={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
-            height: 4,
-            background: `linear-gradient(90deg, ${service.color}, ${service.color}dd)`,
+            height: 2,
+            background: colors.contrast.border,
             borderRadius: '12px 12px 0 0'
           }} />
 
@@ -117,7 +117,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             />
           </Box>
 
-          {/* Super Category Badge con glassmorphism */}
+          {/* Super Category Badge */}
           <Box sx={{ 
             position: 'absolute', 
             top: 12, 
@@ -128,13 +128,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               label={getSuperCategoryText(service.superCategory)}
               size="small"
               sx={{
-                background: `rgba(${getSuperCategoryColor(service.superCategory) === colors.palette.orange ? '255, 92, 0' : '182, 202, 64'}, 0.9)`,
+                background: colors.contrast.surface,
                 backdropFilter: 'blur(10px)',
-                color: colors.palette.white,
-                fontWeight: 700,
+                color: colors.contrast.text.primary,
+                fontWeight: 600,
                 fontSize: '0.7rem',
                 height: 24,
-                border: `1px solid ${getSuperCategoryColor(service.superCategory)}60`
+                border: `1px solid ${colors.contrast.border}`
               }}
             />
           </Box>
@@ -142,7 +142,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {/* Header */}
           <Box sx={{ 
             mb: 3,
-            textAlign: 'center',
             mt: 1
           }}>
             <H3 sx={{ 
@@ -150,16 +149,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               color: colors.contrast.text.primary,
               fontSize: { xs: '1.3rem', md: '1.5rem' },
               fontWeight: 700,
-              lineHeight: 1.3
+              lineHeight: 1.3,
+              textAlign: 'center'
             }}>
               {service.title}
             </H3>
             <BodyText sx={{ 
               mb: 2, 
               fontWeight: 600,
-              color: service.color,
+              color: colors.contrast.text.primary,
               fontSize: '1rem',
-              lineHeight: 1.4
+              lineHeight: 1.4,
+              textAlign: 'center'
             }}>
               {service.subtitle}
             </BodyText>
@@ -169,7 +170,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 mb: 3, 
                 lineHeight: 1.6,
                 color: colors.contrast.text.secondary,
-                fontSize: '0.95rem'
+                fontSize: '0.95rem',
+                textAlign: 'left'
               }}>
                 {service.description}
               </BodyText>
@@ -194,8 +196,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                       <GeometricIcon
                         type="check"
                         size="small"
-                        color={service.color}
-                        variant="filled"
+                        color={colors.contrast.text.primary}
+                        variant="minimal"
                       />
                     </ListItemIcon>
                     <ListItemText 
@@ -234,12 +236,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 </BodyText>
                 <Typography sx={{ 
                   fontWeight: 700,
-                  color: service.color,
-                  fontSize: '1.2rem',
-                  background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)`,
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  color: colors.contrast.text.primary,
+                  fontSize: '1.2rem'
                 }}>
                   {service.price}
                 </Typography>
