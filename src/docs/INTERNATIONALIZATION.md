@@ -306,6 +306,44 @@ El sistema está diseñado para escalar fácilmente:
 3. **Nuevos hooks**: Crear hooks específicos para casos de uso especiales
 4. **Integración con APIs**: Fácil integración con servicios de traducción externos
 
+## Validación y Mantenimiento
+
+### Script de Validación
+
+Se incluye un script para detectar texto hardcodeado:
+
+```bash
+npm run validate-translations
+```
+
+Este script:
+- Busca patrones de texto en español que deberían estar traducidos
+- Identifica atributos como `title`, `label`, `text`, `alt` con texto hardcodeado
+- Excluye archivos de demo que pueden tener texto hardcodeado intencionalmente
+- Proporciona un reporte detallado de problemas encontrados
+
+### Mejores Prácticas para Mantener Traducciones
+
+1. **Siempre usar la función `t()`** para texto visible al usuario
+2. **Ejecutar el script de validación** antes de commits importantes
+3. **Agregar nuevas traducciones** al archivo `translations.ts` inmediatamente
+4. **Mantener consistencia** en la estructura de traducciones
+5. **Probar ambos idiomas** regularmente
+
+## Estado Actual
+
+### ✅ Completamente Traducido
+- Navegación principal
+- Hero Section
+- Footer
+- Páginas principales (Home, Services, WhyAI4U, Gallery, UseCases)
+- Componentes de UI principales
+- Sistema de cambio de idioma
+
+### ⚠️ Componentes de Demo
+- Los componentes de demostración pueden tener texto hardcodeado intencionalmente
+- No afectan la funcionalidad principal de la aplicación
+
 ## Conclusión
 
-El sistema de internacionalización de AI4U proporciona una base sólida y escalable para aplicaciones multilingües, siguiendo las mejores prácticas de React y manteniendo la consistencia con el diseño de la marca. 
+El sistema de internacionalización de AI4U proporciona una base sólida y escalable para aplicaciones multilingües, siguiendo las mejores prácticas de React y manteniendo la consistencia con el diseño de la marca. El sistema está ahora completamente funcional con herramientas de validación para mantener la calidad. 

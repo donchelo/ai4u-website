@@ -350,7 +350,7 @@ const Home = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title="Continúa explorando:"
+          title={t('common.related.continue')}
           variant="horizontal"
         />
       </Container>

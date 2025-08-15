@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../atoms';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { analytics } from '../../../../utils/analytics';
+import { useLanguage } from '../../../../context';
 
 const CALENDLY_URL = 'https://calendly.com/mgarciap333/ai4u';
 
@@ -20,9 +21,11 @@ export const DiagnosticCTA = ({
   variant = 'primary' as ButtonVariant,
   size = 'medium' as ButtonSize,
   showIcon = false,
-  text = 'Diagnóstico gratis',
+  text,
   className,
 }: DiagnosticCTAProps) => {
+  const { t } = useLanguage();
+  const defaultText = t('common.schedule.diagnostic');
   return (
     <Button
       variant={variant as ButtonVariant}
@@ -34,7 +37,7 @@ export const DiagnosticCTA = ({
       startIcon={showIcon ? <CalendarMonthIcon /> : undefined}
       className={className}
     >
-      {text}
+      {text || defaultText}
     </Button>
   );
 };

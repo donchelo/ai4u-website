@@ -12,7 +12,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
   variant = 'both', 
   size = 'medium' 
 }) => {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage, t } = useLanguage();
   const colors = useColors();
 
   const getLanguageDisplay = () => {
@@ -20,7 +20,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
   };
 
   const getLanguageName = () => {
-    return language === 'es' ? 'English' : 'Español';
+    return language === 'es' ? t('language.english') : t('language.spanish');
   };
 
   const getSizeStyles = () => {
@@ -42,7 +42,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
     return (
       <IconButton
         onClick={handleClick}
-        title={`Cambiar a ${getLanguageName()}`}
+        title={`${t('language.changeTo')} ${getLanguageName()}`}
         sx={{
           backgroundColor: colors.contrast.surface,
           color: colors.contrast.text.primary,
@@ -73,7 +73,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
     return (
       <Box
         onClick={handleClick}
-        title={`Cambiar a ${getLanguageName()}`}
+        title={`${t('language.changeTo')} ${getLanguageName()}`}
         sx={{
           cursor: 'pointer',
           padding: getSizeStyles().padding,
@@ -106,7 +106,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
   return (
     <Box
       onClick={handleClick}
-      title={`Cambiar a ${getLanguageName()}`}
+      title={`${t('language.changeTo')} ${getLanguageName()}`}
       sx={{
         cursor: 'pointer',
         display: 'flex',

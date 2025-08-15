@@ -262,17 +262,17 @@ const Services: React.FC = () => {
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
             <H2 sx={{ fontSize: { xs: '1.5rem', md: '1.8rem' } }}>
-              ¿Necesitas ayuda?
+              {t('common.help.title')}
             </H2>
             <BodyText sx={{ maxWidth: 500 }}>
-              Agenda una consulta gratuita de 30 minutos
+              {t('common.help.subtitle')}
             </BodyText>
-            <DiagnosticCTA 
-              variant="primary"
-              size="medium"
-              showIcon={true}
-              text="Agendar consulta"
-            />
+                          <DiagnosticCTA 
+                variant="primary"
+                size="medium"
+                showIcon={true}
+                text={t('common.schedule.title')}
+              />
           </Stack>
         </Container>
       </Box>
@@ -281,7 +281,7 @@ const Services: React.FC = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title="También podrías estar interesado en:"
+          title={t('common.related.title')}
           variant="horizontal"
         />
       </Container>

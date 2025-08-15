@@ -403,6 +403,29 @@ export const translations: Record<Language, Translations> = {
       loading: 'Cargando...',
       error: 'Ha ocurrido un error',
       success: 'Operación exitosa'
+    },
+    
+    // Textos comunes
+    common: {
+      help: {
+        title: '¿Necesitas ayuda?',
+        subtitle: 'Agenda una consulta gratuita de 30 minutos'
+      },
+      related: {
+        title: 'También podrías estar interesado en:',
+        continue: 'Continúa explorando:'
+      },
+      schedule: {
+        title: 'Agendar consulta',
+        diagnostic: 'Diagnóstico gratis'
+      }
+    },
+    
+    // Idioma
+    language: {
+      changeTo: 'Cambiar a',
+      spanish: 'Español',
+      english: 'English'
     }
   },
   
@@ -809,6 +832,29 @@ export const translations: Record<Language, Translations> = {
       loading: 'Loading...',
       error: 'An error has occurred',
       success: 'Operation successful'
+    },
+    
+    // Common texts
+    common: {
+      help: {
+        title: 'Need help?',
+        subtitle: 'Schedule a free 30-minute consultation'
+      },
+      related: {
+        title: 'You might also be interested in:',
+        continue: 'Continue exploring:'
+      },
+      schedule: {
+        title: 'Schedule consultation',
+        diagnostic: 'Free diagnosis'
+      }
+    },
+    
+    // Language
+    language: {
+      changeTo: 'Change to',
+      spanish: 'Español',
+      english: 'English'
     }
   }
 };

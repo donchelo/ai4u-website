@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { SmallText, ContextualLink, NavigationDot } from '../atoms';
 import { useColors } from '../../../../hooks';
+import { useLanguage } from '../../../../context';
 
 interface RelatedPageItem {
   to: string;
@@ -36,11 +37,13 @@ interface RelatedPagesProps {
 const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
   const {
     pages,
-    title = "Páginas relacionadas:",
+    title,
     variant = 'vertical',
     className,
   } = props;
   const colors = useColors();
+  const { t } = useLanguage();
+  const defaultTitle = t('common.related.title');
   
   // Limitar a máximo 3 enlaces para mantener minimalismo
   const limitedPages = pages.slice(0, 3);
@@ -144,7 +147,7 @@ const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
           letterSpacing: '0.5px'
         }}
       >
-        {title}
+        {title || defaultTitle}
       </SmallText>
       
       {renderPages()}

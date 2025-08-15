@@ -245,7 +245,7 @@ const UseCases = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title="Explora más sobre nuestro trabajo:"
+          title={t('common.related.title')}
           variant="horizontal"
         />
       </Container>

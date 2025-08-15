@@ -23,6 +23,7 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "validate-translations": "node scripts/validate-translations.js",
     "deploy": "gh-pages -d build",
     "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada",
     "optimize-images": "node scripts/optimize-images.js",
