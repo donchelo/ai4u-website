@@ -1,0 +1,10 @@
+{
+  "width": 1200,
+  "height": 630,
+  "backgroundColor": "#FFFFFF",
+  "logoPath": "../public/assets/images/ai4u-logo-for-light-background.png",
+  "outputPath": "../public/assets/images/ai4u-social-share.png",
+  "title": "AI4U",
+  "subtitle": "Inteligencia Artificial para tu Negocio",
+  "description": "Soluciones de IA personalizadas"
+}
