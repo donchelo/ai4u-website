@@ -53,15 +53,6 @@ const WhyAI4U = () => {
                 }}>
                   {t('whyAI4U.mariano.title')}
                 </H2>
-                <BodyText sx={{ 
-                  mb: 6, 
-                  color: colors.contrast.text.secondary,
-                  fontSize: '1.1rem',
-                  lineHeight: 1.7,
-                  fontWeight: 300
-                }}>
-                  {t('whyAI4U.mariano.description')}
-                </BodyText>
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -77,6 +68,22 @@ const WhyAI4U = () => {
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.2')}</BodyText>
                   </Box>
                 </Stack>
+                
+                <ExpandableSection
+                  title="Descubre mi historia"
+                  variant="minimal"
+                  defaultExpanded={false}
+                >
+                  <BodyText sx={{ 
+                    mb: 6, 
+                    color: colors.contrast.text.secondary,
+                    fontSize: '1.1rem',
+                    lineHeight: 1.7,
+                    fontWeight: 300
+                  }}>
+                    {t('whyAI4U.mariano.description')}
+                  </BodyText>
+                </ExpandableSection>
                 
                 <Button 
                   variant="outline" 
@@ -191,7 +198,13 @@ const WhyAI4U = () => {
                 <Card variant="elevated" sx={{ 
                   height: '100%',
                   textAlign: 'center',
-                  p: 4
+                  p: 4,
+                  cursor: 'pointer',
+                  '&:hover': {
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    transform: 'translateY(-2px)',
+                    transition: 'all 0.3s ease'
+                  }
                 }}>
                   <Box sx={{ mb: 3 }}>
                     <GeometricIcon
@@ -202,20 +215,12 @@ const WhyAI4U = () => {
                     />
                   </Box>
                   <H3 sx={{ 
-                    mb: 2, 
                     fontSize: '1.3rem',
                     fontWeight: 500,
                     color: colors.contrast.text.primary
                   }}>
                     {benefit.title}
                   </H3>
-                  <BodyText sx={{ 
-                    color: colors.contrast.text.secondary,
-                    lineHeight: 1.6,
-                    fontSize: '1rem'
-                  }}>
-                    {benefit.description}
-                  </BodyText>
                 </Card>
               </Grid>
             ))}
@@ -242,7 +247,6 @@ const WhyAI4U = () => {
                 <MetricCard
                   title={t('whyAI4U.stats.metrics.services.title')}
                   value={t('whyAI4U.stats.metrics.services.value')}
-                  subtitle={t('whyAI4U.stats.metrics.services.subtitle')}
                   iconType="square"
                   variant="elevated"
                   size="large"
@@ -254,7 +258,6 @@ const WhyAI4U = () => {
                 <MetricCard
                   title={t('whyAI4U.stats.metrics.strategy.title')}
                   value={t('whyAI4U.stats.metrics.strategy.value')}
-                  subtitle={t('whyAI4U.stats.metrics.strategy.subtitle')}
                   iconType="triangle"
                   variant="elevated"
                   size="large"
@@ -266,7 +269,6 @@ const WhyAI4U = () => {
                 <MetricCard
                   title={t('whyAI4U.stats.metrics.operation.title')}
                   value={t('whyAI4U.stats.metrics.operation.value')}
-                  subtitle={t('whyAI4U.stats.metrics.operation.subtitle')}
                   iconType="circle"
                   variant="elevated"
                   size="large"
@@ -278,7 +280,6 @@ const WhyAI4U = () => {
                 <MetricCard
                   title={t('whyAI4U.stats.metrics.roi.title')}
                   value={t('whyAI4U.stats.metrics.roi.value')}
-                  subtitle={t('whyAI4U.stats.metrics.roi.subtitle')}
                   iconType="arrow-up"
                   variant="elevated"
                   size="large"
@@ -290,10 +291,9 @@ const WhyAI4U = () => {
           
           {/* Métricas adicionales con información progresiva */}
           <ExpandableSection
-            title="Métricas adicionales"
-            subtitle="Ver más estadísticas de impacto"
+            title="Explorar métricas detalladas"
             variant="minimal"
-            defaultExpanded={true}
+            defaultExpanded={false}
           >
             <Grid container spacing={4} justifyContent="center">
               <Grid item xs={12} sm={6} md={4}>
@@ -309,14 +309,25 @@ const WhyAI4U = () => {
                   />
                 </Box>
               </Grid>
-
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.stats.metrics.implementation.title')}
-                    value={t('whyAI4U.stats.metrics.implementation.value')}
-                    subtitle={t('whyAI4U.stats.metrics.implementation.subtitle')}
+                    title={t('whyAI4U.stats.metrics.costReduction.title')}
+                    value={t('whyAI4U.stats.metrics.costReduction.value')}
+                    subtitle={t('whyAI4U.stats.metrics.costReduction.subtitle')}
                     iconType="triangle"
+                    variant="elevated"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('whyAI4U.stats.metrics.efficiency.title')}
+                    value={t('whyAI4U.stats.metrics.efficiency.value')}
+                    subtitle={t('whyAI4U.stats.metrics.efficiency.subtitle')}
+                    iconType="circle"
                     variant="elevated"
                     size="large"
                   />
@@ -327,7 +338,7 @@ const WhyAI4U = () => {
         </Container>
       </Box>
 
-      {/* Impact Section - Impacto Real */}
+      {/* Impact Section - Métricas de Impacto */}
       <Box sx={{ py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <H2 sx={{ 
@@ -341,10 +352,9 @@ const WhyAI4U = () => {
           </H2>
           
           <ExpandableSection
-            title="Métricas de Impacto"
-            subtitle="Ver todas las métricas de rendimiento"
+            title="Ver impacto real"
             variant="minimal"
-            defaultExpanded={true}
+            defaultExpanded={false}
           >
             <Grid container spacing={4} justifyContent="center">
               <Grid item xs={12} sm={6} md={3}>
@@ -352,7 +362,6 @@ const WhyAI4U = () => {
                   <MetricCard
                     title={t('whyAI4U.impact.metrics.hoursSaved.title')}
                     value={t('whyAI4U.impact.metrics.hoursSaved.value')}
-                    subtitle={t('whyAI4U.impact.metrics.hoursSaved.subtitle')}
                     iconType="arrow-up"
                     variant="elevated"
                     size="large"
@@ -365,7 +374,6 @@ const WhyAI4U = () => {
                   <MetricCard
                     title={t('whyAI4U.impact.metrics.automatedProcesses.title')}
                     value={t('whyAI4U.impact.metrics.automatedProcesses.value')}
-                    subtitle={t('whyAI4U.impact.metrics.automatedProcesses.subtitle')}
                     iconType="circle"
                     variant="elevated"
                     size="large"
@@ -377,7 +385,6 @@ const WhyAI4U = () => {
                   <MetricCard
                     title={t('whyAI4U.impact.metrics.responseTime.title')}
                     value={t('whyAI4U.impact.metrics.responseTime.value')}
-                    subtitle={t('whyAI4U.impact.metrics.responseTime.subtitle')}
                     iconType="triangle"
                     variant="elevated"
                     size="large"
@@ -389,7 +396,6 @@ const WhyAI4U = () => {
                   <MetricCard
                     title={t('whyAI4U.impact.metrics.averageROI.title')}
                     value={t('whyAI4U.impact.metrics.averageROI.value')}
-                    subtitle={t('whyAI4U.impact.metrics.averageROI.subtitle')}
                     iconType="arrow-up"
                     variant="elevated"
                     size="large"
@@ -421,16 +427,6 @@ const WhyAI4U = () => {
             }}>
               {t('whyAI4U.cta.title')}
             </H2>
-            <BodyText sx={{ 
-              mb: 6, 
-              color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-              fontSize: '1.1rem',
-              lineHeight: 1.6,
-              maxWidth: 600,
-              mx: 'auto'
-            }}>
-              {t('whyAI4U.cta.subtitle')}
-            </BodyText>
             
             <Stack 
               direction={{ xs: 'column', sm: 'row' }} 

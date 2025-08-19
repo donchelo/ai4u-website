@@ -201,27 +201,26 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         >
           {title}
         </Typography>
-        
-        {icon || (
+        {iconType && (
           <GeometricIcon
             type={iconType}
             size="small"
             color={getTrendColor()}
-            variant="filled"
+            variant="minimal"
           />
         )}
       </Box>
 
-      {/* Subtitle/description */}
+      {/* Subtitle - solo si existe */}
       {subtitle && (
         <Typography
-          variant="body2"
+          variant="caption"
           sx={{
-            fontSize: size === 'compact' ? '0.75rem' : '0.875rem',
-            color: variant === 'dark' ? alpha(colors.palette.white, 0.6) : colors.contrast.text.secondary,
-            lineHeight: 1.4,
-            maxWidth: '80%',
+            fontSize: '0.75rem',
+            color: alpha(colors.contrast.text.secondary, 0.8),
             textAlign: 'center',
+            lineHeight: 1.4,
+            maxWidth: '90%',
             position: 'relative',
             zIndex: 1,
           }}

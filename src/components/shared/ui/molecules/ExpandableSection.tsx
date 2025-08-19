@@ -78,14 +78,15 @@ const ExpandableSection = ({
           <H4 sx={{ 
             color: colors.contrast.text.primary,
             fontWeight: 600,
-            mb: subtitle ? 0.5 : 0
+            fontSize: '1rem'
           }}>
             {title}
           </H4>
           {subtitle && (
             <BodyText sx={{ 
               color: colors.contrast.text.secondary,
-              fontSize: '0.875rem'
+              fontSize: '0.875rem',
+              mt: 0.5
             }}>
               {subtitle}
             </BodyText>

@@ -105,7 +105,6 @@ const Services: React.FC = () => {
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         <ServicesPremiumHero 
           title="Fashion Agent"
-          subtitle="De figurines a fotos reales de ecommerce con modelos personalizados. Ahorra en fotos, confección y tiempos."
           maxItems={2}
         />
       </Box>
@@ -156,17 +155,6 @@ const Services: React.FC = () => {
             
             {/* Services Grid */}
             <Grid item xs={12} md={9}>
-              {/* Filter Stats */}
-              <FilterStats
-                totalCount={stats.total}
-                filteredCount={filteredServices.length}
-                activeFilters={[
-                  ...(searchValue ? [`Búsqueda: "${searchValue}"`] : []),
-                  ...(selectedSuperTab > 0 ? [superCategoryTabs[selectedSuperTab].label] : []),
-                  ...(selectedTab > 0 ? [categoryTabs[selectedTab].label] : [])
-                ]}
-              />
-              
               {filteredServices.length > 0 ? (
                 <Box sx={{ 
                   position: 'relative', 
@@ -188,8 +176,7 @@ const Services: React.FC = () => {
                   {/* Mostrar servicios adicionales si hay más de 6 */}
                   {filteredServices.length > 6 && (
                     <ExpandableSection
-                      title={`Ver ${filteredServices.length - 6} servicios adicionales`}
-                      subtitle="Expandir para ver todos los servicios disponibles"
+                      title={`Explorar ${filteredServices.length - 6} servicios más`}
                       variant="minimal"
                       defaultExpanded={false}
                     >
@@ -207,20 +194,22 @@ const Services: React.FC = () => {
                   )}
                 </Box>
               ) : (
-                <Card variant="elevated" sx={{ textAlign: 'center', py: 6 }}>
-                  <GeometricIcon
-                    type="cross"
-                    size="large"
-                    color={colors.contrast.text.disabled}
-                    variant="minimal"
-                  />
-                  <BodyText sx={{ mt: 2, mb: 3 }}>
-                    {t('services.filter.noResults.title')}
-                  </BodyText>
-                  <Button variant="outline" onClick={clearFilters}>
-                    {t('services.filter.noResults.clearButton')}
+                <Box sx={{ 
+                  textAlign: 'center', 
+                  py: 8,
+                  color: colors.contrast.text.secondary
+                }}>
+                  <Typography variant="h6" sx={{ mb: 2 }}>
+                    No se encontraron servicios
+                  </Typography>
+                  <Button 
+                    variant="outline" 
+                    onClick={clearFilters}
+                    sx={{ mt: 2 }}
+                  >
+                    Limpiar filtros
                   </Button>
-                </Card>
+                </Box>
               )}
             </Grid>
           </Grid>

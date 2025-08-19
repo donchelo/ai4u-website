@@ -103,20 +103,9 @@ const Home = () => {
       {/* Features Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>
+          <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
             {t('home.features.title')}
           </H2>
-          <BodyText sx={{ 
-            color: 'text.secondary', 
-            textAlign: 'center', 
-            maxWidth: 700, 
-            mb: 6,
-            mx: 'auto',
-            fontSize: '1rem',
-            lineHeight: 1.6
-          }}>
-            {t('home.features.subtitle')}
-          </BodyText>
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
               <Grid item xs={12} md={4} key={idx}>
@@ -128,6 +117,7 @@ const Home = () => {
                     flexDirection: 'column',
                     bgcolor: 'background.paper',
                     border: `1px solid ${theme.palette.divider}`,
+                    cursor: 'pointer',
                     '&:hover': {
                       boxShadow: theme.shadows[4],
                       transform: 'translateY(-2px)',
@@ -152,14 +142,6 @@ const Home = () => {
                       {feature.title}
                     </H3>
                   </Box>
-                  <BodyText sx={{ 
-                    color: 'text.secondary', 
-                    lineHeight: 1.6,
-                    fontSize: '0.95rem',
-                    flexGrow: 1
-                  }}>
-                    {feature.description}
-                  </BodyText>
                 </Card>
               </Grid>
             ))}
@@ -177,39 +159,12 @@ const Home = () => {
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
             <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
               <H2 sx={{ 
-                mb: 2, 
+                mb: 4, 
                 color: mode === 'dark' ? 'text.primary' : 'white', 
                 fontWeight: 300 
               }}>
                 {t('home.robot.title')}
               </H2>
-              <BodyText sx={{ 
-                mb: 6, 
-                color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)', 
-                maxWidth: 600, 
-                fontSize: '1.1rem', 
-                lineHeight: 1.7 
-              }}>
-                {t('home.robot.subtitle')}
-              </BodyText>
-              
-              <BodyText sx={{ 
-                mb: 4, 
-                color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)', 
-                fontSize: '0.9rem', 
-                fontStyle: 'italic' 
-              }}>
-                {t('home.robot.preview')}
-              </BodyText>
-              
-              <H3 sx={{ 
-                mb: 4, 
-                color: mode === 'dark' ? 'text.primary' : 'white', 
-                fontWeight: 400, 
-                fontSize: '1.2rem' 
-              }}>
-                {t('home.robot.uniqueTitle')}
-              </H3>
               
               {/* Lista ultra minimalista con iconos geométricos */}
               <Stack spacing={4} sx={{ mb: 6, maxWidth: 500 }}>
@@ -232,21 +187,55 @@ const Home = () => {
                 ))}
               </Stack>
               
-              <Box sx={{ 
-                pl: 4,
-                borderLeft: `1px solid ${mode === 'dark' ? 'divider' : 'rgba(255, 255, 255, 0.2)'}`,
-                maxWidth: 500
-              }}>
+              <ExpandableSection
+                title="Descubre cómo funciona"
+                variant="minimal"
+                defaultExpanded={false}
+              >
                 <BodyText sx={{ 
-                  fontStyle: 'italic', 
-                  color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
-                  fontSize: '1rem',
-                  fontWeight: 300,
-                  lineHeight: 1.6
+                  mb: 4, 
+                  color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)', 
+                  maxWidth: 600, 
+                  fontSize: '1.1rem', 
+                  lineHeight: 1.7 
                 }}>
-                  "{t('home.robot.quote')}"
+                  {t('home.robot.subtitle')}
                 </BodyText>
-              </Box>
+                
+                <BodyText sx={{ 
+                  mb: 4, 
+                  color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)', 
+                  fontSize: '0.9rem', 
+                  fontStyle: 'italic' 
+                }}>
+                  {t('home.robot.preview')}
+                </BodyText>
+                
+                <H3 sx={{ 
+                  mb: 4, 
+                  color: mode === 'dark' ? 'text.primary' : 'white', 
+                  fontWeight: 400, 
+                  fontSize: '1.2rem' 
+                }}>
+                  {t('home.robot.uniqueTitle')}
+                </H3>
+                
+                <Box sx={{ 
+                  pl: 4,
+                  borderLeft: `1px solid ${mode === 'dark' ? 'divider' : 'rgba(255, 255, 255, 0.2)'}`,
+                  maxWidth: 500
+                }}>
+                  <BodyText sx={{ 
+                    fontStyle: 'italic', 
+                    color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
+                    fontSize: '1rem',
+                    fontWeight: 300,
+                    lineHeight: 1.6
+                  }}>
+                    "{t('home.robot.quote')}"
+                  </BodyText>
+                </Box>
+              </ExpandableSection>
             </Box>
             
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -265,16 +254,14 @@ const Home = () => {
       {/* Services Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 2, fontWeight: 400, color: 'text.primary' }}>
+          <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
             {t('home.services.title')}
           </H2>
-          <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mb: 6, mx: 'auto', fontSize: '1rem' }}>
-            {t('home.services.subtitle')}
-          </BodyText>
-          {/* Mostrar primeras 2 categorías siempre */}
-          <Grid container spacing={4} sx={{ mb: 4 }}>
-            {serviceCategories.slice(0, 2).map((cat, idx) => (
-              <Grid item xs={12} md={6} key={idx}>
+          
+          {/* Mostrar las 4 categorías como un grupo armónico */}
+          <Grid container spacing={4}>
+            {serviceCategories.map((cat, idx) => (
+              <Grid item xs={12} sm={6} md={3} key={idx}>
                 <Card 
                   variant="elevated"
                   sx={{ 
@@ -282,8 +269,9 @@ const Home = () => {
                     textAlign: 'center',
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: idx === 1 ? 'primary.main' : 'background.paper',
-                    border: `1px solid ${idx === 1 ? 'primary.main' : theme.palette.divider}`,
+                    bgcolor: 'background.paper',
+                    border: `1px solid ${theme.palette.divider}`,
+                    cursor: 'pointer',
                     '&:hover': {
                       boxShadow: theme.shadows[4],
                       transform: 'translateY(-2px)',
@@ -291,96 +279,25 @@ const Home = () => {
                     }
                   }}
                 >
-                  <>
-                    <Box sx={{ mb: 2 }}>
-                      <GeometricIcon 
-                        type={idx === 0 ? "triangle" : "square"} 
-                        size="medium" 
-                        color={idx === 1 ? "#FFFFFF" : theme.palette.text.secondary} 
-                        variant={idx === 1 ? "filled" : "minimal"} 
-                      />
-                    </Box>
-                    <H3 sx={{ 
-                      mb: 2, 
-                      color: idx === 1 ? '#FFFFFF' : 'text.primary',
-                      fontWeight: idx === 1 ? 600 : 500,
-                      fontSize: '1.2rem'
-                    }}>
-                      {cat.title}
-                    </H3>
-                    <BodyText sx={{ 
-                      color: idx === 1 ? 'rgba(255, 255, 255, 0.9)' : 'text.secondary', 
-                      fontSize: '0.95rem', 
-                      lineHeight: 1.5,
-                      flexGrow: 1
-                    }}>
-                      {cat.description}
-                    </BodyText>
-                  </>
+                  <Box sx={{ mb: 2 }}>
+                    <GeometricIcon 
+                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
+                      size="medium" 
+                      color={theme.palette.text.secondary} 
+                      variant="minimal" 
+                    />
+                  </Box>
+                  <H3 sx={{ 
+                    color: 'text.primary',
+                    fontWeight: 500,
+                    fontSize: '1.1rem'
+                  }}>
+                    {cat.title}
+                  </H3>
                 </Card>
               </Grid>
             ))}
           </Grid>
-
-          {/* Mostrar categorías adicionales si hay más de 2 */}
-          {serviceCategories.length > 2 && (
-            <ExpandableSection
-              title={`Ver ${serviceCategories.length - 2} categorías adicionales`}
-              subtitle="Expandir para ver todas las categorías disponibles"
-              variant="minimal"
-              defaultExpanded={false}
-            >
-              <Grid container spacing={4}>
-                {serviceCategories.slice(2).map((cat, idx) => (
-                  <Grid item xs={12} md={6} key={idx + 2}>
-                    <Card 
-                      variant="elevated"
-                      sx={{ 
-                        height: '100%',
-                        textAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        bgcolor: 'background.paper',
-                        border: `1px solid ${theme.palette.divider}`,
-                        '&:hover': {
-                          boxShadow: theme.shadows[4],
-                          transform: 'translateY(-2px)',
-                          transition: 'all 0.3s ease'
-                        }
-                      }}
-                    >
-                      <>
-                        <Box sx={{ mb: 2 }}>
-                          <GeometricIcon 
-                            type={idx === 0 ? "circle" : "line"} 
-                            size="medium" 
-                            color={theme.palette.text.secondary} 
-                            variant="minimal" 
-                          />
-                        </Box>
-                        <H3 sx={{ 
-                          mb: 2, 
-                          color: 'text.primary',
-                          fontWeight: 500,
-                          fontSize: '1.2rem'
-                        }}>
-                          {cat.title}
-                        </H3>
-                        <BodyText sx={{ 
-                          color: 'text.secondary', 
-                          fontSize: '0.95rem', 
-                          lineHeight: 1.5,
-                          flexGrow: 1
-                        }}>
-                          {cat.description}
-                        </BodyText>
-                      </>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </ExpandableSection>
-          )}
         </Container>
       </Box>
 
@@ -388,12 +305,9 @@ const Home = () => {
       <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
-            <H2 sx={{ mb: 3, fontWeight: 400, color: 'text.primary' }}>
+            <H2 sx={{ mb: 4, fontWeight: 400, color: 'text.primary' }}>
               {t('home.cta.title')}
             </H2>
-            <BodyText sx={{ mb: 4, color: 'text.secondary', fontSize: '1.1rem' }}>
-              {t('home.cta.subtitle')}
-            </BodyText>
             <Stack 
               direction={{ xs: 'column', sm: 'row' }} 
               spacing={3} 
@@ -413,7 +327,6 @@ const Home = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title={t('common.related.continue')}
           variant="horizontal"
         />
       </Container>

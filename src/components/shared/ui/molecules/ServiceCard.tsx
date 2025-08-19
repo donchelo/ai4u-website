@@ -148,7 +148,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             mt: 1
           }}>
             <H3 sx={{ 
-              mb: 1.5,
               color: colors.contrast.text.primary,
               fontSize: { xs: '1.3rem', md: '1.5rem' },
               fontWeight: 700,
@@ -157,41 +156,45 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             }}>
               {service.title}
             </H3>
-            <BodyText sx={{ 
-              mb: 2, 
-              fontWeight: 600,
-              color: colors.contrast.text.primary,
-              fontSize: '1rem',
-              lineHeight: 1.4,
-              textAlign: 'center'
-            }}>
-              {service.subtitle}
-            </BodyText>
             
             {!compact && (
               <ProgressiveContent
                 summary={
-                  <BodyText sx={{ 
-                    lineHeight: 1.6,
-                    color: colors.contrast.text.secondary,
-                    fontSize: '0.95rem',
-                    textAlign: 'left'
+                  <Box sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    mt: 2,
+                    cursor: 'pointer'
                   }}>
-                    {service.description.length > 120 
-                      ? `${service.description.substring(0, 120)}...` 
-                      : service.description
-                    }
-                  </BodyText>
+                    <GeometricIcon
+                      type="arrow-down"
+                      size="small"
+                      color={colors.contrast.text.secondary}
+                      variant="minimal"
+                    />
+                  </Box>
                 }
                 details={
-                  <BodyText sx={{ 
-                    lineHeight: 1.6,
-                    color: colors.contrast.text.secondary,
-                    fontSize: '0.95rem',
-                    textAlign: 'left'
-                  }}>
-                    {service.description}
-                  </BodyText>
+                  <Box sx={{ mt: 2 }}>
+                    <BodyText sx={{ 
+                      mb: 2, 
+                      fontWeight: 600,
+                      color: colors.contrast.text.primary,
+                      fontSize: '1rem',
+                      lineHeight: 1.4,
+                      textAlign: 'center'
+                    }}>
+                      {service.subtitle}
+                    </BodyText>
+                    <BodyText sx={{ 
+                      lineHeight: 1.6,
+                      color: colors.contrast.text.secondary,
+                      fontSize: '0.95rem',
+                      textAlign: 'left'
+                    }}>
+                      {service.description}
+                    </BodyText>
+                  </Box>
                 }
                 variant="inline"
               />
