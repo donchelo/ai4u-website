@@ -9,7 +9,7 @@ import {
   Divider
 } from '@mui/material';
 import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages, SuperCategoryFilter, FilterStats } from '../components/shared/ui/molecules';
+import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages, SuperCategoryFilter, FilterStats, ExpandableSection } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
@@ -173,8 +173,9 @@ const Services: React.FC = () => {
                   zIndex: 2,
                   minHeight: '400px'
                 }}>
-                  <Grid container spacing={2}>
-                    {filteredServices.map((service) => (
+                  {/* Mostrar primeros 6 servicios siempre */}
+                  <Grid container spacing={2} sx={{ mb: 4 }}>
+                    {filteredServices.slice(0, 6).map((service) => (
                       <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
                         <ServiceCard 
                           service={service}
@@ -183,6 +184,27 @@ const Services: React.FC = () => {
                       </Grid>
                     ))}
                   </Grid>
+
+                  {/* Mostrar servicios adicionales si hay más de 6 */}
+                  {filteredServices.length > 6 && (
+                    <ExpandableSection
+                      title={`Ver ${filteredServices.length - 6} servicios adicionales`}
+                      subtitle="Expandir para ver todos los servicios disponibles"
+                      variant="minimal"
+                      defaultExpanded={false}
+                    >
+                      <Grid container spacing={2}>
+                        {filteredServices.slice(6).map((service) => (
+                          <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
+                            <ServiceCard 
+                              service={service}
+                              showPrice={config.displaySettings.showPrices}
+                            />
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </ExpandableSection>
+                  )}
                 </Box>
               ) : (
                 <Card variant="elevated" sx={{ textAlign: 'center', py: 6 }}>

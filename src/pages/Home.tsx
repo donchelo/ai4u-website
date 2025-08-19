@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Box, Stack, useTheme } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA, GalleryFrame, RelatedPages } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, GalleryFrame, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
 import { useLanguage } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
@@ -271,9 +271,10 @@ const Home = () => {
           <BodyText sx={{ color: 'text.secondary', textAlign: 'center', maxWidth: 700, mb: 6, mx: 'auto', fontSize: '1rem' }}>
             {t('home.services.subtitle')}
           </BodyText>
-          <Grid container spacing={4}>
-            {serviceCategories.map((cat, idx) => (
-              <Grid item xs={12} md={3} key={idx}>
+          {/* Mostrar primeras 2 categorías siempre */}
+          <Grid container spacing={4} sx={{ mb: 4 }}>
+            {serviceCategories.slice(0, 2).map((cat, idx) => (
+              <Grid item xs={12} md={6} key={idx}>
                 <Card 
                   variant="elevated"
                   sx={{ 
@@ -293,7 +294,7 @@ const Home = () => {
                   <>
                     <Box sx={{ mb: 2 }}>
                       <GeometricIcon 
-                        type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
+                        type={idx === 0 ? "triangle" : "square"} 
                         size="medium" 
                         color={idx === 1 ? "#FFFFFF" : theme.palette.text.secondary} 
                         variant={idx === 1 ? "filled" : "minimal"} 
@@ -320,6 +321,66 @@ const Home = () => {
               </Grid>
             ))}
           </Grid>
+
+          {/* Mostrar categorías adicionales si hay más de 2 */}
+          {serviceCategories.length > 2 && (
+            <ExpandableSection
+              title={`Ver ${serviceCategories.length - 2} categorías adicionales`}
+              subtitle="Expandir para ver todas las categorías disponibles"
+              variant="minimal"
+              defaultExpanded={false}
+            >
+              <Grid container spacing={4}>
+                {serviceCategories.slice(2).map((cat, idx) => (
+                  <Grid item xs={12} md={6} key={idx + 2}>
+                    <Card 
+                      variant="elevated"
+                      sx={{ 
+                        height: '100%',
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        bgcolor: 'background.paper',
+                        border: `1px solid ${theme.palette.divider}`,
+                        '&:hover': {
+                          boxShadow: theme.shadows[4],
+                          transform: 'translateY(-2px)',
+                          transition: 'all 0.3s ease'
+                        }
+                      }}
+                    >
+                      <>
+                        <Box sx={{ mb: 2 }}>
+                          <GeometricIcon 
+                            type={idx === 0 ? "circle" : "line"} 
+                            size="medium" 
+                            color={theme.palette.text.secondary} 
+                            variant="minimal" 
+                          />
+                        </Box>
+                        <H3 sx={{ 
+                          mb: 2, 
+                          color: 'text.primary',
+                          fontWeight: 500,
+                          fontSize: '1.2rem'
+                        }}>
+                          {cat.title}
+                        </H3>
+                        <BodyText sx={{ 
+                          color: 'text.secondary', 
+                          fontSize: '0.95rem', 
+                          lineHeight: 1.5,
+                          flexGrow: 1
+                        }}>
+                          {cat.description}
+                        </BodyText>
+                      </>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </ExpandableSection>
+          )}
         </Container>
       </Box>
 

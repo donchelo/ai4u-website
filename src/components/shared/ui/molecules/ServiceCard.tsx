@@ -12,6 +12,7 @@ import { H3, BodyText, GeometricIcon, SEOHead, ServiceThumbnail } from '../atoms
 import { useColors } from '../../../../hooks';
 import { Service, ServiceStatus } from '../../../../types/service';
 import { getServiceStructuredData } from '../../../../utils/seo';
+import { ProgressiveContent } from './';
 
 interface ServiceCardProps {
   service: Service;
@@ -168,51 +169,109 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             </BodyText>
             
             {!compact && (
-              <BodyText sx={{ 
-                mb: 3, 
-                lineHeight: 1.6,
-                color: colors.contrast.text.secondary,
-                fontSize: '0.95rem',
-                textAlign: 'left'
-              }}>
-                {service.description}
-              </BodyText>
+              <ProgressiveContent
+                summary={
+                  <BodyText sx={{ 
+                    lineHeight: 1.6,
+                    color: colors.contrast.text.secondary,
+                    fontSize: '0.95rem',
+                    textAlign: 'left'
+                  }}>
+                    {service.description.length > 120 
+                      ? `${service.description.substring(0, 120)}...` 
+                      : service.description
+                    }
+                  </BodyText>
+                }
+                details={
+                  <BodyText sx={{ 
+                    lineHeight: 1.6,
+                    color: colors.contrast.text.secondary,
+                    fontSize: '0.95rem',
+                    textAlign: 'left'
+                  }}>
+                    {service.description}
+                  </BodyText>
+                }
+                variant="inline"
+              />
             )}
           </Box>
 
-          {/* Benefits con iconos geométricos */}
+          {/* Benefits con información progresiva */}
           {!compact && (
             <Box sx={{ mb: 3, flexGrow: 1 }}>
-              <BodyText sx={{ 
-                fontWeight: 600, 
-                mb: 2,
-                color: colors.contrast.text.primary,
-                fontSize: '0.95rem'
-              }}>
-                Beneficios:
-              </BodyText>
-              <List dense disablePadding>
-                {service.benefits.map((benefit, index) => (
-                  <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 28 }}>
-                      <GeometricIcon
-                        type="check"
-                        size="small"
-                        color={colors.contrast.text.primary}
-                        variant="minimal"
-                      />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary={benefit}
-                      primaryTypographyProps={{
-                        fontSize: '0.85rem',
-                        color: colors.contrast.text.secondary,
-                        lineHeight: 1.4
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
+              <ProgressiveContent
+                summary={
+                  <Box>
+                    <BodyText sx={{ 
+                      fontWeight: 600, 
+                      mb: 1,
+                      color: colors.contrast.text.primary,
+                      fontSize: '0.95rem'
+                    }}>
+                      Beneficios:
+                    </BodyText>
+                    <List dense disablePadding>
+                      {service.benefits.slice(0, 2).map((benefit, index) => (
+                        <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
+                          <ListItemIcon sx={{ minWidth: 28 }}>
+                            <GeometricIcon
+                              type="check"
+                              size="small"
+                              color={colors.contrast.text.primary}
+                              variant="minimal"
+                            />
+                          </ListItemIcon>
+                          <ListItemText 
+                            primary={benefit}
+                            primaryTypographyProps={{
+                              fontSize: '0.85rem',
+                              color: colors.contrast.text.secondary,
+                              lineHeight: 1.4
+                            }}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                }
+                details={
+                  <Box>
+                    <BodyText sx={{ 
+                      fontWeight: 600, 
+                      mb: 1,
+                      color: colors.contrast.text.primary,
+                      fontSize: '0.95rem'
+                    }}>
+                      Beneficios:
+                    </BodyText>
+                    <List dense disablePadding>
+                      {service.benefits.map((benefit, index) => (
+                        <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
+                          <ListItemIcon sx={{ minWidth: 28 }}>
+                            <GeometricIcon
+                              type="check"
+                              size="small"
+                              color={colors.contrast.text.primary}
+                              variant="minimal"
+                            />
+                          </ListItemIcon>
+                          <ListItemText 
+                            primary={benefit}
+                            primaryTypographyProps={{
+                              fontSize: '0.85rem',
+                              color: colors.contrast.text.secondary,
+                              lineHeight: 1.4
+                            }}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                }
+                variant="inline"
+              />
             </Box>
           )}
 

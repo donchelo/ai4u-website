@@ -9,7 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
-import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { useLanguage } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
@@ -288,8 +288,13 @@ const WhyAI4U = () => {
             </Grid>
           </Grid>
           
-          {/* Métricas adicionales */}
-          <Box sx={{ mt: 8 }}>
+          {/* Métricas adicionales con información progresiva */}
+          <ExpandableSection
+            title="Métricas adicionales"
+            subtitle="Ver más estadísticas de impacto"
+            variant="minimal"
+            defaultExpanded={true}
+          >
             <Grid container spacing={4} justifyContent="center">
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -318,7 +323,7 @@ const WhyAI4U = () => {
                 </Box>
               </Grid>
             </Grid>
-          </Box>
+          </ExpandableSection>
         </Container>
       </Box>
 
@@ -335,57 +340,64 @@ const WhyAI4U = () => {
             {t('whyAI4U.impact.title')}
           </H2>
           
-          <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} sm={6} md={3}>
-              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <MetricCard
-                  title={t('whyAI4U.impact.metrics.hoursSaved.title')}
-                  value={t('whyAI4U.impact.metrics.hoursSaved.value')}
-                  subtitle={t('whyAI4U.impact.metrics.hoursSaved.subtitle')}
-                  iconType="arrow-up"
-                  variant="elevated"
-                  size="large"
-                  trend="up"
-                />
-              </Box>
+          <ExpandableSection
+            title="Métricas de Impacto"
+            subtitle="Ver todas las métricas de rendimiento"
+            variant="minimal"
+            defaultExpanded={true}
+          >
+            <Grid container spacing={4} justifyContent="center">
+              <Grid item xs={12} sm={6} md={3}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('whyAI4U.impact.metrics.hoursSaved.title')}
+                    value={t('whyAI4U.impact.metrics.hoursSaved.value')}
+                    subtitle={t('whyAI4U.impact.metrics.hoursSaved.subtitle')}
+                    iconType="arrow-up"
+                    variant="elevated"
+                    size="large"
+                    trend="up"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('whyAI4U.impact.metrics.automatedProcesses.title')}
+                    value={t('whyAI4U.impact.metrics.automatedProcesses.value')}
+                    subtitle={t('whyAI4U.impact.metrics.automatedProcesses.subtitle')}
+                    iconType="circle"
+                    variant="elevated"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('whyAI4U.impact.metrics.responseTime.title')}
+                    value={t('whyAI4U.impact.metrics.responseTime.value')}
+                    subtitle={t('whyAI4U.impact.metrics.responseTime.subtitle')}
+                    iconType="triangle"
+                    variant="elevated"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <MetricCard
+                    title={t('whyAI4U.impact.metrics.averageROI.title')}
+                    value={t('whyAI4U.impact.metrics.averageROI.value')}
+                    subtitle={t('whyAI4U.impact.metrics.averageROI.subtitle')}
+                    iconType="arrow-up"
+                    variant="elevated"
+                    size="large"
+                  />
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <MetricCard
-                  title={t('whyAI4U.impact.metrics.automatedProcesses.title')}
-                  value={t('whyAI4U.impact.metrics.automatedProcesses.value')}
-                  subtitle={t('whyAI4U.impact.metrics.automatedProcesses.subtitle')}
-                  iconType="circle"
-                  variant="elevated"
-                  size="large"
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <MetricCard
-                  title={t('whyAI4U.impact.metrics.responseTime.title')}
-                  value={t('whyAI4U.impact.metrics.responseTime.value')}
-                  subtitle={t('whyAI4U.impact.metrics.responseTime.subtitle')}
-                  iconType="triangle"
-                  variant="elevated"
-                  size="large"
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <MetricCard
-                  title={t('whyAI4U.impact.metrics.averageROI.title')}
-                  value={t('whyAI4U.impact.metrics.averageROI.value')}
-                  subtitle={t('whyAI4U.impact.metrics.averageROI.subtitle')}
-                  iconType="arrow-up"
-                  variant="elevated"
-                  size="large"
-                />
-              </Box>
-            </Grid>
-          </Grid>
+          </ExpandableSection>
         </Container>
       </Box>
 
