@@ -75,7 +75,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               {featuredSorted.map((service, idx) => (
                 <Button
                   key={service.id}
-                  variant={idx === activeIndex ? 'primary' : 'glass'}
+                  variant={idx === activeIndex ? 'primary' : 'secondary'}
                   size="small"
                   onClick={() => setActiveIndex(idx)}
                   sx={{
@@ -98,7 +98,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               {/* Columna izquierda: Video/Tarjeta */}
               <Grid item xs={12} md={7}>
                 <Card
-                  variant="glass"
+                  variant="elevated"
                   sx={{
                     p: { xs: 3, md: 4 },
                     overflow: 'hidden',
@@ -182,7 +182,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     )}
                     <Box sx={{ mt: 'auto' }}>
                       <Button
-                        variant="glass"
+                        variant="secondary"
                         size="medium"
                         component="a"
                         href={`#service-${activeService.id}`}

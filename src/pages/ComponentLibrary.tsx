@@ -476,7 +476,7 @@ const ComponentLibrary: React.FC = () => {
                 ]}
                 totalAmount={1500.0}
                 onAddCategory={() => console.log('Add category clicked')}
-                variant="glass"
+                variant="elevated"
               />
               <BudgetCard
                 title="Presupuesto Personal"
@@ -487,7 +487,7 @@ const ComponentLibrary: React.FC = () => {
                 ]}
                 totalAmount={900.0}
                 onAddCategory={() => console.log('Add category clicked')}
-                variant="primary"
+                variant="elevated"
               />
             </div>
           </div>
@@ -527,7 +527,7 @@ const ComponentLibrary: React.FC = () => {
                   }
                 ]}
                 onShowMore={() => console.log('Show more clicked')}
-                variant="glass"
+                variant="elevated"
               />
               <TransactionCard
                 title="Transacciones Recientes"
@@ -550,7 +550,7 @@ const ComponentLibrary: React.FC = () => {
                   }
                 ]}
                 onShowMore={() => console.log('Show more clicked')}
-                variant="accent"
+                variant="elevated"
               />
             </div>
           </div>
@@ -574,7 +574,7 @@ const ComponentLibrary: React.FC = () => {
                     { time: '12 AM', condition: 'Clear', precipitation: 0, temperature: 32 }
                   ]
                 }}
-                variant="glass"
+                variant="elevated"
                 showLocationIcon={true}
                 onRefresh={() => console.log('Refresh weather')}
               />
@@ -593,7 +593,7 @@ const ComponentLibrary: React.FC = () => {
                     { time: '1 AM', condition: 'Clear', precipitation: 2, temperature: 14 }
                   ]
                 }}
-                variant="dark"
+                variant="elevated"
                 showLocationIcon={true}
                 onRefresh={() => console.log('Refresh weather')}
               />
@@ -617,7 +617,7 @@ const ComponentLibrary: React.FC = () => {
                 }}
                 date="Tuesday 17"
                 time="08:26"
-                variant="glass"
+                variant="elevated"
                 onRefresh={() => console.log('Refresh sleep data')}
               />
               <SleepWidget
@@ -633,7 +633,7 @@ const ComponentLibrary: React.FC = () => {
                 }}
                 date="Wednesday 18"
                 time="07:30"
-                variant="primary"
+                variant="elevated"
                 onRefresh={() => console.log('Refresh sleep data')}
               />
             </div>

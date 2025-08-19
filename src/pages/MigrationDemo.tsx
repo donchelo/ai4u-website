@@ -75,7 +75,7 @@ const MigrationDemo = () => {
         <H2 sx={{ mb: 4 }}>Sistema de Colores Actual</H2>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Card variant="light">
+            <Card variant="elevated">
               <H4 sx={{ mb: 2 }}>Colores del Sistema</H4>
               <Stack spacing={2}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -98,16 +98,16 @@ const MigrationDemo = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card variant="primary">
+            <Card variant="elevated">
               <H4 sx={{ mb: 2 }}>Paleta de Marca</H4>
               <Stack spacing={2}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                   <SmallText>Naranja:</SmallText>
-                  <SmallText>{colors.palette.orange}</SmallText>
+                  <SmallText>{colors.palette.accent}</SmallText>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                   <SmallText>Verde:</SmallText>
-                  <SmallText>{colors.palette.green}</SmallText>
+                  <SmallText>{colors.palette.success}</SmallText>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                   <SmallText>Blanco:</SmallText>
@@ -140,7 +140,7 @@ const MigrationDemo = () => {
                   <Button variant="primary">Botón Primario</Button>
                   <Button variant="secondary">Botón Secundario</Button>
                   <Button variant="outline">Botón Outline</Button>
-                  <Button variant="glass">Botón Glass</Button>
+                  <Button variant="secondary">Botón Secondary</Button>
                 </Stack>
               </Card>
             </Grid>
@@ -168,7 +168,7 @@ const MigrationDemo = () => {
           <H3 sx={{ mb: 3 }}>Cards</H3>
           <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
-              <Card variant="light">
+              <Card variant="elevated">
                 <H4 sx={{ mb: 2 }}>Card Light</H4>
                 <BodyText>
                   Card con fondo claro y texto oscuro. Contraste automático garantizado.
@@ -176,15 +176,17 @@ const MigrationDemo = () => {
               </Card>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Card variant="primary">
-                <H4 sx={{ mb: 2 }}>Card Primary</H4>
-                <BodyText>
-                  Card con acento naranja y contraste optimizado para legibilidad.
-                </BodyText>
+              <Card variant="elevated">
+                <>
+                  <H4 sx={{ mb: 2 }}>Card Primary</H4>
+                  <BodyText>
+                    Card con acento naranja y contraste optimizado para legibilidad.
+                  </BodyText>
+                </>
               </Card>
             </Grid>
             <Grid item xs={12} md={4}>
-              <Card variant="accent">
+              <Card variant="elevated">
                 <H4 sx={{ mb: 2 }}>Card Accent</H4>
                 <BodyText>
                   Card con acento verde y diseño minimalista con glassmorphism.
@@ -223,19 +225,21 @@ const MigrationDemo = () => {
         <H2 sx={{ mb: 4 }}>Beneficios de la Migración</H2>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Card variant="light">
-              <H4 sx={{ mb: 2 }}>✅ Antes</H4>
-              <Stack spacing={2}>
-                <BodyText>• Colores hardcodeados</BodyText>
-                <BodyText>• Contraste manual</BodyText>
-                <BodyText>• Duplicación de paletas</BodyText>
-                <BodyText>• Inconsistencias visuales</BodyText>
-                <BodyText>• Difícil mantenimiento</BodyText>
-              </Stack>
+            <Card variant="elevated">
+              <>
+                <H4 sx={{ mb: 2 }}>✅ Antes</H4>
+                <Stack spacing={2}>
+                  <BodyText>• Colores hardcodeados</BodyText>
+                  <BodyText>• Contraste manual</BodyText>
+                  <BodyText>• Duplicación de paletas</BodyText>
+                  <BodyText>• Inconsistencias visuales</BodyText>
+                  <BodyText>• Difícil mantenimiento</BodyText>
+                </Stack>
+              </>
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card variant="primary">
+            <Card variant="elevated">
               <H4 sx={{ mb: 2 }}>✅ Después</H4>
               <Stack spacing={2}>
                 <BodyText>• Sistema unificado</BodyText>

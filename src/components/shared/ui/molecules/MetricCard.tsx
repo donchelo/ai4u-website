@@ -5,7 +5,7 @@ import { useColors } from '../../../../hooks';
 import { alpha } from '@mui/material/styles';
 
 type IconType = 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
-type CardVariant = 'glass' | 'dark' | 'light' | 'primary' | 'accent';
+type CardVariant = 'default' | 'elevated' | 'outlined';
 
 interface MetricCardProps {
   title: string;
@@ -62,7 +62,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     subtitle,
     icon,
     iconType = 'circle',
-    variant = 'light',
+    variant = 'elevated',
     trend = 'neutral',
     size = 'normal',
     onClick
@@ -73,21 +73,16 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
   const getTrendColor = () => {
     switch (trend) {
       case 'up':
-        return colors.palette.green;
+        return colors.palette.success;
       case 'down':
-        return colors.palette.orange;
+        return colors.palette.accent;
       default:
         return colors.contrast.text.secondary;
     }
   };
 
   const getVariantTextColor = () => {
-    switch (variant) {
-      case 'dark':
-        return colors.palette.white;
-      default:
-        return colors.contrast.text.primary;
-    }
+    return colors.contrast.text.primary;
   };
 
   return (

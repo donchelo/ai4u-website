@@ -3,148 +3,96 @@ import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from 
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
-  variant?: 'glass' | 'dark' | 'light' | 'primary' | 'accent';
+  variant?: 'default' | 'elevated' | 'outlined';
   elevation?: number;
   showContent?: boolean;
 }
 
-// Optimized Card component with consolidated styling logic and proper theme integration
+// Card minimalista sin efectos glassmorphism complejos
 const StyledCard = styled(MuiCard, {
   shouldForwardProp: (prop) => prop !== 'cardVariant',
 })<{ cardVariant?: CardProps['variant'] }>(({ theme, cardVariant }) => {
   const isLight = theme.palette.mode === 'light';
   
-  // Base styles using theme tokens for consistency
+  // Estilos base minimalistas
   const baseStyles = {
-    borderRadius: theme.spacing(3), // 24px with theme consistency
-    transition: theme.transitions.create(['transform', 'box-shadow', 'background'], {
-      duration: theme.transitions.duration.standard,
+    borderRadius: theme.spacing(2),
+    transition: theme.transitions.create(['box-shadow', 'border-color'], {
+      duration: theme.transitions.duration.short,
       easing: theme.transitions.easing.easeInOut,
     }),
     position: 'relative' as const,
     overflow: 'hidden' as const,
     fontFamily: theme.typography.fontFamily,
+    // Sin transformaciones dramáticas
     '&:hover': {
-      transform: 'translateY(-4px)',
+      transform: 'none',
     },
   };
 
-  // Consolidated variant logic using theme palette
+  // Variantes simplificadas
   switch (cardVariant) {
-    case 'glass':
+    case 'elevated':
       return {
         ...baseStyles,
-        background: `${theme.palette.common.white}15`,
-        backdropFilter: 'blur(20px)',
-        border: `1px solid ${theme.palette.common.white}25`,
-        boxShadow: `0 8px 32px ${theme.palette.common.black}12, inset 0 1px 0 ${theme.palette.common.white}40`,
-        color: theme.palette.common.white,
-        fontWeight: 600,
+        backgroundColor: isLight ? '#FFFFFF' : '#171717',
+        border: 'none',
+        boxShadow: isLight 
+          ? '0 1px 3px rgba(0, 0, 0, 0.1)' 
+          : '0 1px 3px rgba(0, 0, 0, 0.3)',
+        color: isLight ? '#000000' : '#FFFFFF',
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: `${theme.palette.common.white}35`,
-          boxShadow: `0 12px 40px ${theme.palette.common.black}25, inset 0 1px 0 ${theme.palette.common.white}70`,
+          boxShadow: isLight 
+            ? '0 4px 12px rgba(0, 0, 0, 0.15)' 
+            : '0 4px 12px rgba(0, 0, 0, 0.4)',
         },
       };
     
-    case 'dark':
+    case 'outlined':
       return {
         ...baseStyles,
-        background: isLight 
-          ? 'linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.9))'
-          : theme.palette.background.paper,
-        backdropFilter: 'blur(16px)',
-        border: `1px solid ${isLight ? `${theme.palette.common.white}15` : theme.palette.divider}`,
-        color: isLight ? theme.palette.common.white : theme.palette.text.primary,
-        fontWeight: 600,
-        boxShadow: `0 8px 32px ${theme.palette.common.black}40, inset 0 1px 0 ${theme.palette.common.white}10`,
+        backgroundColor: 'transparent',
+        border: `1px solid ${isLight ? '#E5E5E5' : '#404040'}`,
+        boxShadow: 'none',
+        color: isLight ? '#000000' : '#FFFFFF',
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: isLight 
-            ? 'linear-gradient(135deg, rgba(60, 60, 60, 0.95), rgba(75, 75, 75, 0.9))'
-            : theme.palette.action.hover,
-          boxShadow: `0 12px 40px ${theme.palette.common.black}80, inset 0 1px 0 ${theme.palette.common.white}45`,
+          borderColor: isLight ? '#D4D4D4' : '#525252',
         },
       };
     
-    case 'primary':
+    default:
       return {
         ...baseStyles,
-        background: theme.palette.background.paper,
-        backdropFilter: 'blur(20px)',
-        border: `1px solid ${theme.palette.divider}`,
-        boxShadow: `0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 ${theme.palette.common.white}20`,
-        color: theme.palette.text.primary,
-        fontWeight: 600,
+        backgroundColor: isLight ? '#FFFFFF' : '#171717',
+        border: `1px solid ${isLight ? '#F5F5F5' : '#262626'}`,
+        boxShadow: 'none',
+        color: isLight ? '#000000' : '#FFFFFF',
         '&:hover': {
           ...baseStyles['&:hover'],
-          background: theme.palette.common.white,
-          boxShadow: `0 12px 40px rgba(0,0,0,0.12), inset 0 1px 0 ${theme.palette.common.white}30`,
-        },
-      };
-    
-    case 'accent':
-      return {
-        ...baseStyles,
-        background: theme.palette.background.paper,
-        backdropFilter: 'blur(20px)',
-        border: `1px solid ${theme.palette.divider}`,
-        boxShadow: `0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 ${theme.palette.common.white}20`,
-        color: theme.palette.text.primary,
-        fontWeight: 500,
-        '&:hover': {
-          ...baseStyles['&:hover'],
-          background: theme.palette.common.white,
-          boxShadow: `0 12px 40px rgba(0,0,0,0.12), inset 0 1px 0 ${theme.palette.common.white}30`,
-        },
-      };
-    
-    default: // light
-      return {
-        ...baseStyles,
-        background: isLight 
-          ? `${theme.palette.common.white}90`
-          : theme.palette.background.paper,
-        backdropFilter: 'blur(16px)',
-        border: `1px solid ${theme.palette.divider}`,
-        boxShadow: `0 8px 32px ${theme.palette.common.black}08, inset 0 1px 0 ${theme.palette.common.white}60`,
-        color: theme.palette.text.primary,
-        fontWeight: 500,
-        '&:hover': {
-          ...baseStyles['&:hover'],
-          background: isLight 
-            ? theme.palette.common.white
-            : theme.palette.action.hover,
-          boxShadow: `0 12px 40px ${theme.palette.common.black}12, inset 0 1px 0 ${theme.palette.common.white}80`,
+          borderColor: isLight ? '#E5E5E5' : '#404040',
         },
       };
   }
 });
 
-const Card = ({ 
-  children, 
-  variant = 'light', 
-  elevation = 0, 
+export const Card = ({
+  children,
+  variant = 'default',
+  elevation = 0,
   showContent = true,
-  ...props 
+  ...props
 }: CardProps) => {
   return (
-    <StyledCard 
-      cardVariant={variant}
-      elevation={0}
-      {...props}
-    >
-      {showContent ? (
-        <CardContent sx={{
-          padding: 3, // Use theme spacing instead of hardcoded values
-          '&:last-child': {
-            paddingBottom: 3
-          }
+    <StyledCard cardVariant={variant} elevation={elevation} {...props}>
+      {showContent && (
+        <CardContent sx={{ 
+          padding: { xs: 3, md: 4 },
+          '&:last-child': { paddingBottom: { xs: 3, md: 4 } }
         }}>
           {children}
         </CardContent>
-      ) : (
-        children
       )}
     </StyledCard>
   );

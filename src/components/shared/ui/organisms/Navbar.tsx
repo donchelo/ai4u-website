@@ -32,7 +32,7 @@ const StyledNavButton = styled(Button, {
   fontWeight: 500,
   textTransform: 'none',
   '&:hover': {
-    color: colors.palette.orange,
+    color: colors.palette.accent,
     backgroundColor: colors.helpers.state.hover,
   },
 }));
@@ -46,7 +46,7 @@ const StyledThemeIconButton = styled(IconButton, {
   '&:hover': {
     opacity: 1,
     backgroundColor: colors.helpers.state.hover,
-    color: colors.palette.orange,
+    color: colors.palette.accent,
   }
 }));
 
@@ -168,7 +168,7 @@ const Navbar = () => {
                     color: colors.contrast.text.primary,
                     '&:hover': {
                       backgroundColor: colors.helpers.state.hover,
-                      color: colors.palette.orange,
+                      color: colors.palette.accent,
                     },
                   }}
                 >
@@ -183,7 +183,7 @@ const Navbar = () => {
                   color: colors.contrast.text.primary,
                   '&:hover': {
                     backgroundColor: colors.helpers.state.hover,
-                    color: colors.palette.orange,
+                    color: colors.palette.accent,
                   },
                 }}
               >
@@ -228,7 +228,7 @@ const Navbar = () => {
                   fontWeight: 500,
                   textTransform: 'none',
                   '&:hover': {
-                    color: colors.palette.orange,
+                    color: colors.palette.accent,
                     backgroundColor: colors.helpers.state.hover,
                   },
                 }}

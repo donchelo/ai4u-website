@@ -89,12 +89,12 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
   colors: {
     mode,
     primary: {
-      main: AI4U_PALETTE.orange,
+      main: AI4U_PALETTE.accent,
       light: '#FF7C33',
       dark: '#E54A00',
     },
     secondary: {
-      main: AI4U_PALETTE.green,
+      main: AI4U_PALETTE.success,
       light: '#C4D55A',
       dark: '#9BA832',
     },

@@ -90,7 +90,7 @@ const Footer = () => {
                         textDecoration: 'none',
                         cursor: 'pointer',
                         display: 'block',
-                        '&:hover': { color: colors.palette.orange }
+                        '&:hover': { color: colors.palette.accent }
                       }}
                     >
                       {link.name}
@@ -107,19 +107,19 @@ const Footer = () => {
             </MuiTypography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <EmailIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <EmailIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   {t('footer.contact.email')}
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <WhatsAppIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <WhatsAppIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   {t('footer.contact.phone')}
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <LocationOnIcon sx={{ color: colors.palette.orange, fontSize: '1.2rem' }} />
+                <LocationOnIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   {t('footer.contact.location')}
                 </MuiTypography>
@@ -152,7 +152,7 @@ const Footer = () => {
                 sx={{
                   color: colors.contrast.text.secondary,
                   '&:hover': {
-                    color: colors.palette.orange,
+                    color: colors.palette.accent,
                     transform: 'translateY(-2px)',
                   },
                   transition: 'all 0.2s ease-in-out',

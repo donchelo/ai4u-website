@@ -40,7 +40,7 @@ const NavigationDot: React.FC<NavigationDotProps> = (props) => {
     switch (variant) {
       case 'active':
         return {
-          backgroundColor: colors.palette.green,
+          backgroundColor: colors.palette.success,
           opacity: 1,
         };
       case 'inactive':

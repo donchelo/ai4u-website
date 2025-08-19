@@ -60,12 +60,12 @@ const ColorSystemDemo = () => {
                   <Typography sx={{ color: 'white' }}>Negro: {colors.palette.black}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box sx={{ width: 40, height: 40, bgcolor: colors.palette.orange }} />
-                  <Typography sx={{ color: 'white' }}>Naranja: {colors.palette.orange}</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box sx={{ width: 40, height: 40, bgcolor: colors.palette.green }} />
-                  <Typography>Verde: {colors.palette.green}</Typography>
+                  <Box sx={{ width: 40, height: 40, bgcolor: colors.palette.accent }} />
+<Typography sx={{ color: 'white' }}>Accent: {colors.palette.accent}</Typography>
+</Box>
+<Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+<Box sx={{ width: 40, height: 40, bgcolor: colors.palette.success }} />
+<Typography>Success: {colors.palette.success}</Typography>
                 </Box>
               </Stack>
             </Paper>

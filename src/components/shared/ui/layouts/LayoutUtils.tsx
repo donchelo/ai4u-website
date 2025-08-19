@@ -68,15 +68,15 @@ const PageLayout = ({
     switch (variant) {
       case 'glassmorphism':
         return {
-          background: 'rgba(255, 255, 255, 0.2)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
         };
       case 'futuristic':
         return {
-          background: 'rgba(0, 0, 0, 0.2)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.1)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         };
       default:
         return {
@@ -90,31 +90,29 @@ const PageLayout = ({
     <Box sx={getLayoutStyles()} className={className}>
       {(title || subtitle) && (
         <Box component="header" sx={getHeaderStyles()}>
-          <MuiContainer maxWidth="xl" sx={{ py: 6 }}>
-            <Box sx={{ textAlign: 'center' }}>
-              {title && (
-                <H1 sx={{ 
-                  mb: 3,
-                  background: 'linear-gradient(45deg, #FF5C00 30%, #FF7477 90%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}>
-                  {title}
-                </H1>
-              )}
-              {subtitle && (
-                <BodyText sx={{ 
-                  fontSize: '1.25rem',
-                  color: variant === 'futuristic' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
-                  maxWidth: 'md',
-                  mx: 'auto',
-                }}>
-                  {subtitle}
-                </BodyText>
-              )}
-            </Box>
-          </MuiContainer>
+                  <MuiContainer maxWidth="xl" sx={{ py: { xs: 8, md: 12 } }}>
+          <Box sx={{ textAlign: 'center' }}>
+            {title && (
+              <H1 sx={{ 
+                mb: { xs: 4, md: 6 },
+                color: variant === 'futuristic' ? '#FFFFFF' : '#000000',
+              }}>
+                {title}
+              </H1>
+            )}
+            {subtitle && (
+              <BodyText sx={{ 
+                fontSize: { xs: '1.125rem', md: '1.25rem' },
+                color: variant === 'futuristic' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
+                maxWidth: 'md',
+                mx: 'auto',
+                lineHeight: 1.6,
+              }}>
+                {subtitle}
+              </BodyText>
+            )}
+          </Box>
+        </MuiContainer>
         </Box>
       )}
       <Box component="main" sx={{ display: 'flex', flexDirection: 'column' }}>

@@ -81,7 +81,7 @@ const Navigation = ({
           fontSize: '0.875rem',
           whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: colors.palette.orange,
+            background: colors.palette.accent,
             color: colors.palette.white,
             boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {
@@ -103,9 +103,9 @@ const Navigation = ({
           borderRadius: 1,
           fontSize: '0.875rem',
           ...(isActive ? {
-            background: colors.palette.orange,
+            background: colors.palette.accent,
             color: colors.palette.white,
-            borderLeft: `4px solid ${colors.palette.orange}`,
+            borderLeft: `4px solid ${colors.palette.accent}`,
             boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {
             color: colors.contrast.text.secondary,
@@ -113,7 +113,7 @@ const Navigation = ({
             '&:hover': {
               color: colors.contrast.text.primary,
               background: colors.helpers.state.hover,
-              borderLeft: `4px solid ${colors.palette.orange}`,
+              borderLeft: `4px solid ${colors.palette.accent}`,
             },
           }),
         };
@@ -127,7 +127,7 @@ const Navigation = ({
           fontSize: '0.875rem',
           whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: colors.palette.orange,
+            background: colors.palette.accent,
             color: colors.palette.white,
             boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
           } : {

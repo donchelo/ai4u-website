@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Box, 
-  Card, 
   CardContent, 
   Typography, 
   Divider,
@@ -16,6 +15,7 @@ import {
 } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
 import { H1, H3, H4, BodyText, SmallText } from '../atoms';
+import Card from '../molecules/Card';
 
 interface WeatherData {
   location: string;
@@ -35,72 +35,56 @@ interface WeatherData {
 
 interface WeatherWidgetProps {
   data: WeatherData;
-  variant?: 'glass' | 'dark' | 'primary' | 'accent';
+  variant?: 'default' | 'elevated' | 'outlined';
   showLocationIcon?: boolean;
   onRefresh?: () => void;
 }
 
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({
   data,
-  variant = 'glass',
+  variant = 'elevated',
   showLocationIcon = false,
   onRefresh = undefined
 }) => {
   const colors = useColors();
 
-  // Configuración de variantes según el sistema AI4U
+  // Configuración de variantes según el sistema AI4U minimalista
   const getVariantStyles = () => {
     switch (variant) {
-      case 'dark':
+      case 'outlined':
         return {
           card: {
-            background: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: colors.helpers.text.highContrast
+            background: 'transparent',
+            border: `1px solid ${colors.contrast.divider}`,
+            color: colors.contrast.text.primary
           },
           surface: {
-            background: 'rgba(255, 255, 255, 0.1)',
-            border: '1px solid rgba(255, 255, 255, 0.2)'
+            background: colors.contrast.surface,
+            border: `1px solid ${colors.contrast.divider}`
           }
         };
-      case 'primary':
+      case 'elevated':
         return {
           card: {
-            background: `linear-gradient(135deg, ${colors.palette.orange}15, ${colors.palette.orange}25)`,
-            backdropFilter: 'blur(20px)',
-            border: `1px solid ${colors.palette.orange}30`,
-            color: colors.helpers.text.highContrast
+            background: colors.contrast.surface,
+            border: 'none',
+            color: colors.contrast.text.primary
           },
           surface: {
-            background: 'rgba(255, 255, 255, 0.15)',
-            border: '1px solid rgba(255, 255, 255, 0.2)'
+            background: colors.contrast.background,
+            border: `1px solid ${colors.contrast.divider}`
           }
         };
-      case 'accent':
+      default: // default
         return {
           card: {
-            background: `linear-gradient(135deg, ${colors.palette.green}15, ${colors.palette.green}25)`,
-            backdropFilter: 'blur(20px)',
-            border: `1px solid ${colors.palette.green}30`,
-            color: colors.helpers.text.highContrast
+            background: colors.contrast.surface,
+            border: `1px solid ${colors.contrast.divider}`,
+            color: colors.contrast.text.primary
           },
           surface: {
-            background: 'rgba(255, 255, 255, 0.15)',
-            border: '1px solid rgba(255, 255, 255, 0.2)'
-          }
-        };
-      default: // glass
-        return {
-          card: {
-            background: 'rgba(255, 255, 255, 0.1)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            color: colors.helpers.text.highContrast
-          },
-          surface: {
-            background: 'rgba(255, 255, 255, 0.15)',
-            border: '1px solid rgba(255, 255, 255, 0.25)'
+            background: colors.contrast.background,
+            border: `1px solid ${colors.contrast.divider}`
           }
         };
     }
@@ -122,15 +106,14 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
 
   return (
     <Card
+      variant={variant as 'default' | 'elevated' | 'outlined'}
       sx={{
         borderRadius: 4,
         maxWidth: 400,
         margin: '0 auto',
         transition: 'all 0.3s ease',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
         '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+          transform: 'translateY(-2px)',
         },
         ...variantStyles.card
       }}
@@ -171,7 +154,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
                   color: colors.helpers.text.secondary,
                   '&:hover': {
                     background: colors.helpers.state.hover,
-                    color: colors.palette.orange
+                    color: colors.palette.accent
                   }
                 }}
               >

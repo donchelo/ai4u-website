@@ -65,7 +65,7 @@ const InternationalizationDemo = () => {
                 <Typography 
                   variant="h6" 
                   sx={{ 
-                    color: colors.palette.orange,
+                    color: colors.palette.accent,
                     fontFamily: 'monospace',
                     backgroundColor: colors.contrast.background,
                     padding: 1,
@@ -106,7 +106,7 @@ const InternationalizationDemo = () => {
                       <Typography variant="caption" sx={{ color: colors.contrast.text.secondary }}>
                         {key}:
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.palette.orange }}>
+                      <Typography variant="body2" sx={{ color: colors.palette.accent }}>
                         {value}
                       </Typography>
                     </Box>
@@ -141,7 +141,7 @@ const InternationalizationDemo = () => {
                         <Typography variant="caption" sx={{ color: colors.contrast.text.secondary }}>
                           {key}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: colors.palette.orange, mt: 1 }}>
+                        <Typography variant="body2" sx={{ color: colors.palette.accent, mt: 1 }}>
                           {value}
                         </Typography>
                       </Box>
@@ -166,7 +166,7 @@ const InternationalizationDemo = () => {
               <Grid item xs={12} md={6}>
                 <Stack spacing={2}>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Escalabilidad
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>
@@ -174,7 +174,7 @@ const InternationalizationDemo = () => {
                     </BodyText>
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Persistencia
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>
@@ -182,7 +182,7 @@ const InternationalizationDemo = () => {
                     </BodyText>
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Detección Automática
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>
@@ -194,7 +194,7 @@ const InternationalizationDemo = () => {
               <Grid item xs={12} md={6}>
                 <Stack spacing={2}>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Hooks Personalizados
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>
@@ -202,7 +202,7 @@ const InternationalizationDemo = () => {
                     </BodyText>
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Context API
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>
@@ -210,7 +210,7 @@ const InternationalizationDemo = () => {
                     </BodyText>
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ color: colors.palette.orange, mb: 1 }}>
+                    <Typography variant="h6" sx={{ color: colors.palette.accent, mb: 1 }}>
                       Fallbacks
                     </Typography>
                     <BodyText sx={{ color: colors.contrast.text.secondary }}>

@@ -54,14 +54,14 @@ const ContextualLink: React.FC<ContextualLinkProps> = (props) => {
     switch (variant) {
       case 'accent':
         return {
-          color: colors.palette.orange,
+          color: colors.palette.accent,
           fontWeight: 500,
           textDecoration: 'none',
-          borderBottom: `1px solid ${colors.palette.orange}`,
+          borderBottom: `1px solid ${colors.palette.accent}`,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            color: colors.palette.green,
-            borderBottomColor: colors.palette.green,
+            color: colors.palette.success,
+            borderBottomColor: colors.palette.success,
             transform: 'translateY(-1px)',
           }
         };
@@ -71,10 +71,10 @@ const ContextualLink: React.FC<ContextualLinkProps> = (props) => {
           textDecoration: 'underline',
           textDecorationColor: colors.contrast.text.secondary,
           transition: 'all 0.3s ease',
-          '&:hover': {
-            color: colors.palette.orange,
-            textDecorationColor: colors.palette.orange,
-          }
+                  '&:hover': {
+          color: colors.palette.accent,
+          textDecorationColor: colors.palette.accent,
+        }
         };
       case 'subtle':
       default:
@@ -83,10 +83,10 @@ const ContextualLink: React.FC<ContextualLinkProps> = (props) => {
           textDecoration: 'none',
           borderBottom: `1px solid transparent`,
           transition: 'all 0.3s ease',
-          '&:hover': {
-            color: colors.palette.orange,
-            borderBottomColor: colors.palette.orange,
-          }
+                  '&:hover': {
+          color: colors.palette.accent,
+          borderBottomColor: colors.palette.accent,
+        }
         };
     }
   };

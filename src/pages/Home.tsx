@@ -121,7 +121,7 @@ const Home = () => {
             {features.map((feature, idx) => (
               <Grid item xs={12} md={4} key={idx}>
                 <Card 
-                  variant="light"
+                  variant="elevated"
                   sx={{ 
                     height: '100%',
                     display: 'flex',
@@ -275,7 +275,7 @@ const Home = () => {
             {serviceCategories.map((cat, idx) => (
               <Grid item xs={12} md={3} key={idx}>
                 <Card 
-                  variant={idx === 1 ? "primary" : "light"}
+                  variant="elevated"
                   sx={{ 
                     height: '100%',
                     textAlign: 'center',
@@ -290,30 +290,32 @@ const Home = () => {
                     }
                   }}
                 >
-                  <Box sx={{ mb: 2 }}>
-                    <GeometricIcon 
-                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
-                      size="medium" 
-                      color={idx === 1 ? "#FFFFFF" : theme.palette.text.secondary} 
-                      variant={idx === 1 ? "filled" : "minimal"} 
-                    />
-                  </Box>
-                  <H3 sx={{ 
-                    mb: 2, 
-                    color: idx === 1 ? '#FFFFFF' : 'text.primary',
-                    fontWeight: idx === 1 ? 600 : 500,
-                    fontSize: '1.2rem'
-                  }}>
-                    {cat.title}
-                  </H3>
-                  <BodyText sx={{ 
-                    color: idx === 1 ? 'rgba(255, 255, 255, 0.9)' : 'text.secondary', 
-                    fontSize: '0.95rem', 
-                    lineHeight: 1.5,
-                    flexGrow: 1
-                  }}>
-                    {cat.description}
-                  </BodyText>
+                  <>
+                    <Box sx={{ mb: 2 }}>
+                      <GeometricIcon 
+                        type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
+                        size="medium" 
+                        color={idx === 1 ? "#FFFFFF" : theme.palette.text.secondary} 
+                        variant={idx === 1 ? "filled" : "minimal"} 
+                      />
+                    </Box>
+                    <H3 sx={{ 
+                      mb: 2, 
+                      color: idx === 1 ? '#FFFFFF' : 'text.primary',
+                      fontWeight: idx === 1 ? 600 : 500,
+                      fontSize: '1.2rem'
+                    }}>
+                      {cat.title}
+                    </H3>
+                    <BodyText sx={{ 
+                      color: idx === 1 ? 'rgba(255, 255, 255, 0.9)' : 'text.secondary', 
+                      fontSize: '0.95rem', 
+                      lineHeight: 1.5,
+                      flexGrow: 1
+                    }}>
+                      {cat.description}
+                    </BodyText>
+                  </>
                 </Card>
               </Grid>
             ))}

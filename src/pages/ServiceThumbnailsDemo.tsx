@@ -188,11 +188,11 @@ const ServiceThumbnailsDemo: React.FC = () => {
           <Box sx={{ 
             mt: 3, 
             p: 2, 
-            bgcolor: `${colors.palette.orange}10`, 
-            borderRadius: 2,
-            border: `1px solid ${colors.palette.orange}20`
+            bgcolor: `${colors.palette.accent}10`, 
+borderRadius: 2,
+border: `1px solid ${colors.palette.accent}20`
           }}>
-            <Typography sx={{ fontWeight: 600, mb: 1, color: colors.palette.orange }}>
+            <Typography sx={{ fontWeight: 600, mb: 1, color: colors.palette.accent }}>
               Cómo Agregar Thumbnails Personalizados
             </Typography>
             <BodyText sx={{ fontSize: '0.85rem', color: 'text.secondary' }}>

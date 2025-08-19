@@ -1,53 +1,50 @@
-// Tokens de espaciado AI4U
+// Tokens de espaciado AI4U - Minimalista
 export const SPACING_TOKENS = {
   // Espaciado base (8px)
   base: 8,
   
-  // Escala de espaciado
+  // Escala de espaciado (más generosa)
   spacing: {
     0: 0,
-    1: 4,    // 0.25rem
-    2: 8,    // 0.5rem  
-    3: 12,   // 0.75rem
-    4: 16,   // 1rem
-    5: 20,   // 1.25rem
-    6: 24,   // 1.5rem
-    8: 32,   // 2rem
-    10: 40,  // 2.5rem
-    12: 48,  // 3rem
-    16: 64,  // 4rem
-    20: 80,  // 5rem
-    24: 96,  // 6rem
-    32: 128, // 8rem
-    40: 160, // 10rem
-    48: 192, // 12rem
-    56: 224, // 14rem
-    64: 256, // 16rem
+    1: 8,     // 0.5rem
+    2: 16,    // 1rem
+    3: 24,    // 1.5rem
+    4: 32,    // 2rem
+    5: 40,    // 2.5rem
+    6: 48,    // 3rem
+    8: 64,    // 4rem
+    10: 80,   // 5rem
+    12: 96,   // 6rem
+    16: 128,  // 8rem
+    20: 160,  // 10rem
+    24: 192,  // 12rem
+    32: 256,  // 16rem
+    40: 320,  // 20rem
+    48: 384,  // 24rem
+    56: 448,  // 28rem
+    64: 512,  // 32rem
   },
   
-  // Radios de borde
+  // Radios de borde (más sutiles)
   borderRadius: {
     none: 0,
-    sm: 2,
-    default: 4,
-    md: 6,
-    lg: 8,
-    xl: 12,
-    '2xl': 16,
-    '3xl': 24,
+    sm: 4,
+    default: 8,
+    md: 12,
+    lg: 16,
+    xl: 24,
+    '2xl': 32,
     full: 9999,
   },
   
-  // Anchos de borde
+  // Anchos de borde (más finos)
   borderWidth: {
     0: 0,
     default: 1,
     2: 2,
-    4: 4,
-    8: 8,
   },
   
-  // Tamaños de elementos comunes
+  // Tamaños de elementos (más espaciados)
   sizes: {
     // Iconos
     iconXs: 16,
@@ -56,26 +53,26 @@ export const SPACING_TOKENS = {
     iconLg: 32,
     iconXl: 40,
     
-    // Botones
-    buttonSm: 32,
-    buttonMd: 40,
-    buttonLg: 48,
+    // Botones (más altos)
+    buttonSm: 40,
+    buttonMd: 48,
+    buttonLg: 56,
     
-    // Inputs
-    inputSm: 32,
-    inputMd: 40,
-    inputLg: 48,
+    // Inputs (más altos)
+    inputSm: 40,
+    inputMd: 48,
+    inputLg: 56,
     
-    // Cards
-    cardSm: 200,
-    cardMd: 300,
+    // Cards (más espaciadas)
+    cardSm: 240,
+    cardMd: 320,
     cardLg: 400,
   },
 } as const;
 
-// Utilidades de espaciado para componentes
+// Utilidades de espaciado minimalistas
 export const COMPONENT_SPACING = {
-  // Espaciado interno de componentes
+  // Espaciado interno de componentes (más generoso)
   padding: {
     button: {
       sm: `${SPACING_TOKENS.spacing[2]}px ${SPACING_TOKENS.spacing[3]}px`,
@@ -83,9 +80,9 @@ export const COMPONENT_SPACING = {
       lg: `${SPACING_TOKENS.spacing[4]}px ${SPACING_TOKENS.spacing[6]}px`,
     },
     card: {
-      sm: SPACING_TOKENS.spacing[4],
-      md: SPACING_TOKENS.spacing[6],
-      lg: SPACING_TOKENS.spacing[8],
+      sm: SPACING_TOKENS.spacing[6],
+      md: SPACING_TOKENS.spacing[8],
+      lg: SPACING_TOKENS.spacing[12],
     },
     input: {
       sm: `${SPACING_TOKENS.spacing[2]}px ${SPACING_TOKENS.spacing[3]}px`,
@@ -94,13 +91,26 @@ export const COMPONENT_SPACING = {
     },
   },
   
-  // Márgenes comunes
+  // Márgenes (más generosos)
   margin: {
-    section: SPACING_TOKENS.spacing[12],
-    subsection: SPACING_TOKENS.spacing[8],
-    element: SPACING_TOKENS.spacing[4],
+    section: SPACING_TOKENS.spacing[16],    // 8rem
+    subsection: SPACING_TOKENS.spacing[12], // 6rem
+    element: SPACING_TOKENS.spacing[6],     // 3rem
+  },
+  
+  // Espaciado de layout
+  layout: {
+    container: {
+      xs: SPACING_TOKENS.spacing[3],  // 1.5rem
+      md: SPACING_TOKENS.spacing[6],  // 3rem
+      lg: SPACING_TOKENS.spacing[8],  // 4rem
+    },
+    section: {
+      xs: SPACING_TOKENS.spacing[12], // 6rem
+      md: SPACING_TOKENS.spacing[16], // 8rem
+      lg: SPACING_TOKENS.spacing[20], // 10rem
+    },
   },
 } as const;
 
 export type SpacingSize = keyof typeof SPACING_TOKENS.spacing;
-export type BorderRadius = keyof typeof SPACING_TOKENS.borderRadius;

@@ -73,7 +73,7 @@ const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
         border: `1px solid ${colors.contrast.divider}`,
         transition: 'all 0.3s ease',
         '&:hover': {
-          borderColor: colors.palette.orange,
+          borderColor: colors.palette.accent,
           backgroundColor: colors.palette.white,
         }
       }}
@@ -83,7 +83,7 @@ const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
           <GeometricIcon 
             type="square" 
             size="small" 
-            color={colors.palette.orange} 
+            color={colors.palette.accent} 
             variant="filled" 
           />
           <ContextualLink

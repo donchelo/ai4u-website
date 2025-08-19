@@ -13,7 +13,7 @@ const MetricsDemo: React.FC = () => {
       value: '22,900',
       subtitle: 'Horas recuperadas este mes',
       iconType: 'arrow-up' as const,
-      variant: 'dark' as const,
+      variant: 'elevated' as const,
       trend: 'up' as const,
       size: 'large' as const,
     },
@@ -22,7 +22,7 @@ const MetricsDemo: React.FC = () => {
       value: '158',
       subtitle: 'Sistemas activos',
       iconType: 'circle' as const,
-      variant: 'accent' as const,
+      variant: 'elevated' as const,
       trend: 'up' as const,
       size: 'normal' as const,
     },
@@ -31,7 +31,7 @@ const MetricsDemo: React.FC = () => {
       value: '94.8',
       subtitle: 'Porcentaje de optimización',
       iconType: 'triangle' as const,
-      variant: 'primary' as const,
+      variant: 'elevated' as const,
       trend: 'up' as const,
       size: 'normal' as const,
     },
@@ -40,7 +40,7 @@ const MetricsDemo: React.FC = () => {
       value: '67,500',
       subtitle: 'USD ahorrados mensualmente',
       iconType: 'arrow-down' as const,
-      variant: 'glass' as const,
+      variant: 'elevated' as const,
       trend: 'down' as const,
       size: 'compact' as const,
     },
@@ -113,7 +113,7 @@ const MetricsDemo: React.FC = () => {
             {/* Day Range Card */}
             <Grid item xs={12} md={8}>
               <Card 
-                variant="dark"
+                variant="elevated"
                 sx={{ 
                   minHeight: '200px',
                   position: 'relative'
@@ -205,7 +205,7 @@ const MetricsDemo: React.FC = () => {
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={10}>
               <Card 
-                variant="accent"
+                variant="elevated"
                 sx={{ 
                   minHeight: '240px',
                   position: 'relative',
@@ -244,7 +244,7 @@ const MetricsDemo: React.FC = () => {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <Card 
-                      variant="dark"
+                      variant="elevated"
                       sx={{ 
                         minHeight: '100px',
                         borderRadius: '16px'
@@ -308,7 +308,7 @@ const MetricsDemo: React.FC = () => {
                   value={metric.value}
                   subtitle={metric.subtitle}
                   iconType="dot"
-                  variant="glass"
+                  variant="elevated"
                   size="normal"
                 />
               </Grid>

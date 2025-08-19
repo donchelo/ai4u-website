@@ -144,11 +144,11 @@ const Fase3Demo = () => {
             <Card>
               <H4 sx={{ mb: 2 }}>Icon Variants</H4>
               <Stack direction="row" spacing={2} flexWrap="wrap">
-                <GeometricIcon type="circle" variant="filled" color={colors.palette.orange} />
-                <GeometricIcon type="square" variant="outline" color={colors.palette.green} />
-                <GeometricIcon type="triangle" variant="minimal" color={colors.contrast.text.primary} />
-                <GeometricIcon type="arrow-up" variant="filled" color={colors.palette.orange} />
-                <GeometricIcon type="plus" variant="outline" color={colors.palette.green} />
+                <GeometricIcon type="circle" variant="filled" color={colors.palette.accent} />
+<GeometricIcon type="square" variant="outline" color={colors.palette.success} />
+<GeometricIcon type="triangle" variant="minimal" color={colors.contrast.text.primary} />
+<GeometricIcon type="arrow-up" variant="filled" color={colors.palette.accent} />
+<GeometricIcon type="plus" variant="outline" color={colors.palette.success} />
                 <GeometricIcon type="cross" variant="minimal" color={colors.contrast.text.secondary} />
               </Stack>
             </Card>
@@ -158,9 +158,9 @@ const Fase3Demo = () => {
             <Card>
               <H4 sx={{ mb: 2 }}>Icon Sizes</H4>
               <Stack direction="row" spacing={2} alignItems="center">
-                <GeometricIcon type="circle" size="small" color={colors.palette.orange} />
-                <GeometricIcon type="circle" size="medium" color={colors.palette.green} />
-                <GeometricIcon type="circle" size="large" color={colors.palette.orange} />
+                <GeometricIcon type="circle" size="small" color={colors.palette.accent} />
+<GeometricIcon type="circle" size="medium" color={colors.palette.success} />
+<GeometricIcon type="circle" size="large" color={colors.palette.accent} />
               </Stack>
             </Card>
           </Grid>
@@ -225,7 +225,7 @@ const Fase3Demo = () => {
               subtitle="+12% desde el mes pasado"
               iconType="arrow-up"
               trend="up"
-              variant="light"
+              variant="elevated"
               size="normal"
             />
           </Grid>
@@ -237,7 +237,7 @@ const Fase3Demo = () => {
               subtitle="+8% desde el mes pasado"
               iconType="arrow-up"
               trend="up"
-              variant="primary"
+              variant="elevated"
               size="normal"
             />
           </Grid>
@@ -249,7 +249,7 @@ const Fase3Demo = () => {
               subtitle="-2% desde el mes pasado"
               iconType="arrow-down"
               trend="down"
-              variant="accent"
+              variant="elevated"
               size="normal"
             />
           </Grid>
@@ -287,7 +287,7 @@ const Fase3Demo = () => {
         <H2 sx={{ mb: 4 }}>Resumen de la Fase 3</H2>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Card variant="light">
+            <Card variant="elevated">
               <H4 sx={{ mb: 2 }}>✅ Componentes Migrados</H4>
               <Stack spacing={2}>
                 <BodyText>• Navigation (horizontal, vertical, tabs)</BodyText>
@@ -302,7 +302,7 @@ const Fase3Demo = () => {
           </Grid>
           
           <Grid item xs={12} md={6}>
-            <Card variant="primary">
+            <Card variant="elevated">
               <H4 sx={{ mb: 2 }}>🎯 Beneficios Logrados</H4>
               <Stack spacing={2}>
                 <BodyText>• Sistema de colores completamente unificado</BodyText>

@@ -27,7 +27,7 @@ const ServiceThumbnail = ({
   };
 
   const currentSize = sizeMap[size];
-  const color = serviceColor || colors.palette.orange;
+  const color = serviceColor || colors.palette.accent;
 
   // Generar un patrón único basado en el serviceId
   const generatePattern = (id: string) => {

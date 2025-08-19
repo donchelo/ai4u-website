@@ -285,7 +285,7 @@ const UseCases = () => {
                     }}
                   >
                     <Card 
-                      variant="glass" 
+                      variant="elevated" 
                       sx={{ 
                         width: '100%',
                         height: '100%',
@@ -506,12 +506,12 @@ const UseCases = () => {
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
                 {[0, 1, 2].map((index) => (
-                  <Card key={index} variant="glass" sx={{ p: 4 }}>
+                  <Card key={index} variant="elevated" sx={{ p: 4 }}>
                     <Stack direction="row" alignItems="center" spacing={3}>
                       <GeometricIcon 
                         type={index === 0 ? "circle" : index === 1 ? "square" : "triangle"} 
                         size="medium" 
-                        color={index <= 1 ? colors.palette.orange : colors.palette.green} 
+                        color={index <= 1 ? colors.palette.accent : colors.palette.success} 
                         variant="filled" 
                       />
                       <Box>
@@ -552,7 +552,7 @@ const UseCases = () => {
               fontSize: { xs: '2rem', md: '2.5rem' },
               color: colors.contrast.text.primary
             }}>
-              ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.orange }}>caso de éxito</Box>?
+              ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.accent }}>caso de éxito</Box>?
             </H2>
             <BodyText sx={{ 
               color: colors.contrast.text.secondary,

@@ -185,7 +185,7 @@ const Services: React.FC = () => {
                   </Grid>
                 </Box>
               ) : (
-                <Card variant="glass" sx={{ textAlign: 'center', py: 6 }}>
+                <Card variant="elevated" sx={{ textAlign: 'center', py: 6 }}>
                   <GeometricIcon
                     type="cross"
                     size="large"
@@ -236,25 +236,25 @@ const Services: React.FC = () => {
                   number: 1,
                   title: t('services.process.steps.0.title'),
                   description: t('services.process.steps.0.description'),
-                  color: colors.palette.green
+                  color: colors.palette.success
                 },
                 {
                   number: 2,
                   title: t('services.process.steps.1.title'),
                   description: t('services.process.steps.1.description'),
-                  color: colors.palette.green
+                  color: colors.palette.success
                 },
                 {
                   number: 3,
                   title: t('services.process.steps.2.title'),
                   description: t('services.process.steps.2.description'),
-                  color: colors.palette.green
+                  color: colors.palette.success
                 },
                 {
                   number: 4,
                   title: t('services.process.steps.3.title'),
                   description: t('services.process.steps.3.description'),
-                  color: colors.palette.green
+                  color: colors.palette.success
                 }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} key={idx}>

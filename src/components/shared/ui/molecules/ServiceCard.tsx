@@ -31,8 +31,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   const getStatusColor = (status: ServiceStatus) => {
     switch (status) {
-      case ServiceStatus.ACTIVE: return colors.palette.green;
-      case ServiceStatus.COMING_SOON: return colors.palette.orange;
+      case ServiceStatus.ACTIVE: return colors.palette.success;
+      case ServiceStatus.COMING_SOON: return colors.palette.accent;
       case ServiceStatus.DEPRECATED: return colors.palette.gray[500];
       default: return colors.palette.gray[400];
     }
@@ -48,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   };
 
   const getSuperCategoryColor = (superCategory: string) => {
-    return superCategory === 'strategy' ? colors.palette.orange : colors.palette.green;
+    return superCategory === 'strategy' ? colors.palette.accent : colors.palette.success;
   };
 
   const getSuperCategoryText = (superCategory: string) => {

@@ -65,7 +65,7 @@ const WhyAI4U = () => {
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="circle" size="small" color={colors.palette.green} variant="filled" />
+                    <GeometricIcon type="circle" size="small" color={colors.palette.success} variant="filled" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.0')}</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -100,7 +100,7 @@ const WhyAI4U = () => {
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <Card variant="glass" sx={{ p: 0, overflow: 'hidden', position: 'relative' }}>
+              <Card variant="elevated" sx={{ p: 0, overflow: 'hidden', position: 'relative' }}>
                 <PixelArtImage
                   src="/assets/images/mariano.jpeg"
                   pixelArtSrc="/assets/images/mariano-pixel-art.png"
@@ -172,7 +172,7 @@ const WhyAI4U = () => {
                 title: t('whyAI4U.benefits.items.0.title'),
                 description: t('whyAI4U.benefits.items.0.description'),
                 icon: "circle",
-                color: colors.palette.green
+                color: colors.palette.success
               },
               {
                 title: t('whyAI4U.benefits.items.1.title'),
@@ -188,7 +188,7 @@ const WhyAI4U = () => {
               }
             ].map((benefit, idx) => (
               <Grid item xs={12} md={4} key={idx}>
-                <Card variant="light" sx={{ 
+                <Card variant="elevated" sx={{ 
                   height: '100%',
                   textAlign: 'center',
                   p: 4
@@ -244,7 +244,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.stats.metrics.services.value')}
                   subtitle={t('whyAI4U.stats.metrics.services.subtitle')}
                   iconType="square"
-                  variant="glass"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -256,7 +256,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.stats.metrics.strategy.value')}
                   subtitle={t('whyAI4U.stats.metrics.strategy.subtitle')}
                   iconType="triangle"
-                  variant="primary"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -268,7 +268,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.stats.metrics.operation.value')}
                   subtitle={t('whyAI4U.stats.metrics.operation.subtitle')}
                   iconType="circle"
-                  variant="accent"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -280,7 +280,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.stats.metrics.roi.value')}
                   subtitle={t('whyAI4U.stats.metrics.roi.subtitle')}
                   iconType="arrow-up"
-                  variant="glass"
+                  variant="elevated"
                   size="large"
                   trend="up"
                 />
@@ -298,7 +298,7 @@ const WhyAI4U = () => {
                     value={t('whyAI4U.stats.metrics.timeSaved.value')}
                     subtitle={t('whyAI4U.stats.metrics.timeSaved.subtitle')}
                     iconType="arrow-up"
-                    variant="glass"
+                    variant="elevated"
                     size="large"
                     trend="up"
                   />
@@ -312,7 +312,7 @@ const WhyAI4U = () => {
                     value={t('whyAI4U.stats.metrics.implementation.value')}
                     subtitle={t('whyAI4U.stats.metrics.implementation.subtitle')}
                     iconType="triangle"
-                    variant="accent"
+                    variant="elevated"
                     size="large"
                   />
                 </Box>
@@ -343,7 +343,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.impact.metrics.hoursSaved.value')}
                   subtitle={t('whyAI4U.impact.metrics.hoursSaved.subtitle')}
                   iconType="arrow-up"
-                  variant="glass"
+                  variant="elevated"
                   size="large"
                   trend="up"
                 />
@@ -356,7 +356,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.impact.metrics.automatedProcesses.value')}
                   subtitle={t('whyAI4U.impact.metrics.automatedProcesses.subtitle')}
                   iconType="circle"
-                  variant="primary"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -368,7 +368,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.impact.metrics.responseTime.value')}
                   subtitle={t('whyAI4U.impact.metrics.responseTime.subtitle')}
                   iconType="triangle"
-                  variant="accent"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -380,7 +380,7 @@ const WhyAI4U = () => {
                   value={t('whyAI4U.impact.metrics.averageROI.value')}
                   subtitle={t('whyAI4U.impact.metrics.averageROI.subtitle')}
                   iconType="arrow-up"
-                  variant="glass"
+                  variant="elevated"
                   size="large"
                 />
               </Box>
@@ -392,12 +392,12 @@ const WhyAI4U = () => {
       {/* Final CTA Section - Maximizando ventas */}
       <Box sx={{ py: { xs: 8, md: 12 } }}>
         <Container maxWidth="md">
-          <Card variant="dark" sx={{ textAlign: 'center', p: 6 }}>
+          <Card variant="elevated" sx={{ textAlign: 'center', p: 6 }}>
             <Box sx={{ mb: 4 }}>
               <GeometricIcon
                 type="arrow-up"
                 size="large"
-                color={colors.palette.green}
+                color={colors.palette.success}
                 variant="filled"
               />
             </Box>

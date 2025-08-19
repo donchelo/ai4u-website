@@ -86,7 +86,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					transition: 'all 0.2s ease-in-out',
 				},
 				containedPrimary: {
-					backgroundColor: AI4U_PALETTE.orange,
+					backgroundColor: AI4U_PALETTE.accent,
 					color: AI4U_PALETTE.white,
 					'&:hover': {
 						backgroundColor: '#E54A00',
@@ -102,8 +102,8 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 				},
 				outlined: {
 					borderWidth: '2px',
-					borderColor: AI4U_PALETTE.orange,
-					color: AI4U_PALETTE.orange,
+					borderColor: AI4U_PALETTE.accent,
+					color: AI4U_PALETTE.accent,
 					'&:hover': {
 						backgroundColor: 'rgba(255, 92, 0, 0.08)',
 						borderWidth: '2px',
@@ -143,7 +143,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					},
 				},
 				colorPrimary: {
-					color: AI4U_PALETTE.orange,
+					color: AI4U_PALETTE.accent,
 					'&:hover': {
 						backgroundColor: 'rgba(255, 92, 0, 0.08)',
 					},
@@ -200,14 +200,14 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 	};
 };
 
-// Configuración de paleta simplificada
+// Configuración de paleta minimalista
 const getPalette = (mode: PaletteMode) => {
 	const isLight = mode === 'light';
 	
 	return {
 		mode,
 		primary: {
-			main: AI4U_PALETTE.orange,
+			main: AI4U_PALETTE.accent,
 			light: '#FF7C33',
 			dark: '#E54A00',
 			contrastText: AI4U_PALETTE.white,
@@ -224,21 +224,19 @@ const getPalette = (mode: PaletteMode) => {
 		},
 		text: {
 			primary: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-			secondary: isLight ? AI4U_PALETTE.gray[700] : AI4U_PALETTE.gray[100],
-			disabled: AI4U_PALETTE.gray[500],
+			secondary: isLight ? AI4U_PALETTE.gray[600] : AI4U_PALETTE.gray[300],
+			disabled: AI4U_PALETTE.gray[400],
 		},
 		action: {
 			active: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 			hover: isLight ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
 			selected: isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.16)',
-			disabled: AI4U_PALETTE.gray[500],
+			disabled: AI4U_PALETTE.gray[400],
 			disabledBackground: isLight ? 'rgba(0, 0, 0, 0.12)' : 'rgba(255, 255, 255, 0.12)',
 		},
 		error: { main: AI4U_PALETTE.error },
 		success: { main: AI4U_PALETTE.success },
-		info: { main: AI4U_PALETTE.info },
-		warning: { main: AI4U_PALETTE.warning },
-		divider: isLight ? AI4U_PALETTE.gray[300] : AI4U_PALETTE.gray[700],
+		divider: isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800],
 	};
 };
 
