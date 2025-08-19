@@ -62,8 +62,18 @@ const ProgressiveContent = ({
 
   return (
     <Box>
-      {/* Summary Content */}
-      <Box sx={{ mb: expanded ? 2 : 0 }}>
+      {/* Summary Content - Clickable para expandir/contraer */}
+      <Box 
+        sx={{ 
+          mb: expanded ? 2 : 0,
+          cursor: 'pointer',
+          '&:hover': {
+            opacity: 0.8,
+            transition: 'opacity 0.2s ease'
+          }
+        }}
+        onClick={handleToggle}
+      >
         {summary}
       </Box>
 
@@ -73,37 +83,27 @@ const ProgressiveContent = ({
           <Box
             sx={{
               maxHeight: maxHeight,
-              overflow: 'hidden',
-              transition: 'all 0.3s ease'
+              overflow: 'auto',
+              transition: 'all 0.3s ease',
+              '&::-webkit-scrollbar': {
+                width: '6px',
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'transparent',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: colors.contrast.divider,
+                borderRadius: '3px',
+              },
+              '&::-webkit-scrollbar-thumb:hover': {
+                background: colors.contrast.text.secondary,
+              }
             }}
           >
             {details}
           </Box>
         </Box>
       )}
-
-      {/* Toggle Button */}
-      <Box sx={{ mt: 1 }}>
-        <Button
-          variant="text"
-          size="small"
-          onClick={handleToggle}
-          sx={{
-            color: colors.palette.accent,
-            textTransform: 'none',
-            p: 0,
-            minWidth: 'auto',
-            fontSize: '0.875rem',
-            fontWeight: 500,
-            '&:hover': {
-              background: 'transparent',
-              textDecoration: 'underline'
-            }
-          }}
-        >
-          {expanded ? 'Ver menos' : 'Ver más'}
-        </Button>
-      </Box>
     </Box>
   );
 };

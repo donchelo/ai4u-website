@@ -333,7 +333,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                 textTransform: 'uppercase',
                 letterSpacing: 0.5
               }}>
-                Ver más transacciones
+                Explorar más
               </SmallText>
             </Box>
           </>

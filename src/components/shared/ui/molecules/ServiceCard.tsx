@@ -164,14 +164,47 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                     display: 'flex', 
                     justifyContent: 'center', 
                     mt: 2,
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                      transition: 'transform 0.2s ease'
+                    }
                   }}>
-                    <GeometricIcon
-                      type="arrow-down"
-                      size="small"
-                      color={colors.contrast.text.secondary}
-                      variant="minimal"
-                    />
+                    <Box sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
+                      background: `linear-gradient(135deg, ${colors.palette.accent}20, ${colors.palette.success}20)`,
+                      border: `1px solid ${colors.contrast.border}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        width: 6,
+                        height: 6,
+                        borderRadius: '50%',
+                        background: colors.palette.accent,
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        transition: 'all 0.3s ease'
+                      },
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        width: 2,
+                        height: 2,
+                        borderRadius: '50%',
+                        background: colors.palette.success,
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        transition: 'all 0.3s ease'
+                      }
+                    }} />
                   </Box>
                 }
                 details={
@@ -190,10 +223,44 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                       lineHeight: 1.6,
                       color: colors.contrast.text.secondary,
                       fontSize: '0.95rem',
-                      textAlign: 'left'
+                      textAlign: 'left',
+                      mb: 3
                     }}>
                       {service.description}
                     </BodyText>
+                    
+                    <Box>
+                      <BodyText sx={{ 
+                        fontWeight: 600, 
+                        mb: 1,
+                        color: colors.contrast.text.primary,
+                        fontSize: '0.95rem'
+                      }}>
+                        Beneficios:
+                      </BodyText>
+                      <List dense disablePadding>
+                        {service.benefits.map((benefit, index) => (
+                          <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
+                            <ListItemIcon sx={{ minWidth: 28 }}>
+                              <GeometricIcon
+                                type="check"
+                                size="small"
+                                color={colors.contrast.text.primary}
+                                variant="minimal"
+                              />
+                            </ListItemIcon>
+                            <ListItemText 
+                              primary={benefit}
+                              primaryTypographyProps={{
+                                fontSize: '0.85rem',
+                                color: colors.contrast.text.secondary,
+                                lineHeight: 1.4
+                              }}
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Box>
                   </Box>
                 }
                 variant="inline"
@@ -201,82 +268,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             )}
           </Box>
 
-          {/* Benefits con información progresiva */}
-          {!compact && (
-            <Box sx={{ mb: 3, flexGrow: 1 }}>
-              <ProgressiveContent
-                summary={
-                  <Box>
-                    <BodyText sx={{ 
-                      fontWeight: 600, 
-                      mb: 1,
-                      color: colors.contrast.text.primary,
-                      fontSize: '0.95rem'
-                    }}>
-                      Beneficios:
-                    </BodyText>
-                    <List dense disablePadding>
-                      {service.benefits.slice(0, 2).map((benefit, index) => (
-                        <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                          <ListItemIcon sx={{ minWidth: 28 }}>
-                            <GeometricIcon
-                              type="check"
-                              size="small"
-                              color={colors.contrast.text.primary}
-                              variant="minimal"
-                            />
-                          </ListItemIcon>
-                          <ListItemText 
-                            primary={benefit}
-                            primaryTypographyProps={{
-                              fontSize: '0.85rem',
-                              color: colors.contrast.text.secondary,
-                              lineHeight: 1.4
-                            }}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Box>
-                }
-                details={
-                  <Box>
-                    <BodyText sx={{ 
-                      fontWeight: 600, 
-                      mb: 1,
-                      color: colors.contrast.text.primary,
-                      fontSize: '0.95rem'
-                    }}>
-                      Beneficios:
-                    </BodyText>
-                    <List dense disablePadding>
-                      {service.benefits.map((benefit, index) => (
-                        <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                          <ListItemIcon sx={{ minWidth: 28 }}>
-                            <GeometricIcon
-                              type="check"
-                              size="small"
-                              color={colors.contrast.text.primary}
-                              variant="minimal"
-                            />
-                          </ListItemIcon>
-                          <ListItemText 
-                            primary={benefit}
-                            primaryTypographyProps={{
-                              fontSize: '0.85rem',
-                              color: colors.contrast.text.secondary,
-                              lineHeight: 1.4
-                            }}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Box>
-                }
-                variant="inline"
-              />
-            </Box>
-          )}
+
 
           {/* Footer con números prominentes */}
           <Box sx={{ 
