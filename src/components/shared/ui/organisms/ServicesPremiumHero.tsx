@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
-import { H3, BodyText, LazyImage, Button } from '../atoms';
-import { Card } from '../molecules';
+import { H3, BodyText, LazyImage } from '../atoms';
+import { Card, DiagnosticCTA } from '../molecules';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
 import { useLanguage } from '../../../../context';
@@ -72,20 +72,28 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               }}
             >
               {featuredSorted.map((service, idx) => (
-                <Button
+                <Box
                   key={service.id}
-                  variant={idx === activeIndex ? 'primary' : 'secondary'}
-                  size="small"
                   onClick={() => setActiveIndex(idx)}
                   sx={{
-                    minWidth: 'auto',
                     px: 2,
                     py: 1,
-                    fontSize: '0.875rem'
+                    fontSize: '0.875rem',
+                    fontWeight: idx === activeIndex ? 600 : 500,
+                    color: idx === activeIndex ? colors.contrast.text.primary : colors.contrast.text.secondary,
+                    background: idx === activeIndex ? colors.contrast.surface : 'transparent',
+                    border: `1px solid ${idx === activeIndex ? colors.contrast.border : 'transparent'}`,
+                    borderRadius: 1,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      background: colors.contrast.surface,
+                      borderColor: colors.contrast.border,
+                    }
                   }}
                 >
                   {service.title}
-                </Button>
+                </Box>
               ))}
             </Box>
 
@@ -181,20 +189,12 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       </BodyText>
                     )}
                     <Box sx={{ mt: 'auto' }}>
-                      <Button
+                      <DiagnosticCTA 
                         variant="primary"
                         size="medium"
-                        component="a"
-                        href={`#service-${activeService.id}`}
-                        sx={{ 
-                          px: 3, 
-                          py: 1.5,
-                          fontSize: '1rem',
-                          fontWeight: 600
-                        }}
-                      >
-                        Ver servicio
-                      </Button>
+                        showIcon={true}
+                        text="Agendar un diagnóstico gratis"
+                      />
                     </Box>
                   </Box>
                 </Card>
