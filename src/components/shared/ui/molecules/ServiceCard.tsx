@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { H3, BodyText, GeometricIcon, SEOHead, ServiceThumbnail } from '../atoms';
 import { useColors } from '../../../../hooks';
-import { Service, ServiceStatus } from '../../../../types/service';
+import { Service } from '../../../../types/service';
 import { getServiceStructuredData } from '../../../../utils/seo';
 import { ProgressiveContent } from './';
 
@@ -30,28 +30,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   // Generar structured data específico para este servicio
   const serviceStructuredData = getServiceStructuredData(service);
 
-  const getStatusColor = (status: ServiceStatus) => {
-    switch (status) {
-      case ServiceStatus.ACTIVE: return colors.palette.success;
-      case ServiceStatus.COMING_SOON: return colors.palette.accent;
-      case ServiceStatus.DEPRECATED: return colors.palette.gray[500];
-      default: return colors.palette.gray[400];
-    }
-  };
-
-  const getStatusText = (status: ServiceStatus) => {
-    switch (status) {
-      case ServiceStatus.ACTIVE: return 'Disponible';
-      case ServiceStatus.COMING_SOON: return 'Próximamente';
-      case ServiceStatus.DEPRECATED: return 'Descontinuado';
-      default: return 'Inactivo';
-    }
-  };
-
-  const getSuperCategoryColor = (superCategory: string) => {
-    return superCategory === 'strategy' ? colors.palette.accent : colors.palette.success;
-  };
-
   const getSuperCategoryText = (superCategory: string) => {
     return superCategory === 'strategy' ? 'Estrategia' : 'Operación';
   };
@@ -61,56 +39,39 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       {/* Structured Data para este servicio específico */}
       <SEOHead
         structuredData={serviceStructuredData}
-        noIndex={true} // No indexar el structured data individual para evitar duplicados
+        noIndex={true}
       />
       
       <Box sx={{
         height: '100%',
         position: 'relative',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        zIndex: 2,
+        transition: 'all 0.2s ease',
         '&:hover': {
-          transform: 'translateY(-4px)',
-          zIndex: 3,
+          transform: 'translateY(-2px)',
           '& .service-card-content': {
-            boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
             borderColor: colors.contrast.border,
-            backdropFilter: 'blur(24px)'
           }
         }
       }}>
-        {/* Main Card Content con glassmorphism */}
+        {/* Main Card Content minimalista */}
         <Box className="service-card-content" sx={{
           p: compact ? 2.5 : 3,
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           position: 'relative',
-          background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(20px)',
+          background: colors.contrast.surface,
           border: `1px solid ${colors.contrast.border}`,
-          borderRadius: 3,
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          borderRadius: 2,
+          transition: 'all 0.2s ease',
           overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-          zIndex: 1
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
         }}>
-          {/* Subtle Header */}
-          <Box sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 2,
-            background: colors.contrast.border,
-            borderRadius: '12px 12px 0 0'
-          }} />
-
           {/* Service Thumbnail */}
           <Box sx={{ 
             width: '100%',
             mb: 3,
-            mt: 2
           }}>
             <ServiceThumbnail
               serviceId={service.id}
@@ -120,7 +81,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             />
           </Box>
 
-          {/* Super Category Badge */}
+          {/* Super Category Badge minimalista */}
           <Box sx={{ 
             position: 'absolute', 
             top: 12, 
@@ -131,13 +92,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               label={getSuperCategoryText(service.superCategory)}
               size="small"
               sx={{
-                background: colors.contrast.surface,
-                backdropFilter: 'blur(10px)',
+                background: colors.contrast.background,
                 color: colors.contrast.text.primary,
-                fontWeight: 600,
+                fontWeight: 500,
                 fontSize: '0.7rem',
                 height: 24,
-                border: `1px solid ${colors.contrast.border}`
+                border: `1px solid ${colors.contrast.border}`,
+                '& .MuiChip-label': {
+                  px: 1,
+                }
               }}
             />
           </Box>
@@ -145,14 +108,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {/* Header */}
           <Box sx={{ 
             mb: 3,
-            mt: 1
           }}>
             <H3 sx={{ 
               color: colors.contrast.text.primary,
-              fontSize: { xs: '1.3rem', md: '1.5rem' },
-              fontWeight: 700,
+              fontSize: { xs: '1.2rem', md: '1.4rem' },
+              fontWeight: 600,
               lineHeight: 1.3,
-              textAlign: 'center'
+              textAlign: 'center',
+              mb: 2
             }}>
               {service.title}
             </H3>
@@ -166,15 +129,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                     mt: 2,
                     cursor: 'pointer',
                     '&:hover': {
-                      transform: 'scale(1.1)',
+                      transform: 'scale(1.05)',
                       transition: 'transform 0.2s ease'
                     }
                   }}>
                     <Box sx={{
-                      width: 32,
-                      height: 32,
+                      width: 24,
+                      height: 24,
                       borderRadius: '50%',
-                      background: `linear-gradient(135deg, ${colors.palette.accent}20, ${colors.palette.success}20)`,
+                      background: colors.contrast.background,
                       border: `1px solid ${colors.contrast.border}`,
                       display: 'flex',
                       alignItems: 'center',
@@ -183,26 +146,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                       '&::before': {
                         content: '""',
                         position: 'absolute',
-                        width: 6,
-                        height: 6,
+                        width: 4,
+                        height: 4,
                         borderRadius: '50%',
-                        background: colors.palette.accent,
+                        background: colors.contrast.text.secondary,
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        transition: 'all 0.3s ease'
-                      },
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        width: 2,
-                        height: 2,
-                        borderRadius: '50%',
-                        background: colors.palette.success,
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        transition: 'all 0.3s ease'
                       }
                     }} />
                   </Box>
@@ -211,9 +161,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                   <Box sx={{ mt: 2 }}>
                     <BodyText sx={{ 
                       mb: 2, 
-                      fontWeight: 600,
+                      fontWeight: 500,
                       color: colors.contrast.text.primary,
-                      fontSize: '1rem',
+                      fontSize: '0.95rem',
                       lineHeight: 1.4,
                       textAlign: 'center'
                     }}>
@@ -222,7 +172,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                     <BodyText sx={{ 
                       lineHeight: 1.6,
                       color: colors.contrast.text.secondary,
-                      fontSize: '0.95rem',
+                      fontSize: '0.9rem',
                       textAlign: 'left',
                       mb: 3
                     }}>
@@ -234,25 +184,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                         fontWeight: 600, 
                         mb: 1,
                         color: colors.contrast.text.primary,
-                        fontSize: '0.95rem'
+                        fontSize: '0.9rem'
                       }}>
                         Beneficios:
                       </BodyText>
                       <List dense disablePadding>
                         {service.benefits.map((benefit, index) => (
                           <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                            <ListItemIcon sx={{ minWidth: 28 }}>
+                            <ListItemIcon sx={{ minWidth: 24 }}>
                               <GeometricIcon
                                 type="check"
                                 size="small"
-                                color={colors.contrast.text.primary}
+                                color={colors.contrast.text.secondary}
                                 variant="minimal"
                               />
                             </ListItemIcon>
                             <ListItemText 
                               primary={benefit}
                               primaryTypographyProps={{
-                                fontSize: '0.85rem',
+                                fontSize: '0.8rem',
                                 color: colors.contrast.text.secondary,
                                 lineHeight: 1.4
                               }}
@@ -268,9 +218,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             )}
           </Box>
 
-
-
-          {/* Footer con números prominentes */}
+          {/* Footer minimalista */}
           <Box sx={{ 
             mt: 'auto',
             pt: 2,
@@ -284,16 +232,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 mb: 1
               }}>
                 <BodyText sx={{ 
-                  fontWeight: 600,
-                  color: colors.contrast.text.primary,
-                  fontSize: '0.9rem'
+                  fontWeight: 500,
+                  color: colors.contrast.text.secondary,
+                  fontSize: '0.85rem'
                 }}>
                   Precio:
                 </BodyText>
                 <Typography sx={{ 
-                  fontWeight: 700,
+                  fontWeight: 600,
                   color: colors.contrast.text.primary,
-                  fontSize: '1.2rem'
+                  fontSize: '1.1rem'
                 }}>
                   {service.price}
                 </Typography>

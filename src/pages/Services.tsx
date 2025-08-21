@@ -5,11 +5,10 @@ import {
   Box, 
   Typography,
   Stack,
-  Chip,
   Divider
 } from '@mui/material';
-import { H1, H2, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { ServiceCard, Card, DiagnosticCTA, Breadcrumb, RelatedPages, SuperCategoryFilter, FilterStats, ExpandableSection } from '../components/shared/ui/molecules';
+import { H2, BodyText, Button, SEOHead } from '../components/shared/ui/atoms';
+import { ServiceCard, DiagnosticCTA, RelatedPages, SuperCategoryFilter, ExpandableSection } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
@@ -24,7 +23,6 @@ const Services: React.FC = () => {
   const colors = useColors();
   const { 
     config,
-    stats,
     setCategoryFilter,
     setSuperCategoryFilter,
     setSearchTerm,
@@ -60,11 +58,6 @@ const Services: React.FC = () => {
     { label: t('services.filter.categories.6.label'), value: ServiceCategory.CONSULTING }
   ];
 
-  const handleSuperTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setSelectedSuperTab(newValue);
-    setSuperCategoryFilter(superCategoryTabs[newValue].value);
-  };
-
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
     setCategoryFilter(categoryTabs[newValue].value);
@@ -87,8 +80,7 @@ const Services: React.FC = () => {
     <Box sx={{ 
       minHeight: '100vh', 
       bgcolor: colors.contrast.background,
-      position: 'relative',
-      overflow: 'hidden'
+      position: 'relative'
     }}>
       {/* SEO Head con meta tags optimizados */}
       <SEOHead
@@ -99,9 +91,7 @@ const Services: React.FC = () => {
         structuredData={structuredData}
       />
 
-      {/* Breadcrumb eliminado para hero limpio */}
-
-      {/* Hero Premium para Servicios: destacar Fashion Agent y Data Entry */}
+      {/* Hero Premium para Servicios */}
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         <ServicesPremiumHero 
           title="Fashion Agent"
@@ -219,20 +209,20 @@ const Services: React.FC = () => {
       <Divider />
 
       {/* Process Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, position: 'relative', zIndex: 1, bgcolor: colors.contrast.surface }}>
+      <Box sx={{ py: { xs: 6, md: 8 }, position: 'relative', zIndex: 1, bgcolor: colors.contrast.surface }}>
         <Container maxWidth="xl">
-          <Stack spacing={6} alignItems="center">
+          <Stack spacing={4} alignItems="center">
             <Box sx={{ textAlign: 'center', mb: 2 }}>
               <H2 sx={{ 
-                fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
-                fontWeight: 700,
+                fontSize: { xs: '1.8rem', md: '2.2rem', lg: '2.5rem' },
+                fontWeight: 600,
                 letterSpacing: '-0.02em',
                 mb: 2
               }}>
                 {t('services.process.title')}
               </H2>
               <BodyText sx={{ 
-                fontSize: { xs: '1.1rem', md: '1.25rem' },
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 color: colors.contrast.text.secondary,
                 maxWidth: 600,
                 mx: 'auto'
@@ -241,31 +231,31 @@ const Services: React.FC = () => {
               </BodyText>
             </Box>
             
-            <Grid container spacing={{ xs: 4, md: 6 }} sx={{ mt: 2 }}>
+            <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mt: 2 }}>
               {[
                 {
                   number: 1,
                   title: t('services.process.steps.0.title'),
                   description: t('services.process.steps.0.description'),
-                  color: colors.palette.success
+                  color: colors.contrast.text.secondary
                 },
                 {
                   number: 2,
                   title: t('services.process.steps.1.title'),
                   description: t('services.process.steps.1.description'),
-                  color: colors.palette.success
+                  color: colors.contrast.text.secondary
                 },
                 {
                   number: 3,
                   title: t('services.process.steps.2.title'),
                   description: t('services.process.steps.2.description'),
-                  color: colors.palette.success
+                  color: colors.contrast.text.secondary
                 },
                 {
                   number: 4,
                   title: t('services.process.steps.3.title'),
                   description: t('services.process.steps.3.description'),
-                  color: colors.palette.success
+                  color: colors.contrast.text.secondary
                 }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} key={idx}>
@@ -274,7 +264,7 @@ const Services: React.FC = () => {
                     title={step.title}
                     description={step.description}
                     color={step.color}
-                    size="large"
+                    size="medium"
                   />
                 </Grid>
               ))}
@@ -287,18 +277,18 @@ const Services: React.FC = () => {
       <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.contrast.surface, position: 'relative', zIndex: 1 }}>
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
-            <H2 sx={{ fontSize: { xs: '1.5rem', md: '1.8rem' } }}>
+            <H2 sx={{ fontSize: { xs: '1.4rem', md: '1.6rem' } }}>
               {t('common.help.title')}
             </H2>
             <BodyText sx={{ maxWidth: 500 }}>
               {t('common.help.subtitle')}
             </BodyText>
-                          <DiagnosticCTA 
-                variant="primary"
-                size="medium"
-                showIcon={true}
-                text={t('common.schedule.title')}
-              />
+            <DiagnosticCTA 
+              variant="primary"
+              size="medium"
+              showIcon={true}
+              text={t('common.schedule.title')}
+            />
           </Stack>
         </Container>
       </Box>

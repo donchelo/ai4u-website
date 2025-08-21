@@ -22,7 +22,7 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
   return (
     <Box>
       <Box sx={{ 
-        mb: 2,
+        mb: 1.5,
         fontSize: '0.875rem', 
         fontWeight: 500,
         color: colors.contrast.text.primary 
@@ -37,29 +37,28 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
             label={option.label}
             size="small"
             onClick={() => onValueChange(option.value)}
-                         sx={{
-               background: selectedValue === option.value 
-                 ? colors.contrast.text.primary 
-                 : colors.contrast.background,
-               color: selectedValue === option.value 
-                 ? colors.contrast.background 
-                 : colors.contrast.text.primary,
-               border: `1px solid ${
-                 selectedValue === option.value 
-                   ? colors.contrast.text.primary 
-                   : colors.contrast.border
-               }`,
+            sx={{
+              background: selectedValue === option.value 
+                ? colors.contrast.text.primary 
+                : colors.contrast.background,
+              color: selectedValue === option.value 
+                ? colors.contrast.background 
+                : colors.contrast.text.primary,
+              border: `1px solid ${
+                selectedValue === option.value 
+                  ? colors.contrast.text.primary 
+                  : colors.contrast.border
+              }`,
               fontSize: '0.75rem',
               fontWeight: 500,
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-                             '&:hover': {
-                 background: selectedValue === option.value 
-                   ? colors.contrast.text.primary 
-                   : colors.contrast.surface,
-                 transform: 'translateY(-1px)',
-                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-               }
+              '&:hover': {
+                background: selectedValue === option.value 
+                  ? colors.contrast.text.primary 
+                  : colors.contrast.surface,
+                borderColor: colors.contrast.text.secondary,
+              }
             }}
           />
         ))}

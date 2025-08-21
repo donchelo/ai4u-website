@@ -39,11 +39,11 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
 
   return (
     <Box sx={{
-      mb: 4,
-      p: 2,
-      background: colors.contrast.background,
+      mb: 3,
+      p: 2.5,
+      background: colors.contrast.surface,
       border: `1px solid ${colors.contrast.border}`,
-      borderRadius: 1.5
+      borderRadius: 2
     }}>
       {/* Header con contador */}
       <Stack 
@@ -62,17 +62,9 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
         
         {searchValue && (
           <Button
-            variant="outline"
+            variant="text"
             size="small"
             onClick={onClearFilters}
-            startIcon={
-              <GeometricIcon 
-                type="clear" 
-                size="small" 
-                color={colors.contrast.text.secondary} 
-                variant="minimal" 
-              />
-            }
             sx={{
               color: colors.contrast.text.secondary,
               fontSize: '0.75rem',
@@ -105,20 +97,20 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               border: `1px solid ${colors.contrast.border}`,
               transition: 'all 0.2s ease',
               '&:hover': {
-                borderColor: colors.contrast.text.primary,
+                borderColor: colors.contrast.text.secondary,
               },
               '&.Mui-focused': {
-                borderColor: colors.contrast.text.primary,
-                borderWidth: '2px'
+                borderColor: colors.contrast.text.secondary,
+                borderWidth: '1px'
               }
             },
             '& .MuiOutlinedInput-input': {
               fontSize: '0.875rem',
-              padding: '10px 12px',
+              padding: '8px 12px',
               color: colors.contrast.text.primary,
               '&::placeholder': {
                 color: colors.contrast.text.secondary,
-                opacity: 0.8
+                opacity: 0.7
               }
             },
             '& .MuiOutlinedInput-notchedOutline': {
@@ -149,14 +141,15 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               size="small"
               onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
               sx={{
-                background: colors.contrast.text.primary,
-                color: colors.contrast.background,
+                background: colors.contrast.text.secondary,
+                color: '#FFFFFF',
                 fontSize: '0.75rem',
                 fontWeight: 500,
                 '& .MuiChip-deleteIcon': {
-                  color: colors.contrast.background,
+                  color: '#FFFFFF',
                   '&:hover': {
-                    color: colors.contrast.surface
+                    color: '#FFFFFF',
+                    opacity: 0.8
                   }
                 }
               }}
@@ -175,17 +168,17 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
           variant="scrollable"
           scrollButtons="auto"
           sx={{
-            minHeight: 40,
+            minHeight: 36,
             '& .MuiTabs-scrollButtons': {
               '&.Mui-disabled': { opacity: 0.3 }
             },
             '& .MuiTab-root': {
-              minHeight: 40,
-              fontSize: '0.875rem',
+              minHeight: 36,
+              fontSize: '0.8rem',
               fontWeight: 500,
               textTransform: 'none',
               borderRadius: 1,
-              mx: 0.5,
+              mx: 0.25,
               transition: 'all 0.2s ease',
               color: colors.contrast.text.secondary,
               background: 'transparent',
