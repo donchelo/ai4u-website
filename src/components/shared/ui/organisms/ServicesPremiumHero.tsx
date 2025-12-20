@@ -4,7 +4,6 @@ import { H3, BodyText, LazyImage } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
-import { useLanguage } from '../../../../context';
 import { useServicesContext } from '../../../../context/ServicesContext';
 
 interface ServicesPremiumHeroProps {
@@ -19,7 +18,6 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
   maxItems = 3,
 }) => {
   const colors = useColors();
-  const { t } = useLanguage();
   const { getFeaturedServices } = useServicesContext();
 
   // Destacados ordenados por prioridad
@@ -54,7 +52,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   letterSpacing: '-0.01em'
                 }}
               >
-                {t('services.premiumHero.title')}
+                Destacados
               </Typography>
             </Box>
 
@@ -351,5 +349,3 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
 };
 
 export default ServicesPremiumHero;
-
-

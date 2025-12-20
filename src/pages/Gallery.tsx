@@ -3,12 +3,10 @@ import { Box, Container, useTheme, CircularProgress, Alert } from '@mui/material
 import { Gallery } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { useGalleryImages } from '../hooks/useGalleryImages';
-import { useLanguage } from '../hooks';
 
 const GalleryPage: React.FC = () => {
   const theme = useTheme();
   const colors = useColors();
-  const { t } = useLanguage();
   const { images, isLoading, error, reload } = useGalleryImages();
 
   return (
@@ -33,7 +31,7 @@ const GalleryPage: React.FC = () => {
               }
             }}
           >
-            {t('gallery.error')}
+            Error al cargar las imágenes
           </Alert>
         </Box>
       )}
@@ -50,4 +48,4 @@ const GalleryPage: React.FC = () => {
   );
 };
 
-export default GalleryPage; 
+export default GalleryPage;

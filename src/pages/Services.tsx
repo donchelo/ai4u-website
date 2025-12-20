@@ -12,14 +12,12 @@ import { ServiceCard, DiagnosticCTA, RelatedPages, SuperCategoryFilter, Expandab
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context/ServicesContext';
-import { useLanguage } from '../hooks';
 import { useColors } from '../hooks';
 import { ServiceCategory, ServiceSuperCategory } from '../types/service';
 import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Services: React.FC = () => {
-  const { t } = useLanguage();
   const colors = useColors();
   const { 
     config,
@@ -43,19 +41,19 @@ const Services: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
 
   const superCategoryTabs = [
-    { label: t('services.filter.superCategories.0.label'), value: undefined },
-    { label: t('services.filter.superCategories.1.label'), value: ServiceSuperCategory.STRATEGY },
-    { label: t('services.filter.superCategories.2.label'), value: ServiceSuperCategory.OPERATION }
+    { label: 'Todos', value: undefined },
+    { label: 'Estrategia', value: ServiceSuperCategory.STRATEGY },
+    { label: 'Operación', value: ServiceSuperCategory.OPERATION }
   ];
 
   const categoryTabs = [
-    { label: t('services.filter.categories.0.label'), value: undefined },
-    { label: t('services.filter.categories.1.label'), value: ServiceCategory.AI_ASSISTANT },
-    { label: t('services.filter.categories.2.label'), value: ServiceCategory.AUTOMATION },
-    { label: t('services.filter.categories.3.label'), value: ServiceCategory.ANALYTICS },
-    { label: t('services.filter.categories.4.label'), value: ServiceCategory.ECOMMERCE },
-    { label: t('services.filter.categories.5.label'), value: ServiceCategory.TRAINING },
-    { label: t('services.filter.categories.6.label'), value: ServiceCategory.CONSULTING }
+    { label: 'Todos', value: undefined },
+    { label: 'Asistentes IA', value: ServiceCategory.AI_ASSISTANT },
+    { label: 'Automatización', value: ServiceCategory.AUTOMATION },
+    { label: 'Análisis', value: ServiceCategory.ANALYTICS },
+    { label: 'E-commerce', value: ServiceCategory.ECOMMERCE },
+    { label: 'Capacitación', value: ServiceCategory.TRAINING },
+    { label: 'Consultoría', value: ServiceCategory.CONSULTING }
   ];
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -219,7 +217,7 @@ const Services: React.FC = () => {
                 letterSpacing: '-0.02em',
                 mb: 2
               }}>
-                {t('services.process.title')}
+                Nuestro proceso
               </H2>
               <BodyText sx={{ 
                 fontSize: { xs: '1rem', md: '1.1rem' },
@@ -227,7 +225,7 @@ const Services: React.FC = () => {
                 maxWidth: 600,
                 mx: 'auto'
               }}>
-                {t('services.process.subtitle')}
+                Un proceso simple y efectivo para transformar tu negocio
               </BodyText>
             </Box>
             
@@ -235,26 +233,26 @@ const Services: React.FC = () => {
               {[
                 {
                   number: 1,
-                  title: t('services.process.steps.0.title'),
-                  description: t('services.process.steps.0.description'),
+                  title: 'Diagnóstico gratuito (30 minutos)',
+                  description: 'Identificamos todas las oportunidades de automatización en tu negocio',
                   color: colors.contrast.text.secondary
                 },
                 {
                   number: 2,
-                  title: t('services.process.steps.1.title'),
-                  description: t('services.process.steps.1.description'),
+                  title: 'Definición de prioridades',
+                  description: 'Establecemos qué procesos automatizar primero según tu ROI',
                   color: colors.contrast.text.secondary
                 },
                 {
                   number: 3,
-                  title: t('services.process.steps.2.title'),
-                  description: t('services.process.steps.2.description'),
+                  title: 'Presupuesto personalizado',
+                  description: 'Adaptamos las soluciones a tu capacidad de inversión',
                   color: colors.contrast.text.secondary
                 },
                 {
                   number: 4,
-                  title: t('services.process.steps.3.title'),
-                  description: t('services.process.steps.3.description'),
+                  title: 'Implementación',
+                  description: 'Desarrollamos e integramos las soluciones en tu negocio',
                   color: colors.contrast.text.secondary
                 }
               ].map((step, idx) => (
@@ -278,16 +276,16 @@ const Services: React.FC = () => {
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
             <H2 sx={{ fontSize: { xs: '1.4rem', md: '1.6rem' } }}>
-              {t('common.help.title')}
+              ¿Necesitas ayuda?
             </H2>
             <BodyText sx={{ maxWidth: 500 }}>
-              {t('common.help.subtitle')}
+              Agenda una consulta gratuita de 30 minutos
             </BodyText>
             <DiagnosticCTA 
               variant="primary"
               size="medium"
               showIcon={true}
-              text={t('common.schedule.title')}
+              text="Agendar consulta"
             />
           </Stack>
         </Container>
@@ -297,7 +295,7 @@ const Services: React.FC = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title={t('common.related.title')}
+          title="También podrías estar interesado en:"
           variant="horizontal"
         />
       </Container>

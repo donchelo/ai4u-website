@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { SmallText, ContextualLink, NavigationDot } from '../atoms';
 import { useColors } from '../../../../hooks';
-import { useLanguage } from '../../../../context';
 
 interface RelatedPageItem {
   to: string;
@@ -42,8 +41,7 @@ const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
     className,
   } = props;
   const colors = useColors();
-  const { t } = useLanguage();
-  const defaultTitle = t('common.related.title');
+  const defaultTitle = 'También podrías estar interesado en:';
   
   // Limitar a máximo 3 enlaces para mantener minimalismo
   const limitedPages = pages.slice(0, 3);

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Grid, Box, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
 import { useColors } from '../../../../hooks';
-import { useLanguage } from '../../../../hooks';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -14,6 +13,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useColorMode } from '../../../../context/ThemeContext';
+import { ROUTES } from '../../../../utils/constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,7 +21,6 @@ const Footer = () => {
   const { mode } = useColorMode();
   const colors = useColors();
   const navigate = useNavigate();
-  const { t } = useLanguage();
 
   // Logo según el tema (footer siempre tiene fondo oscuro)
   const logoPath = mode === 'light' 
@@ -33,6 +32,13 @@ const Footer = () => {
     { icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
     { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' },
     { icon: <XIcon />, url: 'https://x.com/_ai4u_' }
+  ];
+
+  const quickLinks = [
+    { name: 'Inicio', path: ROUTES.HOME },
+    { name: 'Servicios', path: ROUTES.SERVICES },
+    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
+    { name: 'Casos de uso', path: ROUTES.SUCCESS_CASES }
   ];
 
   return (
@@ -59,22 +65,17 @@ const Footer = () => {
               }}
             />
             <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-              {t('footer.tagline')}
+              Transformando el futuro con inteligencia artificial.
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
-              {t('footer.quickLinks.title')}
+              Enlaces Rápidos
             </MuiTypography>
-            <Box component="nav" aria-label={t('footer.quickLinks.title')}>
+            <Box component="nav" aria-label="Enlaces Rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
-                {[
-                  { name: t('footer.quickLinks.links.0.name'), path: t('footer.quickLinks.links.0.path') },
-                  { name: t('footer.quickLinks.links.1.name'), path: t('footer.quickLinks.links.1.path') },
-                  { name: t('footer.quickLinks.links.2.name'), path: t('footer.quickLinks.links.2.path') },
-                  { name: t('footer.quickLinks.links.3.name'), path: t('footer.quickLinks.links.3.path') }
-                ].map((link) => (
+                {quickLinks.map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
                     <Box
                       component="a"
@@ -103,25 +104,25 @@ const Footer = () => {
           
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
-              {t('footer.contact.title')}
+              Contacto
             </MuiTypography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <EmailIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  {t('footer.contact.email')}
+                  hola@ai4u.com.co
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <WhatsAppIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  {t('footer.contact.phone')}
+                  +57 321 817 5744
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <LocationOnIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                  {t('footer.contact.location')}
+                  Medellín, Colombia
                 </MuiTypography>
               </Box>
             </Stack>
@@ -138,7 +139,7 @@ const Footer = () => {
           gap: 2
         }}>
           <SmallText sx={{ color: colors.contrast.text.secondary }}>
-            {t('footer.copyright').replace('{year}', currentYear.toString())}
+            {`© ${currentYear} AI4U. Todos los derechos reservados.`}
           </SmallText>
           
           <Stack direction="row" spacing={1}>
@@ -168,4 +169,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components/shared/ui/layouts';
 import { ErrorBoundary } from './components/shared/ui/molecules';
-import { ThemeProvider, ServicesProvider, LanguageProvider } from './context';
+import { ThemeProvider, ServicesProvider } from './context';
 import { ROUTES } from './utils/constants';
 import './utils/errorTracking';
 import { 
@@ -18,19 +18,19 @@ function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
-        <LanguageProvider>
-          <ThemeProvider>
-            <ServicesProvider>
-              <BasicLoadingWrapper>
-                <Router
-                  future={{
-                    v7_startTransition: true,
-                    v7_relativeSplatPath: true,
-                  }}
-                >
-                  <ScrollToTop />
-                  <Layout>
+        <ThemeProvider>
+          <ServicesProvider>
+            <BasicLoadingWrapper>
+              <Router
+                future={{
+                  v7_startTransition: true,
+                  v7_relativeSplatPath: true,
+                }}
+              >
+                <ScrollToTop />
+                <Layout>
                   <Routes>
+                    {/* Home Route */}
                     <Route 
                       path={ROUTES.HOME} 
                       element={
@@ -39,6 +39,8 @@ function App() {
                         </LazyPage>
                       } 
                     />
+
+                    {/* Services Route */}
                     <Route 
                       path={ROUTES.SERVICES} 
                       element={
@@ -47,14 +49,8 @@ function App() {
                         </LazyPage>
                       } 
                     />
-                    <Route 
-                      path={ROUTES.TIENDA_AI} 
-                      element={
-                        <LazyPage>
-                          <Home />
-                        </LazyPage>
-                      } 
-                    />
+
+                    {/* Why AI4U Route */}
                     <Route 
                       path={ROUTES.WHY_AI4U} 
                       element={
@@ -63,6 +59,8 @@ function App() {
                         </LazyPage>
                       } 
                     />
+
+                    {/* Success Cases Route */}
                     <Route 
                       path={ROUTES.SUCCESS_CASES} 
                       element={
@@ -71,6 +69,8 @@ function App() {
                         </LazyPage>
                       } 
                     />
+
+                    {/* Gallery Route */}
                     <Route 
                       path={ROUTES.GALLERY} 
                       element={
@@ -79,16 +79,18 @@ function App() {
                         </LazyPage>
                       } 
                     />
+
+                    {/* Fallback Route */}
+                    <Route path="*" element={<LazyPage><Home /></LazyPage>} />
                   </Routes>
-                  </Layout>
-                </Router>
-              </BasicLoadingWrapper>
-            </ServicesProvider>
-          </ThemeProvider>
-        </LanguageProvider>
+                </Layout>
+              </Router>
+            </BasicLoadingWrapper>
+          </ServicesProvider>
+        </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
   );
 }
 
-export default App; 
+export default App;

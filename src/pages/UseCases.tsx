@@ -19,7 +19,6 @@ import {
 import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
 import { useColors } from '../hooks';
-import { useLanguage } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -27,7 +26,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const UseCases = () => {
   const colors = useColors();
-  const { t } = useLanguage();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const metaTags = getPageMetaTags('cases');
@@ -199,17 +197,6 @@ const UseCases = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handlePrevious, handleNext]);
-
-  // Auto-play del carrusel (opcional - descomenta si quieres activarlo)
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (!isNavigating) {
-  //       handleNext();
-  //     }
-  //   }, 5000);
-
-  //   return () => clearInterval(interval);
-  // }, [handleNext, isNavigating]);
 
   return (
     <Box sx={{ 
@@ -458,7 +445,7 @@ const UseCases = () => {
             letterSpacing: '-0.02em',
             color: colors.contrast.text.primary
           }}>
-            {t('successCases.hero.title')}
+            Nuestros Clientes
           </H1>
           <BodyText sx={{ 
             mb: 8, 
@@ -469,7 +456,7 @@ const UseCases = () => {
             maxWidth: 700,
             mx: 'auto'
           }}>
-            {t('successCases.hero.description')}
+            Empresas líderes que confían en AI4U para su transformación digital. Cada logo representa una alianza exitosa en innovación y automatización.
           </BodyText>
         </Container>
       </Box>
@@ -489,7 +476,7 @@ const UseCases = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   color: colors.contrast.text.primary
                 }}>
-                  {t('successCases.metrics.title')}
+                  Resultados que Hablan
                 </H2>
                 <BodyText sx={{ 
                   mb: 6,
@@ -498,44 +485,54 @@ const UseCases = () => {
                   lineHeight: 1.6,
                   fontWeight: 300
                 }}>
-                  {t('successCases.metrics.description')}
+                  Nuestras soluciones de IA han transformado empresas de todos los tamaños, generando resultados medibles y crecimiento sostenible.
                 </BodyText>
               </Box>
             </Grid>
             
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
-                {[0, 1, 2].map((index) => (
-                  <Card key={index} variant="elevated" sx={{ p: 4 }}>
-                    <Stack direction="row" alignItems="center" spacing={3}>
-                      <GeometricIcon 
-                        type={index === 0 ? "circle" : index === 1 ? "square" : "triangle"} 
-                        size="medium" 
-                        color={index <= 1 ? colors.palette.accent : colors.palette.success} 
-                        variant="filled" 
-                      />
-                      <Box>
-                        <H3 sx={{ 
-                          mb: 1,
-                          fontWeight: 700,
-                          fontSize: { xs: '3rem', sm: '4rem', md: '5rem' },
-                          lineHeight: 0.9,
-                          color: colors.contrast.text.primary,
-                          letterSpacing: '-0.02em'
-                        }}>
-                          {t(`successCases.metrics.items.${index}.value`)}
-                        </H3>
-                        <BodyText sx={{ 
-                          color: colors.contrast.text.secondary,
-                          fontSize: { xs: '0.9rem', sm: '1rem' },
-                          fontWeight: 300
-                        }}>
-                          {t(`successCases.metrics.items.${index}.description`)}
-                        </BodyText>
-                      </Box>
-                    </Stack>
-                  </Card>
-                ))}
+                <Card variant="elevated" sx={{ p: 4 }}>
+                  <Stack direction="row" alignItems="center" spacing={3}>
+                    <GeometricIcon type="circle" size="medium" color={colors.palette.accent} variant="filled" />
+                    <Box>
+                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
+                        95%
+                      </H3>
+                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
+                        Reducción en tiempo operativo
+                      </BodyText>
+                    </Box>
+                  </Stack>
+                </Card>
+                
+                <Card variant="elevated" sx={{ p: 4 }}>
+                  <Stack direction="row" alignItems="center" spacing={3}>
+                    <GeometricIcon type="square" size="medium" color={colors.palette.accent} variant="filled" />
+                    <Box>
+                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
+                        300%
+                      </H3>
+                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
+                        Incremento en eficiencia
+                      </BodyText>
+                    </Box>
+                  </Stack>
+                </Card>
+                
+                <Card variant="elevated" sx={{ p: 4 }}>
+                  <Stack direction="row" alignItems="center" spacing={3}>
+                    <GeometricIcon type="triangle" size="medium" color={colors.palette.success} variant="filled" />
+                    <Box>
+                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
+                        24/7
+                      </H3>
+                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
+                        Automatización continua
+                      </BodyText>
+                    </Box>
+                  </Stack>
+                </Card>
               </Stack>
             </Grid>
           </Grid>
@@ -572,7 +569,7 @@ const UseCases = () => {
       <Container maxWidth="lg">
         <RelatedPages 
           pages={relatedLinks}
-          title={t('common.related.title')}
+          title="También podrías estar interesado en:"
           variant="horizontal"
         />
       </Container>
@@ -580,4 +577,4 @@ const UseCases = () => {
   );
 };
 
-export default UseCases; 
+export default UseCases;

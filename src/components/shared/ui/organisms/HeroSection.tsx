@@ -5,7 +5,6 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { H1, BodyText, LazyImage } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
-import { useLanguage } from '../../../../context';
 
 interface HeroSectionProps {
   customTitle?: string;
@@ -15,14 +14,13 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
-  customTitle,
-  customSubtitle,
-  primaryButtonText,
-  secondaryButtonText
+  customTitle = 'Te devolvemos tu tiempo',
+  customSubtitle = 'para que lo uses en lo que verdaderamente importa',
+  primaryButtonText = 'Recupera tu tiempo',
+  secondaryButtonText = 'Conoce más'
 }) => {
   const theme = useTheme();
   const colors = useColors();
-  const { t } = useLanguage();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [currentImage, setCurrentImage] = useState(0);
@@ -31,6 +29,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     "/assets/images/hero-image2.png",
     "/assets/images/hero-image3.png"
   ];
+
+  const humanElementText = 'La parte humana detrás de la tecnología';
+  const timeText = '30 minutos';
+  const noCommitmentText = 'Sin compromiso';
+  const immediateResultsText = 'Resultados inmediatos';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,12 +50,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const handleNext = () => {
     setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
-
-  // Usar props personalizadas o traducciones por defecto
-  const title = customTitle || t('hero.title');
-  const subtitle = customSubtitle || t('hero.subtitle');
-  const primaryText = primaryButtonText || t('hero.cta');
-  const secondaryText = secondaryButtonText || t('buttons.learnMore');
 
   return (
     <Box 
@@ -147,7 +144,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 mb: { xs: 1, md: 1.5 }
               }}
             >
-              {title}
+              {customTitle}
             </H1>
             
             <BodyText 
@@ -161,7 +158,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 textAlign: { xs: 'left', md: 'left' }
               }}
             >
-              {subtitle}
+              {customSubtitle}
             </BodyText>
             
             <BodyText 
@@ -175,7 +172,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 textAlign: { xs: 'left', md: 'left' }
               }}
             >
-              {t('hero.humanElement')}
+              {humanElementText}
             </BodyText>
             
             <Stack
@@ -186,7 +183,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             >
               <DiagnosticCTA 
                 variant="primary" 
-                text={primaryText} 
+                text={primaryButtonText} 
                 size="large"
                 showIcon={false}
               />
@@ -216,9 +213,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   }
                 }}
               >
-                <span>{t('hero.time')}</span>
-                <span>{t('hero.no_commitment')}</span>
-                <span>{t('hero.immediate_results')}</span>
+                <span>{timeText}</span>
+                <span>{noCommitmentText}</span>
+                <span>{immediateResultsText}</span>
               </Typography>
             </Stack>
           </Stack>

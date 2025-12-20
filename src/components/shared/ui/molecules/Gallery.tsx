@@ -6,7 +6,6 @@ import {
   Typography
 } from '@mui/material';
 import { useColors } from '../../../../hooks';
-import { useLanguage } from '../../../../hooks';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -37,7 +36,6 @@ const Gallery: React.FC<GalleryProps> = ({
   const [isAutoScrolling, setIsAutoScrolling] = useState(autoScroll);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const colors = useColors();
-  const { t } = useLanguage();
 
   const getRandomIndex = useCallback(() => {
     let newIndex;
@@ -114,7 +112,7 @@ const Gallery: React.FC<GalleryProps> = ({
               color: colors.contrast.text.secondary,
             }}
           >
-            {t('gallery.noImages')}
+            No hay imágenes disponibles
           </Box>
         </Box>
       </Container>
@@ -179,7 +177,7 @@ const Gallery: React.FC<GalleryProps> = ({
               {/* Botón anterior */}
               <IconButton
                 onClick={previousImage}
-                aria-label={t('gallery.navigation.previous')}
+                aria-label="Imagen anterior"
                 sx={{
                   position: 'absolute',
                   left: '1rem',
@@ -214,7 +212,7 @@ const Gallery: React.FC<GalleryProps> = ({
               {/* Botón siguiente */}
               <IconButton
                 onClick={nextImage}
-                aria-label={t('gallery.navigation.next')}
+                aria-label="Imagen siguiente"
                 sx={{
                   position: 'absolute',
                   right: '1rem',
@@ -273,7 +271,7 @@ const Gallery: React.FC<GalleryProps> = ({
               >
                 <IconButton
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  aria-label={isAutoScrolling ? t('gallery.navigation.pause') : t('gallery.navigation.play')}
+                  aria-label={isAutoScrolling ? "Pausar reproducción automática" : "Reproducir automáticamente"}
                   sx={{
                     color: 'white',
                     padding: '4px',
@@ -341,4 +339,4 @@ const Gallery: React.FC<GalleryProps> = ({
   );
 };
 
-export default Gallery; 
+export default Gallery;

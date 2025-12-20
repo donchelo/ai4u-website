@@ -17,9 +17,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useColorMode } from '../../../../context/ThemeContext';
-import { useLanguage } from '../../../../context';
 import { useColors } from '../../../../hooks';
-import { Logo, LanguageToggle } from '../atoms';
+import { Logo, GoogleTranslateWidget } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
 
@@ -47,6 +46,7 @@ const StyledThemeIconButton = styled(IconButton, {
     opacity: 1,
     backgroundColor: colors.helpers.state.hover,
     color: colors.palette.accent,
+    backgroundColor: 'transparent',
   }
 }));
 
@@ -63,17 +63,16 @@ const StyledDesktopMenuBox = styled(Box)(({ theme }) => ({
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const { mode, toggleColorMode } = useColorMode();
-  const { t } = useLanguage();
   const colors = useColors();
   const navigate = useNavigate();
 
-  // Items de navegación con traducciones
+  // Items de navegación estáticos en español
   const navItems = [
-    { name: t('nav.home'), path: ROUTES.HOME },
-    { name: t('nav.services'), path: ROUTES.SERVICES },
-    { name: t('nav.whyAI4U'), path: ROUTES.WHY_AI4U },
-    { name: t('nav.successCases'), path: ROUTES.SUCCESS_CASES },
-    { name: t('nav.gallery'), path: ROUTES.GALLERY }
+    { name: 'Inicio', path: ROUTES.HOME },
+    { name: 'Servicios', path: ROUTES.SERVICES },
+    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
+    { name: 'Casos de uso', path: ROUTES.SUCCESS_CASES },
+    { name: 'Galería', path: ROUTES.GALLERY }
   ];
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -175,6 +174,10 @@ const Navbar = () => {
                   <MuiTypography textAlign="center">{item.name}</MuiTypography>
                 </MenuItem>
               ))}
+              {/* Google Translate en menú móvil */}
+              <MenuItem>
+                 <GoogleTranslateWidget />
+              </MenuItem>
               {/* Theme toggle en menú móvil */}
               <MenuItem 
                 onClick={toggleColorMode}
@@ -237,9 +240,9 @@ const Navbar = () => {
               </Button>
             ))}
             
-            {/* Language toggle button desktop */}
-            <Box sx={{ ml: 1 }}>
-              <LanguageToggle variant="icon" size="small" />
+            {/* Google Translate Widget */}
+            <Box sx={{ ml: 1, display: 'flex', alignItems: 'center' }}>
+              <GoogleTranslateWidget />
             </Box>
             
             {/* Theme toggle button desktop */}
@@ -258,4 +261,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

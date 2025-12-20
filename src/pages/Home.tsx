@@ -4,7 +4,6 @@ import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, GalleryFrame, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
-import { useLanguage } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
@@ -13,7 +12,6 @@ import { getRelatedLinks } from '../data/internalLinkingStrategy';
 const Home = () => {
   const theme = useTheme();
   const { mode } = useColorMode();
-  const { t } = useLanguage();
   
   // Monitoreo automático de performance para la página de inicio
   usePerformanceMonitoring('home', {
@@ -37,48 +35,48 @@ const Home = () => {
   // Obtener enlaces contextuales para la página Home
   const relatedLinks = getRelatedLinks('/');
 
-  // Obtener traducciones para las features
+  // Features estáticas en español
   const features = [
     {
-      title: t('home.features.items.0.title'),
-      description: t('home.features.items.0.description')
+      title: 'La automatización ya no es opcional',
+      description: 'En 2025, las empresas que no automaticen quedarán atrás. Nuestros asistentes robóticos trabajan 24/7 para mantenerte a la vanguardia, mientras tu competencia sigue atrapada en lo manual.'
     },
     {
-      title: t('home.features.items.1.title'),
-      description: t('home.features.items.1.description')
+      title: 'Libera el 70% de tu tiempo operativo',
+      description: 'Nuestros asistentes robóticos transforman tiempo perdido en oportunidades de crecimiento. ROI medible desde el primer mes, mientras tú te enfocas en decisiones estratégicas que multiplican el valor de tu empresa.'
     },
     {
-      title: t('home.features.items.2.title'),
-      description: t('home.features.items.2.description')
+      title: 'Asistentes que nunca descansan',
+      description: 'Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.'
     },
   ];
 
-  // Obtener traducciones para las categorías de servicios
+  // Categorías de servicios en español
   const serviceCategories = [
     {
-      title: t('home.services.categories.0.title'),
-      description: t('home.services.categories.0.description')
+      title: 'Estrategia',
+      description: 'Acompañamiento estratégico continuo, diagnóstico y planificación empresarial con IA para transformar tu negocio desde la raíz.'
     },
     {
-      title: t('home.services.categories.1.title'),
-      description: t('home.services.categories.1.description')
+      title: 'Automatizaciones',
+      description: 'Implementación de asistentes robóticos, chatbots y sistemas automáticos que trabajan 24/7 para liberar tu tiempo y potenciar tu empresa.'
     },
     {
-      title: t('home.services.categories.2.title'),
-      description: t('home.services.categories.2.description')
+      title: 'Educación',
+      description: 'Capacitación y formación en inteligencia artificial y automatización para que tu equipo evolucione junto a la tecnología.'
     },
     {
-      title: t('home.services.categories.3.title'),
-      description: t('home.services.categories.3.description')
+      title: 'Transformación Digital',
+      description: 'Integración de soluciones digitales y automatizadas para llevar tu empresa al siguiente nivel de eficiencia y competitividad.'
     },
   ];
 
-  // Obtener traducciones para las características del robot
+  // Características del robot en español
   const robotFeatures = [
-    t('home.robot.features.0'),
-    t('home.robot.features.1'),
-    t('home.robot.features.2'),
-    t('home.robot.features.3'),
+    'Generan ROI desde el primer mes',
+    'Aprenden y evolucionan con tu empresa',
+    'Trabajan 24/7 para tu crecimiento',
+    'Se integran perfectamente con tus sistemas'
   ];
 
   return (
@@ -94,17 +92,17 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle={t('hero.customTitle')}
-        customSubtitle={t('hero.customSubtitle')}
-        primaryButtonText={t('hero.primaryButtonText')}
-        secondaryButtonText={t('hero.secondaryButtonText')}
+        customTitle="¡Tu tiempo es oro!"
+        customSubtitle="Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa: tu familia y el crecimiento estratégico de tu empresa."
+        primaryButtonText="Recupera tu tiempo familiar"
+        secondaryButtonText="Calcula tu ROI"
       />
 
       {/* Features Section */}
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            {t('home.features.title')}
+            ¿El trabajo te está robando momentos irreemplazables?
           </H2>
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
@@ -163,7 +161,7 @@ const Home = () => {
                 color: mode === 'dark' ? 'text.primary' : 'white', 
                 fontWeight: 300 
               }}>
-                {t('home.robot.title')}
+                Asistentes Robóticos que Transforman tu Empresa
               </H2>
               
               {/* Lista ultra minimalista con iconos geométricos */}
@@ -199,7 +197,7 @@ const Home = () => {
                   fontSize: '1.1rem', 
                   lineHeight: 1.7 
                 }}>
-                  {t('home.robot.subtitle')}
+                  Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
                 </BodyText>
                 
                 <BodyText sx={{ 
@@ -208,7 +206,7 @@ const Home = () => {
                   fontSize: '0.9rem', 
                   fontStyle: 'italic' 
                 }}>
-                  {t('home.robot.preview')}
+                  Vista previa de nuestra galería de proyectos y casos de uso
                 </BodyText>
                 
                 <H3 sx={{ 
@@ -217,7 +215,7 @@ const Home = () => {
                   fontWeight: 400, 
                   fontSize: '1.2rem' 
                 }}>
-                  {t('home.robot.uniqueTitle')}
+                  ¿Qué los hace únicos?
                 </H3>
                 
                 <Box sx={{ 
@@ -232,7 +230,7 @@ const Home = () => {
                     fontWeight: 300,
                     lineHeight: 1.6
                   }}>
-                    "{t('home.robot.quote')}"
+                    "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
                   </BodyText>
                 </Box>
               </ExpandableSection>
@@ -255,7 +253,7 @@ const Home = () => {
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            {t('home.services.title')}
+            Servicios
           </H2>
           
           {/* Mostrar las 4 categorías como un grupo armónico */}
@@ -306,7 +304,7 @@ const Home = () => {
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
             <H2 sx={{ mb: 4, fontWeight: 400, color: 'text.primary' }}>
-              {t('home.cta.title')}
+              ¿Listo para transformar tu empresa?
             </H2>
             <Stack 
               direction={{ xs: 'column', sm: 'row' }} 
@@ -316,7 +314,7 @@ const Home = () => {
             >
               <DiagnosticCTA />
               <Button variant="outline" size="large">
-                {t('home.cta.exploreButton')}
+                Explorar soluciones
               </Button>
             </Stack>
           </Box>
@@ -334,4 +332,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

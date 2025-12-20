@@ -11,13 +11,11 @@ import {
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
-import { useLanguage } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const WhyAI4U = () => {
   const colors = useColors();
-  const { t } = useLanguage();
 
   // Obtener meta tags optimizados para la página "Por qué AI4U"
   const metaTags = getPageMetaTags('why');
@@ -51,21 +49,21 @@ const WhyAI4U = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   color: colors.contrast.text.primary
                 }}>
-                  {t('whyAI4U.mariano.title')}
+                  La parte humana detrás de la tecnología
                 </H2>
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="circle" size="small" color={colors.palette.success} variant="filled" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.0')}</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Fundador de AI4U</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="triangle" size="small" color={colors.contrast.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.1')}</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Cofundador de Matt Movilidad</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <GeometricIcon type="square" size="small" color={colors.contrast.text.secondary} variant="minimal" />
-                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>{t('whyAI4U.mariano.credentials.2')}</BodyText>
+                    <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Especialista en automatización</BodyText>
                   </Box>
                 </Stack>
                 
@@ -81,7 +79,7 @@ const WhyAI4U = () => {
                     lineHeight: 1.7,
                     fontWeight: 300
                   }}>
-                    {t('whyAI4U.mariano.description')}
+                    Detrás de cada automatización hay una mente humana que entiende tu negocio. Mariano, fundador de AI4U, combina experiencia en startups, movilidad y tecnología para crear soluciones que realmente funcionan.
                   </BodyText>
                 </ExpandableSection>
                 
@@ -101,7 +99,7 @@ const WhyAI4U = () => {
                     rel: 'noopener noreferrer'
                   }}
                 >
-                  {t('whyAI4U.mariano.linkedinButton')}
+                  Conectar en LinkedIn
                 </Button>
               </Box>
             </Grid>
@@ -111,7 +109,7 @@ const WhyAI4U = () => {
                 <PixelArtImage
                   src="/assets/images/mariano.jpeg"
                   pixelArtSrc="/assets/images/mariano-pixel-art.png"
-                  alt={t('whyAI4U.mariano.imageAlt')}
+                  alt="Mariano, Fundador de AI4U"
                   sx={{
                     width: '100%',
                     height: { xs: 400, md: 500 },
@@ -142,7 +140,7 @@ const WhyAI4U = () => {
                     mb: 1,
                     color: colors.contrast.text.primary
                   }}>
-                    {t('whyAI4U.mariano.hoverText')}
+                    Pasa el mouse para ver el efecto pixel art
                   </BodyText>
                   <BodyText sx={{ 
                     fontSize: '0.8rem',
@@ -151,7 +149,7 @@ const WhyAI4U = () => {
                     opacity: 0.8,
                     color: colors.contrast.text.primary
                   }}>
-                    {t('whyAI4U.mariano.hoverSubtext')}
+                    Tecnología + Creatividad
                   </BodyText>
                 </Box>
               </Card>
@@ -170,26 +168,26 @@ const WhyAI4U = () => {
             fontSize: { xs: '2rem', md: '2.5rem' },
             color: colors.contrast.text.primary
           }}>
-            {t('whyAI4U.benefits.title')}
+            ¿Qué nos hace diferentes?
           </H2>
 
           <Grid container spacing={6}>
             {[
               {
-                title: t('whyAI4U.benefits.items.0.title'),
-                description: t('whyAI4U.benefits.items.0.description'),
+                title: 'Diagnóstico Gratuito',
+                description: 'Evaluamos tu negocio sin costo para identificar oportunidades de automatización.',
                 icon: "circle",
                 color: colors.palette.success
               },
               {
-                title: t('whyAI4U.benefits.items.1.title'),
-                description: t('whyAI4U.benefits.items.1.description'),
+                title: 'Asistentes que Evolucionan',
+                description: 'A diferencia de otros servicios, nuestros asistentes aprenden y mejoran continuamente.',
                 icon: "triangle",
                 color: colors.contrast.text.secondary
               },
               {
-                title: t('whyAI4U.benefits.items.2.title'),
-                description: t('whyAI4U.benefits.items.2.description'),
+                title: 'Resultados Garantizados',
+                description: '72 horas para implementación. ROI medible desde el primer mes.',
                 icon: "square", 
                 color: colors.contrast.text.secondary
               }
@@ -221,6 +219,9 @@ const WhyAI4U = () => {
                   }}>
                     {benefit.title}
                   </H3>
+                  <BodyText sx={{ mt: 2, color: colors.contrast.text.secondary }}>
+                    {benefit.description}
+                  </BodyText>
                 </Card>
               </Grid>
             ))}
@@ -238,15 +239,15 @@ const WhyAI4U = () => {
             fontSize: { xs: '2rem', md: '2.5rem' },
             color: colors.contrast.text.primary
           }}>
-            {t('whyAI4U.stats.title')}
+            Nuestros números hablan por sí solos
           </H2>
           
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title={t('whyAI4U.stats.metrics.services.title')}
-                  value={t('whyAI4U.stats.metrics.services.value')}
+                  title="Servicios"
+                  value="25+"
                   iconType="square"
                   variant="elevated"
                   size="large"
@@ -256,8 +257,8 @@ const WhyAI4U = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title={t('whyAI4U.stats.metrics.strategy.title')}
-                  value={t('whyAI4U.stats.metrics.strategy.value')}
+                  title="Estrategia"
+                  value="12"
                   iconType="triangle"
                   variant="elevated"
                   size="large"
@@ -267,8 +268,8 @@ const WhyAI4U = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title={t('whyAI4U.stats.metrics.operation.title')}
-                  value={t('whyAI4U.stats.metrics.operation.value')}
+                  title="Operación"
+                  value="13"
                   iconType="circle"
                   variant="elevated"
                   size="large"
@@ -278,8 +279,8 @@ const WhyAI4U = () => {
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <MetricCard
-                  title={t('whyAI4U.stats.metrics.roi.title')}
-                  value={t('whyAI4U.stats.metrics.roi.value')}
+                  title="ROI promedio"
+                  value="300%"
                   iconType="arrow-up"
                   variant="elevated"
                   size="large"
@@ -299,9 +300,9 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.stats.metrics.timeSaved.title')}
-                    value={t('whyAI4U.stats.metrics.timeSaved.value')}
-                    subtitle={t('whyAI4U.stats.metrics.timeSaved.subtitle')}
+                    title="Tiempo ahorrado"
+                    value="85%"
+                    subtitle="Reducción de tareas manuales"
                     iconType="arrow-up"
                     variant="elevated"
                     size="large"
@@ -312,9 +313,9 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.stats.metrics.costReduction.title')}
-                    value={t('whyAI4U.stats.metrics.costReduction.value')}
-                    subtitle={t('whyAI4U.stats.metrics.costReduction.subtitle')}
+                    title="Reducción de costos"
+                    value="40%"
+                    subtitle="En gastos operativos"
                     iconType="triangle"
                     variant="elevated"
                     size="large"
@@ -324,9 +325,9 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.stats.metrics.efficiency.title')}
-                    value={t('whyAI4U.stats.metrics.efficiency.value')}
-                    subtitle={t('whyAI4U.stats.metrics.efficiency.subtitle')}
+                    title="Eficiencia"
+                    value="3x"
+                    subtitle="Multiplicador de productividad"
                     iconType="circle"
                     variant="elevated"
                     size="large"
@@ -348,7 +349,7 @@ const WhyAI4U = () => {
             fontSize: { xs: '2rem', md: '2.5rem' },
             color: colors.contrast.text.primary
           }}>
-            {t('whyAI4U.impact.title')}
+            Impacto real en nuestros clientes
           </H2>
           
           <ExpandableSection
@@ -360,8 +361,8 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.impact.metrics.hoursSaved.title')}
-                    value={t('whyAI4U.impact.metrics.hoursSaved.value')}
+                    title="Horas ahorradas"
+                    value="1200+"
                     iconType="arrow-up"
                     variant="elevated"
                     size="large"
@@ -372,8 +373,8 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.impact.metrics.automatedProcesses.title')}
-                    value={t('whyAI4U.impact.metrics.automatedProcesses.value')}
+                    title="Procesos automatizados"
+                    value="95%"
                     iconType="circle"
                     variant="elevated"
                     size="large"
@@ -383,8 +384,8 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.impact.metrics.responseTime.title')}
-                    value={t('whyAI4U.impact.metrics.responseTime.value')}
+                    title="Tiempo de respuesta"
+                    value="80%"
                     iconType="triangle"
                     variant="elevated"
                     size="large"
@@ -394,8 +395,8 @@ const WhyAI4U = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <MetricCard
-                    title={t('whyAI4U.impact.metrics.averageROI.title')}
-                    value={t('whyAI4U.impact.metrics.averageROI.value')}
+                    title="ROI promedio"
+                    value="300%"
                     iconType="arrow-up"
                     variant="elevated"
                     size="large"
@@ -425,7 +426,7 @@ const WhyAI4U = () => {
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 300
             }}>
-              {t('whyAI4U.cta.title')}
+              ¿Listo para liberar tu tiempo estratégico?
             </H2>
             
             <Stack 
@@ -438,7 +439,7 @@ const WhyAI4U = () => {
               <ServicesButton
                 variant="outline"
                 size="large"
-                text={t('whyAI4U.cta.viewSolutionsButton')}
+                text="VER SOLUCIONES"
               />
             </Stack>
             
@@ -447,7 +448,7 @@ const WhyAI4U = () => {
               color: colors.mode === 'light' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)',
               fontSize: '0.9rem'
             }}>
-              {t('whyAI4U.cta.disclaimer')}
+              Sin compromiso • Personalizado a tu negocio • Resultados desde el primer mes
             </BodyText>
           </Card>
         </Container>
@@ -465,4 +466,4 @@ const WhyAI4U = () => {
   );
 };
 
-export default WhyAI4U; 
+export default WhyAI4U;
