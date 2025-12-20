@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import React, { useEffect, useState, useRef } from 'react';
+import { Box, Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
 import { useColors } from '../../../../hooks';
 
 declare global {
@@ -9,22 +9,43 @@ declare global {
   }
 }
 
-// Top 10 idiomas más usados en orden de popularidad
-const TOP_LANGUAGES = 'es,en,zh-CN,hi,ar,pt,ru,ja,de,fr';
+// Top 10 idiomas más usados
+const LANGUAGES = [
+  { code: 'es', label: 'Español', short: 'ES' },
+  { code: 'en', label: 'English', short: 'EN' },
+  { code: 'zh-CN', label: '中文', short: 'ZH' },
+  { code: 'hi', label: 'हिन्दी', short: 'HI' },
+  { code: 'ar', label: 'العربية', short: 'AR' },
+  { code: 'pt', label: 'Português', short: 'PT' },
+  { code: 'ru', label: 'Русский', short: 'RU' },
+  { code: 'ja', label: '日本語', short: 'JA' },
+  { code: 'de', label: 'Deutsch', short: 'DE' },
+  { code: 'fr', label: 'Français', short: 'FR' },
+];
+
+const TOP_LANGUAGES = LANGUAGES.map(l => l.code).join(',');
 
 const GoogleTranslateWidget: React.FC = () => {
   const colors = useColors();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const [currentLanguage, setCurrentLanguage] = useState<string>('ES');
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     // Verificar si el script ya existe
     if (document.getElementById('google-translate-script')) {
+      const lang = document.documentElement.lang || 'es';
+      const langCode = lang.split('-')[0].toLowerCase();
+      const found = LANGUAGES.find(l => l.code.toLowerCase().startsWith(langCode));
+      setCurrentLanguage(found?.short || 'ES');
       return;
     }
 
-    // Definir la función de inicialización global ANTES de cargar el script
+    // Definir la función de inicialización global
     window.googleTranslateElementInit = () => {
       try {
         if (window.google && window.google.translate && document.getElementById('google_translate_element')) {
@@ -38,6 +59,27 @@ const GoogleTranslateWidget: React.FC = () => {
             },
             'google_translate_element'
           );
+
+          // Ocultar completamente el widget de Google
+          setTimeout(() => {
+            const element = document.getElementById('google_translate_element');
+            if (element) {
+              element.style.display = 'none';
+            }
+          }, 100);
+
+          // Observar cambios en el idioma
+          const observer = new MutationObserver(() => {
+            const lang = document.documentElement.lang || 'es';
+            const langCode = lang.split('-')[0].toLowerCase();
+            const found = LANGUAGES.find(l => l.code.toLowerCase().startsWith(langCode));
+            setCurrentLanguage(found?.short || 'ES');
+          });
+
+          observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['lang']
+          });
         }
       } catch (error) {
         console.error('Error inicializando Google Translate:', error);
@@ -54,128 +96,210 @@ const GoogleTranslateWidget: React.FC = () => {
     document.body.appendChild(script);
   }, []);
 
-  // Tamaños responsivos
-  const widgetSize = isMobile ? { minWidth: '100px', fontSize: '12px' } : 
-                     isTablet ? { minWidth: '110px', fontSize: '13px' } : 
-                     { minWidth: '120px', fontSize: '14px' };
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  // Generar estilos dinámicos basados en el sistema de diseño
-  const dynamicStyles = `
-    /* Ocultar la barra superior de Google Translate */
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const selectLanguage = (langCode: string, langShort: string) => {
+    // Buscar el iframe de Google Translate
+    const iframe = document.querySelector<HTMLIFrameElement>('.goog-te-menu-frame');
+    if (iframe) {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+      if (iframeDoc) {
+        // Buscar el elemento del idioma y hacer clic
+        const items = iframeDoc.querySelectorAll<HTMLElement>('.goog-te-menu2-item');
+        items.forEach((item) => {
+          const text = item.textContent?.toLowerCase() || '';
+          const lang = LANGUAGES.find(l => l.code === langCode);
+          if (lang && text.includes(lang.label.toLowerCase())) {
+            item.click();
+          }
+        });
+      }
+    }
+
+    // También intentar usando el select oculto de Google Translate
+    const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+    if (select) {
+      select.value = langCode;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    setCurrentLanguage(langShort);
+    handleClose();
+  };
+
+  // Tamaños responsivos
+  const buttonSize = isMobile 
+    ? { width: '32px', height: '28px', fontSize: '11px' } 
+    : isTablet 
+    ? { width: '36px', height: '30px', fontSize: '12px' } 
+    : { width: '40px', height: '32px', fontSize: '13px' };
+
+  // Estilos para ocultar el widget de Google
+  const hideGoogleStyles = `
     .goog-te-banner-frame {
       display: none !important;
     }
     body {
       top: 0 !important;
     }
-    /* Estilizar el botón con el sistema de diseño AI4U */
-    .goog-te-gadget-simple {
-      background-color: ${colors.contrast.surface} !important;
-      border: 1px solid ${colors.contrast.border} !important;
-      padding: ${isMobile ? '4px 8px' : '6px 12px'} !important;
-      border-radius: 8px !important;
-      font-family: "Red Hat Display", sans-serif !important;
-      font-size: ${widgetSize.fontSize} !important;
-      font-weight: 500 !important;
-      min-width: ${widgetSize.minWidth} !important;
-      max-width: ${isMobile ? '140px' : '180px'} !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease-in-out !important;
-      color: ${colors.contrast.text.primary} !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    .goog-te-gadget-simple:hover {
-      border-color: ${colors.palette.accent} !important;
-      background-color: ${colors.helpers.state.hover} !important;
-    }
-    .goog-te-gadget-simple:focus {
-      outline: 2px solid ${colors.palette.accent} !important;
-      outline-offset: 2px !important;
-    }
-    .goog-te-gadget-simple img {
+    #google_translate_element {
       display: none !important;
     }
-    .goog-te-menu-value {
-      color: ${colors.contrast.text.primary} !important;
-      font-family: "Red Hat Display", sans-serif !important;
-      font-size: ${widgetSize.fontSize} !important;
-    }
-    .goog-te-menu-value span {
-      color: ${colors.contrast.text.primary} !important;
-      font-family: "Red Hat Display", sans-serif !important;
-      font-weight: 500 !important;
-      font-size: ${widgetSize.fontSize} !important;
-    }
     .goog-te-gadget {
-      font-family: "Red Hat Display", sans-serif !important;
+      display: none !important;
     }
-    #google_translate_element {
-      display: inline-block !important;
-      min-width: ${widgetSize.minWidth} !important;
-      min-height: ${isMobile ? '28px' : '32px'} !important;
-      max-width: 100% !important;
+    .skiptranslate {
+      display: none !important;
     }
-    /* Estilizar el menú desplegable */
     .goog-te-menu-frame {
-      z-index: 9999 !important;
-      font-family: "Red Hat Display", sans-serif !important;
-      max-width: ${isMobile ? '280px' : '320px'} !important;
-    }
-    .goog-te-menu-value {
-      font-family: "Red Hat Display", sans-serif !important;
-    }
-    /* Estilizar los items del menú */
-    .goog-te-menu2-item {
-      font-family: "Red Hat Display", sans-serif !important;
-      color: ${colors.contrast.text.primary} !important;
-      padding: ${isMobile ? '8px 12px' : '10px 16px'} !important;
-      font-size: ${isMobile ? '13px' : '14px'} !important;
-    }
-    .goog-te-menu2-item:hover {
-      background-color: ${colors.helpers.state.hover} !important;
-    }
-    .goog-te-menu2-item-selected {
-      background-color: ${colors.helpers.state.selected} !important;
-    }
-    /* Responsive para móvil */
-    @media (max-width: 600px) {
-      .goog-te-gadget-simple {
-        padding: 4px 6px !important;
-        font-size: 12px !important;
-        min-width: 90px !important;
-      }
-      .goog-te-menu-value span {
-        font-size: 12px !important;
-      }
+      display: none !important;
     }
   `;
 
   return (
     <Box
       sx={{
+        position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
-        minWidth: widgetSize.minWidth,
-        minHeight: isMobile ? '28px' : '32px',
-        maxWidth: '100%',
-        ...(isMobile && {
-          width: '100%',
-          justifyContent: 'center',
-        }),
       }}
     >
+      {/* Widget oculto de Google Translate */}
       <Box
         id="google_translate_element"
         sx={{
-          display: 'inline-block',
-          width: '100%',
-          minWidth: widgetSize.minWidth,
-          minHeight: isMobile ? '28px' : '32px',
+          position: 'absolute',
+          opacity: 0,
+          pointerEvents: 'none',
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+          zIndex: -1,
         }}
       />
-      <style>{dynamicStyles}</style>
+      
+      {/* Botón compacto */}
+      <Box
+        ref={buttonRef}
+        component="button"
+        onClick={handleClick}
+        aria-label={`Cambiar idioma (actual: ${currentLanguage})`}
+        aria-controls={open ? 'language-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        sx={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: buttonSize.width,
+          height: buttonSize.height,
+          minWidth: buttonSize.width,
+          padding: 0,
+          color: colors.contrast.text.primary,
+          border: `1px solid ${colors.contrast.border}`,
+          borderRadius: '6px',
+          transition: 'all 0.2s ease-in-out',
+          backgroundColor: colors.contrast.surface,
+          fontFamily: '"Red Hat Display", sans-serif',
+          fontSize: buttonSize.fontSize,
+          fontWeight: 600,
+          cursor: 'pointer',
+          '&:hover': {
+            borderColor: colors.palette.accent,
+            backgroundColor: colors.helpers.state.hover,
+            transform: 'scale(1.05)',
+          },
+          '&:focus': {
+            outline: `2px solid ${colors.palette.accent}`,
+            outlineOffset: '2px',
+          },
+          '&:active': {
+            transform: 'scale(0.95)',
+          },
+        }}
+      >
+        {currentLanguage}
+      </Box>
+
+      {/* Menú personalizado */}
+      <Menu
+        id="language-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 0.5,
+              minWidth: '160px',
+              maxWidth: '200px',
+              backgroundColor: colors.contrast.surface,
+              border: `1px solid ${colors.contrast.border}`,
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            },
+          },
+        }}
+      >
+        {LANGUAGES.map((lang) => (
+          <MenuItem
+            key={lang.code}
+            onClick={() => selectLanguage(lang.code, lang.short)}
+            selected={currentLanguage === lang.short}
+            sx={{
+              fontFamily: '"Red Hat Display", sans-serif',
+              fontSize: '14px',
+              fontWeight: currentLanguage === lang.short ? 600 : 400,
+              color: currentLanguage === lang.short 
+                ? colors.palette.accent 
+                : colors.contrast.text.primary,
+              py: 1,
+              px: 2,
+              '&:hover': {
+                backgroundColor: colors.helpers.state.hover,
+              },
+              '&.Mui-selected': {
+                backgroundColor: colors.helpers.state.selected,
+                '&:hover': {
+                  backgroundColor: colors.helpers.state.hover,
+                },
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                component="span"
+                sx={{
+                  fontWeight: 600,
+                  minWidth: '24px',
+                  color: currentLanguage === lang.short 
+                    ? colors.palette.accent 
+                    : colors.contrast.text.secondary,
+                }}
+              >
+                {lang.short}
+              </Box>
+              <Box component="span">{lang.label}</Box>
+            </Box>
+          </MenuItem>
+        ))}
+      </Menu>
+
+      <style>{hideGoogleStyles}</style>
     </Box>
   );
 };
