@@ -93,7 +93,7 @@ const ContextualLink: React.FC<ContextualLinkProps> = (props) => {
 
   return (
     <Link
-      component={RouterLink}
+      component={RouterLink as React.ElementType}
       to={to}
       onClick={handleClick}
       className={className}

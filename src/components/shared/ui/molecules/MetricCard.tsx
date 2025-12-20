@@ -85,9 +85,13 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     return colors.contrast.text.primary;
   };
 
+  // Convertir variant personalizado a variant de MUI
+  const muiVariant = variant === 'outlined' ? 'outlined' : 'elevation';
+  
   return (
     <Card 
-      variant={variant}
+      variant={muiVariant}
+      elevation={variant === 'elevated' ? 4 : variant === 'default' ? 2 : 0}
       onClick={onClick}
       sx={{
         cursor: onClick ? 'pointer' : 'default',
@@ -195,7 +199,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             fontWeight: 600,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: variant === 'dark' ? alpha(colors.palette.white, 0.8) : alpha(colors.contrast.text.primary, 0.7),
+            color: alpha(colors.contrast.text.primary, 0.7),
             fontFamily: '"Red Hat Display", sans-serif',
           }}
         >

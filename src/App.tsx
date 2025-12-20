@@ -11,15 +11,7 @@ import {
   Services, 
   WhyAI4U, 
   UseCases, 
-  ComponentLibrary, 
-  Gallery,
-  ColorSystemDemo,
-  MigrationDemo,
-  Fase3Demo,
-  MetricsDemo,
-  ThemeDemo,
-  InternationalizationDemo,
-  ServiceThumbnailsDemo
+  Gallery
 } from './pages/lazy';
 
 function App() {
@@ -80,75 +72,10 @@ function App() {
                       } 
                     />
                     <Route 
-                      path={ROUTES.COMPONENT_LIBRARY} 
-                      element={
-                        <LazyPage>
-                          <ComponentLibrary />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
                       path={ROUTES.GALLERY} 
                       element={
                         <LazyPage>
                           <Gallery />
-                        </LazyPage>
-                      } 
-                    />
-                    {/* Rutas de Demo */}
-                    <Route 
-                      path={ROUTES.COLOR_SYSTEM_DEMO} 
-                      element={
-                        <LazyPage>
-                          <ColorSystemDemo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.MIGRATION_DEMO} 
-                      element={
-                        <LazyPage>
-                          <MigrationDemo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.FASE3_DEMO} 
-                      element={
-                        <LazyPage>
-                          <Fase3Demo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.METRICS_DEMO} 
-                      element={
-                        <LazyPage>
-                          <MetricsDemo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.THEME_DEMO} 
-                      element={
-                        <LazyPage>
-                          <ThemeDemo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.I18N_DEMO} 
-                      element={
-                        <LazyPage>
-                          <InternationalizationDemo />
-                        </LazyPage>
-                      } 
-                    />
-                    <Route 
-                      path={ROUTES.SERVICE_THUMBNAILS_DEMO} 
-                      element={
-                        <LazyPage>
-                          <ServiceThumbnailsDemo />
                         </LazyPage>
                       } 
                     />

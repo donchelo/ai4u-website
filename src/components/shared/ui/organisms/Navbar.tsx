@@ -105,7 +105,7 @@ const Navbar = () => {
         <Toolbar disableGutters>
           {/* Logo - Desktop */}
           <Box
-            component={RouterLink}
+            component={RouterLink as React.ElementType}
             to={ROUTES.HOME}
             aria-label="Ir a página principal - AI4U Logo"
             sx={{
@@ -162,7 +162,7 @@ const Navbar = () => {
                 <MenuItem 
                   key={item.name} 
                   onClick={() => handleNavigate(item.path)}
-                  component={RouterLink}
+                  component={RouterLink as React.ElementType}
                   to={item.path}
                   sx={{
                     color: colors.contrast.text.primary,
@@ -199,7 +199,7 @@ const Navbar = () => {
 
           {/* Logo - Mobile */}
           <Box
-            component={RouterLink}
+            component={RouterLink as React.ElementType}
             to={ROUTES.HOME}
             aria-label="Ir a página principal - AI4U Logo"
             sx={{
@@ -220,7 +220,7 @@ const Navbar = () => {
               <Button
                 key={item.name}
                 onClick={() => scrollToTop()}
-                component={RouterLink}
+                component={RouterLink as React.ElementType}
                 to={item.path}
                 sx={{ 
                   mx: 1,
