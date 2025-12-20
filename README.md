@@ -92,10 +92,10 @@ import { Button } from '@/components/shared/ui/atoms';
 
 ### Automático (Recomendado)
 
-El sitio se despliega automáticamente a [ai4u.com.co](https://ai4u.com.co) mediante GitHub Actions al hacer push a la rama `main`.
+El sitio se despliega automáticamente a [ai4u.com.co](https://ai4u.com.co) mediante GitHub Actions al hacer push a la rama `master`.
 
 El workflow de CI/CD:
-- Se ejecuta automáticamente en cada push a `main`
+- Se ejecuta automáticamente en cada push a `master`
 - Valida traducciones
 - Ejecuta build optimizado
 - Despliega a GitHub Pages
@@ -109,9 +109,9 @@ Si necesitas hacer un deploy manual:
 npm run deploy:manual
 ```
 
-Este comando ejecuta el build y despliega a la rama `gh-pages` usando el paquete `gh-pages`.
+Este comando ejecuta el build y despliega directamente.
 
-**Nota:** El deploy manual es solo para casos de emergencia. El método recomendado es usar GitHub Actions.
+**Nota:** El deploy manual es solo para casos de emergencia. El método recomendado es usar GitHub Actions desde la rama `master`.
 
 ## Mejores Prácticas
 
@@ -123,10 +123,10 @@ Este comando ejecuta el build y despliega a la rama `gh-pages` usando el paquete
 
 ## Contribución
 
-1. Crear una rama desde `main`
+1. Trabajar directamente sobre la rama `master`
 2. Realizar cambios y commits descriptivos
 3. Ejecutar tests y linting
-4. Crear Pull Request
+4. Al hacer push, el despliegue es automático
 
 ## Licencia
 
