@@ -1,0 +1,86 @@
+{
+  "name": "ai4u-website",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^6.0.0",
+    "@mui/material": "^6.0.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^6.26.0",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "predeploy": "npm run build",
+    "validate-translations": "node scripts/validate-translations.js",
+    "analyze-images": "node scripts/analyze-image-performance.js",
+    "optimize-images:full": "npm run optimize-images && npm run analyze-images",
+    "deploy": "gh-pages -d dist",
+    "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build:optimized": "npm run optimize-images && npm run build",
+    "lighthouse": "node scripts/lighthouse-test.js",
+    "test:performance": "npm start & timeout 10 && npm run lighthouse",
+    "validate-whatsapp": "node scripts/validate-whatsapp-share.js",
+    "create-social-image": "node scripts/create-social-share-image.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "import/first": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "react-hooks/exhaustive-deps": "warn",
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/aria-props": "error",
+      "jsx-a11y/aria-proptypes": "error",
+      "prefer-const": "error",
+      "no-var": "error",
+      "no-console": "warn",
+      "no-debugger": "error"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": ".",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "chrome-launcher": "^1.2.0",
+    "gh-pages": "^6.3.0",
+    "imagemin": "^9.0.1",
+    "imagemin-webp": "^8.0.0",
+    "lighthouse": "^12.8.1",
+    "vite": "^5.1.0",
+    "vitest": "^1.2.0"
+  }
+}

@@ -1,0 +1,217 @@
+/* AI4U Global Styles - Migrated from Tailwind to CSS */
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+
+/* CSS Variables - AI4U Colors */
+:root {
+  --ai4u-orange: #FF5C00;
+  --ai4u-green: #B6CA40;
+  --ai4u-white: #FFFFFF;
+  --ai4u-black: #0A0A0A;
+  --ai4u-gray-50: #FAFAFA;
+  --ai4u-gray-100: #F5F5F5;
+  --ai4u-gray-200: #EEEEEE;
+  --ai4u-gray-300: #E0E0E0;
+  --ai4u-gray-400: #BDBDBD;
+  --ai4u-gray-500: #9E9E9E;
+  --ai4u-gray-600: #757575;
+  --ai4u-gray-700: #616161;
+  --ai4u-gray-800: #424242;
+  --ai4u-gray-900: #212121;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ai4u-gray-50);
+  color: var(--ai4u-black);
+  font-family: 'Red Hat Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--ai4u-orange);
+  outline-offset: 2px;
+}
+
+/* Numeric font class */
+.numeric {
+  font-family: 'Fira Mono', monospace;
+}
+
+/* Component Styles - Migrated from Tailwind */
+/* Note: These breakpoints align with MUI's default breakpoints (sm: 600px, lg: 1024px) */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 600px) { /* MUI sm breakpoint */
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) { /* MUI lg breakpoint */
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Smooth transitions */
+.ai4u-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Card styles */
+.ai4u-card {
+  background-color: var(--ai4u-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border: 1px solid var(--ai4u-gray-200);
+  transition: all 0.3s ease-in-out;
+}
+
+.ai4u-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.ai4u-button {
+  background-color: var(--ai4u-orange);
+  color: var(--ai4u-white);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.ai4u-button:hover {
+  background-color: #E54A00;
+}
+
+.ai4u-button-secondary {
+  background-color: var(--ai4u-green);
+  color: var(--ai4u-white);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.ai4u-button-secondary:hover {
+  background-color: #9BA832;
+}
+
+.ai4u-button-outline {
+  background-color: transparent;
+  color: var(--ai4u-orange);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--ai4u-orange);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.ai4u-button-outline:hover {
+  background-color: rgba(255, 92, 0, 0.1);
+}
+
+/* Typography styles */
+.ai4u-h1 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(48px, 5vw, 64px);
+  color: var(--ai4u-black);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.ai4u-h2 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 48px);
+  color: var(--ai4u-black);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.ai4u-h3 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--ai4u-black);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.ai4u-body {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.1vw, 18px);
+  color: var(--ai4u-black);
+  line-height: 1.5;
+}
+
+.ai4u-small {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ai4u-black);
+  line-height: 1.5;
+}
+
+.ai4u-code {
+  font-family: 'Fira Mono', monospace;
+  font-size: clamp(14px, 1vw, 16px);
+  color: var(--ai4u-black);
+  line-height: 1.6;
+} 
+
+/* Optimizaciones para imágenes en PWA */
+img {
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimizaciones específicas para dispositivos de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Optimizaciones para PWA */
+@media (display-mode: standalone) {
+  img {
+    image-rendering: auto;
+  }
+}
+
+/* Prevenir zoom en imágenes en PWA */
+@media (display-mode: standalone) {
+  img {
+    touch-action: manipulation;
+  }
+} 

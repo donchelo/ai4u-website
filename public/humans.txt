@@ -1,0 +1,53 @@
+/* TEAM */
+    Developer: Mariano García
+    Contact: hola@ai4u.com.co
+    From: Colombia
+
+/* SITE */
+    Last update: 2024/01/15
+    Language: Spanish
+    Doctype: HTML5
+    IDE: Visual Studio Code
+    Standards: HTML5, CSS3, JavaScript ES6+
+    Components: React 18, TypeScript, Material-UI v6, Tailwind CSS
+    Software: Node.js, npm, react-app-rewired
+
+/* TECHNOLOGY */
+    Frontend: React 18, TypeScript, Material-UI v6, Tailwind CSS
+    Build Tool: React Scripts + react-app-rewired
+    Package Manager: npm
+    Version Control: Git
+    Hosting: GitHub Pages
+    Analytics: Google Analytics 4
+    SEO: Optimizado para Google
+
+/* DESIGN */
+    Brand: AI4U
+    Colors: Paleta AI4U (8 colores principales)
+    Typography: Red Hat Display, Fira Mono
+    Style: Minimalista, Glassmorphism
+    Framework: Atomic Design
+
+/* FEATURES */
+    Responsive Design: Mobile-first approach
+    PWA: Progressive Web App capabilities
+    i18n: Internationalization support
+    Performance: Lazy loading, code splitting
+    Accessibility: WCAG 2.1 AA compliance
+    SEO: Structured data, meta tags, sitemap
+
+/* SERVICES */
+    SuperAI Empresarial
+    GPT Personalizado
+    Automatización Inteligente
+    Chatbots Avanzados
+    Machine Learning
+    Inteligencia Artificial
+
+/* CONTACT */
+    Email: contacto@ai4u.com.co
+    Phone: +57 321 817 5744
+    Website: https://ai4u.com.co
+    LinkedIn: https://linkedin.com/company/ai4u
+    Twitter: https://twitter.com/ai4u_co
+    Instagram: https://instagram.com/ai4u_co 

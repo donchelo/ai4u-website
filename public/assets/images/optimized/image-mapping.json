@@ -1,0 +1,145 @@
+{
+  "ai4u-logo-dark": {
+    "original": "ai4u-logo-dark.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "ai4u-logo-dark.webp",
+        "size": 14456,
+        "savings": 55
+      }
+    }
+  },
+  "ai4u-logo-for-dark-background": {
+    "original": "ai4u-logo-for-dark-background.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "ai4u-logo-for-dark-background.webp",
+        "size": 14456,
+        "savings": 55
+      }
+    }
+  },
+  "ai4u-logo-for-light-background": {
+    "original": "ai4u-logo-for-light-background.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "ai4u-logo-for-light-background.webp",
+        "size": 14010,
+        "savings": 56
+      }
+    }
+  },
+  "ai4u-logo": {
+    "original": "ai4u-logo.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "ai4u-logo.webp",
+        "size": 14010,
+        "savings": 56
+      }
+    }
+  },
+  "hero-image": {
+    "original": "hero-image.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "hero-image.webp",
+        "size": 132374,
+        "savings": 92
+      }
+    }
+  },
+  "hero-image2": {
+    "original": "hero-image2.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "hero-image2.webp",
+        "size": 586068,
+        "savings": 90
+      }
+    }
+  },
+  "hero-image3": {
+    "original": "hero-image3.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "hero-image3.webp",
+        "size": 171834,
+        "savings": 92
+      }
+    }
+  },
+  "Logo V3 - Crema": {
+    "original": "Logo V3 - Crema.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "Logo V3 - Crema.webp",
+        "size": 11418,
+        "savings": 56
+      }
+    }
+  },
+  "Logo V3 - Negro": {
+    "original": "Logo V3 - Negro.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "Logo V3 - Negro.webp",
+        "size": 10976,
+        "savings": 57
+      }
+    }
+  },
+  "mariano-pixel-art": {
+    "original": "mariano-pixel-art.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "mariano-pixel-art.webp",
+        "size": 43038,
+        "savings": 97
+      }
+    }
+  },
+  "mariano": {
+    "original": "mariano.jpeg",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "mariano.webp",
+        "size": 32386,
+        "savings": 60
+      }
+    }
+  },
+  "robot-assistant": {
+    "original": "robot-assistant.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "robot-assistant.webp",
+        "size": 126176,
+        "savings": 87
+      }
+    }
+  },
+  "robot": {
+    "original": "robot.png",
+    "sizes": {},
+    "formats": {
+      "webp": {
+        "file": "robot.webp",
+        "size": 109534,
+        "savings": 95
+      }
+    }
+  }
+}
