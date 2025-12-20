@@ -14,9 +14,10 @@ Esta guía documenta la configuración necesaria en GitHub para que el proyecto 
    - Esto permite que el workflow `.github/workflows/deploy.yml` controle el deployment
 
 2. **Custom domain (Dominio personalizado)**
-   - Dominio: `ai4u.com.co`
+   - Dominio: `www.ai4u.com.co`
    - Verifica que esté configurado correctamente
    - **Enforce HTTPS**: Activar (recomendado)
+   - *Nota: GitHub Pages redirigirá automáticamente `ai4u.com.co` a `www.ai4u.com.co`*
 
 3. **Build and deployment**
    - Source: **GitHub Actions** (seleccionado automáticamente)
@@ -123,7 +124,7 @@ Si necesitas variables de entorno o secrets:
 ### Checklist
 
 - [ ] GitHub Pages configurado con source: GitHub Actions
-- [ ] Dominio personalizado `ai4u.com.co` configurado
+- [ ] Dominio personalizado `www.ai4u.com.co` configurado
 - [ ] HTTPS forzado en GitHub Pages
 - [ ] Branch `main` es la rama por defecto
 - [ ] Branch protection rules configuradas (opcional)
@@ -141,7 +142,7 @@ Si necesitas variables de entorno o secrets:
    ```
 3. Ve a **Actions** y verifica que el workflow se ejecute
 4. Espera 1-2 minutos
-5. Verifica que el sitio esté actualizado en `https://ai4u.com.co`
+5. Verifica que el sitio esté actualizado en `https://www.ai4u.com.co`
 
 ## Troubleshooting
 
