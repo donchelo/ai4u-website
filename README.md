@@ -88,6 +88,31 @@ El proyecto usa alias `@` para imports desde `src/`:
 import { Button } from '@/components/shared/ui/atoms';
 ```
 
+## Deployment
+
+### Automático (Recomendado)
+
+El sitio se despliega automáticamente a [ai4u.com.co](https://ai4u.com.co) mediante GitHub Actions al hacer push a la rama `main`.
+
+El workflow de CI/CD:
+- Se ejecuta automáticamente en cada push a `main`
+- Valida traducciones
+- Ejecuta build optimizado
+- Despliega a GitHub Pages
+- Preserva el dominio personalizado (CNAME)
+
+### Manual (Backup)
+
+Si necesitas hacer un deploy manual:
+
+```bash
+npm run deploy:manual
+```
+
+Este comando ejecuta el build y despliega a la rama `gh-pages` usando el paquete `gh-pages`.
+
+**Nota:** El deploy manual es solo para casos de emergencia. El método recomendado es usar GitHub Actions.
+
 ## Mejores Prácticas
 
 - Usar TypeScript estricto

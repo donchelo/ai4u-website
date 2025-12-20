@@ -26,6 +26,7 @@
     "analyze-images": "node scripts/analyze-image-performance.js",
     "optimize-images:full": "npm run optimize-images && npm run analyze-images",
     "deploy": "gh-pages -d dist",
+    "deploy:manual": "npm run build && gh-pages -d dist",
     "deploy:full": "echo Build iniciado... && npm run build && echo Deploy a gh-pages... && npm run deploy && echo Publicación completada",
     "optimize-images": "node scripts/optimize-images.js",
     "build:optimized": "npm run optimize-images && npm run build",
