@@ -175,8 +175,20 @@ const Navbar = () => {
                 </MenuItem>
               ))}
               {/* Google Translate en menú móvil */}
-              <MenuItem>
-                 <GoogleTranslateWidget />
+              <MenuItem
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  width: '100%',
+                  py: 2,
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
+                }}
+              >
+                <Box sx={{ width: '100%', maxWidth: '200px' }}>
+                  <GoogleTranslateWidget />
+                </Box>
               </MenuItem>
               {/* Theme toggle en menú móvil */}
               <MenuItem 
@@ -241,7 +253,14 @@ const Navbar = () => {
             ))}
             
             {/* Google Translate Widget */}
-            <Box sx={{ ml: 1, display: 'flex', alignItems: 'center' }}>
+            <Box 
+              sx={{ 
+                ml: { xs: 0.5, md: 1 }, 
+                display: 'flex', 
+                alignItems: 'center',
+                flexShrink: 0,
+              }}
+            >
               <GoogleTranslateWidget />
             </Box>
             
