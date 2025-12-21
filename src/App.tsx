@@ -11,7 +11,8 @@ import {
   Services, 
   WhyAI4U, 
   UseCases, 
-  Gallery
+  Gallery,
+  DesignSystem
 } from './pages/lazy';
 
 function App() {
@@ -80,7 +81,17 @@ function App() {
                       } 
                     />
 
-                    {/* Fallback Route */}
+                    {/* Design System Route - Debe estar antes del fallback */}
+                    <Route 
+                      path={ROUTES.DESIGN_SYSTEM} 
+                      element={
+                        <LazyPage>
+                          <DesignSystem />
+                        </LazyPage>
+                      } 
+                    />
+
+                    {/* Fallback Route - Siempre al final */}
                     <Route path="*" element={<LazyPage><Home /></LazyPage>} />
                   </Routes>
                 </Layout>
