@@ -14,12 +14,12 @@ export const SHADOW_TOKENS = {
   '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
   inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
   
-  // Sombras AI4U específicas
+  // Sombras AI4U específicas - Minimalistas (sin naranja)
   ai4u: {
     card: '0 4px 12px rgba(0,0,0,0.05)',
     cardDark: '0 4px 12px rgba(0,0,0,0.2)',
-    button: '0 4px 12px rgba(255, 92, 0, 0.3)',
-    glow: '0 0 20px rgba(31, 169, 246, 0.3)',
+    button: '0 4px 12px rgba(0, 0, 0, 0.15)',  // Sombra negra/gris (no naranja)
+    glow: '0 0 20px rgba(0, 0, 0, 0.1)',  // Glow minimalista
   },
 } as const;
 
@@ -89,14 +89,15 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
   colors: {
     mode,
     primary: {
-      main: AI4U_PALETTE.accent,
-      light: '#FF7C33',
-      dark: '#E54A00',
+      // Primario ahora es negro (no naranja)
+      main: AI4U_PALETTE.black,
+      light: AI4U_PALETTE.gray[700],
+      dark: AI4U_PALETTE.black,
     },
     secondary: {
-      main: AI4U_PALETTE.success,
-      light: '#C4D55A',
-      dark: '#9BA832',
+      main: AI4U_PALETTE.gray[600],
+      light: AI4U_PALETTE.gray[400],
+      dark: AI4U_PALETTE.gray[800],
     },
     background: {
       default: CONTRAST_PAIRS[mode].background,

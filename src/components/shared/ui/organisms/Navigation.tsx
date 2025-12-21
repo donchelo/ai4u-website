@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { 
   Box, 
-  Button, 
-  styled 
+  Button,
+  alpha,
+  useTheme
 } from '@mui/material';
 import { useColors } from '../../../../hooks';
+import { SHADOW_TOKENS } from '../tokens/theme';
 
 interface NavigationItem {
   id: string;
@@ -21,26 +23,7 @@ interface NavigationProps {
   className?: string;
 }
 
-// Styled components para glassmorfismo
-const GlassmorphismButton = styled(Button)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.1)',
-  backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.2)',
-  borderRadius: theme.spacing(2),
-  color: theme.palette.text.primary,
-  fontWeight: 600,
-  textTransform: 'none',
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    background: 'rgba(255, 255, 255, 0.2)',
-    transform: 'translateY(-1px)',
-  },
-  '&.Mui-selected': {
-    background: '#FF5C00',
-    color: '#FFFFFF',
-    boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
-  },
-}));
+// Styled components eliminado - usar estilos inline con tokens
 
 const Navigation = ({
   items,
@@ -50,6 +33,7 @@ const Navigation = ({
   className = ''
 }: NavigationProps) => {
   const colors = useColors();
+  const theme = useTheme();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const handleItemClick = (item: NavigationItem) => {
@@ -63,7 +47,6 @@ const Navigation = ({
 
   const getButtonStyles = (item: NavigationItem) => {
     const isActive = activeItem === item.id;
-    const isHovered = hoveredItem === item.id;
 
     const baseStyles = {
       fontWeight: 600,
@@ -81,14 +64,14 @@ const Navigation = ({
           fontSize: '0.875rem',
           whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: colors.palette.accent,
+            background: colors.palette.black,
             color: colors.palette.white,
-            boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+            boxShadow: SHADOW_TOKENS.ai4u.button,
           } : {
             color: colors.contrast.text.secondary,
             '&:hover': {
               color: colors.contrast.text.primary,
-              background: 'rgba(255, 255, 255, 0.2)',
+              background: alpha(colors.palette.white, 0.1),
             },
           }),
         };
@@ -103,17 +86,21 @@ const Navigation = ({
           borderRadius: 1,
           fontSize: '0.875rem',
           ...(isActive ? {
-            background: colors.palette.accent,
+            background: colors.palette.black,
             color: colors.palette.white,
-            borderLeft: `4px solid ${colors.palette.accent}`,
-            boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+            borderLeftWidth: 2,
+            borderLeftStyle: 'solid',
+            borderLeftColor: colors.palette.black,
+            boxShadow: SHADOW_TOKENS.ai4u.button,
           } : {
             color: colors.contrast.text.secondary,
-            borderLeft: `4px solid transparent`,
+            borderLeftWidth: 2,
+            borderLeftStyle: 'solid',
+            borderLeftColor: 'transparent',
             '&:hover': {
               color: colors.contrast.text.primary,
               background: colors.helpers.state.hover,
-              borderLeft: `4px solid ${colors.palette.accent}`,
+              borderLeftColor: colors.palette.black,
             },
           }),
         };
@@ -127,9 +114,9 @@ const Navigation = ({
           fontSize: '0.875rem',
           whiteSpace: 'nowrap' as const,
           ...(isActive ? {
-            background: colors.palette.accent,
+            background: colors.palette.black,
             color: colors.palette.white,
-            boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+            boxShadow: SHADOW_TOKENS.ai4u.button,
           } : {
             color: colors.contrast.text.secondary,
             '&:hover': {
@@ -149,7 +136,7 @@ const Navigation = ({
           gap: 1,
           p: 1,
           borderRadius: 3,
-          background: 'rgba(255, 255, 255, 0.05)',
+          background: alpha(colors.palette.white, 0.05),
           backdropFilter: 'blur(20px)',
           border: `1px solid ${colors.contrast.border}`,
         };

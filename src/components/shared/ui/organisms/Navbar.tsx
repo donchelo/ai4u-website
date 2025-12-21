@@ -21,32 +21,32 @@ import { useColors } from '../../../../hooks';
 import { Logo, GoogleTranslateWidget } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
+import { SHADOW_TOKENS } from '../tokens/theme';
 
-// Styled components para mejor performance
+// Styled components usando tokens del sistema
 const StyledNavButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== 'colors'
-})<{ colors: ReturnType<typeof useColors> }>(({ colors }) => ({
-  marginX: '4px',
+})<{ colors: ReturnType<typeof useColors> }>(({ theme, colors }) => ({
+  marginX: theme.spacing(0.5),
   color: colors.contrast.text.primary,
   fontWeight: 500,
   textTransform: 'none',
   '&:hover': {
-    color: colors.palette.accent,
+    color: colors.palette.black,
     backgroundColor: colors.helpers.state.hover,
   },
 }));
 
 const StyledThemeIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => prop !== 'colors'
-})<{ colors: ReturnType<typeof useColors> }>(({ colors }) => ({
-  marginLeft: '8px',
+})<{ colors: ReturnType<typeof useColors> }>(({ theme, colors }) => ({
+  marginLeft: theme.spacing(1),
   color: colors.contrast.text.secondary,
   opacity: 0.7,
   '&:hover': {
     opacity: 1,
     backgroundColor: colors.helpers.state.hover,
-    color: colors.palette.accent,
-    backgroundColor: 'transparent',
+    color: colors.palette.black,
   }
 }));
 
@@ -153,7 +153,7 @@ const Navbar = () => {
                 '& .MuiPaper-root': {
                   backgroundColor: colors.contrast.surface,
                   border: `1px solid ${colors.contrast.border}`,
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+                  boxShadow: SHADOW_TOKENS.xl,
                 },
               }}
             >
@@ -167,7 +167,7 @@ const Navbar = () => {
                     color: colors.contrast.text.primary,
                     '&:hover': {
                       backgroundColor: colors.helpers.state.hover,
-                      color: colors.palette.accent,
+                      color: colors.palette.black,
                     },
                   }}
                 >
@@ -186,7 +186,7 @@ const Navbar = () => {
                   },
                 }}
               >
-                <Box sx={{ width: '100%', maxWidth: '200px' }}>
+                <Box sx={{ width: '100%', maxWidth: (theme) => theme.spacing(25) }}>
                   <GoogleTranslateWidget />
                 </Box>
               </MenuItem>
@@ -243,7 +243,7 @@ const Navbar = () => {
                   fontWeight: 500,
                   textTransform: 'none',
                   '&:hover': {
-                    color: colors.palette.accent,
+                    color: colors.palette.black,
                     backgroundColor: colors.helpers.state.hover,
                   },
                 }}

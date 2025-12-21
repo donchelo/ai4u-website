@@ -1,6 +1,7 @@
 // Sistema de colores AI4U - Minimalista
+// Paleta principal: blanco, negro y gris (sin naranja como primario)
 export const AI4U_PALETTE = {
-  // Colores base (solo 3 colores esenciales)
+  // Colores base (paleta minimalista)
   white: '#FFFFFF',
   black: '#000000',
   gray: {
@@ -16,12 +17,24 @@ export const AI4U_PALETTE = {
     900: '#171717',
   },
   
-  // Solo 1 acento (naranja AI4U)
-  accent: '#FF5C00',
+  // Acentos mínimos (solo para casos excepcionales)
+  // El naranja ya no es el color primario - usar solo cuando sea absolutamente necesario
+  accentColors: {
+    // Mantener disponible pero no como primario
+    orange: '#FF5C00',  // Uso mínimo - solo para casos excepcionales
+    green: '#B6CA40',   // Uso mínimo - solo para casos excepcionales
+  },
   
-  // Estados mínimos
+  // Compatibilidad hacia atrás: mantener accent como string para componentes existentes
+  // NOTA: Este es un valor legacy. Nuevos componentes NO deben usar esto.
+  // Usar accentColors.orange o accentColors.green explícitamente, o mejor aún, usar la paleta minimalista
+  accent: '#FF5C00' as const,
+  
+  // Estados funcionales
   success: '#10B981',
   error: '#EF4444',
+  warning: '#F59E0B',
+  info: '#3B82F6',
 } as const;
 
 // Sistema de contraste simplificado
@@ -53,14 +66,15 @@ export const CONTRAST_PAIRS = {
   },
 } as const;
 
-// Variantes de componentes simplificadas
+// Variantes de componentes simplificadas - Minimalista (sin naranja como primario)
 export const COMPONENT_VARIANTS = {
-  // Botones minimalistas
+  // Botones minimalistas - Usar gris/negro como primario
   button: {
     primary: {
-      background: AI4U_PALETTE.accent,
+      // Primario ahora es negro/gris oscuro (no naranja)
+      background: AI4U_PALETTE.black,
       text: AI4U_PALETTE.white,
-      hover: '#E54A00',
+      hover: AI4U_PALETTE.gray[800],
     },
     secondary: {
       background: AI4U_PALETTE.gray[100],
@@ -68,10 +82,18 @@ export const COMPONENT_VARIANTS = {
       hover: AI4U_PALETTE.gray[200],
     },
     outline: {
+      // Outline usa borde negro/gris (no naranja)
       background: 'transparent',
-      text: AI4U_PALETTE.accent,
-      border: AI4U_PALETTE.accent,
+      text: AI4U_PALETTE.black,
+      border: AI4U_PALETTE.gray[400],
       hover: AI4U_PALETTE.gray[50],
+    },
+    // Variante minimalista adicional
+    minimal: {
+      background: 'transparent',
+      text: AI4U_PALETTE.black,
+      border: 'none',
+      hover: AI4U_PALETTE.gray[100],
     },
   },
   

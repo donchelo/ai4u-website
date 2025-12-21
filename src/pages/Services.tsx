@@ -147,7 +147,7 @@ const Services: React.FC = () => {
                 <Box sx={{ 
                   position: 'relative', 
                   zIndex: 2,
-                  minHeight: '400px'
+                  minHeight: (theme) => theme.spacing(50)
                 }}>
                   {/* Mostrar primeros 6 servicios siempre */}
                   <Grid container spacing={2} sx={{ mb: 4 }}>

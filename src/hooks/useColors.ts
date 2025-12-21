@@ -36,12 +36,13 @@ export const useColors = () => {
         accent: mode === 'light' ? '#FFF5F0' : '#2A1A0F',
       },
       
-      // Para textos
+      // Para textos - Minimalista (sin naranja como primario)
       text: {
         primary: contrast.text.primary,
         secondary: contrast.text.secondary,
         disabled: contrast.text.disabled,
-        accent: '#FF5C00',
+        // Acentos mínimos (solo para casos excepcionales)
+        accent: mode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         // Garantizar contraste mínimo
         highContrast: mode === 'light' ? '#000000' : '#FFFFFF',
         mediumContrast: mode === 'light' ? '#333333' : '#F0F0F0',
@@ -50,11 +51,11 @@ export const useColors = () => {
         darkMediumContrast: mode === 'dark' ? '#E8E8E8' : '#333333',
       },
       
-      // Para bordes
+      // Para bordes - Minimalista (sin naranja)
       border: {
         primary: contrast.border,
         secondary: contrast.divider,
-        accent: '#FF5C00',
+        accent: mode === 'light' ? AI4U_PALETTE.gray[400] : AI4U_PALETTE.gray[600],
       },
       
       // Para estados

@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
+import { AI4U_PALETTE, COMPONENT_VARIANTS, CONTRAST_PAIRS } from '../tokens/palette';
+import { SHADOW_TOKENS } from '../tokens/theme';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
@@ -8,13 +10,15 @@ interface CardProps extends Omit<MuiCardProps, 'variant'> {
   showContent?: boolean;
 }
 
-// Card minimalista sin efectos glassmorphism complejos
+// Card minimalista usando sistema de tokens
 const StyledCard = styled(MuiCard, {
   shouldForwardProp: (prop) => prop !== 'cardVariant',
 })<{ cardVariant?: CardProps['variant'] }>(({ theme, cardVariant }) => {
   const isLight = theme.palette.mode === 'light';
+  const contrast = CONTRAST_PAIRS[isLight ? 'light' : 'dark'];
+  const cardVariants = COMPONENT_VARIANTS.card;
   
-  // Estilos base minimalistas
+  // Estilos base minimalistas usando tokens
   const baseStyles = {
     borderRadius: theme.spacing(2),
     transition: theme.transitions.create(['box-shadow', 'border-color'], {
@@ -30,22 +34,18 @@ const StyledCard = styled(MuiCard, {
     },
   };
 
-  // Variantes simplificadas
+  // Variantes usando tokens del sistema
   switch (cardVariant) {
     case 'elevated':
       return {
         ...baseStyles,
-        backgroundColor: isLight ? '#FFFFFF' : '#171717',
+        backgroundColor: isLight ? cardVariants.light.background : cardVariants.dark.background,
         border: 'none',
-        boxShadow: isLight 
-          ? '0 1px 3px rgba(0, 0, 0, 0.1)' 
-          : '0 1px 3px rgba(0, 0, 0, 0.3)',
-        color: isLight ? '#000000' : '#FFFFFF',
+        boxShadow: isLight ? SHADOW_TOKENS.md : SHADOW_TOKENS.ai4u.cardDark,
+        color: isLight ? cardVariants.light.text : cardVariants.dark.text,
         '&:hover': {
           ...baseStyles['&:hover'],
-          boxShadow: isLight 
-            ? '0 4px 12px rgba(0, 0, 0, 0.15)' 
-            : '0 4px 12px rgba(0, 0, 0, 0.4)',
+          boxShadow: isLight ? SHADOW_TOKENS.lg : SHADOW_TOKENS['2xl'],
         },
       };
     
@@ -53,25 +53,25 @@ const StyledCard = styled(MuiCard, {
       return {
         ...baseStyles,
         backgroundColor: 'transparent',
-        border: `1px solid ${isLight ? '#E5E5E5' : '#404040'}`,
+        border: `1px solid ${contrast.border}`,
         boxShadow: 'none',
-        color: isLight ? '#000000' : '#FFFFFF',
+        color: contrast.text.primary,
         '&:hover': {
           ...baseStyles['&:hover'],
-          borderColor: isLight ? '#D4D4D4' : '#525252',
+          borderColor: contrast.divider,
         },
       };
     
     default:
       return {
         ...baseStyles,
-        backgroundColor: isLight ? '#FFFFFF' : '#171717',
-        border: `1px solid ${isLight ? '#F5F5F5' : '#262626'}`,
+        backgroundColor: isLight ? cardVariants.light.background : cardVariants.dark.background,
+        border: `1px solid ${contrast.border}`,
         boxShadow: 'none',
-        color: isLight ? '#000000' : '#FFFFFF',
+        color: isLight ? cardVariants.light.text : cardVariants.dark.text,
         '&:hover': {
           ...baseStyles['&:hover'],
-          borderColor: isLight ? '#E5E5E5' : '#404040',
+          borderColor: contrast.divider,
         },
       };
   }

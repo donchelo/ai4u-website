@@ -59,7 +59,7 @@ const Footer = () => {
               src={logoPath}
               alt="AI4U Logo"
               sx={{ 
-                height: 42,
+                height: (theme) => theme.spacing(5.25),
                 width: 'auto',
                 mb: 2
               }}
@@ -91,7 +91,7 @@ const Footer = () => {
                         textDecoration: 'none',
                         cursor: 'pointer',
                         display: 'block',
-                        '&:hover': { color: colors.palette.accent }
+                        '&:hover': { color: colors.palette.white }
                       }}
                     >
                       {link.name}
@@ -108,19 +108,19 @@ const Footer = () => {
             </MuiTypography>
             <Stack spacing={2}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <EmailIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
+                <EmailIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   hola@ai4u.com.co
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <WhatsAppIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
+                <WhatsAppIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   +57 321 817 5744
                 </MuiTypography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <LocationOnIcon sx={{ color: colors.palette.accent, fontSize: '1.2rem' }} />
+                <LocationOnIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
                 <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                   Medellín, Colombia
                 </MuiTypography>
@@ -153,8 +153,8 @@ const Footer = () => {
                 sx={{
                   color: colors.contrast.text.secondary,
                   '&:hover': {
-                    color: colors.palette.accent,
-                    transform: 'translateY(-2px)',
+                    color: colors.palette.white,
+                    transform: (theme) => `translateY(-${theme.spacing(0.25)})`,
                   },
                   transition: 'all 0.2s ease-in-out',
                 }}

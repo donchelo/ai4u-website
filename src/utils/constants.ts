@@ -35,19 +35,27 @@ export const SERVICE_CONFIG = {
   }
 } as const;
 
-// Colores de la marca
+// Colores de la marca - Importados del sistema de tokens
+// NOTA: Estos valores están deprecados. Usar directamente desde:
+// - AI4U_PALETTE de src/components/shared/ui/tokens/palette.ts
+// - useColors() hook para colores con contraste automático
+import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { BREAKPOINT_TOKENS } from '../components/shared/ui/tokens/theme';
+
+// @deprecated Usar AI4U_PALETTE directamente
 export const BRAND_COLORS = {
-  PRIMARY: '#FF4500', // Orange
-  SECONDARY: '#5B92E5', // Blue
-  SUCCESS: '#4CAF50',
-  WARNING: '#FF9800',
-  ERROR: '#F44336',
-  INFO: '#2196F3'
+  PRIMARY: AI4U_PALETTE.accent, // Legacy - usar palette.accent o palette.accentColors.orange
+  SECONDARY: AI4U_PALETTE.gray[600], // Legacy - usar palette.gray
+  SUCCESS: AI4U_PALETTE.success,
+  WARNING: AI4U_PALETTE.warning,
+  ERROR: AI4U_PALETTE.error,
+  INFO: AI4U_PALETTE.info
 } as const;
 
-// Breakpoints para responsive design
+// Breakpoints para responsive design - Importados del sistema de tokens
+// @deprecated Usar BREAKPOINT_TOKENS directamente o theme.breakpoints de MUI
 export const BREAKPOINTS = {
-  MOBILE: 600,
-  TABLET: 960,
-  DESKTOP: 1280
+  MOBILE: BREAKPOINT_TOKENS.sm,
+  TABLET: BREAKPOINT_TOKENS.md,
+  DESKTOP: BREAKPOINT_TOKENS.lg
 } as const; 

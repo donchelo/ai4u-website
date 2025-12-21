@@ -8,6 +8,7 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import { 
   H1, 
   H2, 
@@ -254,7 +255,12 @@ const UseCases = () => {
                     },
                     scrollSnapAlign: 'start',
                     position: 'relative',
-                    height: { xs: '200px', sm: '250px', md: '300px', lg: '280px' },
+                    height: (theme) => ({ 
+                      xs: theme.spacing(25), 
+                      sm: theme.spacing(31.25), 
+                      md: theme.spacing(37.5), 
+                      lg: theme.spacing(35) 
+                    }),
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -283,8 +289,8 @@ const UseCases = () => {
                         cursor: 'pointer',
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                         backdropFilter: 'blur(20px)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                        border: `2px solid rgba(255, 255, 255, 0.1)`,
+                        backgroundColor: (theme) => alpha(theme.palette.common.white, 0.08),
+                        border: (theme) => `${theme.spacing(0.25)} solid ${alpha(theme.palette.common.white, 0.1)}`,
                         p: { xs: 2, sm: 2.5, md: 3, lg: 3 },
                         '&:hover': {
                           boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
@@ -350,13 +356,13 @@ const UseCases = () => {
                 left: { xs: 8, md: 16 },
                 top: '50%',
                 transform: 'translateY(-50%)',
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
+                bgcolor: (theme) => alpha(theme.palette.common.white, 0.1),
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: (theme) => `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
                 color: colors.contrast.text.primary,
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: 'rgba(255, 255, 255, 0.2)',
+                  bgcolor: (theme) => alpha(theme.palette.common.white, 0.2),
                   transform: 'translateY(-50%) scale(1.1)'
                 },
                 '&:disabled': {
@@ -378,13 +384,13 @@ const UseCases = () => {
                 right: { xs: 8, md: 16 },
                 top: '50%',
                 transform: 'translateY(-50%)',
-                bgcolor: 'rgba(255, 255, 255, 0.1)',
+                bgcolor: (theme) => alpha(theme.palette.common.white, 0.1),
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: (theme) => `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
                 color: colors.contrast.text.primary,
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: 'rgba(255, 255, 255, 0.2)',
+                  bgcolor: (theme) => alpha(theme.palette.common.white, 0.2),
                   transform: 'translateY(-50%) scale(1.1)'
                 },
                 '&:disabled': {
@@ -508,7 +514,7 @@ const UseCases = () => {
                 
                 <Card variant="elevated" sx={{ p: 4 }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="square" size="medium" color={colors.palette.accent} variant="filled" />
+                    <GeometricIcon type="square" size="medium" color={colors.palette.black} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         300%

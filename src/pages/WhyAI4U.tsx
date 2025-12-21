@@ -6,7 +6,8 @@ import {
   Stack, 
   Avatar, 
   IconButton,
-  Typography
+  Typography,
+  alpha
 } from '@mui/material';
 import { H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
@@ -199,8 +200,8 @@ const WhyAI4U = () => {
                   p: 4,
                   cursor: 'pointer',
                   '&:hover': {
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
-                    transform: 'translateY(-2px)',
+                    boxShadow: (theme) => `0 ${theme.spacing(1)} ${theme.spacing(4)} ${alpha(theme.palette.common.black, 0.12)}`,
+                    transform: (theme) => `translateY(-${theme.spacing(0.25)})`,
                     transition: 'all 0.3s ease'
                   }
                 }}>

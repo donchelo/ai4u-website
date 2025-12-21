@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Box, Typography, styled } from '@mui/material';
+import { Card, Box, Typography, styled, useTheme } from '@mui/material';
 import { GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
 import { alpha } from '@mui/material/styles';
@@ -20,7 +20,9 @@ interface MetricCardProps {
 }
 
 // Styled component para el valor de la métrica - NÚMEROS GIGANTES
-const MetricValue = styled(Typography)<{ metricSize: string; isDarkMode?: boolean }>(({ metricSize, isDarkMode, theme }) => ({
+const MetricValue = styled(Typography, {
+  shouldForwardProp: (prop) => prop !== 'metricSize' && prop !== 'isDarkMode',
+})<{ metricSize: string; isDarkMode?: boolean }>(({ metricSize, isDarkMode, theme }) => ({
   fontSize: metricSize === 'compact' 
     ? '3.5rem' 
     : metricSize === 'large' 
@@ -33,25 +35,25 @@ const MetricValue = styled(Typography)<{ metricSize: string; isDarkMode?: boolea
   margin: 0,
   padding: 0,
   background: isDarkMode 
-    ? 'linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%)'
-    : 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+    ? `linear-gradient(135deg, ${theme.palette.common.white} 0%, ${theme.palette.grey[100]} 100%)`
+    : `linear-gradient(135deg, ${theme.palette.common.black} 0%, ${theme.palette.grey[800]} 100%)`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
   textFillColor: 'transparent',
   [theme.breakpoints.down('sm')]: {
     fontSize: metricSize === 'compact' 
-      ? '2.5rem' 
+      ? theme.typography.h3.fontSize
       : metricSize === 'large' 
-        ? '4rem' 
-        : '3.5rem',
+        ? theme.typography.h1.fontSize
+        : theme.typography.h2.fontSize,
   },
   [theme.breakpoints.down('xs')]: {
     fontSize: metricSize === 'compact' 
-      ? '2rem' 
+      ? theme.typography.h4.fontSize
       : metricSize === 'large' 
-        ? '3.5rem' 
-        : '3rem',
+        ? theme.typography.h2.fontSize
+        : theme.typography.h3.fontSize,
   }
 }));
 
@@ -68,6 +70,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     onClick
   } = props;
   const colors = useColors();
+  const theme = useTheme();
   const isDarkMode = colors.mode === 'dark';
 
   const getTrendColor = () => {
@@ -75,7 +78,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
       case 'up':
         return colors.palette.success;
       case 'down':
-        return colors.palette.accent;
+        return colors.palette.black;
       default:
         return colors.contrast.text.secondary;
     }
@@ -95,8 +98,8 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
       onClick={onClick}
       sx={{
         cursor: onClick ? 'pointer' : 'default',
-        minHeight: size === 'compact' ? '200px' : size === 'large' ? '400px' : '240px',
-        minWidth: size === 'compact' ? '320px' : size === 'large' ? '400px' : '350px',
+        minHeight: (theme) => size === 'compact' ? theme.spacing(25) : size === 'large' ? theme.spacing(50) : theme.spacing(30),
+        minWidth: (theme) => size === 'compact' ? theme.spacing(40) : size === 'large' ? theme.spacing(50) : theme.spacing(43.75),
         width: size === 'large' ? '100%' : 'auto',
         display: 'flex',
         flexDirection: 'column',
@@ -114,7 +117,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
           right: 0,
           bottom: 0,
           background: size === 'large' 
-            ? 'linear-gradient(135deg, rgba(182, 202, 64, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)'
+            ? `linear-gradient(135deg, ${alpha(colors.palette.accentColors.green, 0.05)} 0%, ${alpha(colors.palette.white, 0.02)} 100%)`
             : 'none',
           zIndex: 0,
         }
@@ -138,11 +141,11 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             color: getVariantTextColor(),
             textShadow: size === 'large' 
               ? isDarkMode
-                ? '0 12px 24px rgba(255,255,255,0.1), 0 4px 8px rgba(182, 202, 64, 0.2)' 
-                : '0 12px 24px rgba(0,0,0,0.2), 0 4px 8px rgba(182, 202, 64, 0.3)' 
+                ? (theme) => `0 ${theme.spacing(1.5)} ${theme.spacing(3)} ${alpha(colors.palette.white, 0.1)}, 0 ${theme.spacing(0.5)} ${theme.spacing(1)} ${alpha(colors.palette.accentColors.green, 0.2)}`
+                : (theme) => `0 ${theme.spacing(1.5)} ${theme.spacing(3)} ${alpha(colors.palette.black, 0.2)}, 0 ${theme.spacing(0.5)} ${theme.spacing(1)} ${alpha(colors.palette.accentColors.green, 0.3)}`
               : isDarkMode
-                ? '0 6px 12px rgba(255,255,255,0.08)' 
-                : '0 6px 12px rgba(0,0,0,0.15)',
+                ? (theme) => `0 ${theme.spacing(0.75)} ${theme.spacing(1.5)} ${alpha(colors.palette.white, 0.08)}`
+                : (theme) => `0 ${theme.spacing(0.75)} ${theme.spacing(1.5)} ${alpha(colors.palette.black, 0.15)}`,
             filter: size === 'large' 
               ? isDarkMode 
                 ? 'drop-shadow(0 8px 16px rgba(255,255,255,0.1))' 
@@ -154,23 +157,23 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             '&::after': {
               content: '""',
               position: 'absolute',
-              bottom: '-8px',
+              bottom: (theme) => `-${theme.spacing(1)}`,
               left: '50%',
               transform: 'translateX(-50%)',
               width: size === 'large' ? '80%' : '60%',
-              height: '2px',
-              background: 'linear-gradient(90deg, transparent, #B6CA40, transparent)',
+              height: (theme) => theme.spacing(0.25),
+              background: (theme) => `linear-gradient(90deg, transparent, ${colors.palette.accentColors.green}, transparent)`,
               opacity: 0.6,
             },
             '&:hover': {
               transform: size === 'large' ? 'scale(1.15)' : 'scale(1.05)',
               textShadow: size === 'large' 
                 ? isDarkMode
-                  ? '0 16px 32px rgba(255,255,255,0.15), 0 8px 16px rgba(182, 202, 64, 0.3)' 
-                  : '0 16px 32px rgba(0,0,0,0.25), 0 8px 16px rgba(182, 202, 64, 0.4)' 
+                  ? (theme) => `0 ${theme.spacing(2)} ${theme.spacing(4)} ${alpha(colors.palette.white, 0.15)}, 0 ${theme.spacing(1)} ${theme.spacing(2)} ${alpha(colors.palette.accentColors.green, 0.3)}`
+                  : (theme) => `0 ${theme.spacing(2)} ${theme.spacing(4)} ${alpha(colors.palette.black, 0.25)}, 0 ${theme.spacing(1)} ${theme.spacing(2)} ${alpha(colors.palette.accentColors.green, 0.4)}`
                 : isDarkMode
-                  ? '0 8px 16px rgba(255,255,255,0.12)' 
-                  : '0 8px 16px rgba(0,0,0,0.2)',
+                  ? (theme) => `0 ${theme.spacing(1)} ${theme.spacing(2)} ${alpha(colors.palette.white, 0.12)}`
+                  : (theme) => `0 ${theme.spacing(1)} ${theme.spacing(2)} ${alpha(colors.palette.black, 0.2)}`,
               '&::after': {
                 opacity: 1,
                 width: size === 'large' ? '90%' : '70%',

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
 import { useColors } from '../../../../hooks';
+import { SHADOW_TOKENS } from '../tokens/theme';
 
 declare global {
   interface Window {
@@ -133,12 +134,28 @@ const GoogleTranslateWidget: React.FC = () => {
     handleClose();
   };
 
-  // Tamaños responsivos
-  const buttonSize = isMobile 
-    ? { width: '32px', height: '28px', fontSize: '11px' } 
-    : isTablet 
-    ? { width: '36px', height: '30px', fontSize: '12px' } 
-    : { width: '40px', height: '32px', fontSize: '13px' };
+  // Tamaños responsivos usando tokens
+  const getButtonSize = (theme: any) => {
+    if (isMobile) {
+      return {
+        width: theme.spacing(4),
+        height: theme.spacing(3.5),
+        fontSize: theme.typography.caption.fontSize
+      };
+    } else if (isTablet) {
+      return {
+        width: theme.spacing(4.5),
+        height: theme.spacing(3.75),
+        fontSize: theme.typography.body2.fontSize
+      };
+    } else {
+      return {
+        width: theme.spacing(5),
+        height: theme.spacing(4),
+        fontSize: theme.typography.body2.fontSize
+      };
+    }
+  };
 
   // Estilos para ocultar el widget de Google
   const hideGoogleStyles = `
@@ -193,35 +210,38 @@ const GoogleTranslateWidget: React.FC = () => {
         aria-controls={open ? 'language-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        sx={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: buttonSize.width,
-          height: buttonSize.height,
-          minWidth: buttonSize.width,
-          padding: 0,
-          color: colors.contrast.text.primary,
-          border: `1px solid ${colors.contrast.border}`,
-          borderRadius: '6px',
-          transition: 'all 0.2s ease-in-out',
-          backgroundColor: colors.contrast.surface,
-          fontFamily: '"Red Hat Display", sans-serif',
-          fontSize: buttonSize.fontSize,
-          fontWeight: 600,
-          cursor: 'pointer',
-          '&:hover': {
-            borderColor: colors.palette.accent,
-            backgroundColor: colors.helpers.state.hover,
-            transform: 'scale(1.05)',
-          },
-          '&:focus': {
-            outline: `2px solid ${colors.palette.accent}`,
-            outlineOffset: '2px',
-          },
-          '&:active': {
-            transform: 'scale(0.95)',
-          },
+        sx={(theme) => {
+          const size = getButtonSize(theme);
+          return {
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: size.width,
+            height: size.height,
+            minWidth: size.width,
+            padding: 0,
+            color: colors.contrast.text.primary,
+            border: `1px solid ${colors.contrast.border}`,
+            borderRadius: theme.spacing(0.75),
+            transition: 'all 0.2s ease-in-out',
+            backgroundColor: colors.contrast.surface,
+            fontFamily: theme.typography.fontFamily,
+            fontSize: size.fontSize,
+            fontWeight: 600,
+            cursor: 'pointer',
+            '&:hover': {
+              borderColor: colors.palette.black,
+              backgroundColor: colors.helpers.state.hover,
+              transform: 'scale(1.05)',
+            },
+            '&:focus': {
+              outline: `${theme.spacing(0.25)} solid ${colors.palette.black}`,
+              outlineOffset: theme.spacing(0.25),
+            },
+            '&:active': {
+              transform: 'scale(0.95)',
+            },
+          };
         }}
       >
         {currentLanguage}
@@ -243,15 +263,15 @@ const GoogleTranslateWidget: React.FC = () => {
         }}
         slotProps={{
           paper: {
-            sx: {
+            sx: (theme) => ({
               mt: 0.5,
-              minWidth: '160px',
-              maxWidth: '200px',
+              minWidth: theme.spacing(20),
+              maxWidth: theme.spacing(25),
               backgroundColor: colors.contrast.surface,
               border: `1px solid ${colors.contrast.border}`,
-              borderRadius: '8px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-            },
+              borderRadius: theme.spacing(1),
+              boxShadow: SHADOW_TOKENS.md,
+            }),
           },
         }}
       >
@@ -260,12 +280,12 @@ const GoogleTranslateWidget: React.FC = () => {
             key={lang.code}
             onClick={() => selectLanguage(lang.code, lang.short)}
             selected={currentLanguage === lang.short}
-            sx={{
-              fontFamily: '"Red Hat Display", sans-serif',
-              fontSize: '14px',
+            sx={(theme) => ({
+              fontFamily: theme.typography.fontFamily,
+              fontSize: theme.typography.body2.fontSize,
               fontWeight: currentLanguage === lang.short ? 600 : 400,
               color: currentLanguage === lang.short 
-                ? colors.palette.accent 
+                ? colors.palette.black 
                 : colors.contrast.text.primary,
               py: 1,
               px: 2,
@@ -278,18 +298,18 @@ const GoogleTranslateWidget: React.FC = () => {
                   backgroundColor: colors.helpers.state.hover,
                 },
               },
-            }}
+            })}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               <Box
                 component="span"
-                sx={{
+                sx={(theme) => ({
                   fontWeight: 600,
-                  minWidth: '24px',
+                  minWidth: theme.spacing(3),
                   color: currentLanguage === lang.short 
-                    ? colors.palette.accent 
+                    ? colors.palette.black 
                     : colors.contrast.text.secondary,
-                }}
+                })}
               >
                 {lang.short}
               </Box>

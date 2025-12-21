@@ -1,17 +1,18 @@
 import React from 'react';
-import { Container, Grid, Box, Stack, useTheme } from '@mui/material';
+import { Container, Grid, Box, Stack } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, GalleryFrame, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
+import { useColors } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Home = () => {
-  const theme = useTheme();
   const { mode } = useColorMode();
+  const colors = useColors();
   
   // Monitoreo automático de performance para la página de inicio
   usePerformanceMonitoring('home', {
@@ -113,11 +114,8 @@ const Home = () => {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: 'background.paper',
-                    border: `1px solid ${theme.palette.divider}`,
                     cursor: 'pointer',
                     '&:hover': {
-                      boxShadow: theme.shadows[4],
                       transform: 'translateY(-2px)',
                       transition: 'all 0.3s ease'
                     }
@@ -127,7 +125,7 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
                       size="small" 
-                      color={theme.palette.text.secondary}
+                      color={colors.contrast.text.secondary}
                       variant="minimal" 
                     />
                     <H3 sx={{ 
@@ -150,15 +148,15 @@ const Home = () => {
       {/* Robot Section - Fondo oscuro con contraste automático */}
       <Box sx={{ 
         py: { xs: 6, md: 10 }, 
-        bgcolor: mode === 'dark' ? 'background.default' : '#1a1a1a', 
-        color: mode === 'dark' ? 'text.primary' : 'white' 
+        bgcolor: mode === 'dark' ? 'background.default' : colors.palette.black, 
+        color: mode === 'dark' ? 'text.primary' : colors.palette.white 
       }}>
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
             <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
               <H2 sx={{ 
                 mb: 4, 
-                color: mode === 'dark' ? 'text.primary' : 'white', 
+                color: mode === 'dark' ? 'text.primary' : colors.palette.white, 
                 fontWeight: 300 
               }}>
                 Asistentes Robóticos que Transforman tu Empresa
@@ -171,11 +169,11 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "circle" : "dot"} 
                       size="small" 
-                      color={idx === 0 ? "#B6CA40" : (mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.4)')} 
+                      color={idx === 0 ? colors.palette.accentColors.green : (mode === 'dark' ? colors.contrast.text.disabled : colors.contrast.text.secondary)} 
                       variant={idx === 0 ? "filled" : "minimal"} 
                     />
                     <BodyText sx={{ 
-                      color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.7)'), 
+                      color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? colors.palette.white : colors.contrast.text.secondary), 
                       fontSize: '1rem', 
                       lineHeight: 1.6 
                     }}>
@@ -192,7 +190,7 @@ const Home = () => {
               >
                 <BodyText sx={{ 
                   mb: 4, 
-                  color: mode === 'dark' ? 'text.secondary' : 'rgba(255, 255, 255, 0.8)', 
+                  color: mode === 'dark' ? 'text.secondary' : colors.contrast.text.secondary, 
                   maxWidth: 600, 
                   fontSize: '1.1rem', 
                   lineHeight: 1.7 
@@ -202,7 +200,7 @@ const Home = () => {
                 
                 <BodyText sx={{ 
                   mb: 4, 
-                  color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)', 
+                  color: mode === 'dark' ? 'text.disabled' : colors.contrast.text.disabled, 
                   fontSize: '0.9rem', 
                   fontStyle: 'italic' 
                 }}>
@@ -211,7 +209,7 @@ const Home = () => {
                 
                 <H3 sx={{ 
                   mb: 4, 
-                  color: mode === 'dark' ? 'text.primary' : 'white', 
+                  color: mode === 'dark' ? 'text.primary' : colors.palette.white, 
                   fontWeight: 400, 
                   fontSize: '1.2rem' 
                 }}>
@@ -220,12 +218,12 @@ const Home = () => {
                 
                 <Box sx={{ 
                   pl: 4,
-                  borderLeft: `1px solid ${mode === 'dark' ? 'divider' : 'rgba(255, 255, 255, 0.2)'}`,
+                  borderLeft: `1px solid ${mode === 'dark' ? colors.contrast.divider : colors.contrast.border}`,
                   maxWidth: 500
                 }}>
                   <BodyText sx={{ 
                     fontStyle: 'italic', 
-                    color: mode === 'dark' ? 'text.disabled' : 'rgba(255, 255, 255, 0.6)',
+                    color: mode === 'dark' ? 'text.disabled' : colors.contrast.text.disabled,
                     fontSize: '1rem',
                     fontWeight: 300,
                     lineHeight: 1.6
@@ -267,11 +265,8 @@ const Home = () => {
                     textAlign: 'center',
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: 'background.paper',
-                    border: `1px solid ${theme.palette.divider}`,
                     cursor: 'pointer',
                     '&:hover': {
-                      boxShadow: theme.shadows[4],
                       transform: 'translateY(-2px)',
                       transition: 'all 0.3s ease'
                     }
@@ -281,7 +276,7 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
                       size="medium" 
-                      color={theme.palette.text.secondary} 
+                      color={colors.contrast.text.secondary} 
                       variant="minimal" 
                     />
                   </Box>
