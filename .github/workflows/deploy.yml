@@ -49,7 +49,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://ai4u.com.co
+      url: https://www.ai4u.com.co
     runs-on: ubuntu-latest
     needs: build
     permissions:
