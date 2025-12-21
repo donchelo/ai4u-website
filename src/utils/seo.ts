@@ -6,11 +6,11 @@ export const getHomeStructuredData = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "AI4U",
-  "url": "https://ai4u.com.co",
+  "url": "https://www.ai4u.com.co",
   "description": "Soluciones de Inteligencia Artificial personalizadas para tu negocio",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://ai4u.com.co/servicios?q={search_term_string}",
+    "target": "https://www.ai4u.com.co/servicios?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 });
@@ -21,7 +21,7 @@ export const getServicesStructuredData = () => ({
   "@type": "ItemList",
   "name": "Servicios de Inteligencia Artificial",
   "description": "Catálogo completo de servicios de IA personalizados",
-  "url": "https://ai4u.com.co/servicios",
+  "url": "https://www.ai4u.com.co/servicios",
   "numberOfItems": 6,
   "itemListElement": [
     {
@@ -29,21 +29,21 @@ export const getServicesStructuredData = () => ({
       "position": 1,
       "name": "SuperAI Empresarial",
       "description": "Solución integral de IA para empresas",
-      "url": "https://ai4u.com.co/servicios#superai-empresarial"
+      "url": "https://www.ai4u.com.co/servicios#superai-empresarial"
     },
     {
       "@type": "Service",
       "position": 2,
       "name": "GPT Personalizado",
       "description": "Chatbots inteligentes personalizados",
-      "url": "https://ai4u.com.co/servicios#gpt-personalizado"
+      "url": "https://www.ai4u.com.co/servicios#gpt-personalizado"
     },
     {
       "@type": "Service",
       "position": 3,
       "name": "Automatización Inteligente",
       "description": "Automatización de procesos con IA",
-      "url": "https://ai4u.com.co/servicios#automatizacion"
+      "url": "https://www.ai4u.com.co/servicios#automatizacion"
     }
   ]
 });
@@ -57,7 +57,7 @@ export const getServiceStructuredData = (service: Service) => ({
   "provider": {
     "@type": "Organization",
     "name": "AI4U",
-    "url": "https://ai4u.com.co"
+    "url": "https://www.ai4u.com.co"
   },
   "areaServed": {
     "@type": "Country",
@@ -78,7 +78,7 @@ export const getUseCasesStructuredData = () => ({
   "@type": "ItemList",
   "name": "Casos de Uso de IA",
   "description": "Casos de éxito y aplicaciones de inteligencia artificial",
-  "url": "https://ai4u.com.co/casos-de-uso",
+  "url": "https://www.ai4u.com.co/casos-de-uso",
   "itemListElement": [
     {
       "@type": "CreativeWork",
@@ -157,7 +157,7 @@ export const getPageMetaTags = (page: string) => {
 
 // Generar URL canónica
 export const getCanonicalUrl = (path: string = '') => {
-  const baseUrl = 'https://ai4u.com.co';
+  const baseUrl = 'https://www.ai4u.com.co';
   return `${baseUrl}${path}`;
 };
 

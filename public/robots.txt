@@ -26,7 +26,7 @@ Disallow: /build/
 Disallow: /static/
 
 # Sitemap
-Sitemap: https://ai4u.com.co/sitemap.xml
+Sitemap: https://www.ai4u.com.co/sitemap.xml
 
 # Crawl-delay para ser respetuoso con el servidor
 Crawl-delay: 1
