@@ -125,8 +125,8 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
                       size="small" 
-                      color={colors.contrast.text.secondary}
-                      variant="minimal" 
+                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : colors.palette.info}
+                      variant={idx === 0 ? "filled" : "minimal"} 
                     />
                     <H3 sx={{ 
                       ml: 2,
@@ -167,10 +167,10 @@ const Home = () => {
                 {robotFeatures.map((feature, idx) => (
                   <Stack key={idx} direction="row" alignItems="center" spacing={3}>
                     <GeometricIcon 
-                      type={idx === 0 ? "circle" : "dot"} 
+                      type={idx === 0 ? "circle" : idx === 1 ? "triangle" : idx === 2 ? "square" : "dot"} 
                       size="small" 
-                      color={idx === 0 ? colors.palette.accentColors.green : (mode === 'dark' ? colors.contrast.text.disabled : colors.contrast.text.secondary)} 
-                      variant={idx === 0 ? "filled" : "minimal"} 
+                      color={idx === 0 ? colors.palette.accentColors.green : idx === 1 ? colors.palette.accentColors.orange : idx === 2 ? colors.palette.info : (mode === 'dark' ? colors.contrast.text.disabled : colors.contrast.text.secondary)} 
+                      variant={idx === 0 || idx === 1 ? "filled" : "minimal"} 
                     />
                     <BodyText sx={{ 
                       color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? colors.palette.white : colors.contrast.text.secondary), 
@@ -276,8 +276,8 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
                       size="medium" 
-                      color={colors.contrast.text.secondary} 
-                      variant="minimal" 
+                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : idx === 2 ? colors.palette.info : colors.palette.success}
+                      variant={idx === 0 ? "filled" : "minimal"} 
                     />
                   </Box>
                   <H3 sx={{ 

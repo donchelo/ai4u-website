@@ -55,15 +55,15 @@ const WhyAI4U = () => {
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="circle" size="small" color={colors.palette.success} variant="filled" />
+                    <GeometricIcon type="circle" size="small" color={colors.palette.accentColors.green} variant="filled" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Fundador de AI4U</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="triangle" size="small" color={colors.contrast.text.secondary} variant="minimal" />
+                    <GeometricIcon type="triangle" size="small" color={colors.palette.accentColors.orange} variant="filled" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Cofundador de Matt Movilidad</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="square" size="small" color={colors.contrast.text.secondary} variant="minimal" />
+                    <GeometricIcon type="square" size="small" color={colors.palette.info} variant="minimal" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Especialista en automatización</BodyText>
                   </Box>
                 </Stack>
@@ -178,19 +178,19 @@ const WhyAI4U = () => {
                 title: 'Diagnóstico Gratuito',
                 description: 'Evaluamos tu negocio sin costo para identificar oportunidades de automatización.',
                 icon: "circle",
-                color: colors.palette.success
+                color: colors.palette.accentColors.green
               },
               {
                 title: 'Asistentes que Evolucionan',
                 description: 'A diferencia de otros servicios, nuestros asistentes aprenden y mejoran continuamente.',
                 icon: "triangle",
-                color: colors.contrast.text.secondary
+                color: colors.palette.accentColors.orange
               },
               {
                 title: 'Resultados Garantizados',
                 description: '72 horas para implementación. ROI medible desde el primer mes.',
                 icon: "square", 
-                color: colors.contrast.text.secondary
+                color: colors.palette.info
               }
             ].map((benefit, idx) => (
               <Grid item xs={12} md={4} key={idx}>
@@ -417,7 +417,7 @@ const WhyAI4U = () => {
               <GeometricIcon
                 type="arrow-up"
                 size="large"
-                color={colors.palette.success}
+                color={colors.palette.accentColors.green}
                 variant="filled"
               />
             </Box>

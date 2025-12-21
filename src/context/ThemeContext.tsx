@@ -76,7 +76,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 	const isLight = mode === 'light';
 	
 	return {
-		MuiButton: {
+			MuiButton: {
 			styleOverrides: {
 				root: {
 					borderRadius: 8,
@@ -86,11 +86,12 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					transition: 'all 0.2s ease-in-out',
 				},
 				containedPrimary: {
-					backgroundColor: AI4U_PALETTE.accent,
-					color: AI4U_PALETTE.white,
+					// Botón primario minimalista: negro en modo claro, blanco en modo oscuro
+					backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+					color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
 					'&:hover': {
-						backgroundColor: '#E54A00',
-						boxShadow: '0 4px 12px rgba(255, 92, 0, 0.3)',
+						backgroundColor: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[200],
+						boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
 					},
 				},
 				containedSecondary: {
@@ -101,12 +102,14 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					},
 				},
 				outlined: {
+					// Outline minimalista: borde gris, sin naranja
 					borderWidth: '2px',
-					borderColor: AI4U_PALETTE.accent,
-					color: AI4U_PALETTE.accent,
+					borderColor: isLight ? AI4U_PALETTE.gray[400] : AI4U_PALETTE.gray[600],
+					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					'&:hover': {
-						backgroundColor: 'rgba(255, 92, 0, 0.08)',
+						backgroundColor: isLight ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
 						borderWidth: '2px',
+						borderColor: isLight ? AI4U_PALETTE.gray[600] : AI4U_PALETTE.gray[400],
 					},
 				},
 				text: {
@@ -143,9 +146,12 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					},
 				},
 				colorPrimary: {
-					color: AI4U_PALETTE.accent,
+					// IconButton primario minimalista: negro/gris
+					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					'&:hover': {
-						backgroundColor: 'rgba(255, 92, 0, 0.08)',
+						backgroundColor: isLight 
+							? 'rgba(0, 0, 0, 0.08)' 
+							: 'rgba(255, 255, 255, 0.12)',
 					},
 				},
 			},
@@ -207,10 +213,11 @@ const getPalette = (mode: PaletteMode) => {
 	return {
 		mode,
 		primary: {
-			main: AI4U_PALETTE.accent,
-			light: '#FF7C33',
-			dark: '#E54A00',
-			contrastText: AI4U_PALETTE.white,
+			// Color primario minimalista: negro en modo claro, blanco en modo oscuro
+			main: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+			light: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[200],
+			dark: isLight ? AI4U_PALETTE.gray[900] : AI4U_PALETTE.gray[100],
+			contrastText: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
 		},
 		secondary: {
 			main: AI4U_PALETTE.gray[600],
@@ -236,6 +243,8 @@ const getPalette = (mode: PaletteMode) => {
 		},
 		error: { main: AI4U_PALETTE.error },
 		success: { main: AI4U_PALETTE.success },
+		warning: { main: AI4U_PALETTE.warning },
+		info: { main: AI4U_PALETTE.info },
 		divider: isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800],
 	};
 };

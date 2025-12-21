@@ -235,25 +235,25 @@ const Services: React.FC = () => {
                   number: 1,
                   title: 'Diagnóstico gratuito (30 minutos)',
                   description: 'Identificamos todas las oportunidades de automatización en tu negocio',
-                  color: colors.contrast.text.secondary
+                  color: colors.palette.accentColors.orange
                 },
                 {
                   number: 2,
                   title: 'Definición de prioridades',
                   description: 'Establecemos qué procesos automatizar primero según tu ROI',
-                  color: colors.contrast.text.secondary
+                  color: colors.palette.accentColors.green
                 },
                 {
                   number: 3,
                   title: 'Presupuesto personalizado',
                   description: 'Adaptamos las soluciones a tu capacidad de inversión',
-                  color: colors.contrast.text.secondary
+                  color: colors.palette.info
                 },
                 {
                   number: 4,
                   title: 'Implementación',
                   description: 'Desarrollamos e integramos las soluciones en tu negocio',
-                  color: colors.contrast.text.secondary
+                  color: colors.palette.success
                 }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} key={idx}>

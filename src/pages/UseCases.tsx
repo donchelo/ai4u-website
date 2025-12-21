@@ -500,7 +500,7 @@ const UseCases = () => {
               <Stack spacing={4}>
                 <Card variant="elevated" sx={{ p: 4 }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="circle" size="medium" color={colors.palette.accent} variant="filled" />
+                    <GeometricIcon type="circle" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         95%
@@ -514,7 +514,7 @@ const UseCases = () => {
                 
                 <Card variant="elevated" sx={{ p: 4 }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="square" size="medium" color={colors.palette.black} variant="filled" />
+                    <GeometricIcon type="square" size="medium" color={colors.palette.accentColors.green} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         300%
@@ -528,7 +528,7 @@ const UseCases = () => {
                 
                 <Card variant="elevated" sx={{ p: 4 }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="triangle" size="medium" color={colors.palette.success} variant="filled" />
+                    <GeometricIcon type="triangle" size="medium" color={colors.palette.info} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         24/7
@@ -555,7 +555,7 @@ const UseCases = () => {
               fontSize: { xs: '2rem', md: '2.5rem' },
               color: colors.contrast.text.primary
             }}>
-              ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.accent }}>caso de éxito</Box>?
+              ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>caso de éxito</Box>?
             </H2>
             <BodyText sx={{ 
               color: colors.contrast.text.secondary,

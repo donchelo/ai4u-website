@@ -167,10 +167,8 @@ const Section = ({
           {title && (
             <H2 sx={{ 
               mb: 2,
-              background: 'linear-gradient(45deg, #FF5C00 30%, #FF7477 90%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              // Estilo minimalista: usar color del tema en lugar de gradiente naranja
+              color: variant === 'futuristic' ? '#FFFFFF' : theme.palette.text.primary,
             }}>
               {title}
             </H2>

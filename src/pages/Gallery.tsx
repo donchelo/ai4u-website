@@ -14,7 +14,7 @@ const GalleryPage: React.FC = () => {
       {/* Estado de carga */}
       {isLoading && (
         <Box display="flex" justifyContent="center" alignItems="center" py={8}>
-          <CircularProgress size={60} sx={{ color: colors.palette.accent }} />
+          <CircularProgress size={60} sx={{ color: colors.palette.accentColors.orange }} />
         </Box>
       )}
 
