@@ -103,7 +103,7 @@ const Home = () => {
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            ¿El trabajo te está robando momentos irreemplazables?
+            ¿El trabajo te está robando <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>momentos irreemplazables</Box>?
           </H2>
           <Grid container spacing={4}>
             {features.map((feature, idx) => (
@@ -115,9 +115,12 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     cursor: 'pointer',
+                    borderLeft: `4px solid ${idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : colors.palette.info}`,
                     '&:hover': {
                       transform: 'translateY(-2px)',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      borderLeftWidth: '6px',
+                      boxShadow: `0 8px 24px ${idx === 0 ? `${colors.palette.accentColors.orange}20` : idx === 1 ? `${colors.palette.accentColors.green}20` : `${colors.palette.info}20`}`
                     }
                   }}
                 >
@@ -125,8 +128,8 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
                       size="small" 
-                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : colors.palette.info}
-                      variant={idx === 0 ? "filled" : "minimal"} 
+                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.orange : colors.palette.accentColors.orange}
+                      variant="filled" 
                     />
                     <H3 sx={{ 
                       ml: 2,
@@ -169,8 +172,8 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "circle" : idx === 1 ? "triangle" : idx === 2 ? "square" : "dot"} 
                       size="small" 
-                      color={idx === 0 ? colors.palette.accentColors.green : idx === 1 ? colors.palette.accentColors.orange : idx === 2 ? colors.palette.info : (mode === 'dark' ? colors.contrast.text.disabled : colors.contrast.text.secondary)} 
-                      variant={idx === 0 || idx === 1 ? "filled" : "minimal"} 
+                      color={colors.palette.accentColors.orange}
+                      variant="filled" 
                     />
                     <BodyText sx={{ 
                       color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? colors.palette.white : colors.contrast.text.secondary), 
@@ -251,7 +254,7 @@ const Home = () => {
       <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            Servicios
+            <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Servicios</Box> que transforman
           </H2>
           
           {/* Mostrar las 4 categorías como un grupo armónico */}
@@ -266,9 +269,12 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     cursor: 'pointer',
+                    borderTop: `3px solid ${colors.palette.accentColors.orange}`,
                     '&:hover': {
                       transform: 'translateY(-2px)',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      borderTopWidth: '5px',
+                      boxShadow: `0 8px 24px ${colors.palette.accentColors.orange}25`
                     }
                   }}
                 >
@@ -276,8 +282,8 @@ const Home = () => {
                     <GeometricIcon 
                       type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
                       size="medium" 
-                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : idx === 2 ? colors.palette.info : colors.palette.success}
-                      variant={idx === 0 ? "filled" : "minimal"} 
+                      color={colors.palette.accentColors.orange}
+                      variant="filled" 
                     />
                   </Box>
                   <H3 sx={{ 
@@ -299,7 +305,7 @@ const Home = () => {
         <Container maxWidth="md">
           <Box sx={{ textAlign: 'center' }}>
             <H2 sx={{ mb: 4, fontWeight: 400, color: 'text.primary' }}>
-              ¿Listo para transformar tu empresa?
+              ¿Listo para <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>transformar</Box> tu empresa?
             </H2>
             <Stack 
               direction={{ xs: 'column', sm: 'row' }} 

@@ -50,12 +50,12 @@ const WhyAI4U = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   color: colors.contrast.text.primary
                 }}>
-                  La parte humana detrás de la tecnología
+                  La parte <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>humana</Box> detrás de la tecnología
                 </H2>
                 
                 <Stack spacing={3} sx={{ mb: 6 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="circle" size="small" color={colors.palette.accentColors.green} variant="filled" />
+                    <GeometricIcon type="circle" size="small" color={colors.palette.accentColors.orange} variant="filled" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Fundador de AI4U</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -63,7 +63,7 @@ const WhyAI4U = () => {
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Cofundador de Matt Movilidad</BodyText>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <GeometricIcon type="square" size="small" color={colors.palette.info} variant="minimal" />
+                    <GeometricIcon type="square" size="small" color={colors.palette.accentColors.orange} variant="filled" />
                     <BodyText sx={{ fontSize: '1rem', color: colors.contrast.text.primary }}>Especialista en automatización</BodyText>
                   </Box>
                 </Stack>
@@ -169,7 +169,7 @@ const WhyAI4U = () => {
             fontSize: { xs: '2rem', md: '2.5rem' },
             color: colors.contrast.text.primary
           }}>
-            ¿Qué nos hace diferentes?
+            ¿Qué nos hace <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>diferentes</Box>?
           </H2>
 
           <Grid container spacing={6}>
@@ -178,7 +178,7 @@ const WhyAI4U = () => {
                 title: 'Diagnóstico Gratuito',
                 description: 'Evaluamos tu negocio sin costo para identificar oportunidades de automatización.',
                 icon: "circle",
-                color: colors.palette.accentColors.green
+                color: colors.palette.accentColors.orange
               },
               {
                 title: 'Asistentes que Evolucionan',
@@ -190,7 +190,7 @@ const WhyAI4U = () => {
                 title: 'Resultados Garantizados',
                 description: '72 horas para implementación. ROI medible desde el primer mes.',
                 icon: "square", 
-                color: colors.palette.info
+                color: colors.palette.accentColors.orange
               }
             ].map((benefit, idx) => (
               <Grid item xs={12} md={4} key={idx}>
@@ -199,10 +199,12 @@ const WhyAI4U = () => {
                   textAlign: 'center',
                   p: 4,
                   cursor: 'pointer',
+                  borderTop: `4px solid ${colors.palette.accentColors.orange}`,
                   '&:hover': {
-                    boxShadow: (theme) => `0 ${theme.spacing(1)} ${theme.spacing(4)} ${alpha(theme.palette.common.black, 0.12)}`,
+                    boxShadow: `0 8px 24px ${colors.palette.accentColors.orange}30`,
                     transform: (theme) => `translateY(-${theme.spacing(0.25)})`,
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    borderTopWidth: '6px'
                   }
                 }}>
                   <Box sx={{ mb: 3 }}>
@@ -417,7 +419,7 @@ const WhyAI4U = () => {
               <GeometricIcon
                 type="arrow-up"
                 size="large"
-                color={colors.palette.accentColors.green}
+                color={colors.palette.accentColors.orange}
                 variant="filled"
               />
             </Box>
@@ -427,7 +429,7 @@ const WhyAI4U = () => {
               fontSize: { xs: '2rem', md: '2.5rem' },
               fontWeight: 300
             }}>
-              ¿Listo para liberar tu tiempo estratégico?
+              ¿Listo para <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>liberar</Box> tu tiempo estratégico?
             </H2>
             
             <Stack 

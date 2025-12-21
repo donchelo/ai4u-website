@@ -217,7 +217,7 @@ const Services: React.FC = () => {
                 letterSpacing: '-0.02em',
                 mb: 2
               }}>
-                Nuestro proceso
+                Nuestro <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>proceso</Box>
               </H2>
               <BodyText sx={{ 
                 fontSize: { xs: '1rem', md: '1.1rem' },
@@ -241,19 +241,19 @@ const Services: React.FC = () => {
                   number: 2,
                   title: 'Definición de prioridades',
                   description: 'Establecemos qué procesos automatizar primero según tu ROI',
-                  color: colors.palette.accentColors.green
+                  color: colors.palette.accentColors.orange
                 },
                 {
                   number: 3,
                   title: 'Presupuesto personalizado',
                   description: 'Adaptamos las soluciones a tu capacidad de inversión',
-                  color: colors.palette.info
+                  color: colors.palette.accentColors.orange
                 },
                 {
                   number: 4,
                   title: 'Implementación',
                   description: 'Desarrollamos e integramos las soluciones en tu negocio',
-                  color: colors.palette.success
+                  color: colors.palette.accentColors.orange
                 }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} key={idx}>
@@ -276,7 +276,7 @@ const Services: React.FC = () => {
         <Container maxWidth="md">
           <Stack spacing={3} alignItems="center" textAlign="center">
             <H2 sx={{ fontSize: { xs: '1.4rem', md: '1.6rem' } }}>
-              ¿Necesitas ayuda?
+              ¿Necesitas <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ayuda</Box>?
             </H2>
             <BodyText sx={{ maxWidth: 500 }}>
               Agenda una consulta gratuita de 30 minutos

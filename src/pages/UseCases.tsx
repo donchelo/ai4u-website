@@ -451,7 +451,7 @@ const UseCases = () => {
             letterSpacing: '-0.02em',
             color: colors.contrast.text.primary
           }}>
-            Nuestros Clientes
+            Nuestros <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Clientes</Box>
           </H1>
           <BodyText sx={{ 
             mb: 8, 
@@ -482,7 +482,7 @@ const UseCases = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   color: colors.contrast.text.primary
                 }}>
-                  Resultados que Hablan
+                  Resultados que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Hablan</Box>
                 </H2>
                 <BodyText sx={{ 
                   mb: 6,
@@ -498,7 +498,7 @@ const UseCases = () => {
             
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
-                <Card variant="elevated" sx={{ p: 4 }}>
+                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
                     <GeometricIcon type="circle" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
                     <Box>
@@ -512,9 +512,9 @@ const UseCases = () => {
                   </Stack>
                 </Card>
                 
-                <Card variant="elevated" sx={{ p: 4 }}>
+                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="square" size="medium" color={colors.palette.accentColors.green} variant="filled" />
+                    <GeometricIcon type="square" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         300%
@@ -526,9 +526,9 @@ const UseCases = () => {
                   </Stack>
                 </Card>
                 
-                <Card variant="elevated" sx={{ p: 4 }}>
+                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
                   <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="triangle" size="medium" color={colors.palette.info} variant="filled" />
+                    <GeometricIcon type="triangle" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
                     <Box>
                       <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
                         24/7
