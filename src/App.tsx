@@ -12,7 +12,8 @@ import {
   WhyAI4U, 
   UseCases, 
   Gallery,
-  DesignSystem
+  DesignSystem,
+  Pitch
 } from './pages/lazy';
 
 function App() {
@@ -87,6 +88,16 @@ function App() {
                       element={
                         <LazyPage>
                           <DesignSystem />
+                        </LazyPage>
+                      } 
+                    />
+
+                    {/* Pitch Route */}
+                    <Route 
+                      path={ROUTES.PITCH} 
+                      element={
+                        <LazyPage>
+                          <Pitch />
                         </LazyPage>
                       } 
                     />
