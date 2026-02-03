@@ -79,45 +79,49 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			MuiButton: {
 			styleOverrides: {
 				root: {
-					borderRadius: 8,
-					fontWeight: 600,
-					textTransform: 'none',
+					borderRadius: 0, // Sharp edges
+					fontWeight: 800, // Thicker font
+					textTransform: 'uppercase', // Brutalist style
 					boxShadow: 'none',
-					transition: 'all 0.2s ease-in-out',
+					padding: '12px 24px',
+					transition: 'all 0.1s ease-in-out',
+					border: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
 				},
 				containedPrimary: {
-					// Botón primario minimalista: negro en modo claro, blanco en modo oscuro
 					backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
 					'&:hover': {
-						backgroundColor: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[200],
-						boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+						backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+						color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+						boxShadow: isLight ? '4px 4px 0px #000000' : '4px 4px 0px #FFFFFF',
 					},
 				},
 				containedSecondary: {
-					backgroundColor: isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800],
+					backgroundColor: 'transparent',
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+					border: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
 					'&:hover': {
-						backgroundColor: isLight ? AI4U_PALETTE.gray[300] : AI4U_PALETTE.gray[700],
+						backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+						color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
 					},
 				},
 				outlined: {
-					// Outline minimalista: borde gris, sin naranja
 					borderWidth: '2px',
-					borderColor: isLight ? AI4U_PALETTE.gray[400] : AI4U_PALETTE.gray[600],
+					borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					'&:hover': {
-						backgroundColor: isLight ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
+						backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+						color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
 						borderWidth: '2px',
-						borderColor: isLight ? AI4U_PALETTE.gray[600] : AI4U_PALETTE.gray[400],
 					},
 				},
 				text: {
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+					fontWeight: 700,
+					textDecoration: 'underline',
 					'&:hover': {
-						backgroundColor: isLight 
-							? 'rgba(0, 0, 0, 0.04)' 
-							: 'rgba(255, 255, 255, 0.08)',
+						backgroundColor: 'transparent',
+						opacity: 0.8,
 					},
 				},
 			},
@@ -125,12 +129,13 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiCard: {
 			styleOverrides: {
 				root: {
-					borderRadius: 12,
-					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.gray[900],
-					border: `1px solid ${isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800]}`,
-					boxShadow: isLight 
-						? '0 4px 12px rgba(0,0,0,0.05)' 
-						: '0 4px 12px rgba(0,0,0,0.2)',
+					borderRadius: 0, // Sharp edges
+					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+					border: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
+					boxShadow: 'none',
+					'&:hover': {
+						boxShadow: isLight ? '8px 8px 0px #000000' : '8px 8px 0px #FFFFFF',
+					},
 				},
 			},
 		},
@@ -159,7 +164,8 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiDivider: {
 			styleOverrides: {
 				root: {
-					borderColor: isLight ? AI4U_PALETTE.gray[300] : AI4U_PALETTE.gray[700],
+					borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+					borderBottomWidth: '2px',
 				},
 			},
 		},
@@ -174,19 +180,19 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-					boxShadow: isLight 
-						? '0 1px 3px rgba(0,0,0,0.1)' 
-						: '0 1px 3px rgba(0,0,0,0.3)',
+					boxShadow: 'none',
+					borderBottom: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
 				},
 			},
 		},
 		MuiChip: {
 			styleOverrides: {
 				root: {
-					borderRadius: 8,
-					backgroundColor: isLight ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
-					border: `1px solid ${isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800]}`,
+					borderRadius: 0,
+					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+					border: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+					fontWeight: 700,
 				},
 			},
 		},
@@ -289,7 +295,7 @@ const createAI4UTheme = (mode: PaletteMode): Theme => {
 		typography,
 		components: getComponentsOverrides(mode),
 		shape: {
-			borderRadius: 8,
+			borderRadius: 0, // Bordes afilados para un look moderno/brutalista
 		},
 		shadows: getCustomShadows(),
 	});

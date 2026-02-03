@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { 
+  Giant,
   H1, 
   H2, 
   H3, 
@@ -201,7 +202,7 @@ const UseCases = () => {
 
   return (
     <Box sx={{ 
-      background: `linear-gradient(135deg, ${colors.contrast.background} 0%, ${colors.contrast.surface} 100%)`
+      bgcolor: colors.contrast.background
     }}>
       {/* SEO Head */}
       <SEOHead
@@ -211,363 +212,171 @@ const UseCases = () => {
         canonical="https://ai4u.com.co/casos-de-uso"
       />
 
-      {/* Hero Section with Client Logos */}
+      {/* Clients Carousel Section - Inspiración WHITE_MINIMAL */}
       <Box sx={{ 
-        py: { xs: 6, md: 12 },
-        textAlign: 'center'
+        py: { xs: 10, md: 18 },
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.white,
+        color: colors.palette.black,
+        display: 'flex',
+        justifyContent: 'center'
       }}>
-        <Container maxWidth="lg">
-          {/* Carrusel de Logos Protagonistas */}
-          <Box sx={{ 
-            position: 'relative',
-            width: '100%',
-            overflow: 'hidden',
-            borderRadius: 4,
-            mb: 6,
-            maxWidth: '100%'
+        <Container maxWidth="xl">
+          <H1 sx={{ 
+            mb: 10, 
+            fontWeight: 900,
+            textTransform: 'uppercase',
+            color: colors.palette.black,
+            fontSize: { xs: '3rem', md: '6rem' }
           }}>
-            {/* Contenedor del carrusel */}
+            NUESTROS <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>CLIENTES</Box>
+          </H1>
+
+          <Box sx={{ position: 'relative', mb: 8 }}>
             <Box
               ref={scrollContainerRef}
               sx={{
                 display: 'flex',
-                gap: { xs: 2, sm: 2, md: 2, lg: 2 },
+                gap: 4,
                 scrollBehavior: 'smooth',
-                scrollSnapType: 'x mandatory',
                 '&::-webkit-scrollbar': { display: 'none' },
-                msOverflowStyle: 'none',
-                scrollbarWidth: 'none',
-                px: { xs: 2, sm: 2, md: 3, lg: 2 },
-                width: '100%',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                px: 2
               }}
             >
               {infiniteClients.map((client, index) => (
                 <Box
                   key={`${client.id}-${index}`}
                   sx={{
-                    flex: '0 0 calc(25% - 6px)', // Exactamente 4 clientes por fila en desktop
-                    minWidth: { 
-                      xs: 'calc(100% - 8px)', // 1 cliente en móvil
-                      sm: 'calc(50% - 8px)',   // 2 clientes en tablet pequeño
-                      md: 'calc(33.333% - 10px)', // 3 clientes en tablet
-                      lg: 'calc(25% - 6px)'   // 4 clientes en desktop
-                    },
-                    scrollSnapAlign: 'start',
-                    position: 'relative',
-                    height: (theme) => ({ 
-                      xs: theme.spacing(25), 
-                      sm: theme.spacing(31.25), 
-                      md: theme.spacing(37.5), 
-                      lg: theme.spacing(35) 
-                    }),
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    flex: '0 0 auto',
+                    width: { 
+                      xs: '100%', 
+                      sm: 'calc(50% - 16px)', 
+                      md: 'calc(33.333% - 24px)', 
+                      lg: 'calc(25% - 24px)' 
+                    }
                   }}
                 >
-                  <Box
-                    component="a"
-                    href={client.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Card 
+                    variant="default" 
                     sx={{ 
-                      textDecoration: 'none',
-                      width: '100%',
-                      height: '100%'
+                      height: '300px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      p: 4,
+                      bgcolor: colors.palette.white,
+                      borderColor: colors.palette.black,
+                      borderWidth: '4px',
+                      '&:hover': {
+                        transform: 'translate(8px, -8px)',
+                        boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                      }
                     }}
                   >
-                    <Card 
-                      variant="elevated" 
-                      sx={{ 
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        cursor: 'pointer',
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        backdropFilter: 'blur(20px)',
-                        backgroundColor: (theme) => alpha(theme.palette.common.white, 0.08),
-                        border: (theme) => `${theme.spacing(0.25)} solid ${alpha(theme.palette.common.white, 0.1)}`,
-                        p: { xs: 2, sm: 2.5, md: 3, lg: 3 },
-                        '&:hover': {
-                          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
-                          borderColor: colors.contrast.text.primary,
-                          backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                          transform: 'translateY(-8px) scale(1.02)'
-                        }
-                      }}
-                    >
-                      {/* Logo Principal */}
-                      <Box sx={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        height: { xs: '85%', sm: '90%', md: '95%', lg: '95%' },
-                        width: '100%',
-                        mb: { xs: 0.5, sm: 0.5, md: 0.5, lg: 0.5 }
-                      }}>
-                        <Box
-                          component="img"
-                          src={client.logo}
-                          alt={`Logo de ${client.name}`}
-                          sx={{
-                            maxWidth: '95%',
-                            maxHeight: '95%',
-                            objectFit: 'contain',
-                            filter: 'grayscale(0%)',
-                            opacity: 1,
-                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                            '&:hover': {
-                              filter: 'grayscale(0%)',
-                              opacity: 1,
-                              transform: 'scale(1.15)'
-                            }
-                          }}
-                        />
-                      </Box>
-                      
-                      {/* Información del cliente */}
-                      <Box sx={{ textAlign: 'center' }}>
-                        <BodyText sx={{ 
-                          color: colors.contrast.text.secondary,
-                          fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.8rem', lg: '0.7rem' },
-                          fontWeight: 400,
-                          opacity: 0.8
-                        }}>
-                          {client.sector}
-                        </BodyText>
-                      </Box>
-                    </Card>
-                  </Box>
+                    <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Box
+                        component="img"
+                        src={client.logo}
+                        alt={client.name}
+                        sx={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
+                      />
+                    </Box>
+                    <BodyText sx={{ textAlign: 'center', fontWeight: 800, textTransform: 'uppercase', mt: 2 }}>
+                      {client.sector}
+                    </BodyText>
+                  </Card>
                 </Box>
               ))}
             </Box>
 
-            {/* Botones de navegación */}
             <IconButton
               onClick={handlePrevious}
-              disabled={isNavigating}
-              aria-label="Cliente anterior"
               sx={{
                 position: 'absolute',
-                left: { xs: 8, md: 16 },
+                left: -20,
                 top: '50%',
-                transform: 'translateY(-50%)',
-                bgcolor: (theme) => alpha(theme.palette.common.white, 0.1),
-                backdropFilter: 'blur(10px)',
-                border: (theme) => `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
-                color: colors.contrast.text.primary,
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  bgcolor: (theme) => alpha(theme.palette.common.white, 0.2),
-                  transform: 'translateY(-50%) scale(1.1)'
-                },
-                '&:disabled': {
-                  opacity: 0.5,
-                  cursor: 'not-allowed'
-                },
-                zIndex: 2
+                bgcolor: colors.palette.black,
+                color: colors.palette.white,
+                '&:hover': { bgcolor: colors.palette.accentColors.orange }
               }}
             >
-              <ChevronLeftIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
+              <ChevronLeftIcon />
             </IconButton>
 
             <IconButton
               onClick={handleNext}
-              disabled={isNavigating}
-              aria-label="Siguiente cliente"
               sx={{
                 position: 'absolute',
-                right: { xs: 8, md: 16 },
+                right: -20,
                 top: '50%',
-                transform: 'translateY(-50%)',
-                bgcolor: (theme) => alpha(theme.palette.common.white, 0.1),
-                backdropFilter: 'blur(10px)',
-                border: (theme) => `1px solid ${alpha(theme.palette.common.white, 0.2)}`,
-                color: colors.contrast.text.primary,
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  bgcolor: (theme) => alpha(theme.palette.common.white, 0.2),
-                  transform: 'translateY(-50%) scale(1.1)'
-                },
-                '&:disabled': {
-                  opacity: 0.5,
-                  cursor: 'not-allowed'
-                },
-                zIndex: 2
+                bgcolor: colors.palette.black,
+                color: colors.palette.white,
+                '&:hover': { bgcolor: colors.palette.accentColors.orange }
               }}
             >
-              <ChevronRightIcon sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }} />
+              <ChevronRightIcon />
             </IconButton>
-
-            {/* Indicadores de posición */}
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 16,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 1,
-                zIndex: 2
-              }}
-            >
-              {/* Puntos indicadores */}
-              <Box sx={{ display: 'flex', gap: 1 }}>
-                {clients.map((_, index) => (
-                  <Box
-                    key={index}
-                    onClick={() => scrollToClient(index)}
-                    sx={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: '50%',
-                      bgcolor: currentIndex === index 
-                        ? colors.contrast.text.primary 
-                        : 'rgba(255, 255, 255, 0.3)',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        bgcolor: colors.contrast.text.primary,
-                        transform: 'scale(1.2)'
-                      }
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
           </Box>
 
-          {/* Título más pequeño */}
-          <H1 sx={{ 
-            mb: 4, 
-            fontWeight: 300,
-            fontSize: { xs: '2rem', md: '3rem' },
-            letterSpacing: '-0.02em',
-            color: colors.contrast.text.primary
-          }}>
-            Nuestros <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Clientes</Box>
-          </H1>
-          <BodyText sx={{ 
-            mb: 8, 
-            color: colors.contrast.text.secondary,
-            fontSize: '1.1rem',
-            lineHeight: 1.6,
-            fontWeight: 300,
-            maxWidth: 700,
-            mx: 'auto'
-          }}>
-            Empresas líderes que confían en AI4U para su transformación digital. Cada logo representa una alianza exitosa en innovación y automatización.
+          <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, maxWidth: '800px' }}>
+            EMPRESAS LÍDERES QUE CONFÍAN EN AI4U PARA SU TRANSFORMACIÓN DIGITAL. CADA LOGO REPRESENTA UNA ALIANZA EXITOSA EN INNOVACIÓN.
           </BodyText>
         </Container>
       </Box>
 
-      {/* Metrics Section */}
-      <Box sx={{ py: { xs: 8, md: 12 } }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="center">
+      {/* Results Section - Inspiración ORANGE_PUNCH */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.accentColors.orange,
+        color: colors.palette.black,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
+          <Grid container spacing={10} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Box sx={{ 
-                textAlign: { xs: 'center', md: 'left' },
-                mb: { xs: 6, md: 0 }
-              }}>
-                <H2 sx={{ 
-                  mb: 4,
-                  fontWeight: 300,
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  color: colors.contrast.text.primary
-                }}>
-                  Resultados que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Hablan</Box>
-                </H2>
-                <BodyText sx={{ 
-                  mb: 6,
-                  color: colors.contrast.text.secondary,
-                  fontSize: '1.1rem',
-                  lineHeight: 1.6,
-                  fontWeight: 300
-                }}>
-                  Nuestras soluciones de IA han transformado empresas de todos los tamaños, generando resultados medibles y crecimiento sostenible.
-                </BodyText>
-              </Box>
+              <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 6, lineHeight: 0.9 }}>
+                RESULTADOS QUE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>HABLAN</Box>
+              </H1>
+              <BodyText sx={{ fontSize: '2rem', fontWeight: 600, lineHeight: 1.2 }}>
+                NUESTRAS SOLUCIONES DE IA HAN TRANSFORMADO EMPRESAS GENERANDO CRECIMIENTO SOSTENIBLE.
+              </BodyText>
             </Grid>
             
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
-                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
-                  <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="circle" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
-                    <Box>
-                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
-                        95%
-                      </H3>
-                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
-                        Reducción en tiempo operativo
-                      </BodyText>
-                    </Box>
-                  </Stack>
-                </Card>
-                
-                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
-                  <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="square" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
-                    <Box>
-                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
-                        300%
-                      </H3>
-                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
-                        Incremento en eficiencia
-                      </BodyText>
-                    </Box>
-                  </Stack>
-                </Card>
-                
-                <Card variant="elevated" sx={{ p: 4, borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
-                  <Stack direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon type="triangle" size="medium" color={colors.palette.accentColors.orange} variant="filled" />
-                    <Box>
-                      <H3 sx={{ mb: 1, fontWeight: 700, fontSize: { xs: '3rem', sm: '4rem', md: '5rem' }, lineHeight: 0.9, color: colors.contrast.text.primary, letterSpacing: '-0.02em' }}>
-                        24/7
-                      </H3>
-                      <BodyText sx={{ color: colors.contrast.text.secondary, fontSize: { xs: '0.9rem', sm: '1rem' }, fontWeight: 300 }}>
-                        Automatización continua
-                      </BodyText>
-                    </Box>
-                  </Stack>
-                </Card>
+                {[
+                  { label: 'REDUCCIÓN TIEMPO OPERATIVO', value: '95%' },
+                  { label: 'INCREMENTO EFICIENCIA', value: '300%' },
+                  { label: 'AUTOMATIZACIÓN CONTINUA', value: '24/7' }
+                ].map((item, idx) => (
+                  <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.black}`, pl: 4 }}>
+                    <H2 sx={{ fontWeight: 900, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
+                    <BodyText sx={{ fontWeight: 800, textTransform: 'uppercase' }}>{item.label}</BodyText>
+                  </Box>
+                ))}
               </Stack>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {/* CTA Section */}
-      <Box sx={{ py: { xs: 8, md: 12 } }}>
-        <Container maxWidth="md">
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <H2 sx={{ 
-              mb: 3,
-              fontWeight: 300,
-              fontSize: { xs: '2rem', md: '2.5rem' },
-              color: colors.contrast.text.primary
-            }}>
-              ¿Listo para ser nuestro próximo <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>caso de éxito</Box>?
-            </H2>
-            <BodyText sx={{ 
-              color: colors.contrast.text.secondary,
-              fontSize: '1.1rem',
-              lineHeight: 1.6,
-              maxWidth: 600,
-              mx: 'auto'
-            }}>
-              Únete a las empresas que ya transformaron sus procesos con IA. Tu logo podría ser el próximo en esta galería.
-            </BodyText>
-          </Box>
-          <DiagnosticCTA />
+      {/* CTA Section - Inspiración GREEN_FRESH */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.accentColors.green,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="lg">
+          <Stack spacing={8} textAlign="center" alignItems="center">
+            <Giant sx={{ color: colors.palette.black }}>
+              ¿LISTO PARA SER EL PRÓXIMO ÉXITO?
+            </Giant>
+            <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
+          </Stack>
         </Container>
       </Box>
 

@@ -15,18 +15,19 @@ export const TYPOGRAPHY_TOKENS = {
     bold: 700,
   },
   
-  // Tamaños de fuente (escala más dramática)
+  // Tamaños de fuente (escala más dramática para estilo moderno/brutalista)
   fontSize: {
-    xs: '0.875rem',   // 14px
-    sm: '1rem',       // 16px
-    base: '1.125rem', // 18px
-    lg: '1.25rem',    // 20px
-    xl: '1.5rem',     // 24px
-    '2xl': '2rem',    // 32px
-    '3xl': '3rem',    // 48px
-    '4xl': '4rem',    // 64px
-    '5xl': '5rem',    // 80px
-    '6xl': '6rem',    // 96px
+    xs: '0.875rem',    // 14px
+    sm: '1rem',        // 16px
+    base: '1.25rem',   // 20px (aumentado)
+    lg: '1.5rem',      // 24px
+    xl: '2rem',        // 32px
+    '2xl': '3rem',     // 48px
+    '3xl': '4.5rem',   // 72px
+    '4xl': '6rem',     // 96px
+    '5xl': '8rem',     // 128px
+    '6xl': '10rem',    // 160px
+    '7xl': '12rem',    // 192px (gigante)
   },
   
   // Alturas de línea (más espaciadas)
@@ -49,45 +50,54 @@ export const TYPOGRAPHY_TOKENS = {
   },
 } as const;
 
-// Variantes de texto minimalistas
+// Variantes de texto minimalistas/brutalistas
 export const TEXT_VARIANTS = {
-  // Títulos principales (más dramáticos)
+  // Títulos principales (gigantes y dramáticos pero legibles en PC)
   display: {
+    giant: {
+      fontSize: { xs: '3.5rem', md: '6rem', lg: '9rem' }, // Reducido de 12rem
+      fontWeight: 900,
+      lineHeight: 0.95,
+      letterSpacing: '-0.04em',
+      textTransform: 'uppercase' as const,
+    },
     large: {
-      fontSize: { xs: '3rem', md: '4.5rem', lg: '6rem' },
-      fontWeight: 300,
+      fontSize: { xs: '2.5rem', md: '4.5rem', lg: '6.5rem' }, // Reducido de 8rem
+      fontWeight: 800,
+      lineHeight: 1.0,
+      letterSpacing: '-0.03em',
+    },
+    medium: {
+      fontSize: { xs: '2rem', md: '3.5rem', lg: '4.5rem' }, // Reducido de 5rem
+      fontWeight: 700,
       lineHeight: 1.1,
       letterSpacing: '-0.02em',
     },
-    medium: {
-      fontSize: { xs: '2rem', md: '3rem', lg: '4rem' },
-      fontWeight: 400,
+    small: {
+      fontSize: { xs: '1.75rem', md: '2.25rem', lg: '2.75rem' }, // Reducido de 3rem
+      fontWeight: 600,
       lineHeight: 1.2,
       letterSpacing: '-0.01em',
     },
-    small: {
-      fontSize: { xs: '1.5rem', md: '2rem', lg: '2.5rem' },
-      fontWeight: 500,
-      lineHeight: 1.3,
-    },
   },
   
-  // Texto de cuerpo (más espaciado)
+  // Texto de cuerpo (espacioso y moderno)
   body: {
     large: {
+      fontSize: { xs: '1.25rem', md: '1.5rem' },
+      fontWeight: 400,
+      lineHeight: 1.8,
+      letterSpacing: '-0.01em',
+    },
+    regular: {
       fontSize: { xs: '1.125rem', md: '1.25rem' },
       fontWeight: 400,
       lineHeight: 1.7,
     },
-    regular: {
-      fontSize: { xs: '1rem', md: '1.125rem' },
+    small: {
+      fontSize: '1rem',
       fontWeight: 400,
       lineHeight: 1.6,
-    },
-    small: {
-      fontSize: '0.875rem',
-      fontWeight: 400,
-      lineHeight: 1.5,
     },
   },
   

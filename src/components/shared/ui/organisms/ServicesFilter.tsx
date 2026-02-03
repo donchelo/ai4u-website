@@ -39,22 +39,29 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
 
   return (
     <Box sx={{
-      mb: 3,
-      p: 2.5,
-      background: colors.contrast.surface,
-      border: `1px solid ${colors.contrast.border}`,
-      borderRadius: 2
+      mb: 4,
+      p: 4,
+      background: colors.contrast.background,
+      border: `4px solid ${colors.contrast.text.primary}`,
+      borderRadius: 0,
+      transition: 'all 0.2s ease',
+      '&:hover': {
+        boxShadow: `8px 8px 0px ${colors.contrast.text.primary}`,
+        transform: 'translate(-4px, -4px)'
+      }
     }}>
       {/* Header con contador */}
       <Stack 
         direction="row" 
         justifyContent="space-between" 
         alignItems="center" 
-        sx={{ mb: 2 }}
+        sx={{ mb: 3 }}
       >
         <Box sx={{ 
-          fontSize: '0.875rem', 
-          fontWeight: 500,
+          fontSize: '1.25rem', 
+          fontWeight: 900,
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
           color: colors.contrast.text.primary 
         }}>
           {filteredCount} servicios
@@ -66,14 +73,13 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             size="small"
             onClick={onClearFilters}
             sx={{
-              color: colors.contrast.text.secondary,
-              fontSize: '0.75rem',
-              minWidth: 'auto',
-              px: 1,
-              py: 0.5,
+              color: colors.contrast.text.primary,
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              textDecoration: 'underline',
               '&:hover': {
-                color: colors.contrast.text.primary,
-                background: 'transparent'
+                background: 'transparent',
+                opacity: 0.7
               }
             }}
           >
@@ -83,82 +89,45 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
       </Stack>
 
       {/* Campo de búsqueda */}
-      <Box sx={{ mb: 2 }}>
+      <Box sx={{ mb: 3 }}>
         <TextField
           fullWidth
-          placeholder="Buscar servicios..."
+          placeholder="BUSCAR SERVICIOS..."
           value={searchValue}
           onChange={onSearchChange}
-          size="small"
           sx={{
             '& .MuiOutlinedInput-root': {
               background: colors.contrast.background,
-              borderRadius: 1.5,
-              border: `1px solid ${colors.contrast.border}`,
-              transition: 'all 0.2s ease',
+              borderRadius: 0,
+              border: `3px solid ${colors.contrast.text.primary}`,
+              transition: 'all 0.1s ease',
               '&:hover': {
-                borderColor: colors.contrast.text.secondary,
+                borderColor: colors.contrast.text.primary,
               },
               '&.Mui-focused': {
-                borderColor: colors.contrast.text.secondary,
-                borderWidth: '1px'
+                borderColor: colors.contrast.text.primary,
+                boxShadow: `4px 4px 0px ${colors.contrast.text.primary}`,
               }
             },
             '& .MuiOutlinedInput-input': {
-              fontSize: '0.875rem',
-              padding: '8px 12px',
+              fontSize: '1rem',
+              fontWeight: 700,
+              padding: '12px 16px',
               color: colors.contrast.text.primary,
+              textTransform: 'uppercase',
               '&::placeholder': {
-                color: colors.contrast.text.secondary,
-                opacity: 0.7
+                color: colors.contrast.text.primary,
+                opacity: 0.5
               }
             },
             '& .MuiOutlinedInput-notchedOutline': {
               border: 'none'
             }
           }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <GeometricIcon
-                  type="search"
-                  size="small"
-                  color={colors.contrast.text.secondary}
-                  variant="minimal"
-                />
-              </InputAdornment>
-            ),
-          }}
         />
       </Box>
 
-      {/* Filtros activos */}
-      {searchValue && (
-        <Box sx={{ mb: 2 }}>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Chip
-              label={`"${searchValue}"`}
-              size="small"
-              onDelete={() => onSearchChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
-              sx={{
-                background: colors.contrast.text.secondary,
-                color: '#FFFFFF',
-                fontSize: '0.75rem',
-                fontWeight: 500,
-                '& .MuiChip-deleteIcon': {
-                  color: '#FFFFFF',
-                  '&:hover': {
-                    color: '#FFFFFF',
-                    opacity: 0.8
-                  }
-                }
-              }}
-            />
-          </Stack>
-        </Box>
-      )}
-
-      <Divider sx={{ my: 2, borderColor: colors.contrast.divider }} />
+      <Divider sx={{ mb: 3, borderColor: colors.contrast.text.primary, borderWidth: '2px' }} />
 
       {/* Tabs de categorías */}
       <Box>
@@ -168,35 +137,26 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
           variant="scrollable"
           scrollButtons="auto"
           sx={{
-            minHeight: 36,
-            '& .MuiTabs-scrollButtons': {
-              '&.Mui-disabled': { opacity: 0.3 }
-            },
+            minHeight: 48,
             '& .MuiTab-root': {
-              minHeight: 36,
-              fontSize: '0.8rem',
-              fontWeight: 500,
-              textTransform: 'none',
-              borderRadius: 1,
-              mx: 0.25,
-              transition: 'all 0.2s ease',
-              color: colors.contrast.text.secondary,
+              minHeight: 48,
+              fontSize: '0.9rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              borderRadius: 0,
+              mx: 0.5,
+              transition: 'all 0.1s ease',
+              color: colors.contrast.text.primary,
               background: 'transparent',
-              border: `1px solid transparent`,
+              border: `2px solid transparent`,
               '&:hover': {
-                background: colors.contrast.background,
-                color: colors.contrast.text.primary,
-                border: `1px solid ${colors.contrast.border}`
+                background: 'rgba(0,0,0,0.05)',
+                borderColor: colors.contrast.text.primary
               },
               '&.Mui-selected': {
                 background: colors.contrast.text.primary,
                 color: colors.contrast.background,
-                fontWeight: 600,
-                border: `1px solid ${colors.contrast.text.primary}`,
-                '&:hover': {
-                  background: colors.contrast.text.primary,
-                  color: colors.contrast.background
-                }
+                borderColor: colors.contrast.text.primary,
               }
             },
             '& .MuiTabs-indicator': {

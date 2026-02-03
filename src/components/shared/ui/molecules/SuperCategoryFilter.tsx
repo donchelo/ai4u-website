@@ -20,44 +20,47 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
   const colors = useColors();
 
   return (
-    <Box>
+    <Box sx={{ mb: 4 }}>
       <Box sx={{ 
-        mb: 1.5,
-        fontSize: '0.875rem', 
-        fontWeight: 500,
+        mb: 2,
+        fontSize: '1rem', 
+        fontWeight: 900,
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
         color: colors.contrast.text.primary 
       }}>
-        Tipo de servicio
+        // TIPO DE SERVICIO
       </Box>
       
-      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+      <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
         {options.map((option, index) => (
           <Chip
             key={index}
             label={option.label}
-            size="small"
+            size="medium"
             onClick={() => onValueChange(option.value)}
             sx={{
+              borderRadius: 0,
               background: selectedValue === option.value 
                 ? colors.contrast.text.primary 
-                : colors.contrast.background,
+                : 'transparent',
               color: selectedValue === option.value 
                 ? colors.contrast.background 
                 : colors.contrast.text.primary,
-              border: `1px solid ${
-                selectedValue === option.value 
-                  ? colors.contrast.text.primary 
-                  : colors.contrast.border
-              }`,
-              fontSize: '0.75rem',
-              fontWeight: 500,
+              border: `3px solid ${colors.contrast.text.primary}`,
+              fontSize: '0.9rem',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              px: 2,
+              height: '40px',
               cursor: 'pointer',
-              transition: 'all 0.2s ease',
+              transition: 'all 0.1s ease',
               '&:hover': {
                 background: selectedValue === option.value 
                   ? colors.contrast.text.primary 
-                  : colors.contrast.surface,
-                borderColor: colors.contrast.text.secondary,
+                  : 'rgba(0,0,0,0.05)',
+                transform: 'translate(-2px, -2px)',
+                boxShadow: `4px 4px 0px ${colors.contrast.text.primary}`
               }
             }}
           />

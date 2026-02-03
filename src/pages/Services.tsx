@@ -7,7 +7,7 @@ import {
   Stack,
   Divider
 } from '@mui/material';
-import { H2, BodyText, Button, SEOHead } from '../components/shared/ui/atoms';
+import { Giant, H1, H2, BodyText, Button, SEOHead } from '../components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages, SuperCategoryFilter, ExpandableSection } from '../components/shared/ui/molecules';
 import { ProcessStep } from '../components/shared/ui/molecules';
 import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
@@ -99,14 +99,17 @@ const Services: React.FC = () => {
 
       {/* Services Section */}
       <Box sx={{ 
-        py: 4, 
-        bgcolor: colors.contrast.surface, 
+        py: { xs: 8, md: 12 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.contrast.background, 
         mt: 4,
         position: 'relative',
-        zIndex: 2
+        zIndex: 2,
+        display: 'flex',
+        justifyContent: 'center'
       }}>
         <Container maxWidth="xl">
-          <Grid container spacing={3}>
+          <Grid container spacing={6}>
             {/* Filters Sidebar */}
             <Grid item xs={12} md={3}>
               <Box sx={{ 
@@ -115,7 +118,7 @@ const Services: React.FC = () => {
                 zIndex: 3,
                 height: 'fit-content'
               }}>
-                <Stack spacing={3}>
+                <Stack spacing={4}>
                   {/* Super Categories Filter */}
                   <SuperCategoryFilter
                     selectedValue={superCategoryTabs[selectedSuperTab].value}
@@ -150,7 +153,7 @@ const Services: React.FC = () => {
                   minHeight: (theme) => theme.spacing(50)
                 }}>
                   {/* Mostrar primeros 6 servicios siempre */}
-                  <Grid container spacing={2} sx={{ mb: 4 }}>
+                  <Grid container spacing={4} sx={{ mb: 6 }}>
                     {filteredServices.slice(0, 6).map((service) => (
                       <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
                         <ServiceCard 
@@ -164,11 +167,11 @@ const Services: React.FC = () => {
                   {/* Mostrar servicios adicionales si hay más de 6 */}
                   {filteredServices.length > 6 && (
                     <ExpandableSection
-                      title={`Explorar ${filteredServices.length - 6} servicios más`}
-                      variant="minimal"
+                      title={`EXPLORAR ${filteredServices.length - 6} SERVICIOS MÁS`}
+                      variant="card"
                       defaultExpanded={false}
                     >
-                      <Grid container spacing={2}>
+                      <Grid container spacing={4}>
                         {filteredServices.slice(6).map((service) => (
                           <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
                             <ServiceCard 
@@ -184,18 +187,18 @@ const Services: React.FC = () => {
               ) : (
                 <Box sx={{ 
                   textAlign: 'center', 
-                  py: 8,
-                  color: colors.contrast.text.secondary
+                  py: 12,
+                  color: colors.contrast.text.primary
                 }}>
-                  <Typography variant="h6" sx={{ mb: 2 }}>
-                    No se encontraron servicios
-                  </Typography>
+                  <H2 sx={{ mb: 4, fontWeight: 900 }}>
+                    NO SE ENCONTRARON SERVICIOS
+                  </H2>
                   <Button 
-                    variant="outline" 
+                    variant="primary" 
                     onClick={clearFilters}
                     sx={{ mt: 2 }}
                   >
-                    Limpiar filtros
+                    LIMPIAR FILTROS
                   </Button>
                 </Box>
               )}
@@ -204,66 +207,77 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
-      <Divider />
+      <Divider sx={{ borderWidth: '2px', borderColor: colors.palette.black }} />
 
-      {/* Process Section */}
-      <Box sx={{ py: { xs: 6, md: 8 }, position: 'relative', zIndex: 1, bgcolor: colors.contrast.surface }}>
+      {/* Process Section - Inspiración ORANGE_PUNCH */}
+      <Box sx={{ 
+        py: { xs: 10, md: 18 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        position: 'relative', 
+        zIndex: 1, 
+        bgcolor: colors.palette.accentColors.orange,
+        color: colors.palette.white,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
         <Container maxWidth="xl">
-          <Stack spacing={4} alignItems="center">
-            <Box sx={{ textAlign: 'center', mb: 2 }}>
-              <H2 sx={{ 
-                fontSize: { xs: '1.8rem', md: '2.2rem', lg: '2.5rem' },
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-                mb: 2
+          <Stack spacing={10} alignItems="flex-start">
+            <Box sx={{ textAlign: 'left', width: '100%' }}>
+              <H1 sx={{ 
+                fontWeight: 900,
+                textTransform: 'uppercase',
+                mb: 4,
+                color: colors.palette.black,
+                fontSize: { xs: '3rem', md: '6rem', lg: '8rem' },
+                lineHeight: 0.9
               }}>
-                Nuestro <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>proceso</Box>
-              </H2>
+                NUESTRO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>PROCESO</Box>
+              </H1>
               <BodyText sx={{ 
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                color: colors.contrast.text.secondary,
-                maxWidth: 600,
-                mx: 'auto'
+                fontSize: '2rem',
+                color: colors.palette.black,
+                maxWidth: '800px',
+                fontWeight: 600,
+                lineHeight: 1.1,
+                letterSpacing: '-0.03em',
+                textTransform: 'uppercase'
               }}>
-                Un proceso simple y efectivo para transformar tu negocio
+                MÉTODO DIRECTO. RESULTADOS REALES. SIN COMPLICACIONES.
               </BodyText>
             </Box>
             
-            <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mt: 2 }}>
+            <Grid container spacing={6}>
               {[
                 {
                   number: 1,
-                  title: 'Diagnóstico gratuito (30 minutos)',
-                  description: 'Identificamos todas las oportunidades de automatización en tu negocio',
-                  color: colors.palette.accentColors.orange
+                  title: 'DIAGNÓSTICO GRATUITO',
+                  description: 'IDENTIFICAMOS TODAS LAS OPORTUNIDADES DE AUTOMATIZACIÓN EN TU NEGOCIO.',
                 },
                 {
                   number: 2,
-                  title: 'Definición de prioridades',
-                  description: 'Establecemos qué procesos automatizar primero según tu ROI',
-                  color: colors.palette.accentColors.orange
+                  title: 'DEFINICIÓN DE PRIORIDADES',
+                  description: 'ESTABLECEMOS QUÉ PROCESOS AUTOMATIZAR PRIMERO SEGÚN TU ROI.',
                 },
                 {
                   number: 3,
-                  title: 'Presupuesto personalizado',
-                  description: 'Adaptamos las soluciones a tu capacidad de inversión',
-                  color: colors.palette.accentColors.orange
+                  title: 'PRESUPUESTO PERSONALIZADO',
+                  description: 'ADAPTAMOS LAS SOLUCIONES A TU CAPACIDAD DE INVERSIÓN.',
                 },
                 {
                   number: 4,
-                  title: 'Implementación',
-                  description: 'Desarrollamos e integramos las soluciones en tu negocio',
-                  color: colors.palette.accentColors.orange
+                  title: 'IMPLEMENTACIÓN',
+                  description: 'DESARROLLAMOS E INTEGRAMOS LAS SOLUCIONES EN TU NEGOCIO.',
                 }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} key={idx}>
-                  <ProcessStep
-                    number={step.number}
-                    title={step.title}
-                    description={step.description}
-                    color={step.color}
-                    size="medium"
-                  />
+                  <Box sx={{ borderLeft: `8px solid ${colors.palette.black}`, pl: 4, mb: 4 }}>
+                    <H2 sx={{ color: colors.palette.black, fontSize: '3rem', fontWeight: 900, mb: 2, lineHeight: 1 }}>
+                      {String(step.number).padStart(2, '0')} // {step.title}
+                    </H2>
+                    <BodyText sx={{ color: colors.palette.black, fontSize: '1.5rem', fontWeight: 500, opacity: 0.9 }}>
+                      {step.description}
+                    </BodyText>
+                  </Box>
                 </Grid>
               ))}
             </Grid>
@@ -271,28 +285,48 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
-      {/* CTA Section */}
-      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: colors.contrast.surface, position: 'relative', zIndex: 1 }}>
-        <Container maxWidth="md">
-          <Stack spacing={3} alignItems="center" textAlign="center">
-            <H2 sx={{ fontSize: { xs: '1.4rem', md: '1.6rem' } }}>
-              ¿Necesitas <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ayuda</Box>?
-            </H2>
-            <BodyText sx={{ maxWidth: 500 }}>
-              Agenda una consulta gratuita de 30 minutos
+      {/* CTA Section - Inspiración GREEN_FRESH */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.accentColors.green, 
+        color: colors.palette.black, 
+        position: 'relative', 
+        zIndex: 1,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="lg">
+          <Stack spacing={8} alignItems="center" textAlign="center">
+            <Giant sx={{ color: colors.palette.black, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
+              ¿NECESITAS AYUDA?
+            </Giant>
+            <BodyText sx={{ fontSize: '1.8rem', color: colors.palette.black, fontWeight: 600, maxWidth: '800px', textTransform: 'uppercase', lineHeight: 1.1 }}>
+              AGENDA UNA CONSULTA GRATUITA DE 30 MINUTOS Y EMPIEZA A RECUPERAR TU TIEMPO.
             </BodyText>
             <DiagnosticCTA 
               variant="primary"
-              size="medium"
-              showIcon={true}
-              text="Agendar consulta"
+              size="large"
+              text="AGENDAR CONSULTA"
+              sx={{ 
+                height: '100px', 
+                px: 10, 
+                fontSize: '1.8rem',
+                bgcolor: colors.palette.black,
+                color: colors.palette.white,
+                border: `4px solid ${colors.palette.black}`,
+                '&:hover': {
+                  bgcolor: colors.palette.white,
+                  color: colors.palette.black
+                }
+              }}
             />
           </Stack>
         </Container>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ py: 8 }}>
         <RelatedPages 
           pages={relatedLinks}
           title="También podrías estar interesado en:"

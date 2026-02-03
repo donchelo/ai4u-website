@@ -18,20 +18,19 @@ const StyledCard = styled(MuiCard, {
   const contrast = CONTRAST_PAIRS[isLight ? 'light' : 'dark'];
   const cardVariants = COMPONENT_VARIANTS.card;
   
-  // Estilos base minimalistas usando tokens
+  // Estilos base minimalistas/brutalistas
   const baseStyles = {
-    borderRadius: theme.spacing(2),
-    transition: theme.transitions.create(['box-shadow', 'border-color'], {
-      duration: theme.transitions.duration.short,
+    borderRadius: 0, // Sharp edges
+    transition: theme.transitions.create(['box-shadow', 'border-color', 'transform', 'background-color'], {
+      duration: '0.2s',
       easing: theme.transitions.easing.easeInOut,
     }),
     position: 'relative' as const,
     overflow: 'hidden' as const,
     fontFamily: theme.typography.fontFamily,
-    // Sin transformaciones dramáticas
-    '&:hover': {
-      transform: 'none',
-    },
+    borderWidth: '3px',
+    borderStyle: 'solid',
+    boxShadow: 'none',
   };
 
   // Variantes usando tokens del sistema
@@ -39,13 +38,12 @@ const StyledCard = styled(MuiCard, {
     case 'elevated':
       return {
         ...baseStyles,
-        backgroundColor: isLight ? cardVariants.light.background : cardVariants.dark.background,
-        border: 'none',
-        boxShadow: isLight ? SHADOW_TOKENS.md : SHADOW_TOKENS.ai4u.cardDark,
-        color: isLight ? cardVariants.light.text : cardVariants.dark.text,
+        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+        borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+        color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         '&:hover': {
-          ...baseStyles['&:hover'],
-          boxShadow: isLight ? SHADOW_TOKENS.lg : SHADOW_TOKENS['2xl'],
+          transform: 'translate(-8px, -8px)',
+          boxShadow: isLight ? '12px 12px 0px #000000' : '12px 12px 0px #FFFFFF',
         },
       };
     
@@ -53,25 +51,23 @@ const StyledCard = styled(MuiCard, {
       return {
         ...baseStyles,
         backgroundColor: 'transparent',
-        border: `1px solid ${contrast.border}`,
-        boxShadow: 'none',
-        color: contrast.text.primary,
+        borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+        color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         '&:hover': {
-          ...baseStyles['&:hover'],
-          borderColor: contrast.divider,
+          backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+          color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
         },
       };
     
     default:
       return {
         ...baseStyles,
-        backgroundColor: isLight ? cardVariants.light.background : cardVariants.dark.background,
-        border: `1px solid ${contrast.border}`,
-        boxShadow: 'none',
-        color: isLight ? cardVariants.light.text : cardVariants.dark.text,
+        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+        borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+        color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         '&:hover': {
-          ...baseStyles['&:hover'],
-          borderColor: contrast.divider,
+          transform: 'translate(-4px, -4px)',
+          boxShadow: isLight ? '8px 8px 0px #000000' : '8px 8px 0px #FFFFFF',
         },
       };
   }

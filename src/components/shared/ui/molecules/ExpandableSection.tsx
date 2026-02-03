@@ -33,33 +33,35 @@ const ExpandableSection = ({
       case 'card':
         return {
           container: {
-            background: colors.contrast.surface,
-            border: `1px solid ${colors.contrast.divider}`,
-            borderRadius: 2,
-            p: 3,
-            transition: 'all 0.2s ease',
+            background: isDarkMode ? colors.palette.black : colors.palette.white,
+            border: `3px solid ${isDarkMode ? colors.palette.white : colors.palette.black}`,
+            borderRadius: 0,
+            p: 4,
+            transition: 'all 0.1s ease',
             '&:hover': {
-              background: colors.helpers.state.hover
+              transform: 'translate(-4px, -4px)',
+              boxShadow: isDarkMode ? '6px 6px 0px #FFFFFF' : '6px 6px 0px #000000',
             }
           }
         };
       case 'bordered':
         return {
           container: {
-            borderBottom: `1px solid ${colors.contrast.divider}`,
-            pb: 2,
-            mb: 2
+            borderBottom: `3px solid ${isDarkMode ? colors.palette.white : colors.palette.black}`,
+            pb: 3,
+            mb: 3
           }
         };
       default: // minimal
         return {
           container: {
-            mb: 3
+            mb: 4
           }
         };
     }
   };
 
+  const isDarkMode = colors.mode === 'dark';
   const variantStyles = getVariantStyles();
 
   return (
@@ -70,23 +72,27 @@ const ExpandableSection = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           cursor: 'pointer',
-          userSelect: 'none'
+          userSelect: 'none',
+          py: 2
         }}
         onClick={handleToggle}
       >
         <Box sx={{ flex: 1 }}>
           <H4 sx={{ 
-            color: colors.contrast.text.primary,
-            fontWeight: 600,
-            fontSize: '1rem'
+            color: 'inherit',
+            fontWeight: 800,
+            fontSize: '1.25rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em'
           }}>
             {title}
           </H4>
           {subtitle && (
             <BodyText sx={{ 
-              color: colors.contrast.text.secondary,
-              fontSize: '0.875rem',
-              mt: 0.5
+              color: 'inherit',
+              opacity: 0.8,
+              fontSize: '1rem',
+              mt: 1
             }}>
               {subtitle}
             </BodyText>
@@ -94,13 +100,16 @@ const ExpandableSection = ({
         </Box>
         {showIcon && (
           <IconButton
-            size="small"
+            size="large"
             sx={{
-              color: colors.contrast.text.secondary,
+              color: 'inherit',
               transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-              transition: 'transform 0.2s ease',
+              transition: 'transform 0.1s ease',
+              border: `2px solid currentColor`,
+              borderRadius: 0,
               '&:hover': {
-                background: colors.helpers.state.hover
+                background: 'currentColor',
+                color: isDarkMode ? colors.palette.black : colors.palette.white
               }
             }}
           >
@@ -109,11 +118,10 @@ const ExpandableSection = ({
         )}
       </Box>
       
-      <Collapse in={expanded} timeout={200}>
+      <Collapse in={expanded} timeout={100}>
         <Box sx={{ 
-          pt: 2,
-          opacity: expanded ? 1 : 0,
-          transition: 'opacity 0.2s ease'
+          pt: 3,
+          borderTop: expanded ? `1px solid ${isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'}` : 'none'
         }}>
           {children}
         </Box>

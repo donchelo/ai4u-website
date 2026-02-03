@@ -7,14 +7,22 @@ interface TypographyExtendedProps extends MuiTypographyProps {
 }
 
 // Componentes de tipografía minimalistas usando nuevos tokens
+export const Giant = (props: TypographyExtendedProps) => (
+  <MuiTypography 
+    variant="h1" 
+    sx={{
+      ...TEXT_VARIANTS.display.giant,
+      ...props.sx
+    }}
+    {...props} 
+  />
+);
+
 export const H1 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h1" 
     sx={{
-      fontSize: { xs: '3rem', md: '4.5rem', lg: '6rem' },
-      fontWeight: 300,
-      lineHeight: 1.1,
-      letterSpacing: '-0.02em',
+      ...TEXT_VARIANTS.display.large,
       ...props.sx
     }}
     {...props} 
@@ -25,10 +33,7 @@ export const H2 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h2" 
     sx={{
-      fontSize: { xs: '2rem', md: '3rem', lg: '4rem' },
-      fontWeight: 400,
-      lineHeight: 1.2,
-      letterSpacing: '-0.01em',
+      ...TEXT_VARIANTS.display.medium,
       ...props.sx
     }}
     {...props} 
@@ -39,9 +44,7 @@ export const H3 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h3" 
     sx={{
-      fontSize: { xs: '1.5rem', md: '2rem', lg: '2.5rem' },
-      fontWeight: 500,
-      lineHeight: 1.3,
+      ...TEXT_VARIANTS.display.small,
       ...props.sx
     }}
     {...props} 
@@ -52,9 +55,10 @@ export const H4 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h4" 
     sx={{
-      fontSize: { xs: '1.25rem', md: '1.5rem' },
-      fontWeight: 500,
-      lineHeight: 1.4,
+      fontSize: { xs: '1.5rem', md: '2rem' },
+      fontWeight: 700,
+      lineHeight: 1.2,
+      textTransform: 'uppercase',
       ...props.sx
     }}
     {...props} 
@@ -65,9 +69,9 @@ export const H5 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h5" 
     sx={{
-      fontSize: '1.125rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      lineHeight: 1.3,
       ...props.sx
     }}
     {...props} 
@@ -78,8 +82,8 @@ export const H6 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h6" 
     sx={{
-      fontSize: '1rem',
-      fontWeight: 500,
+      fontSize: '1.125rem',
+      fontWeight: 600,
       lineHeight: 1.4,
       ...props.sx
     }}
@@ -91,9 +95,7 @@ export const BodyText = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="body1" 
     sx={{
-      fontSize: { xs: '1rem', md: '1.125rem' },
-      fontWeight: 400,
-      lineHeight: 1.6,
+      ...TEXT_VARIANTS.body.regular,
       ...props.sx
     }}
     {...props} 
@@ -104,9 +106,7 @@ export const SmallText = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="body2" 
     sx={{
-      fontSize: '0.875rem',
-      fontWeight: 400,
-      lineHeight: 1.5,
+      ...TEXT_VARIANTS.body.small,
       ...props.sx
     }}
     {...props} 

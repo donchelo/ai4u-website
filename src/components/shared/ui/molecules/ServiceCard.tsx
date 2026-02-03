@@ -47,10 +47,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         position: 'relative',
         transition: 'all 0.2s ease',
         '&:hover': {
-          transform: 'translateY(-2px)',
           '& .service-card-content': {
-            boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-            borderColor: colors.contrast.border,
+            borderColor: colors.contrast.text.primary,
           }
         }
       }}>
@@ -62,11 +60,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           flexDirection: 'column',
           position: 'relative',
           background: colors.contrast.surface,
-          border: `1px solid ${colors.contrast.border}`,
-          borderRadius: 2,
-          transition: 'all 0.2s ease',
+          border: `3px solid ${colors.contrast.text.primary}`,
+          borderRadius: 0,
+          transition: 'all 0.1s ease',
           overflow: 'hidden',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          boxShadow: 'none',
+          '&:hover': {
+            transform: 'translate(-4px, -4px)',
+            boxShadow: `8px 8px 0px ${colors.contrast.text.primary}`,
+          }
         }}>
           {/* Service Thumbnail */}
           <Box sx={{ 

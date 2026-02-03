@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid, Box, Stack } from '@mui/material';
-import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
+import { Container, Grid, Box, Stack, Typography } from '@mui/material';
+import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
@@ -93,54 +93,56 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle="¡Tu tiempo es oro!"
-        customSubtitle="Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa: tu familia y el crecimiento estratégico de tu empresa."
-        primaryButtonText="Recupera tu tiempo familiar"
-        secondaryButtonText="Calcula tu ROI"
+        customTitle="TU TIEMPO ES ORO"
+        customSubtitle="Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa."
+        primaryButtonText="RECUPERA TU TIEMPO"
       />
 
-      {/* Features Section */}
-      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
-        <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            ¿El trabajo te está robando <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>momentos irreemplazables</Box>?
-          </H2>
-          <Grid container spacing={4}>
+      {/* Features Section - Inspiración GREEN_FRESH */}
+      <Box sx={{ 
+        py: { xs: 10, md: 18 }, // Reducido de 15/25
+        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        bgcolor: colors.palette.accentColors.green,
+        color: colors.palette.black,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
+          <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'uppercase', maxWidth: '1200px' }}>
+            ¿EL TRABAJO TE ESTÁ ROBANDO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>MOMENTOS IRREEMPLAZABLES</Box>?
+          </H1>
+          <Grid container spacing={6}>
             {features.map((feature, idx) => (
               <Grid item xs={12} md={4} key={idx}>
                 <Card 
-                  variant="elevated"
+                  variant="default"
                   sx={{ 
                     height: '100%',
+                    p: 6,
                     display: 'flex',
                     flexDirection: 'column',
-                    cursor: 'pointer',
-                    borderLeft: `4px solid ${idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.green : colors.palette.info}`,
+                    bgcolor: colors.palette.white,
+                    borderColor: colors.palette.black,
+                    borderWidth: '4px',
                     '&:hover': {
-                      transform: 'translateY(-2px)',
-                      transition: 'all 0.3s ease',
-                      borderLeftWidth: '6px',
-                      boxShadow: `0 8px 24px ${idx === 0 ? `${colors.palette.accentColors.orange}20` : idx === 1 ? `${colors.palette.accentColors.green}20` : `${colors.palette.info}20`}`
+                      transform: 'translate(8px, -8px)',
+                      boxShadow: `12px 12px 0px ${colors.palette.black}`,
                     }
                   }}
                 >
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <GeometricIcon 
-                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : "circle"} 
-                      size="small" 
-                      color={idx === 0 ? colors.palette.accentColors.orange : idx === 1 ? colors.palette.accentColors.orange : colors.palette.accentColors.orange}
-                      variant="filled" 
-                    />
-                    <H3 sx={{ 
-                      ml: 2,
-                      fontWeight: 500,
-                      lineHeight: 1.3,
-                      color: 'text.primary',
-                      fontSize: '1.1rem'
-                    }}>
-                      {feature.title}
-                    </H3>
-                  </Box>
+                  <H3 sx={{ 
+                    mb: 3,
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    color: colors.palette.black,
+                    fontSize: '2.25rem',
+                    lineHeight: 1
+                  }}>
+                    {feature.title}
+                  </H3>
+                  <BodyText sx={{ fontSize: '1.25rem', color: colors.palette.black, fontWeight: 500, lineHeight: 1.4 }}>
+                    {feature.description}
+                  </BodyText>
                 </Card>
               </Grid>
             ))}
@@ -148,136 +150,129 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Robot Section - Fondo oscuro con contraste automático */}
+      {/* Robot Section - Inspiración BLACK_MODERN / SUPER_AI_NEON */}
       <Box sx={{ 
-        py: { xs: 6, md: 10 }, 
-        bgcolor: mode === 'dark' ? 'background.default' : colors.palette.black, 
-        color: mode === 'dark' ? 'text.primary' : colors.palette.white 
+        py: { xs: 10, md: 18 }, // Reducido de 15/25
+        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        bgcolor: colors.palette.black, 
+        color: colors.palette.white,
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center'
       }}>
-        <Container maxWidth="lg">
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} alignItems="center" justifyContent="center">
-            <Box sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' } }}>
-              <H2 sx={{ 
-                mb: 4, 
-                color: mode === 'dark' ? 'text.primary' : colors.palette.white, 
-                fontWeight: 300 
-              }}>
-                Asistentes Robóticos que Transforman tu Empresa
-              </H2>
-              
-              {/* Lista ultra minimalista con iconos geométricos */}
-              <Stack spacing={4} sx={{ mb: 6, maxWidth: 500 }}>
-                {robotFeatures.map((feature, idx) => (
-                  <Stack key={idx} direction="row" alignItems="center" spacing={3}>
-                    <GeometricIcon 
-                      type={idx === 0 ? "circle" : idx === 1 ? "triangle" : idx === 2 ? "square" : "dot"} 
-                      size="small" 
-                      color={colors.palette.accentColors.orange}
-                      variant="filled" 
-                    />
-                    <BodyText sx={{ 
-                      color: mode === 'dark' ? (idx === 0 ? 'text.primary' : 'text.secondary') : (idx === 0 ? colors.palette.white : colors.contrast.text.secondary), 
-                      fontSize: '1rem', 
-                      lineHeight: 1.6 
-                    }}>
-                      {feature}
-                    </BodyText>
-                  </Stack>
-                ))}
-              </Stack>
-              
-              <ExpandableSection
-                title="Descubre cómo funciona"
-                variant="minimal"
-                defaultExpanded={false}
-              >
-                <BodyText sx={{ 
-                  mb: 4, 
-                  color: mode === 'dark' ? 'text.secondary' : colors.contrast.text.secondary, 
-                  maxWidth: 600, 
-                  fontSize: '1.1rem', 
-                  lineHeight: 1.7 
-                }}>
-                  Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
-                </BodyText>
-                
-                <H3 sx={{ 
-                  mb: 4, 
-                  color: mode === 'dark' ? 'text.primary' : colors.palette.white, 
-                  fontWeight: 400, 
-                  fontSize: '1.2rem' 
-                }}>
-                  ¿Qué los hace únicos?
-                </H3>
-                
+        {/* Big Background Number inspired by Pitch.tsx */}
+        <Typography 
+          sx={{ 
+            position: 'absolute', 
+            bottom: -100, 
+            right: -20, 
+            fontSize: '35rem', 
+            fontWeight: 900, 
+            color: colors.palette.white, 
+            opacity: 0.03,
+            zIndex: 1,
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+        >
+          02
+        </Typography>
+
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
+          <Stack direction="column" spacing={10}>
+            <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 0.9 }}>
+              // ASISTENTES ROBÓTICOS AUTÓNOMOS
+            </Giant>
+            
+            <Grid container spacing={8}>
+              <Grid item xs={12} md={7}>
+                <Stack spacing={6}>
+                  {robotFeatures.map((feature, idx) => (
+                    <Box key={idx} sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
+                      <H2 sx={{ 
+                        color: colors.palette.white,
+                        fontSize: { xs: '2.25rem', md: '3.5rem', lg: '4rem' },
+                        fontWeight: 900,
+                        textTransform: 'uppercase',
+                        lineHeight: 0.95,
+                        letterSpacing: '-0.03em'
+                      }}>
+                        {feature}
+                      </H2>
+                    </Box>
+                  ))}
+                </Stack>
+              </Grid>
+              <Grid item xs={12} md={5}>
                 <Box sx={{ 
-                  pl: 4,
-                  borderLeft: `1px solid ${mode === 'dark' ? colors.contrast.divider : colors.contrast.border}`,
-                  maxWidth: 500
+                  p: 6, 
+                  border: `6px solid ${colors.palette.accentColors.orange}`, 
+                  bgcolor: 'rgba(255,92,0,0.03)',
+                  backdropFilter: 'blur(20px)',
+                  height: 'fit-content'
                 }}>
                   <BodyText sx={{ 
-                    fontStyle: 'italic', 
-                    color: mode === 'dark' ? 'text.disabled' : colors.contrast.text.disabled,
-                    fontSize: '1rem',
+                    color: colors.palette.white, 
+                    fontSize: '2.2rem', 
+                    lineHeight: 1.2,
                     fontWeight: 300,
-                    lineHeight: 1.6
+                    letterSpacing: '-0.04em',
+                    textTransform: 'uppercase'
                   }}>
-                    "Un equipo silencioso que trabaja incansablemente para multiplicar el valor de tu tiempo."
+                    "LA CÚSPIDE DE LA AUTONOMÍA: UNA IA QUE NO SOLO SUGIERE, SINO QUE EJECUTA Y MULTIPLICA TU TIEMPO."
                   </BodyText>
                 </Box>
-              </ExpandableSection>
-            </Box>
-            
-            <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              {/* Aquí puedes agregar una imagen ilustrativa o un elemento visual */}
-            </Box>
+              </Grid>
+            </Grid>
           </Stack>
         </Container>
       </Box>
 
-      {/* Services Section */}
-      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
-        <Container maxWidth="lg">
-          <H2 sx={{ textAlign: 'center', mb: 6, fontWeight: 400, color: 'text.primary' }}>
-            <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Servicios</Box> que transforman
-          </H2>
+      {/* Services Section - Inspiración WHITE_MINIMAL */}
+      <Box sx={{ 
+        py: { xs: 10, md: 18 }, // Reducido de 15/25
+        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        bgcolor: colors.palette.white,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
+          <H1 sx={{ mb: 10, fontWeight: 900, textTransform: 'uppercase', color: colors.palette.black, fontSize: { xs: '2.5rem', md: '5rem' } }}>
+            SERVICIOS QUE <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>TRANSFORMAN</Box>
+          </H1>
           
-          {/* Mostrar las 4 categorías como un grupo armónico */}
-          <Grid container spacing={4}>
+          <Grid container spacing={6}>
             {serviceCategories.map((cat, idx) => (
               <Grid item xs={12} sm={6} md={3} key={idx}>
                 <Card 
-                  variant="elevated"
+                  variant="default"
                   sx={{ 
                     height: '100%',
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    cursor: 'pointer',
-                    borderTop: `3px solid ${colors.palette.accentColors.orange}`,
+                    p: 6,
+                    textAlign: 'left',
+                    borderColor: colors.palette.black,
+                    borderWidth: '4px',
                     '&:hover': {
-                      transform: 'translateY(-2px)',
-                      transition: 'all 0.3s ease',
-                      borderTopWidth: '5px',
-                      boxShadow: `0 8px 24px ${colors.palette.accentColors.orange}25`
+                      bgcolor: colors.palette.black,
+                      color: colors.palette.white,
+                      transform: 'translateY(-10px)',
+                      '& h3': { color: colors.palette.white }
                     }
                   }}
                 >
-                  <Box sx={{ mb: 2 }}>
-                    <GeometricIcon 
-                      type={idx === 0 ? "triangle" : idx === 1 ? "square" : idx === 2 ? "circle" : "line"} 
-                      size="medium" 
-                      color={colors.palette.accentColors.orange}
-                      variant="filled" 
-                    />
-                  </Box>
                   <H3 sx={{ 
-                    color: 'text.primary',
-                    fontWeight: 500,
-                    fontSize: '1.1rem'
+                    fontWeight: 900,
+                    fontSize: '2.5rem',
+                    mb: 3,
+                    lineHeight: 0.9,
+                    textTransform: 'uppercase'
                   }}>
                     {cat.title}
                   </H3>
+                  <BodyText sx={{ fontSize: '1.25rem', fontWeight: 500, opacity: 0.8 }}>
+                    {cat.description}
+                  </BodyText>
                 </Card>
               </Grid>
             ))}
@@ -285,22 +280,56 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* CTA Section */}
-      <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: 'background.paper' }}>
-        <Container maxWidth="md">
+      {/* CTA Section - Inspiración ORANGE_PUNCH */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, // Reducido de 20/40
+        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        bgcolor: colors.palette.accentColors.orange,
+        color: colors.palette.white,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
           <Box sx={{ textAlign: 'center' }}>
-            <H2 sx={{ mb: 4, fontWeight: 400, color: 'text.primary' }}>
-              ¿Listo para <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>transformar</Box> tu empresa?
-            </H2>
+            <Giant sx={{ mb: 8, color: colors.palette.black, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
+              ¿LISTO PARA EL SIGUIENTE NIVEL?
+            </Giant>
             <Stack 
-              direction={{ xs: 'column', sm: 'row' }} 
-              spacing={3} 
+              direction={{ xs: 'column', lg: 'row' }} 
+              spacing={6} 
               justifyContent="center"
               alignItems="center"
             >
-              <DiagnosticCTA />
-              <Button variant="outline" size="large">
-                Explorar soluciones
+              <DiagnosticCTA sx={{ 
+                height: '120px', 
+                px: 10, 
+                fontSize: '2rem', 
+                fontWeight: 900,
+                bgcolor: colors.palette.black, 
+                color: colors.palette.white,
+                border: `6px solid ${colors.palette.black}`,
+                '&:hover': {
+                  bgcolor: colors.palette.white,
+                  color: colors.palette.black
+                }
+              }} />
+              <Button 
+                variant="outline" 
+                sx={{ 
+                  height: '120px', 
+                  px: 10, 
+                  fontSize: '2rem', 
+                  fontWeight: 900, 
+                  borderWidth: '6px',
+                  borderColor: colors.palette.black,
+                  color: colors.palette.black,
+                  '&:hover': {
+                    bgcolor: colors.palette.black,
+                    color: colors.palette.white
+                  }
+                }}
+              >
+                SOLUCIONES IA
               </Button>
             </Stack>
           </Box>

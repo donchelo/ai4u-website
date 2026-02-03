@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Box, Grid, Stack, Divider, Paper, Typography as MuiTypography } from '@mui/material';
-import { H1, H2, H3, H4, BodyText, SmallText, CodeText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
+import { Giant, H1, H2, H3, H4, BodyText, SmallText, CodeText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { Card, MetricCard } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
@@ -30,12 +30,12 @@ const DesignSystem = () => {
         keywords="diseño, sistema de diseño, componentes, UI, UX, AI4U"
       />
 
-      <Container maxWidth="xl" sx={{ py: { xs: 4, md: 6 } }}>
+      <Container maxWidth="xl" sx={{ py: { xs: 8, md: 15 }, px: { xs: 4, md: 12, lg: 20 } }}>
         {/* Header */}
-        <Box sx={{ mb: 6 }}>
-          <H1>Sistema de Diseño AI4U</H1>
-          <BodyText sx={{ mt: 2, color: colors.contrast.text.secondary }}>
-            Documentación completa de colores, tipografía, componentes y guías de uso del sistema de diseño minimalista AI4U.
+        <Box sx={{ mb: 12 }}>
+          <Giant sx={{ mb: 4 }}>SISTEMA DE DISEÑO AI4U</Giant>
+          <BodyText sx={{ mt: 2, color: colors.contrast.text.secondary, fontSize: '2rem', fontWeight: 300, textTransform: 'uppercase' }}>
+            DOCUMENTACIÓN BRUTALISTA DE COLORES, TIPOGRAFÍA Y COMPONENTES.
           </BodyText>
         </Box>
 
@@ -253,21 +253,27 @@ const DesignSystem = () => {
             <H3 sx={{ mb: 3 }}>Jerarquía Tipográfica</H3>
             <Stack spacing={3}>
               <Box>
+                <Giant>Giant Title (Giant)</Giant>
+                <SmallText sx={{ color: colors.contrast.text.secondary }}>
+                  Display Giant - Para títulos de máximo impacto (9rem LG)
+                </SmallText>
+              </Box>
+              <Box>
                 <H1>Heading 1 (H1)</H1>
                 <SmallText sx={{ color: colors.contrast.text.secondary }}>
-                  Display Large - Para títulos principales
+                  Display Large - Para títulos principales (6.5rem LG)
                 </SmallText>
               </Box>
               <Box>
                 <H2>Heading 2 (H2)</H2>
                 <SmallText sx={{ color: colors.contrast.text.secondary }}>
-                  Display Medium - Para secciones principales
+                  Display Medium - Para secciones principales (4.5rem LG)
                 </SmallText>
               </Box>
               <Box>
                 <H3>Heading 3 (H3)</H3>
                 <SmallText sx={{ color: colors.contrast.text.secondary }}>
-                  Display Small - Para subsecciones
+                  Display Small - Para subsecciones (2.75rem LG)
                 </SmallText>
               </Box>
               <Box>

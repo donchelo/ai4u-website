@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
-import { H3, BodyText, LazyImage } from '../atoms';
+import { H1, H3, BodyText, LazyImage } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
@@ -29,44 +29,45 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
     <Box
       sx={{
         position: 'relative',
-        bgcolor: colors.contrast.background,
-        borderBottom: `1px solid ${colors.contrast.border}`,
-        py: { xs: 4, md: 6 },
-        px: { xs: 2, md: 0 },
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
+        borderBottom: `8px solid ${colors.palette.accentColors.orange}`,
+        py: { xs: 15, md: 25 },
+        px: { xs: 4, md: 12, lg: 20 },
         zIndex: 1,
-        mb: 4,
+        mb: 8,
+        overflow: 'hidden'
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ mx: 0 }}>
         {featuredSorted.length > 0 && (
           <Box sx={{ position: 'relative', zIndex: 1 }}>
-            {/* Título minimalista */}
-            <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 4 } }}>
-              <Typography
-                variant="h3"
+            {/* Título GIGANTE */}
+            <Box sx={{ textAlign: 'left', mb: 8 }}>
+              <H1
                 sx={{
-                  color: colors.contrast.text.primary,
-                  fontWeight: 600,
-                  fontSize: { xs: '1.25rem', md: '1.5rem' },
-                  fontFamily: '"Red Hat Display", sans-serif',
-                  letterSpacing: '-0.01em'
+                  color: colors.palette.white,
+                  fontWeight: 900,
+                  fontSize: { xs: '4rem', md: '8rem' },
+                  textTransform: 'uppercase',
+                  lineHeight: 0.85,
+                  letterSpacing: '-0.05em'
                 }}
               >
-                Destacados
-              </Typography>
+                // DESTACADOS
+              </H1>
             </Box>
 
-            {/* Selector minimalista */}
+            {/* Selector Brutalista */}
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 alignItems: 'center',
-                gap: 1,
-                mb: { xs: 3, md: 4 },
+                gap: 2,
+                mb: 8,
                 overflowX: 'auto',
-                position: 'relative',
-                zIndex: 2,
+                pb: 2
               }}
             >
               {featuredSorted.map((service, idx) => (
@@ -74,19 +75,20 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   key={service.id}
                   onClick={() => setActiveIndex(idx)}
                   sx={{
-                    px: 2,
-                    py: 1,
-                    fontSize: '0.875rem',
-                    fontWeight: idx === activeIndex ? 600 : 500,
-                    color: idx === activeIndex ? colors.contrast.text.primary : colors.contrast.text.secondary,
-                    background: idx === activeIndex ? colors.contrast.surface : 'transparent',
-                    border: `1px solid ${idx === activeIndex ? colors.contrast.border : 'transparent'}`,
-                    borderRadius: 1,
+                    px: 4,
+                    py: 2,
+                    fontSize: '1.25rem',
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    color: idx === activeIndex ? colors.palette.black : colors.palette.white,
+                    background: idx === activeIndex ? colors.palette.white : 'transparent',
+                    border: `4px solid ${colors.palette.white}`,
+                    borderRadius: 0,
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease',
+                    transition: 'all 0.1s ease',
+                    whiteSpace: 'nowrap',
                     '&:hover': {
-                      background: colors.contrast.surface,
-                      borderColor: colors.contrast.border,
+                      background: idx === activeIndex ? colors.palette.white : 'rgba(255,255,255,0.1)',
                     }
                   }}
                 >
@@ -97,39 +99,27 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
 
             <Grid 
               container 
-              spacing={4}
-              sx={{ mb: 2 }}
+              spacing={10}
             >
-              {/* Columna izquierda: Video/Tarjeta */}
+              {/* Columna izquierda: Video/Media */}
               <Grid item xs={12} md={7}>
-                <Card
-                  variant="elevated"
+                <Box
                   sx={{
-                    p: { xs: 3, md: 4 },
-                    overflow: 'hidden',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    background: colors.contrast.surface,
-                    color: colors.contrast.text.primary,
-                    minHeight: { xs: 400, md: 550 },
-                    borderRadius: 2,
+                    p: 4,
+                    bgcolor: colors.palette.white,
+                    border: `8px solid ${colors.palette.white}`,
+                    boxShadow: `15px 15px 0px ${colors.palette.accentColors.orange}`,
+                    minHeight: { xs: 400, md: 600 },
                     width: '100%',
-                    position: 'relative',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                    border: `1px solid ${colors.contrast.border}`,
-                    zIndex: 1
+                    position: 'relative'
                   }}
                 >
-                  {/* Media destacada */}
                   <Box sx={{ 
                     position: 'relative', 
                     width: '100%', 
-                    height: { xs: 280, md: 380 },
-                    borderRadius: 2, 
-                    overflow: 'hidden',
-                    mb: 3,
-                    border: `1px solid ${colors.contrast.border}`,
-                    background: colors.contrast.background
+                    height: { xs: 300, md: 500 },
+                    bgcolor: colors.palette.black,
+                    overflow: 'hidden'
                   }}>
                     {activeService.media?.video ? (
                       <video
@@ -139,206 +129,72 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                         muted
                         loop
                         playsInline
-                        preload="metadata"
-                        controls={false}
-                        disablePictureInPicture
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'contain', 
-                          objectPosition: 'center', 
-                          display: 'block', 
-                          backgroundColor: colors.contrast.background
-                        }}
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                       />
-                    ) : activeService.media?.gif || activeService.media?.poster ? (
+                    ) : (
                       <LazyImage
-                        src={activeService.media?.gif || activeService.media?.poster}
-                        alt={`${activeService.title} preview`}
-                        sx={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'contain', 
-                          objectPosition: 'center', 
-                          backgroundColor: colors.contrast.background
-                        }}
+                        src={activeService.media?.gif || activeService.media?.poster || ''}
+                        alt={activeService.title}
+                        sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
                       />
-                    ) : null}
+                    )}
                   </Box>
+                </Box>
+              </Grid>
 
-                  {/* Contenido de texto */}
-                  <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+              {/* Columna derecha: Info */}
+              <Grid item xs={12} md={5}>
+                <Stack spacing={6}>
+                  <Box>
                     <H3 sx={{ 
-                      color: colors.contrast.text.primary, 
-                      fontWeight: 600, 
-                      mb: 2,
-                      fontSize: { xs: '1.3rem', md: '1.5rem' } 
+                      color: colors.palette.white, 
+                      fontWeight: 900, 
+                      fontSize: '4rem',
+                      lineHeight: 0.9,
+                      mb: 4,
+                      textTransform: 'uppercase'
                     }}>
                       {activeService.title}
                     </H3>
-                    {activeService.subtitle && (
-                      <BodyText sx={{ 
-                        color: colors.contrast.text.secondary, 
-                        fontSize: { xs: '0.95rem', md: '1.05rem' },
-                        mb: 3,
-                        lineHeight: 1.5
-                      }}>
-                        {activeService.subtitle}
-                      </BodyText>
-                    )}
-                    <Box sx={{ mt: 'auto' }}>
-                      <DiagnosticCTA 
-                        variant="primary"
-                        size="medium"
-                        showIcon={true}
-                        text="Agendar un diagnóstico gratis"
-                      />
-                    </Box>
-                  </Box>
-                </Card>
-              </Grid>
-
-              {/* Columna derecha: Beneficios */}
-              <Grid item xs={12} md={5}>
-                <Box sx={{ 
-                  width: '100%',
-                  display: 'flex', 
-                  flexDirection: 'column',
-                  height: { xs: 'auto', md: 550 },
-                  minHeight: { xs: 'auto', md: 550 },
-                  position: 'relative',
-                  zIndex: 1
-                }}>
-                  {/* Título y descripción */}
-                  <Box sx={{ mb: 4 }}>
-                    <H3 sx={{ 
-                      color: colors.contrast.text.primary, 
-                      fontWeight: 600, 
-                      mb: 2,
-                      fontSize: { xs: '1.4rem', md: '1.6rem' }
-                    }}>
-                      Beneficios de {activeService.title}
-                    </H3>
                     <BodyText sx={{ 
-                      color: colors.contrast.text.secondary, 
-                      fontSize: { xs: '1rem', md: '1.1rem' },
-                      lineHeight: 1.7,
-                      mb: 0
+                      color: colors.palette.white, 
+                      fontSize: '1.8rem',
+                      lineHeight: 1.2,
+                      fontWeight: 300,
+                      opacity: 0.9
                     }}>
                       {activeService.description}
                     </BodyText>
                   </Box>
 
-                  {/* Lista de beneficios */}
-                  <Box sx={{ 
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                        color: colors.contrast.text.primary, 
-                        fontWeight: 600, 
-                        mb: 3,
-                        fontSize: { xs: '1.1rem', md: '1.2rem' }
-                      }}
-                    >
-                      ¿Qué obtienes?
-                    </Typography>
-                    
-                    <Stack 
-                      spacing={2}
-                      sx={{ 
-                        flex: 1
-                      }}
-                    >
-                      {activeService.benefits.map((benefit, index) => (
-                        <Box
-                          key={index}
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: 2,
-                            p: 2.5,
-                            borderRadius: 2,
-                            background: colors.contrast.surface,
-                            border: `1px solid ${colors.contrast.border}`,
-                            transition: 'all 0.2s ease',
-                            '&:hover': {
-                              borderColor: colors.contrast.text.secondary,
-                              transform: 'translateX(4px)',
-                              boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
-                            }
-                          }}
-                        >
-                          {/* Icono de check minimalista */}
-                          <Box
-                            sx={{
-                              width: 20,
-                              height: 20,
-                              borderRadius: '50%',
-                              background: colors.contrast.text.secondary,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              flexShrink: 0,
-                              mt: 0.25
-                            }}
-                          >
-                            <Typography
-                              sx={{
-                                color: '#FFFFFF',
-                                fontSize: '0.75rem',
-                                fontWeight: 600,
-                                lineHeight: 1
-                              }}
-                            >
-                              ✓
-                            </Typography>
-                          </Box>
-                          
-                          <Typography
-                            sx={{
-                              color: colors.contrast.text.primary,
-                              fontSize: { xs: '0.9rem', md: '0.95rem' },
-                              lineHeight: 1.6,
-                              fontWeight: 500,
-                              flex: 1
-                            }}
-                          >
-                            {benefit}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </Stack>
-                  </Box>
+                  <Stack spacing={3}>
+                    {activeService.benefits.slice(0, 3).map((benefit, index) => (
+                      <Box key={index} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
+                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 700, color: colors.palette.white }}>
+                          {benefit.toUpperCase()}
+                        </BodyText>
+                      </Box>
+                    ))}
+                  </Stack>
 
-                  {/* Tiempo de entrega minimalista */}
-                  {activeService.deliveryTime && (
-                    <Box sx={{ 
-                      mt: 4, 
-                      p: 2.5, 
-                      borderRadius: 2,
-                      background: colors.contrast.surface,
-                      border: `1px solid ${colors.contrast.text.secondary}`,
-                      flexShrink: 0,
-                      position: 'relative',
-                      zIndex: 1
-                    }}>
-                      <Typography
-                        sx={{
-                          color: colors.contrast.text.secondary,
-                          fontSize: { xs: '0.9rem', md: '0.95rem' },
-                          fontWeight: 600,
-                          textAlign: 'center'
-                        }}
-                      >
-                        ⏱️ {activeService.deliveryTime}
-                      </Typography>
-                    </Box>
-                  )}
-                </Box>
+                  <DiagnosticCTA 
+                    variant="primary"
+                    size="large"
+                    text="OBTENER ESTO AHORA"
+                    sx={{ 
+                      height: '100px', 
+                      fontSize: '1.5rem', 
+                      fontWeight: 900,
+                      bgcolor: colors.palette.accentColors.orange,
+                      borderColor: colors.palette.accentColors.orange,
+                      '&:hover': {
+                        bgcolor: colors.palette.white,
+                        color: colors.palette.black,
+                        borderColor: colors.palette.white
+                      }
+                    }}
+                  />
+                </Stack>
               </Grid>
             </Grid>
           </Box>
