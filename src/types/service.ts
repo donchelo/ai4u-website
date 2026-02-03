@@ -34,8 +34,10 @@ export interface ServiceMetadata {
 }
 
 export enum ServiceSuperCategory {
+  OPERATION = 'operation',
   STRATEGY = 'strategy',
-  OPERATION = 'operation'
+  EDUCATION = 'education',
+  TRANSFORMATION = 'transformation'
 }
 
 export enum ServiceCategory {

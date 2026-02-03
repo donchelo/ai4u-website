@@ -5,74 +5,72 @@ import {
   Box, 
   Typography,
   Stack,
-  Divider
+  Divider,
+  useTheme
 } from '@mui/material';
-import { Giant, H1, H2, BodyText, Button, SEOHead } from '../components/shared/ui/atoms';
-import { ServiceCard, DiagnosticCTA, RelatedPages, SuperCategoryFilter, ExpandableSection } from '../components/shared/ui/molecules';
-import { ProcessStep } from '../components/shared/ui/molecules';
-import { ServicesFilter, ServicesPremiumHero } from '../components/shared/ui/organisms';
-import { useServicesContext } from '../context/ServicesContext';
+import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '../components/shared/ui/atoms';
+import { ServiceCard, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
+import { ServicesPremiumHero } from '../components/shared/ui/organisms';
+import { useServicesContext } from '../context';
 import { useColors } from '../hooks';
-import { ServiceCategory, ServiceSuperCategory } from '../types/service';
+import { ServiceSuperCategory } from '../types/service';
 import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Services: React.FC = () => {
   const colors = useColors();
   const { 
-    config,
-    setCategoryFilter,
-    setSuperCategoryFilter,
-    setSearchTerm,
-    resetFilters,
-    getFilteredServices
+    getFilteredServices,
+    getServicesBySuperCategory
   } = useServicesContext();
 
-  // Obtener meta tags optimizados para la página de servicios
   const metaTags = getPageMetaTags('services');
   const structuredData = getServicesStructuredData();
-  
-  // Obtener enlaces contextuales para la página Services
   const relatedLinks = getRelatedLinks('/servicios');
 
-  const filteredServices = getFilteredServices();
-  const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [selectedSuperTab, setSelectedSuperTab] = useState<number>(0);
-  const [searchValue, setSearchValue] = useState<string>('');
-
-  const superCategoryTabs = [
-    { label: 'Todos', value: undefined },
-    { label: 'Estrategia', value: ServiceSuperCategory.STRATEGY },
-    { label: 'Operación', value: ServiceSuperCategory.OPERATION }
+  // Definición de los 4 ejes con su estilo y contenido del Pitch
+  const axes = [
+    {
+      id: ServiceSuperCategory.OPERATION,
+      title: 'OPERACIÓN',
+      subtitle: 'EFICIENCIA 24/7',
+      description: 'TRANSFORMAMOS TAREAS REPETITIVAS EN PROCESOS AUTÓNOMOS E INFALIBLES. LIBERA EL 70% DE TU TIEMPO OPERATIVO.',
+      color: colors.palette.black,
+      bgColor: colors.palette.white,
+      textColor: colors.palette.black,
+      accentColor: colors.palette.accentColors.orange
+    },
+    {
+      id: ServiceSuperCategory.STRATEGY,
+      title: 'ESTRATEGIA',
+      subtitle: 'EL PODER DE LOS DATOS',
+      description: 'CONVIERTE LA INFORMACIÓN DE TU OPERACIÓN EN TU MAYOR VENTAJA COMPETITIVA. DECISIONES BASADAS EN DATA REAL.',
+      color: colors.palette.white,
+      bgColor: colors.palette.black,
+      textColor: colors.palette.white,
+      accentColor: colors.palette.accentColors.orange
+    },
+    {
+      id: ServiceSuperCategory.EDUCATION,
+      title: 'EDUCACIÓN',
+      subtitle: 'EVOLUCIÓN HUMANA',
+      description: 'CAPACITAMOS A TU EQUIPO PARA DOMINAR LAS HERRAMIENTAS QUE ESTÁN REDEFINIENDO EL MERCADO GLOBAL.',
+      color: colors.palette.black,
+      bgColor: colors.palette.accentColors.green,
+      textColor: colors.palette.black,
+      accentColor: colors.palette.black
+    },
+    {
+      id: ServiceSuperCategory.TRANSFORMATION,
+      title: 'TRANSFORMACIÓN',
+      subtitle: 'SUPER AI INFRASTRUCTURE',
+      description: 'LA CÚSPIDE DE LA AUTONOMÍA: CONSTRUIMOS LA INFRAESTRUCTURA DONDE LA IA ES EL MOTOR PRINCIPAL.',
+      color: colors.palette.white,
+      bgColor: colors.palette.accentColors.orange,
+      textColor: colors.palette.white,
+      accentColor: colors.palette.black
+    }
   ];
-
-  const categoryTabs = [
-    { label: 'Todos', value: undefined },
-    { label: 'Asistentes IA', value: ServiceCategory.AI_ASSISTANT },
-    { label: 'Automatización', value: ServiceCategory.AUTOMATION },
-    { label: 'Análisis', value: ServiceCategory.ANALYTICS },
-    { label: 'E-commerce', value: ServiceCategory.ECOMMERCE },
-    { label: 'Capacitación', value: ServiceCategory.TRAINING },
-    { label: 'Consultoría', value: ServiceCategory.CONSULTING }
-  ];
-
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setSelectedTab(newValue);
-    setCategoryFilter(categoryTabs[newValue].value);
-  };
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchValue(value);
-    setSearchTerm(value || undefined);
-  };
-
-  const clearFilters = () => {
-    setSelectedTab(0);
-    setSelectedSuperTab(0);
-    setSearchValue('');
-    resetFilters();
-  };
 
   return (
     <Box sx={{ 
@@ -80,7 +78,6 @@ const Services: React.FC = () => {
       bgcolor: colors.contrast.background,
       position: 'relative'
     }}>
-      {/* SEO Head con meta tags optimizados */}
       <SEOHead
         title={metaTags.title}
         description={metaTags.description}
@@ -89,194 +86,161 @@ const Services: React.FC = () => {
         structuredData={structuredData}
       />
 
-      {/* Hero Premium para Servicios */}
+      {/* Lab Hero - Inspirado en CoutureLab / Fashion Agent */}
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         <ServicesPremiumHero 
-          title="Fashion Agent"
+          title="AI4U LAB // 2026"
           maxItems={2}
         />
       </Box>
 
-      {/* Services Section */}
-      <Box sx={{ 
-        py: { xs: 8, md: 12 }, 
-        px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.contrast.background, 
-        mt: 4,
-        position: 'relative',
-        zIndex: 2,
-        display: 'flex',
-        justifyContent: 'center'
-      }}>
-        <Container maxWidth="xl">
-          <Grid container spacing={6}>
-            {/* Filters Sidebar */}
-            <Grid item xs={12} md={3}>
-              <Box sx={{ 
-                position: 'sticky', 
-                top: 20, 
-                zIndex: 3,
-                height: 'fit-content'
-              }}>
-                <Stack spacing={4}>
-                  {/* Super Categories Filter */}
-                  <SuperCategoryFilter
-                    selectedValue={superCategoryTabs[selectedSuperTab].value}
-                    onValueChange={(value) => {
-                      const index = superCategoryTabs.findIndex(tab => tab.value === value);
-                      setSelectedSuperTab(index >= 0 ? index : 0);
-                      setSuperCategoryFilter(value);
-                    }}
-                    options={superCategoryTabs}
-                  />
-                  
-                  {/* Services Filter */}
-                  <ServicesFilter
-                    searchValue={searchValue}
-                    onSearchChange={handleSearchChange}
-                    selectedTab={selectedTab}
-                    onTabChange={handleTabChange}
-                    onClearFilters={clearFilters}
-                    filteredCount={filteredServices.length}
-                    categoryTabs={categoryTabs}
-                  />
-                </Stack>
-              </Box>
-            </Grid>
-            
-            {/* Services Grid */}
-            <Grid item xs={12} md={9}>
-              {filteredServices.length > 0 ? (
-                <Box sx={{ 
-                  position: 'relative', 
-                  zIndex: 2,
-                  minHeight: (theme) => theme.spacing(50)
-                }}>
-                  {/* Mostrar primeros 6 servicios siempre */}
-                  <Grid container spacing={4} sx={{ mb: 6 }}>
-                    {filteredServices.slice(0, 6).map((service) => (
-                      <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
+      {/* Secciones de los 4 Ejes */}
+      {axes.map((axis, index) => {
+        const axisServices = getServicesBySuperCategory(axis.id);
+        
+        return (
+          <Box 
+            key={axis.id}
+            id={axis.id}
+            sx={{ 
+              py: { xs: 12, md: 20 }, 
+              px: { xs: 4, md: 8, lg: 12 },
+              bgcolor: axis.bgColor,
+              color: axis.textColor,
+              borderBottom: `1px solid ${colors.palette.black}`,
+              display: 'flex',
+              justifyContent: 'center',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Background Number */}
+            <Typography 
+              sx={{ 
+                position: 'absolute', 
+                top: -50, 
+                right: 20, 
+                fontSize: { xs: '15rem', md: '25rem' }, 
+                fontWeight: 900, 
+                color: axis.textColor, 
+                opacity: 0.05,
+                zIndex: 0,
+                pointerEvents: 'none',
+                userSelect: 'none'
+              }}
+            >
+              0{index + 1}
+            </Typography>
+
+            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+              <Grid container spacing={10}>
+                {/* Header del Eje */}
+                <Grid item xs={12} lg={4}>
+                  <Box sx={{ position: { lg: 'sticky' }, top: 120 }}>
+                    <Typography 
+                      variant="overline" 
+                      sx={{ 
+                        color: axis.accentColor, 
+                        fontWeight: 900, 
+                        letterSpacing: 4,
+                        fontSize: '1.2rem',
+                        mb: 2,
+                        display: 'block'
+                      }}
+                    >
+                      // {axis.subtitle}
+                    </Typography>
+                    <H1 sx={{ 
+                      fontWeight: 900, 
+                      textTransform: 'uppercase', 
+                      fontSize: { xs: '3.5rem', md: '5rem', lg: '6.5rem' },
+                      lineHeight: 0.9,
+                      mb: 4,
+                      color: 'inherit'
+                    }}>
+                      {axis.title}
+                    </H1>
+                    <BodyText sx={{ 
+                      fontSize: '1.5rem', 
+                      fontWeight: 600, 
+                      lineHeight: 1.2,
+                      maxWidth: '400px',
+                      mb: 6,
+                      color: 'inherit',
+                      opacity: 0.9
+                    }}>
+                      {axis.description}
+                    </BodyText>
+                    <Button 
+                      variant={axis.bgColor === colors.palette.black ? 'outline' : 'primary'}
+                      sx={{ 
+                        borderColor: axis.textColor, 
+                        color: axis.textColor,
+                        height: '70px',
+                        px: 6,
+                        fontSize: '1.1rem',
+                        '&:hover': {
+                          bgcolor: axis.textColor,
+                          color: axis.bgColor
+                        }
+                      }}
+                      onClick={() => {
+                        const nextAxis = axes[index + 1];
+                        if (nextAxis) {
+                          document.getElementById(nextAxis.id)?.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      EXPLORAR EJE
+                    </Button>
+                  </Box>
+                </Grid>
+
+                {/* Grid de Servicios del Eje */}
+                <Grid item xs={12} lg={8}>
+                  <Grid container spacing={4}>
+                    {axisServices.map((service) => (
+                      <Grid item xs={12} sm={6} key={service.id}>
                         <ServiceCard 
                           service={service}
-                          showPrice={config.displaySettings.showPrices}
+                          showPrice={false}
                         />
                       </Grid>
                     ))}
                   </Grid>
+                </Grid>
+              </Grid>
+            </Container>
+          </Box>
+        );
+      })}
 
-                  {/* Mostrar servicios adicionales si hay más de 6 */}
-                  {filteredServices.length > 6 && (
-                    <ExpandableSection
-                      title={`EXPLORAR ${filteredServices.length - 6} SERVICIOS MÁS`}
-                      variant="card"
-                      defaultExpanded={false}
-                    >
-                      <Grid container spacing={4}>
-                        {filteredServices.slice(6).map((service) => (
-                          <Grid item xs={12} sm={6} lg={4} key={service.id} id={`service-${service.id}`} sx={{ scrollMarginTop: 96 }}>
-                            <ServiceCard 
-                              service={service}
-                              showPrice={config.displaySettings.showPrices}
-                            />
-                          </Grid>
-                        ))}
-                      </Grid>
-                    </ExpandableSection>
-                  )}
-                </Box>
-              ) : (
-                <Box sx={{ 
-                  textAlign: 'center', 
-                  py: 12,
-                  color: colors.contrast.text.primary
-                }}>
-                  <H2 sx={{ mb: 4, fontWeight: 900 }}>
-                    NO SE ENCONTRARON SERVICIOS
-                  </H2>
-                  <Button 
-                    variant="primary" 
-                    onClick={clearFilters}
-                    sx={{ mt: 2 }}
-                  >
-                    LIMPIAR FILTROS
-                  </Button>
-                </Box>
-              )}
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      <Divider sx={{ borderWidth: '2px', borderColor: colors.palette.black }} />
-
-      {/* Process Section - Inspiración ORANGE_PUNCH */}
+      {/* Proceso Section (Mantenida pero adaptada) */}
       <Box sx={{ 
         py: { xs: 10, md: 18 }, 
         px: { xs: 4, md: 8, lg: 12 },
-        position: 'relative', 
-        zIndex: 1, 
         bgcolor: colors.palette.accentColors.orange,
-        color: colors.palette.white,
+        color: colors.palette.black,
         display: 'flex',
         justifyContent: 'center'
       }}>
         <Container maxWidth="xl">
-          <Stack spacing={10} alignItems="flex-start">
-            <Box sx={{ textAlign: 'left', width: '100%' }}>
-              <H1 sx={{ 
-                fontWeight: 900,
-                textTransform: 'uppercase',
-                mb: 4,
-                color: colors.palette.black,
-                fontSize: { xs: '3rem', md: '6rem', lg: '8rem' },
-                lineHeight: 0.9
-              }}>
-                NUESTRO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>PROCESO</Box>
-              </H1>
-              <BodyText sx={{ 
-                fontSize: '2rem',
-                color: colors.palette.black,
-                maxWidth: '800px',
-                fontWeight: 600,
-                lineHeight: 1.1,
-                letterSpacing: '-0.03em',
-                textTransform: 'uppercase'
-              }}>
-                MÉTODO DIRECTO. RESULTADOS REALES. SIN COMPLICACIONES.
-              </BodyText>
-            </Box>
-            
+          <Stack spacing={10}>
+            <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 4, fontSize: { xs: '3rem', md: '6rem' } }}>
+              MÉTODO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>DIRECTO</Box>
+            </H1>
             <Grid container spacing={6}>
               {[
-                {
-                  number: 1,
-                  title: 'DIAGNÓSTICO GRATUITO',
-                  description: 'IDENTIFICAMOS TODAS LAS OPORTUNIDADES DE AUTOMATIZACIÓN EN TU NEGOCIO.',
-                },
-                {
-                  number: 2,
-                  title: 'DEFINICIÓN DE PRIORIDADES',
-                  description: 'ESTABLECEMOS QUÉ PROCESOS AUTOMATIZAR PRIMERO SEGÚN TU ROI.',
-                },
-                {
-                  number: 3,
-                  title: 'PRESUPUESTO PERSONALIZADO',
-                  description: 'ADAPTAMOS LAS SOLUCIONES A TU CAPACIDAD DE INVERSIÓN.',
-                },
-                {
-                  number: 4,
-                  title: 'IMPLEMENTACIÓN',
-                  description: 'DESARROLLAMOS E INTEGRAMOS LAS SOLUCIONES EN TU NEGOCIO.',
-                }
+                { n: '01', t: 'DIAGNÓSTICO', d: 'IDENTIFICAMOS OPORTUNIDADES REALES.' },
+                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN EL MÁXIMO ROI.' },
+                { n: '03', t: 'DESARROLLO', d: 'INGENIERÍA DE IA A MEDIDA.' },
+                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN TOTAL 24/7.' }
               ].map((step, idx) => (
-                <Grid item xs={12} sm={6} key={idx}>
-                  <Box sx={{ borderLeft: `8px solid ${colors.palette.black}`, pl: 4, mb: 4 }}>
-                    <H2 sx={{ color: colors.palette.black, fontSize: '3rem', fontWeight: 900, mb: 2, lineHeight: 1 }}>
-                      {String(step.number).padStart(2, '0')} // {step.title}
-                    </H2>
-                    <BodyText sx={{ color: colors.palette.black, fontSize: '1.5rem', fontWeight: 500, opacity: 0.9 }}>
-                      {step.description}
-                    </BodyText>
+                <Grid item xs={12} sm={6} md={3} key={idx}>
+                  <Box sx={{ borderLeft: `8px solid ${colors.palette.black}`, pl: 3 }}>
+                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1 }}>{step.n}</H2>
+                    <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1 }}>{step.t}</Typography>
+                    <BodyText sx={{ fontWeight: 500 }}>{step.d}</BodyText>
                   </Box>
                 </Grid>
               ))}
@@ -285,51 +249,39 @@ const Services: React.FC = () => {
         </Container>
       </Box>
 
-      {/* CTA Section - Inspiración GREEN_FRESH */}
+      {/* CTA Final */}
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.green, 
-        color: colors.palette.black, 
-        position: 'relative', 
-        zIndex: 1,
+        bgcolor: colors.palette.accentColors.green,
         display: 'flex',
         justifyContent: 'center'
       }}>
         <Container maxWidth="lg">
-          <Stack spacing={8} alignItems="center" textAlign="center">
-            <Giant sx={{ color: colors.palette.black, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
-              ¿NECESITAS AYUDA?
+          <Stack spacing={6} alignItems="center" textAlign="center">
+            <Giant sx={{ color: colors.palette.black, fontSize: { xs: '3rem', md: '8rem' } }}>
+              ¿EMPEZAMOS?
             </Giant>
-            <BodyText sx={{ fontSize: '1.8rem', color: colors.palette.black, fontWeight: 600, maxWidth: '800px', textTransform: 'uppercase', lineHeight: 1.1 }}>
-              AGENDA UNA CONSULTA GRATUITA DE 30 MINUTOS Y EMPIEZA A RECUPERAR TU TIEMPO.
-            </BodyText>
             <DiagnosticCTA 
               variant="primary"
               size="large"
-              text="AGENDAR CONSULTA"
+              text="AGENDAR CONSULTA GRATUITA"
               sx={{ 
                 height: '100px', 
                 px: 10, 
                 fontSize: '1.8rem',
                 bgcolor: colors.palette.black,
-                color: colors.palette.white,
-                border: `4px solid ${colors.palette.black}`,
-                '&:hover': {
-                  bgcolor: colors.palette.white,
-                  color: colors.palette.black
-                }
+                color: colors.palette.white
               }}
             />
           </Stack>
         </Container>
       </Box>
 
-      {/* Enlaces Relacionados - SEO Internal Linking */}
+      {/* SEO Internal Linking */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <RelatedPages 
           pages={relatedLinks}
-          title="También podrías estar interesado en:"
+          title="Sigue explorando:"
           variant="horizontal"
         />
       </Container>

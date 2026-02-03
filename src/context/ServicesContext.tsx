@@ -84,6 +84,8 @@ const initialState: ServicesState = {
     bySuperCategory: {
       [ServiceSuperCategory.STRATEGY]: services.filter(s => s.superCategory === ServiceSuperCategory.STRATEGY).length,
       [ServiceSuperCategory.OPERATION]: services.filter(s => s.superCategory === ServiceSuperCategory.OPERATION).length,
+      [ServiceSuperCategory.EDUCATION]: services.filter(s => s.superCategory === ServiceSuperCategory.EDUCATION).length,
+      [ServiceSuperCategory.TRANSFORMATION]: services.filter(s => s.superCategory === ServiceSuperCategory.TRANSFORMATION).length,
     }
   },
 };
@@ -179,7 +181,7 @@ function servicesReducer(state: ServicesState, action: ServicesAction): Services
 }
 
 // Contexto
-interface ServicesContextType extends ServicesState {
+export interface ServicesContextType extends ServicesState {
   // Acciones
   setCategoryFilter: (category?: ServiceCategory) => void;
   setSuperCategoryFilter: (superCategory?: ServiceSuperCategory) => void;
@@ -201,7 +203,7 @@ interface ServicesContextType extends ServicesState {
   getTags: () => string[];
 }
 
-const ServicesContext = createContext<ServicesContextType | undefined>(undefined);
+export const ServicesContext = createContext<ServicesContextType | undefined>(undefined);
 
 // Hook personalizado para usar el contexto
 export const useServicesContext = () => {
@@ -336,7 +338,12 @@ export const ServicesProvider: React.FC<ServicesProviderProps> = ({
   };
 
   const getSuperCategories = (): ServiceSuperCategory[] => {
-    return [ServiceSuperCategory.STRATEGY, ServiceSuperCategory.OPERATION];
+    return [
+      ServiceSuperCategory.OPERATION,
+      ServiceSuperCategory.STRATEGY,
+      ServiceSuperCategory.EDUCATION,
+      ServiceSuperCategory.TRANSFORMATION
+    ];
   };
 
   const getTags = (): string[] => {
@@ -370,5 +377,3 @@ export const ServicesProvider: React.FC<ServicesProviderProps> = ({
     </ServicesContext.Provider>
   );
 };
-
-export default ServicesProvider; 

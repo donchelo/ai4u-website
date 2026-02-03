@@ -70,18 +70,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             boxShadow: `8px 8px 0px ${colors.contrast.text.primary}`,
           }
         }}>
-          {/* Service Thumbnail */}
-          <Box sx={{ 
-            width: '100%',
-            mb: 3,
-          }}>
-            <ServiceThumbnail
-              serviceId={service.id}
-              serviceColor={service.color}
-              size="full-width"
-              customThumbnail={service.thumbnail}
-            />
-          </Box>
 
           {/* Super Category Badge minimalista */}
           <Box sx={{ 
@@ -107,117 +95,75 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             />
           </Box>
 
-          {/* Header */}
+          {/* Header & Content */}
           <Box sx={{ 
-            mb: 3,
+            mb: 2,
+            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column'
           }}>
-            <H3 sx={{ 
-              color: colors.contrast.text.primary,
-              fontSize: { xs: '1.2rem', md: '1.4rem' },
-              fontWeight: 600,
-              lineHeight: 1.3,
-              textAlign: 'center',
+            <Typography 
+              sx={{ 
+                color: colors.contrast.text.primary,
+                fontSize: { xs: '1.4rem', md: '1.8rem' },
+                fontWeight: 900,
+                lineHeight: 1.1,
+                textAlign: 'left',
+                textTransform: 'uppercase',
+                mb: 1
+              }}
+            >
+              {service.title}
+            </Typography>
+            
+            <Typography sx={{ 
+              fontWeight: 700,
+              color: colors.palette.accentColors.orange,
+              fontSize: '0.9rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
               mb: 2
             }}>
-              {service.title}
-            </H3>
+              // {service.subtitle}
+            </Typography>
+
+            <BodyText sx={{ 
+              lineHeight: 1.4,
+              color: colors.contrast.text.primary,
+              fontSize: '1.1rem',
+              textAlign: 'left',
+              mb: 3,
+              fontWeight: 500
+            }}>
+              {service.description}
+            </BodyText>
             
-            {!compact && (
-              <ProgressiveContent
-                summary={
-                  <Box sx={{ 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    mt: 2,
-                    cursor: 'pointer',
-                    '&:hover': {
-                      transform: 'scale(1.05)',
-                      transition: 'transform 0.2s ease'
-                    }
-                  }}>
-                    <Box sx={{
-                      width: 24,
-                      height: 24,
-                      borderRadius: '50%',
-                      background: colors.contrast.background,
-                      border: `1px solid ${colors.contrast.border}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      position: 'relative',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        width: 4,
-                        height: 4,
-                        borderRadius: '50%',
-                        background: colors.contrast.text.secondary,
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                      }
-                    }} />
-                  </Box>
-                }
-                details={
-                  <Box sx={{ mt: 2 }}>
-                    <BodyText sx={{ 
-                      mb: 2, 
-                      fontWeight: 500,
-                      color: colors.contrast.text.primary,
-                      fontSize: '0.95rem',
-                      lineHeight: 1.4,
-                      textAlign: 'center'
-                    }}>
-                      {service.subtitle}
-                    </BodyText>
-                    <BodyText sx={{ 
-                      lineHeight: 1.6,
-                      color: colors.contrast.text.secondary,
-                      fontSize: '0.9rem',
-                      textAlign: 'left',
-                      mb: 3
-                    }}>
-                      {service.description}
-                    </BodyText>
-                    
-                    <Box>
-                      <BodyText sx={{ 
-                        fontWeight: 600, 
-                        mb: 1,
-                        color: colors.contrast.text.primary,
-                        fontSize: '0.9rem'
-                      }}>
-                        Beneficios:
-                      </BodyText>
-                      <List dense disablePadding>
-                        {service.benefits.map((benefit, index) => (
-                          <ListItem key={index} disableGutters sx={{ py: 0.5 }}>
-                            <ListItemIcon sx={{ minWidth: 24 }}>
-                              <GeometricIcon
-                                type="check"
-                                size="small"
-                                color={colors.contrast.text.secondary}
-                                variant="minimal"
-                              />
-                            </ListItemIcon>
-                            <ListItemText 
-                              primary={benefit}
-                              primaryTypographyProps={{
-                                fontSize: '0.8rem',
-                                color: colors.contrast.text.secondary,
-                                lineHeight: 1.4
-                              }}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Box>
-                  </Box>
-                }
-                variant="inline"
-              />
-            )}
+            <Box sx={{ mt: 'auto' }}>
+              <List dense disablePadding>
+                {service.benefits.map((benefit, index) => (
+                  <ListItem key={index} disableGutters sx={{ py: 0.5, alignItems: 'flex-start' }}>
+                    <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
+                      <GeometricIcon
+                        type="arrow-right"
+                        size="small"
+                        color={colors.palette.accentColors.orange}
+                        variant="minimal"
+                      />
+                    </ListItemIcon>
+                    <ListItemText 
+                      primary={benefit.toUpperCase()}
+                      primaryTypographyProps={{
+                        fontSize: '0.8rem',
+                        color: colors.contrast.text.secondary,
+                        lineHeight: 1.2,
+                        fontWeight: 700,
+                        letterSpacing: '0.02em'
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
           </Box>
 
           {/* Footer minimalista */}

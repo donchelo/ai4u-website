@@ -4,7 +4,7 @@ import { H1, H3, BodyText, LazyImage } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
-import { useServicesContext } from '../../../../context/ServicesContext';
+import { useServicesContext } from '../../../../context';
 
 interface ServicesPremiumHeroProps {
   title?: string;
@@ -43,18 +43,19 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
         {featuredSorted.length > 0 && (
           <Box sx={{ position: 'relative', zIndex: 1 }}>
             {/* Título GIGANTE */}
-            <Box sx={{ textAlign: 'left', mb: 8 }}>
+            <Box sx={{ textAlign: 'left', mb: 4 }}>
               <H1
                 sx={{
                   color: colors.palette.white,
                   fontWeight: 900,
-                  fontSize: { xs: '4rem', md: '8rem' },
+                  fontSize: { xs: '3rem', md: '5rem' },
                   textTransform: 'uppercase',
                   lineHeight: 0.85,
-                  letterSpacing: '-0.05em'
+                  letterSpacing: '-0.02em',
+                  opacity: 0.5
                 }}
               >
-                // DESTACADOS
+                // {title || 'DESTACADOS'}
               </H1>
             </Box>
 
@@ -102,24 +103,28 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               spacing={10}
             >
               {/* Columna izquierda: Video/Media */}
-              <Grid item xs={12} md={7}>
+              <Grid item xs={12} md={6}>
                 <Box
                   sx={{
-                    p: 4,
-                    bgcolor: colors.palette.white,
-                    border: `8px solid ${colors.palette.white}`,
-                    boxShadow: `15px 15px 0px ${colors.palette.accentColors.orange}`,
-                    minHeight: { xs: 400, md: 600 },
+                    p: 2,
+                    bgcolor: 'rgba(255,255,255,0.05)',
+                    border: `1px solid rgba(255,255,255,0.1)`,
+                    backdropFilter: 'blur(10px)',
+                    minHeight: { xs: 300, md: 450 },
                     width: '100%',
-                    position: 'relative'
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
                   <Box sx={{ 
                     position: 'relative', 
                     width: '100%', 
-                    height: { xs: 300, md: 500 },
+                    height: { xs: 250, md: 400 },
                     bgcolor: colors.palette.black,
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    border: `1px solid rgba(255,255,255,0.2)`
                   }}>
                     {activeService.media?.video ? (
                       <video
@@ -143,34 +148,34 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               </Grid>
 
               {/* Columna derecha: Info */}
-              <Grid item xs={12} md={5}>
-                <Stack spacing={6}>
+              <Grid item xs={12} md={6}>
+                <Stack spacing={4}>
                   <Box>
                     <H3 sx={{ 
                       color: colors.palette.white, 
                       fontWeight: 900, 
-                      fontSize: '4rem',
+                      fontSize: { xs: '2.5rem', md: '4rem' },
                       lineHeight: 0.9,
-                      mb: 4,
+                      mb: 2,
                       textTransform: 'uppercase'
                     }}>
                       {activeService.title}
                     </H3>
                     <BodyText sx={{ 
                       color: colors.palette.white, 
-                      fontSize: '1.8rem',
+                      fontSize: { xs: '1.2rem', md: '1.5rem' },
                       lineHeight: 1.2,
                       fontWeight: 300,
-                      opacity: 0.9
+                      opacity: 0.8
                     }}>
                       {activeService.description}
                     </BodyText>
                   </Box>
 
-                  <Stack spacing={3}>
+                  <Stack spacing={2}>
                     {activeService.benefits.slice(0, 3).map((benefit, index) => (
-                      <Box key={index} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 700, color: colors.palette.white }}>
+                      <Box key={index} sx={{ borderLeft: `4px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
+                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 700, color: colors.palette.white, opacity: 0.9 }}>
                           {benefit.toUpperCase()}
                         </BodyText>
                       </Box>
@@ -180,10 +185,10 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   <DiagnosticCTA 
                     variant="primary"
                     size="large"
-                    text="OBTENER ESTO AHORA"
+                    text={activeService.title === 'coutureLAB' ? 'SOLICITAR ACCESO LAB' : 'SOLICITAR INFRAESTRUCTURA'}
                     sx={{ 
-                      height: '100px', 
-                      fontSize: '1.5rem', 
+                      height: '80px', 
+                      fontSize: '1.2rem', 
                       fontWeight: 900,
                       bgcolor: colors.palette.accentColors.orange,
                       borderColor: colors.palette.accentColors.orange,
