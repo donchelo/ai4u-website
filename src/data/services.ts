@@ -430,6 +430,10 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.TRANSFORMATION,
     priority: 1,
     featured: true,
+    media: {
+      video: '/assets/videos/data-entry-automatico.mp4',
+      poster: '/assets/images/services-thumbnails/super-ai.png'
+    },
     color: '#00F0FF',
     tags: ['super-ai', 'autonomía'],
     status: ServiceStatus.ACTIVE,

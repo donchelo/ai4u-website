@@ -3,7 +3,7 @@ const path = require('path');
 
 // Función para validar meta tags en el HTML
 function validateMetaTags() {
-  const htmlPath = path.resolve(__dirname, '../public/index.html');
+  const htmlPath = path.resolve(__dirname, '../index.html');
   const htmlContent = fs.readFileSync(htmlPath, 'utf8');
   
   console.log('🔍 Validando meta tags para WhatsApp...\n');
@@ -60,7 +60,7 @@ function validateMetaTags() {
   const imageMatches = htmlContent.match(/<meta property="og:image" content="([^"]+)"/);
   if (imageMatches) {
     const imageUrl = imageMatches[1];
-    const imagePath = imageUrl.replace('https://ai4u.com.co', '../public');
+    const imagePath = imageUrl.replace('https://www.ai4u.com.co', '../public');
     const fullImagePath = path.resolve(__dirname, imagePath);
     
     if (fs.existsSync(fullImagePath)) {

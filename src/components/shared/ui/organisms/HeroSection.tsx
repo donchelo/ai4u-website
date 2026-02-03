@@ -52,14 +52,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <Box 
       sx={{ 
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: { xs: 'auto', md: '80vh' },
+        maxHeight: { xs: '100vh', md: 'none' },
         width: '100%',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         bgcolor: colors.palette.black,
-        py: { xs: 10, md: 15 } // Abundante white space
+        py: { xs: 2, sm: 3, md: 10 }
       }}
     >
       {/* Fondo Minimalista con Alto Contraste */}
@@ -104,14 +105,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         sx={{ 
           position: 'relative',
           zIndex: 5,
-          px: { xs: 4, md: 12, lg: 20 }, // Más white space lateral
+          px: { xs: 2, sm: 3, md: 12, lg: 20 },
           display: 'flex',
           justifyContent: 'center'
         }}
       >
         <Stack
           direction="column"
-          spacing={{ xs: 6, md: 12 }}
+          spacing={{ xs: 1.5, sm: 2, md: 8 }}
           alignItems="flex-start"
           sx={{ width: '100%', mx: 0 }}
         >
@@ -119,10 +120,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <Giant 
               sx={{ 
                 color: colors.palette.white,
-                mb: 4,
+                mb: { xs: 0.5, sm: 1, md: 3 },
                 maxWidth: '1100px',
-                fontSize: { xs: '3.5rem', md: '7rem', lg: '9rem' }, // Reducido para legibilidad en PC
-                lineHeight: 0.8,
+                fontSize: { xs: '1.8rem', sm: '2.5rem', md: '5rem', lg: '7rem' },
+                lineHeight: { xs: 1, sm: 0.95, md: 0.85 },
                 letterSpacing: '-0.05em'
               }}
             >
@@ -133,11 +134,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               sx={{ 
                 color: colors.palette.white,
                 maxWidth: '900px',
-                mb: 6,
+                mb: { xs: 1, sm: 1.5, md: 4 },
                 opacity: 0.9,
                 fontWeight: 300,
-                fontSize: { xs: '2rem', md: '4rem' },
-                lineHeight: 1.1
+                fontSize: { xs: '0.75rem', sm: '1rem', md: '2.5rem' },
+                lineHeight: { xs: 1.2, md: 1.1 }
               }}
             >
               {customSubtitle}
@@ -146,7 +147,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
           <Stack
             direction={{ xs: 'column', md: 'row' }}
-            spacing={6}
+            spacing={{ xs: 1.5, sm: 2, md: 4 }}
             alignItems="center"
           >
             <DiagnosticCTA 
@@ -155,11 +156,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               size="large"
               showIcon={false}
               sx={{ 
-                height: '120px', 
-                px: 10, 
-                fontSize: '2rem',
+                height: { xs: '45px', sm: '60px', md: '100px' }, 
+                px: { xs: 3, sm: 4, md: 8 }, 
+                fontSize: { xs: '0.75rem', sm: '1rem', md: '1.6rem' },
                 fontWeight: 900,
-                border: `6px solid ${colors.palette.white}`,
+                border: { xs: `2px solid ${colors.palette.white}`, md: `4px solid ${colors.palette.white}` },
                 bgcolor: colors.palette.white,
                 color: colors.palette.black,
                 '&:hover': {
@@ -169,15 +170,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               }}
             />
             
-            <Box sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
+            <Box sx={{ 
+              borderLeft: { xs: `2px solid ${colors.palette.accentColors.orange}`, md: `4px solid ${colors.palette.accentColors.orange}` }, 
+              pl: { xs: 1.5, sm: 2, md: 3 } 
+            }}>
               <BodyText 
                 sx={{ 
                   color: colors.palette.white,
                   fontWeight: 800,
-                  fontSize: '1.8rem',
-                  letterSpacing: '0.1em',
+                  fontSize: { xs: '0.6rem', sm: '0.8rem', md: '1.4rem' },
+                  letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  lineHeight: 1
+                  lineHeight: 1.1
                 }}
               >
                 {humanElementText}
