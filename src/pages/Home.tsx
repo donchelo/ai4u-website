@@ -116,12 +116,12 @@ const Home = () => {
               <Grid item xs={12} md={4} key={idx}>
                 <Card 
                   variant="default"
+                  colorMode="light"
                   sx={{ 
                     height: '100%',
                     p: 6,
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: colors.palette.white,
                     borderColor: colors.palette.black,
                     borderWidth: '4px',
                     '&:hover': {

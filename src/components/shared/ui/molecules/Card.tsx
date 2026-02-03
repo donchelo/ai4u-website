@@ -1,23 +1,21 @@
 import React, { ReactNode } from 'react';
 import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
-import { AI4U_PALETTE, COMPONENT_VARIANTS, CONTRAST_PAIRS } from '../tokens/palette';
-import { SHADOW_TOKENS } from '../tokens/theme';
+import { AI4U_PALETTE } from '../tokens/palette';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
   children?: ReactNode;
   variant?: 'default' | 'elevated' | 'outlined';
   elevation?: number;
   showContent?: boolean;
+  colorMode?: 'light' | 'dark';
 }
 
 // Card minimalista usando sistema de tokens
 const StyledCard = styled(MuiCard, {
-  shouldForwardProp: (prop) => prop !== 'cardVariant',
-})<{ cardVariant?: CardProps['variant'] }>(({ theme, cardVariant }) => {
-  const isLight = theme.palette.mode === 'light';
-  const contrast = CONTRAST_PAIRS[isLight ? 'light' : 'dark'];
-  const cardVariants = COMPONENT_VARIANTS.card;
-  
+  shouldForwardProp: (prop) => prop !== 'cardVariant' && prop !== 'forceMode',
+})<{ cardVariant?: CardProps['variant']; forceMode?: 'light' | 'dark' }>(({ theme, cardVariant, forceMode }) => {
+  const isLight = forceMode ? forceMode === 'light' : theme.palette.mode === 'light';
+
   // Estilos base minimalistas/brutalistas
   const baseStyles = {
     borderRadius: 0, // Sharp edges
@@ -78,10 +76,11 @@ export const Card = ({
   variant = 'default',
   elevation = 0,
   showContent = true,
+  colorMode,
   ...props
 }: CardProps) => {
   return (
-    <StyledCard cardVariant={variant} elevation={elevation} {...props}>
+    <StyledCard cardVariant={variant} elevation={elevation} forceMode={colorMode} {...props}>
       {showContent && (
         <CardContent sx={{ 
           padding: { xs: 3, md: 4 },

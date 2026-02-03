@@ -78,9 +78,12 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     
-    <!-- Preload recursos críticos -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;900&family=Fira+Mono&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;900&family=Fira+Mono&display=swap"></noscript>
+    <!-- Fuentes: un único link con display=swap y pesos usados (Red Hat 300,400,600,900; Fira Mono 400,500) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;600;900&family=Fira+Mono:wght@400;500&display=swap">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;600;900&family=Fira+Mono:wght@400;500&display=swap"></noscript>
+    
+    <!-- Preload LCP: imagen principal del hero en Home -->
+    <link rel="preload" as="image" href="/assets/images/hero-image.png">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44D5SE9KCR"></script>

@@ -11,12 +11,13 @@ import {
 } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
-import { useColors } from '../hooks';
+import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const WhyAI4U = () => {
   const colors = useColors();
+  usePerformanceMonitoring('why-ai4u', { lcp: 2500, fcp: 1800 });
 
   // Obtener meta tags optimizados para la página "Por qué AI4U"
   const metaTags = getPageMetaTags('why');
@@ -77,6 +78,7 @@ const WhyAI4U = () => {
                   title="DESCUBRE MI HISTORIA"
                   variant="card"
                   defaultExpanded={false}
+                  colorMode="dark"
                 >
                   <BodyText sx={{ 
                     color: colors.palette.white,
@@ -203,7 +205,7 @@ const WhyAI4U = () => {
         </Container>
       </Box>
 
-      {/* Stats Section - Inspiración BLACK_MODERN */}
+            {/* Stats Section - Inspiración BLACK_MODERN */}
       <Box sx={{ 
         py: { xs: 10, md: 18 }, 
         px: { xs: 4, md: 8, lg: 12 },
@@ -236,6 +238,7 @@ const WhyAI4U = () => {
                   value={stat.value}
                   variant="default"
                   size="large"
+                  colorMode="dark"
                 />
               </Grid>
             ))}

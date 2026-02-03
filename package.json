@@ -19,6 +19,7 @@
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
+    "build:analyze": "cross-env ANALYZE=true vite build",
     "preview": "vite preview",
     "test": "vitest",
     "predeploy": "npm run build",
@@ -76,10 +77,12 @@
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.2.1",
     "chrome-launcher": "^1.2.0",
+    "cross-env": "^10.1.0",
     "gh-pages": "^6.3.0",
     "imagemin": "^9.0.1",
     "imagemin-webp": "^8.0.0",
     "lighthouse": "^12.8.1",
+    "rollup-plugin-visualizer": "^6.0.5",
     "vite": "^5.1.0",
     "vitest": "^1.2.0"
   }

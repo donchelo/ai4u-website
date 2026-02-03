@@ -12,7 +12,7 @@ import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '../comp
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { ServicesPremiumHero } from '../components/shared/ui/organisms';
 import { useServicesContext } from '../context';
-import { useColors } from '../hooks';
+import { useColors, usePerformanceMonitoring } from '../hooks';
 import { ServiceSuperCategory } from '../types/service';
 import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
@@ -23,6 +23,8 @@ const Services: React.FC = () => {
     getFilteredServices,
     getServicesBySuperCategory
   } = useServicesContext();
+
+  usePerformanceMonitoring('services', { lcp: 2500, fcp: 1800 });
 
   const metaTags = getPageMetaTags('services');
   const structuredData = getServicesStructuredData();

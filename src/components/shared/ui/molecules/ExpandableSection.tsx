@@ -11,6 +11,7 @@ interface ExpandableSectionProps {
   defaultExpanded?: boolean;
   variant?: 'minimal' | 'card' | 'bordered';
   showIcon?: boolean;
+  colorMode?: 'light' | 'dark';
 }
 
 const ExpandableSection = ({
@@ -19,10 +20,14 @@ const ExpandableSection = ({
   children,
   defaultExpanded = false,
   variant = 'minimal',
-  showIcon = true
+  showIcon = true,
+  colorMode
 }: ExpandableSectionProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const colors = useColors();
+  
+  const currentMode = colorMode || colors.mode;
+  const isDarkMode = currentMode === 'dark';
 
   const handleToggle = () => {
     setExpanded(!expanded);
@@ -35,6 +40,7 @@ const ExpandableSection = ({
           container: {
             background: isDarkMode ? colors.palette.black : colors.palette.white,
             border: `3px solid ${isDarkMode ? colors.palette.white : colors.palette.black}`,
+            color: isDarkMode ? colors.palette.white : colors.palette.black,
             borderRadius: 0,
             p: 4,
             transition: 'all 0.1s ease',
@@ -48,6 +54,7 @@ const ExpandableSection = ({
         return {
           container: {
             borderBottom: `3px solid ${isDarkMode ? colors.palette.white : colors.palette.black}`,
+            color: isDarkMode ? colors.palette.white : colors.palette.black,
             pb: 3,
             mb: 3
           }
@@ -55,13 +62,13 @@ const ExpandableSection = ({
       default: // minimal
         return {
           container: {
+            color: 'inherit',
             mb: 4
           }
         };
     }
   };
 
-  const isDarkMode = colors.mode === 'dark';
   const variantStyles = getVariantStyles();
 
   return (

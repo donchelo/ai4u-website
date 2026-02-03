@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { H1, H3, BodyText, LazyImage } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
@@ -19,6 +19,22 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
 }) => {
   const colors = useColors();
   const { getFeaturedServices } = useServicesContext();
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const [videoInView, setVideoInView] = useState(false);
+
+  // Lazy load video: cargar src solo cuando el contenedor entra en viewport (no compite con LCP)
+  useEffect(() => {
+    const el = videoContainerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) setVideoInView(true);
+      },
+      { rootMargin: '100px', threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Destacados ordenados por prioridad
   const featuredSorted = ServiceUtils.sortByPriority([...getFeaturedServices()]);
@@ -118,18 +134,22 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     justifyContent: 'center'
                   }}
                 >
-                  <Box sx={{ 
-                    position: 'relative', 
-                    width: '100%', 
-                    height: { xs: 250, md: 400 },
-                    bgcolor: colors.palette.black,
-                    overflow: 'hidden',
-                    border: `1px solid rgba(255,255,255,0.2)`
-                  }}>
+                  <Box
+                    ref={videoContainerRef}
+                    sx={{ 
+                      position: 'relative', 
+                      width: '100%', 
+                      height: { xs: 250, md: 400 },
+                      bgcolor: colors.palette.black,
+                      overflow: 'hidden',
+                      border: `1px solid rgba(255,255,255,0.2)`
+                    }}
+                  >
                     {activeService.media?.video ? (
                       <video
-                        src={activeService.media.video}
+                        src={videoInView ? activeService.media.video : undefined}
                         poster={activeService.media.poster}
+                        preload="metadata"
                         autoPlay
                         muted
                         loop

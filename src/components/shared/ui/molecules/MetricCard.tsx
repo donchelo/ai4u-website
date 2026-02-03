@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Box, Typography, styled, useTheme } from '@mui/material';
+import { Card, Box, Typography, styled } from '@mui/material';
 import { GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
-import { alpha } from '@mui/material/styles';
 
 type IconType = 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
 type CardVariant = 'default' | 'elevated' | 'outlined';
@@ -17,16 +16,16 @@ interface MetricCardProps {
   trend?: 'up' | 'down' | 'neutral';
   size?: 'compact' | 'normal' | 'large';
   onClick?: () => void;
+  colorMode?: 'light' | 'dark';
 }
 
-// Styled component para el valor de la métrica - NÚMEROS GIGANTES
 const MetricValue = styled(Typography, {
   shouldForwardProp: (prop) => prop !== 'metricSize' && prop !== 'isDarkMode',
 })<{ metricSize: string; isDarkMode?: boolean }>(({ metricSize, theme }) => ({
-  fontSize: metricSize === 'compact' 
-    ? '4rem' 
-    : metricSize === 'large' 
-      ? '8rem' 
+  fontSize: metricSize === 'compact'
+    ? '4rem'
+    : metricSize === 'large'
+      ? '8rem'
       : '6rem',
   fontWeight: 900,
   lineHeight: 0.8,
@@ -36,9 +35,9 @@ const MetricValue = styled(Typography, {
   padding: 0,
   color: 'inherit',
   [theme.breakpoints.down('sm')]: {
-    fontSize: metricSize === 'compact' 
+    fontSize: metricSize === 'compact'
       ? '3rem'
-      : metricSize === 'large' 
+      : metricSize === 'large'
         ? '5rem'
         : '4rem',
   },
@@ -53,17 +52,18 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     variant = 'elevated',
     trend = 'neutral',
     size = 'normal',
-    onClick
+    onClick,
+    colorMode
   } = props;
   const colors = useColors();
-  const isDarkMode = colors.mode === 'dark';
+  const isDarkMode = (colorMode || colors.mode) === 'dark';
 
   const getTrendColor = () => {
     switch (trend) {
       case 'up':
         return colors.palette.accentColors.orange;
       case 'down':
-        return colors.palette.black;
+        return isDarkMode ? colors.palette.white : colors.palette.black;
       default:
         return isDarkMode ? colors.palette.white : colors.palette.black;
     }

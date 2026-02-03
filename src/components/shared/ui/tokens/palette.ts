@@ -66,6 +66,45 @@ export const CONTRAST_PAIRS = {
   },
 } as const;
 
+// Presets de superficie para bloques de marca con colores fijos
+export const SURFACE_PRESETS = {
+  black: {
+    background: AI4U_PALETTE.black,
+    text: {
+      primary: AI4U_PALETTE.white,
+      secondary: AI4U_PALETTE.gray[300],
+      disabled: AI4U_PALETTE.gray[500],
+    },
+    border: AI4U_PALETTE.white,
+    divider: AI4U_PALETTE.gray[800],
+    effectiveMode: 'dark' as const,
+  },
+  green: {
+    background: AI4U_PALETTE.accentColors.green,
+    text: {
+      primary: AI4U_PALETTE.black,
+      secondary: AI4U_PALETTE.gray[800],
+      disabled: AI4U_PALETTE.gray[600],
+    },
+    border: AI4U_PALETTE.black,
+    divider: 'rgba(0,0,0,0.1)',
+    effectiveMode: 'light' as const,
+  },
+  orange: {
+    background: AI4U_PALETTE.accentColors.orange,
+    text: {
+      primary: AI4U_PALETTE.black,
+      secondary: AI4U_PALETTE.gray[800],
+      disabled: AI4U_PALETTE.gray[600],
+    },
+    border: AI4U_PALETTE.black,
+    divider: 'rgba(0,0,0,0.1)',
+    effectiveMode: 'light' as const,
+  },
+} as const;
+
+export type SurfaceType = 'theme' | keyof typeof SURFACE_PRESETS;
+
 // Variantes de componentes simplificadas - Minimalista (sin naranja como primario)
 export const COMPONENT_VARIANTS = {
   // Botones minimalistas - Usar gris/negro como primario

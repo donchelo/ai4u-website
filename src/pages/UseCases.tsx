@@ -23,7 +23,7 @@ import {
 import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
 import { featuredProjects } from '../data/featuredProjects';
-import { useColors } from '../hooks';
+import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -33,6 +33,7 @@ const UseCases = () => {
   const colors = useColors();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  usePerformanceMonitoring('use-cases', { lcp: 2500, fcp: 1800 });
   const metaTags = getPageMetaTags('cases');
   
   // Estado para el carrusel
@@ -262,12 +263,12 @@ const UseCases = () => {
                 >
                   <Card 
                     variant="default" 
+                    colorMode="light"
                     sx={{ 
                       height: '300px',
                       display: 'flex',
                       flexDirection: 'column',
                       p: 4,
-                      bgcolor: colors.palette.white,
                       borderColor: colors.palette.black,
                       borderWidth: '4px',
                       '&:hover': {
@@ -353,12 +354,12 @@ const UseCases = () => {
               <Grid item xs={12} md={6} key={project.id}>
                 <Card 
                   variant="default" 
+                  colorMode="dark"
                   sx={{ 
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     p: 0,
-                    bgcolor: colors.palette.black,
                     borderColor: colors.palette.white,
                     borderWidth: '4px',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
