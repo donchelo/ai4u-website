@@ -16,7 +16,7 @@ export const APP_CONFIG = {
   CONTACT: {
     EMAIL: 'contacto@ai4u.com.co',
     PHONE: '+57 321 817 5744',
-    CALENDLY: 'calendly.com/mgarciap333/ai4u-automatizacion-inteligente'
+    CALENDLY: 'calendly.com/mgarciap333/ai4u'
   },
   SOCIAL: {
     LINKEDIN: 'https://linkedin.com/company/ai4u',

@@ -2,8 +2,9 @@ import React from 'react';
 import { Button } from '../atoms';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { analytics } from '../../../../utils/analytics';
+import { APP_CONFIG } from '../../../../utils/constants';
 
-const CALENDLY_URL = 'https://calendly.com/mgarciap333/ai4u';
+const CALENDLY_URL = `https://${APP_CONFIG.CONTACT.CALENDLY}`;
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline';
 type ButtonSize = 'small' | 'medium' | 'large';
