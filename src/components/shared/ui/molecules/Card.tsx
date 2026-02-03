@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Card as MuiCard, CardContent, CardProps as MuiCardProps, styled } from '@mui/material';
+import { useColors } from '../../../../hooks';
 import { AI4U_PALETTE } from '../tokens/palette';
 
 interface CardProps extends Omit<MuiCardProps, 'variant'> {
@@ -7,7 +8,6 @@ interface CardProps extends Omit<MuiCardProps, 'variant'> {
   variant?: 'default' | 'elevated' | 'outlined';
   elevation?: number;
   showContent?: boolean;
-  colorMode?: 'light' | 'dark';
 }
 
 // Card minimalista usando sistema de tokens
@@ -76,11 +76,11 @@ export const Card = ({
   variant = 'default',
   elevation = 0,
   showContent = true,
-  colorMode,
   ...props
 }: CardProps) => {
+  const colors = useColors();
   return (
-    <StyledCard cardVariant={variant} elevation={elevation} forceMode={colorMode} {...props}>
+    <StyledCard cardVariant={variant} elevation={elevation} forceMode={colors.effectiveMode} {...props}>
       {showContent && (
         <CardContent sx={{ 
           padding: { xs: 3, md: 4 },

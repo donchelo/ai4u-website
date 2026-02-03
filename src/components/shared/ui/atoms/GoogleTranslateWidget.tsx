@@ -1,14 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
 import { useColors } from '../../../../hooks';
 import { SHADOW_TOKENS } from '../tokens/theme';
-
-declare global {
-  interface Window {
-    googleTranslateElementInit: () => void;
-    google: any;
-  }
-}
 
 // Top 10 idiomas más usados
 const LANGUAGES = [
@@ -24,77 +17,58 @@ const LANGUAGES = [
   { code: 'fr', label: 'Français', short: 'FR' },
 ];
 
-const TOP_LANGUAGES = LANGUAGES.map(l => l.code).join(',');
+const PAGE_LANGUAGE = 'es';
+
+/** Obtiene el idioma actual desde cookie googtrans o desde document.documentElement.lang */
+function getCurrentLanguageShort(): string {
+  const cookieMatch = document.cookie.match(/googtrans=([^;]+)/);
+  if (cookieMatch && cookieMatch[1]) {
+    const value = cookieMatch[1].trim();
+    if (value) {
+      const parts = value.split('/').filter(Boolean);
+      const target = parts[parts.length - 1];
+      if (target && target !== PAGE_LANGUAGE) {
+        const found = LANGUAGES.find(l => l.code === target || l.code.startsWith(target));
+        if (found) return found.short;
+      }
+    }
+  }
+  const lang = document.documentElement.lang || PAGE_LANGUAGE;
+  const langCode = lang.split('-')[0].toLowerCase();
+  const found = LANGUAGES.find(l => l.code.toLowerCase().startsWith(langCode));
+  return found?.short ?? 'ES';
+}
 
 const GoogleTranslateWidget: React.FC = () => {
   const colors = useColors();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const [currentLanguage, setCurrentLanguage] = useState<string>('ES');
+  const [currentLanguage, setCurrentLanguage] = useState<string>(getCurrentLanguageShort);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [scriptReady, setScriptReady] = useState(() => !!document.getElementById('google-translate-script'));
   const buttonRef = useRef<HTMLButtonElement>(null);
   const open = Boolean(anchorEl);
 
   useEffect(() => {
-    // Verificar si el script ya existe
     if (document.getElementById('google-translate-script')) {
-      const lang = document.documentElement.lang || 'es';
-      const langCode = lang.split('-')[0].toLowerCase();
-      const found = LANGUAGES.find(l => l.code.toLowerCase().startsWith(langCode));
-      setCurrentLanguage(found?.short || 'ES');
+      setScriptReady(true);
       return;
     }
-
-    // Definir la función de inicialización global
-    window.googleTranslateElementInit = () => {
-      try {
-        if (window.google && window.google.translate && document.getElementById('google_translate_element')) {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'es',
-              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false,
-              includedLanguages: TOP_LANGUAGES,
-              multilanguagePage: false,
-            },
-            'google_translate_element'
-          );
-
-          // Ocultar completamente el widget de Google
-          setTimeout(() => {
-            const element = document.getElementById('google_translate_element');
-            if (element) {
-              element.style.display = 'none';
-            }
-          }, 100);
-
-          // Observar cambios en el idioma
-          const observer = new MutationObserver(() => {
-            const lang = document.documentElement.lang || 'es';
-            const langCode = lang.split('-')[0].toLowerCase();
-            const found = LANGUAGES.find(l => l.code.toLowerCase().startsWith(langCode));
-            setCurrentLanguage(found?.short || 'ES');
-          });
-
-          observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['lang']
-          });
-        }
-      } catch (error) {
-        console.error('Error inicializando Google Translate:', error);
+    const check = setInterval(() => {
+      if (document.getElementById('google-translate-script')) {
+        setScriptReady(true);
+        clearInterval(check);
       }
+    }, 200);
+    const fallback = setTimeout(() => {
+      clearInterval(check);
+      setScriptReady(true);
+    }, 5000);
+    return () => {
+      clearInterval(check);
+      clearTimeout(fallback);
     };
-
-    // Crear y añadir el script
-    const script = document.createElement('script');
-    script.id = 'google-translate-script';
-    script.type = 'text/javascript';
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    script.async = true;
-    
-    document.body.appendChild(script);
   }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -105,33 +79,21 @@ const GoogleTranslateWidget: React.FC = () => {
     setAnchorEl(null);
   };
 
-  const selectLanguage = (langCode: string, langShort: string) => {
-    // Buscar el iframe de Google Translate
-    const iframe = document.querySelector<HTMLIFrameElement>('.goog-te-menu-frame');
-    if (iframe) {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (iframeDoc) {
-        // Buscar el elemento del idioma y hacer clic
-        const items = iframeDoc.querySelectorAll<HTMLElement>('.goog-te-menu2-item');
-        items.forEach((item) => {
-          const text = item.textContent?.toLowerCase() || '';
-          const lang = LANGUAGES.find(l => l.code === langCode);
-          if (lang && text.includes(lang.label.toLowerCase())) {
-            item.click();
-          }
-        });
-      }
-    }
-
-    // También intentar usando el select oculto de Google Translate
-    const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
-    if (select) {
-      select.value = langCode;
-      select.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-
-    setCurrentLanguage(langShort);
+  const selectLanguage = (langCode: string, _langShort: string) => {
     handleClose();
+
+    // Volver al idioma original de la página: borrar cookie y recargar
+    if (langCode === PAGE_LANGUAGE) {
+      document.cookie = 'googtrans=; path=/; max-age=0';
+      document.cookie = 'googtrans=; path=/; domain=' + window.location.hostname + '; max-age=0';
+      window.location.reload();
+      return;
+    }
+
+    // Establecer cookie en formato /origen/destino para que Google Translate aplique al recargar
+    const googtransValue = `/${PAGE_LANGUAGE}/${langCode}`;
+    document.cookie = `googtrans=${googtransValue}; path=/`;
+    window.location.reload();
   };
 
   // Tamaños responsivos usando tokens
@@ -157,28 +119,6 @@ const GoogleTranslateWidget: React.FC = () => {
     }
   };
 
-  // Estilos para ocultar el widget de Google
-  const hideGoogleStyles = `
-    .goog-te-banner-frame {
-      display: none !important;
-    }
-    body {
-      top: 0 !important;
-    }
-    #google_translate_element {
-      display: none !important;
-    }
-    .goog-te-gadget {
-      display: none !important;
-    }
-    .skiptranslate {
-      display: none !important;
-    }
-    .goog-te-menu-frame {
-      display: none !important;
-    }
-  `;
-
   return (
     <Box
       sx={{
@@ -187,20 +127,6 @@ const GoogleTranslateWidget: React.FC = () => {
         alignItems: 'center',
       }}
     >
-      {/* Widget oculto de Google Translate */}
-      <Box
-        id="google_translate_element"
-        sx={{
-          position: 'absolute',
-          opacity: 0,
-          pointerEvents: 'none',
-          width: 0,
-          height: 0,
-          overflow: 'hidden',
-          zIndex: -1,
-        }}
-      />
-      
       {/* Botón compacto */}
       <Box
         ref={buttonRef}
@@ -210,6 +136,7 @@ const GoogleTranslateWidget: React.FC = () => {
         aria-controls={open ? 'language-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        disabled={!scriptReady}
         sx={(theme) => {
           const size = getButtonSize(theme);
           return {
@@ -244,7 +171,7 @@ const GoogleTranslateWidget: React.FC = () => {
           };
         }}
       >
-        {currentLanguage}
+        {scriptReady ? currentLanguage : '…'}
       </Box>
 
       {/* Menú personalizado */}
@@ -318,8 +245,6 @@ const GoogleTranslateWidget: React.FC = () => {
           </MenuItem>
         ))}
       </Menu>
-
-      <style>{hideGoogleStyles}</style>
     </Box>
   );
 };

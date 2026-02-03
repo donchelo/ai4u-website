@@ -70,6 +70,7 @@ export const CONTRAST_PAIRS = {
 export const SURFACE_PRESETS = {
   black: {
     background: AI4U_PALETTE.black,
+    surface: AI4U_PALETTE.gray[900],
     text: {
       primary: AI4U_PALETTE.white,
       secondary: AI4U_PALETTE.gray[300],
@@ -81,6 +82,7 @@ export const SURFACE_PRESETS = {
   },
   green: {
     background: AI4U_PALETTE.accentColors.green,
+    surface: AI4U_PALETTE.accentColors.green,
     text: {
       primary: AI4U_PALETTE.black,
       secondary: AI4U_PALETTE.gray[800],
@@ -92,6 +94,7 @@ export const SURFACE_PRESETS = {
   },
   orange: {
     background: AI4U_PALETTE.accentColors.orange,
+    surface: AI4U_PALETTE.accentColors.orange,
     text: {
       primary: AI4U_PALETTE.black,
       secondary: AI4U_PALETTE.gray[800],

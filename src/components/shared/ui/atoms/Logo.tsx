@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box, BoxProps } from '@mui/material';
-import { useColorMode } from '../../../../context/ThemeContext';
 
 interface LogoProps extends Omit<BoxProps, 'component'> {
   variant?: 'desktop' | 'mobile';
   onClick?: () => void;
 }
+
+const LOGO_LIGHT_PATH = '/assets/images/ai4u-logo-for-light-background.png';
 
 const Logo: React.FC<LogoProps> = ({ 
   variant = 'desktop', 
@@ -13,12 +14,6 @@ const Logo: React.FC<LogoProps> = ({
   sx,
   ...props 
 }: LogoProps) => {
-  const { mode } = useColorMode();
-  
-  // Logo para fondo claro u oscuro
-  const logoPath = mode === 'dark' 
-    ? '/assets/images/ai4u-logo-for-dark-background.png'
-    : '/assets/images/ai4u-logo-for-light-background.png';
 
   const handleClick = () => {
     if (onClick) {
@@ -35,7 +30,7 @@ const Logo: React.FC<LogoProps> = ({
   return (
     <Box
       component="img"
-      src={logoPath}
+      src={LOGO_LIGHT_PATH}
       alt="AI4U Logo"
       onClick={handleClick}
       sx={{

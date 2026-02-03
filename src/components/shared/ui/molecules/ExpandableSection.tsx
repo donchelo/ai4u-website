@@ -11,7 +11,6 @@ interface ExpandableSectionProps {
   defaultExpanded?: boolean;
   variant?: 'minimal' | 'card' | 'bordered';
   showIcon?: boolean;
-  colorMode?: 'light' | 'dark';
 }
 
 const ExpandableSection = ({
@@ -21,13 +20,10 @@ const ExpandableSection = ({
   defaultExpanded = false,
   variant = 'minimal',
   showIcon = true,
-  colorMode
 }: ExpandableSectionProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const colors = useColors();
-  
-  const currentMode = colorMode || colors.mode;
-  const isDarkMode = currentMode === 'dark';
+  const isDarkMode = colors.effectiveMode === 'dark';
 
   const handleToggle = () => {
     setExpanded(!expanded);

@@ -14,9 +14,6 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useColorMode } from '../../../../context/ThemeContext';
 import { useColors } from '../../../../hooks';
 import { Logo, GoogleTranslateWidget } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
@@ -37,19 +34,6 @@ const StyledNavButton = styled(Button, {
   },
 }));
 
-const StyledThemeIconButton = styled(IconButton, {
-  shouldForwardProp: (prop) => prop !== 'colors'
-})<{ colors: ReturnType<typeof useColors> }>(({ theme, colors }) => ({
-  marginLeft: theme.spacing(1),
-  color: colors.contrast.text.secondary,
-  opacity: 0.7,
-  '&:hover': {
-    opacity: 1,
-    backgroundColor: colors.helpers.state.hover,
-    color: colors.palette.black,
-  }
-}));
-
 const StyledDesktopMenuBox = styled(Box)(({ theme }) => ({
   flexGrow: 1,
   justifyContent: 'flex-end',
@@ -62,7 +46,6 @@ const StyledDesktopMenuBox = styled(Box)(({ theme }) => ({
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const { mode, toggleColorMode } = useColorMode();
   const colors = useColors();
   const navigate = useNavigate();
 
@@ -189,25 +172,6 @@ const Navbar = () => {
                   <GoogleTranslateWidget />
                 </Box>
               </MenuItem>
-              {/* Theme toggle en menú móvil */}
-              <MenuItem 
-                onClick={toggleColorMode}
-                aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-                sx={{
-                  color: colors.contrast.text.primary,
-                  '&:hover': {
-                    backgroundColor: colors.helpers.state.hover,
-                    color: colors.palette.accent,
-                  },
-                }}
-              >
-                <MuiTypography textAlign="center" sx={{ display: 'flex', alignItems: 'center' }}>
-                  {mode === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
-                  <Box component="span" sx={{ ml: 1, display: 'flex' }}>
-                    {mode === 'dark' ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
-                  </Box>
-                </MuiTypography>
-              </MenuItem>
             </Menu>
           </Box>
 
@@ -262,16 +226,6 @@ const Navbar = () => {
             >
               <GoogleTranslateWidget />
             </Box>
-            
-            {/* Theme toggle button desktop */}
-            <StyledThemeIconButton
-              onClick={toggleColorMode} 
-              size="small"
-              colors={colors}
-              aria-label={mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-            >
-              {mode === 'dark' ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
-            </StyledThemeIconButton>
           </StyledDesktopMenuBox>
         </Toolbar>
       </Container>

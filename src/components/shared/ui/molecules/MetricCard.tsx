@@ -53,10 +53,9 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     trend = 'neutral',
     size = 'normal',
     onClick,
-    colorMode
   } = props;
   const colors = useColors();
-  const isDarkMode = (colorMode || colors.mode) === 'dark';
+  const isDarkMode = colors.effectiveMode === 'dark';
 
   const getTrendColor = () => {
     switch (trend) {

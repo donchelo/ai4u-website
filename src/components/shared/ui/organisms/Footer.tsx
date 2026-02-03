@@ -12,20 +12,15 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import HomeIcon from '@mui/icons-material/Home';
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { useColorMode } from '../../../../context/ThemeContext';
 import { ROUTES } from '../../../../utils/constants';
+
+const FOOTER_LOGO_PATH = '/assets/images/Logo V3 - Crema.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
-  const { mode } = useColorMode();
   const colors = useColors();
   const navigate = useNavigate();
-
-  // Logo según el tema (footer siempre tiene fondo oscuro)
-  const logoPath = mode === 'light' 
-    ? '/assets/images/Logo V3 - Crema.png'
-    : '/assets/images/Logo V3 - Negro.png';
 
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
@@ -56,7 +51,7 @@ const Footer = () => {
           <Grid item xs={12} md={4}>
             <Box 
               component="img"
-              src={logoPath}
+              src={FOOTER_LOGO_PATH}
               alt="AI4U Logo"
               sx={{ 
                 height: (theme) => theme.spacing(5.25),

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Toolbar } from '@mui/material';
+import { GoogleTranslateProvider } from '../atoms';
 import { Navbar } from '../organisms';
 import { Footer } from '../organisms';
 
@@ -10,6 +11,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <GoogleTranslateProvider />
       <Navbar />
       <Box 
         component="main" 

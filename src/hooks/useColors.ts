@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { useColorMode, useSurface } from '../context';
-import { useContrastColors, useComponentColors, SURFACE_PRESETS, CONTRAST_PAIRS } from '../components/shared/ui/tokens/palette';
+import { useComponentColors, SURFACE_PRESETS, CONTRAST_PAIRS } from '../components/shared/ui/tokens/palette';
 
 // Import palette from single source of truth
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
@@ -51,7 +51,7 @@ export const useColors = () => {
       // Para fondos
       background: {
         primary: contrast.background,
-        secondary: contrast.surface || (effectiveMode === 'light' ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900]),
+        secondary: contrast.surface,
         accent: effectiveMode === 'light' ? '#FFF5F0' : '#2A1A0F',
       },
       

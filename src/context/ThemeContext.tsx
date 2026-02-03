@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useMemo, ReactNode } from 'react';
 import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Components, Shadows } from '@mui/material/styles';
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -301,57 +301,24 @@ const createAI4UTheme = (mode: PaletteMode): Theme => {
 	});
 };
 
-// Interface para el contexto
+// Interface para el contexto (solo light mode)
 interface ThemeContextType {
-	toggleColorMode: () => void;
 	mode: PaletteMode;
 }
 
 // Crear contexto
 export const ColorModeContext = createContext<ThemeContextType>({
-	toggleColorMode: () => {},
 	mode: 'light',
 });
 
-// Hook personalizado para usar el modo de color
+// Hook personalizado para usar el modo de color (siempre 'light')
 export const useColorMode = () => useContext(ColorModeContext);
 
-// Proveedor del tema
+// Proveedor del tema - siempre light mode
 export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) => {
-	// Inicializar modo siempre en claro por defecto
-	const [mode, setMode] = useState<PaletteMode>(() => {
-		if (typeof window === 'undefined') return 'light';
-		
-		const savedMode = localStorage.getItem('themeMode') as PaletteMode | null;
-		if (savedMode && (savedMode === 'light' || savedMode === 'dark')) {
-			return savedMode;
-		}
-		
-		// Siempre usar tema claro por defecto, sin importar la preferencia del sistema
-		return 'light';
-	});
-
-	// Persistir el modo en localStorage y actualizar atributo del DOM
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			localStorage.setItem('themeMode', mode);
-			document.documentElement.setAttribute('data-theme', mode);
-		}
-	}, [mode]);
-
-	// Memoizar el contexto de color
-	const colorMode = useMemo(
-		() => ({
-			toggleColorMode: () => {
-				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-			},
-			mode,
-		}),
-		[mode],
-	);
-
-	// Memoizar el tema para evitar recreaciones innecesarias
-	const theme = useMemo(() => createAI4UTheme(mode), [mode]);
+	const mode: PaletteMode = 'light';
+	const colorMode = useMemo(() => ({ mode }), []);
+	const theme = useMemo(() => createAI4UTheme('light'), []);
 
 	return (
 		<ColorModeContext.Provider value={colorMode}>

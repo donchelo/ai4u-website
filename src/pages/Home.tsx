@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, Grid, Box, Stack, Typography } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
-import { useColorMode } from '../context/ThemeContext';
+import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
+import { SurfaceProvider } from '../context';
 import { useColors } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
@@ -11,7 +11,6 @@ import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Home = () => {
-  const { mode } = useColorMode();
   const colors = useColors();
   
   // Monitoreo automático de performance para la página de inicio
@@ -100,36 +99,35 @@ const Home = () => {
 
       {/* Features Section - Inspiración GREEN_FRESH */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, // Reducido de 15/25
-        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        py: { xs: 10, md: 18 },
+        px: { xs: 4, md: 8, lg: 12 },
         bgcolor: colors.palette.accentColors.green,
         color: colors.palette.black,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'uppercase', maxWidth: '1200px' }}>
-            ¿EL TRABAJO TE ESTÁ ROBANDO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>MOMENTOS IRREEMPLAZABLES</Box>?
-          </H1>
-          <Grid container spacing={6}>
-            {features.map((feature, idx) => (
-              <Grid item xs={12} md={4} key={idx}>
-                <Card 
-                  variant="default"
-                  colorMode="light"
-                  sx={{ 
-                    height: '100%',
-                    p: 6,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    borderColor: colors.palette.black,
-                    borderWidth: '4px',
-                    '&:hover': {
-                      transform: 'translate(8px, -8px)',
-                      boxShadow: `12px 12px 0px ${colors.palette.black}`,
-                    }
-                  }}
-                >
+        <SurfaceProvider surface="green">
+          <Container maxWidth="xl">
+            <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'uppercase', maxWidth: '1200px' }}>
+              ¿EL TRABAJO TE ESTÁ ROBANDO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>MOMENTOS IRREEMPLAZABLES</Box>?
+            </H1>
+            <Grid container spacing={6}>
+              {features.map((feature, idx) => (
+                <Grid item xs={12} md={4} key={idx}>
+                  <Card 
+                    variant="default"
+                    sx={{ 
+                      height: '100%',
+                      p: 6,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      borderWidth: '4px',
+                      '&:hover': {
+                        transform: 'translate(8px, -8px)',
+                        boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                      }
+                    }}
+                  >
                   <H3 sx={{ 
                     mb: 3,
                     fontWeight: 900,
@@ -148,12 +146,13 @@ const Home = () => {
             ))}
           </Grid>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Robot Section - Inspiración BLACK_MODERN / SUPER_AI_NEON */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, // Reducido de 15/25
-        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        py: { xs: 10, md: 18 },
+        px: { xs: 4, md: 8, lg: 12 },
         bgcolor: colors.palette.black, 
         color: colors.palette.white,
         position: 'relative',
@@ -179,7 +178,8 @@ const Home = () => {
           02
         </Typography>
 
-        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
+        <SurfaceProvider surface="black">
+          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
           <Stack direction="column" spacing={10}>
             <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 1.0 }}>
               // ASISTENTES ROBÓTICOS AUTÓNOMOS
@@ -228,6 +228,7 @@ const Home = () => {
             </Grid>
           </Stack>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Services Section - Inspiración WHITE_MINIMAL (Optimizado) */}
@@ -353,15 +354,16 @@ const Home = () => {
 
       {/* CTA Section - Inspiración ORANGE_PUNCH */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, // Reducido de 20/40
-        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        py: { xs: 15, md: 25 },
+        px: { xs: 4, md: 8, lg: 12 },
         bgcolor: colors.palette.accentColors.orange,
         color: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <Box sx={{ textAlign: 'center' }}>
+        <SurfaceProvider surface="orange">
+          <Container maxWidth="xl">
+            <Box sx={{ textAlign: 'center' }}>
             <Giant sx={{ mb: 8, color: colors.palette.black, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
               ¿LISTO PARA EL SIGUIENTE NIVEL?
             </Giant>
@@ -405,6 +407,7 @@ const Home = () => {
             </Stack>
           </Box>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}

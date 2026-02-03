@@ -8,6 +8,7 @@ export { default as LoadingScreen } from './LoadingScreen';
 export { default as LazyImage } from './LazyImage';
 export { default as PixelArtImage } from './PixelArtImage';
 export { default as PixelArtFilter } from './PixelArtFilter';
+export { default as GoogleTranslateProvider } from './GoogleTranslateProvider';
 export { default as GoogleTranslateWidget } from './GoogleTranslateWidget';
 export { default as SEOHead } from './SEOHead';
 export { default as OptimizedImage } from './OptimizedImage';

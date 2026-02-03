@@ -120,6 +120,19 @@ colors.helpers.state.selected        // Estado seleccionado
 colors.helpers.state.disabled        // Estado deshabilitado
 ```
 
+### Regla de superficies y temas (light/dark)
+
+Los colores efectivos vienen de la **superficie actual** (tema o marca):
+
+- **Superficie "tema"** (por defecto): sigue al tema global (light/dark). `useColors().contrast` y `effectiveMode` reflejan el tema.
+- **Superficies de marca** (black, green, orange): se activan envolviendo la sección en `<SurfaceProvider surface="black">` (o `green`/`orange`). Los componentes dentro (Card, ExpandableSection, MetricCard) obtienen contraste y `effectiveMode` del preset sin props adicionales.
+
+**Reglas:**
+
+1. Las secciones con color fijo (bloques negro/verde/naranja) deben envolver su contenido en `SurfaceProvider` con la superficie correspondiente.
+2. Los componentes no reciben `colorMode`; leen el modo efectivo desde `useColors().effectiveMode` (derivado del contexto de superficie).
+3. Para títulos y texto de sección renderizados por la página, usar colores explícitos de `colors.palette` cuando la sección tenga fondo fijo; los componentes hijos que llaman `useColors()` dentro del provider ya reciben el preset.
+
 ## 📦 Componentes Migrados
 
 ### Navigation

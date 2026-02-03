@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
+import { SurfaceProvider } from '../context';
 import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
@@ -46,40 +47,40 @@ const WhyAI4U = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <Grid container spacing={8} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Box sx={{ textAlign: 'left' }}>
-                <H1 sx={{ 
-                  mb: 6, 
-                  fontWeight: 900,
-                  textTransform: 'uppercase',
-                  color: colors.palette.white,
-                  lineHeight: 0.9
-                }}>
-                  LA PARTE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>HUMANA</Box> DE LA IA
-                </H1>
-                
-                <Stack spacing={4} sx={{ mb: 8 }}>
-                  {[
-                    'FUNDADOR DE AI4U',
-                    'COFUNDADOR DE MATT MOVILIDAD',
-                    'ESPECIALISTA EN AUTOMATIZACIÓN'
-                  ].map((text, idx) => (
-                    <Box key={idx} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                      <BodyText sx={{ fontSize: '1.5rem', fontWeight: 800, textTransform: 'uppercase' }}>
-                        {text}
-                      </BodyText>
-                    </Box>
-                  ))}
-                </Stack>
-                
-                <ExpandableSection
-                  title="DESCUBRE MI HISTORIA"
-                  variant="card"
-                  defaultExpanded={false}
-                  colorMode="dark"
-                >
+        <SurfaceProvider surface="black">
+          <Container maxWidth="xl">
+            <Grid container spacing={8} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <Box sx={{ textAlign: 'left' }}>
+                  <H1 sx={{ 
+                    mb: 6, 
+                    fontWeight: 900,
+                    textTransform: 'uppercase',
+                    color: colors.palette.white,
+                    lineHeight: 0.9
+                  }}>
+                    LA PARTE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>HUMANA</Box> DE LA IA
+                  </H1>
+                  
+                  <Stack spacing={4} sx={{ mb: 8 }}>
+                    {[
+                      'FUNDADOR DE AI4U',
+                      'COFUNDADOR DE MATT MOVILIDAD',
+                      'ESPECIALISTA EN AUTOMATIZACIÓN'
+                    ].map((text, idx) => (
+                      <Box key={idx} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
+                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 800, textTransform: 'uppercase', color: colors.palette.white }}>
+                          {text}
+                        </BodyText>
+                      </Box>
+                    ))}
+                  </Stack>
+                  
+                  <ExpandableSection
+                    title="DESCUBRE MI HISTORIA"
+                    variant="card"
+                    defaultExpanded={false}
+                  >
                   <BodyText sx={{ 
                     color: colors.palette.white,
                     fontSize: '1.5rem',
@@ -137,6 +138,7 @@ const WhyAI4U = () => {
             </Grid>
           </Grid>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Benefits Section - Inspiración GREEN_FRESH */}
@@ -147,62 +149,62 @@ const WhyAI4U = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <H1 sx={{ 
-            mb: 10, 
-            textAlign: 'left',
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            color: colors.palette.black
-          }}>
-            ¿QUÉ NOS HACE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>DIFERENTES</Box>?
-          </H1>
+        <SurfaceProvider surface="green">
+          <Container maxWidth="xl">
+            <H1 sx={{ 
+              mb: 10, 
+              textAlign: 'left',
+              fontWeight: 900,
+              textTransform: 'uppercase',
+              color: colors.palette.black
+            }}>
+              ¿QUÉ NOS HACE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>DIFERENTES</Box>?
+            </H1>
 
-          <Grid container spacing={6}>
-            {[
-              {
-                title: 'DIAGNÓSTICO GRATUITO',
-                description: 'EVALUAMOS TU NEGOCIO SIN COSTO PARA IDENTIFICAR OPORTUNIDADES.',
-              },
-              {
-                title: 'ASISTENTES QUE EVOLUCIONAN',
-                description: 'NUESTROS ASISTENTES APRENDEN Y MEJORAN CONTINUAMENTE.',
-              },
-              {
-                title: 'RESULTADOS GARANTIZADOS',
-                description: '72 HORAS PARA IMPLEMENTACIÓN. ROI MEDIBLE DESDE EL PRIMER MES.',
-              }
-            ].map((benefit, idx) => (
-              <Grid item xs={12} md={4} key={idx}>
-                <Card variant="default" sx={{ 
-                  height: '100%',
-                  p: 6,
-                  bgcolor: colors.palette.white,
-                  borderColor: colors.palette.black,
-                  borderWidth: '4px',
-                  '&:hover': {
-                    transform: 'translate(8px, -8px)',
-                    boxShadow: `12px 12px 0px ${colors.palette.black}`,
-                  }
-                }}>
-                  <H3 sx={{ 
-                    fontSize: '2rem',
-                    fontWeight: 900,
-                    mb: 3,
-                    lineHeight: 1,
-                    color: colors.palette.black,
-                    textTransform: 'uppercase'
+            <Grid container spacing={6}>
+              {[
+                {
+                  title: 'DIAGNÓSTICO GRATUITO',
+                  description: 'EVALUAMOS TU NEGOCIO SIN COSTO PARA IDENTIFICAR OPORTUNIDADES.',
+                },
+                {
+                  title: 'ASISTENTES QUE EVOLUCIONAN',
+                  description: 'NUESTROS ASISTENTES APRENDEN Y MEJORAN CONTINUAMENTE.',
+                },
+                {
+                  title: 'RESULTADOS GARANTIZADOS',
+                  description: '72 HORAS PARA IMPLEMENTACIÓN. ROI MEDIBLE DESDE EL PRIMER MES.',
+                }
+              ].map((benefit, idx) => (
+                <Grid item xs={12} md={4} key={idx}>
+                  <Card variant="default" sx={{ 
+                    height: '100%',
+                    p: 6,
+                    borderWidth: '4px',
+                    '&:hover': {
+                      transform: 'translate(8px, -8px)',
+                      boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                    }
                   }}>
-                    {benefit.title}
-                  </H3>
-                  <BodyText sx={{ color: colors.palette.black, fontSize: '1.25rem', fontWeight: 500 }}>
-                    {benefit.description}
-                  </BodyText>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+                    <H3 sx={{ 
+                      fontSize: '2rem',
+                      fontWeight: 900,
+                      mb: 3,
+                      lineHeight: 1,
+                      color: 'inherit',
+                      textTransform: 'uppercase'
+                    }}>
+                      {benefit.title}
+                    </H3>
+                    <BodyText sx={{ color: 'inherit', fontSize: '1.25rem', fontWeight: 500 }}>
+                      {benefit.description}
+                    </BodyText>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </SurfaceProvider>
       </Box>
 
             {/* Stats Section - Inspiración BLACK_MODERN */}
@@ -214,36 +216,37 @@ const WhyAI4U = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <H1 sx={{ 
-            mb: 10, 
-            textAlign: 'left',
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            color: colors.palette.white
-          }}>
-            NUESTROS <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>NÚMEROS</Box>
-          </H1>
-          
-          <Grid container spacing={6}>
-            {[
-              { title: 'SERVICIOS', value: '25+' },
-              { title: 'ESTRATEGIA', value: '12' },
-              { title: 'OPERACIÓN', value: '13' },
-              { title: 'ROI PROMEDIO', value: '300%' }
-            ].map((stat, idx) => (
-              <Grid item xs={12} sm={6} md={3} key={idx}>
-                <MetricCard
-                  title={stat.title}
-                  value={stat.value}
-                  variant="default"
-                  size="large"
-                  colorMode="dark"
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+        <SurfaceProvider surface="black">
+          <Container maxWidth="xl">
+            <H1 sx={{ 
+              mb: 10, 
+              textAlign: 'left',
+              fontWeight: 900,
+              textTransform: 'uppercase',
+              color: colors.palette.white
+            }}>
+              NUESTROS <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>NÚMEROS</Box>
+            </H1>
+            
+            <Grid container spacing={6}>
+              {[
+                { title: 'SERVICIOS', value: '25+' },
+                { title: 'ESTRATEGIA', value: '12' },
+                { title: 'OPERACIÓN', value: '13' },
+                { title: 'ROI PROMEDIO', value: '300%' }
+              ].map((stat, idx) => (
+                <Grid item xs={12} sm={6} md={3} key={idx}>
+                  <MetricCard
+                    title={stat.title}
+                    value={stat.value}
+                    variant="default"
+                    size="large"
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Final CTA Section - Inspiración ORANGE_PUNCH */}
@@ -254,26 +257,27 @@ const WhyAI4U = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="lg">
-          <Stack spacing={8} textAlign="center" alignItems="center">
-            <Giant sx={{ color: colors.palette.black }}>
-              ¿LISTO PARA LIBERAR TU TIEMPO?
-            </Giant>
-            
-            <Stack 
-              direction={{ xs: 'column', sm: 'row' }} 
-              spacing={4} 
-              justifyContent="center"
-            >
-              <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
-              <ServicesButton
-                variant="outline"
-                sx={{ height: '100px', px: 10, fontSize: '1.8rem', borderWidth: '6px', borderColor: colors.palette.black, color: colors.palette.black }}
-                text="VER SOLUCIONES"
-              />
+        <SurfaceProvider surface="orange">
+          <Container maxWidth="lg">
+            <Stack spacing={8} textAlign="center" alignItems="center">
+              <Giant sx={{ color: colors.palette.black }}>
+                ¿LISTO PARA LIBERAR TU TIEMPO?
+              </Giant>
+              <Stack 
+                direction={{ xs: 'column', sm: 'row' }} 
+                spacing={4} 
+                justifyContent="center"
+              >
+                <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
+                <ServicesButton
+                  variant="outline"
+                  sx={{ height: '100px', px: 10, fontSize: '1.8rem', borderWidth: '6px', borderColor: colors.palette.black, color: colors.palette.black }}
+                  text="VER SOLUCIONES"
+                />
+              </Stack>
             </Stack>
-          </Stack>
-        </Container>
+          </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}

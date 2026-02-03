@@ -21,6 +21,7 @@ import {
   OptimizedImage 
 } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
+import { SurfaceProvider } from '../context';
 import { clients } from '../data/clients';
 import { featuredProjects } from '../data/featuredProjects';
 import { useColors, usePerformanceMonitoring } from '../hooks';
@@ -263,17 +264,15 @@ const UseCases = () => {
                 >
                   <Card 
                     variant="default" 
-                    colorMode="light"
                     sx={{ 
                       height: '300px',
                       display: 'flex',
                       flexDirection: 'column',
                       p: 4,
-                      borderColor: colors.palette.black,
                       borderWidth: '4px',
                       '&:hover': {
                         transform: 'translate(8px, -8px)',
-                        boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                        boxShadow: `12px 12px 0px ${colors.contrast.text.primary}`,
                       }
                     }}
                   >
@@ -337,48 +336,47 @@ const UseCases = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <H1 sx={{ 
-            mb: 10, 
-            fontWeight: 900,
-            textTransform: 'uppercase',
-            color: colors.palette.white,
-            fontSize: { xs: '3rem', md: '6rem' },
-            lineHeight: 0.9
-          }}>
-            PORTAFOLIO DE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>INNOVACIÓN</Box>
-          </H1>
+        <SurfaceProvider surface="black">
+          <Container maxWidth="xl">
+            <H1 sx={{ 
+              mb: 10, 
+              fontWeight: 900,
+              textTransform: 'uppercase',
+              color: colors.palette.white,
+              fontSize: { xs: '3rem', md: '6rem' },
+              lineHeight: 0.9
+            }}>
+              PORTAFOLIO DE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>INNOVACIÓN</Box>
+            </H1>
 
-          <Grid container spacing={8}>
-            {featuredProjects.map((project) => (
-              <Grid item xs={12} md={6} key={project.id}>
-                <Card 
-                  variant="default" 
-                  colorMode="dark"
-                  sx={{ 
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    p: 0,
-                    borderColor: colors.palette.white,
-                    borderWidth: '4px',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': {
-                      transform: 'translate(12px, -12px)',
-                      boxShadow: `-12px 12px 0px ${colors.palette.accentColors.orange}`,
-                      '& .project-image': {
-                        transform: 'scale(1.05)',
+            <Grid container spacing={8}>
+              {featuredProjects.map((project) => (
+                <Grid item xs={12} md={6} key={project.id}>
+                  <Card 
+                    variant="default" 
+                    sx={{ 
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      p: 0,
+                      borderWidth: '4px',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      '&:hover': {
+                        transform: 'translate(12px, -12px)',
+                        boxShadow: `-12px 12px 0px ${colors.palette.accentColors.orange}`,
+                        '& .project-image': {
+                          transform: 'scale(1.05)',
+                        }
                       }
-                    }
-                  }}
-                >
-                  <Box sx={{ 
-                    width: '100%', 
-                    aspectRatio: '16/9', 
-                    overflow: 'hidden',
-                    borderBottom: `4px solid ${colors.palette.white}`,
-                    bgcolor: alpha(colors.palette.white, 0.05)
-                  }}>
+                    }}
+                  >
+                    <Box sx={{ 
+                      width: '100%', 
+                      aspectRatio: '16/9', 
+                      overflow: 'hidden',
+                      borderBottom: `4px solid ${colors.palette.white}`,
+                      bgcolor: alpha(colors.palette.white, 0.05)
+                    }}>
                     <Box
                       component="img"
                       src={project.image}
@@ -449,6 +447,7 @@ const UseCases = () => {
             ))}
           </Grid>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Results Section - Inspiración ORANGE_PUNCH */}
@@ -460,8 +459,9 @@ const UseCases = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="xl">
-          <Grid container spacing={10} alignItems="center">
+        <SurfaceProvider surface="orange">
+          <Container maxWidth="xl">
+            <Grid container spacing={10} alignItems="center">
             <Grid item xs={12} md={6}>
               <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 6, lineHeight: 0.9 }}>
                 RESULTADOS QUE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>HABLAN</Box>
@@ -487,6 +487,7 @@ const UseCases = () => {
             </Grid>
           </Grid>
         </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* CTA Section - Inspiración GREEN_FRESH */}
@@ -497,14 +498,16 @@ const UseCases = () => {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <Container maxWidth="lg">
-          <Stack spacing={8} textAlign="center" alignItems="center">
-            <Giant sx={{ color: colors.palette.black }}>
-              ¿LISTO PARA SER EL PRÓXIMO ÉXITO?
-            </Giant>
-            <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
-          </Stack>
-        </Container>
+        <SurfaceProvider surface="green">
+          <Container maxWidth="lg">
+            <Stack spacing={8} textAlign="center" alignItems="center">
+              <Giant sx={{ color: colors.palette.black }}>
+                ¿LISTO PARA SER EL PRÓXIMO ÉXITO?
+              </Giant>
+              <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
+            </Stack>
+          </Container>
+        </SurfaceProvider>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}
