@@ -19,7 +19,7 @@ export const services: Service[] = [
     featured: true,
     media: {
       video: '/assets/videos/fashion-agent.mp4',
-      poster: '/assets/images/fashion-agent-poster.jpg'
+      poster: '/assets/images/services-thumbnails/fashion-agent.png'
     },
     thumbnail: '/assets/images/services-thumbnails/fashion-agent.png',
     color: '#0ea5e9',
@@ -44,7 +44,7 @@ export const services: Service[] = [
     featured: false,
     media: {
       video: '/assets/videos/data-entry-automatico.mp4',
-      poster: '/assets/images/data-entry-automatico-poster.jpg'
+      poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
     color: '#22c55e',
