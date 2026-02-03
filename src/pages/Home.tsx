@@ -181,7 +181,7 @@ const Home = () => {
 
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
           <Stack direction="column" spacing={10}>
-            <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 0.9 }}>
+            <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 1.0 }}>
               // ASISTENTES ROBÓTICOS AUTÓNOMOS
             </Giant>
             
@@ -192,11 +192,12 @@ const Home = () => {
                     <Box key={idx} sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
                       <H2 sx={{ 
                         color: colors.palette.white,
-                        fontSize: { xs: '2.25rem', md: '3.5rem', lg: '4rem' },
+                        fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' }, // Reducido para evitar cortes
                         fontWeight: 900,
                         textTransform: 'uppercase',
-                        lineHeight: 0.95,
-                        letterSpacing: '-0.03em'
+                        lineHeight: 1.0,
+                        letterSpacing: '-0.02em',
+                        wordBreak: 'break-word'
                       }}>
                         {feature}
                       </H2>
@@ -229,53 +230,123 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Services Section - Inspiración WHITE_MINIMAL */}
+      {/* Services Section - Inspiración WHITE_MINIMAL (Optimizado) */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, // Reducido de 15/25
-        px: { xs: 4, md: 8, lg: 12 }, // Ajustado
+        py: { xs: 10, md: 20 },
+        px: { xs: 4, md: 8, lg: 12 },
         bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
         <Container maxWidth="xl">
-          <H1 sx={{ mb: 10, fontWeight: 900, textTransform: 'uppercase', color: colors.palette.black, fontSize: { xs: '2.5rem', md: '5rem' } }}>
-            SERVICIOS QUE <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>TRANSFORMAN</Box>
-          </H1>
-          
-          <Grid container spacing={6}>
-            {serviceCategories.map((cat, idx) => (
-              <Grid item xs={12} sm={6} md={3} key={idx}>
-                <Card 
-                  variant="default"
+          <Grid container spacing={10}>
+            {/* Título Columna Izquierda */}
+            <Grid item xs={12} lg={5}>
+              <Box sx={{ position: { lg: 'sticky' }, top: 100 }}>
+                <H1 sx={{ 
+                  fontWeight: 900, 
+                  textTransform: 'uppercase', 
+                  color: colors.palette.black, 
+                  fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' }, // Reducido ligeramente
+                  lineHeight: 1.0,
+                  mb: 4,
+                  wordBreak: 'break-word'
+                }}>
+                  SERVICIOS QUE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>TRANSFORMAN</Box>
+                </H1>
+                <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
+                  SOLUCIONES INTEGRALES PARA EMPRESAS QUE BUSCAN LIDERAR LA ERA DE LA INTELIGENCIA ARTIFICIAL.
+                </BodyText>
+                <Button 
+                  variant="primary" 
+                  size="large"
                   sx={{ 
-                    height: '100%',
-                    p: 6,
-                    textAlign: 'left',
-                    borderColor: colors.palette.black,
-                    borderWidth: '4px',
-                    '&:hover': {
-                      bgcolor: colors.palette.black,
-                      color: colors.palette.white,
-                      transform: 'translateY(-10px)',
-                      '& h3': { color: colors.palette.white }
-                    }
+                    height: '80px', 
+                    px: 6, 
+                    fontSize: '1.2rem',
+                    display: { xs: 'none', lg: 'flex' }
                   }}
                 >
-                  <H3 sx={{ 
-                    fontWeight: 900,
-                    fontSize: '2.5rem',
-                    mb: 3,
-                    lineHeight: 0.9,
-                    textTransform: 'uppercase'
-                  }}>
-                    {cat.title}
-                  </H3>
-                  <BodyText sx={{ fontSize: '1.25rem', fontWeight: 500, opacity: 0.8 }}>
-                    {cat.description}
-                  </BodyText>
-                </Card>
+                  VER TODOS LOS SERVICIOS
+                </Button>
+              </Box>
+            </Grid>
+
+            {/* Cards Columna Derecha - Bento Grid Style */}
+            <Grid item xs={12} lg={7}>
+              <Grid container spacing={4}>
+                {serviceCategories.map((cat, idx) => (
+                  <Grid item xs={12} md={6} key={idx}>
+                    <Card 
+                      variant="default"
+                      sx={{ 
+                        height: '100%',
+                        p: 5, // Reducido ligeramente de 6
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        bgcolor: colors.palette.white,
+                        borderColor: colors.palette.black,
+                        borderWidth: '4px',
+                        transition: 'all 0.2s ease',
+                        overflow: 'visible',
+                        '&:hover': {
+                          bgcolor: colors.palette.black,
+                          color: colors.palette.white,
+                          transform: 'translate(-8px, -8px)',
+                          boxShadow: `12px 12px 0px ${colors.palette.accentColors.orange}`,
+                          '& h3, & p, & .idx': { color: colors.palette.white }
+                        }
+                      }}
+                    >
+                      <Box>
+                        <Typography 
+                          className="idx"
+                          sx={{ 
+                            fontSize: '1.5rem', 
+                            fontWeight: 900, 
+                            color: colors.palette.accentColors.orange,
+                            mb: 2,
+                            fontFamily: '"Necto Mono", monospace'
+                          }}
+                        >
+                          // 0{idx + 1}
+                        </Typography>
+                        <H3 sx={{ 
+                          fontWeight: 900,
+                          fontSize: { xs: '2rem', md: '2.4rem' }, // Reducido de 2.8rem para evitar cortes
+                          mb: 3,
+                          lineHeight: 1.0,
+                          textTransform: 'uppercase',
+                          color: colors.palette.black,
+                          wordBreak: 'break-word',
+                          hyphens: 'auto'
+                        }}>
+                          {cat.title}
+                        </H3>
+                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 500, opacity: 0.9, mb: 4 }}>
+                          {cat.description}
+                        </BodyText>
+                      </Box>
+                      
+                      <Box sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 2,
+                        mt: 'auto',
+                        pt: 4,
+                        borderTop: `1px solid ${colors.palette.gray[200]}`
+                      }}>
+                        <GeometricIcon type="arrow-right" size="small" color="inherit" />
+                        <Typography sx={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
+                          SABER MÁS
+                        </Typography>
+                      </Box>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
+            </Grid>
           </Grid>
         </Container>
       </Box>

@@ -16,10 +16,13 @@ import {
   H3, 
   BodyText, 
   GeometricIcon, 
-  SEOHead 
+  SEOHead,
+  Button,
+  OptimizedImage 
 } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { clients } from '../data/clients';
+import { featuredProjects } from '../data/featuredProjects';
 import { useColors } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
@@ -321,6 +324,129 @@ const UseCases = () => {
           <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, maxWidth: '800px' }}>
             EMPRESAS LÍDERES QUE CONFÍAN EN AI4U PARA SU TRANSFORMACIÓN DIGITAL. CADA LOGO REPRESENTA UNA ALIANZA EXITOSA EN INNOVACIÓN.
           </BodyText>
+        </Container>
+      </Box>
+
+      {/* Portafolio de Innovación - Proyectos Destacados */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
+          <H1 sx={{ 
+            mb: 10, 
+            fontWeight: 900,
+            textTransform: 'uppercase',
+            color: colors.palette.white,
+            fontSize: { xs: '3rem', md: '6rem' },
+            lineHeight: 0.9
+          }}>
+            PORTAFOLIO DE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>INNOVACIÓN</Box>
+          </H1>
+
+          <Grid container spacing={8}>
+            {featuredProjects.map((project) => (
+              <Grid item xs={12} md={6} key={project.id}>
+                <Card 
+                  variant="default" 
+                  sx={{ 
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    p: 0,
+                    bgcolor: colors.palette.black,
+                    borderColor: colors.palette.white,
+                    borderWidth: '4px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translate(12px, -12px)',
+                      boxShadow: `-12px 12px 0px ${colors.palette.accentColors.orange}`,
+                      '& .project-image': {
+                        transform: 'scale(1.05)',
+                      }
+                    }
+                  }}
+                >
+                  <Box sx={{ 
+                    width: '100%', 
+                    aspectRatio: '16/9', 
+                    overflow: 'hidden',
+                    borderBottom: `4px solid ${colors.palette.white}`,
+                    bgcolor: alpha(colors.palette.white, 0.05)
+                  }}>
+                    <Box
+                      component="img"
+                      src={project.image}
+                      alt={project.title}
+                      className="project-image"
+                      sx={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                        transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                      }}
+                    />
+                  </Box>
+                  <Box sx={{ p: 4, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <Box sx={{ 
+                      display: 'inline-block', 
+                      bgcolor: colors.palette.accentColors.orange, 
+                      color: colors.palette.white,
+                      px: 2,
+                      py: 0.5,
+                      mb: 2,
+                      alignSelf: 'flex-start',
+                      fontWeight: 800,
+                      fontSize: '0.8rem',
+                      textTransform: 'uppercase'
+                    }}>
+                      {project.category}
+                    </Box>
+                    <H3 sx={{ 
+                      fontWeight: 900, 
+                      textTransform: 'uppercase', 
+                      mb: 2,
+                      color: colors.palette.white
+                    }}>
+                      {project.title}
+                    </H3>
+                    <BodyText sx={{ 
+                      mb: 4, 
+                      color: alpha(colors.palette.white, 0.7),
+                      flex: 1
+                    }}>
+                      {project.description}
+                    </BodyText>
+                    <Button 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="outlined"
+                      sx={{ 
+                        alignSelf: 'flex-start',
+                        borderColor: colors.palette.white,
+                        color: colors.palette.white,
+                        borderWidth: '3px',
+                        fontWeight: 900,
+                        '&:hover': {
+                          bgcolor: colors.palette.white,
+                          color: colors.palette.black,
+                          borderColor: colors.palette.white
+                        }
+                      }}
+                    >
+                      VER PROYECTO EN VIVO
+                    </Button>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
 
