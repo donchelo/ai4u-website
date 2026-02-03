@@ -23,17 +23,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'mui-icons': ['@mui/icons-material'],
-          'mui-vendor': ['@mui/material', '@emotion/react', '@emotion/styled']
-        }
-      }
-    }
+    sourcemap: false
   },
   publicDir: 'public'
 });
-
