@@ -1,19 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { Layout, ScrollToTop, LazyPage, BasicLoadingWrapper } from './components/shared/ui/layouts';
+import { Layout, ScrollToTop, BasicLoadingWrapper } from './components/shared/ui/layouts';
 import { ErrorBoundary } from './components/shared/ui/molecules';
 import { ThemeProvider, ServicesProvider } from './context';
 import { ROUTES } from './utils/constants';
 import './utils/errorTracking';
-import { 
-  Home, 
-  Services, 
-  WhyAI4U, 
-  UseCases, 
-  DesignSystem,
-  Pitch
-} from './pages/lazy';
+// Importar directamente sin lazy loading para debugging
+import Home from './pages/Home';
+import Services from './pages/Services';
+import WhyAI4U from './pages/WhyAI4U';
+import UseCases from './pages/UseCases';
+import DesignSystem from './pages/DesignSystem';
+import Pitch from './pages/Pitch';
 
 function App() {
   return (
@@ -34,65 +33,41 @@ function App() {
                     {/* Home Route */}
                     <Route 
                       path={ROUTES.HOME} 
-                      element={
-                        <LazyPage>
-                          <Home />
-                        </LazyPage>
-                      } 
+                      element={<Home />} 
                     />
 
                     {/* Services Route */}
                     <Route 
                       path={ROUTES.SERVICES} 
-                      element={
-                        <LazyPage>
-                          <Services />
-                        </LazyPage>
-                      } 
+                      element={<Services />} 
                     />
 
                     {/* Why AI4U Route */}
                     <Route 
                       path={ROUTES.WHY_AI4U} 
-                      element={
-                        <LazyPage>
-                          <WhyAI4U />
-                        </LazyPage>
-                      } 
+                      element={<WhyAI4U />} 
                     />
 
                     {/* Success Cases Route */}
                     <Route 
                       path={ROUTES.SUCCESS_CASES} 
-                      element={
-                        <LazyPage>
-                          <UseCases />
-                        </LazyPage>
-                      } 
+                      element={<UseCases />} 
                     />
 
                     {/* Design System Route - Debe estar antes del fallback */}
                     <Route 
                       path={ROUTES.DESIGN_SYSTEM} 
-                      element={
-                        <LazyPage>
-                          <DesignSystem />
-                        </LazyPage>
-                      } 
+                      element={<DesignSystem />} 
                     />
 
                     {/* Pitch Route */}
                     <Route 
                       path={ROUTES.PITCH} 
-                      element={
-                        <LazyPage>
-                          <Pitch />
-                        </LazyPage>
-                      } 
+                      element={<Pitch />} 
                     />
 
                     {/* Fallback Route - Siempre al final */}
-                    <Route path="*" element={<LazyPage><Home /></LazyPage>} />
+                    <Route path="*" element={<Home />} />
                   </Routes>
                 </Layout>
               </Router>
