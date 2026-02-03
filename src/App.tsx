@@ -11,7 +11,6 @@ import {
   Services, 
   WhyAI4U, 
   UseCases, 
-  Gallery,
   DesignSystem,
   Pitch
 } from './pages/lazy';
@@ -68,16 +67,6 @@ function App() {
                       element={
                         <LazyPage>
                           <UseCases />
-                        </LazyPage>
-                      } 
-                    />
-
-                    {/* Gallery Route */}
-                    <Route 
-                      path={ROUTES.GALLERY} 
-                      element={
-                        <LazyPage>
-                          <Gallery />
                         </LazyPage>
                       } 
                     />

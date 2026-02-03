@@ -8,8 +8,6 @@ export { default as MetricCard } from './MetricCard';
 export { default as Card } from './Card';
 export { default as DiagnosticCTA } from './DiagnosticCTA';
 export { default as ServiceCard } from './ServiceCard';
-export { default as Gallery } from './Gallery';
-export { default as GalleryFrame } from './GalleryFrame';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Button } from '../atoms/Button';

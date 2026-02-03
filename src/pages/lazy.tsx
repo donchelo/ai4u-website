@@ -9,12 +9,9 @@ export const WhyAI4U = lazy(() => import('./WhyAI4U'));
 
 export const UseCases = lazy(() => import('./UseCases'));
 
-export const Gallery = lazy(() => import('./Gallery'));
-
 export const DesignSystem = lazy(() => import('./DesignSystem'));
 export const Pitch = lazy(() => import('./Pitch'));
 
 // Preloading para páginas críticas
 export const preloadHome = () => import('./Home');
-export const preloadServices = () => import('./Services');
-export const preloadGallery = () => import('./Gallery'); 
+export const preloadServices = () => import('./Services'); 

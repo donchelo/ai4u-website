@@ -336,7 +336,7 @@ Este script:
 - Navegación principal
 - Hero Section
 - Footer
-- Páginas principales (Home, Services, WhyAI4U, Gallery, UseCases)
+- Páginas principales (Home, Services, WhyAI4U, UseCases)
 - Componentes de UI principales
 - Sistema de cambio de idioma
 

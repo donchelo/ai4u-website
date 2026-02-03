@@ -34,7 +34,7 @@ describe('SEO Utils', () => {
     });
 
     it('should return fallback meta tags for unknown page', () => {
-      const metaTags = getPageMetaTags('gallery');
+      const metaTags = getPageMetaTags('unknown-page');
       
       expect(metaTags.title).toContain('AI4U');
       expect(metaTags.description).toContain('Automatización');

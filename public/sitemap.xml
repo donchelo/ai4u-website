@@ -44,14 +44,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Galería -->
-  <url>
-    <loc>https://www.ai4u.com.co/Gallery</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
   <!-- Component Library (Demo) -->
   <url>
     <loc>https://www.ai4u.com.co/component-library</loc>

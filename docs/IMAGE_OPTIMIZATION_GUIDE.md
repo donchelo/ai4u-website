@@ -99,7 +99,6 @@ const App = () => {
       <IntelligentImagePreloader
         criticalImages={['hero-image', 'logo']}
         importantImages={['mariano', 'robot']}
-        backgroundImages={['gallery-1', 'gallery-2']}
         onCriticalLoaded={() => console.log('Críticas cargadas')}
         onAllLoaded={() => console.log('Todas cargadas')}
         showProgress={true}
@@ -176,9 +175,6 @@ sudo apt-get install imagemagick
 
 // Importantes: Cargar cuando estén en viewport
 <OptimizedImageAdvanced imageName="content" priority={false} />
-
-// Fondo: Cargar en segundo plano
-<OptimizedImageAdvanced imageName="gallery" preload={true} />
 ```
 
 ### **2. Selección de Tamaños**

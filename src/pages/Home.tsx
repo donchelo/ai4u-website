@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Box, Stack } from '@mui/material';
 import { H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA, GalleryFrame, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { useColorMode } from '../context/ThemeContext';
 import { useColors } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
@@ -201,15 +201,6 @@ const Home = () => {
                   Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.
                 </BodyText>
                 
-                <BodyText sx={{ 
-                  mb: 4, 
-                  color: mode === 'dark' ? 'text.disabled' : colors.contrast.text.disabled, 
-                  fontSize: '0.9rem', 
-                  fontStyle: 'italic' 
-                }}>
-                  Vista previa de nuestra galería de proyectos y casos de uso
-                </BodyText>
-                
                 <H3 sx={{ 
                   mb: 4, 
                   color: mode === 'dark' ? 'text.primary' : colors.palette.white, 
@@ -238,13 +229,7 @@ const Home = () => {
             </Box>
             
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <GalleryFrame
-                interval={4000}
-                showNavigation={false}
-                showTitle={false}
-                frameStyle="glass"
-                size="medium"
-              />
+              {/* Aquí puedes agregar una imagen ilustrativa o un elemento visual */}
             </Box>
           </Stack>
         </Container>

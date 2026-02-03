@@ -176,13 +176,13 @@ Esta es la versión pública de la guía completa para el desarrollo del proyect
 ├── src/
 │   ├── components/shared/ui/
 │   │   ├── atoms/           # Button, Typography, Logo, GeometricIcon, SEOHead
-│   │   ├── molecules/       # Card, Gallery, ServiceCard, MetricCard, ChatButton
+│   │   ├── molecules/       # Card, ServiceCard, MetricCard, ChatButton
 │   │   ├── organisms/       # HeroSection, Navbar, Footer, ServicesFilter
 │   │   ├── layouts/         # Layout wrappers, LazyPage
 │   │   └── tokens/          # palette.ts, typography.ts, theme.ts
 │   ├── context/             # ThemeContext, ServicesContext, LoadingContext
-│   ├── hooks/               # useGalleryImages, useLazyImage, useColors
-│   ├── pages/               # Home, Services, Gallery, demos
+│   ├── hooks/               # useLazyImage, useColors, useWindowSize
+│   ├── pages/               # Home, Services, demos
 │   ├── data/                # Static data files + brandIdentity.ts
 │   ├── utils/               # Helper functions, constants, seo.ts
 │   └── docs/                # Documentation files
