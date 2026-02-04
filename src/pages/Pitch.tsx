@@ -323,17 +323,16 @@ const Pitch: React.FC = () => {
   return (
     <Box 
       sx={{ 
-        height: 'calc(100vh - 64px)', 
+        minHeight: 'calc(100vh - 64px)', 
         bgcolor: AI4U_PALETTE.black, 
         display: 'flex', 
         flexDirection: 'column',
-        overflow: 'hidden',
         position: 'relative',
         transition: 'background-color 0.8s ease'
       }}
     >
       <GlobalStyles styles={{
-        body: { overflow: 'hidden' }
+        body: { overflowX: 'hidden' }
       }} />
 
       {/* Premium Progress Bar */}
@@ -358,12 +357,13 @@ const Pitch: React.FC = () => {
           justifyContent: 'center',
           bgcolor: styles.bg,
           transition: 'background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-          position: 'relative'
+          position: 'relative',
+          py: { xs: 4, md: 8 } // Margen para que respire verticalmente
         }}
       >
         <Fade in={true} key={currentSlide} timeout={800}>
-          <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ width: '100%', py: { xs: 8, md: 12 }, position: 'relative', zIndex: 2 }}>
+          <Container maxWidth="lg" sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', py: { xs: 4, md: 6 }, position: 'relative', zIndex: 2 }}>
               
               {/* Category Tag */}
               {current.category && (
@@ -373,8 +373,8 @@ const Pitch: React.FC = () => {
                     color: styles.accent, 
                     fontWeight: 900, 
                     letterSpacing: 4,
-                    fontSize: { xs: '0.8rem', md: '1rem' },
-                    mb: 2,
+                    fontSize: { xs: '0.75rem', md: '0.85rem' },
+                    mb: 1,
                     display: 'block',
                     textShadow: styles.glow ? `0 0 10px ${styles.accent}` : 'none'
                   }}
@@ -388,20 +388,20 @@ const Pitch: React.FC = () => {
                 sx={{ 
                   color: styles.text,
                   fontWeight: 900,
-                  fontSize: { xs: '2.5rem', md: '4rem', lg: '5.5rem' },
-                  lineHeight: 1,
-                  letterSpacing: '-0.03em',
+                  fontSize: { xs: '2.2rem', md: '3.5rem', lg: '4.8rem' },
+                  lineHeight: 1.1,
+                  letterSpacing: '-0.02em',
                   textTransform: 'uppercase',
-                  mb: 6,
-                  maxWidth: '1200px'
+                  mb: { xs: 4, md: 6 },
+                  maxWidth: '1000px'
                 }}
               >
                 {current.title}
               </Typography>
 
               {/* Subtitle & Content Split */}
-              <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 10 }} alignItems="flex-start">
-                <Box sx={{ flex: 1 }}>
+              <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 3, md: 8 }} alignItems="flex-start">
+                <Box sx={{ flex: 1, width: '100%' }}>
                   {current.subtitle && (
                     <Typography 
                       variant="h2" 
@@ -409,7 +409,7 @@ const Pitch: React.FC = () => {
                         color: styles.text,
                         opacity: 0.8,
                         fontWeight: 300,
-                        fontSize: { xs: '1.2rem', md: '2rem', lg: '2.8rem' },
+                        fontSize: { xs: '1.1rem', md: '1.8rem', lg: '2.4rem' },
                         lineHeight: 1.2,
                         letterSpacing: '-0.01em'
                       }}
@@ -419,15 +419,15 @@ const Pitch: React.FC = () => {
                   )}
                 </Box>
                 
-                <Box sx={{ flex: 1.4 }}>
+                <Box sx={{ flex: 1.5, width: '100%' }}>
                   {current.title === 'Casos de Éxito' ? (
-                    <Box sx={{ mt: 2 }}>
+                    <Box sx={{ mt: 1 }}>
                       <Typography 
                         sx={{ 
                           color: styles.text,
-                          fontSize: { xs: '1rem', md: '1.4rem', lg: '1.8rem' },
+                          fontSize: { xs: '0.9rem', md: '1.2rem', lg: '1.5rem' },
                           fontWeight: 400,
-                          mb: 4,
+                          mb: 3,
                           opacity: 0.9,
                           lineHeight: 1.6
                         }}
@@ -436,10 +436,10 @@ const Pitch: React.FC = () => {
                       </Typography>
                       <Stack 
                         direction="row" 
-                        spacing={4} 
+                        spacing={3} 
                         flexWrap="wrap" 
                         alignItems="center"
-                        sx={{ gap: 4, mt: 4 }}
+                        sx={{ gap: 3, mt: 2 }}
                       >
                         {clientLogos.map((logo, idx) => (
                           <Box 
@@ -447,7 +447,7 @@ const Pitch: React.FC = () => {
                             component="img"
                             src={logo}
                             sx={{ 
-                              height: { xs: 35, md: 50, lg: 65 },
+                              height: { xs: 30, md: 45, lg: 55 },
                               width: 'auto',
                               filter: styles.bg === AI4U_PALETTE.white ? 'grayscale(1) contrast(1.2)' : 'brightness(0) invert(1)',
                               opacity: 0.8,
@@ -463,13 +463,13 @@ const Pitch: React.FC = () => {
                       </Stack>
                     </Box>
                   ) : Array.isArray(current.content) ? (
-                    <Stack spacing={4}>
+                    <Stack spacing={3}>
                       {current.content.map((line, i) => (
-                        <Box key={i} sx={{ borderLeft: `2px solid ${styles.accent}`, pl: 4 }}>
+                        <Box key={i} sx={{ borderLeft: `2px solid ${styles.accent}`, pl: 3 }}>
                           <Typography 
                             sx={{ 
                               color: styles.text,
-                              fontSize: { xs: '1rem', md: '1.4rem', lg: '1.8rem' },
+                              fontSize: { xs: '0.9rem', md: '1.2rem', lg: '1.6rem' },
                               fontWeight: 400,
                               lineHeight: 1.5
                             }}
@@ -483,7 +483,7 @@ const Pitch: React.FC = () => {
                     <Typography 
                       sx={{ 
                         color: styles.text,
-                        fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.4rem' },
+                        fontSize: { xs: '1.1rem', md: '1.6rem', lg: '2rem' },
                         fontWeight: 400,
                         lineHeight: 1.5,
                         opacity: 0.9
@@ -499,23 +499,24 @@ const Pitch: React.FC = () => {
         </Fade>
 
         {/* Floating Logo - Más discreto */}
-        <Box sx={{ position: 'absolute', top: 32, right: 40, zIndex: 5, opacity: 0.8 }}>
-          <Logo variant="desktop" sx={{ height: 32, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
+        <Box sx={{ position: 'absolute', top: 24, right: 32, zIndex: 5, opacity: 0.6 }}>
+          <Logo variant="desktop" sx={{ height: 28, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
         </Box>
 
         {/* Big Background Number */}
         <Typography 
           sx={{ 
             position: 'absolute', 
-            bottom: -50, 
+            bottom: -20, 
             left: 20, 
-            fontSize: '30rem', 
+            fontSize: { xs: '15rem', md: '25rem' }, 
             fontWeight: 900, 
             color: styles.text, 
-            opacity: 0.03,
+            opacity: 0.02,
             zIndex: 1,
             pointerEvents: 'none',
-            userSelect: 'none'
+            userSelect: 'none',
+            lineHeight: 0.8
           }}
         >
           {String(currentSlide + 1).padStart(2, '0')}
