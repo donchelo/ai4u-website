@@ -6,7 +6,8 @@ export const ROUTES = {
   SUCCESS_CASES: '/casos-de-uso',
   TIENDA_AI: '/tienda-ai',
   DESIGN_SYSTEM: '/design-system',
-  PITCH: '/pitch'
+  PITCH: '/pitch',
+  PITCH_BANCOLOMBIA: '/pitch-bancolombia'
 } as const;
 
 // Configuración de la aplicación
