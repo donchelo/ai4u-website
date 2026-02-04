@@ -362,8 +362,8 @@ const Pitch: React.FC = () => {
         }}
       >
         <Fade in={true} key={currentSlide} timeout={800}>
-          <Container maxWidth="xl" sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ width: '100%', py: 4, position: 'relative', zIndex: 2 }}>
+          <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', py: { xs: 8, md: 12 }, position: 'relative', zIndex: 2 }}>
               
               {/* Category Tag */}
               {current.category && (
@@ -373,7 +373,7 @@ const Pitch: React.FC = () => {
                     color: styles.accent, 
                     fontWeight: 900, 
                     letterSpacing: 4,
-                    fontSize: '1.2rem',
+                    fontSize: { xs: '0.8rem', md: '1rem' },
                     mb: 2,
                     display: 'block',
                     textShadow: styles.glow ? `0 0 10px ${styles.accent}` : 'none'
@@ -383,16 +383,16 @@ const Pitch: React.FC = () => {
                 </Typography>
               )}
 
-              {/* Title Section - GIGANTE */}
+              {/* Title Section - GIGANTE PERO CONTROLADO */}
               <Typography 
                 sx={{ 
                   color: styles.text,
                   fontWeight: 900,
-                  fontSize: { xs: '3.5rem', md: '5.5rem', lg: '7.5rem' },
-                  lineHeight: 0.9,
-                  letterSpacing: '-0.04em',
+                  fontSize: { xs: '2.5rem', md: '4rem', lg: '5.5rem' },
+                  lineHeight: 1,
+                  letterSpacing: '-0.03em',
                   textTransform: 'uppercase',
-                  mb: 4,
+                  mb: 6,
                   maxWidth: '1200px'
                 }}
               >
@@ -400,7 +400,7 @@ const Pitch: React.FC = () => {
               </Typography>
 
               {/* Subtitle & Content Split */}
-              <Stack direction={{ xs: 'column', md: 'row' }} spacing={8} alignItems="flex-start">
+              <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 10 }} alignItems="flex-start">
                 <Box sx={{ flex: 1 }}>
                   {current.subtitle && (
                     <Typography 
@@ -409,9 +409,9 @@ const Pitch: React.FC = () => {
                         color: styles.text,
                         opacity: 0.8,
                         fontWeight: 300,
-                        fontSize: { xs: '1.5rem', md: '2.5rem', lg: '3.5rem' },
-                        lineHeight: 1.1,
-                        letterSpacing: '-0.02em'
+                        fontSize: { xs: '1.2rem', md: '2rem', lg: '2.8rem' },
+                        lineHeight: 1.2,
+                        letterSpacing: '-0.01em'
                       }}
                     >
                       {current.subtitle}
@@ -419,16 +419,17 @@ const Pitch: React.FC = () => {
                   )}
                 </Box>
                 
-                <Box sx={{ flex: 1.2 }}>
+                <Box sx={{ flex: 1.4 }}>
                   {current.title === 'Casos de Éxito' ? (
                     <Box sx={{ mt: 2 }}>
                       <Typography 
                         sx={{ 
                           color: styles.text,
-                          fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.2rem' },
+                          fontSize: { xs: '1rem', md: '1.4rem', lg: '1.8rem' },
                           fontWeight: 400,
                           mb: 4,
-                          opacity: 0.9
+                          opacity: 0.9,
+                          lineHeight: 1.6
                         }}
                       >
                         {Array.isArray(current.content) ? current.content[0] : current.content}
@@ -446,7 +447,7 @@ const Pitch: React.FC = () => {
                             component="img"
                             src={logo}
                             sx={{ 
-                              height: { xs: 40, md: 60, lg: 80 },
+                              height: { xs: 35, md: 50, lg: 65 },
                               width: 'auto',
                               filter: styles.bg === AI4U_PALETTE.white ? 'grayscale(1) contrast(1.2)' : 'brightness(0) invert(1)',
                               opacity: 0.8,
@@ -462,15 +463,15 @@ const Pitch: React.FC = () => {
                       </Stack>
                     </Box>
                   ) : Array.isArray(current.content) ? (
-                    <Stack spacing={3}>
+                    <Stack spacing={4}>
                       {current.content.map((line, i) => (
-                        <Box key={i} sx={{ borderLeft: `4px solid ${styles.accent}`, pl: 3 }}>
+                        <Box key={i} sx={{ borderLeft: `2px solid ${styles.accent}`, pl: 4 }}>
                           <Typography 
                             sx={{ 
                               color: styles.text,
-                              fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.2rem' },
+                              fontSize: { xs: '1rem', md: '1.4rem', lg: '1.8rem' },
                               fontWeight: 400,
-                              lineHeight: 1.3
+                              lineHeight: 1.5
                             }}
                           >
                             {line}
@@ -482,9 +483,9 @@ const Pitch: React.FC = () => {
                     <Typography 
                       sx={{ 
                         color: styles.text,
-                        fontSize: { xs: '1.5rem', md: '2.2rem', lg: '2.8rem' },
+                        fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.4rem' },
                         fontWeight: 400,
-                        lineHeight: 1.4,
+                        lineHeight: 1.5,
                         opacity: 0.9
                       }}
                     >
@@ -497,9 +498,9 @@ const Pitch: React.FC = () => {
           </Container>
         </Fade>
 
-        {/* Floating Logo */}
-        <Box sx={{ position: 'absolute', top: 48, right: 64, zIndex: 5 }}>
-          <Logo variant="desktop" sx={{ height: 48, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
+        {/* Floating Logo - Más discreto */}
+        <Box sx={{ position: 'absolute', top: 32, right: 40, zIndex: 5, opacity: 0.8 }}>
+          <Logo variant="desktop" sx={{ height: 32, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
         </Box>
 
         {/* Big Background Number */}
@@ -521,65 +522,79 @@ const Pitch: React.FC = () => {
         </Typography>
       </Box>
 
-      {/* Floating Glass Controls */}
+      {/* Floating Glass Controls - Rediseñados para no obstruir */}
       <Box 
         sx={{ 
           position: 'absolute',
-          bottom: 40,
-          left: '50%',
-          transform: 'translateX(-50%)',
+          bottom: { xs: 20, md: 30 },
+          right: { xs: 20, md: 30 },
           display: 'flex', 
           alignItems: 'center',
-          gap: 2,
-          bgcolor: 'rgba(0,0,0,0.4)',
-          backdropFilter: 'blur(20px)',
+          gap: 1.5,
+          bgcolor: 'rgba(0,0,0,0.2)',
+          backdropFilter: 'blur(10px)',
           p: 1,
-          px: 3,
-          borderRadius: 10,
-          border: '1px solid rgba(255,255,255,0.1)',
-          zIndex: 100
+          px: 2,
+          borderRadius: 4,
+          border: '1px solid rgba(255,255,255,0.05)',
+          zIndex: 100,
+          opacity: { xs: 0.8, md: 0.4 }, // Más visible en móvil por defecto
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            opacity: 1,
+            bgcolor: 'rgba(0,0,0,0.6)',
+            transform: 'translateY(-5px)',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+          }
         }}
       >
-        <IconButton onClick={() => navigate(ROUTES.HOME)} sx={{ color: 'white' }}>
+        <IconButton 
+          onClick={() => navigate(ROUTES.HOME)} 
+          size="small"
+          sx={{ color: 'white', p: 0.5 }}
+        >
           <HomeIcon fontSize="small" />
         </IconButton>
 
-        <Box sx={{ width: 1, height: 24, bgcolor: 'rgba(255,255,255,0.2)', mx: 1 }} />
+        <Box sx={{ width: 1, height: 16, bgcolor: 'rgba(255,255,255,0.2)', mx: 0.5 }} />
 
-        <Stack direction="row" spacing={1}>
-          <IconButton onClick={prevSlide} sx={{ color: 'white' }}>
+        <Stack direction="row" spacing={0.5}>
+          <IconButton onClick={prevSlide} size="small" sx={{ color: 'white', p: 0.5 }}>
             <PrevIcon fontSize="small" />
           </IconButton>
           
           <IconButton 
             onClick={() => setIsPaused(!isPaused)} 
+            size="small"
             sx={{ 
               color: isPaused ? 'white' : styles.accent,
+              p: 0.5,
               transition: 'all 0.3s ease'
             }}
           >
-            {isPaused ? <PlayIcon /> : <PauseIcon />}
+            {isPaused ? <PlayIcon fontSize="small" /> : <PauseIcon fontSize="small" />}
           </IconButton>
 
-          <IconButton onClick={nextSlide} sx={{ color: 'white' }}>
+          <IconButton onClick={nextSlide} size="small" sx={{ color: 'white', p: 0.5 }}>
             <NextIcon fontSize="small" />
           </IconButton>
         </Stack>
 
-        <Box sx={{ width: 1, height: 24, bgcolor: 'rgba(255,255,255,0.2)', mx: 1 }} />
+        <Box sx={{ width: 1, height: 16, bgcolor: 'rgba(255,255,255,0.2)', mx: 0.5 }} />
 
-        <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.8rem', opacity: 0.8, minWidth: 40 }}>
-          {currentSlide + 1} / {slides.length}
+        <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.75rem', opacity: 0.8, minWidth: 40, textAlign: 'center' }}>
+          {currentSlide + 1}/{slides.length}
         </Typography>
 
         {current.type === 'cta' && (
           <IconButton 
             href={`https://${APP_CONFIG.CONTACT.CALENDLY}`}
             target="_blank"
+            size="small"
             sx={{ 
               bgcolor: styles.accent, 
               color: styles.bg,
-              ml: 2,
+              p: 0.5,
               '&:hover': { opacity: 0.8, bgcolor: styles.accent }
             }}
           >
