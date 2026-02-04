@@ -26,30 +26,27 @@ export const PITCHES: Record<string, PitchData> = {
         clientName: 'Bancolombia',
         slides: [
             {
-                title: 'EL TIEMPO ES ORO',
+                title: '¿QUÉ PRECIO TIENE TU TIEMPO?',
+                subtitle: 'EL TIEMPO ES ORO',
                 content: '',
                 type: 'title',
                 theme: 'BLACK_MODERN',
                 category: 'FILOSOFÍA',
-                image: '/assets/images/bancolombia/gemini-composite-1769733280428 (1).png',
+                image: '/assets/images/bancolombia/bee-background.png',
                 imageLayout: 'background'
             },
             {
-                title: 'IA Generativa: El Futuro del Contenido Bancario',
-                subtitle: 'AI4U + Bancolombia',
-                content: 'Escalando la creatividad y la eficiencia mediante arquitecturas de IA personalizadas.',
-                type: 'title',
-                theme: 'BANCOLOMBIA_PRIMARY',
-                image: '/assets/images/bancolombia/she_lookbook (12).jpg',
-                imageLayout: 'side'
-            },
-            {
-                title: 'Visual Showcase',
-                subtitle: 'Impacto IA de alta fidelidad',
-                content: '',
+                title: 'AI4U: Time is Gold',
+                subtitle: 'Ecosistemas, no herramientas',
+                content: [
+                    'Construimos compañeros digitales incansables que trabajan 24/7.',
+                    'Nuestra misión es liberar tu potencial estratégico eliminando tareas repetitivas.',
+                    'Arquitecturas que escalan con tu negocio.'
+                ],
                 type: 'section',
-                theme: 'BLACK_MODERN',
-                video: '/assets/videos/bancolombia-showcase.mp4',
+                theme: 'BANCOLOMBIA_PRIMARY',
+                category: 'FILOSOFÍA',
+                image: '/assets/images/bancolombia/she_lookbook (12).jpg',
                 imageLayout: 'background'
             },
             {
@@ -81,20 +78,6 @@ export const PITCHES: Record<string, PitchData> = {
                 imageLayout: 'side'
             },
             {
-                title: 'AI4U: Time is Gold',
-                subtitle: 'Ecosistemas, no herramientas',
-                content: [
-                    'Construimos compañeros digitales incansables que trabajan 24/7.',
-                    'Nuestra misión es liberar tu potencial estratégico eliminando tareas repetitivas.',
-                    'Arquitecturas que escalan con tu negocio.'
-                ],
-                type: 'section',
-                theme: 'BANCOLOMBIA_PRIMARY',
-                category: 'FILOSOFÍA',
-                image: '/assets/images/bancolombia/she_lookbook (12).jpg',
-                imageLayout: 'background'
-            },
-            {
                 title: '¿Por qué el contenido es un cuello de botella?',
                 subtitle: 'Falta de escalabilidad y altos costos',
                 content: [
@@ -106,6 +89,15 @@ export const PITCHES: Record<string, PitchData> = {
                 theme: 'ORANGE_PUNCH',
                 category: 'EL PROBLEMA',
                 image: '/assets/images/bancolombia/gemini-composite-1769733280428 (1).png',
+                imageLayout: 'side'
+            },
+            {
+                title: 'IA Generativa: El Futuro del Contenido Bancario',
+                subtitle: 'AI4U + Bancolombia',
+                content: 'Escalando la creatividad y la eficiencia mediante arquitecturas de IA personalizadas.',
+                type: 'title',
+                theme: 'BANCOLOMBIA_PRIMARY',
+                image: '/assets/images/bancolombia/she_lookbook (12).jpg',
                 imageLayout: 'side'
             },
             {
@@ -152,12 +144,21 @@ export const PITCHES: Record<string, PitchData> = {
                 imageLayout: 'side'
             },
             {
+                title: 'Visual Showcase',
+                subtitle: 'Impacto IA de alta fidelidad',
+                content: '',
+                type: 'section',
+                theme: 'BLACK_MODERN',
+                video: '/assets/videos/bancolombia-showcase.mp4',
+                imageLayout: 'background'
+            },
+            {
                 title: 'Agendemos Ahora',
                 subtitle: 'El Futuro no Espera',
                 content: 'Conversemos sobre cómo potenciar Bancolombia con Infraestructura de Inteligencia Artificial.',
                 type: 'cta',
                 theme: 'BLACK_MODERN',
-                image: '/assets/images/bancolombia/gemini-composite-1769733280428 (1).png',
+                image: '/assets/images/bancolombia/bee-background.png',
                 imageLayout: 'background'
             }
         ]
