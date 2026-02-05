@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import WhyAI4U from './pages/WhyAI4U';
 import UseCases from './pages/UseCases';
+import SuperAI from './pages/SuperAI';
 import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
 
@@ -52,6 +53,12 @@ function App() {
                     <Route 
                       path={ROUTES.SUCCESS_CASES} 
                       element={<UseCases />} 
+                    />
+
+                    {/* SuperAI Route */}
+                    <Route 
+                      path={ROUTES.SUPER_AI} 
+                      element={<SuperAI />} 
                     />
 
                     {/* Design System Route - Debe estar antes del fallback */}
