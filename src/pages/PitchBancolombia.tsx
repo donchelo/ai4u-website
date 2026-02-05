@@ -34,7 +34,7 @@ const PitchBancolombia: React.FC = () => {
     // State for Pitch Data
     const [selectedPitchId, setSelectedPitchId] = useState<'bancolombia' | 'corona'>('bancolombia');
     const [slides, setSlides] = useState<Slide[]>(() => {
-        const saved = localStorage.getItem(`pitch_slides_v6_${selectedPitchId}`);
+        const saved = localStorage.getItem(`pitch_slides_v11_${selectedPitchId}`);
         return saved ? JSON.parse(saved) : PITCHES[selectedPitchId].slides;
     });
 
@@ -88,7 +88,7 @@ const PitchBancolombia: React.FC = () => {
 
     // Persist slides change
     useEffect(() => {
-        localStorage.setItem(`pitch_slides_v6_${selectedPitchId}`, JSON.stringify(slides));
+        localStorage.setItem(`pitch_slides_v11_${selectedPitchId}`, JSON.stringify(slides));
     }, [slides, selectedPitchId]);
 
     // Reset focus mode on slide change
@@ -98,7 +98,7 @@ const PitchBancolombia: React.FC = () => {
 
     // Sync slides when selectedPitchId changes
     useEffect(() => {
-        const saved = localStorage.getItem(`pitch_slides_v6_${selectedPitchId}`);
+        const saved = localStorage.getItem(`pitch_slides_v11_${selectedPitchId}`);
         setSlides(saved ? JSON.parse(saved) : PITCHES[selectedPitchId].slides);
         setCurrentSlideIndex(0);
     }, [selectedPitchId]);

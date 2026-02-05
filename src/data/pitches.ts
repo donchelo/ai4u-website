@@ -36,16 +36,17 @@ export const PITCHES: Record<string, PitchData> = {
                 imageLayout: 'background'
             },
             {
-                title: 'AI4U: Time is Gold',
-                subtitle: 'Ecosistemas, no herramientas',
+                title: 'Ecosistemas que Evolucionan',
+                subtitle: 'Estrategia • Automatización • Educación • Transformación',
                 content: [
-                    'Construimos compañeros digitales incansables que trabajan 24/7.',
-                    'Nuestra misión es liberar tu potencial estratégico eliminando tareas repetitivas.',
-                    'Arquitecturas que escalan con tu negocio.'
+                    'Estrategia: Diagnóstico y planificación con IA para transformar tu negocio desde la raíz.',
+                    'Automatización: Asistentes robóticos 24/7 que liberan el 70% de tu tiempo operativo.',
+                    'Educación: Capacitación para que tu equipo evolucione junto a la tecnología.',
+                    'Transformación Digital: Integración de soluciones para alcanzar el máximo nivel de eficiencia.'
                 ],
                 type: 'section',
                 theme: 'BANCOLOMBIA_PRIMARY',
-                category: 'FILOSOFÍA',
+                category: 'NUESTRO ADN',
                 image: '/assets/images/bancolombia/she_lookbook (12).jpg',
                 imageLayout: 'background'
             },
@@ -111,7 +112,22 @@ export const PITCHES: Record<string, PitchData> = {
                 type: 'product',
                 theme: 'BLACK_MODERN',
                 category: 'SOLUCIÓN',
-                image: '/assets/images/bancolombia/AI4U 4rt (14).png',
+                video: '/assets/videos/data-entry-automatico.mp4',
+                imageLayout: 'side'
+            },
+            {
+                title: 'CoutureLab: Fashion AI Studio',
+                subtitle: 'Arquitectura: Node_Alpha_Active // Core_Sync_01',
+                content: [
+                    'Infraestructura digital que unifica diseño, marketing y producción.',
+                    'Casting Digital: Crea avatares, vístelos y escenifícalos sin límites.',
+                    'Virtual Try-on & Editorial Lookbook: Calce real y consistencia visual 4K.',
+                    'Eliminamos la fricción operativa: de la idea al activo final en horas.'
+                ],
+                type: 'product',
+                theme: 'SUPER_AI_NEON',
+                category: 'TECNOLOGÍA',
+                image: '/assets/images/bancolombia/couturelab-1769631535174.jpg',
                 imageLayout: 'side'
             },
             {
@@ -125,7 +141,7 @@ export const PITCHES: Record<string, PitchData> = {
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
                 category: 'CASO DE USO',
-                image: '/assets/images/bancolombia/AI4U 4rt (19).png',
+                video: '/assets/videos/video_1768938346414.mp4',
                 imageLayout: 'side'
             },
             {
