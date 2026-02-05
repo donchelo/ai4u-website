@@ -208,8 +208,8 @@ const Home = () => {
               <Grid item xs={12} md={5}>
                 <Box sx={{ 
                   p: 6, 
-                  border: `6px solid ${colors.palette.accentColors.orange}`, 
-                  bgcolor: 'rgba(255,92,0,0.03)',
+                  border: `6px solid ${colors.palette.white}`, 
+                  bgcolor: 'rgba(255,255,255,0.03)',
                   backdropFilter: 'blur(20px)',
                   height: 'fit-content'
                 }}>
@@ -295,7 +295,7 @@ const Home = () => {
                           bgcolor: colors.palette.black,
                           color: colors.palette.white,
                           transform: 'translate(-8px, -8px)',
-                          boxShadow: `12px 12px 0px ${colors.palette.accentColors.orange}`,
+                          boxShadow: `12px 12px 0px ${colors.palette.gray[800]}`,
                           '& h3, & p, & .idx': { color: colors.palette.white }
                         }
                       }}
@@ -306,7 +306,7 @@ const Home = () => {
                           sx={{ 
                             fontSize: '1.5rem', 
                             fontWeight: 900, 
-                            color: colors.palette.accentColors.orange,
+                            color: colors.palette.gray[400],
                             mb: 2,
                             fontFamily: '"Necto Mono", monospace'
                           }}
@@ -356,15 +356,15 @@ const Home = () => {
       <Box sx={{ 
         py: { xs: 15, md: 25 },
         px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.orange,
+        bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <SurfaceProvider surface="orange">
+        <SurfaceProvider surface="black">
           <Container maxWidth="xl">
             <Box sx={{ textAlign: 'center' }}>
-            <Giant sx={{ mb: 8, color: colors.palette.black, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
+            <Giant sx={{ mb: 8, color: colors.palette.white, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
               ¿LISTO PARA EL SIGUIENTE NIVEL?
             </Giant>
             <Stack 
@@ -377,13 +377,13 @@ const Home = () => {
                 height: '120px', 
                 px: 10, 
                 fontSize: '2rem', 
-                fontWeight: 900,
-                bgcolor: colors.palette.black, 
-                color: colors.palette.white,
-                border: `6px solid ${colors.palette.black}`,
+                fontWeight: 900, 
+                bgcolor: colors.palette.white, 
+                color: colors.palette.black,
+                border: `6px solid ${colors.palette.white}`,
                 '&:hover': {
-                  bgcolor: colors.palette.white,
-                  color: colors.palette.black
+                  bgcolor: colors.palette.black,
+                  color: colors.palette.white
                 }
               }} />
               <Button 
@@ -394,11 +394,11 @@ const Home = () => {
                   fontSize: '2rem', 
                   fontWeight: 900, 
                   borderWidth: '6px',
-                  borderColor: colors.palette.black,
-                  color: colors.palette.black,
+                  borderColor: colors.palette.white,
+                  color: colors.palette.white,
                   '&:hover': {
-                    bgcolor: colors.palette.black,
-                    color: colors.palette.white
+                    bgcolor: colors.palette.white,
+                    color: colors.palette.black
                   }
                 }}
               >

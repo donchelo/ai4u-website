@@ -1,6 +1,6 @@
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 
-export type SlideTheme = 'BANCOLOMBIA_PRIMARY' | 'BLACK_MODERN' | 'WHITE_MINIMAL' | 'ORANGE_PUNCH' | 'SUPER_AI_NEON' | 'GREEN_FRESH';
+export type SlideTheme = 'BANCOLOMBIA_PRIMARY' | 'BLACK_MODERN' | 'WHITE_MINIMAL' | 'GRAY_MODERN' | 'SUPER_AI_NEON' | 'GREEN_FRESH';
 
 export interface Slide {
     title: string;
@@ -87,7 +87,7 @@ export const PITCHES: Record<string, PitchData> = {
                     'Tiempos de entrega que frenan la agilidad comercial.'
                 ],
                 type: 'content',
-                theme: 'ORANGE_PUNCH',
+                theme: 'GRAY_MODERN',
                 category: 'EL PROBLEMA',
                 image: '/assets/images/bancolombia/gemini-composite-1769733280428 (1).png',
                 imageLayout: 'side'
@@ -210,7 +210,7 @@ export const PITCHES: Record<string, PitchData> = {
                     'Dependencia de personal para tareas repetitivas de bajo valor.'
                 ],
                 type: 'content',
-                theme: 'ORANGE_PUNCH'
+                theme: 'GRAY_MODERN'
             },
             {
                 title: 'Automatizaciones',
@@ -277,7 +277,7 @@ export const PITCHES: Record<string, PitchData> = {
                     'Arquitectura optimizada para máxima velocidad y fiabilidad.'
                 ],
                 type: 'product',
-                theme: 'ORANGE_PUNCH',
+                theme: 'GRAY_MODERN',
                 category: 'OPERATIVO'
             },
             {
@@ -363,7 +363,7 @@ export const PITCHES: Record<string, PitchData> = {
                 subtitle: 'Tu Socio de Ingeniería Dedicado',
                 content: 'No somos un proveedor de software; somos tu equipo de ingeniería de IA personalizado.',
                 type: 'content',
-                theme: 'ORANGE_PUNCH'
+                theme: 'GRAY_MODERN'
             },
             {
                 title: 'Diagnóstico Gratuito',
@@ -374,7 +374,7 @@ export const PITCHES: Record<string, PitchData> = {
                     'Entrega de un Roadmap estratégico de implementación.'
                 ],
                 type: 'offer',
-                theme: 'ORANGE_PUNCH'
+                theme: 'GRAY_MODERN'
             },
             {
                 title: 'Agendemos Ahora',
@@ -396,25 +396,25 @@ export const getThemeStyles = (themeName: SlideTheme) => {
                 accent: '#000000',
                 logoMode: 'light' as const
             };
-        case 'ORANGE_PUNCH':
+        case 'GRAY_MODERN':
             return {
-                bg: AI4U_PALETTE.accentColors.orange,
-                text: AI4U_PALETTE.white,
+                bg: AI4U_PALETTE.gray[100],
+                text: AI4U_PALETTE.black,
                 accent: AI4U_PALETTE.black,
-                logoMode: 'dark' as const
+                logoMode: 'light' as const
             };
         case 'BLACK_MODERN':
             return {
                 bg: AI4U_PALETTE.black,
                 text: AI4U_PALETTE.white,
-                accent: '#FDDA24',
+                accent: AI4U_PALETTE.white,
                 logoMode: 'dark' as const
             };
         case 'WHITE_MINIMAL':
             return {
                 bg: AI4U_PALETTE.white,
                 text: AI4U_PALETTE.black,
-                accent: '#FDDA24',
+                accent: AI4U_PALETTE.black,
                 logoMode: 'light' as const
             };
         case 'GREEN_FRESH':
@@ -426,9 +426,9 @@ export const getThemeStyles = (themeName: SlideTheme) => {
             };
         case 'SUPER_AI_NEON':
             return {
-                bg: AI4U_PALETTE.gray[900],
+                bg: AI4U_PALETTE.black,
                 text: AI4U_PALETTE.white,
-                accent: '#00F0FF',
+                accent: AI4U_PALETTE.white,
                 logoMode: 'dark' as const,
                 glow: true
             };
@@ -436,7 +436,7 @@ export const getThemeStyles = (themeName: SlideTheme) => {
             return {
                 bg: AI4U_PALETTE.white,
                 text: AI4U_PALETTE.black,
-                accent: AI4U_PALETTE.accentColors.orange,
+                accent: AI4U_PALETTE.black,
                 logoMode: 'light' as const
             };
     }

@@ -117,11 +117,13 @@ const SuperAI: React.FC = () => {
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={4} alignItems="center" textAlign="center">
             <Chip
-              label="🎯 Tu Nuevo Miembro del Equipo"
+              label="Tu Nuevo Miembro del Equipo"
               sx={{
-                backgroundColor: `${colors.accent}20`,
-                color: colors.accent,
+                backgroundColor: colors.contrast.background,
+                color: colors.contrast.text.primary,
+                border: `2px solid ${colors.palette.accentColors.orange}`,
                 fontSize: '14px',
+                fontWeight: 700,
                 padding: '8px 4px',
               }}
             />
@@ -131,10 +133,7 @@ const SuperAI: React.FC = () => {
               sx={{
                 fontSize: { xs: '2.5rem', md: '4rem' },
                 fontWeight: 800,
-                background: `linear-gradient(90deg, ${colors.text} 0%, ${colors.accent} 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: colors.contrast.text.primary,
                 maxWidth: '800px',
                 lineHeight: 1.2,
               }}
@@ -146,7 +145,7 @@ const SuperAI: React.FC = () => {
               variant="h5"
               sx={{
                 fontSize: { xs: '1.2rem', md: '1.5rem' },
-                color: colors.textSecondary,
+                color: colors.contrast.text.secondary,
                 maxWidth: '700px',
                 lineHeight: 1.6,
               }}
@@ -159,15 +158,15 @@ const SuperAI: React.FC = () => {
                 variant="contained"
                 size="large"
                 sx={{
-                  background: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.accentDark} 100%)`,
-                  color: '#fff',
+                  bgcolor: colors.contrast.text.primary,
+                  color: colors.contrast.background,
                   padding: '12px 40px',
                   fontSize: '1.1rem',
                   fontWeight: 600,
-                  borderRadius: '8px',
+                  borderRadius: 0,
                   '&:hover': {
                     transform: 'translateY(-2px)',
-                    boxShadow: `0 8px 24px ${colors.accent}40`,
+                    bgcolor: colors.contrast.text.secondary,
                   },
                   transition: 'all 0.3s ease',
                 }}
@@ -178,14 +177,15 @@ const SuperAI: React.FC = () => {
                 variant="outlined"
                 size="large"
                 sx={{
-                  borderColor: colors.accent,
-                  color: colors.accent,
+                  borderColor: colors.contrast.text.primary,
+                  color: colors.contrast.text.primary,
                   padding: '12px 40px',
                   fontSize: '1.1rem',
                   fontWeight: 600,
+                  borderRadius: 0,
                   '&:hover': {
-                    borderColor: colors.accentDark,
-                    backgroundColor: `${colors.accent}10`,
+                    borderColor: colors.contrast.text.primary,
+                    backgroundColor: colors.contrast.divider,
                   },
                 }}
               >
@@ -205,18 +205,19 @@ const SuperAI: React.FC = () => {
                   <Grid item xs={12} sm={6} md={4} key={idx}>
                     <Card
                       sx={{
-                        background: `${colors.surface}80`,
+                        background: colors.contrast.surface,
                         backdropFilter: 'blur(10px)',
-                        border: `1px solid ${colors.border}`,
+                        border: `1px solid ${colors.contrast.border}`,
                         textAlign: 'center',
                         py: 2,
+                        borderRadius: 0,
                       }}
                     >
-                      <IconComponent sx={{ width: 32, height: 32, marginBottom: '8px', color: colors.accent }} />
-                      <Typography variant="h6" sx={{ color: colors.accent, fontWeight: 700 }}>
+                      <IconComponent sx={{ width: 32, height: 32, marginBottom: '8px', color: colors.palette.accentColors.orange }} />
+                      <Typography variant="h6" sx={{ color: colors.contrast.text.primary, fontWeight: 700 }}>
                         {metric.value}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.textSecondary }}>
+                      <Typography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
                         {metric.label}
                       </Typography>
                     </Card>
@@ -229,7 +230,7 @@ const SuperAI: React.FC = () => {
       </Box>
 
       {/* Benefits Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.background }}>
+      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.background }}>
         <Container maxWidth="lg">
           <Typography
             variant="h2"
@@ -238,7 +239,7 @@ const SuperAI: React.FC = () => {
               fontSize: { xs: '2rem', md: '2.8rem' },
               fontWeight: 700,
               mb: 6,
-              color: colors.text,
+              color: colors.contrast.text.primary,
             }}
           >
             ¿Por qué SuperAI es Diferente?
@@ -251,15 +252,16 @@ const SuperAI: React.FC = () => {
                 <Grid item xs={12} sm={6} md={6} lg={3} key={idx}>
                   <Card
                     sx={{
-                      background: `linear-gradient(135deg, ${colors.surface}80 0%, ${colors.darker}40 100%)`,
-                      border: `1px solid ${colors.border}`,
+                      background: colors.contrast.surface,
+                      border: `1px solid ${colors.contrast.border}`,
                       backdropFilter: 'blur(10px)',
                       height: '100%',
                       transition: 'all 0.3s ease',
+                      borderRadius: 0,
                       '&:hover': {
                         transform: 'translateY(-8px)',
-                        borderColor: colors.accent,
-                        boxShadow: `0 12px 32px ${colors.accent}20`,
+                        borderColor: colors.contrast.text.primary,
+                        boxShadow: `0 12px 32px rgba(0,0,0,0.1)`,
                       },
                     }}
                   >
@@ -268,15 +270,15 @@ const SuperAI: React.FC = () => {
                         sx={{
                           width: 48,
                           height: 48,
-                          color: colors.accent,
+                          color: colors.palette.accentColors.orange,
                           marginBottom: '16px',
                           margin: '0 auto 16px',
                         }}
                       />
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: colors.text }}>
+                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: colors.contrast.text.primary }}>
                         {benefit.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.textSecondary, lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: colors.contrast.text.secondary, lineHeight: 1.6 }}>
                         {benefit.description}
                       </Typography>
                     </CardContent>
@@ -289,7 +291,7 @@ const SuperAI: React.FC = () => {
       </Box>
 
       {/* Capabilities Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.darker }}>
+      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.surface }}>
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6}>
@@ -299,21 +301,21 @@ const SuperAI: React.FC = () => {
                   fontSize: { xs: '2rem', md: '2.5rem' },
                   fontWeight: 700,
                   mb: 4,
-                  color: colors.text,
+                  color: colors.contrast.text.primary,
                 }}
               >
                 Qué Puede Hacer Tu Asistente
               </Typography>
 
-              <List sx={{ color: colors.text }}>
+              <List sx={{ color: colors.contrast.text.primary }}>
                 {capabilities.map((capability, idx) => (
                   <ListItem key={idx} sx={{ py: 1, px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32, color: colors.accent }}>
+                    <ListItemIcon sx={{ minWidth: 32, color: colors.contrast.text.primary }}>
                       <CheckCircle sx={{ fontSize: 24 }} />
                     </ListItemIcon>
                     <ListItemText
                       primary={capability}
-                      sx={{ m: 0, '& .MuiTypography-root': { color: colors.text } }}
+                      sx={{ m: 0, '& .MuiTypography-root': { color: colors.contrast.text.primary } }}
                     />
                   </ListItem>
                 ))}
@@ -323,18 +325,18 @@ const SuperAI: React.FC = () => {
             <Grid item xs={12} md={6}>
               <Box
                 sx={{
-                  background: `linear-gradient(135deg, ${colors.accent}20 0%, ${colors.accent}05 100%)`,
-                  border: `2px solid ${colors.accent}40`,
-                  borderRadius: '12px',
+                  background: colors.contrast.background,
+                  border: `2px solid ${colors.contrast.border}`,
+                  borderRadius: 0,
                   p: 4,
                   textAlign: 'center',
                 }}
               >
-                <AutoAwesome sx={{ width: 64, height: 64, color: colors.accent, margin: '0 auto 24px' }} />
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: colors.text }}>
+                <AutoAwesome sx={{ width: 64, height: 64, color: colors.contrast.text.primary, margin: '0 auto 24px' }} />
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: colors.contrast.text.primary }}>
                   100% Personalizado
                 </Typography>
-                <Typography variant="body2" sx={{ color: colors.textSecondary, lineHeight: 1.8 }}>
+                <Typography variant="body2" sx={{ color: colors.contrast.text.secondary, lineHeight: 1.8 }}>
                   Tú defines qué skills necesitas. Nosotros lo configuramos en 3 días. Tu asistente aprende el contexto de tu negocio y se adapta a tus procesos.
                 </Typography>
               </Box>
@@ -344,7 +346,7 @@ const SuperAI: React.FC = () => {
       </Box>
 
       {/* Use Cases Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.background }}>
+      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.background }}>
         <Container maxWidth="lg">
           <Typography
             variant="h2"
@@ -353,7 +355,7 @@ const SuperAI: React.FC = () => {
               fontSize: { xs: '2rem', md: '2.8rem' },
               fontWeight: 700,
               mb: 6,
-              color: colors.text,
+              color: colors.contrast.text.primary,
             }}
           >
             Ya Está Funcionando Para Otros
@@ -364,38 +366,39 @@ const SuperAI: React.FC = () => {
               <Grid item xs={12} md={4} key={idx}>
                 <Card
                   sx={{
-                    background: `linear-gradient(135deg, ${colors.surface}80 0%, ${colors.darker}40 100%)`,
-                    border: `1px solid ${colors.border}`,
+                    background: colors.contrast.surface,
+                    border: `1px solid ${colors.contrast.border}`,
                     backdropFilter: 'blur(10px)',
                     height: '100%',
                     p: 3,
+                    borderRadius: 0,
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: colors.accent, mb: 2 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: colors.contrast.text.primary, mb: 2 }}>
                     {useCase.title}
                   </Typography>
                   <Stack spacing={2}>
                     <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.textSecondary, mb: 0.5 }}>
+                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.secondary, mb: 0.5 }}>
                         El Problema:
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.text }}>
+                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary }}>
                         {useCase.challenge}
                       </Typography>
                     </Box>
                     <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.textSecondary, mb: 0.5 }}>
+                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.secondary, mb: 0.5 }}>
                         La Solución:
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.text }}>
+                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary }}>
                         {useCase.solution}
                       </Typography>
                     </Box>
                     <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.accent, mb: 0.5 }}>
+                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.primary, mb: 0.5 }}>
                         El Resultado:
                       </Typography>
-                      <Typography variant="body2" sx={{ color: colors.accent, fontWeight: 600 }}>
+                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary, fontWeight: 600 }}>
                         {useCase.result}
                       </Typography>
                     </Box>
@@ -410,8 +413,8 @@ const SuperAI: React.FC = () => {
       {/* CTA Section */}
       <Box
         sx={{
-          background: `linear-gradient(135deg, ${colors.accent}20 0%, ${colors.accent}05 100%)`,
-          border: `2px solid ${colors.accent}40`,
+          background: colors.contrast.surface,
+          border: `2px solid ${colors.contrast.border}`,
           py: { xs: 8, md: 10 },
         }}
       >
@@ -422,7 +425,7 @@ const SuperAI: React.FC = () => {
               sx={{
                 fontSize: { xs: '2rem', md: '2.5rem' },
                 fontWeight: 700,
-                color: colors.text,
+                color: colors.contrast.text.primary,
               }}
             >
               ¿Listo para tu Asistente Personal?
@@ -431,7 +434,7 @@ const SuperAI: React.FC = () => {
             <Typography
               variant="h6"
               sx={{
-                color: colors.textSecondary,
+                color: colors.contrast.text.secondary,
                 fontWeight: 400,
               }}
             >
@@ -445,12 +448,15 @@ const SuperAI: React.FC = () => {
                 href="https://calendly.com/mgarciap333/ai4u"
                 target="_blank"
                 sx={{
-                  background: `linear-gradient(135deg, ${colors.accent} 0%, ${colors.accentDark} 100%)`,
-                  color: '#fff',
+                  bgcolor: colors.contrast.text.primary,
+                  color: colors.contrast.background,
                   padding: '14px 48px',
                   fontSize: '1.1rem',
                   fontWeight: 600,
-                  borderRadius: '8px',
+                  borderRadius: 0,
+                  '&:hover': {
+                    bgcolor: colors.contrast.text.secondary,
+                  }
                 }}
               >
                 Agendar Conversación
@@ -461,11 +467,15 @@ const SuperAI: React.FC = () => {
                 href="https://wa.me/573218175744"
                 target="_blank"
                 sx={{
-                  borderColor: colors.accent,
-                  color: colors.accent,
+                  borderColor: colors.contrast.text.primary,
+                  color: colors.contrast.text.primary,
                   padding: '14px 48px',
                   fontSize: '1.1rem',
                   fontWeight: 600,
+                  borderRadius: 0,
+                  '&:hover': {
+                    bgcolor: colors.contrast.divider,
+                  }
                 }}
               >
                 WhatsApp
@@ -475,11 +485,11 @@ const SuperAI: React.FC = () => {
             <Typography
               variant="body2"
               sx={{
-                color: colors.textSecondary,
+                color: colors.contrast.text.secondary,
                 pt: 2,
               }}
             >
-              📞 O llámanos: +57 321 817 5744
+              Llámanos: +57 321 817 5744
             </Typography>
           </Stack>
         </Container>

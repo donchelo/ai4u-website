@@ -86,7 +86,7 @@ export const IntelligentImagePreloader: React.FC<IntelligentImagePreloaderProps>
       fontFamily: 'monospace'
     }}>
       <div style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
-        🖼️ Cargando imágenes...
+        Cargando imágenes...
       </div>
       
       <div style={{ width: '300px', marginBottom: '1rem' }}>

@@ -300,7 +300,7 @@ const UseCases = () => {
                 top: '50%',
                 bgcolor: colors.palette.black,
                 color: colors.palette.white,
-                '&:hover': { bgcolor: colors.palette.accentColors.orange }
+                '&:hover': { bgcolor: colors.palette.gray[800] }
               }}
             >
               <ChevronLeftIcon />
@@ -314,7 +314,7 @@ const UseCases = () => {
                 top: '50%',
                 bgcolor: colors.palette.black,
                 color: colors.palette.white,
-                '&:hover': { bgcolor: colors.palette.accentColors.orange }
+                '&:hover': { bgcolor: colors.palette.gray[800] }
               }}
             >
               <ChevronRightIcon />
@@ -363,7 +363,7 @@ const UseCases = () => {
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       '&:hover': {
                         transform: 'translate(12px, -12px)',
-                        boxShadow: `-12px 12px 0px ${colors.palette.accentColors.orange}`,
+                        boxShadow: `-12px 12px 0px ${colors.palette.white}`,
                         '& .project-image': {
                           transform: 'scale(1.05)',
                         }
@@ -394,8 +394,8 @@ const UseCases = () => {
                   <Box sx={{ p: 4, flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <Box sx={{ 
                       display: 'inline-block', 
-                      bgcolor: colors.palette.accentColors.orange, 
-                      color: colors.palette.white,
+                      bgcolor: colors.palette.white, 
+                      color: colors.palette.black,
                       px: 2,
                       py: 0.5,
                       mb: 2,
@@ -454,12 +454,12 @@ const UseCases = () => {
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
         px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.orange,
+        bgcolor: colors.palette.white,
         color: colors.palette.black,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <SurfaceProvider surface="orange">
+        <SurfaceProvider surface="white">
           <Container maxWidth="xl">
             <Grid container spacing={10} alignItems="center">
             <Grid item xs={12} md={6}>
@@ -478,7 +478,7 @@ const UseCases = () => {
                   { label: 'INCREMENTO EFICIENCIA', value: '300%' },
                   { label: 'AUTOMATIZACIÓN CONTINUA', value: '24/7' }
                 ].map((item, idx) => (
-                  <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.black}`, pl: 4 }}>
+                  <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
                     <H2 sx={{ fontWeight: 900, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
                     <BodyText sx={{ fontWeight: 800, textTransform: 'uppercase' }}>{item.label}</BodyText>
                   </Box>
@@ -494,17 +494,18 @@ const UseCases = () => {
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
         px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.green,
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <SurfaceProvider surface="green">
+        <SurfaceProvider surface="black">
           <Container maxWidth="lg">
             <Stack spacing={8} textAlign="center" alignItems="center">
-              <Giant sx={{ color: colors.palette.black }}>
+              <Giant sx={{ color: colors.palette.white }}>
                 ¿LISTO PARA SER EL PRÓXIMO ÉXITO?
               </Giant>
-              <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
+              <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.white, color: colors.palette.black }} />
             </Stack>
           </Container>
         </SurfaceProvider>

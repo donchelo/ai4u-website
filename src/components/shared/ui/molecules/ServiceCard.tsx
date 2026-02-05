@@ -18,12 +18,14 @@ interface ServiceCardProps {
   service: Service;
   showPrice?: boolean;
   compact?: boolean;
+  onClick?: () => void;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ 
   service, 
   showPrice = true, 
-  compact = false 
+  compact = false,
+  onClick
 }) => {
   const colors = useColors();
 
@@ -53,7 +55,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }
       }}>
         {/* Main Card Content minimalista */}
-        <Box className="service-card-content" sx={{
+      <Box 
+        className="service-card-content" 
+        onClick={onClick}
+        sx={{
           p: compact ? 2.5 : 3,
           height: '100%',
           display: 'flex',
@@ -65,11 +70,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           transition: 'all 0.1s ease',
           overflow: 'hidden',
           boxShadow: 'none',
+          cursor: onClick ? 'pointer' : 'default',
           '&:hover': {
-            transform: 'translate(-4px, -4px)',
-            boxShadow: `8px 8px 0px ${colors.contrast.text.primary}`,
+            transform: onClick ? 'translate(-4px, -4px)' : 'none',
+            boxShadow: onClick ? `8px 8px 0px ${colors.contrast.text.primary}` : 'none',
           }
-        }}>
+        }}
+      >
 
           {/* Super Category Badge minimalista */}
           <Box sx={{ 
@@ -118,7 +125,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             
             <Typography sx={{ 
               fontWeight: 700,
-              color: colors.palette.accentColors.orange,
+              color: colors.contrast.text.secondary,
               fontSize: '0.9rem',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -146,7 +153,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                       <GeometricIcon
                         type="arrow-right"
                         size="small"
-                        color={colors.palette.accentColors.orange}
+                        color={colors.contrast.text.primary}
                         variant="minimal"
                       />
                     </ListItemIcon>

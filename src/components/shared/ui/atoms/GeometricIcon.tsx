@@ -125,7 +125,7 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
       case 'dot':
         return <span {...iconProps}>•</span>;
       case 'search':
-        return <span {...iconProps}>🔍</span>;
+        return <span {...iconProps}>[?]</span>;
       case 'clear':
         return <span {...iconProps}>✕</span>;
       case 'check':

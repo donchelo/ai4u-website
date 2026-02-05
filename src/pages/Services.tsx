@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '../components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
-import { ServicesPremiumHero } from '../components/shared/ui/organisms';
-import { useServicesContext } from '../context';
+import { ServicesPremiumHero, SuperAIModal } from '../components/shared/ui/organisms';
+import { useServicesContext } from '@/context';
 import { useColors, usePerformanceMonitoring } from '../hooks';
 import { ServiceSuperCategory } from '../types/service';
 import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
@@ -19,6 +19,7 @@ import { getRelatedLinks } from '../data/internalLinkingStrategy';
 
 const Services: React.FC = () => {
   const colors = useColors();
+  const [isSuperAIModalOpen, setIsSuperAIModalOpen] = useState(false);
   const { 
     getFilteredServices,
     getServicesBySuperCategory
@@ -50,7 +51,7 @@ const Services: React.FC = () => {
       color: colors.palette.white,
       bgColor: colors.palette.black,
       textColor: colors.palette.white,
-      accentColor: colors.palette.accentColors.orange
+      accentColor: colors.palette.gray[600]
     },
     {
       id: ServiceSuperCategory.EDUCATION,
@@ -58,7 +59,7 @@ const Services: React.FC = () => {
       subtitle: 'EVOLUCIÓN HUMANA',
       description: 'CAPACITAMOS A TU EQUIPO PARA DOMINAR LAS HERRAMIENTAS QUE ESTÁN REDEFINIENDO EL MERCADO GLOBAL.',
       color: colors.palette.black,
-      bgColor: colors.palette.accentColors.green,
+      bgColor: colors.palette.gray[100],
       textColor: colors.palette.black,
       accentColor: colors.palette.black
     },
@@ -68,9 +69,9 @@ const Services: React.FC = () => {
       subtitle: 'SUPER AI INFRASTRUCTURE',
       description: 'LA CÚSPIDE DE LA AUTONOMÍA: CONSTRUIMOS LA INFRAESTRUCTURA DONDE LA IA ES EL MOTOR PRINCIPAL.',
       color: colors.palette.white,
-      bgColor: colors.palette.accentColors.orange,
+      bgColor: colors.palette.black,
       textColor: colors.palette.white,
-      accentColor: colors.palette.black
+      accentColor: colors.palette.accentColors.green
     }
   ];
 
@@ -206,6 +207,7 @@ const Services: React.FC = () => {
                         <ServiceCard 
                           service={service}
                           showPrice={false}
+                          onClick={service.id === 'super-ai' ? () => setIsSuperAIModalOpen(true) : undefined}
                         />
                       </Grid>
                     ))}
@@ -221,15 +223,15 @@ const Services: React.FC = () => {
       <Box sx={{ 
         py: { xs: 10, md: 18 }, 
         px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.orange,
-        color: colors.palette.black,
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
         <Container maxWidth="xl">
           <Stack spacing={10}>
             <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 4, fontSize: { xs: '3rem', md: '6rem' } }}>
-              MÉTODO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>DIRECTO</Box>
+              MÉTODO <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>DIRECTO</Box>
             </H1>
             <Grid container spacing={6}>
               {[
@@ -239,7 +241,7 @@ const Services: React.FC = () => {
                 { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN TOTAL 24/7.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ borderLeft: `8px solid ${colors.palette.black}`, pl: 3 }}>
+                  <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
                     <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1 }}>{step.n}</H2>
                     <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1 }}>{step.t}</Typography>
                     <BodyText sx={{ fontWeight: 500 }}>{step.d}</BodyText>
@@ -254,7 +256,7 @@ const Services: React.FC = () => {
       {/* CTA Final */}
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
-        bgcolor: colors.palette.accentColors.green,
+        bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
@@ -287,6 +289,11 @@ const Services: React.FC = () => {
           variant="horizontal"
         />
       </Container>
+
+      <SuperAIModal 
+        open={isSuperAIModalOpen}
+        onClose={() => setIsSuperAIModalOpen(false)}
+      />
     </Box>
   );
 };

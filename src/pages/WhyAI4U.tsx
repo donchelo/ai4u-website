@@ -120,7 +120,7 @@ const WhyAI4U = () => {
             <Grid item xs={12} md={6}>
               <Box sx={{ 
                 border: `8px solid ${colors.palette.white}`,
-                boxShadow: `15px 15px 0px ${colors.palette.accentColors.orange}`,
+                boxShadow: `15px 15px 0px ${colors.palette.gray[800]}`,
                 overflow: 'hidden'
               }}>
                 <PixelArtImage
@@ -253,11 +253,11 @@ const WhyAI4U = () => {
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
         px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.accentColors.orange,
+        bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <SurfaceProvider surface="orange">
+        <SurfaceProvider surface="white">
           <Container maxWidth="lg">
             <Stack spacing={8} textAlign="center" alignItems="center">
               <Giant sx={{ color: colors.palette.black }}>

@@ -10,3 +10,4 @@ export { default as ServicesStats } from './ServicesStats';
 export { default as Documentation } from './Documentation';
 export { default as ModelingInterface } from './ModelingInterface';
 export { default as Navbar } from './Navbar';
+export { default as SuperAIModal } from './SuperAIModal';

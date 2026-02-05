@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout, ScrollToTop, BasicLoadingWrapper } from './components/shared/ui/layouts';
 import { ErrorBoundary } from './components/shared/ui/molecules';
-import { ThemeProvider, ServicesProvider } from './context';
+import { ThemeProvider, ServicesProvider } from '@/context';
 import { ROUTES } from './utils/constants';
 import './utils/errorTracking';
 // Importar directamente sin lazy loading para debugging

@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
-import { H1, H3, BodyText, LazyImage } from '../atoms';
+import { H1, H3, BodyText, LazyImage, Button } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
+import SuperAIModal from './SuperAIModal';
 import { ServiceUtils } from '../../../../data/services';
 import { useColors } from '../../../../hooks';
-import { useServicesContext } from '../../../../context';
+import { useServicesContext } from '@/context';
 
 interface ServicesPremiumHeroProps {
   title?: string;
@@ -39,6 +40,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
   // Destacados ordenados por prioridad
   const featuredSorted = ServiceUtils.sortByPriority([...getFeaturedServices()]);
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const activeService = featuredSorted[activeIndex];
 
   return (
@@ -47,7 +49,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
         position: 'relative',
         bgcolor: colors.palette.black,
         color: colors.palette.white,
-        borderBottom: `8px solid ${colors.palette.accentColors.orange}`,
+        borderBottom: `8px solid ${colors.palette.white}`,
         py: { xs: 15, md: 25 },
         px: { xs: 4, md: 12, lg: 20 },
         zIndex: 1,
@@ -194,7 +196,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
 
                   <Stack spacing={2}>
                     {activeService.benefits.slice(0, 3).map((benefit, index) => (
-                      <Box key={index} sx={{ borderLeft: `4px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
+                      <Box key={index} sx={{ borderLeft: `4px solid ${colors.palette.white}`, pl: 3 }}>
                         <BodyText sx={{ fontSize: '1.1rem', fontWeight: 700, color: colors.palette.white, opacity: 0.9 }}>
                           {benefit.toUpperCase()}
                         </BodyText>
@@ -202,29 +204,57 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     ))}
                   </Stack>
 
-                  <DiagnosticCTA 
-                    variant="primary"
-                    size="large"
-                    text={activeService.title === 'coutureLAB' ? 'SOLICITAR ACCESO LAB' : 'SOLICITAR INFRAESTRUCTURA'}
-                    sx={{ 
-                      height: '80px', 
-                      fontSize: '1.2rem', 
-                      fontWeight: 900,
-                      bgcolor: colors.palette.accentColors.orange,
-                      borderColor: colors.palette.accentColors.orange,
-                      '&:hover': {
+                  {activeService.id === 'super-ai' ? (
+                    <Button 
+                      variant="primary"
+                      size="large"
+                      text="CONOCER SUPER AI"
+                      onClick={() => setIsModalOpen(true)}
+                      sx={{ 
+                        height: '80px', 
+                        fontSize: '1.2rem', 
+                        fontWeight: 900, 
                         bgcolor: colors.palette.white,
+                        borderColor: colors.palette.white,
                         color: colors.palette.black,
-                        borderColor: colors.palette.white
-                      }
-                    }}
-                  />
+                        '&:hover': {
+                          bgcolor: colors.palette.black,
+                          color: colors.palette.white,
+                          borderColor: colors.palette.white
+                        }
+                      }}
+                    />
+                  ) : (
+                    <DiagnosticCTA 
+                      variant="primary"
+                      size="large"
+                      text={activeService.title === 'coutureLAB' ? 'SOLICITAR ACCESO LAB' : 'SOLICITAR INFRAESTRUCTURA'}
+                      sx={{ 
+                        height: '80px', 
+                        fontSize: '1.2rem', 
+                        fontWeight: 900, 
+                        bgcolor: colors.palette.white,
+                        borderColor: colors.palette.white,
+                        color: colors.palette.black,
+                        '&:hover': {
+                          bgcolor: colors.palette.black,
+                          color: colors.palette.white,
+                          borderColor: colors.palette.white
+                        }
+                      }}
+                    />
+                  )}
                 </Stack>
               </Grid>
             </Grid>
           </Box>
         )}
       </Container>
+      
+      <SuperAIModal 
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </Box>
   );
 };

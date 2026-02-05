@@ -121,7 +121,7 @@ export const OptimizedImageAdvanced: React.FC<OptimizedImageAdvancedProps> = ({
             gap: 1
           }}
         >
-          <Box component="span" sx={{ fontSize: '2rem' }}>🖼️</Box>
+          <Box component="span" sx={{ fontSize: '2rem' }}>IMG</Box>
           <Box component="span">Error al cargar imagen</Box>
           {showOptimizationInfo && (
             <Box component="span" sx={{ fontSize: '0.75rem', opacity: 0.7 }}>
@@ -148,9 +148,9 @@ export const OptimizedImageAdvanced: React.FC<OptimizedImageAdvancedProps> = ({
             zIndex: 1
           }}
         >
-          <Box>📦 {actualFormat}</Box>
-          <Box>📏 {actualSize}</Box>
-          <Box>🌐 {supportsWebP ? 'WebP' : 'No WebP'}</Box>
+          <Box>FMT: {actualFormat}</Box>
+          <Box>SIZE: {actualSize}</Box>
+          <Box>WEBP: {supportsWebP ? 'Yes' : 'No'}</Box>
         </Box>
       )}
     </Box>

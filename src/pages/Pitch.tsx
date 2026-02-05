@@ -14,7 +14,7 @@ import { ROUTES, APP_CONFIG } from '../utils/constants';
 import Logo from '../components/shared/ui/atoms/Logo';
 
 // Definición de Temas Visuales
-type SlideTheme = 'ORANGE_PUNCH' | 'BLACK_MODERN' | 'WHITE_MINIMAL' | 'GREEN_FRESH' | 'SUPER_AI_NEON';
+type SlideTheme = 'GRAY_MODERN' | 'BLACK_MODERN' | 'WHITE_MINIMAL' | 'GREEN_FRESH' | 'SUPER_AI_NEON';
 
 interface Slide {
   title: string;
@@ -53,7 +53,7 @@ const slides: Slide[] = [
       'Dependencia de personal para tareas repetitivas de bajo valor.'
     ],
     type: 'content',
-    theme: 'ORANGE_PUNCH'
+    theme: 'GRAY_MODERN'
   },
   {
     title: 'Automatizaciones',
@@ -120,7 +120,7 @@ const slides: Slide[] = [
       'Arquitectura optimizada para máxima velocidad y fiabilidad.'
     ],
     type: 'product',
-    theme: 'ORANGE_PUNCH',
+    theme: 'GRAY_MODERN',
     category: 'OPERATIVO'
   },
   {
@@ -206,7 +206,7 @@ const slides: Slide[] = [
     subtitle: 'Tu Socio de Ingeniería Dedicado',
     content: 'No somos un proveedor de software; somos tu equipo de ingeniería de IA personalizado.',
     type: 'content',
-    theme: 'ORANGE_PUNCH'
+    theme: 'GRAY_MODERN'
   },
   {
     title: 'Diagnóstico Gratuito',
@@ -217,7 +217,7 @@ const slides: Slide[] = [
       'Entrega de un Roadmap estratégico de implementación.'
     ],
     type: 'offer',
-    theme: 'ORANGE_PUNCH'
+    theme: 'GRAY_MODERN'
   },
   {
     title: 'Agendemos Ahora',
@@ -239,25 +239,25 @@ const clientLogos = [
 
 const getThemeStyles = (themeName: SlideTheme) => {
   switch (themeName) {
-    case 'ORANGE_PUNCH':
+    case 'GRAY_MODERN':
       return {
-        bg: AI4U_PALETTE.accentColors.orange,
-        text: AI4U_PALETTE.white,
+        bg: AI4U_PALETTE.gray[100],
+        text: AI4U_PALETTE.black,
         accent: AI4U_PALETTE.black,
-        logoMode: 'dark' as const
+        logoMode: 'light' as const
       };
     case 'BLACK_MODERN':
       return {
         bg: AI4U_PALETTE.black,
         text: AI4U_PALETTE.white,
-        accent: AI4U_PALETTE.accentColors.orange,
+        accent: AI4U_PALETTE.white,
         logoMode: 'dark' as const
       };
     case 'WHITE_MINIMAL':
       return {
         bg: AI4U_PALETTE.white,
         text: AI4U_PALETTE.black,
-        accent: AI4U_PALETTE.accentColors.orange,
+        accent: AI4U_PALETTE.black,
         logoMode: 'light' as const
       };
     case 'GREEN_FRESH':
@@ -269,9 +269,9 @@ const getThemeStyles = (themeName: SlideTheme) => {
       };
     case 'SUPER_AI_NEON':
       return {
-        bg: AI4U_PALETTE.gray[900],
+        bg: AI4U_PALETTE.black,
         text: AI4U_PALETTE.white,
-        accent: '#00F0FF', // Neon Blue
+        accent: AI4U_PALETTE.white,
         logoMode: 'dark' as const,
         glow: true
       };
@@ -279,7 +279,7 @@ const getThemeStyles = (themeName: SlideTheme) => {
       return {
         bg: AI4U_PALETTE.white,
         text: AI4U_PALETTE.black,
-        accent: AI4U_PALETTE.accentColors.orange,
+        accent: AI4U_PALETTE.black,
         logoMode: 'light' as const
       };
   }
