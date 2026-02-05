@@ -14,6 +14,7 @@ import UseCases from './pages/UseCases';
 import SuperAI from './pages/SuperAI';
 import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
+import PitchBancolombia from './pages/PitchBancolombia';
 
 function App() {
   return (
@@ -32,27 +33,27 @@ function App() {
                 <Layout>
                   <Routes>
                     {/* Home Route */}
-                    <Route 
-                      path={ROUTES.HOME} 
-                      element={<Home />} 
+                    <Route
+                      path={ROUTES.HOME}
+                      element={<Home />}
                     />
 
                     {/* Services Route */}
-                    <Route 
-                      path={ROUTES.SERVICES} 
-                      element={<Services />} 
+                    <Route
+                      path={ROUTES.SERVICES}
+                      element={<Services />}
                     />
 
                     {/* Why AI4U Route */}
-                    <Route 
-                      path={ROUTES.WHY_AI4U} 
-                      element={<WhyAI4U />} 
+                    <Route
+                      path={ROUTES.WHY_AI4U}
+                      element={<WhyAI4U />}
                     />
 
                     {/* Success Cases Route */}
-                    <Route 
-                      path={ROUTES.SUCCESS_CASES} 
-                      element={<UseCases />} 
+                    <Route
+                      path={ROUTES.SUCCESS_CASES}
+                      element={<UseCases />}
                     />
 
                     {/* SuperAI Route */}
@@ -62,15 +63,20 @@ function App() {
                     />
 
                     {/* Design System Route - Debe estar antes del fallback */}
-                    <Route 
-                      path={ROUTES.DESIGN_SYSTEM} 
-                      element={<DesignSystem />} 
+                    <Route
+                      path={ROUTES.DESIGN_SYSTEM}
+                      element={<DesignSystem />}
                     />
 
-                    {/* Pitch Route */}
-                    <Route 
-                      path={ROUTES.PITCH} 
-                      element={<Pitch />} 
+                    <Route
+                      path={ROUTES.PITCH}
+                      element={<Pitch />}
+                    />
+
+                    {/* Pitch Bancolombia Route */}
+                    <Route
+                      path={ROUTES.PITCH_BANCOLOMBIA}
+                      element={<PitchBancolombia />}
                     />
 
                     {/* Fallback Route - Siempre al final */}

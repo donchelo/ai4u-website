@@ -7,7 +7,8 @@ export const ROUTES = {
   SUPER_AI: '/super-ai',
   TIENDA_AI: '/tienda-ai',
   DESIGN_SYSTEM: '/design-system',
-  PITCH: '/pitch'
+  PITCH: '/pitch',
+  PITCH_BANCOLOMBIA: '/pitch-bancolombia'
 } as const;
 
 // Configuración de la aplicación
