@@ -1,33 +1,33 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-  Stack,
-  Chip,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+import { 
+  Container, 
+  Grid, 
+  Box, 
+  Stack, 
+  List, 
+  ListItem, 
+  ListItemIcon, 
+  ListItemText 
 } from '@mui/material';
-import {
-  CheckCircle,
-  ElectricBolt,
-  AccessTime,
-  TrendingUp,
-  Psychology,
-  Settings,
-  BarChart,
-  AutoAwesome,
+import { 
+  CheckCircle, 
+  AccessTime, 
+  TrendingUp, 
+  BarChart, 
+  Psychology, 
+  Settings, 
+  AutoAwesome 
 } from '@mui/icons-material';
+import { Giant, H1, H2, H3, H4, BodyText, Button, SEOHead } from '@/components/shared/ui/atoms';
 import { useColors } from '@/hooks';
+import { SurfaceProvider } from '@/context';
 
-const SuperAI: React.FC = () => {
+interface SuperAIProps {
+  isModal?: boolean;
+}
+
+const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const colors = useColors();
 
   const benefits = [
@@ -86,7 +86,7 @@ const SuperAI: React.FC = () => {
   ];
 
   return (
-    <>
+    <SurfaceProvider surface="black">
       <Helmet>
         <title>SuperAI - Tu Asistente Personal para Negocios | AI4U</title>
         <meta name="description" content="SuperAI: Tu asistente dedicado 24/7 personalizado con los skills que necesitas. Implementación en 3 días, resultados inmediatos." />
@@ -97,248 +97,245 @@ const SuperAI: React.FC = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: `linear-gradient(135deg, ${colors.dark} 0%, ${colors.darker} 100%)`,
-          py: { xs: 8, md: 12 },
+          background: `radial-gradient(circle at 50% 50%, ${colors.palette.accentColors.orange}10 0%, ${colors.palette.black} 100%)`,
+          py: isModal ? { xs: 6, md: 10 } : { xs: 10, md: 20 },
           position: 'relative',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '600px',
-            height: '600px',
-            background: `radial-gradient(circle, ${colors.accent}15 0%, transparent 70%)`,
-            borderRadius: '50%',
-            zIndex: 0,
-          }
+          borderBottom: `1px solid ${colors.palette.gray[800]}`,
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Stack spacing={4} alignItems="center" textAlign="center">
-            <Chip
-              label="Tu Nuevo Miembro del Equipo"
-              sx={{
-                backgroundColor: colors.contrast.background,
-                color: colors.contrast.text.primary,
-                border: `2px solid ${colors.palette.accentColors.orange}`,
-                fontSize: '14px',
-                fontWeight: 700,
-                padding: '8px 4px',
-              }}
-            />
-
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: { xs: '2.5rem', md: '4rem' },
-                fontWeight: 800,
-                color: colors.contrast.text.primary,
-                maxWidth: '800px',
-                lineHeight: 1.2,
-              }}
-            >
-              Tu Asistente Dedicado que Trabaja 24/7
-            </Typography>
-
-            <Typography
-              variant="h5"
-              sx={{
-                fontSize: { xs: '1.2rem', md: '1.5rem' },
-                color: colors.contrast.text.secondary,
-                maxWidth: '700px',
-                lineHeight: 1.6,
-              }}
-            >
-              Un IA 100% personalizado con los skills exactos que necesitas. Sin distracciones, sin limitaciones. Solo resultado.
-            </Typography>
-
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 3 }}>
-              <Button
-                variant="contained"
-                size="large"
+          <Stack spacing={isModal ? 3 : 6} alignItems="center" textAlign="center">
+              <Box
                 sx={{
-                  bgcolor: colors.contrast.text.primary,
-                  color: colors.contrast.background,
-                  padding: '12px 40px',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 0,
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    bgcolor: colors.contrast.text.secondary,
-                  },
-                  transition: 'all 0.3s ease',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                  px: 2,
+                  py: 0.5,
+                  border: `1px solid ${colors.palette.accentColors.orange}40`,
+                  bgcolor: 'rgba(0,0,0,0.5)',
                 }}
               >
-                Ver Demostración
+                <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: colors.palette.accentColors.orange, boxShadow: `0 0 10px ${colors.palette.accentColors.orange}` }} />
+                <Typography
+                  sx={{
+                    color: colors.palette.accentColors.orange,
+                    fontSize: '0.7rem',
+                    fontWeight: 800,
+                    fontFamily: '"Necto Mono", monospace',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  Infinite Potential // Model 2026
+                </Typography>
+              </Box>
+
+            <Giant
+              sx={{
+                color: colors.palette.white,
+                maxWidth: '1000px',
+                lineHeight: 0.9,
+                fontSize: isModal ? { xs: '2.5rem', md: '4.5rem', lg: '5.5rem' } : undefined,
+                '& span': {
+                  color: colors.palette.accentColors.orange,
+                }
+              }}
+            >
+              Tu Asistente <span>Autónomo</span> Sin Límites
+            </Giant>
+
+            <BodyText
+              sx={{
+                fontSize: isModal ? '1.1rem' : { xs: '1.2rem', md: '1.6rem' },
+                color: colors.palette.gray[400],
+                maxWidth: '800px',
+                fontWeight: 300,
+                lineHeight: 1.4,
+              }}
+            >
+              Un motor de ejecución de élite 100% personalizado. No sugerimos soluciones, las ejecutamos.
+            </BodyText>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 2 }}>
+              <Button
+                variant="primary"
+                size="large"
+                sx={{
+                  px: 6,
+                  height: '70px',
+                  fontSize: '1.1rem',
+                  fontWeight: 900,
+                  bgcolor: colors.palette.white,
+                  color: colors.palette.black,
+                  '&:hover': {
+                    bgcolor: colors.palette.accentColors.orange,
+                    color: colors.palette.white,
+                  },
+                }}
+              >
+                AGENDAR DESPLIEGUE
               </Button>
               <Button
-                variant="outlined"
+                variant="outline"
                 size="large"
                 sx={{
-                  borderColor: colors.contrast.text.primary,
-                  color: colors.contrast.text.primary,
-                  padding: '12px 40px',
+                  px: 6,
+                  height: '70px',
                   fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 0,
+                  fontWeight: 900,
+                  borderColor: colors.palette.gray[700],
+                  color: colors.palette.white,
                   '&:hover': {
-                    borderColor: colors.contrast.text.primary,
-                    backgroundColor: colors.contrast.divider,
+                    borderColor: colors.palette.white,
+                    bgcolor: 'rgba(255,255,255,0.05)',
                   },
                 }}
               >
-                Casos de Éxito
+                EXPLORAR CASOS
               </Button>
             </Stack>
 
-            {/* Key Metrics */}
-            <Grid container spacing={3} sx={{ pt: 4, maxWidth: '800px' }}>
+            {/* Key Metrics Dashboard Style */}
+            <Grid container spacing={2} sx={{ pt: isModal ? 4 : 8, maxWidth: '1000px' }}>
               {[
-                { label: 'En Vivo', value: '3 Días', icon: AccessTime },
-                { label: 'Productividad', value: '+70%', icon: TrendingUp },
-                { label: 'ROI', value: '300%', icon: BarChart },
-              ].map((metric, idx) => {
-                const IconComponent = metric.icon;
-                return (
-                  <Grid item xs={12} sm={6} md={4} key={idx}>
-                    <Card
-                      sx={{
-                        background: colors.contrast.surface,
-                        backdropFilter: 'blur(10px)',
-                        border: `1px solid ${colors.contrast.border}`,
-                        textAlign: 'center',
-                        py: 2,
-                        borderRadius: 0,
+                { label: 'Tiempo de Setup', value: '72H', sub: 'FAST TRACK' },
+                { label: 'Eficiencia Op.', value: '+70%', sub: 'MINIMUN GUARANTEE' },
+                { label: 'Retorno ROI', value: '3.5X', sub: 'MONTHLY AVG' },
+              ].map((metric, idx) => (
+                <Grid item xs={12} sm={4} key={idx}>
+                  <Box
+                    sx={{
+                      textAlign: 'left',
+                      p: 3,
+                      border: `1px solid ${colors.palette.gray[900]}`,
+                      bgcolor: 'rgba(255,255,255,0.02)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '2px',
+                        height: '100%',
+                        bgcolor: idx === 0 ? colors.palette.accentColors.orange : colors.palette.gray[800],
+                      }
+                    }}
+                  >
+                    <Typography 
+                      sx={{ 
+                        fontFamily: '"Necto Mono", monospace', 
+                        color: colors.palette.gray[500], 
+                        fontSize: '0.7rem', 
+                        mb: 1,
+                        letterSpacing: '0.1em'
                       }}
                     >
-                      <IconComponent sx={{ width: 32, height: 32, marginBottom: '8px', color: colors.palette.accentColors.orange }} />
-                      <Typography variant="h6" sx={{ color: colors.contrast.text.primary, fontWeight: 700 }}>
-                        {metric.value}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-                        {metric.label}
-                      </Typography>
-                    </Card>
-                  </Grid>
-                );
-              })}
+                      {metric.sub}
+                    </Typography>
+                    <H2 sx={{ color: colors.palette.white, fontWeight: 900, mb: 0.5, fontSize: '2.5rem' }}>
+                      {metric.value}
+                    </H2>
+                    <BodyText sx={{ color: colors.palette.gray[400], fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                      {metric.label}
+                    </BodyText>
+                  </Box>
+                </Grid>
+              ))}
             </Grid>
           </Stack>
         </Container>
       </Box>
 
-      {/* Benefits Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.background }}>
+      {/* Benefits Section - Bento Grid */}
+      <Box sx={{ py: isModal ? 8 : 15, background: colors.palette.black }}>
         <Container maxWidth="lg">
-          <Typography
-            variant="h2"
-            sx={{
-              textAlign: 'center',
-              fontSize: { xs: '2rem', md: '2.8rem' },
-              fontWeight: 700,
-              mb: 6,
-              color: colors.contrast.text.primary,
-            }}
-          >
-            ¿Por qué SuperAI es Diferente?
-          </Typography>
-
-          <Grid container spacing={4}>
-            {benefits.map((benefit, idx) => {
-              const IconComponent = benefit.icon;
-              return (
-                <Grid item xs={12} sm={6} md={6} lg={3} key={idx}>
-                  <Card
-                    sx={{
-                      background: colors.contrast.surface,
-                      border: `1px solid ${colors.contrast.border}`,
-                      backdropFilter: 'blur(10px)',
-                      height: '100%',
-                      transition: 'all 0.3s ease',
-                      borderRadius: 0,
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        borderColor: colors.contrast.text.primary,
-                        boxShadow: `0 12px 32px rgba(0,0,0,0.1)`,
-                      },
-                    }}
-                  >
-                    <CardContent sx={{ textAlign: 'center', p: 3 }}>
-                      <IconComponent
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <H1 sx={{ mb: 4, color: colors.palette.white }}>
+                INGENIERÍA DE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ELITE</Box> PARA TU OPERACIÓN
+              </H1>
+              <BodyText sx={{ color: colors.palette.gray[400], mb: 6, fontSize: '1.2rem', fontWeight: 300 }}>
+                SuperAI no es un chatbot. Es una capa de inteligencia profunda que vive en tu infraestructura y ejecuta tareas complejas sin supervisión.
+              </BodyText>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Grid container spacing={2}>
+                {benefits.map((benefit, idx) => {
+                  const IconComponent = benefit.icon;
+                  return (
+                    <Grid item xs={12} sm={6} key={idx}>
+                      <Box
                         sx={{
-                          width: 48,
-                          height: 48,
-                          color: colors.palette.accentColors.orange,
-                          marginBottom: '16px',
-                          margin: '0 auto 16px',
+                          bgcolor: colors.palette.gray[900],
+                          p: 3,
+                          height: '100%',
+                          border: `1px solid ${colors.palette.gray[800]}`,
+                          transition: 'all 0.2s ease',
+                          '&:hover': {
+                            borderColor: colors.palette.accentColors.orange,
+                            transform: 'translateY(-4px)',
+                          },
                         }}
-                      />
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: colors.contrast.text.primary }}>
-                        {benefit.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: colors.contrast.text.secondary, lineHeight: 1.6 }}>
-                        {benefit.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            })}
+                      >
+                        <IconComponent sx={{ fontSize: 32, color: colors.palette.accentColors.orange, mb: 2 }} />
+                        <H4 sx={{ mb: 1, color: colors.palette.white, fontSize: '1.1rem' }}>
+                          {benefit.title}
+                        </H4>
+                        <BodyText sx={{ color: colors.palette.gray[500], fontSize: '0.85rem', lineHeight: 1.4 }}>
+                          {benefit.description}
+                        </BodyText>
+                      </Box>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Grid>
           </Grid>
         </Container>
       </Box>
 
       {/* Capabilities Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.surface }}>
+      <Box sx={{ py: isModal ? 8 : 18, background: colors.palette.gray[900], borderTop: `1px solid ${colors.palette.gray[800]}`, borderBottom: `1px solid ${colors.palette.gray[800]}` }}>
         <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  fontWeight: 700,
-                  mb: 4,
-                  color: colors.contrast.text.primary,
-                }}
-              >
-                Qué Puede Hacer Tu Asistente
-              </Typography>
+          <Grid container spacing={8} alignItems="center">
+            <Grid item xs={12} md={7}>
+              <H2 sx={{ mb: 6, color: colors.palette.white }}>
+                CAPACIDADES <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>SIN LÍMITES</Box>
+              </H2>
 
-              <List sx={{ color: colors.contrast.text.primary }}>
+              <Grid container spacing={2}>
                 {capabilities.map((capability, idx) => (
-                  <ListItem key={idx} sx={{ py: 1, px: 0 }}>
-                    <ListItemIcon sx={{ minWidth: 32, color: colors.contrast.text.primary }}>
-                      <CheckCircle sx={{ fontSize: 24 }} />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={capability}
-                      sx={{ m: 0, '& .MuiTypography-root': { color: colors.contrast.text.primary } }}
-                    />
-                  </ListItem>
+                  <Grid item xs={12} sm={6} key={idx}>
+                    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                      <CheckCircle sx={{ fontSize: 18, color: colors.palette.accentColors.orange }} />
+                      <BodyText sx={{ color: colors.palette.white, fontWeight: 500, fontSize: '0.95rem' }}>
+                        {capability}
+                      </BodyText>
+                    </Box>
+                  </Grid>
                 ))}
-              </List>
+              </Grid>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={5}>
               <Box
                 sx={{
-                  background: colors.contrast.background,
-                  border: `2px solid ${colors.contrast.border}`,
-                  borderRadius: 0,
-                  p: 4,
-                  textAlign: 'center',
+                  background: colors.palette.black,
+                  border: `1px solid ${colors.palette.white}20`,
+                  p: 5,
+                  position: 'relative',
                 }}
               >
-                <AutoAwesome sx={{ width: 64, height: 64, color: colors.contrast.text.primary, margin: '0 auto 24px' }} />
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: colors.contrast.text.primary }}>
-                  100% Personalizado
-                </Typography>
-                <Typography variant="body2" sx={{ color: colors.contrast.text.secondary, lineHeight: 1.8 }}>
-                  Tú defines qué skills necesitas. Nosotros lo configuramos en 3 días. Tu asistente aprende el contexto de tu negocio y se adapta a tus procesos.
-                </Typography>
+                <AutoAwesome sx={{ fontSize: 40, color: colors.palette.accentColors.orange, mb: 3 }} />
+                <H3 sx={{ mb: 2, color: colors.palette.white, fontSize: '1.5rem' }}>
+                  ADN 100% EMPRESARIAL
+                </H3>
+                <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1rem' }}>
+                  Olvídate de los prompts manuales. SuperAI utiliza arquitecturas de agentes autónomos que entienden objetivos, no solo instrucciones.
+                </BodyText>
               </Box>
             </Grid>
           </Grid>
@@ -346,64 +343,48 @@ const SuperAI: React.FC = () => {
       </Box>
 
       {/* Use Cases Section */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: colors.contrast.background }}>
+      <Box sx={{ py: isModal ? 8 : 15, background: colors.palette.black }}>
         <Container maxWidth="lg">
-          <Typography
-            variant="h2"
-            sx={{
-              textAlign: 'center',
-              fontSize: { xs: '2rem', md: '2.8rem' },
-              fontWeight: 700,
-              mb: 6,
-              color: colors.contrast.text.primary,
-            }}
-          >
-            Ya Está Funcionando Para Otros
-          </Typography>
+          <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>
+            RESULTADOS <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>REALES</Box>
+          </H1>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={3}>
             {useCases.map((useCase, idx) => (
               <Grid item xs={12} md={4} key={idx}>
-                <Card
+                <Box
                   sx={{
-                    background: colors.contrast.surface,
-                    border: `1px solid ${colors.contrast.border}`,
-                    backdropFilter: 'blur(10px)',
+                    bgcolor: colors.palette.gray[900],
+                    border: `1px solid ${colors.palette.gray[800]}`,
+                    p: 4,
                     height: '100%',
-                    p: 3,
-                    borderRadius: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      borderColor: colors.palette.gray[600],
+                    }
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: colors.contrast.text.primary, mb: 2 }}>
+                  <H4 sx={{ color: colors.palette.white, mb: 3, fontSize: '1.2rem' }}>
                     {useCase.title}
-                  </Typography>
-                  <Stack spacing={2}>
+                  </H4>
+                  <Stack spacing={3} sx={{ flexGrow: 1 }}>
                     <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.secondary, mb: 0.5 }}>
-                        El Problema:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary }}>
+                      <BodyText sx={{ fontFamily: '"Necto Mono", monospace', color: colors.palette.accentColors.orange, mb: 1, fontSize: '0.65rem', letterSpacing: '0.1em' }}>
+                        PRB // {useCase.challenge.substring(0, 15)}...
+                      </BodyText>
+                      <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.9rem', fontWeight: 300 }}>
                         {useCase.challenge}
-                      </Typography>
+                      </BodyText>
                     </Box>
-                    <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.secondary, mb: 0.5 }}>
-                        La Solución:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary }}>
-                        {useCase.solution}
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600, color: colors.contrast.text.primary, mb: 0.5 }}>
-                        El Resultado:
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: colors.contrast.text.primary, fontWeight: 600 }}>
+                    <Box sx={{ mt: 'auto', pt: 3, borderTop: `1px solid ${colors.palette.gray[800]}` }}>
+                      <Typography sx={{ color: colors.palette.white, fontWeight: 900, fontSize: '1.25rem', lineHeight: 1.1 }}>
                         {useCase.result}
                       </Typography>
                     </Box>
                   </Stack>
-                </Card>
+                </Box>
               </Grid>
             ))}
           </Grid>
@@ -413,88 +394,46 @@ const SuperAI: React.FC = () => {
       {/* CTA Section */}
       <Box
         sx={{
-          background: colors.contrast.surface,
-          border: `2px solid ${colors.contrast.border}`,
-          py: { xs: 8, md: 10 },
+          background: colors.palette.gray[900],
+          py: isModal ? 8 : 15,
+          textAlign: 'center',
+          borderTop: `1px solid ${colors.palette.gray[800]}`,
         }}
       >
         <Container maxWidth="md">
-          <Stack spacing={4} alignItems="center" textAlign="center">
-            <Typography
-              variant="h3"
+          <Stack spacing={4} alignItems="center">
+            <H2 sx={{ color: colors.palette.white }}>
+              ¿LISTO PARA TU PRIMER <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>AGENTE AUTÓNOMO</Box>?
+            </H2>
+
+            <BodyText sx={{ color: colors.palette.gray[400], maxWidth: '600px' }}>
+              En 72 horas tu primer flujo de trabajo estará automatizado al 100%. No busques más empleados, busca más agentes.
+            </BodyText>
+
+            <Button
+              variant="primary"
+              size="large"
+              href="https://calendly.com/mgarciap333/ai4u"
+              target="_blank"
               sx={{
-                fontSize: { xs: '2rem', md: '2.5rem' },
-                fontWeight: 700,
-                color: colors.contrast.text.primary,
+                px: 8,
+                height: '80px',
+                fontSize: '1.2rem',
+                fontWeight: 900,
+                bgcolor: colors.palette.accentColors.orange,
+                color: colors.palette.white,
+                '&:hover': {
+                  bgcolor: colors.palette.white,
+                  color: colors.palette.black,
+                }
               }}
             >
-              ¿Listo para tu Asistente Personal?
-            </Typography>
-
-            <Typography
-              variant="h6"
-              sx={{
-                color: colors.contrast.text.secondary,
-                fontWeight: 400,
-              }}
-            >
-              Una conversación de 30 minutos es suficiente para entender qué necesitas. Luego, 3 días para que tu nuevo asistente esté en vivo.
-            </Typography>
-
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-              <Button
-                variant="contained"
-                size="large"
-                href="https://calendly.com/mgarciap333/ai4u"
-                target="_blank"
-                sx={{
-                  bgcolor: colors.contrast.text.primary,
-                  color: colors.contrast.background,
-                  padding: '14px 48px',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 0,
-                  '&:hover': {
-                    bgcolor: colors.contrast.text.secondary,
-                  }
-                }}
-              >
-                Agendar Conversación
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                href="https://wa.me/573218175744"
-                target="_blank"
-                sx={{
-                  borderColor: colors.contrast.text.primary,
-                  color: colors.contrast.text.primary,
-                  padding: '14px 48px',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: 0,
-                  '&:hover': {
-                    bgcolor: colors.contrast.divider,
-                  }
-                }}
-              >
-                WhatsApp
-              </Button>
-            </Stack>
-
-            <Typography
-              variant="body2"
-              sx={{
-                color: colors.contrast.text.secondary,
-                pt: 2,
-              }}
-            >
-              Llámanos: +57 321 817 5744
-            </Typography>
+              RESERVAR CONSULTA TÉCNICA
+            </Button>
           </Stack>
         </Container>
       </Box>
-    </>
+    </SurfaceProvider>
   );
 };
 

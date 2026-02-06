@@ -9,8 +9,8 @@ import {
   Container
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import SuperAI from '../../../pages/SuperAI';
-import { useColors } from '../../../hooks';
+import SuperAI from '@/pages/SuperAI';
+import { useColors } from '@/hooks';
 
 interface SuperAIModalProps {
   open: boolean;
@@ -34,9 +34,9 @@ const SuperAIModal: React.FC<SuperAIModalProps> = ({ open, onClose }) => {
         sx: {
           bgcolor: colors.palette.black,
           backgroundImage: 'none',
-          borderRadius: fullScreen ? 0 : 2,
+          borderRadius: fullScreen ? 0 : 0, // Mantener estética brutalista de bordes rectos
           position: 'relative',
-          border: fullScreen ? 'none' : `1px solid ${colors.palette.white}20`,
+          border: fullScreen ? 'none' : `1px solid ${colors.palette.gray[800]}`,
         }
       }}
     >
@@ -48,9 +48,12 @@ const SuperAIModal: React.FC<SuperAIModalProps> = ({ open, onClose }) => {
           top: 16,
           color: colors.palette.white,
           zIndex: 10,
-          bgcolor: 'rgba(0,0,0,0.5)',
+          bgcolor: colors.palette.black,
+          border: `1px solid ${colors.palette.gray[800]}`,
+          borderRadius: 0,
           '&:hover': {
-            bgcolor: 'rgba(0,0,0,0.8)',
+            bgcolor: colors.palette.gray[900],
+            borderColor: colors.palette.white,
           }
         }}
       >
@@ -59,7 +62,7 @@ const SuperAIModal: React.FC<SuperAIModalProps> = ({ open, onClose }) => {
       
       <DialogContent sx={{ p: 0 }}>
         <Box sx={{ bgcolor: colors.palette.black }}>
-          <SuperAI />
+          <SuperAI isModal={true} />
         </Box>
       </DialogContent>
     </Dialog>

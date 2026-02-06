@@ -3,8 +3,8 @@ import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import { H1, H3, BodyText, LazyImage, Button } from '../atoms';
 import { Card, DiagnosticCTA } from '../molecules';
 import SuperAIModal from './SuperAIModal';
-import { ServiceUtils } from '../../../../data/services';
-import { useColors } from '../../../../hooks';
+import { ServiceUtils } from '@/data/services';
+import { useColors } from '@/hooks';
 import { useServicesContext } from '@/context';
 
 interface ServicesPremiumHeroProps {

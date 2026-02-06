@@ -8,14 +8,14 @@ import {
   Divider,
   useTheme
 } from '@mui/material';
-import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '../components/shared/ui/atoms';
-import { ServiceCard, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
-import { ServicesPremiumHero, SuperAIModal } from '../components/shared/ui/organisms';
+import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
+import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
+import { ServicesPremiumHero, SuperAIModal } from '@/components/shared/ui/organisms';
 import { useServicesContext } from '@/context';
-import { useColors, usePerformanceMonitoring } from '../hooks';
-import { ServiceSuperCategory } from '../types/service';
-import { getServicesStructuredData, getPageMetaTags } from '../utils/seo';
-import { getRelatedLinks } from '../data/internalLinkingStrategy';
+import { useColors, usePerformanceMonitoring } from '@/hooks';
+import { ServiceSuperCategory } from '@/types/service';
+import { getServicesStructuredData, getPageMetaTags } from '@/utils/seo';
+import { getRelatedLinks } from '@/data/internalLinkingStrategy';
 
 const Services: React.FC = () => {
   const colors = useColors();

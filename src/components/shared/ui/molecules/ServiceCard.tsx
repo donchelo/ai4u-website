@@ -55,28 +55,28 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }
       }}>
         {/* Main Card Content minimalista */}
-      <Box 
-        className="service-card-content" 
-        onClick={onClick}
-        sx={{
-          p: compact ? 2.5 : 3,
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
-          background: colors.contrast.surface,
-          border: `3px solid ${colors.contrast.text.primary}`,
-          borderRadius: 0,
-          transition: 'all 0.1s ease',
-          overflow: 'hidden',
-          boxShadow: 'none',
-          cursor: onClick ? 'pointer' : 'default',
-          '&:hover': {
-            transform: onClick ? 'translate(-4px, -4px)' : 'none',
-            boxShadow: onClick ? `8px 8px 0px ${colors.contrast.text.primary}` : 'none',
-          }
-        }}
-      >
+        <Box 
+          className="service-card-content" 
+          onClick={onClick}
+          sx={{
+            p: compact ? 2.5 : 3,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
+            background: colors.contrast.surface,
+            border: `3px solid ${colors.contrast.text.primary}`,
+            borderRadius: 0,
+            transition: 'all 0.1s ease',
+            overflow: 'hidden',
+            boxShadow: 'none',
+            cursor: onClick ? 'pointer' : 'default',
+            '&:hover': {
+              transform: onClick ? 'translate(-4px, -4px)' : 'none',
+              boxShadow: onClick ? `8px 8px 0px ${colors.contrast.text.primary}` : 'none',
+            }
+          }}
+        >
 
           {/* Super Category Badge minimalista */}
           <Box sx={{ 
