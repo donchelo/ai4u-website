@@ -38,16 +38,16 @@ const Home = () => {
   // Features estáticas en español
   const features = [
     {
-      title: 'La automatización ya no es opcional',
-      description: 'En 2025, las empresas que no automaticen quedarán atrás. Nuestros asistentes robóticos trabajan 24/7 para mantenerte a la vanguardia, mientras tu competencia sigue atrapada en lo manual.'
+      title: 'El costo de la inacción es tu libertad',
+      description: 'Cada hora que pasas en tareas operativas es una hora que le robas a tu estrategia y a tu vida. La automatización no es un lujo, es la única forma de escalar sin quemarte en el proceso.'
     },
     {
-      title: 'Libera el 70% de tu tiempo operativo',
-      description: 'Nuestros asistentes robóticos transforman tiempo perdido en oportunidades de crecimiento. ROI medible desde el primer mes, mientras tú te enfocas en decisiones estratégicas que multiplican el valor de tu empresa.'
+      title: 'No compres software, compra tiempo',
+      description: 'Nuestros motores de ejecución autónoma no solo procesan datos; devuelven el 70% de tu jornada. ROI medible que se traduce en libertad para decidir dónde realmente importa estar.'
     },
     {
-      title: 'Asistentes que nunca descansan',
-      description: 'Imagina tener un equipo incansable que trabaja mientras tú disfrutas de lo que realmente importa. Nuestros asistentes robóticos no solo automatizan - transforman cada minuto operativo en oportunidad estratégica.'
+      title: 'Tu competencia ya está ejecutando',
+      description: 'Mientras otros debaten sobre el futuro, nuestros agentes ya están facturando, atendiendo y operando 24/7. ¿Vas a seguir invirtiendo tu tiempo en lo que un agente de élite puede hacer mejor?'
     },
   ];
 
@@ -92,8 +92,8 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle="POTENCIAL INFINITO"
-        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución autónoma que liberan el 70% de tu tiempo operativo en solo 72 horas."
+        customTitle="¿CUÁNTO VALE TU TIEMPO?"
+        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución autónoma que recuperan tus horas más valiosas en solo 72 horas."
         primaryButtonText="DESPLEGAR MI AGENTE"
       />
 
