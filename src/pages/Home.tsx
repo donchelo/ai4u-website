@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Stack, Typography } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
 import { HeroSection } from '../components/shared/ui/organisms';
@@ -9,6 +10,7 @@ import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
+import { ServiceSuperCategory } from '../types/service';
 
 const Home = () => {
   const colors = useColors();
@@ -54,18 +56,22 @@ const Home = () => {
   // Categorías de servicios en español
   const serviceCategories = [
     {
+      id: ServiceSuperCategory.STRATEGY,
       title: 'Estrategia',
       description: 'Acompañamiento estratégico continuo, diagnóstico y planificación empresarial con IA para transformar tu negocio desde la raíz.'
     },
     {
+      id: ServiceSuperCategory.OPERATION,
       title: 'Automatizaciones',
       description: 'Implementación de asistentes robóticos, chatbots y sistemas automáticos que trabajan 24/7 para liberar tu tiempo y potenciar tu empresa.'
     },
     {
+      id: ServiceSuperCategory.EDUCATION,
       title: 'Educación',
       description: 'Capacitación y formación en inteligencia artificial y automatización para que tu equipo evolucione junto a la tecnología.'
     },
     {
+      id: ServiceSuperCategory.TRANSFORMATION,
       title: 'Transformación Digital',
       description: 'Integración de soluciones digitales y automatizadas para llevar tu empresa al siguiente nivel de eficiencia y competitividad.'
     },
@@ -330,14 +336,23 @@ const Home = () => {
                         </BodyText>
                       </Box>
                       
-                      <Box sx={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: 2,
-                        mt: 'auto',
-                        pt: 4,
-                        borderTop: `1px solid ${colors.palette.gray[200]}`
-                      }}>
+                      <Box 
+                        component={Link}
+                        to={`/servicios#${cat.id}`}
+                        sx={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: 2,
+                          mt: 'auto',
+                          pt: 4,
+                          borderTop: `1px solid ${colors.palette.gray[200]}`,
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          '&:hover': {
+                            opacity: 0.8
+                          }
+                        }}
+                      >
                         <GeometricIcon type="arrow-right" size="small" color="inherit" />
                         <Typography sx={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
                           SABER MÁS

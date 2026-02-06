@@ -33,9 +33,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   // Generar structured data específico para este servicio
   const serviceStructuredData = getServiceStructuredData(service);
 
-  const getSuperCategoryText = (superCategory: string) => {
-    return superCategory === 'strategy' ? 'Estrategia' : 'Operación';
+  const getSuperCategoryTags = (tags: string[]) => {
+    const axisMap: Record<string, string> = {
+      'eje:operation': 'Operación',
+      'eje:strategy': 'Estrategia',
+      'eje:education': 'Educación',
+      'eje:transformation': 'Transformación'
+    };
+    return tags.filter(tag => tag.startsWith('eje:')).map(tag => axisMap[tag] || tag.replace('eje:', ''));
   };
+
+  const axisLabels = getSuperCategoryTags(service.tags);
 
   return (
     <>
@@ -79,30 +87,37 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           }}
         >
 
-          {/* Super Category Badge minimalista */}
+          {/* Super Category Badges minimalistas */}
           <Box sx={{ 
             position: 'absolute', 
             top: 12, 
             right: 12,
-            zIndex: 2
+            zIndex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-end',
+            gap: 0.5
           }}>
-            <Chip 
-              label={getSuperCategoryText(service.superCategory)}
-              size="small"
-              sx={{
-                background: AI4U_PALETTE.black,
-                color: AI4U_PALETTE.white,
-                fontWeight: 900,
-                fontSize: '0.6rem',
-                height: 20,
-                borderRadius: 0,
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                '& .MuiChip-label': {
-                  px: 1,
-                }
-              }}
-            />
+            {axisLabels.map((label, idx) => (
+              <Chip 
+                key={idx}
+                label={label}
+                size="small"
+                sx={{
+                  background: AI4U_PALETTE.black,
+                  color: AI4U_PALETTE.white,
+                  fontWeight: 900,
+                  fontSize: '0.6rem',
+                  height: 20,
+                  borderRadius: 0,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  '& .MuiChip-label': {
+                    px: 1,
+                  }
+                }}
+              />
+            ))}
           </Box>
 
           {/* Header & Content */}

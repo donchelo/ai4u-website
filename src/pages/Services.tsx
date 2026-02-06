@@ -6,7 +6,8 @@ import {
   Typography,
   Stack,
   Divider,
-  useTheme
+  useTheme,
+  Collapse
 } from '@mui/material';
 import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
@@ -21,6 +22,33 @@ import { getRelatedLinks } from '@/data/internalLinkingStrategy';
 const Services: React.FC = () => {
   const colors = useColors();
   const [isSuperAIModalOpen, setIsSuperAIModalOpen] = useState(false);
+  const [expandedAxes, setExpandedAxes] = useState<Record<string, boolean>>({});
+
+  const toggleAxis = (axisId: string) => {
+    const isExpanding = !expandedAxes[axisId];
+    setExpandedAxes(prev => ({
+      ...prev,
+      [axisId]: isExpanding
+    }));
+
+    if (isExpanding) {
+      // Pequeño delay para dejar que la animación de Collapse comience
+      setTimeout(() => {
+        const element = document.getElementById(axisId);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  };
+
   const { 
     getFilteredServices,
     getServicesBySuperCategory
@@ -127,10 +155,11 @@ const Services: React.FC = () => {
                 fontSize: { xs: '15rem', md: '25rem' }, 
                 fontWeight: 900, 
                 color: axis.accentColor, 
-                opacity: 0.1,
+                opacity: expandedAxes[axis.id] ? 0.2 : 0.1,
                 zIndex: 0,
                 pointerEvents: 'none',
-                userSelect: 'none'
+                userSelect: 'none',
+                transition: 'all 0.4s ease'
               }}
             >
               0{index + 1}
@@ -183,38 +212,80 @@ const Services: React.FC = () => {
                         height: '70px',
                         px: 6,
                         fontSize: '1.1rem',
-                        bgcolor: axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined,
+                        bgcolor: expandedAxes[axis.id] ? axis.textColor : (axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined),
+                        color: expandedAxes[axis.id] ? axis.bgColor : axis.textColor,
                         borderWidth: '3px',
                         '&:hover': {
                           bgcolor: axis.textColor,
-                          color: axis.bgColor
-                        }
+                          color: axis.bgColor,
+                          transform: 'translate(-4px, -4px)',
+                          boxShadow: `8px 8px 0px ${axis.accentColor}`
+                        },
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2
                       }}
-                      onClick={() => {
-                        const nextAxis = axes[index + 1];
-                        if (nextAxis) {
-                          document.getElementById(nextAxis.id)?.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={() => toggleAxis(axis.id)}
                     >
-                      EXPLORAR EJE
+                      {expandedAxes[axis.id] ? 'CERRAR EJE' : 'EXPLORAR EJE'}
+                      <Box sx={{ 
+                        display: 'flex', 
+                        transform: expandedAxes[axis.id] ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.4s ease'
+                      }}>
+                        <GeometricIcon type="arrow-right" size="small" color="inherit" />
+                      </Box>
                     </Button>
                   </Box>
                 </Grid>
 
                 {/* Grid de Servicios del Eje */}
                 <Grid item xs={12} lg={8}>
-                  <Grid container spacing={4}>
-                    {axisServices.map((service) => (
-                      <Grid item xs={12} sm={6} key={service.id}>
-                        <ServiceCard 
-                          service={service}
-                          showPrice={false}
-                          onClick={service.id === 'super-ai' ? () => setIsSuperAIModalOpen(true) : undefined}
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
+                  <Collapse in={expandedAxes[axis.id]} timeout={600}>
+                    <Grid container spacing={4}>
+                      {axisServices.map((service, sIdx) => (
+                        <Grid item xs={12} sm={6} key={service.id}>
+                          <Box sx={{ 
+                            animation: expandedAxes[axis.id] ? `fadeInUp 0.6s ease forwards ${sIdx * 0.1}s` : 'none',
+                            opacity: 0,
+                            '@keyframes fadeInUp': {
+                              from: { opacity: 0, transform: 'translateY(20px)' },
+                              to: { opacity: 1, transform: 'translateY(0)' }
+                            }
+                          }}>
+                            <ServiceCard 
+                              service={service}
+                              showPrice={false}
+                              onClick={service.id === 'super-ai' ? () => setIsSuperAIModalOpen(true) : undefined}
+                            />
+                          </Box>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Collapse>
+                  
+                  {!expandedAxes[axis.id] && (
+                    <Box sx={{ 
+                      height: '300px', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      border: `2px dashed ${axis.accentColor}`,
+                      opacity: 0.3,
+                      cursor: 'pointer',
+                      '&:hover': {
+                        opacity: 0.6,
+                        bgcolor: 'rgba(0,0,0,0.02)'
+                      }
+                    }}
+                    onClick={() => toggleAxis(axis.id)}
+                    >
+                      <Typography sx={{ fontWeight: 900, letterSpacing: 2, fontSize: '0.8rem' }}>
+                        // CLICK PARA DESPLEGAR SOLUCIONES
+                      </Typography>
+                    </Box>
+                  )}
                 </Grid>
               </Grid>
             </Container>

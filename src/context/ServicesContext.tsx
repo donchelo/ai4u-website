@@ -82,10 +82,10 @@ const initialState: ServicesState = {
       [category]: services.filter(s => s.category === category).length
     }), {} as Record<ServiceCategory, number>),
     bySuperCategory: {
-      [ServiceSuperCategory.STRATEGY]: services.filter(s => s.superCategory === ServiceSuperCategory.STRATEGY).length,
-      [ServiceSuperCategory.OPERATION]: services.filter(s => s.superCategory === ServiceSuperCategory.OPERATION).length,
-      [ServiceSuperCategory.EDUCATION]: services.filter(s => s.superCategory === ServiceSuperCategory.EDUCATION).length,
-      [ServiceSuperCategory.TRANSFORMATION]: services.filter(s => s.superCategory === ServiceSuperCategory.TRANSFORMATION).length,
+      [ServiceSuperCategory.STRATEGY]: services.filter(s => s.tags.includes('eje:strategy')).length,
+      [ServiceSuperCategory.OPERATION]: services.filter(s => s.tags.includes('eje:operation')).length,
+      [ServiceSuperCategory.EDUCATION]: services.filter(s => s.tags.includes('eje:education')).length,
+      [ServiceSuperCategory.TRANSFORMATION]: services.filter(s => s.tags.includes('eje:transformation')).length,
     }
   },
 };
@@ -287,7 +287,8 @@ export const ServicesProvider: React.FC<ServicesProviderProps> = ({
 
     // Filtrar por supracategoría
     if (state.filters.superCategory) {
-      result = result.filter(service => service.superCategory === state.filters.superCategory);
+      const tag = `eje:${state.filters.superCategory.toLowerCase()}`;
+      result = result.filter(service => service.tags.includes(tag));
     }
 
     // Filtrar por destacados
@@ -322,7 +323,8 @@ export const ServicesProvider: React.FC<ServicesProviderProps> = ({
   };
 
   const getServicesBySuperCategory = (superCategory: ServiceSuperCategory): Service[] => {
-    return state.services.filter(service => service.superCategory === superCategory);
+    const tag = `eje:${superCategory.toLowerCase()}`;
+    return state.services.filter(service => service.tags.includes(tag));
   };
 
   const getFeaturedServices = (): Service[] => {

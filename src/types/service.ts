@@ -7,7 +7,6 @@ export interface Service {
   price?: string; // Opcional ahora
   deliveryTime: string;
   category: ServiceCategory;
-  superCategory: ServiceSuperCategory; // Nueva supracategoría
   priority: number; // Para ordenar servicios
   featured: boolean; // Servicios destacados
   icon?: string; // Path al icono del servicio

@@ -14,7 +14,6 @@ export const services: Service[] = [
     ],
     deliveryTime: '24h',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 1,
     featured: true,
     media: {
@@ -23,7 +22,7 @@ export const services: Service[] = [
     },
     thumbnail: '/assets/images/services-thumbnails/fashion-agent.png',
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['fashion', 'ecommerce', 'ai'],
+    tags: ['fashion', 'ecommerce', 'ai', 'eje:operation', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-11', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
   },
@@ -39,7 +38,6 @@ export const services: Service[] = [
     ],
     deliveryTime: '7 días',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 2,
     featured: false,
     media: {
@@ -48,7 +46,7 @@ export const services: Service[] = [
     },
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['ocr', 'erp', 'automatización'],
+    tags: ['ocr', 'erp', 'automatización', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-09', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
   },
@@ -64,11 +62,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '3 días',
     category: ServiceCategory.AI_ASSISTANT,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 3,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['chatbot', 'whatsapp'],
+    tags: ['chatbot', 'whatsapp', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/chatbot-inteligente.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.2', author: 'AI4U Team' }
@@ -85,11 +82,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '5 días',
     category: ServiceCategory.ANALYTICS,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 4,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['auditoría', 'control'],
+    tags: ['auditoría', 'control', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/auditoria-ia.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -106,35 +102,32 @@ export const services: Service[] = [
     ],
     deliveryTime: '14 días',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 5,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['visión', 'seguridad'],
+    tags: ['visión', 'seguridad', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/vision-computadora.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
   },
   {
-    id: 'sitios-web-ia',
-    title: 'Webs B2B con IA',
-    subtitle: 'Pedidos optimizados',
-    description: 'Plataformas inteligentes de pedidos con experiencia personalizada.',
+    id: 'desarrollo-web',
+    title: 'Desarrollo Web',
+    subtitle: 'Arquitectura digital pro',
+    description: 'Construcción de plataformas web de alto rendimiento y diseño minimalista.',
     benefits: [
-      'Conversión maximizada',
-      'UX personalizada',
-      'Velocidad extrema'
+      'Optimización SEO/LCP',
+      'Diseño ultra-rápido'
     ],
-    deliveryTime: '10 días',
+    deliveryTime: '14 días',
     category: ServiceCategory.ECOMMERCE,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 6,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['web', 'b2b'],
+    tags: ['web', 'desarrollo', 'ux', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/sitios-web-ia.png',
-    metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
+    metadata: { createdAt: '2025-02-05', updatedAt: '2025-02-05', version: '1.0', author: 'AI4U Team' }
   },
   {
     id: 'cotizador-automatico',
@@ -148,11 +141,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '5 días',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 7,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['cotizaciones', 'voz'],
+    tags: ['cotizaciones', 'voz', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/cotizador-automatico.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -169,11 +161,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '7 días',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 8,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['pedidos', 'erp'],
+    tags: ['pedidos', 'erp', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/gestor-pedidos.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.3', author: 'AI4U Team' }
@@ -190,11 +181,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '14 días',
     category: ServiceCategory.ECOMMERCE,
-    superCategory: ServiceSuperCategory.OPERATION,
     priority: 9,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange,
-    tags: ['shopify', 'ecommerce'],
+    tags: ['shopify', 'ecommerce', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-builder.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '2.0', author: 'AI4U Team' }
@@ -213,11 +203,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '3 días',
     category: ServiceCategory.AI_ASSISTANT,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 1,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['estrategia', 'kpis'],
+    tags: ['estrategia', 'kpis', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/estratega-ejecutivo.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -234,11 +223,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '7 días',
     category: ServiceCategory.ANALYTICS,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 2,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['dashboards', 'data'],
+    tags: ['dashboards', 'data', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/dashboards-inteligentes.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -255,11 +243,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '15 días',
     category: ServiceCategory.CONSULTING,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 3,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['horeca', 'expansión'],
+    tags: ['horeca', 'expansión', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/investigacion-horeca.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -276,11 +263,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Continuo',
     category: ServiceCategory.CONSULTING,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 4,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['consultoría', 'innovación'],
+    tags: ['consultoría', 'innovación', 'eje:strategy', 'eje:transformation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/asesoria-estrategica-continua.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -297,11 +283,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '7 días',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 5,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['leads', 'marketing'],
+    tags: ['leads', 'marketing', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/cazador-leads.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -318,11 +303,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Inmediato',
     category: ServiceCategory.ANALYTICS,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 6,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['redes', 'tendencias'],
+    tags: ['redes', 'tendencias', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/investigador-digital.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -339,11 +323,10 @@ export const services: Service[] = [
     ],
     deliveryTime: '3 días',
     category: ServiceCategory.ANALYTICS,
-    superCategory: ServiceSuperCategory.STRATEGY,
     priority: 7,
     featured: false,
     color: AI4U_PALETTE.info,
-    tags: ['sentimientos', 'insights'],
+    tags: ['sentimientos', 'insights', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/analista-comentarios.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -362,11 +345,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Programado',
     category: ServiceCategory.TRAINING,
-    superCategory: ServiceSuperCategory.EDUCATION,
     priority: 1,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
-    tags: ['líderes', 'masterclass'],
+    tags: ['líderes', 'masterclass', 'eje:education', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-master.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -383,11 +365,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Sesiones',
     category: ServiceCategory.TRAINING,
-    superCategory: ServiceSuperCategory.EDUCATION,
     priority: 2,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
-    tags: ['chatgpt', 'productividad'],
+    tags: ['chatgpt', 'productividad', 'eje:education'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-mentor.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -404,11 +385,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Sesiones',
     category: ServiceCategory.TRAINING,
-    superCategory: ServiceSuperCategory.EDUCATION,
     priority: 3,
     featured: false,
     color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
-    tags: ['midjourney', 'diseño'],
+    tags: ['midjourney', 'diseño', 'eje:education'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-artist.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -427,7 +407,6 @@ export const services: Service[] = [
     ],
     deliveryTime: 'A medida',
     category: ServiceCategory.AUTOMATION,
-    superCategory: ServiceSuperCategory.TRANSFORMATION,
     priority: 1,
     featured: true,
     media: {
@@ -435,7 +414,7 @@ export const services: Service[] = [
       poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
     color: AI4U_PALETTE.accentColors.green,
-    tags: ['super-ai', 'autonomía'],
+    tags: ['super-ai', 'autonomía', 'eje:transformation', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -452,11 +431,10 @@ export const services: Service[] = [
     ],
     deliveryTime: 'Consultoría',
     category: ServiceCategory.CONSULTING,
-    superCategory: ServiceSuperCategory.TRANSFORMATION,
     priority: 2,
     featured: false,
     color: AI4U_PALETTE.accentColors.green,
-    tags: ['metodología', 'futuro'],
+    tags: ['metodología', 'futuro', 'eje:transformation', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/metodologia-ai-first.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
@@ -481,8 +459,10 @@ export const ServiceUtils = {
   getByCategory: (category: ServiceCategory) => 
     services.filter(service => service.category === category),
   
-  getBySuperCategory: (superCategory: ServiceSuperCategory) =>
-    services.filter(service => service.superCategory === superCategory),
+  getBySuperCategory: (superCategory: ServiceSuperCategory) => {
+    const tag = `eje:${superCategory.toLowerCase()}`;
+    return services.filter(service => service.tags.includes(tag));
+  },
   
   getFeatured: () => 
     services.filter(service => service.featured),
