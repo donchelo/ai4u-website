@@ -92,9 +92,9 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle="TU TIEMPO ES ORO"
-        customSubtitle="Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7 para que inviertas tu tiempo en lo que realmente importa."
-        primaryButtonText="RECUPERA TU TIEMPO"
+        customTitle="POTENCIAL INFINITO"
+        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución autónoma que liberan el 70% de tu tiempo operativo en solo 72 horas."
+        primaryButtonText="DESPLEGAR MI AGENTE"
       />
 
       {/* Features Section - Inspiración GREEN_FRESH */}
@@ -182,7 +182,7 @@ const Home = () => {
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
           <Stack direction="column" spacing={10}>
             <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 1.0 }}>
-              // ASISTENTES ROBÓTICOS AUTÓNOMOS
+              // FUERZA DE TRABAJO AUTÓNOMA DE ÉLITE
             </Giant>
             
             <Grid container spacing={8}>

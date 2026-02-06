@@ -28,35 +28,35 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const benefits = [
     {
       icon: Psychology,
-      title: 'Asistente 100% Tuyo',
-      description: 'Un IA dedicada solo a tu negocio, con acceso a toda tu información'
+      title: 'ADN Empresarial Exclusivo',
+      description: 'Una inteligencia dedicada solo a tu negocio, con acceso profundo a tu información y contexto.'
     },
     {
       icon: Settings,
-      title: 'Skills Personalizables',
-      description: 'Agrega, quita o modifica capacidades según tus necesidades'
+      title: 'Skills de Alto Rendimiento',
+      description: 'Agrega, quita o evoluciona capacidades según las necesidades cambiantes de tu operación.'
     },
     {
       icon: TrendingUp,
-      title: '70% Más Productivo',
-      description: 'Tu equipo enfocado en estrategia, mientras tu asistente maneja lo operativo'
+      title: 'Productividad Exponencial',
+      description: 'Tu equipo liberado de lo operativo para enfocarse en la estrategia que hace crecer el negocio.'
     },
     {
       icon: BarChart,
-      title: 'ROI Inmediato',
-      description: 'Rentable desde el primer mes de operación'
+      title: 'ROI de Clase Mundial',
+      description: 'Impacto directo en la rentabilidad desde el primer mes, con un promedio de 3.5X de retorno.'
     },
   ];
 
   const capabilities = [
-    'Entiende el contexto completo de tu negocio',
-    'Procesa información en tiempo real',
-    'Automatiza tareas repetitivas',
-    'Genera reportes y análisis automáticamente',
-    'Integra con tus herramientas actuales',
-    'Toma decisiones inteligentes documentadas',
-    'Escala con tu negocio sin esfuerzo',
-    'Disponible 24/7 sin descanso',
+    'Comprensión profunda del contexto de tu negocio',
+    'Procesamiento y respuesta en tiempo real',
+    'Ejecución autónoma de tareas complejas',
+    'Análisis predictivo y reportes automáticos',
+    'Integración nativa con tu infraestructura actual',
+    'Toma de decisiones inteligentes documentadas',
+    'Escalabilidad infinita sin costos adicionales',
+    'Disponibilidad absoluta 24/7 sin supervisión',
   ];
 
   const useCases = [
@@ -163,7 +163,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 }
               }}
             >
-              Tu Asistente <span>Autónomo</span> Sin Límites
+              SuperAI: Ejecución <span>Autónoma</span> de Élite
             </Giant>
 
             <BodyText
@@ -175,7 +175,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 lineHeight: 1.4,
               }}
             >
-              Un motor de ejecución de élite 100% personalizado. No sugerimos soluciones, las ejecutamos.
+              El motor de ejecución definitivo para tu negocio. No sugerimos soluciones, las ejecutamos con autonomía total y precisión quirúrgica.
             </BodyText>
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 2 }}>
@@ -433,11 +433,11 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
         <Container maxWidth="md">
           <Stack spacing={4} alignItems="center">
             <H2 sx={{ color: colors.palette.white }}>
-              ¿LISTO PARA TU PRIMER <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>AGENTE AUTÓNOMO</Box>?
+              ¿LISTO PARA TU PRIMERA <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>FUERZA DE TRABAJO AUTÓNOMA</Box>?
             </H2>
 
             <BodyText sx={{ color: colors.palette.gray[400], maxWidth: '600px' }}>
-              En 72 horas tu primer flujo de trabajo estará automatizado al 100%. No busques más empleados, busca más agentes.
+              En 72 horas tu primer flujo de trabajo estará automatizado al 100%. Deja de buscar empleados, empieza a desplegar agentes de élite.
             </BodyText>
 
             <Button
