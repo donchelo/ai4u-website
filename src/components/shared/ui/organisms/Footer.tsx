@@ -14,7 +14,7 @@ import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { ROUTES } from '../../../../utils/constants';
 
-const FOOTER_LOGO_PATH = '/assets/images/Logo V3 - Crema.png';
+const FOOTER_LOGO_PATH = '/assets/images/Isotipo Crema.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

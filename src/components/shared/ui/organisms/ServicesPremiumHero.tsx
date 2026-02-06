@@ -99,15 +99,20 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     fontSize: '1.25rem',
                     fontWeight: 900,
                     textTransform: 'uppercase',
-                    color: idx === activeIndex ? colors.palette.black : colors.palette.white,
-                    background: idx === activeIndex ? colors.palette.white : 'transparent',
-                    border: `4px solid ${colors.palette.white}`,
+                    color: idx === activeIndex 
+                      ? (service.color === '#FFFFFF' || service.color === '#FF5C00' || service.color === '#B6CA40' || service.color === '#3B82F6' 
+                          ? colors.palette.black 
+                          : colors.palette.white) 
+                      : colors.palette.white,
+                    background: idx === activeIndex ? service.color : 'transparent',
+                    border: `4px solid ${idx === activeIndex ? service.color : colors.palette.white}`,
                     borderRadius: 0,
                     cursor: 'pointer',
                     transition: 'all 0.1s ease',
                     whiteSpace: 'nowrap',
                     '&:hover': {
-                      background: idx === activeIndex ? colors.palette.white : 'rgba(255,255,255,0.1)',
+                      background: idx === activeIndex ? service.color : 'rgba(255,255,255,0.1)',
+                      borderColor: service.color
                     }
                   }}
                 >
@@ -179,7 +184,12 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       fontSize: { xs: '2.5rem', md: '4rem' },
                       lineHeight: 0.9,
                       mb: 2,
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      '&::before': {
+                        content: '"//"',
+                        color: activeService.color || colors.palette.white,
+                        mr: 2
+                      }
                     }}>
                       {activeService.title}
                     </H3>
@@ -194,15 +204,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     </BodyText>
                   </Box>
 
-                  <Stack spacing={2}>
-                    {activeService.benefits.slice(0, 3).map((benefit, index) => (
-                      <Box key={index} sx={{ borderLeft: `4px solid ${colors.palette.white}`, pl: 3 }}>
-                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 700, color: colors.palette.white, opacity: 0.9 }}>
-                          {benefit.toUpperCase()}
-                        </BodyText>
-                      </Box>
-                    ))}
-                  </Stack>
+                  <Box sx={{ flexGrow: 1 }} />
 
                   {activeService.id === 'super-ai' ? (
                     <Button 

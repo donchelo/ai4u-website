@@ -2,16 +2,15 @@ import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 import { Service, ServiceCategory, ServiceStatus, ServiceSuperCategory } from '../types/service';
 
 export const services: Service[] = [
-  // --- EJE 1: OPERACIÓN ---
+  // --- EJE 1: OPERACIÓN (ORANGE) ---
   {
     id: 'fashion-agent',
     title: 'coutureLAB',
     subtitle: 'De figurines a ecommerce real',
-    description: 'Transforma diseños en fotos de producto reales con modelos IA. Ahorra 90% en costos de fotografía.',
+    description: 'Fotos de producto con modelos IA. Ahorro del 90% en producción.',
     benefits: [
-      'Fotos ecommerce en horas',
       'Modelos personalizados',
-      'Cero costos de producción'
+      'Cero costos de estudio'
     ],
     deliveryTime: '24h',
     category: ServiceCategory.AUTOMATION,
@@ -23,7 +22,7 @@ export const services: Service[] = [
       poster: '/assets/images/services-thumbnails/fashion-agent.png'
     },
     thumbnail: '/assets/images/services-thumbnails/fashion-agent.png',
-    color: AI4U_PALETTE.gray[800],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['fashion', 'ecommerce', 'ai'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-11', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -32,7 +31,7 @@ export const services: Service[] = [
     id: 'data-entry-automatico',
     title: 'Data Entry Automático',
     subtitle: 'Cero digitación manual',
-    description: 'Extrae datos de PDF, imágenes o correos e ingrésalos en tu ERP/CRM automáticamente.',
+    description: 'Extracción automática de datos desde PDF o imágenes hacia tu ERP.',
     benefits: [
       'Elimina errores humanos',
       'Libera 20h semanales',
@@ -48,7 +47,7 @@ export const services: Service[] = [
       poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
-    color: AI4U_PALETTE.gray[700],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['ocr', 'erp', 'automatización'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-09', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -57,7 +56,7 @@ export const services: Service[] = [
     id: 'chatbot-inteligente',
     title: 'Chatbots WhatsApp',
     subtitle: 'Pedidos 24/7 sin humanos',
-    description: 'Vende por WhatsApp automáticamente. Gestión de órdenes conectada a tu inventario.',
+    description: 'Ventas y atención por WhatsApp conectadas a tu inventario 24/7.',
     benefits: [
       'Atención 24/7 real',
       'Ventas automáticas',
@@ -68,7 +67,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 3,
     featured: false,
-    color: AI4U_PALETTE.gray[600],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['chatbot', 'whatsapp'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/chatbot-inteligente.png',
@@ -78,7 +77,7 @@ export const services: Service[] = [
     id: 'auditoria-ia',
     title: 'Auditorías IA',
     subtitle: 'Control total operativo',
-    description: 'Detección automática de errores en facturación y logística. Seguridad operativa garantizada.',
+    description: 'Control automático de errores en facturación y procesos logísticos.',
     benefits: [
       'Reportes en segundos',
       'Cero fraude/error',
@@ -89,7 +88,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 4,
     featured: false,
-    color: AI4U_PALETTE.gray[500],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['auditoría', 'control'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/auditoria-ia.png',
@@ -99,7 +98,7 @@ export const services: Service[] = [
     id: 'vision-computadora',
     title: 'Visión Artificial',
     subtitle: 'Cámaras inteligentes',
-    description: 'Monitoreo de stock y control de calidad visual en tiempo real en bodegas y tiendas.',
+    description: 'Monitoreo de stock y calidad visual en tiempo real para bodegas.',
     benefits: [
       'Control 24/7 visual',
       'Detección de mermas',
@@ -110,7 +109,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 5,
     featured: false,
-    color: AI4U_PALETTE.gray[400],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['visión', 'seguridad'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/vision-computadora.png',
@@ -120,7 +119,7 @@ export const services: Service[] = [
     id: 'sitios-web-ia',
     title: 'Webs B2B con IA',
     subtitle: 'Pedidos optimizados',
-    description: 'Plataformas inteligentes para pedidos web con experiencia personalizada y alta velocidad.',
+    description: 'Plataformas inteligentes de pedidos con experiencia personalizada.',
     benefits: [
       'Conversión maximizada',
       'UX personalizada',
@@ -131,7 +130,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 6,
     featured: false,
-    color: AI4U_PALETTE.gray[300],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['web', 'b2b'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/sitios-web-ia.png',
@@ -141,7 +140,7 @@ export const services: Service[] = [
     id: 'cotizador-automatico',
     title: 'Cotizador Automático',
     subtitle: 'Presupuestos al instante',
-    description: 'Convierte voz o texto en cotizaciones profesionales automáticas enviadas por email.',
+    description: 'Conversión de voz o texto en presupuestos enviados al instante.',
     benefits: [
       'Cero errores manuales',
       'Envío instantáneo',
@@ -152,7 +151,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 7,
     featured: false,
-    color: AI4U_PALETTE.gray[800],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['cotizaciones', 'voz'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/cotizador-automatico.png',
@@ -162,7 +161,7 @@ export const services: Service[] = [
     id: 'gestor-pedidos',
     title: 'Gestor de Pedidos',
     subtitle: 'Automatiza tus órdenes',
-    description: 'Procesa automáticamente órdenes de compra desde PDFs o JPGs hacia tu ERP.',
+    description: 'Procesamiento automático de órdenes de compra desde cualquier formato.',
     benefits: [
       'Elimina digitación',
       'Cero errores ERP',
@@ -173,7 +172,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 8,
     featured: false,
-    color: AI4U_PALETTE.gray[700],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['pedidos', 'erp'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/gestor-pedidos.png',
@@ -183,7 +182,7 @@ export const services: Service[] = [
     id: 'the-builder',
     title: 'The Builder',
     subtitle: 'Tiendas Shopify Pro',
-    description: 'Creamos tu tienda online profesional en Shopify optimizada para máxima conversión.',
+    description: 'Tiendas Shopify profesionales optimizadas para máxima conversión.',
     benefits: [
       'Diseño profesional',
       'Pagos configurados',
@@ -194,19 +193,19 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.OPERATION,
     priority: 9,
     featured: false,
-    color: AI4U_PALETTE.gray[600],
+    color: AI4U_PALETTE.accentColors.orange,
     tags: ['shopify', 'ecommerce'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-builder.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '2.0', author: 'AI4U Team' }
   },
 
-  // --- EJE 2: ESTRATEGIA ---
+  // --- EJE 2: ESTRATEGIA (INFO/BLUE) ---
   {
     id: 'estratega-ejecutivo',
     title: 'Estratega Ejecutivo',
     subtitle: 'Consultor IA en tu bolsillo',
-    description: 'Analiza KPIs y genera reportes estratégicos automáticamente para toma de decisiones.',
+    description: 'Análisis de KPIs y reportes estratégicos generados automáticamente.',
     benefits: [
       'Data real, no instinto',
       'Reportes 24/7',
@@ -217,7 +216,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 1,
     featured: false,
-    color: AI4U_PALETTE.gray[900],
+    color: AI4U_PALETTE.info,
     tags: ['estrategia', 'kpis'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/estratega-ejecutivo.png',
@@ -227,7 +226,7 @@ export const services: Service[] = [
     id: 'dashboards-inteligentes',
     title: 'Dashboards IA',
     subtitle: 'Tu negocio en tiempo real',
-    description: 'Visualización avanzada de rentabilidad y mermas. Predice tendencias antes que pasen.',
+    description: 'Visualización de rentabilidad y predicción de tendencias en tiempo real.',
     benefits: [
       'Visibilidad 360°',
       'Predicción IA',
@@ -238,7 +237,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 2,
     featured: false,
-    color: AI4U_PALETTE.gray[800],
+    color: AI4U_PALETTE.info,
     tags: ['dashboards', 'data'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/dashboards-inteligentes.png',
@@ -248,7 +247,7 @@ export const services: Service[] = [
     id: 'investigacion-horeca',
     title: 'Investigación HORECA',
     subtitle: 'Expansión basada en datos',
-    description: 'Mapeo exhaustivo de mercado para identificar zonas con mayor potencial de crecimiento.',
+    description: 'Mapeo de mercado con IA para identificar zonas de alto crecimiento.',
     benefits: [
       'Leads calificados',
       'Mapeo competencia',
@@ -259,7 +258,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 3,
     featured: false,
-    color: AI4U_PALETTE.gray[700],
+    color: AI4U_PALETTE.info,
     tags: ['horeca', 'expansión'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/investigacion-horeca.png',
@@ -269,7 +268,7 @@ export const services: Service[] = [
     id: 'asesoria-estrategica',
     title: 'Consultoría Permanente',
     subtitle: 'Tu equipo IA dedicado',
-    description: 'Acceso ilimitado a innovaciones, soporte preferencial y asesoramiento mensual constante.',
+    description: 'Acceso ilimitado a innovación IA y asesoramiento mensual dedicado.',
     benefits: [
       'Actualizaciones IA',
       'Soporte preferencial',
@@ -280,7 +279,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 4,
     featured: false,
-    color: AI4U_PALETTE.gray[600],
+    color: AI4U_PALETTE.info,
     tags: ['consultoría', 'innovación'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/asesoria-estrategica-continua.png',
@@ -290,7 +289,7 @@ export const services: Service[] = [
     id: 'cazador-leads',
     title: 'Cazador de Leads',
     subtitle: 'Clientes calificados',
-    description: 'Sistema automático de generación de prospectos usando Meta Ads optimizado con IA.',
+    description: 'Generación automática de prospectos calificados con Meta Ads e IA.',
     benefits: [
       'Pipeline siempre lleno',
       'Leads de alta calidad',
@@ -301,7 +300,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 5,
     featured: false,
-    color: AI4U_PALETTE.gray[500],
+    color: AI4U_PALETTE.info,
     tags: ['leads', 'marketing'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/cazador-leads.png',
@@ -311,7 +310,7 @@ export const services: Service[] = [
     id: 'investigador-digital',
     title: 'Investigador Digital',
     subtitle: 'Monitor de tendencias',
-    description: 'Monitorea redes sociales y competencia 24/7 generando reportes automáticos de mercado.',
+    description: 'Monitoreo de competencia y tendencias de mercado en tiempo real.',
     benefits: [
       'Análisis competencia',
       'Ahorro 15h semanales',
@@ -322,7 +321,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 6,
     featured: false,
-    color: AI4U_PALETTE.gray[400],
+    color: AI4U_PALETTE.info,
     tags: ['redes', 'tendencias'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/investigador-digital.png',
@@ -332,7 +331,7 @@ export const services: Service[] = [
     id: 'analista-comentarios',
     title: 'Analista de Comentarios',
     subtitle: 'Insights automáticos',
-    description: 'Analiza sentimientos y patrones en redes sociales para ajustar tu estrategia comercial.',
+    description: 'Detección de patrones y sentimientos en comentarios de clientes.',
     benefits: [
       'Análisis sentimientos',
       'Insights de clientes',
@@ -343,19 +342,19 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.STRATEGY,
     priority: 7,
     featured: false,
-    color: AI4U_PALETTE.gray[300],
+    color: AI4U_PALETTE.info,
     tags: ['sentimientos', 'insights'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/analista-comentarios.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
   },
 
-  // --- EJE 3: EDUCACIÓN ---
+  // --- EJE 3: EDUCACIÓN (BLACK) ---
   {
     id: 'the-master',
     title: 'The Master',
     subtitle: 'Estrategia para líderes',
-    description: 'Masterclass presencial para dueños de negocio sobre IA y automatización estratégica.',
+    description: 'Estrategia de IA y automatización exclusiva para dueños de negocio.',
     benefits: [
       'Sesión exclusiva',
       'Roadmap real',
@@ -366,7 +365,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.EDUCATION,
     priority: 1,
     featured: false,
-    color: AI4U_PALETTE.gray[900],
+    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
     tags: ['líderes', 'masterclass'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-master.png',
@@ -376,7 +375,7 @@ export const services: Service[] = [
     id: 'the-mentor',
     title: 'The Mentor',
     subtitle: 'Prompt Engineering 1a1',
-    description: 'Capacitación personalizada para multiplicar tu productividad usando ChatGPT y GPTs.',
+    description: 'Capacitación personalizada en productividad extrema con ChatGPT.',
     benefits: [
       'Productividad x10',
       'GPTs personalizados',
@@ -387,7 +386,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.EDUCATION,
     priority: 2,
     featured: false,
-    color: AI4U_PALETTE.gray[800],
+    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
     tags: ['chatgpt', 'productividad'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-mentor.png',
@@ -397,7 +396,7 @@ export const services: Service[] = [
     id: 'the-artist',
     title: 'The Artist',
     subtitle: 'Master Midjourney 1a1',
-    description: 'Domina la creación de imágenes IA para marketing, diseño y conceptualización pro.',
+    description: 'Dominio de creación de imágenes IA para marketing y diseño pro.',
     benefits: [
       'Control Midjourney',
       'Feedback en vivo',
@@ -408,19 +407,19 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.EDUCATION,
     priority: 3,
     featured: false,
-    color: AI4U_PALETTE.gray[700],
+    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
     tags: ['midjourney', 'diseño'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-artist.png',
     metadata: { createdAt: '2024-01-01', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
   },
 
-  // --- EJE 4: TRANSFORMACIÓN DIGITAL ---
+  // --- EJE 4: TRANSFORMACIÓN DIGITAL (GREEN) ---
   {
     id: 'super-ai',
     title: 'Super AI',
     subtitle: 'Autonomía Total (AIA)',
-    description: 'IA que no solo sugiere, sino que ejecuta. Conectada a tus sistemas para decidir sola.',
+    description: 'IA autónoma que ejecuta decisiones conectada a tus sistemas.',
     benefits: [
       'Ejecución autónoma',
       'Cero intervención',
@@ -435,7 +434,7 @@ export const services: Service[] = [
       video: '/assets/videos/data-entry-automatico.mp4',
       poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
-    color: AI4U_PALETTE.gray[400],
+    color: AI4U_PALETTE.accentColors.green,
     tags: ['super-ai', 'autonomía'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
@@ -445,7 +444,7 @@ export const services: Service[] = [
     id: 'metodologia-ai-first',
     title: 'Metodología AI-First',
     subtitle: 'Infraestructura del futuro',
-    description: 'Construimos tu negocio sobre IA desde el núcleo. Escalabilidad infinita y radical.',
+    description: 'Arquitectura de negocio diseñada desde el núcleo con IA.',
     benefits: [
       'Arquitectura IA',
       'Ventaja competitiva',
@@ -456,7 +455,7 @@ export const services: Service[] = [
     superCategory: ServiceSuperCategory.TRANSFORMATION,
     priority: 2,
     featured: false,
-    color: AI4U_PALETTE.white,
+    color: AI4U_PALETTE.accentColors.green,
     tags: ['metodología', 'futuro'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/metodologia-ai-first.png',

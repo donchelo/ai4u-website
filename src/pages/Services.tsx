@@ -11,6 +11,7 @@ import {
 import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
 import { ServicesPremiumHero, SuperAIModal } from '@/components/shared/ui/organisms';
+import { AI4U_PALETTE } from '@/components/shared/ui/tokens/palette';
 import { useServicesContext } from '@/context';
 import { useColors, usePerformanceMonitoring } from '@/hooks';
 import { ServiceSuperCategory } from '@/types/service';
@@ -37,41 +38,41 @@ const Services: React.FC = () => {
       id: ServiceSuperCategory.OPERATION,
       title: 'OPERACIÓN',
       subtitle: 'EFICIENCIA 24/7',
-      description: 'TRANSFORMAMOS TAREAS REPETITIVAS EN PROCESOS AUTÓNOMOS E INFALIBLES. LIBERA EL 70% DE TU TIEMPO OPERATIVO.',
+      description: 'PROCESOS AUTÓNOMOS QUE LIBERAN EL 70% DE TU TIEMPO OPERATIVO.',
       color: colors.palette.black,
-      bgColor: colors.palette.white,
+      bgColor: colors.palette.accentColors.orange,
       textColor: colors.palette.black,
-      accentColor: colors.palette.accentColors.orange
+      accentColor: colors.palette.black
     },
     {
       id: ServiceSuperCategory.STRATEGY,
       title: 'ESTRATEGIA',
       subtitle: 'EL PODER DE LOS DATOS',
-      description: 'CONVIERTE LA INFORMACIÓN DE TU OPERACIÓN EN TU MAYOR VENTAJA COMPETITIVA. DECISIONES BASADAS EN DATA REAL.',
-      color: colors.palette.white,
-      bgColor: colors.palette.black,
-      textColor: colors.palette.white,
-      accentColor: colors.palette.gray[600]
+      description: 'TOMA DECISIONES BASADAS EN DATA REAL Y VENTAJA COMPETITIVA.',
+      color: colors.palette.black,
+      bgColor: colors.palette.info,
+      textColor: colors.palette.black,
+      accentColor: colors.palette.black
     },
     {
       id: ServiceSuperCategory.EDUCATION,
       title: 'EDUCACIÓN',
       subtitle: 'EVOLUCIÓN HUMANA',
-      description: 'CAPACITAMOS A TU EQUIPO PARA DOMINAR LAS HERRAMIENTAS QUE ESTÁN REDEFINIENDO EL MERCADO GLOBAL.',
-      color: colors.palette.black,
-      bgColor: colors.palette.gray[100],
-      textColor: colors.palette.black,
-      accentColor: colors.palette.black
+      description: 'CAPACITAMOS A TU EQUIPO PARA DOMINAR EL MERCADO GLOBAL CON IA.',
+      color: colors.palette.white,
+      bgColor: colors.palette.black,
+      textColor: colors.palette.white,
+      accentColor: colors.palette.accentColors.orange
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
       title: 'TRANSFORMACIÓN',
       subtitle: 'SUPER AI INFRASTRUCTURE',
-      description: 'LA CÚSPIDE DE LA AUTONOMÍA: CONSTRUIMOS LA INFRAESTRUCTURA DONDE LA IA ES EL MOTOR PRINCIPAL.',
-      color: colors.palette.white,
-      bgColor: colors.palette.black,
-      textColor: colors.palette.white,
-      accentColor: colors.palette.accentColors.green
+      description: 'LA CÚSPIDE DE LA AUTONOMÍA: INFRAESTRUCTURA DONDE LA IA ES EL MOTOR.',
+      color: colors.palette.black,
+      bgColor: colors.palette.accentColors.green,
+      textColor: colors.palette.black,
+      accentColor: colors.palette.black
     }
   ];
 
@@ -110,7 +111,7 @@ const Services: React.FC = () => {
               px: { xs: 4, md: 8, lg: 12 },
               bgcolor: axis.bgColor,
               color: axis.textColor,
-              borderBottom: `1px solid ${colors.palette.black}`,
+              borderBottom: `2px solid ${axis.accentColor}`,
               display: 'flex',
               justifyContent: 'center',
               position: 'relative',
@@ -125,8 +126,8 @@ const Services: React.FC = () => {
                 right: 20, 
                 fontSize: { xs: '15rem', md: '25rem' }, 
                 fontWeight: 900, 
-                color: axis.textColor, 
-                opacity: 0.05,
+                color: axis.accentColor, 
+                opacity: 0.1,
                 zIndex: 0,
                 pointerEvents: 'none',
                 userSelect: 'none'
@@ -175,13 +176,15 @@ const Services: React.FC = () => {
                       {axis.description}
                     </BodyText>
                     <Button 
-                      variant={axis.bgColor === colors.palette.black ? 'outline' : 'primary'}
+                      variant={axis.bgColor === colors.palette.black || axis.bgColor === colors.palette.info ? 'outline' : 'primary'}
                       sx={{ 
                         borderColor: axis.textColor, 
                         color: axis.textColor,
                         height: '70px',
                         px: 6,
                         fontSize: '1.1rem',
+                        bgcolor: axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined,
+                        borderWidth: '3px',
                         '&:hover': {
                           bgcolor: axis.textColor,
                           color: axis.bgColor
@@ -230,7 +233,13 @@ const Services: React.FC = () => {
       }}>
         <Container maxWidth="xl">
           <Stack spacing={10}>
-            <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 4, fontSize: { xs: '3rem', md: '6rem' } }}>
+            <H1 sx={{ 
+              fontWeight: 900, 
+              textTransform: 'uppercase', 
+              mb: 4, 
+              fontSize: { xs: '3rem', md: '6rem' },
+              color: colors.palette.white // Asegurar que sea blanco
+            }}>
               MÉTODO <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>DIRECTO</Box>
             </H1>
             <Grid container spacing={6}>
@@ -242,9 +251,9 @@ const Services: React.FC = () => {
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
-                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1 }}>{step.n}</H2>
-                    <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1 }}>{step.t}</Typography>
-                    <BodyText sx={{ fontWeight: 500 }}>{step.d}</BodyText>
+                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1, color: colors.palette.white }}>{step.n}</H2>
+                    <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1, color: colors.palette.white }}>{step.t}</Typography>
+                    <BodyText sx={{ fontWeight: 500, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
                   </Box>
                 </Grid>
               ))}

@@ -9,8 +9,9 @@ import {
   Typography
 } from '@mui/material';
 import { H3, BodyText, GeometricIcon, SEOHead, ServiceThumbnail } from '../atoms';
-import { useColors } from '../../../../hooks';
-import { Service } from '../../../../types/service';
+import { useColors } from '@/hooks';
+import { AI4U_PALETTE } from '@/components/shared/ui/tokens/palette';
+import { Service } from '@/types/service';
 import { getServiceStructuredData } from '../../../../utils/seo';
 import { ProgressiveContent } from './';
 
@@ -50,7 +51,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         transition: 'all 0.2s ease',
         '&:hover': {
           '& .service-card-content': {
-            borderColor: colors.contrast.text.primary,
+            borderColor: service.color || colors.contrast.text.primary,
           }
         }
       }}>
@@ -64,16 +65,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             display: 'flex',
             flexDirection: 'column',
             position: 'relative',
-            background: colors.contrast.surface,
-            border: `3px solid ${colors.contrast.text.primary}`,
+            background: AI4U_PALETTE.white, // Siempre blanco para máximo contraste "sticker"
+            border: `3px solid ${AI4U_PALETTE.black}`, // Siempre borde negro
             borderRadius: 0,
             transition: 'all 0.1s ease',
             overflow: 'hidden',
-            boxShadow: 'none',
+            boxShadow: `4px 4px 0px ${service.color || AI4U_PALETTE.black}`,
             cursor: onClick ? 'pointer' : 'default',
             '&:hover': {
-              transform: onClick ? 'translate(-4px, -4px)' : 'none',
-              boxShadow: onClick ? `8px 8px 0px ${colors.contrast.text.primary}` : 'none',
+              transform: onClick ? 'translate(-2px, -2px)' : 'none',
+              boxShadow: onClick ? `8px 8px 0px ${service.color || AI4U_PALETTE.black}` : `4px 4px 0px ${service.color || AI4U_PALETTE.black}`,
             }
           }}
         >
@@ -82,19 +83,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <Box sx={{ 
             position: 'absolute', 
             top: 12, 
-            left: 12,
+            right: 12,
             zIndex: 2
           }}>
             <Chip 
               label={getSuperCategoryText(service.superCategory)}
               size="small"
               sx={{
-                background: colors.contrast.background,
-                color: colors.contrast.text.primary,
-                fontWeight: 500,
-                fontSize: '0.7rem',
-                height: 24,
-                border: `1px solid ${colors.contrast.border}`,
+                background: AI4U_PALETTE.black,
+                color: AI4U_PALETTE.white,
+                fontWeight: 900,
+                fontSize: '0.6rem',
+                height: 20,
+                borderRadius: 0,
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
                 '& .MuiChip-label': {
                   px: 1,
                 }
@@ -111,66 +114,38 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           }}>
             <Typography 
               sx={{ 
-                color: colors.contrast.text.primary,
+                color: AI4U_PALETTE.black, // Forzar negro para el título
                 fontSize: { xs: '1.4rem', md: '1.8rem' },
                 fontWeight: 900,
                 lineHeight: 1.1,
                 textAlign: 'left',
                 textTransform: 'uppercase',
-                mb: 1
+                mb: 2,
+                display: 'flex',
+                alignItems: 'flex-start',
+                '&::before': {
+                  content: '"■"',
+                  color: service.color || AI4U_PALETTE.black,
+                  mr: 1.5,
+                  fontSize: '1.2rem',
+                }
               }}
             >
               {service.title}
             </Typography>
-            
-            <Typography sx={{ 
-              fontWeight: 700,
-              color: colors.contrast.text.secondary,
-              fontSize: '0.9rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              mb: 2
-            }}>
-              // {service.subtitle}
-            </Typography>
 
             <BodyText sx={{ 
               lineHeight: 1.4,
-              color: colors.contrast.text.primary,
-              fontSize: '1.1rem',
+              color: AI4U_PALETTE.black, // Forzar negro para el cuerpo
+              fontSize: '1rem',
               textAlign: 'left',
-              mb: 3,
-              fontWeight: 500
+              mb: 0,
+              fontWeight: 500,
+              opacity: 0.9,
+              pl: 4 
             }}>
               {service.description}
             </BodyText>
-            
-            <Box sx={{ mt: 'auto' }}>
-              <List dense disablePadding>
-                {service.benefits.map((benefit, index) => (
-                  <ListItem key={index} disableGutters sx={{ py: 0.5, alignItems: 'flex-start' }}>
-                    <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
-                      <GeometricIcon
-                        type="arrow-right"
-                        size="small"
-                        color={colors.contrast.text.primary}
-                        variant="minimal"
-                      />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary={benefit.toUpperCase()}
-                      primaryTypographyProps={{
-                        fontSize: '0.8rem',
-                        color: colors.contrast.text.secondary,
-                        lineHeight: 1.2,
-                        fontWeight: 700,
-                        letterSpacing: '0.02em'
-                      }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
           </Box>
 
           {/* Footer minimalista */}
