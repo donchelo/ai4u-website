@@ -45,44 +45,6 @@ const Footer = () => {
         borderColor: colors.contrast.divider
       }}
     >
-      {/* Architecture By Section */}
-      <Box
-        sx={{
-          bgcolor: colors.palette.black,
-          py: 8,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderBottom: `1px solid ${colors.contrast.divider}`
-        }}
-      >
-        <Stack spacing={0.5} alignItems="center">
-          <MuiTypography
-            sx={{
-              fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.85rem' },
-              fontWeight: 300,
-              letterSpacing: '0.3em',
-              color: colors.palette.white,
-              textTransform: 'uppercase',
-              opacity: 0.7
-            }}
-          >
-            ARCHITECTURE_BY
-          </MuiTypography>
-          <MuiTypography
-            sx={{
-              fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.8rem' },
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              color: colors.palette.white,
-              fontFamily: 'inherit'
-            }}
-          >
-            MARIANO | 마리아노
-          </MuiTypography>
-        </Stack>
-      </Box>
-
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
@@ -167,12 +129,26 @@ const Footer = () => {
           display: 'flex', 
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
-          alignItems: { xs: 'center', md: 'flex-start' },
+          alignItems: { xs: 'center', md: 'flex-end' },
           gap: 2
         }}>
-          <SmallText sx={{ color: colors.contrast.text.secondary }}>
-            {`© ${currentYear} AI4U. Todos los derechos reservados.`}
-          </SmallText>
+          <Stack spacing={0.5} alignItems={{ xs: 'center', md: 'flex-start' }}>
+            <SmallText sx={{ color: colors.contrast.text.secondary }}>
+              {`© ${currentYear} AI4U. Todos los derechos reservados.`}
+            </SmallText>
+            <MuiTypography 
+              sx={{ 
+                color: colors.palette.white,
+                opacity: 0.9,
+                fontSize: '0.65rem',
+                letterSpacing: '0.05em',
+                fontWeight: 500,
+                fontFamily: 'inherit'
+              }}
+            >
+              architecture by <Box component="span" sx={{ fontWeight: 700 }}>MARIANO | 마리아노</Box>
+            </MuiTypography>
+          </Stack>
           
           <Stack direction="row" spacing={1}>
             {socialLinks.map((social, index) => (
