@@ -4,22 +4,17 @@ import {
   Container, 
   Grid, 
   Box, 
-  Stack, 
-  List, 
-  ListItem, 
-  ListItemIcon, 
-  ListItemText 
+  Stack 
 } from '@mui/material';
 import { 
   CheckCircle, 
-  AccessTime, 
   TrendingUp, 
   BarChart, 
   Psychology, 
   Settings, 
   AutoAwesome 
 } from '@mui/icons-material';
-import { Giant, H1, H2, H3, H4, BodyText, Button, SEOHead } from '@/components/shared/ui/atoms';
+import { Typography, Giant, H1, H2, H3, H4, BodyText, Button, SEOHead, OptimizedImage } from '@/components/shared/ui/atoms';
 import { useColors } from '@/hooks';
 import { SurfaceProvider } from '@/context';
 
@@ -97,15 +92,40 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: `radial-gradient(circle at 50% 50%, ${colors.palette.accentColors.orange}10 0%, ${colors.palette.black} 100%)`,
+          background: colors.palette.black,
           py: isModal ? { xs: 6, md: 10 } : { xs: 10, md: 20 },
           position: 'relative',
           overflow: 'hidden',
-          borderBottom: `1px solid ${colors.palette.gray[800]}`,
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={isModal ? 3 : 6} alignItems="center" textAlign="center">
+            <Box
+              sx={{
+                width: { xs: 200, md: 320, lg: 400 },
+                height: { xs: 200, md: 320, lg: 400 },
+                position: 'relative',
+                mb: -2,
+                filter: 'drop-shadow(0 0 50px rgba(255,255,255,0.15))',
+                animation: 'float 10s ease-in-out infinite',
+                '@keyframes float': {
+                  '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                  '50%': { transform: 'translateY(-20px) scale(1.02)' },
+                }
+              }}
+            >
+              <OptimizedImage 
+                src="/assets/images/bancolombia/AI4U 4rt (19).png" 
+                alt="SuperAI Protagonist"
+                priority
+                sx={{ 
+                  filter: 'invert(1)', 
+                  width: '100%', 
+                  height: '100%',
+                  objectFit: 'contain'
+                }}
+              />
+            </Box>
               <Box
                 sx={{
                   display: 'inline-flex',
@@ -162,6 +182,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <Button
                 variant="primary"
                 size="large"
+                href="https://calendly.com/mgarciap333/ai4u"
+                target="_blank"
                 sx={{
                   px: 6,
                   height: '70px',
@@ -180,6 +202,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <Button
                 variant="outline"
                 size="large"
+                onClick={() => document.getElementById('use-cases')?.scrollIntoView({ behavior: 'smooth' })}
                 sx={{
                   px: 6,
                   height: '70px',
@@ -327,9 +350,16 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   border: `1px solid ${colors.palette.white}20`,
                   p: 5,
                   position: 'relative',
+                  overflow: 'hidden'
                 }}
               >
-                <AutoAwesome sx={{ fontSize: 40, color: colors.palette.accentColors.orange, mb: 3 }} />
+                <Box sx={{ width: 60, height: 60, mb: 3 }}>
+                  <OptimizedImage 
+                    src="/assets/images/bancolombia/AI4U 4rt (19).png" 
+                    alt="SuperAI ADN"
+                    sx={{ filter: 'invert(1)', objectFit: 'contain' }}
+                  />
+                </Box>
                 <H3 sx={{ mb: 2, color: colors.palette.white, fontSize: '1.5rem' }}>
                   ADN 100% EMPRESARIAL
                 </H3>
@@ -343,7 +373,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Use Cases Section */}
-      <Box sx={{ py: isModal ? 8 : 15, background: colors.palette.black }}>
+      <Box id="use-cases" sx={{ py: isModal ? 8 : 15, background: colors.palette.black }}>
         <Container maxWidth="lg">
           <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>
             RESULTADOS <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>REALES</Box>

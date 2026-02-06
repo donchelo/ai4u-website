@@ -433,12 +433,12 @@ export const services: Service[] = [
     featured: true,
     media: {
       video: '/assets/videos/data-entry-automatico.mp4',
-      poster: '/assets/images/services-thumbnails/super-ai.png'
+      poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
     color: AI4U_PALETTE.gray[400],
     tags: ['super-ai', 'autonomía'],
     status: ServiceStatus.ACTIVE,
-    thumbnail: '/assets/images/services-thumbnails/super-ai.png',
+    thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
     metadata: { createdAt: '2025-02-03', updatedAt: '2025-02-03', version: '1.0', author: 'AI4U Team' }
   },
   {
