@@ -51,11 +51,11 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   ];
 
   const benefits = [
-    { icon: Bolt, title: 'EJECUTA', description: 'Entiende tu negocio y actúa.' },
-    { icon: Autorenew, title: 'AUTOMATIZA', description: 'Propuestas, reportes, seguimiento.' },
-    { icon: RocketLaunch, title: 'ESCALA', description: '10 o 1000 clientes, mismo costo.' },
-    { icon: Psychology, title: 'APRENDE', description: 'Tu lógica, métricas y prioridades.' },
-    { icon: IntegrationInstructions, title: 'SE INTEGRA', description: 'Gmail, Drive, Sheets, APIs. Todo.' }
+    { icon: Bolt, title: 'ejecuta', description: 'Entiende tu negocio y actúa.' },
+    { icon: Autorenew, title: 'automatiza', description: 'Propuestas, reportes, seguimiento.' },
+    { icon: RocketLaunch, title: 'escala', description: '10 o 1000 clientes, mismo costo.' },
+    { icon: Psychology, title: 'aprende', description: 'Tu lógica, métricas y prioridades.' },
+    { icon: IntegrationInstructions, title: 'seIntegra', description: 'Gmail, Drive, Sheets, APIs. Todo.' }
   ];
 
   const results = [
@@ -68,19 +68,19 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const steps = [
     {
       num: '01',
-      title: 'INTEGRACIÓN',
+      title: 'Integración',
       subtitle: 'Semana 1',
       description: 'Conectamos a tu email, calendario, docs y APIs. 24 horas, cero disrupción.'
     },
     {
       num: '02',
-      title: 'APRENDIZAJE',
+      title: 'Aprendizaje',
       subtitle: 'Semana 2-3',
       description: 'Observa tus prioridades, métricas y decisiones. Aprende tu lógica.'
     },
     {
       num: '03',
-      title: 'EJECUCIÓN',
+      title: 'Ejecución',
       subtitle: 'Día 1 en adelante',
       description: 'Propuestas, reportes, oportunidades y workflows. 24/7.'
     }
@@ -132,7 +132,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
   const pricing = [
     {
-      name: 'STARTER',
+      name: 'Starter',
       implementation: '$1,000',
       price: '$100',
       period: 'USD/mes',
@@ -144,7 +144,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       for: 'Freelancers y startups'
     },
     {
-      name: 'PROFESSIONAL',
+      name: 'Professional',
       implementation: '$2,000',
       price: '$200',
       period: 'USD/mes',
@@ -154,19 +154,19 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
         'Prospecting + insights',
         'Reportes diarios + alertas'
       ],
-      for: 'Empresas 5-50 personas',
+      for: 'Empresas 5-24 personas',
       highlight: true
     },
     {
-      name: 'ENTERPRISE',
+      name: 'Enterprise',
       implementation: null,
-      price: 'A MEDIDA',
+      price: 'aMedida',
       period: '',
       features: [
         'Agenda una consultoría estratégica para diseñar la infraestructura personalizada que tu operación a gran escala necesita.'
       ],
-      for: 'Empresas 50+ personas',
-      buttonText: 'AGENDAR CONSULTA'
+      for: 'Empresas 25+ personas',
+      buttonText: 'agendarConsulta'
     }
   ];
 
@@ -259,10 +259,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   fontWeight: 800,
                   fontFamily: '"Necto Mono", monospace',
                   letterSpacing: '0.2em',
-                  textTransform: 'uppercase'
+                  textTransform: 'none'
                 }}
               >
-                SuperAI // THE EXECUTION PARTNER
+                SuperAI // theExecutionPartner
               </Typography>
             </Box>
 
@@ -311,7 +311,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   },
                 }}
               >
-                SOLICITA TU SUPERAI HOY
+                Solicita tu SuperAI hoy
               </Button>
               <Typography sx={{ color: colors.palette.gray[500], alignSelf: 'center', fontSize: '0.9rem', fontWeight: 600 }}>
                 Llamada estratégica gratuita (30 min)
@@ -414,7 +414,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     justifyContent: 'center'
                   }}
                 >
-                  <H3 sx={{ color: colors.palette.white, mb: 3, fontWeight: 900 }}>RESULTADOS:</H3>
+                  <H3 sx={{ color: colors.palette.white, mb: 3, fontWeight: 900 }}>Resultados:</H3>
                   <Stack spacing={1.5}>
                     {results.map((res, idx) => (
                       <BodyText key={idx} sx={{ color: colors.palette.white, fontWeight: 700, fontSize: '0.9rem' }}>
@@ -486,7 +486,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             {useCases.map((useCase, idx) => (
               <Grid item xs={12} md={6} key={idx}>
                 <Box sx={{ bgcolor: colors.palette.black, p: 5, height: '100%', borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
-                  <H3 sx={{ color: colors.palette.white, mb: 4, textTransform: 'uppercase' }}>Para {useCase.category}</H3>
+                  <H3 sx={{ color: colors.palette.white, mb: 4, textTransform: 'none' }}>Para {useCase.category}</H3>
                   <Stack spacing={2.5}>
                     {useCase.items.map((item, i) => (
                       <Box key={i} sx={{ display: 'flex', gap: 2 }}>
@@ -529,7 +529,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                         {row.chatbot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 900 }}>✗</Typography>}
                       </TableCell>
                       <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
-                        {row.copilot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : (row.copilot === 'Parcial' ? <Typography sx={{ color: colors.palette.gray[600], fontWeight: 800, fontSize: '0.8rem' }}>PARCIAL</Typography> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 900 }}>✗</Typography>)}
+                        {row.copilot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : (row.copilot === 'Parcial' ? <Typography sx={{ color: colors.palette.gray[600], fontWeight: 800, fontSize: '0.8rem' }}>parcial</Typography> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 900 }}>✗</Typography>)}
                       </TableCell>
                       <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
                         {row.superai === true ? <CheckCircle sx={{ color: colors.palette.accentColors.orange }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 900 }}>✗</Typography>}
@@ -571,11 +571,11 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 >
                   {tier.highlight && (
                     <Box sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 3, py: 0.5, fontWeight: 900, fontSize: '0.7rem', letterSpacing: '0.1em' }}>
-                      MÁS POPULAR
+                      Más popular
                     </Box>
                   )}
                   <Typography sx={{ color: colors.palette.gray[500], fontWeight: 800, mb: 1, fontFamily: '"Necto Mono", monospace', letterSpacing: '0.1em' }}>
-                    SUPERAI {tier.name}
+                    SuperAI {tier.name}
                   </Typography>
                   {tier.implementation != null && (
                     <Typography sx={{ color: colors.palette.gray[400], fontSize: '0.85rem', mb: 0.5 }}>
@@ -623,12 +623,12 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             }}
           >
             <H3 sx={{ color: colors.palette.white, mb: 4, fontSize: '1.5rem', fontWeight: 900 }}>
-              // CONSIDERACIONES DE OPERACIÓN
+              // Consideraciones de operación
             </H3>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 800, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
-                  CONSUMO DE LLM & APIs
+                  Consumo de LLM & APIs
                 </Typography>
                 <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
                   Los costos de consumo de modelos (OpenAI, Anthropic, etc.) se facturan directamente a tu tarjeta. La inversión depende de la inteligencia y el volumen de ejecución requerido.
@@ -636,7 +636,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 800, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
-                  HARDWARE DEDICADO
+                  Hardware dedicado
                 </Typography>
                 <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
                   SuperAI requiere una estación de trabajo (PC/Servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
@@ -703,7 +703,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   }
                 }}
               >
-                SOLICITA TU DEMO GRATUITA
+                Solicita tu demo gratuita
               </Button>
               <Button
                 variant="outline"
@@ -719,7 +719,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   color: colors.palette.white,
                 }}
               >
-                VER CÓMO FUNCIONA
+                Ver cómo funciona
               </Button>
             </Stack>
 
