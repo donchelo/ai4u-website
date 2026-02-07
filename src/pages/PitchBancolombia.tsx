@@ -24,6 +24,8 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 import { ROUTES } from '../utils/constants';
 import Logo from '../components/shared/ui/atoms/Logo';
 import { PITCHES, getThemeStyles, Slide } from '../data/pitches';
@@ -219,7 +221,7 @@ const PitchBancolombia: React.FC = () => {
 
             {/* Premium Progress Bar */}
             <Box sx={{
-                height: 8,
+                height: '8px',
                 width: '100%',
                 bgcolor: 'rgba(255,255,255,0.1)',
                 position: 'relative',
@@ -350,10 +352,11 @@ const PitchBancolombia: React.FC = () => {
                                             color: styles.accent,
                                             fontWeight: 400,
                                             letterSpacing: 4,
-                                            fontSize: { xs: '0.65rem', md: '0.85rem' },
+                                            fontSize: TEXT_VARIANTS.ui.caption.fontSize,
                                             mb: 1,
                                             display: 'block',
-                                            textAlign: isTitleOnly ? 'center' : 'left'
+                                            textAlign: isTitleOnly ? 'center' : 'left',
+                                            ...TEXT_VARIANTS.ui.code
                                         }}
                                     >
                                         // {current.category}
@@ -387,6 +390,7 @@ const PitchBancolombia: React.FC = () => {
                                         sx={{
                                             color: styles.text,
                                             fontWeight: 400,
+                                            ...TEXT_VARIANTS.display.medium,
                                             fontSize: isTitleOnly 
                                                 ? { xs: '2.5rem', md: '5rem', lg: '8rem' } 
                                                 : { xs: '1.8rem', md: '3rem', lg: '4.2rem' },
@@ -416,7 +420,7 @@ const PitchBancolombia: React.FC = () => {
                                                     sx: {
                                                         color: styles.accent,
                                                         fontWeight: 400,
-                                                        fontSize: { xs: '1rem', md: '1.5rem', lg: '2rem' },
+                                                        fontSize: TEXT_VARIANTS.display.small.fontSize,
                                                         textAlign: 'center',
                                                         letterSpacing: 2,
                                                         textTransform: 'none'
@@ -428,6 +432,7 @@ const PitchBancolombia: React.FC = () => {
                                                 sx={{
                                                     color: styles.accent,
                                                     fontWeight: 400,
+                                                    ...TEXT_VARIANTS.display.small,
                                                     fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.5rem' },
                                                     letterSpacing: 4,
                                                     textTransform: 'none',
@@ -460,7 +465,7 @@ const PitchBancolombia: React.FC = () => {
                                                             color: styles.text,
                                                             opacity: 0.8,
                                                             fontWeight: 300,
-                                                            fontSize: { xs: '1rem', md: '1.5rem' },
+                                                            fontSize: TEXT_VARIANTS.body.large.fontSize,
                                                         }
                                                     }}
                                                 />
@@ -471,7 +476,7 @@ const PitchBancolombia: React.FC = () => {
                                                         color: styles.text,
                                                         opacity: 0.8,
                                                         fontWeight: 300,
-                                                        fontSize: { xs: '1rem', md: '1.5rem' },
+                                                        ...TEXT_VARIANTS.body.large,
                                                         lineHeight: 1.2,
                                                         letterSpacing: '-0.01em'
                                                     }}
@@ -485,7 +490,7 @@ const PitchBancolombia: React.FC = () => {
                                             {Array.isArray(current.content) ? (
                                                 <Stack spacing={1.5}>
                                                     {current.content.map((line, i) => (
-                                                        <Box key={i} sx={{ borderLeft: `2px solid ${styles.accent}`, pl: { xs: 2, md: 3 } }}>
+                                                        <Box key={i} sx={{ borderLeft: `${SPACING_TOKENS.borderWidth[2]}px solid ${styles.accent}`, pl: { xs: 2, md: 3 } }}>
                                                             {isEditMode ? (
                                                                 <TextField
                                                                     fullWidth
@@ -496,7 +501,7 @@ const PitchBancolombia: React.FC = () => {
                                                                     InputProps={{
                                                                         sx: {
                                                                             color: styles.text,
-                                                                            fontSize: { xs: '0.85rem', md: '1rem' },
+                                                                            fontSize: TEXT_VARIANTS.body.regular.fontSize,
                                                                         }
                                                                     }}
                                                                 />
@@ -504,7 +509,7 @@ const PitchBancolombia: React.FC = () => {
                                                                 <Typography
                                                                     sx={{
                                                                         color: styles.text,
-                                                                        fontSize: { xs: '0.85rem', md: '1rem' },
+                                                                        ...TEXT_VARIANTS.body.regular,
                                                                         fontWeight: 400,
                                                                         lineHeight: 1.4
                                                                     }}
@@ -527,7 +532,7 @@ const PitchBancolombia: React.FC = () => {
                                                             InputProps={{
                                                                 sx: {
                                                                     color: styles.text,
-                                                                    fontSize: { xs: '1rem', md: '1.2rem' },
+                                                                    fontSize: TEXT_VARIANTS.body.large.fontSize,
                                                                 }
                                                             }}
                                                         />
@@ -535,7 +540,7 @@ const PitchBancolombia: React.FC = () => {
                                                         <Typography
                                                             sx={{
                                                                 color: styles.text,
-                                                                fontSize: { xs: '1rem', md: '1.2rem' },
+                                                                ...TEXT_VARIANTS.body.large,
                                                                 fontWeight: 400,
                                                                 lineHeight: 1.4,
                                                                 opacity: 0.9
@@ -647,7 +652,7 @@ const PitchBancolombia: React.FC = () => {
                 </Fade>
 
                 {/* Floating Logo */}
-                <Box sx={{ position: 'absolute', top: 24, right: 32, zIndex: 5, opacity: 0.6 }}>
+                <Box sx={{ position: 'absolute', top: 3, right: 4, zIndex: 5, opacity: 0.6 }}>
                     <Logo variant="desktop" sx={{ height: 28, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
                 </Box>
 
@@ -655,8 +660,8 @@ const PitchBancolombia: React.FC = () => {
                 <Typography
                     sx={{
                         position: 'absolute',
-                        bottom: -20,
-                        left: 20,
+                        bottom: -2.5,
+                        left: 2.5,
                         fontSize: { xs: '15rem', md: '25rem' },
                         fontWeight: 400,
                         color: styles.text,

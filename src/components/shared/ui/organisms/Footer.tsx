@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
 import { useColors } from '../../../../hooks';
+import { SPACING_TOKENS } from '../../../../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../../../../components/shared/ui/tokens/typography';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -135,10 +137,10 @@ const Footer = () => {
               sx={{ 
                 color: colors.palette.white,
                 opacity: 0.9,
-                fontSize: '0.65rem',
+                fontSize: TEXT_VARIANTS.ui.caption.fontSize,
                 letterSpacing: '0.05em',
                 fontWeight: 400,
-                fontFamily: 'inherit'
+                ...TEXT_VARIANTS.ui.code
               }}
             >
               architecture by <Box component="span" sx={{ fontWeight: 400 }}>MARIANO | 마리아노</Box>

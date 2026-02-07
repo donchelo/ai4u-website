@@ -42,6 +42,8 @@ export const SPACING_TOKENS = {
     0: 0,
     default: 1,
     2: 2,
+    thick: 4,
+    heavy: 6,
   },
   
   // Tamaños de elementos (más espaciados)
@@ -72,43 +74,45 @@ export const SPACING_TOKENS = {
 
 // Utilidades de espaciado minimalistas
 export const COMPONENT_SPACING = {
-  // Espaciado interno de componentes (más generoso)
+  // Espaciado interno de componentes (más generoso) - UNIDADES MUI (x8px)
   padding: {
     button: {
-      sm: `${SPACING_TOKENS.spacing[2]}px ${SPACING_TOKENS.spacing[3]}px`,
-      md: `${SPACING_TOKENS.spacing[3]}px ${SPACING_TOKENS.spacing[4]}px`,
-      lg: `${SPACING_TOKENS.spacing[4]}px ${SPACING_TOKENS.spacing[6]}px`,
+      sm: '1.25 2.5', // Aproximado para usar con theme.spacing
+      md: '1.5 3',
+      lg: '2 4',
     },
     card: {
-      sm: SPACING_TOKENS.spacing[6],
-      md: SPACING_TOKENS.spacing[8],
-      lg: SPACING_TOKENS.spacing[12],
+      sm: 6,
+      md: 8,
+      lg: 12,
     },
     input: {
-      sm: `${SPACING_TOKENS.spacing[2]}px ${SPACING_TOKENS.spacing[3]}px`,
-      md: `${SPACING_TOKENS.spacing[3]}px ${SPACING_TOKENS.spacing[4]}px`,
-      lg: `${SPACING_TOKENS.spacing[4]}px ${SPACING_TOKENS.spacing[5]}px`,
+      sm: '1.25 2',
+      md: '1.5 2.5',
+      lg: '2 3',
     },
   },
   
-  // Márgenes (más generosos)
+  // Márgenes (más generosos) - UNIDADES MUI (x8px)
   margin: {
-    section: SPACING_TOKENS.spacing[16],    // 8rem
-    subsection: SPACING_TOKENS.spacing[12], // 6rem
-    element: SPACING_TOKENS.spacing[6],     // 3rem
+    section: 12,    // 96px
+    subsection: 8,  // 64px
+    element: 4,     // 32px
   },
   
-  // Espaciado de layout
+  // Espaciado de layout - valores RESPONSIVOS para usar directamente en sx
   layout: {
     container: {
-      xs: SPACING_TOKENS.spacing[3],  // 1.5rem
-      md: SPACING_TOKENS.spacing[6],  // 3rem
-      lg: SPACING_TOKENS.spacing[8],  // 4rem
+      xs: 2,  // 16px en móvil
+      sm: 3,  // 24px en tablet
+      md: 4,  // 32px en desktop pequeño
+      lg: 6,  // 48px en desktop grande
     },
     section: {
-      xs: SPACING_TOKENS.spacing[12], // 6rem
-      md: SPACING_TOKENS.spacing[16], // 8rem
-      lg: SPACING_TOKENS.spacing[20], // 10rem
+      xs: 6,  // 48px en móvil
+      sm: 8,  // 64px en tablet
+      md: 10, // 80px en desktop
+      lg: 12, // 96px en desktop grande
     },
   },
 } as const;

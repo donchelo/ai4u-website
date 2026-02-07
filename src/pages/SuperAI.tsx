@@ -35,6 +35,8 @@ import { Typography, Giant, H1, H2, H3, H4, BodyText, Button, SEOHead, Optimized
 import { ExpandableSection } from '@/components/shared/ui/molecules';
 import { useColors } from '@/hooks';
 import { SurfaceProvider } from '@/context';
+import { COMPONENT_SPACING, SPACING_TOKENS } from '@/components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '@/components/shared/ui/tokens/typography';
 
 interface SuperAIProps {
   isModal?: boolean;
@@ -204,10 +206,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       <Box
         sx={{
           background: colors.palette.black,
-          py: isModal ? { xs: 8, md: 12 } : { xs: 12, md: 25 },
+          py: isModal ? COMPONENT_SPACING.layout.container : COMPONENT_SPACING.layout.section,
           position: 'relative',
           overflow: 'hidden',
-          borderBottom: `1px solid ${colors.palette.gray[900]}`
+          borderBottom: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
@@ -246,7 +248,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 gap: 1.5,
                 px: 2,
                 py: 0.5,
-                border: `1px solid ${colors.palette.accentColors.orange}40`,
+                border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.accentColors.orange}40`,
                 bgcolor: 'rgba(0,0,0,0.5)',
                 mb: 2
               }}
@@ -255,9 +257,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <Typography
                 sx={{
                   color: colors.palette.accentColors.orange,
+                  ...TEXT_VARIANTS.ui.code,
                   fontSize: '0.7rem',
-                  fontWeight: 400,
-                  fontFamily: '"Necto Mono", monospace',
                   letterSpacing: '0.2em',
                   textTransform: 'none'
                 }}
@@ -271,7 +272,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 color: colors.palette.white,
                 maxWidth: '1100px',
                 lineHeight: 0.9,
-                fontSize: isModal ? { xs: '2.5rem', md: '4.5rem', lg: '5rem' } : { xs: '3rem', md: '5.5rem', lg: '6.5rem' },
+                fontSize: isModal ? TEXT_VARIANTS.display.medium.fontSize : TEXT_VARIANTS.display.large.fontSize,
                 '& span': {
                   color: colors.palette.accentColors.orange,
                 }
@@ -282,11 +283,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
             <BodyText
               sx={{
-                fontSize: { xs: '1.2rem', md: '1.6rem' },
+                ...TEXT_VARIANTS.body.large,
                 color: colors.palette.gray[400],
                 maxWidth: '850px',
                 fontWeight: 300,
-                lineHeight: 1.4,
               }}
             >
               Tu propio CEO de IA. Ejecuta estrategias y genera revenue.
@@ -300,8 +300,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 target="_blank"
                 sx={{
                   px: 6,
-                  height: '75px',
-                  fontSize: '1.1rem',
+                  height: 10,
+                  fontSize: TEXT_VARIANTS.ui.button.fontSize,
                   fontWeight: 400,
                   bgcolor: colors.palette.white,
                   color: colors.palette.black,
@@ -313,7 +313,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               >
                 Solicita tu SuperAI hoy
               </Button>
-              <Typography sx={{ color: colors.palette.gray[500], alignSelf: 'center', fontSize: '0.9rem', fontWeight: 400 }}>
+              <Typography sx={{ color: colors.palette.gray[500], alignSelf: 'center', ...TEXT_VARIANTS.ui.caption }}>
                 Llamada estratégica gratuita (30 min)
               </Typography>
             </Stack>
@@ -322,14 +322,14 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 1: EL PROBLEMA */}
-      <Box sx={{ py: { xs: 10, md: 15 }, background: colors.palette.black }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
         <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
             <Grid item xs={12} md={6}>
               <H1 sx={{ color: colors.palette.white, mb: 4 }}>
                 Eres Inteligente. <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Sistema No.</Box>
               </H1>
-              <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.2rem', mb: 4 }}>
+              <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.large, mb: 4 }}>
                 40+ horas/semana en tareas que la IA resuelve en minutos.
               </BodyText>
             </Grid>
@@ -340,15 +340,15 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     key={idx} 
                     sx={{ 
                       p: 3, 
-                      border: `1px solid ${colors.palette.gray[900]}`, 
+                      border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, 
                       bgcolor: 'rgba(255,255,255,0.02)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: 0.5
                     }}
                   >
-                    <H4 sx={{ color: colors.palette.white, fontSize: '1.1rem' }}>- {prob.title}</H4>
-                    <BodyText sx={{ color: colors.palette.gray[500], fontSize: '0.9rem', pl: 2 }}>
+                    <H4 sx={{ color: colors.palette.white, fontSize: TEXT_VARIANTS.body.regular.fontSize }}>- {prob.title}</H4>
+                    <BodyText sx={{ color: colors.palette.gray[500], fontSize: TEXT_VARIANTS.ui.caption.fontSize, pl: 2 }}>
                       ({prob.desc})
                     </BodyText>
                   </Box>
@@ -365,14 +365,14 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 2: LA SOLUCIÓN */}
-      <Box sx={{ py: { xs: 10, md: 18 }, background: colors.palette.gray[900], borderTop: `1px solid ${colors.palette.gray[800]}`, borderBottom: `1px solid ${colors.palette.gray[800]}` }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900], borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}`, borderBottom: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}` }}>
         <Container maxWidth="lg">
           <Stack spacing={8}>
             <Box textAlign="center">
               <H1 sx={{ color: colors.palette.white, mb: 3 }}>
                 Presenta SuperAI: <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Execution Partner Inteligente</Box>
               </H1>
-              <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.3rem' }}>
+              <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.large }}>
                 No es un chatbot. Es un agente que ejecuta.
               </BodyText>
             </Box>
@@ -385,7 +385,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                       bgcolor: colors.palette.black,
                       p: 4,
                       height: '100%',
-                      border: `1px solid ${colors.palette.gray[800]}`,
+                      border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}`,
                       transition: 'all 0.2s ease',
                       '&:hover': {
                         borderColor: colors.palette.accentColors.orange,
@@ -394,10 +394,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     }}
                   >
                     <benefit.icon sx={{ fontSize: 40, color: colors.palette.accentColors.orange, mb: 2 }} />
-                    <H4 sx={{ mb: 1, color: colors.palette.white, letterSpacing: '0.1em' }}>
+                    <H4 sx={{ mb: 1, color: colors.palette.white, letterSpacing: '0.1em', ...TEXT_VARIANTS.ui.button }}>
                       ✓ {benefit.title}
                     </H4>
-                    <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
+                    <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
                       {benefit.description}
                     </BodyText>
                   </Box>
@@ -417,7 +417,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   <H3 sx={{ color: colors.palette.white, mb: 3, fontWeight: 400 }}>Resultados:</H3>
                   <Stack spacing={1.5}>
                     {results.map((res, idx) => (
-                      <BodyText key={idx} sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '0.9rem' }}>
+                      <BodyText key={idx} sx={{ color: colors.palette.white, fontWeight: 400, fontSize: TEXT_VARIANTS.body.small.fontSize }}>
                         • {res}
                       </BodyText>
                     ))}
@@ -430,7 +430,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 3: CÓMO FUNCIONA */}
-      <Box sx={{ py: { xs: 10, md: 15 }, background: colors.palette.black }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
         <Container maxWidth="lg">
           <Box textAlign="center" mb={10}>
             <H1 sx={{ color: colors.palette.white, mb: 2 }}>
@@ -446,7 +446,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                       position: 'absolute',
                       top: 0,
                       left: 0,
-                      fontSize: '6rem',
+                      fontSize: TEXT_VARIANTS.display.large.fontSize,
                       fontWeight: 400,
                       color: colors.palette.gray[900],
                       lineHeight: 1,
@@ -457,10 +457,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   </Typography>
                   <Box sx={{ position: 'relative', zIndex: 1, pl: 2 }}>
                     <H3 sx={{ color: colors.palette.white, mb: 1 }}>{step.title}</H3>
-                    <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, fontFamily: '"Necto Mono", monospace' }}>
+                    <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code }}>
                       {step.subtitle}
                     </Typography>
-                    <BodyText sx={{ color: colors.palette.gray[400] }}>
+                    <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.regular }}>
                       {step.description}
                     </BodyText>
                   </Box>
@@ -468,8 +468,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ mt: 10, textAlign: 'center', p: 4, border: `1px solid ${colors.palette.gray[900]}` }}>
-            <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.1rem' }}>
+          <Box sx={{ mt: 10, textAlign: 'center', p: 4, border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}` }}>
+            <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.regular }}>
               Mes 1: ROI obvio. Mes 3: <Box component="span" sx={{ color: colors.palette.white, fontWeight: 400 }}>transformacional.</Box>
             </BodyText>
           </Box>
@@ -477,7 +477,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 4: CASOS DE USO */}
-      <Box sx={{ py: { xs: 10, md: 15 }, background: colors.palette.gray[900] }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900] }}>
         <Container maxWidth="lg">
           <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>
             Mira lo que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>SuperAI Hace</Box> en la Práctica
@@ -485,13 +485,13 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           <Grid container spacing={4}>
             {useCases.map((useCase, idx) => (
               <Grid item xs={12} md={6} key={idx}>
-                <Box sx={{ bgcolor: colors.palette.black, p: 5, height: '100%', borderLeft: `5px solid ${colors.palette.accentColors.orange}` }}>
+                <Box sx={{ bgcolor: colors.palette.black, p: 5, height: '100%', borderLeft: '5px solid ${colors.palette.accentColors.orange}' }}>
                   <H3 sx={{ color: colors.palette.white, mb: 4, textTransform: 'none' }}>Para {useCase.category}</H3>
                   <Stack spacing={2.5}>
                     {useCase.items.map((item, i) => (
                       <Box key={i} sx={{ display: 'flex', gap: 2 }}>
-                        <CheckCircle sx={{ color: colors.palette.accentColors.orange, fontSize: 20, mt: 0.5 }} />
-                        <BodyText sx={{ color: colors.palette.gray[300] }}>{item}</BodyText>
+                        <CheckCircle sx={{ color: colors.palette.accentColors.orange, fontSize: SPACING_TOKENS.sizes.iconSm, mt: 0.5 }} />
+                        <BodyText sx={{ color: colors.palette.gray[300], ...TEXT_VARIANTS.body.regular }}>{item}</BodyText>
                       </Box>
                     ))}
                   </Stack>
@@ -503,7 +503,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 5: DIFERENCIACIÓN */}
-      <Box sx={{ py: { xs: 10, md: 15 }, background: colors.palette.black }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
         <Container maxWidth="lg">
           <Stack spacing={6} alignItems="center">
             <Box textAlign="center">
@@ -511,25 +511,25 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <H1 sx={{ color: colors.palette.accentColors.orange }}>Es Tu Socio Ejecutivo.</H1>
             </Box>
 
-            <TableContainer component={Paper} sx={{ bgcolor: 'transparent', boxShadow: 'none', borderRadius: 0, border: `1px solid ${colors.palette.gray[900]}` }}>
+            <TableContainer component={Paper} sx={{ bgcolor: 'transparent', boxShadow: 'none', borderRadius: 0, border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}` }}>
               <Table>
                 <TableHead>
-                  <TableRow sx={{ borderBottom: `2px solid ${colors.palette.gray[800]}` }}>
+                  <TableRow sx={{ borderBottom: `${SPACING_TOKENS.borderWidth[2]}px solid ${colors.palette.gray[800]}` }}>
                     <TableCell sx={{ color: colors.palette.gray[500], fontWeight: 400, py: 3, border: 'none' }}></TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '1.1rem', py: 3, border: 'none' }}>ChatBot</TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '1.1rem', py: 3, border: 'none' }}>Copilot</TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, fontSize: '1.2rem', py: 3, border: 'none' }}>SuperAI</TableCell>
+                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.regular, py: 3, border: 'none' }}>ChatBot</TableCell>
+                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.regular, py: 3, border: 'none' }}>Copilot</TableCell>
+                    <TableCell align="center" sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, ...TEXT_VARIANTS.body.large, py: 3, border: 'none' }}>SuperAI</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {comparison.map((row, idx) => (
-                    <TableRow key={idx} sx={{ borderBottom: `1px solid ${colors.palette.gray[900]}`, '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' } }}>
+                    <TableRow key={idx} sx={{ borderBottom: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' } }}>
                       <TableCell sx={{ color: colors.palette.white, fontWeight: 400, py: 2.5, border: 'none' }}>{row.feature}</TableCell>
                       <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
                         {row.chatbot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>}
                       </TableCell>
                       <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
-                        {row.copilot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : (row.copilot === 'Parcial' ? <Typography sx={{ color: colors.palette.gray[600], fontWeight: 400, fontSize: '0.8rem' }}>parcial</Typography> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>)}
+                        {row.copilot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : (row.copilot === 'Parcial' ? <Typography sx={{ color: colors.palette.gray[600], fontWeight: 400, ...TEXT_VARIANTS.ui.caption }}>parcial</Typography> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>)}
                       </TableCell>
                       <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
                         {row.superai === true ? <CheckCircle sx={{ color: colors.palette.accentColors.orange }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>}
@@ -550,7 +550,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 7: PRECIOS */}
-      <Box sx={{ py: { xs: 10, md: 20 }, background: colors.palette.black }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
         <Container maxWidth="lg">
           <Box textAlign="center" mb={10}>
             <H1 sx={{ color: colors.palette.white, mb: 2 }}>Inversión Mínima. <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Retorno Máximo.</Box></H1>
@@ -561,7 +561,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 <Box
                   sx={{
                     bgcolor: tier.highlight ? 'rgba(255,255,255,0.03)' : 'transparent',
-                    border: tier.highlight ? `2px solid ${colors.palette.accentColors.orange}` : `1px solid ${colors.palette.gray[900]}`,
+                    border: tier.highlight ? `${SPACING_TOKENS.borderWidth[2]}px solid ${colors.palette.accentColors.orange}` : `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
                     p: 5,
                     height: '100%',
                     display: 'flex',
@@ -570,29 +570,29 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   }}
                 >
                   {tier.highlight && (
-                    <Box sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 3, py: 0.5, fontWeight: 400, fontSize: '0.7rem', letterSpacing: '0.1em' }}>
+                    <Box sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 3, py: 0.5, fontWeight: 400, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
                       Más popular
                     </Box>
                   )}
-                  <Typography sx={{ color: colors.palette.gray[500], fontWeight: 400, mb: 1, fontFamily: '"Necto Mono", monospace', letterSpacing: '0.1em' }}>
+                  <Typography sx={{ color: colors.palette.gray[500], fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.code, letterSpacing: '0.1em' }}>
                     SuperAI {tier.name}
                   </Typography>
                   {tier.implementation != null && (
-                    <Typography sx={{ color: colors.palette.gray[400], fontSize: '0.85rem', mb: 0.5 }}>
+                    <Typography sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.caption, mb: 0.5 }}>
                       Implementación: {tier.implementation} USD <Box component="span" sx={{ color: colors.palette.gray[500] }}>(una vez)</Box>
                     </Typography>
                   )}
                   <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 1 }}>
-                    <Typography sx={{ color: colors.palette.white, fontSize: '3rem', fontWeight: 400 }}>{tier.price}</Typography>
+                    <Typography sx={{ color: colors.palette.white, ...TEXT_VARIANTS.display.medium, fontWeight: 400 }}>{tier.price}</Typography>
                     {tier.period && <Typography sx={{ color: colors.palette.gray[500], ml: 1, fontWeight: 400 }}>{tier.period}</Typography>}
                   </Box>
-                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 4, fontSize: '0.9rem' }}>{tier.for}</Typography>
+                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 4, ...TEXT_VARIANTS.body.small }}>{tier.for}</Typography>
                   
                   <Stack spacing={2} sx={{ mb: 6, flexGrow: 1 }}>
                     {tier.features.map((feat, i) => (
                       <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
-                        <Add sx={{ color: colors.palette.accentColors.orange, fontSize: 16 }} />
-                        <BodyText sx={{ color: colors.palette.gray[300], fontSize: '0.9rem' }}>{feat}</BodyText>
+                        <Add sx={{ color: colors.palette.accentColors.orange, fontSize: SPACING_TOKENS.sizes.iconXs }} />
+                        <BodyText sx={{ color: colors.palette.gray[300], fontSize: TEXT_VARIANTS.body.small.fontSize }}>{feat}</BodyText>
                       </Box>
                     ))}
                   </Stack>
@@ -602,7 +602,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     fullWidth
                     href="https://calendly.com/mgarciap333/ai4u"
                     target="_blank"
-                    sx={{ height: '60px', fontWeight: 400 }}
+                    sx={{ height: 7.5, fontWeight: 400 }}
                   >
                     {tier.buttonText || 'empezarAhora'}
                   </Button>
@@ -616,29 +616,29 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             sx={{ 
               mt: 12, 
               p: { xs: 4, md: 6 }, 
-              border: `1px solid ${colors.palette.gray[900]}`,
+              border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
               bgcolor: 'rgba(255,255,255,0.02)',
               maxWidth: '900px',
               mx: 'auto'
             }}
           >
-            <H3 sx={{ color: colors.palette.white, mb: 4, fontSize: '1.5rem', fontWeight: 400 }}>
+            <H3 sx={{ color: colors.palette.white, mb: 4, ...TEXT_VARIANTS.body.large, fontWeight: 400 }}>
               // Consideraciones de operación
             </H3>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
-                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
                   Consumo de LLM & APIs
                 </Typography>
-                <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
+                <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
                   Los costos de consumo de modelos (OpenAI, Anthropic, etc.) se facturan directamente a tu tarjeta. La inversión depende de la inteligencia y el volumen de ejecución requerido.
                 </BodyText>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
                   Hardware dedicado
                 </Typography>
-                <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
+                <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
                   SuperAI requiere una estación de trabajo (PC/Servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
                 </BodyText>
               </Grid>
@@ -648,7 +648,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 8: PREGUNTAS FRECUENTES */}
-      <Box sx={{ py: { xs: 10, md: 15 }, background: colors.palette.gray[900] }}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900] }}>
         <Container maxWidth="md">
           <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>Preguntas Frecuentes</H1>
           <Stack spacing={2}>
@@ -671,16 +671,16 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       <Box
         sx={{
           background: colors.palette.black,
-          py: { xs: 12, md: 20 },
+          py: COMPONENT_SPACING.layout.section,
           textAlign: 'center',
-          borderTop: `1px solid ${colors.palette.gray[900]}`,
+          borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
         }}
       >
         <Container maxWidth="md">
           <Stack spacing={6} alignItems="center">
             <Giant sx={{ color: colors.palette.white }}>¿Listo para Ejecutar a Velocidad?</Giant>
 
-            <BodyText sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '1.4rem', maxWidth: '700px' }}>
+            <BodyText sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.large, maxWidth: '700px' }}>
               Cuesta menos que un freelancer. Trabaja 24/7.
             </BodyText>
 
@@ -692,8 +692,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 target="_blank"
                 sx={{
                   px: 8,
-                  height: '80px',
-                  fontSize: '1.3rem',
+                  height: 10,
+                  fontSize: TEXT_VARIANTS.body.large.fontSize,
                   fontWeight: 400,
                   bgcolor: colors.palette.accentColors.orange,
                   color: colors.palette.white,
@@ -712,8 +712,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 target="_blank"
                 sx={{
                   px: 6,
-                  height: '80px',
-                  fontSize: '1.1rem',
+                  height: 10,
+                  fontSize: TEXT_VARIANTS.ui.button.fontSize,
                   fontWeight: 400,
                   borderColor: colors.palette.gray[700],
                   color: colors.palette.white,
@@ -728,14 +728,14 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 component="a" 
                 href={`https://wa.me/573218175744`} 
                 target="_blank"
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', '&:hover': { color: colors.palette.white } }}
+                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
               >
                 Whatsapp
               </Typography>
               <Typography 
                 component="a" 
                 href="mailto:contacto@ai4u.com.co" 
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', '&:hover': { color: colors.palette.white } }}
+                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
               >
                 Email
               </Typography>
@@ -743,7 +743,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 component="a" 
                 href="https://calendly.com/mgarciap333/ai4u" 
                 target="_blank"
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', '&:hover': { color: colors.palette.white } }}
+                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
               >
                 Calendario
               </Typography>
@@ -753,7 +753,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Footer Branding */}
-      <Box sx={{ py: 6, background: colors.palette.black, borderTop: `1px solid ${colors.palette.gray[900]}`, textAlign: 'center' }}>
+      <Box sx={{ py: 6, background: colors.palette.black, borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, textAlign: 'center' }}>
         <Container maxWidth="lg">
           <H2 sx={{ color: colors.palette.white, opacity: 0.5, fontWeight: 400 }}>SuperAI</H2>
         </Container>

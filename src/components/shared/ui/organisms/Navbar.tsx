@@ -20,6 +20,7 @@ import { Logo, GoogleTranslateWidget } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
 import { SHADOW_TOKENS } from '../tokens/theme';
+import { TEXT_VARIANTS } from '../tokens/typography';
 
 // Styled components usando tokens del sistema
 const StyledNavButton = styled(Button, {
@@ -29,7 +30,7 @@ const StyledNavButton = styled(Button, {
   color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
   fontWeight: 400,
   textTransform: 'none',
-  fontSize: '0.95rem',
+  fontSize: TEXT_VARIANTS.ui.caption.fontSize,
   transition: 'all 0.3s ease-in-out',
   position: 'relative',
   border: 'none', // Eliminar el borde global del tema

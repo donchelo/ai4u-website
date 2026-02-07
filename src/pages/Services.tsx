@@ -19,6 +19,8 @@ import { ServiceSuperCategory } from '@/types/service';
 import { getServicesStructuredData, getPageMetaTags } from '@/utils/seo';
 import { getRelatedLinks } from '@/data/internalLinkingStrategy';
 import { SHADOW_TOKENS } from '@/components/shared/ui/tokens/theme';
+import { COMPONENT_SPACING, SPACING_TOKENS } from '@/components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '@/components/shared/ui/tokens/typography';
 
 const Services: React.FC = () => {
   const colors = useColors();
@@ -121,11 +123,10 @@ const Services: React.FC = () => {
 
       {/* Hero Section - Los 4 Ejes de AI4U */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black,
         color: colors.palette.white,
-        borderBottom: `8px solid ${colors.palette.white}`,
+        borderBottom: `${SPACING_TOKENS.spacing[1]}px solid ${colors.palette.white}`,
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -133,8 +134,8 @@ const Services: React.FC = () => {
         <Typography 
           sx={{ 
             position: 'absolute', 
-            top: -100, 
-            right: -50, 
+            top: -12, 
+            right: -6, 
             fontSize: { xs: '20rem', md: '35rem' }, 
             fontWeight: 400, 
             color: colors.palette.white, 
@@ -156,10 +157,10 @@ const Services: React.FC = () => {
                   color: colors.palette.accentColors.orange, 
                   fontWeight: 400, 
                   letterSpacing: 4,
-                  fontSize: '1.2rem',
+                  fontSize: TEXT_VARIANTS.body.regular.fontSize,
                   mb: 2,
                   display: 'block',
-                  fontFamily: '"Necto Mono", monospace'
+                  ...TEXT_VARIANTS.ui.code
                 }}
               >
                 // AI4U LAB // 2026
@@ -168,13 +169,13 @@ const Services: React.FC = () => {
                 color: colors.palette.white, 
                 mb: 4,
                 lineHeight: 0.85,
-                fontSize: { xs: '3.5rem', md: '6.5rem', lg: '8.5rem' },
+                ...TEXT_VARIANTS.display.giant,
                 maxWidth: '900px'
               }}>
                 Nuestros 4 <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ejes</Box> de servicio
               </Giant>
               <BodyText sx={{ 
-                fontSize: { xs: '1.4rem', md: '1.8rem' }, 
+                ...TEXT_VARIANTS.body.large, 
                 fontWeight: 400, 
                 color: colors.palette.white,
                 maxWidth: '700px',
@@ -197,7 +198,7 @@ const Services: React.FC = () => {
                       color: colors.palette.white,
                       borderRadius: 0,
                       px: 3,
-                      height: '60px',
+                      height: 7,
                       '&:hover': {
                         borderColor: axis.bgColor,
                         bgcolor: axis.bgColor,
@@ -270,8 +271,7 @@ const Services: React.FC = () => {
             key={axis.id}
             id={axis.id}
             sx={{ 
-              py: { xs: 12, md: 20 }, 
-              px: { xs: 4, md: 8, lg: 12 },
+              py: COMPONENT_SPACING.layout.section, 
               bgcolor: axis.bgColor,
               color: axis.textColor,
               display: 'flex',
@@ -284,8 +284,8 @@ const Services: React.FC = () => {
             <Typography 
               sx={{ 
                 position: 'absolute', 
-                top: -50, 
-                right: 20, 
+                top: -6, 
+                right: 2.5, 
                 fontSize: { xs: '15rem', md: '25rem' }, 
                 fontWeight: 400, 
                 color: axis.accentColor, 
@@ -310,7 +310,7 @@ const Services: React.FC = () => {
                         color: axis.accentColor, 
                         fontWeight: 400, 
                         letterSpacing: 4,
-                        fontSize: '1.2rem',
+                        fontSize: TEXT_VARIANTS.body.regular.fontSize,
                         mb: 2,
                         display: 'block'
                       }}
@@ -320,7 +320,7 @@ const Services: React.FC = () => {
                     <H1 sx={{ 
                       fontWeight: 400, 
                       textTransform: 'none', 
-                      fontSize: { xs: '3.5rem', md: '5rem', lg: '6.5rem' },
+                      ...TEXT_VARIANTS.display.large,
                       lineHeight: 0.9,
                       mb: 4,
                       color: 'inherit'
@@ -328,7 +328,7 @@ const Services: React.FC = () => {
                       {axis.title}
                     </H1>
                     <BodyText sx={{ 
-                      fontSize: '1.5rem', 
+                      ...TEXT_VARIANTS.body.large, 
                       fontWeight: 400, 
                       lineHeight: 1.2,
                       maxWidth: '400px',
@@ -342,9 +342,9 @@ const Services: React.FC = () => {
                       variant={axis.bgColor === colors.palette.black || axis.bgColor === colors.palette.info ? 'outline' : 'primary'}
                       sx={{ 
                         borderColor: axis.textColor, 
-                        height: '70px',
+                        height: 9,
                         px: 6,
-                        fontSize: '1.1rem',
+                        fontSize: TEXT_VARIANTS.ui.button.fontSize,
                         bgcolor: expandedAxes[axis.id] ? axis.textColor : (axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined),
                         color: expandedAxes[axis.id] ? axis.bgColor : axis.textColor,
                         borderRadius: 0,
@@ -429,8 +429,7 @@ const Services: React.FC = () => {
 
       {/* Proceso Section (Mantenida pero adaptada) */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
@@ -442,8 +441,8 @@ const Services: React.FC = () => {
               fontWeight: 400, 
               textTransform: 'none', 
               mb: 4, 
-              fontSize: { xs: '3rem', md: '6rem' },
-              color: colors.palette.white // Asegurar que sea blanco
+              ...TEXT_VARIANTS.display.large,
+              color: colors.palette.white
             }}>
               Método <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>directo</Box>
             </H1>
@@ -455,9 +454,9 @@ const Services: React.FC = () => {
                 { n: '04', t: 'despliegue', d: 'Integración + soporte.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ borderLeft: `4px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
-                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 400, mb: 1, color: colors.palette.white }}>{step.n}</H2>
-                    <Typography sx={{ fontWeight: 400, fontSize: '1.5rem', mb: 1, color: colors.palette.white }}>{step.t}</Typography>
+                  <Box sx={{ borderLeft: `${SPACING_TOKENS.borderWidth.thick}px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
+                    <H2 sx={{ ...TEXT_VARIANTS.display.small, fontWeight: 400, mb: 1, color: colors.palette.white }}>{step.n}</H2>
+                    <Typography sx={{ fontWeight: 400, ...TEXT_VARIANTS.body.large, mb: 1, color: colors.palette.white }}>{step.t}</Typography>
                     <BodyText sx={{ fontWeight: 400, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
                   </Box>
                 </Grid>
@@ -469,14 +468,14 @@ const Services: React.FC = () => {
 
       {/* CTA Final */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
       }}>
         <Container maxWidth="lg">
           <Stack spacing={6} alignItems="center" textAlign="center">
-            <Giant sx={{ color: colors.palette.black, fontSize: { xs: '3rem', md: '8rem' } }}>
+            <Giant sx={{ color: colors.palette.black }}>
               ¿Empezamos?
             </Giant>
             <DiagnosticCTA 
@@ -484,9 +483,9 @@ const Services: React.FC = () => {
               size="large"
               text="Agendar consulta gratuita"
               sx={{ 
-                height: '100px', 
-                px: 10, 
-                fontSize: '1.8rem',
+                height: 13, 
+                px: 6, 
+                fontSize: TEXT_VARIANTS.display.small.fontSize,
                 borderRadius: 0,
                 bgcolor: colors.palette.black,
                 color: colors.palette.white,

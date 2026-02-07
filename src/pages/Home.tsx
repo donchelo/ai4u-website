@@ -14,6 +14,8 @@ import { ServiceSuperCategory } from '../types/service';
 import { ROUTES } from '../utils/constants';
 import { scrollToTop } from '../utils/helpers';
 import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
+import { COMPONENT_SPACING, SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 
 const Home = () => {
   const colors = useColors();
@@ -107,8 +109,7 @@ const Home = () => {
 
       {/* Features Section - Inspiración GREEN_FRESH */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 },
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section,
         bgcolor: colors.palette.accentColors.green,
         color: colors.palette.black,
         display: 'flex',
@@ -126,7 +127,7 @@ const Home = () => {
                     variant="default"
                     sx={{ 
                       height: '100%',
-                      p: 6,
+                      p: COMPONENT_SPACING.padding.card.md,
                       display: 'flex',
                       flexDirection: 'column',
                       '&:hover': {
@@ -139,12 +140,12 @@ const Home = () => {
                     fontWeight: 400,
                     textTransform: 'none',
                     color: colors.palette.black,
-                    fontSize: '2.25rem',
+                    ...TEXT_VARIANTS.display.small,
                     lineHeight: 1
                   }}>
                     {feature.title}
                   </H3>
-                  <BodyText sx={{ fontSize: '1.25rem', color: colors.palette.black, fontWeight: 400, lineHeight: 1.4 }}>
+                  <BodyText sx={{ ...TEXT_VARIANTS.body.large, color: colors.palette.black }}>
                     {feature.description}
                   </BodyText>
                 </Card>
@@ -157,8 +158,7 @@ const Home = () => {
 
       {/* Robot Section - Inspiración BLACK_MODERN / SUPER_AI_NEON */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 },
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section,
         bgcolor: colors.palette.black, 
         color: colors.palette.white,
         position: 'relative',
@@ -195,10 +195,10 @@ const Home = () => {
               <Grid item xs={12} md={7}>
                 <Stack spacing={6}>
                   {robotFeatures.map((feature, idx) => (
-                    <Box key={idx} sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
+                    <Box key={idx} sx={{ borderLeft: `${SPACING_TOKENS.spacing[1]}px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
                       <H2 sx={{ 
                         color: colors.palette.white,
-                        fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' }, // Reducido para evitar cortes
+                        ...TEXT_VARIANTS.display.medium,
                         fontWeight: 400,
                         textTransform: 'none',
                         lineHeight: 1.0,
@@ -214,14 +214,14 @@ const Home = () => {
               <Grid item xs={12} md={5}>
                 <Box sx={{ 
                   p: 6, 
-                  borderRadius: 4,
+                  borderRadius: SPACING_TOKENS.borderRadius.lg,
                   bgcolor: 'rgba(255,255,255,0.03)',
                   backdropFilter: 'blur(20px)',
                   height: 'fit-content'
                 }}>
                   <BodyText sx={{ 
                     color: colors.palette.white, 
-                    fontSize: '2.2rem', 
+                    ...TEXT_VARIANTS.display.small,
                     lineHeight: 1.2,
                     fontWeight: 300,
                     letterSpacing: '-0.04em',
@@ -239,8 +239,7 @@ const Home = () => {
 
       {/* Services Section - Inspiración WHITE_MINIMAL (Optimizado) */}
       <Box sx={{ 
-        py: { xs: 10, md: 20 },
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section,
         bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
@@ -254,14 +253,14 @@ const Home = () => {
                   fontWeight: 400, 
                   textTransform: 'none', 
                   color: colors.palette.black, 
-                  fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' }, // Reducido ligeramente
+                  ...TEXT_VARIANTS.display.large,
                   lineHeight: 1.0,
                   mb: 4,
                   wordBreak: 'break-word'
                 }}>
                   Servicios que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>transforman</Box>
                 </H1>
-                <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
+                <BodyText sx={{ ...TEXT_VARIANTS.body.large, fontWeight: 400, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
                   IA aplicada a tu negocio.
                 </BodyText>
                 <Button 
@@ -271,9 +270,9 @@ const Home = () => {
                   to={ROUTES.SERVICES}
                   onClick={() => scrollToTop()}
                   sx={{ 
-                    height: '80px', 
+                    height: 10, 
                     px: 6, 
-                    fontSize: '1.2rem',
+                    fontSize: TEXT_VARIANTS.ui.button.fontSize,
                     display: { xs: 'none', lg: 'flex' }
                   }}
                 >
@@ -291,7 +290,7 @@ const Home = () => {
                       variant="default"
                       sx={{ 
                         height: '100%',
-                        p: 5, // Reducido ligeramente de 6
+                        p: COMPONENT_SPACING.padding.card.sm,
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
@@ -311,18 +310,18 @@ const Home = () => {
                         <Typography 
                           className="idx"
                           sx={{ 
-                            fontSize: '1.5rem', 
+                            ...TEXT_VARIANTS.ui.code,
+                            fontSize: TEXT_VARIANTS.body.large.fontSize, 
                             fontWeight: 400, 
                             color: colors.palette.gray[400],
                             mb: 2,
-                            fontFamily: '"Necto Mono", monospace'
                           }}
                         >
                           // 0{idx + 1}
                         </Typography>
                         <H3 sx={{ 
                           fontWeight: 400,
-                          fontSize: { xs: '2rem', md: '2.4rem' }, // Reducido de 2.8rem para evitar cortes
+                          ...TEXT_VARIANTS.display.small,
                           mb: 3,
                           lineHeight: 1.0,
                           textTransform: 'none',
@@ -332,7 +331,7 @@ const Home = () => {
                         }}>
                           {cat.title}
                         </H3>
-                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 400, opacity: 0.9, mb: 4 }}>
+                        <BodyText sx={{ ...TEXT_VARIANTS.body.regular, opacity: 0.9, mb: 4 }}>
                           {cat.description}
                         </BodyText>
                       </Box>
@@ -346,7 +345,7 @@ const Home = () => {
                           gap: 2,
                           mt: 'auto',
                           pt: 4,
-                          borderTop: `1px solid ${colors.palette.gray[200]}`,
+                          borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[200]}`,
                           textDecoration: 'none',
                           color: 'inherit',
                           '&:hover': {
@@ -355,7 +354,7 @@ const Home = () => {
                         }}
                       >
                         <GeometricIcon type="arrow-right" size="small" color="inherit" />
-                        <Typography sx={{ fontWeight: 400, textTransform: 'none', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
+                        <Typography sx={{ ...TEXT_VARIANTS.ui.caption, textTransform: 'none', letterSpacing: '0.1em' }}>
                           Saber más
                         </Typography>
                       </Box>
@@ -370,8 +369,7 @@ const Home = () => {
 
       {/* CTA Section - Inspiración ORANGE_PUNCH */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 },
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section,
         bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
@@ -380,7 +378,7 @@ const Home = () => {
         <SurfaceProvider surface="black">
           <Container maxWidth="xl">
             <Box sx={{ textAlign: 'center' }}>
-            <Giant sx={{ mb: 8, color: colors.palette.white, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
+            <Giant sx={{ mb: 8, color: colors.palette.white, lineHeight: 0.85 }}>
               ¿Listo para el siguiente nivel?
             </Giant>
             <Stack 
@@ -390,9 +388,9 @@ const Home = () => {
               alignItems="center"
             >
               <DiagnosticCTA sx={{ 
-                height: '120px', 
-                px: 10, 
-                fontSize: '2rem', 
+                height: 8, 
+                px: 6, 
+                fontSize: TEXT_VARIANTS.display.small.fontSize, 
                 fontWeight: 400, 
                 bgcolor: colors.palette.white, 
                 color: colors.palette.black,
@@ -408,9 +406,9 @@ const Home = () => {
                 to={ROUTES.SERVICES}
                 onClick={() => scrollToTop()}
                 sx={{ 
-                  height: '120px', 
-                  px: 10, 
-                  fontSize: '2rem', 
+                  height: 8, 
+                  px: 6, 
+                  fontSize: TEXT_VARIANTS.display.small.fontSize, 
                   fontWeight: 400, 
                   borderRadius: 0,
                   borderColor: colors.palette.white,

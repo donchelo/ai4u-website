@@ -6,67 +6,68 @@ import CssBaseline from '@mui/material/CssBaseline';
 // Import consolidated color system from single source of truth
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
+import { TYPOGRAPHY_TOKENS } from '../components/shared/ui/tokens/typography';
 
 // Fuentes para código
-const CODE_FONT_FAMILY = '"Necto Mono", monospace';
+const CODE_FONT_FAMILY = TYPOGRAPHY_TOKENS.fontFamily.code;
 
 // Configuración de tipografía
 const typography: TypographyVariantsOptions = {
-	fontFamily: '"Red Hat Display", sans-serif',
+	fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
 	h1: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
-		fontSize: '2.5rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.medium,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize['2xl'],
 	},
 	h2: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
-		fontSize: '2rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.medium,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.xl,
 	},
 	h3: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
-		fontSize: '1.75rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.medium,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.lg,
 	},
 	h4: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
-		fontSize: '1.5rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.medium,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.base,
 	},
 	h5: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '1.25rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.sm,
 	},
 	h6: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '1.1rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.xs,
 	},
 	body1: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '1rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.sm,
 	},
 	body2: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '0.875rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.xs,
 	},
 	button: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
 		textTransform: 'none' as const,
 	},
 	caption: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '0.75rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.xs,
 	},
 	overline: {
-		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 400,
-		fontSize: '0.75rem',
+		fontFamily: TYPOGRAPHY_TOKENS.fontFamily.primary,
+		fontWeight: TYPOGRAPHY_TOKENS.fontWeight.regular,
+		fontSize: TYPOGRAPHY_TOKENS.fontSize.xs,
 		textTransform: 'none',
 		letterSpacing: '0.08em',
 	},
@@ -77,17 +78,17 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 	const isLight = mode === 'light';
 	
 	return {
-			MuiButton: {
+		MuiButton: {
 			styleOverrides: {
-				root: {
-					borderRadius: 0, // Ángulos rectos para un look más minimalista/limpio
+				root: ({ theme }) => ({
+					borderRadius: 0,
 					fontWeight: 400,
 					textTransform: 'none',
 					boxShadow: 'none',
-					padding: '10px 20px',
+					padding: theme.spacing(1.25, 2.5),
 					transition: 'all 0.2s ease-in-out',
-					border: 'none', // Sin bordes por defecto
-				},
+					border: 'none',
+				}),
 				containedPrimary: {
 					backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 					color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,

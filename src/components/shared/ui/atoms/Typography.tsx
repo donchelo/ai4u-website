@@ -4,6 +4,9 @@ import { TEXT_VARIANTS } from '../tokens/typography';
 
 interface TypographyExtendedProps extends MuiTypographyProps {
   children?: ReactNode;
+  href?: string;
+  target?: string;
+  component?: any;
 }
 
 // Componentes de tipografía minimalistas usando nuevos tokens
@@ -55,7 +58,7 @@ export const H4 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h4" 
     sx={{
-      fontSize: { xs: '1.5rem', md: '2rem' },
+      fontSize: TEXT_VARIANTS.display.small.fontSize,
       fontWeight: 500,
       lineHeight: 1.2,
       textTransform: 'none',
@@ -69,7 +72,7 @@ export const H5 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h5" 
     sx={{
-      fontSize: '1.25rem',
+      fontSize: TEXT_VARIANTS.body.large.fontSize,
       fontWeight: 400,
       lineHeight: 1.3,
       ...props.sx
@@ -82,7 +85,7 @@ export const H6 = (props: TypographyExtendedProps) => (
   <MuiTypography 
     variant="h6" 
     sx={{
-      fontSize: '1.125rem',
+      fontSize: TEXT_VARIANTS.body.regular.fontSize,
       fontWeight: 400,
       lineHeight: 1.4,
       ...props.sx
@@ -119,16 +122,14 @@ export const CodeText = (props: TypographyExtendedProps) => {
   return (
     <MuiTypography
       component="code"
-      fontFamily="monospace"
+      fontFamily={TEXT_VARIANTS.ui.code.fontFamily}
       sx={{ 
         display: 'inline-block',
         backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
         color: theme.palette.mode === 'dark' ? 'primary.light' : 'text.primary',
         borderRadius: 1,
         px: 0.5,
-        fontSize: '0.875rem',
-        fontWeight: 400,
-        lineHeight: 1.4,
+        ...TEXT_VARIANTS.ui.code,
         ...props.sx
       }}
       {...props}

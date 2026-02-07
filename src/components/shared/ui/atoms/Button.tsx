@@ -8,6 +8,9 @@ interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'minimal';
   size?: 'small' | 'medium' | 'large';
   children?: ReactNode;
+  href?: string;
+  target?: string;
+  component?: any;
 }
 
 // Botón minimalista usando sistema de tokens

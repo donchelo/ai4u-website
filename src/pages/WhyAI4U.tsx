@@ -16,6 +16,8 @@ import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { clients } from '../data/clients';
+import { COMPONENT_SPACING, SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 
 const WhyAI4U = () => {
   const colors = useColors();
@@ -41,8 +43,7 @@ const WhyAI4U = () => {
 
       {/* Mariano Section - Inspiración BLACK_MODERN */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black, 
         color: colors.palette.white,
         display: 'flex',
@@ -58,7 +59,8 @@ const WhyAI4U = () => {
                     fontWeight: 400,
                     textTransform: 'none',
                     color: colors.palette.white,
-                    lineHeight: 0.9
+                    lineHeight: 0.9,
+                    ...TEXT_VARIANTS.display.large
                   }}>
                     La parte <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>humana</Box> de la IA
                   </H1>
@@ -69,8 +71,8 @@ const WhyAI4U = () => {
                       'Cofundador de Matt Movilidad',
                       'Especialista en automatización'
                     ].map((text, idx) => (
-                      <Box key={idx} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, textTransform: 'none', color: colors.palette.white }}>
+                      <Box key={idx} sx={{ borderLeft: '6px solid ${colors.palette.accentColors.orange}', pl: 4 }}>
+                        <BodyText sx={{ ...TEXT_VARIANTS.body.large, fontWeight: 400, textTransform: 'none', color: colors.palette.white }}>
                           {text}
                         </BodyText>
                       </Box>
@@ -84,7 +86,7 @@ const WhyAI4U = () => {
                   >
                   <BodyText sx={{ 
                     color: colors.palette.white,
-                    fontSize: '1.5rem',
+                    ...TEXT_VARIANTS.body.large,
                     lineHeight: 1.4,
                     fontWeight: 300,
                     opacity: 0.9
@@ -100,9 +102,9 @@ const WhyAI4U = () => {
                   href="https://www.linkedin.com/in/mariano3/"
                   sx={{
                     mt: 4,
-                    height: '100px',
+                    height: 13,
                     px: 8,
-                    fontSize: '1.5rem',
+                    fontSize: TEXT_VARIANTS.body.large.fontSize,
                     borderColor: colors.palette.white,
                     color: colors.palette.white,
                     '&:hover': {
@@ -120,7 +122,7 @@ const WhyAI4U = () => {
             
             <Grid item xs={12} md={6}>
               <Box sx={{ 
-                border: `8px solid ${colors.palette.white}`,
+                border: '8px solid ${colors.palette.white}',
                 boxShadow: `15px 15px 0px ${colors.palette.gray[800]}`,
                 overflow: 'hidden'
               }}>
@@ -144,8 +146,7 @@ const WhyAI4U = () => {
 
       {/* Benefits Section - Inspiración GREEN_FRESH */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.accentColors.green,
         display: 'flex',
         justifyContent: 'center'
@@ -157,7 +158,8 @@ const WhyAI4U = () => {
               textAlign: 'left',
               fontWeight: 400,
               textTransform: 'none',
-              color: colors.palette.black
+              color: colors.palette.black,
+              ...TEXT_VARIANTS.display.large
             }}>
               ¿Qué nos hace <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>diferentes</Box>?
             </H1>
@@ -180,15 +182,15 @@ const WhyAI4U = () => {
                 <Grid item xs={12} md={4} key={idx}>
                   <Card variant="default" sx={{ 
                     height: '100%',
-                    p: 6,
-                    borderWidth: '4px',
+                    p: COMPONENT_SPACING.padding.card.sm,
+                    borderWidth: `${SPACING_TOKENS.borderWidth.thick}px`,
                     '&:hover': {
                       transform: 'translate(8px, -8px)',
                       boxShadow: `12px 12px 0px ${colors.palette.black}`,
                     }
                   }}>
                     <H3 sx={{ 
-                      fontSize: '2rem',
+                      ...TEXT_VARIANTS.display.small,
                       fontWeight: 400,
                       mb: 3,
                       lineHeight: 1,
@@ -197,7 +199,7 @@ const WhyAI4U = () => {
                     }}>
                       {benefit.title}
                     </H3>
-                    <BodyText sx={{ color: 'inherit', fontSize: '1.25rem', fontWeight: 400 }}>
+                    <BodyText sx={{ color: 'inherit', ...TEXT_VARIANTS.body.large, fontWeight: 400 }}>
                       {benefit.description}
                     </BodyText>
                   </Card>
@@ -210,8 +212,7 @@ const WhyAI4U = () => {
 
       {/* Final CTA Section - Inspiración ORANGE_PUNCH */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.white,
         display: 'flex',
         justifyContent: 'center'
@@ -227,10 +228,10 @@ const WhyAI4U = () => {
                 spacing={4} 
                 justifyContent="center"
               >
-                <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.black, color: colors.palette.white }} />
+                <DiagnosticCTA sx={{ height: 13, px: 10, fontSize: TEXT_VARIANTS.display.small.fontSize, bgcolor: colors.palette.black, color: colors.palette.white }} />
                 <ServicesButton
                   variant="outline"
-                  sx={{ height: '100px', px: 10, fontSize: '1.8rem', borderWidth: '6px', borderColor: colors.palette.black, color: colors.palette.black }}
+                  sx={{ height: 13, px: 10, fontSize: TEXT_VARIANTS.display.small.fontSize, borderWidth: `${SPACING_TOKENS.borderWidth.heavy}px`, borderColor: colors.palette.black, color: colors.palette.black }}
                   text="Ver soluciones"
                 />
               </Stack>

@@ -10,6 +10,8 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 import { ROUTES, APP_CONFIG } from '../utils/constants';
 import Logo from '../components/shared/ui/atoms/Logo';
 
@@ -336,7 +338,7 @@ const Pitch: React.FC = () => {
       }} />
 
       {/* Premium Progress Bar */}
-      <Box sx={{ height: 8, width: '100%', bgcolor: 'rgba(255,255,255,0.1)', position: 'relative', zIndex: 10 }}>
+      <Box sx={{ height: '8px', width: '100%', bgcolor: 'rgba(255,255,255,0.1)', position: 'relative', zIndex: 10 }}>
         <Box 
           sx={{ 
             height: '100%', 
@@ -373,10 +375,11 @@ const Pitch: React.FC = () => {
                     color: styles.accent, 
                     fontWeight: 400, 
                     letterSpacing: 4,
-                    fontSize: { xs: '0.75rem', md: '0.85rem' },
+                    fontSize: TEXT_VARIANTS.ui.caption.fontSize,
                     mb: 1,
                     display: 'block',
-                    textShadow: styles.glow ? `0 0 10px ${styles.accent}` : 'none'
+                    textShadow: styles.glow ? `0 0 10px ${styles.accent}` : 'none',
+                    ...TEXT_VARIANTS.ui.code
                   }}
                 >
                   // {current.category}
@@ -388,6 +391,7 @@ const Pitch: React.FC = () => {
                 sx={{ 
                   color: styles.text,
                   fontWeight: 400,
+                  ...TEXT_VARIANTS.display.medium,
                   fontSize: { xs: '2.2rem', md: '3.5rem', lg: '4.8rem' },
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
@@ -409,6 +413,7 @@ const Pitch: React.FC = () => {
                         color: styles.text,
                         opacity: 0.8,
                         fontWeight: 300,
+                        ...TEXT_VARIANTS.display.small,
                         fontSize: { xs: '1.1rem', md: '1.8rem', lg: '2.4rem' },
                         lineHeight: 1.2,
                         letterSpacing: '-0.01em'
@@ -425,6 +430,7 @@ const Pitch: React.FC = () => {
                       <Typography 
                         sx={{ 
                           color: styles.text,
+                          ...TEXT_VARIANTS.body.large,
                           fontSize: { xs: '0.9rem', md: '1.2rem', lg: '1.5rem' },
                           fontWeight: 400,
                           mb: 3,
@@ -465,10 +471,11 @@ const Pitch: React.FC = () => {
                   ) : Array.isArray(current.content) ? (
                     <Stack spacing={3}>
                       {current.content.map((line, i) => (
-                        <Box key={i} sx={{ borderLeft: `2px solid ${styles.accent}`, pl: 3 }}>
+                        <Box key={i} sx={{ borderLeft: `${SPACING_TOKENS.borderWidth[2]}px solid ${styles.accent}`, pl: 3 }}>
                           <Typography 
                             sx={{ 
                               color: styles.text,
+                              ...TEXT_VARIANTS.body.regular,
                               fontSize: { xs: '0.9rem', md: '1.2rem', lg: '1.6rem' },
                               fontWeight: 400,
                               lineHeight: 1.5
@@ -483,6 +490,7 @@ const Pitch: React.FC = () => {
                     <Typography 
                       sx={{ 
                         color: styles.text,
+                        ...TEXT_VARIANTS.body.large,
                         fontSize: { xs: '1.1rem', md: '1.6rem', lg: '2rem' },
                         fontWeight: 400,
                         lineHeight: 1.5,
@@ -499,7 +507,7 @@ const Pitch: React.FC = () => {
         </Fade>
 
         {/* Floating Logo - Más discreto */}
-        <Box sx={{ position: 'absolute', top: 24, right: 32, zIndex: 5, opacity: 0.6 }}>
+        <Box sx={{ position: 'absolute', top: 3, right: 4, zIndex: 5, opacity: 0.6 }}>
           <Logo variant="desktop" sx={{ height: 28, filter: styles.logoMode === 'dark' ? 'invert(1)' : 'none' }} />
         </Box>
 
@@ -507,8 +515,8 @@ const Pitch: React.FC = () => {
         <Typography 
           sx={{ 
             position: 'absolute', 
-            bottom: -20, 
-            left: 20, 
+            bottom: -2.5, 
+            left: 2.5, 
             fontSize: { xs: '15rem', md: '25rem' }, 
             fontWeight: 400, 
             color: styles.text, 

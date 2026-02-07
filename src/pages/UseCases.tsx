@@ -27,6 +27,8 @@ import { featuredProjects } from '../data/featuredProjects';
 import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
+import { COMPONENT_SPACING, SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
+import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -219,8 +221,7 @@ const UseCases = () => {
 
       {/* Clients Carousel Section - Inspiración WHITE_MINIMAL */}
       <Box sx={{ 
-        py: { xs: 10, md: 18 },
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section,
         bgcolor: colors.palette.white,
         color: colors.palette.black,
         display: 'flex',
@@ -232,7 +233,7 @@ const UseCases = () => {
             fontWeight: 400,
             textTransform: 'none',
             color: colors.palette.black,
-            fontSize: { xs: '3rem', md: '6rem' }
+            ...TEXT_VARIANTS.display.large
           }}>
             Nuestros <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>clientes</Box>
           </H1>
@@ -268,8 +269,8 @@ const UseCases = () => {
                       height: '300px',
                       display: 'flex',
                       flexDirection: 'column',
-                      p: 4,
-                      borderWidth: '4px',
+                      p: COMPONENT_SPACING.padding.card.sm,
+                      borderWidth: `${SPACING_TOKENS.borderWidth.thick}px`,
                       '&:hover': {
                         transform: 'translate(8px, -8px)',
                         boxShadow: `12px 12px 0px ${colors.contrast.text.primary}`,
@@ -284,7 +285,7 @@ const UseCases = () => {
                         sx={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
                       />
                     </Box>
-                    <BodyText sx={{ textAlign: 'center', fontWeight: 400, textTransform: 'none', mt: 2 }}>
+                    <BodyText sx={{ textAlign: 'center', ...TEXT_VARIANTS.body.regular, mt: 2 }}>
                       {client.sector}
                     </BodyText>
                   </Card>
@@ -321,7 +322,7 @@ const UseCases = () => {
             </IconButton>
           </Box>
 
-          <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, maxWidth: '800px' }}>
+          <BodyText sx={{ ...TEXT_VARIANTS.body.large, fontWeight: 400, maxWidth: '800px' }}>
             Alianzas en innovación.
           </BodyText>
         </Container>
@@ -329,8 +330,7 @@ const UseCases = () => {
 
       {/* Portafolio de Innovación - Proyectos Destacados */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
@@ -343,7 +343,7 @@ const UseCases = () => {
               fontWeight: 400,
               textTransform: 'none',
               color: colors.palette.white,
-              fontSize: { xs: '3rem', md: '6rem' },
+              ...TEXT_VARIANTS.display.large,
               lineHeight: 0.9
             }}>
               Portafolio de <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>innovación</Box>
@@ -359,7 +359,7 @@ const UseCases = () => {
                       display: 'flex',
                       flexDirection: 'column',
                       p: 0,
-                      borderWidth: '4px',
+                      borderWidth: `${SPACING_TOKENS.borderWidth.thick}px`,
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       '&:hover': {
                         transform: 'translate(12px, -12px)',
@@ -374,7 +374,7 @@ const UseCases = () => {
                       width: '100%', 
                       aspectRatio: '16/9', 
                       overflow: 'hidden',
-                      borderBottom: `4px solid ${colors.palette.white}`,
+                      borderBottom: `${SPACING_TOKENS.borderWidth.thick}px solid ${colors.palette.white}`,
                       bgcolor: alpha(colors.palette.white, 0.05)
                     }}>
                     <Box
@@ -401,7 +401,7 @@ const UseCases = () => {
                       mb: 2,
                       alignSelf: 'flex-start',
                       fontWeight: 400,
-                      fontSize: '0.8rem',
+                      ...TEXT_VARIANTS.ui.caption,
                       textTransform: 'none'
                     }}>
                       {project.category}
@@ -417,7 +417,8 @@ const UseCases = () => {
                     <BodyText sx={{ 
                       mb: 4, 
                       color: alpha(colors.palette.white, 0.7),
-                      flex: 1
+                      flex: 1,
+                      ...TEXT_VARIANTS.body.regular
                     }}>
                       {project.description}
                     </BodyText>
@@ -452,8 +453,7 @@ const UseCases = () => {
 
       {/* Results Section - Inspiración ORANGE_PUNCH */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.white,
         color: colors.palette.black,
         display: 'flex',
@@ -466,7 +466,7 @@ const UseCases = () => {
               <H1 sx={{ fontWeight: 400, textTransform: 'none', mb: 6, lineHeight: 0.9 }}>
                 Resultados que <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>hablan</Box>
               </H1>
-              <BodyText sx={{ fontSize: '2rem', fontWeight: 400, lineHeight: 1.2 }}>
+              <BodyText sx={{ ...TEXT_VARIANTS.display.medium, fontWeight: 400, lineHeight: 1.2 }}>
                 IA que genera crecimiento real.
               </BodyText>
             </Grid>
@@ -478,9 +478,9 @@ const UseCases = () => {
                   { label: 'Incremento eficiencia', value: 'Significativo' },
                   { label: 'Disponibilidad continua', value: '24/7' }
                 ].map((item, idx) => (
-                  <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                    <H2 sx={{ fontWeight: 400, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
-                    <BodyText sx={{ fontWeight: 400, textTransform: 'none' }}>{item.label}</BodyText>
+                  <Box key={idx} sx={{ borderLeft: '12px solid ${colors.palette.accentColors.orange}', pl: 4 }}>
+                    <H2 sx={{ fontWeight: 400, ...TEXT_VARIANTS.display.large, lineHeight: 1 }}>{item.value}</H2>
+                    <BodyText sx={{ fontWeight: 400, textTransform: 'none', ...TEXT_VARIANTS.body.regular }}>{item.label}</BodyText>
                   </Box>
                 ))}
               </Stack>
@@ -492,8 +492,7 @@ const UseCases = () => {
 
       {/* CTA Section - Inspiración GREEN_FRESH */}
       <Box sx={{ 
-        py: { xs: 15, md: 25 }, 
-        px: { xs: 4, md: 8, lg: 12 },
+        py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
@@ -505,7 +504,7 @@ const UseCases = () => {
               <Giant sx={{ color: colors.palette.white }}>
                 ¿Listo para ser el próximo éxito?
               </Giant>
-              <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.white, color: colors.palette.black }} />
+              <DiagnosticCTA sx={{ height: 13, px: 6, fontSize: TEXT_VARIANTS.display.small.fontSize, bgcolor: colors.palette.white, color: colors.palette.black }} />
             </Stack>
           </Container>
         </SurfaceProvider>
