@@ -133,7 +133,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const pricing = [
     {
       name: 'STARTER',
-      price: '$1,000',
+      implementation: '$1,000',
+      price: '$100',
       period: 'USD/mes',
       features: [
         '3-5 herramientas integradas',
@@ -144,7 +145,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
     },
     {
       name: 'PROFESSIONAL',
-      price: '$2,000',
+      implementation: '$2,000',
+      price: '$200',
       period: 'USD/mes',
       features: [
         '10+ herramientas integradas',
@@ -157,7 +159,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
     },
     {
       name: 'ENTERPRISE',
-      price: 'CUSTOM',
+      implementation: null,
+      price: 'Por cotización',
       period: '',
       features: [
         'APIs custom + integración total',
@@ -576,9 +579,14 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   <Typography sx={{ color: colors.palette.gray[500], fontWeight: 800, mb: 1, fontFamily: '"Necto Mono", monospace', letterSpacing: '0.1em' }}>
                     SUPERAI {tier.name}
                   </Typography>
+                  {tier.implementation != null && (
+                    <Typography sx={{ color: colors.palette.gray[400], fontSize: '0.85rem', mb: 0.5 }}>
+                      Implementación: {tier.implementation} USD <Box component="span" sx={{ color: colors.palette.gray[500] }}>(una vez)</Box>
+                    </Typography>
+                  )}
                   <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 1 }}>
                     <Typography sx={{ color: colors.palette.white, fontSize: '3rem', fontWeight: 900 }}>{tier.price}</Typography>
-                    <Typography sx={{ color: colors.palette.gray[500], ml: 1, fontWeight: 600 }}>{tier.period}</Typography>
+                    {tier.period && <Typography sx={{ color: colors.palette.gray[500], ml: 1, fontWeight: 600 }}>{tier.period}</Typography>}
                   </Box>
                   <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 700, mb: 4, fontSize: '0.9rem' }}>{tier.for}</Typography>
                   

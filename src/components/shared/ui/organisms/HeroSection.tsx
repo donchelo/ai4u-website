@@ -76,7 +76,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: alpha(colors.palette.black, 0.8), // Más oscuro para contraste
+            backgroundColor: alpha(colors.palette.black, 0.55), // Overlay más suave para que se vea la imagen de fondo
             zIndex: 1
           }
         }}
@@ -91,7 +91,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: idx === currentImage ? 0.4 : 0,
+                opacity: idx === currentImage ? 0.55 : 0,
                 transition: 'opacity 1.5s ease-in-out',
                 filter: 'grayscale(100%)' // Estilo moderno/brutalista
               }}
