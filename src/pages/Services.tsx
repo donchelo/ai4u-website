@@ -64,9 +64,9 @@ const Services: React.FC = () => {
   const axes = [
     {
       id: ServiceSuperCategory.OPERATION,
-      title: 'OPERACIÓN',
-      subtitle: 'EFICIENCIA CONTINUA',
-      description: 'OPTIMIZA TIEMPO Y RECURSOS.',
+      title: 'operación',
+      subtitle: 'Eficiencia continua',
+      description: 'Optimiza tiempo y recursos.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.orange,
       textColor: colors.palette.black,
@@ -74,9 +74,9 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.STRATEGY,
-      title: 'ESTRATEGIA',
-      subtitle: 'DATA REAL',
-      description: 'DECISIONES CON VENTAJA COMPETITIVA.',
+      title: 'estrategia',
+      subtitle: 'Data real',
+      description: 'Decisiones con ventaja competitiva.',
       color: colors.palette.black,
       bgColor: colors.palette.info,
       textColor: colors.palette.black,
@@ -84,9 +84,9 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.EDUCATION,
-      title: 'EDUCACIÓN',
-      subtitle: 'EVOLUCIÓN HUMANA',
-      description: 'TU EQUIPO DOMINANDO LA IA.',
+      title: 'educación',
+      subtitle: 'Evolución humana',
+      description: 'Tu equipo dominando la IA.',
       color: colors.palette.white,
       bgColor: colors.palette.black,
       textColor: colors.palette.white,
@@ -94,9 +94,9 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
-      title: 'TRANSFORMACIÓN',
-      subtitle: 'INFRAESTRUCTURA IA',
-      description: 'DISEÑADA PARA ESCALAR.',
+      title: 'transformación',
+      subtitle: 'Infraestructura IA',
+      description: 'Diseñada para escalar.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.green,
       textColor: colors.palette.black,
@@ -185,7 +185,7 @@ const Services: React.FC = () => {
                     </Typography>
                     <H1 sx={{ 
                       fontWeight: 900, 
-                      textTransform: 'uppercase', 
+                      textTransform: 'none', 
                       fontSize: { xs: '3.5rem', md: '5rem', lg: '6.5rem' },
                       lineHeight: 0.9,
                       mb: 4,
@@ -227,7 +227,7 @@ const Services: React.FC = () => {
                       }}
                       onClick={() => toggleAxis(axis.id)}
                     >
-                      {expandedAxes[axis.id] ? 'CERRAR EJE' : 'EXPLORAR EJE'}
+                      {expandedAxes[axis.id] ? 'Cerrar eje' : 'Explorar eje'}
                       <Box sx={{ 
                         display: 'flex', 
                         transform: expandedAxes[axis.id] ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -281,7 +281,7 @@ const Services: React.FC = () => {
                     onClick={() => toggleAxis(axis.id)}
                     >
                       <Typography sx={{ fontWeight: 900, letterSpacing: 2, fontSize: '0.8rem' }}>
-                        // CLICK PARA DESPLEGAR SOLUCIONES
+                        // Click para desplegar soluciones
                       </Typography>
                     </Box>
                   )}
@@ -305,19 +305,19 @@ const Services: React.FC = () => {
           <Stack spacing={10}>
             <H1 sx={{ 
               fontWeight: 900, 
-              textTransform: 'uppercase', 
+              textTransform: 'none', 
               mb: 4, 
               fontSize: { xs: '3rem', md: '6rem' },
               color: colors.palette.white // Asegurar que sea blanco
             }}>
-              MÉTODO <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>DIRECTO</Box>
+              Método <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>directo</Box>
             </H1>
             <Grid container spacing={6}>
               {[
-                { n: '01', t: 'DIAGNÓSTICO', d: 'OPORTUNIDADES REALES.' },
-                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN RESULTADOS.' },
-                { n: '03', t: 'DESARROLLO', d: 'IA A TU MEDIDA.' },
-                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN + SOPORTE.' }
+                { n: '01', t: 'diagnóstico', d: 'Oportunidades reales.' },
+                { n: '02', t: 'priorización', d: 'Foco en resultados.' },
+                { n: '03', t: 'desarrollo', d: 'IA a tu medida.' },
+                { n: '04', t: 'despliegue', d: 'Integración + soporte.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
@@ -342,12 +342,12 @@ const Services: React.FC = () => {
         <Container maxWidth="lg">
           <Stack spacing={6} alignItems="center" textAlign="center">
             <Giant sx={{ color: colors.palette.black, fontSize: { xs: '3rem', md: '8rem' } }}>
-              ¿EMPEZAMOS?
+              ¿Empezamos?
             </Giant>
             <DiagnosticCTA 
               variant="primary"
               size="large"
-              text="AGENDAR CONSULTA GRATUITA"
+              text="Agendar consulta gratuita"
               sx={{ 
                 height: '100px', 
                 px: 10, 

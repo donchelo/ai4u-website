@@ -39,7 +39,11 @@ function getCurrentLanguageShort(): string {
   return found?.short ?? 'ES';
 }
 
-const GoogleTranslateWidget: React.FC = () => {
+interface GoogleTranslateWidgetProps {
+  light?: boolean;
+}
+
+const GoogleTranslateWidget: React.FC<GoogleTranslateWidgetProps> = ({ light = false }) => {
   const colors = useColors();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -147,18 +151,17 @@ const GoogleTranslateWidget: React.FC = () => {
             height: size.height,
             minWidth: size.width,
             padding: 0,
-            color: colors.contrast.text.primary,
-            border: `1px solid ${colors.contrast.border}`,
+            color: light ? '#FFFFFF' : colors.contrast.text.primary,
+            border: 'none',
             borderRadius: theme.spacing(0.75),
-            transition: 'all 0.2s ease-in-out',
-            backgroundColor: colors.contrast.surface,
+            transition: 'all 0.3s ease-in-out',
+            backgroundColor: light ? 'transparent' : colors.contrast.surface,
             fontFamily: theme.typography.fontFamily,
             fontSize: size.fontSize,
             fontWeight: 600,
             cursor: 'pointer',
             '&:hover': {
-              borderColor: colors.palette.black,
-              backgroundColor: colors.helpers.state.hover,
+              backgroundColor: light ? 'rgba(255, 255, 255, 0.1)' : colors.helpers.state.hover,
               transform: 'scale(1.05)',
             },
             '&:focus': {

@@ -21,7 +21,7 @@ const StyledButton = styled(MuiButton, {
   const baseStyles = {
     borderRadius: 0, // Sharp edges
     fontWeight: 800, // Thicker
-    textTransform: 'uppercase' as const, // More aggressive
+    textTransform: 'none' as const, // Permite normal case y camelCase
     fontFamily: '"Red Hat Display", sans-serif',
     transition: theme.transitions.create(['background-color', 'border-color', 'color', 'transform', 'box-shadow'], {
       duration: '0.1s',

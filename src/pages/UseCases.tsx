@@ -230,11 +230,11 @@ const UseCases = () => {
           <H1 sx={{ 
             mb: 10, 
             fontWeight: 900,
-            textTransform: 'uppercase',
+            textTransform: 'none',
             color: colors.palette.black,
             fontSize: { xs: '3rem', md: '6rem' }
           }}>
-            NUESTROS <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>CLIENTES</Box>
+            Nuestros <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2 }}>clientes</Box>
           </H1>
 
           <Box sx={{ position: 'relative', mb: 8 }}>
@@ -284,7 +284,7 @@ const UseCases = () => {
                         sx={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
                       />
                     </Box>
-                    <BodyText sx={{ textAlign: 'center', fontWeight: 800, textTransform: 'uppercase', mt: 2 }}>
+                    <BodyText sx={{ textAlign: 'center', fontWeight: 800, textTransform: 'none', mt: 2 }}>
                       {client.sector}
                     </BodyText>
                   </Card>
@@ -322,7 +322,7 @@ const UseCases = () => {
           </Box>
 
           <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, maxWidth: '800px' }}>
-            ALIANZAS EN INNOVACIÓN.
+            Alianzas en innovación.
           </BodyText>
         </Container>
       </Box>
@@ -341,12 +341,12 @@ const UseCases = () => {
             <H1 sx={{ 
               mb: 10, 
               fontWeight: 900,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               color: colors.palette.white,
               fontSize: { xs: '3rem', md: '6rem' },
               lineHeight: 0.9
             }}>
-              PORTAFOLIO DE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>INNOVACIÓN</Box>
+              Portafolio de <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>innovación</Box>
             </H1>
 
             <Grid container spacing={8}>
@@ -402,13 +402,13 @@ const UseCases = () => {
                       alignSelf: 'flex-start',
                       fontWeight: 800,
                       fontSize: '0.8rem',
-                      textTransform: 'uppercase'
+                      textTransform: 'none'
                     }}>
                       {project.category}
                     </Box>
                     <H3 sx={{ 
                       fontWeight: 900, 
-                      textTransform: 'uppercase', 
+                      textTransform: 'none', 
                       mb: 2,
                       color: colors.palette.white
                     }}>
@@ -439,7 +439,7 @@ const UseCases = () => {
                         }
                       }}
                     >
-                      VER PROYECTO EN VIVO
+                      Ver proyecto en vivo
                     </Button>
                   </Box>
                 </Card>
@@ -463,24 +463,24 @@ const UseCases = () => {
           <Container maxWidth="xl">
             <Grid container spacing={10} alignItems="center">
             <Grid item xs={12} md={6}>
-              <H1 sx={{ fontWeight: 900, textTransform: 'uppercase', mb: 6, lineHeight: 0.9 }}>
-                RESULTADOS QUE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>HABLAN</Box>
+              <H1 sx={{ fontWeight: 900, textTransform: 'none', mb: 6, lineHeight: 0.9 }}>
+                Resultados que <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>hablan</Box>
               </H1>
               <BodyText sx={{ fontSize: '2rem', fontWeight: 600, lineHeight: 1.2 }}>
-                IA QUE GENERA CRECIMIENTO REAL.
+                IA que genera crecimiento real.
               </BodyText>
             </Grid>
             
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
                 {[
-                  { label: 'OPTIMIZACIÓN TIEMPO OPERATIVO', value: 'ALTA' },
-                  { label: 'INCREMENTO EFICIENCIA', value: 'SIGNIFICATIVO' },
-                  { label: 'DISPONIBILIDAD CONTINUA', value: '24/7' }
+                  { label: 'Optimización tiempo operativo', value: 'Alta' },
+                  { label: 'Incremento eficiencia', value: 'Significativo' },
+                  { label: 'Disponibilidad continua', value: '24/7' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
                     <H2 sx={{ fontWeight: 900, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
-                    <BodyText sx={{ fontWeight: 800, textTransform: 'uppercase' }}>{item.label}</BodyText>
+                    <BodyText sx={{ fontWeight: 800, textTransform: 'none' }}>{item.label}</BodyText>
                   </Box>
                 ))}
               </Stack>
@@ -503,7 +503,7 @@ const UseCases = () => {
           <Container maxWidth="lg">
             <Stack spacing={8} textAlign="center" alignItems="center">
               <Giant sx={{ color: colors.palette.white }}>
-                ¿LISTO PARA SER EL PRÓXIMO ÉXITO?
+                ¿Listo para ser el próximo éxito?
               </Giant>
               <DiagnosticCTA sx={{ height: '100px', px: 10, fontSize: '1.8rem', bgcolor: colors.palette.white, color: colors.palette.black }} />
             </Stack>

@@ -92,27 +92,27 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
 
   const getCategoryColor = (category: string) => {
     const categoryColors: { [key: string]: { bg: string; text: string; icon: React.ReactNode } } = {
-      'SHOPPING': { 
+      'Shopping': { 
         bg: colors.palette.accent + '20', 
         text: colors.palette.accent,
         icon: <ShoppingCartIcon />
       },
-      'FITNESS': { 
+      'Fitness': { 
         bg: colors.palette.success + '20', 
         text: colors.palette.success,
         icon: <FitnessCenterIcon />
       },
-      'EDUCATION': { 
+      'Education': { 
         bg: colors.palette.accent + '20', 
         text: colors.palette.accent,
         icon: <SchoolIcon />
       },
-      'INVESTMENTS': { 
+      'Investments': { 
         bg: colors.palette.success + '20', 
         text: colors.palette.success,
         icon: <TrendingUpIcon />
       },
-      'HEALTH': { 
+      'Health': { 
         bg: colors.palette.accent + '20', 
         text: colors.palette.accent,
         icon: <FavoriteIcon />
@@ -330,7 +330,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
               <SmallText sx={{ 
                 mt: 1,
                 color: colors.helpers.text.secondary,
-                textTransform: 'uppercase',
+                textTransform: 'none',
                 letterSpacing: 0.5
               }}>
                 Explorar más

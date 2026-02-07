@@ -26,12 +26,12 @@ export const PITCHES: Record<string, PitchData> = {
         clientName: 'Bancolombia',
         slides: [
             {
-                title: '¿QUÉ PRECIO TIENE TU TIEMPO?',
-                subtitle: 'EL TIEMPO ES ORO',
+                title: '¿Qué precio tiene tu tiempo?',
+                subtitle: 'El tiempo es oro',
                 content: '',
                 type: 'title',
                 theme: 'BLACK_MODERN',
-                category: 'FILOSOFÍA',
+                category: 'filosofía',
                 image: '/assets/images/bancolombia/bee-background.png',
                 imageLayout: 'background'
             },
@@ -46,7 +46,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'section',
                 theme: 'BANCOLOMBIA_PRIMARY',
-                category: 'NUESTRO ADN',
+                category: 'nuestroAdn',
                 image: '/assets/images/bancolombia/she_lookbook (12).jpg',
                 imageLayout: 'background'
             },
@@ -60,7 +60,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'content',
                 theme: 'BLACK_MODERN',
-                category: 'QUIÉN SOY',
+                category: 'quiénSoy',
                 image: '/assets/images/mariano-pixel-art.png',
                 imageLayout: 'side'
             },
@@ -74,7 +74,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
-                category: 'EXPERIENCIA',
+                category: 'experiencia',
                 image: '/assets/images/bancolombia/couturelab-1770084400455.jpg',
                 imageLayout: 'side'
             },
@@ -88,7 +88,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'content',
                 theme: 'GRAY_MODERN',
-                category: 'EL PROBLEMA',
+                category: 'elProblema',
                 image: '/assets/images/bancolombia/gemini-composite-1769733280428 (1).png',
                 imageLayout: 'side'
             },
@@ -111,7 +111,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'BLACK_MODERN',
-                category: 'SOLUCIÓN',
+                category: 'solución',
                 video: '/assets/videos/data-entry-automatico.mp4',
                 imageLayout: 'side'
             },
@@ -126,7 +126,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',
-                category: 'TECNOLOGÍA',
+                category: 'tecnología',
                 image: '/assets/images/bancolombia/couturelab-1769631535174.jpg',
                 imageLayout: 'side'
             },
@@ -140,7 +140,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
-                category: 'CASO DE USO',
+                category: 'casoDeUso',
                 video: '/assets/videos/video_1768938346414.mp4',
                 imageLayout: 'side'
             },
@@ -154,7 +154,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'offer',
                 theme: 'BANCOLOMBIA_PRIMARY',
-                category: 'PRÓXIMO PASO',
+                category: 'próximoPaso',
                 image: '/assets/images/bancolombia/7ec3294e-6517-4049-b557-67dccbe989d1.jpg.jpeg',
                 video: '/assets/videos/bancolombia-intro.mp4',
                 imageLayout: 'side'
@@ -218,7 +218,7 @@ export const PITCHES: Record<string, PitchData> = {
                 content: 'Transformamos tareas repetitivas en procesos ágiles y confiables.',
                 type: 'section',
                 theme: 'BLACK_MODERN',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Chatbots Inteligentes',
@@ -230,7 +230,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Data Entry Automático',
@@ -242,7 +242,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'BLACK_MODERN',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Auditorías Internas con IA',
@@ -254,7 +254,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'GREEN_FRESH',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Visión por Computadora',
@@ -266,7 +266,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Sitios Web con IA',
@@ -278,7 +278,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'GRAY_MODERN',
-                category: 'OPERATIVO'
+                category: 'operativo'
             },
             {
                 title: 'Data Analysis',
@@ -286,7 +286,7 @@ export const PITCHES: Record<string, PitchData> = {
                 content: 'Convierte la información de tu operación en tu mayor ventaja competitiva.',
                 type: 'section',
                 theme: 'BLACK_MODERN',
-                category: 'ESTRATÉGICO'
+                category: 'estratégico'
             },
             {
                 title: 'Dashboards Inteligentes',
@@ -298,7 +298,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'WHITE_MINIMAL',
-                category: 'ESTRATÉGICO'
+                category: 'estratégico'
             },
             {
                 title: 'Investigación HORECA',
@@ -310,7 +310,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'GREEN_FRESH',
-                category: 'ESTRATÉGICO'
+                category: 'estratégico'
             },
             {
                 title: 'El Siguiente Nivel',
@@ -318,7 +318,7 @@ export const PITCHES: Record<string, PitchData> = {
                 content: 'La capacidad ejecutiva de la IA: tecnología que apoya la toma de decisiones.',
                 type: 'section',
                 theme: 'SUPER_AI_NEON',
-                category: 'SUPER AI'
+                category: 'superAi'
             },
             {
                 title: 'Super AI',
@@ -330,7 +330,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',
-                category: 'SUPER AI'
+                category: 'superAi'
             },
             {
                 title: 'Capacidad Ejecutiva',
@@ -342,7 +342,7 @@ export const PITCHES: Record<string, PitchData> = {
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',
-                category: 'SUPER AI'
+                category: 'superAi'
             },
             {
                 title: 'Metodología AI-First',

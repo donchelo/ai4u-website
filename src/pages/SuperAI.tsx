@@ -604,7 +604,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     target="_blank"
                     sx={{ height: '60px', fontWeight: 900 }}
                   >
-                    {tier.buttonText || 'EMPEZAR AHORA'}
+                    {tier.buttonText || 'empezarAhora'}
                   </Button>
                 </Box>
               </Grid>

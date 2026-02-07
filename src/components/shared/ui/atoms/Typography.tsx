@@ -58,7 +58,7 @@ export const H4 = (props: TypographyExtendedProps) => (
       fontSize: { xs: '1.5rem', md: '2rem' },
       fontWeight: 700,
       lineHeight: 1.2,
-      textTransform: 'uppercase',
+      textTransform: 'none',
       ...props.sx
     }}
     {...props} 

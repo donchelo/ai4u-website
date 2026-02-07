@@ -18,7 +18,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     id: 'rascal',
-    title: 'RASCAL',
+    title: 'Rascal',
     description: 'Ecosistema digital de movilidad eléctrica.',
     image: '/assets/images/cases/screenshots/rascal.png',
     link: 'https://rascal-three.vercel.app/',

@@ -144,7 +144,7 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     serviceName: 'SuperAI Empresarial',
     description: 'Arquitectura integral de IA que transforma recursos operativos en ventaja estratégica',
     relatedCases: [
-      { client: 'TRUE', sector: 'Fashion', slug: 'fashion' },
+      { client: 'True', sector: 'Fashion', slug: 'fashion' },
       { client: 'HUA Naturals', sector: 'Wellness', slug: 'wellness' }
     ],
     relatedServices: ['gpt-personalizado', 'automatizacion-inteligente']
@@ -165,7 +165,7 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
     description: 'Procesos automatizados que se adaptan y aprenden de tu operación',
     relatedCases: [
       { client: 'La Magdalena', sector: 'Impact Storytelling', slug: 'impact-storytelling' },
-      { client: 'TRUE', sector: 'Fashion', slug: 'fashion' }
+      { client: 'True', sector: 'Fashion', slug: 'fashion' }
     ],
     relatedServices: ['superai-empresarial', 'machine-learning']
   },

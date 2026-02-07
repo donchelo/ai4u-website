@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   AppBar,
@@ -10,7 +10,8 @@ import {
   Button,
   Container,
   Typography as MuiTypography,
-  styled
+  styled,
+  alpha
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -22,15 +23,36 @@ import { SHADOW_TOKENS } from '../tokens/theme';
 
 // Styled components usando tokens del sistema
 const StyledNavButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== 'colors'
-})<{ colors: ReturnType<typeof useColors> }>(({ theme, colors }) => ({
+  shouldForwardProp: (prop) => prop !== 'colors' && prop !== 'isScrolled'
+})<{ colors: ReturnType<typeof useColors>; isScrolled: boolean }>(({ theme, colors, isScrolled }) => ({
   marginX: theme.spacing(0.5),
-  color: colors.contrast.text.primary,
-  fontWeight: 500,
+  color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+  fontWeight: 600,
   textTransform: 'none',
+  fontSize: '0.95rem',
+  transition: 'all 0.3s ease-in-out',
+  position: 'relative',
+  border: 'none', // Eliminar el borde global del tema
+  padding: theme.spacing(1, 1.5), // Ajustar el padding excesivo del tema
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 8,
+    left: '50%',
+    width: 0,
+    height: '2px',
+    backgroundColor: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+    transition: 'all 0.3s ease-in-out',
+    transform: 'translateX(-50%)',
+  },
   '&:hover': {
-    color: colors.palette.black,
-    backgroundColor: colors.helpers.state.hover,
+    backgroundColor: 'transparent',
+    color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+    opacity: 0.8,
+    border: 'none', // Asegurar que no aparezca en hover
+    '&::after': {
+      width: '60%',
+    },
   },
 }));
 
@@ -46,8 +68,18 @@ const StyledDesktopMenuBox = styled(Box)(({ theme }) => ({
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const colors = useColors();
   const navigate = useNavigate();
+
+  // Detectar scroll para cambiar apariencia
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Items de navegación estáticos en español
   const navItems = [
@@ -75,11 +107,17 @@ const Navbar = () => {
   return (
     <AppBar 
       position="fixed" 
-      color="default" 
-      elevation={1} 
+      color="transparent" 
+      elevation={0} 
       sx={{ 
-        backgroundColor: colors.contrast.surface,
-        borderBottom: `1px solid ${colors.contrast.border}`,
+        backgroundColor: isScrolled 
+          ? alpha(colors.contrast.surface, 0.85) 
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        borderBottom: isScrolled 
+          ? `1px solid ${alpha(colors.contrast.border, 0.1)}` 
+          : 'none',
+        transition: 'all 0.3s ease-in-out',
         zIndex: (theme) => theme.zIndex.drawer + 1 
       }}
     >
@@ -97,7 +135,7 @@ const Navbar = () => {
               alignItems: 'center',
             }}
           >
-            <Logo variant="desktop" />
+            <Logo variant="desktop" light={!isScrolled} />
           </Box>
 
           {/* Mobile Menu */}
@@ -109,9 +147,11 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{
-                color: colors.contrast.text.primary,
+                color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+                transition: 'color 0.3s ease-in-out',
                 '&:hover': {
-                  backgroundColor: colors.helpers.state.hover,
+                  backgroundColor: 'transparent',
+                  opacity: 0.7,
                 },
               }}
             >
@@ -170,7 +210,7 @@ const Navbar = () => {
                 }}
               >
                 <Box sx={{ width: '100%', maxWidth: (theme) => theme.spacing(25) }}>
-                  <GoogleTranslateWidget />
+                  <GoogleTranslateWidget light={false} />
                 </Box>
               </MenuItem>
             </Menu>
@@ -190,30 +230,22 @@ const Navbar = () => {
               justifyContent: 'center',
             }}
           >
-            <Logo variant="mobile" />
+            <Logo variant="mobile" light={!isScrolled} />
           </Box>
 
           {/* Desktop Menu */}
           <StyledDesktopMenuBox>
             {navItems.map((item) => (
-              <Button
+              <StyledNavButton
                 key={item.name}
+                colors={colors}
+                isScrolled={isScrolled}
                 onClick={() => scrollToTop()}
                 component={RouterLink as React.ElementType}
                 to={item.path}
-                sx={{ 
-                  mx: 1,
-                  color: colors.contrast.text.primary,
-                  fontWeight: 500,
-                  textTransform: 'none',
-                  '&:hover': {
-                    color: colors.palette.black,
-                    backgroundColor: colors.helpers.state.hover,
-                  },
-                }}
               >
                 {item.name}
-              </Button>
+              </StyledNavButton>
             ))}
             
             {/* Google Translate Widget */}
@@ -225,7 +257,7 @@ const Navbar = () => {
                 flexShrink: 0,
               }}
             >
-              <GoogleTranslateWidget />
+              <GoogleTranslateWidget light={!isScrolled} />
             </Box>
           </StyledDesktopMenuBox>
         </Toolbar>

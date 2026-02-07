@@ -67,13 +67,13 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   color: colors.palette.white,
                   fontWeight: 900,
                   fontSize: { xs: '3rem', md: '5rem' },
-                  textTransform: 'uppercase',
+                  textTransform: 'none',
                   lineHeight: 0.85,
                   letterSpacing: '-0.02em',
                   opacity: 0.5
                 }}
               >
-                // {title || 'DESTACADOS'}
+                // {title || 'destacados'}
               </H1>
             </Box>
 
@@ -98,7 +98,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     py: 2,
                     fontSize: '1.25rem',
                     fontWeight: 900,
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: idx === activeIndex 
                       ? (service.color === '#FFFFFF' || service.color === '#FF5C00' || service.color === '#B6CA40' || service.color === '#3B82F6' 
                           ? colors.palette.black 
@@ -184,7 +184,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       fontSize: { xs: '2.5rem', md: '4rem' },
                       lineHeight: 0.9,
                       mb: 2,
-                      textTransform: 'uppercase',
+                      textTransform: 'none',
                       '&::before': {
                         content: '"//"',
                         color: activeService.color || colors.palette.white,
@@ -225,13 +225,13 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                         }
                       }}
                     >
-                      CONOCER SUPER AI
+                      Conocer SuperAI
                     </Button>
                   ) : (
                     <DiagnosticCTA 
                       variant="primary"
                       size="large"
-                      text={activeService.title === 'coutureLAB' ? 'SOLICITAR ACCESO LAB' : 'SOLICITAR INFRAESTRUCTURA'}
+                      text={activeService.title === 'coutureLAB' ? 'Solicitar acceso Lab' : 'Solicitar infraestructura'}
                       sx={{ 
                         height: '80px', 
                         fontSize: '1.2rem', 

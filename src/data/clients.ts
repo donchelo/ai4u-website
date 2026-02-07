@@ -16,7 +16,7 @@ export const clients: Client[] = [
   },
   {
     id: 'true',
-    name: 'TRUE',
+    name: 'True',
     website: 'https://www.trueshop.co',
     logo: '/assets/images/cases/logo-true.png',
     sector: 'Fashion'

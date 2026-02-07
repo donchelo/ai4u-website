@@ -61,7 +61,7 @@ const slides: Slide[] = [
     content: 'Transformamos tareas repetitivas en procesos autónomos e infalibles.',
     type: 'section',
     theme: 'BLACK_MODERN',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Chatbots Inteligentes',
@@ -73,7 +73,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'WHITE_MINIMAL',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Data Entry Automático',
@@ -85,7 +85,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'BLACK_MODERN',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Auditorías Internas con IA',
@@ -97,7 +97,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'GREEN_FRESH',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Visión por Computadora',
@@ -109,7 +109,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'WHITE_MINIMAL',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Sitios Web con IA',
@@ -121,7 +121,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'GRAY_MODERN',
-    category: 'OPERATIVO'
+    category: 'operativo'
   },
   {
     title: 'Data Analysis',
@@ -129,7 +129,7 @@ const slides: Slide[] = [
     content: 'Convierte la información de tu operación en tu mayor ventaja competitiva.',
     type: 'section',
     theme: 'BLACK_MODERN',
-    category: 'ESTRATÉGICO'
+    category: 'estratégico'
   },
   {
     title: 'Dashboards Inteligentes',
@@ -141,7 +141,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'WHITE_MINIMAL',
-    category: 'ESTRATÉGICO'
+    category: 'estratégico'
   },
   {
     title: 'Investigación HORECA',
@@ -153,7 +153,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'GREEN_FRESH',
-    category: 'ESTRATÉGICO'
+    category: 'estratégico'
   },
   {
     title: 'El Siguiente Nivel',
@@ -161,7 +161,7 @@ const slides: Slide[] = [
     content: 'La cúspide de la autonomía: una IA que no solo sugiere, sino que ejecuta.',
     type: 'section',
     theme: 'SUPER_AI_NEON',
-    category: 'SUPER AI'
+    category: 'superAi'
   },
   {
     title: 'Super AI',
@@ -173,7 +173,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'SUPER_AI_NEON',
-    category: 'SUPER AI'
+    category: 'superAi'
   },
   {
     title: 'Autonomía Total',
@@ -185,7 +185,7 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'SUPER_AI_NEON',
-    category: 'SUPER AI'
+    category: 'superAi'
   },
   {
     title: 'Metodología AI-First',
@@ -391,7 +391,7 @@ const Pitch: React.FC = () => {
                   fontSize: { xs: '2.2rem', md: '3.5rem', lg: '4.8rem' },
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
-                  textTransform: 'uppercase',
+                  textTransform: 'none',
                   mb: { xs: 4, md: 6 },
                   maxWidth: '1000px'
                 }}

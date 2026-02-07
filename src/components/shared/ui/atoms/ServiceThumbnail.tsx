@@ -184,7 +184,7 @@ const ServiceThumbnail = ({
               fontSize: '0.6rem',
               fontWeight: 600,
               color: color,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               letterSpacing: '0.5px',
               background: 'rgba(255,255,255,0.9)',
               padding: '2px 6px',

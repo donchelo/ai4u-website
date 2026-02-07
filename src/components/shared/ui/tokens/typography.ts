@@ -59,7 +59,7 @@ export const TEXT_VARIANTS = {
       fontWeight: 900,
       lineHeight: 0.95,
       letterSpacing: '-0.04em',
-      textTransform: 'uppercase' as const,
+      textTransform: 'none' as const,
     },
     large: {
       fontSize: { xs: '2.5rem', md: '4.5rem', lg: '6.5rem' }, // Reducido de 8rem

@@ -1,0 +1,19 @@
+---
+description: Convenciones de texto para evitar el uso de mayúsculas sostenidas y promover el uso de CamelCase en uniones de palabras.
+globs: **/*
+alwaysApply: true
+---
+
+# Convenciones de Texto
+
+Para mantener una estética limpia y profesional en el proyecto, se establecen las siguientes reglas de estilo para textos:
+
+- **Prohibido el uso de MAYÚSCULAS sostenidas**: No se deben usar textos completamente en mayúsculas en ninguna parte del código o contenido (ej. ❌ `BOTÓN DE ENVÍO`).
+- **Uso de Texto Normal/Regular**: Se prefiere el uso de capitalización estándar (primera letra en mayúscula) o minúsculas (ej. ✅ `Enviar formulario`, `enviar`).
+- **CamelCase para Estilo**: Se permite y fomenta el uso de `camelCase` para la unión de dos palabras cuando aporte un estilo moderno ("cool") o sea necesario técnicamente (ej. ✅ `smartSearch`, `aiAssistant`).
+
+## Ejemplos de Aplicación
+
+- ❌ `MENÚ PRINCIPAL` -> ✅ `Menú principal` o `menúPrincipal`
+- ❌ `CONTACTO` -> ✅ `Contacto`
+- ❌ `VER MÁS` -> ✅ `verMás` o `Ver más`

@@ -21,7 +21,6 @@ const Layout = ({ children }: LayoutProps) => {
           maxWidth: '100%' 
         }}
       >
-        <Toolbar />
         {children}
       </Box>
       <Footer />

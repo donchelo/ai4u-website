@@ -99,9 +99,9 @@ const Home = () => {
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle="¿CUÁNTO VALE TU TIEMPO?"
+        customTitle="¿Cuánto vale tu tiempo?"
         customSubtitle="Implementamos IA que recupera tus horas más valiosas."
-        primaryButtonText="DESPLEGAR MI AGENTE"
+        primaryButtonText="Desplegar mi agente"
       />
 
       {/* Features Section - Inspiración GREEN_FRESH */}
@@ -115,8 +115,8 @@ const Home = () => {
       }}>
         <SurfaceProvider surface="green">
           <Container maxWidth="xl">
-            <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'uppercase', maxWidth: '1200px' }}>
-              ¿CUÁNTAS HORAS <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>PIERDES</Box> AL DÍA?
+            <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'none', maxWidth: '1200px' }}>
+              ¿Cuántas horas <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>pierdes</Box> al día?
             </H1>
             <Grid container spacing={6}>
               {features.map((feature, idx) => (
@@ -138,7 +138,7 @@ const Home = () => {
                   <H3 sx={{ 
                     mb: 3,
                     fontWeight: 900,
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: colors.palette.black,
                     fontSize: '2.25rem',
                     lineHeight: 1
@@ -189,7 +189,7 @@ const Home = () => {
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
           <Stack direction="column" spacing={10}>
             <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 1.0 }}>
-              // FUERZA DE TRABAJO INTELIGENTE
+              // Fuerza de trabajo inteligente
             </Giant>
             
             <Grid container spacing={8}>
@@ -201,7 +201,7 @@ const Home = () => {
                         color: colors.palette.white,
                         fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' }, // Reducido para evitar cortes
                         fontWeight: 900,
-                        textTransform: 'uppercase',
+                        textTransform: 'none',
                         lineHeight: 1.0,
                         letterSpacing: '-0.02em',
                         wordBreak: 'break-word'
@@ -226,9 +226,9 @@ const Home = () => {
                     lineHeight: 1.2,
                     fontWeight: 300,
                     letterSpacing: '-0.04em',
-                    textTransform: 'uppercase'
+                    textTransform: 'none'
                   }}>
-                    "IA QUE EJECUTA POR TI."
+                    "IA que ejecuta por ti."
                   </BodyText>
                 </Box>
               </Grid>
@@ -253,17 +253,17 @@ const Home = () => {
               <Box sx={{ position: { lg: 'sticky' }, top: 100 }}>
                 <H1 sx={{ 
                   fontWeight: 900, 
-                  textTransform: 'uppercase', 
+                  textTransform: 'none', 
                   color: colors.palette.black, 
                   fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' }, // Reducido ligeramente
                   lineHeight: 1.0,
                   mb: 4,
                   wordBreak: 'break-word'
                 }}>
-                  SERVICIOS QUE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>TRANSFORMAN</Box>
+                  Servicios que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>transforman</Box>
                 </H1>
                 <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
-                  IA APLICADA A TU NEGOCIO.
+                  IA aplicada a tu negocio.
                 </BodyText>
                 <Button 
                   variant="primary" 
@@ -278,7 +278,7 @@ const Home = () => {
                     display: { xs: 'none', lg: 'flex' }
                   }}
                 >
-                  VER TODOS LOS SERVICIOS
+                  Ver todos los servicios
                 </Button>
               </Box>
             </Grid>
@@ -328,7 +328,7 @@ const Home = () => {
                           fontSize: { xs: '2rem', md: '2.4rem' }, // Reducido de 2.8rem para evitar cortes
                           mb: 3,
                           lineHeight: 1.0,
-                          textTransform: 'uppercase',
+                          textTransform: 'none',
                           color: colors.palette.black,
                           wordBreak: 'break-word',
                           hyphens: 'auto'
@@ -358,8 +358,8 @@ const Home = () => {
                         }}
                       >
                         <GeometricIcon type="arrow-right" size="small" color="inherit" />
-                        <Typography sx={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
-                          SABER MÁS
+                        <Typography sx={{ fontWeight: 800, textTransform: 'none', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
+                          Saber más
                         </Typography>
                       </Box>
                     </Card>
@@ -384,7 +384,7 @@ const Home = () => {
           <Container maxWidth="xl">
             <Box sx={{ textAlign: 'center' }}>
             <Giant sx={{ mb: 8, color: colors.palette.white, fontSize: { xs: '3rem', md: '7rem', lg: '9rem' }, lineHeight: 0.85 }}>
-              ¿LISTO PARA EL SIGUIENTE NIVEL?
+              ¿Listo para el siguiente nivel?
             </Giant>
             <Stack 
               direction={{ xs: 'column', lg: 'row' }} 
@@ -424,7 +424,7 @@ const Home = () => {
                   }
                 }}
               >
-                SOLUCIONES IA
+                Soluciones IA
               </Button>
             </Stack>
           </Box>

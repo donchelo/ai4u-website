@@ -375,7 +375,7 @@ const PitchBancolombia: React.FC = () => {
                                                 fontSize: isTitleOnly 
                                                     ? { xs: '2.5rem', md: '5rem', lg: '7rem' } 
                                                     : { xs: '1.8rem', md: '3rem', lg: '4rem' },
-                                                textTransform: 'uppercase',
+                                                textTransform: 'none',
                                                 textAlign: isTitleOnly ? 'center' : 'left',
                                                 mb: isTitleOnly && !current.subtitle ? 0 : { xs: 2, md: 4 },
                                                 lineHeight: 1.1
@@ -392,7 +392,7 @@ const PitchBancolombia: React.FC = () => {
                                                 : { xs: '1.8rem', md: '3rem', lg: '4.2rem' },
                                             lineHeight: 1.1,
                                             letterSpacing: '-0.04em',
-                                            textTransform: 'uppercase',
+                                            textTransform: 'none',
                                             mb: isTitleOnly && !current.subtitle ? 0 : { xs: 2, md: 4 },
                                             maxWidth: isTitleOnly ? 'none' : '100%',
                                             textAlign: isTitleOnly ? 'center' : 'left',
@@ -419,7 +419,7 @@ const PitchBancolombia: React.FC = () => {
                                                         fontSize: { xs: '1rem', md: '1.5rem', lg: '2rem' },
                                                         textAlign: 'center',
                                                         letterSpacing: 2,
-                                                        textTransform: 'uppercase'
+                                                        textTransform: 'none'
                                                     }
                                                 }}
                                             />
@@ -430,7 +430,7 @@ const PitchBancolombia: React.FC = () => {
                                                     fontWeight: 400,
                                                     fontSize: { xs: '1.2rem', md: '1.8rem', lg: '2.5rem' },
                                                     letterSpacing: 4,
-                                                    textTransform: 'uppercase',
+                                                    textTransform: 'none',
                                                     opacity: 0.8
                                                 }}
                                             >
@@ -819,7 +819,7 @@ const PitchBancolombia: React.FC = () => {
                 <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
                         <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 1 }}>
-                            ORGANIZADOR
+                            Organizador
                         </Typography>
                         <IconButton onClick={() => setIsOrganizerOpen(false)} sx={{ color: 'white' }}>
                             <NextIcon sx={{ transform: 'rotate(180deg)' }} />
@@ -907,12 +907,12 @@ const PitchBancolombia: React.FC = () => {
                                 color: 'rgba(255,255,255,0.5)', 
                                 fontSize: '0.75rem', 
                                 width: '100%', 
-                                borderRadius: 2,
+                                borderRadius: 2, 
                                 gap: 1
                             }}
                         >
                             <PitchIcon fontSize="small" />
-                            RESTAURAR ORDEN ORIGINAL
+                            Restaurar orden original
                         </IconButton>
                     </Box>
                 </Box>

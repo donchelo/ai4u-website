@@ -110,7 +110,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                   fontSize: '0.6rem',
                   height: 20,
                   borderRadius: 0,
-                  textTransform: 'uppercase',
+                  textTransform: 'none',
                   letterSpacing: '0.1em',
                   '& .MuiChip-label': {
                     px: 1,
@@ -134,7 +134,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 fontWeight: 900,
                 lineHeight: 1.1,
                 textAlign: 'left',
-                textTransform: 'uppercase',
+                textTransform: 'none',
                 mb: 2,
                 display: 'flex',
                 alignItems: 'flex-start',

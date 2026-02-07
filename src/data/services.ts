@@ -5,7 +5,7 @@ export const services: Service[] = [
   // --- EJE 1: OPERACIÓN (ORANGE) ---
   {
     id: 'fashion-agent',
-    title: 'coutureLAB',
+    title: 'coutureLab',
     subtitle: 'De figurines a ecommerce real',
     description: 'Fotos de producto con modelos IA.',
     benefits: [
@@ -397,7 +397,7 @@ export const services: Service[] = [
   // --- EJE 4: TRANSFORMACIÓN DIGITAL (GREEN) ---
   {
     id: 'super-ai',
-    title: 'Super AI',
+    title: 'SuperAI',
     subtitle: 'Capacidad Ejecutiva (AIA)',
     description: 'IA ejecutiva conectada a tus sistemas.',
     benefits: [

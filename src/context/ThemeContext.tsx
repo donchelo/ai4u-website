@@ -66,7 +66,7 @@ const typography: TypographyVariantsOptions = {
 		fontFamily: '"Red Hat Display", sans-serif',
 		fontWeight: 500,
 		fontSize: '0.75rem',
-		textTransform: 'uppercase',
+		textTransform: 'none',
 		letterSpacing: '0.08em',
 	},
 };
@@ -81,7 +81,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 				root: {
 					borderRadius: 0, // Sharp edges
 					fontWeight: 800, // Thicker font
-					textTransform: 'uppercase', // Brutalist style
+					textTransform: 'none', // Brutalist style
 					boxShadow: 'none',
 					padding: '12px 24px',
 					transition: 'all 0.1s ease-in-out',

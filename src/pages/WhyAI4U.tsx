@@ -56,21 +56,21 @@ const WhyAI4U = () => {
                   <H1 sx={{ 
                     mb: 6, 
                     fontWeight: 900,
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: colors.palette.white,
                     lineHeight: 0.9
                   }}>
-                    LA PARTE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>HUMANA</Box> DE LA IA
+                    La parte <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>humana</Box> de la IA
                   </H1>
                   
                   <Stack spacing={4} sx={{ mb: 8 }}>
                     {[
-                      'FUNDADOR DE AI4U',
-                      'COFUNDADOR DE MATT MOVILIDAD',
-                      'ESPECIALISTA EN AUTOMATIZACIÓN'
+                      'Fundador de AI4U',
+                      'Cofundador de Matt Movilidad',
+                      'Especialista en automatización'
                     ].map((text, idx) => (
                       <Box key={idx} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 800, textTransform: 'uppercase', color: colors.palette.white }}>
+                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 800, textTransform: 'none', color: colors.palette.white }}>
                           {text}
                         </BodyText>
                       </Box>
@@ -78,7 +78,7 @@ const WhyAI4U = () => {
                   </Stack>
                   
                   <ExpandableSection
-                    title="DESCUBRE MI HISTORIA"
+                    title="Descubre mi historia"
                     variant="card"
                     defaultExpanded={false}
                   >
@@ -89,7 +89,7 @@ const WhyAI4U = () => {
                     fontWeight: 300,
                     opacity: 0.9
                   }}>
-                    EXPERIENCIA EN STARTUPS, MOVILIDAD Y TECNOLOGÍA. SOLUCIONES QUE FUNCIONAN.
+                    Experiencia en startups, movilidad y tecnología. Soluciones que funcionan.
                   </BodyText>
                 </ExpandableSection>
                 
@@ -113,7 +113,7 @@ const WhyAI4U = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LINKEDIN
+                  LinkedIn
                 </Button>
               </Box>
             </Grid>
@@ -156,25 +156,25 @@ const WhyAI4U = () => {
               mb: 10, 
               textAlign: 'left',
               fontWeight: 900,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               color: colors.palette.black
             }}>
-              ¿QUÉ NOS HACE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>DIFERENTES</Box>?
+              ¿Qué nos hace <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>diferentes</Box>?
             </H1>
 
             <Grid container spacing={6}>
               {[
                 {
-                  title: 'DIAGNÓSTICO GRATUITO',
-                  description: 'IDENTIFICAMOS OPORTUNIDADES REALES SIN COSTO.',
+                  title: 'Diagnóstico gratuito',
+                  description: 'Identificamos oportunidades reales sin costo.',
                 },
                 {
-                  title: 'IA QUE EVOLUCIONA',
-                  description: 'APRENDE Y MEJORA CON TU NEGOCIO.',
+                  title: 'IA que evoluciona',
+                  description: 'Aprende y mejora con tu negocio.',
                 },
                 {
-                  title: 'ROI MEDIBLE',
-                  description: 'RESULTADOS DESDE LAS PRIMERAS SEMANAS.',
+                  title: 'ROI medible',
+                  description: 'Resultados desde las primeras semanas.',
                 }
               ].map((benefit, idx) => (
                 <Grid item xs={12} md={4} key={idx}>
@@ -193,7 +193,7 @@ const WhyAI4U = () => {
                       mb: 3,
                       lineHeight: 1,
                       color: 'inherit',
-                      textTransform: 'uppercase'
+                      textTransform: 'none'
                     }}>
                       {benefit.title}
                     </H3>
@@ -220,7 +220,7 @@ const WhyAI4U = () => {
           <Container maxWidth="lg">
             <Stack spacing={8} textAlign="center" alignItems="center">
               <Giant sx={{ color: colors.palette.black }}>
-                ¿LISTO PARA LIBERAR TU TIEMPO?
+                ¿Listo para liberar tu tiempo?
               </Giant>
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
@@ -231,7 +231,7 @@ const WhyAI4U = () => {
                 <ServicesButton
                   variant="outline"
                   sx={{ height: '100px', px: 10, fontSize: '1.8rem', borderWidth: '6px', borderColor: colors.palette.black, color: colors.palette.black }}
-                  text="VER SOLUCIONES"
+                  text="Ver soluciones"
                 />
               </Stack>
             </Stack>
@@ -252,7 +252,7 @@ const WhyAI4U = () => {
             textAlign: 'center', 
             mb: 6, 
             fontWeight: 800, 
-            textTransform: 'uppercase', 
+            textTransform: 'none', 
             color: colors.palette.black 
           }}>
             Nuestros clientes
