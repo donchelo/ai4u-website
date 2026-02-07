@@ -160,9 +160,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 px: { xs: 3, sm: 4, md: 8 }, 
                 fontSize: { xs: '0.75rem', sm: '1rem', md: '1.6rem' },
                 fontWeight: 900,
-                border: { xs: `2px solid ${colors.palette.white}`, md: `4px solid ${colors.palette.white}` },
+                borderRadius: 0,
                 bgcolor: colors.palette.white,
                 color: colors.palette.black,
+                border: 'none',
                 '&:hover': {
                   bgcolor: colors.palette.black,
                   color: colors.palette.white

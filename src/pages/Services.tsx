@@ -18,6 +18,7 @@ import { useColors, usePerformanceMonitoring } from '@/hooks';
 import { ServiceSuperCategory } from '@/types/service';
 import { getServicesStructuredData, getPageMetaTags } from '@/utils/seo';
 import { getRelatedLinks } from '@/data/internalLinkingStrategy';
+import { SHADOW_TOKENS } from '@/components/shared/ui/tokens/theme';
 
 const Services: React.FC = () => {
   const colors = useColors();
@@ -139,7 +140,6 @@ const Services: React.FC = () => {
               px: { xs: 4, md: 8, lg: 12 },
               bgcolor: axis.bgColor,
               color: axis.textColor,
-              borderBottom: `2px solid ${axis.accentColor}`,
               display: 'flex',
               justifyContent: 'center',
               position: 'relative',
@@ -213,12 +213,13 @@ const Services: React.FC = () => {
                         fontSize: '1.1rem',
                         bgcolor: expandedAxes[axis.id] ? axis.textColor : (axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined),
                         color: expandedAxes[axis.id] ? axis.bgColor : axis.textColor,
-                        borderWidth: '3px',
+                        borderRadius: 0,
+                        border: 'none',
                         '&:hover': {
                           bgcolor: axis.textColor,
                           color: axis.bgColor,
-                          transform: 'translate(-4px, -4px)',
-                          boxShadow: `8px 8px 0px ${axis.accentColor}`
+                          transform: 'translateY(-4px)',
+                          boxShadow: SHADOW_TOKENS.md
                         },
                         transition: 'all 0.2s ease',
                         display: 'flex',
@@ -320,7 +321,7 @@ const Services: React.FC = () => {
                 { n: '04', t: 'despliegue', d: 'Integración + soporte.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
+                  <Box sx={{ borderLeft: `4px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
                     <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1, color: colors.palette.white }}>{step.n}</H2>
                     <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1, color: colors.palette.white }}>{step.t}</Typography>
                     <BodyText sx={{ fontWeight: 500, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
@@ -352,8 +353,10 @@ const Services: React.FC = () => {
                 height: '100px', 
                 px: 10, 
                 fontSize: '1.8rem',
+                borderRadius: 0,
                 bgcolor: colors.palette.black,
-                color: colors.palette.white
+                color: colors.palette.white,
+                border: 'none'
               }}
             />
           </Stack>

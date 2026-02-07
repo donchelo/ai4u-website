@@ -5,6 +5,7 @@ import { Card, MetricCard } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 import { TYPOGRAPHY_TOKENS } from '../components/shared/ui/tokens/typography';
+import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
 
 const DesignSystem = () => {
   React.useEffect(() => {
@@ -34,8 +35,8 @@ const DesignSystem = () => {
         {/* Header */}
         <Box sx={{ mb: 12 }}>
           <Giant sx={{ mb: 4 }}>SISTEMA DE DISEÑO AI4U</Giant>
-          <BodyText sx={{ mt: 2, color: colors.contrast.text.secondary, fontSize: '2rem', fontWeight: 300, textTransform: 'uppercase' }}>
-            DOCUMENTACIÓN BRUTALISTA DE COLORES, TIPOGRAFÍA Y COMPONENTES.
+          <BodyText sx={{ mt: 2, color: colors.contrast.text.secondary, fontSize: '2rem', fontWeight: 300 }}>
+            DOCUMENTACIÓN MODERNA DE COLORES, TIPOGRAFÍA Y COMPONENTES.
           </BodyText>
         </Box>
 
@@ -50,24 +51,25 @@ const DesignSystem = () => {
             <H3 sx={{ mb: 3 }}>Colores Base</H3>
             <Grid container spacing={2}>
               <Grid item xs={6} sm={4} md={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    backgroundColor: AI4U_PALETTE.white,
-                    border: `1px solid ${AI4U_PALETTE.gray[200]}`,
-                    textAlign: 'center'
-                  }}
-                >
-                  <Box
+                  <Paper
                     sx={{
-                      width: '100%',
-                      height: 80,
+                      p: 2,
                       backgroundColor: AI4U_PALETTE.white,
-                      border: `1px solid ${AI4U_PALETTE.gray[200]}`,
-                      borderRadius: 1,
-                      mb: 1
+                      boxShadow: SHADOW_TOKENS.sm,
+                      textAlign: 'center',
+                      borderRadius: 2
                     }}
-                  />
+                  >
+                    <Box
+                      sx={{
+                        width: '100%',
+                        height: 80,
+                        backgroundColor: AI4U_PALETTE.white,
+                        boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.05)',
+                        borderRadius: 1,
+                        mb: 1
+                      }}
+                    />
                   <SmallText sx={{ fontWeight: 600 }}>White</SmallText>
                   <CodeText>{AI4U_PALETTE.white}</CodeText>
                 </Paper>
@@ -107,8 +109,9 @@ const DesignSystem = () => {
                     sx={{
                       p: 2,
                       backgroundColor: colors.contrast.background,
-                      border: `1px solid ${colors.contrast.border}`,
-                      textAlign: 'center'
+                      boxShadow: SHADOW_TOKENS.sm,
+                      textAlign: 'center',
+                      borderRadius: 2
                     }}
                   >
                     <Box
@@ -118,7 +121,7 @@ const DesignSystem = () => {
                         backgroundColor: value,
                         borderRadius: 1,
                         mb: 1,
-                        border: `1px solid ${colors.contrast.border}`
+                        boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.05)'
                       }}
                     />
                     <SmallText sx={{ fontWeight: 600 }}>Gray {key}</SmallText>
@@ -195,8 +198,9 @@ const DesignSystem = () => {
                     sx={{
                       p: 2,
                       backgroundColor: colors.contrast.background,
-                      border: `1px solid ${colors.contrast.border}`,
-                      textAlign: 'center'
+                      boxShadow: SHADOW_TOKENS.sm,
+                      textAlign: 'center',
+                      borderRadius: 2
                     }}
                   >
                     <Box

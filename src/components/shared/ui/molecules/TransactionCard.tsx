@@ -60,10 +60,23 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           },
           surface: {
             background: colors.contrast.surface,
-            border: `1px solid ${colors.contrast.divider}`
+            border: 'none'
           }
         };
       case 'elevated':
+        return {
+          card: {
+            background: colors.contrast.surface,
+            border: 'none',
+            color: colors.contrast.text.primary,
+            boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+          },
+          surface: {
+            background: colors.contrast.background,
+            border: 'none'
+          }
+        };
+      default: // default
         return {
           card: {
             background: colors.contrast.surface,
@@ -72,19 +85,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           },
           surface: {
             background: colors.contrast.background,
-            border: `1px solid ${colors.contrast.divider}`
-          }
-        };
-      default: // default
-        return {
-          card: {
-            background: colors.contrast.surface,
-            border: `1px solid ${colors.contrast.divider}`,
-            color: colors.contrast.text.primary
-          },
-          surface: {
-            background: colors.contrast.background,
-            border: `1px solid ${colors.contrast.divider}`
+            border: 'none'
           }
         };
     }

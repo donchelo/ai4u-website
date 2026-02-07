@@ -83,12 +83,14 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         p: size === 'compact' ? 4 : size === 'large' ? 8 : 6,
         position: 'relative',
         overflow: 'hidden',
-        border: `4px solid ${isDarkMode ? colors.palette.white : colors.palette.black}`,
-        bgcolor: isDarkMode ? colors.palette.black : colors.palette.white,
+        border: 'none',
+        bgcolor: isDarkMode ? colors.palette.gray[900] : colors.palette.white,
         color: isDarkMode ? colors.palette.white : colors.palette.black,
+        borderRadius: 0,
+        boxShadow: isDarkMode ? '0 10px 30px rgba(0,0,0,0.3)' : '0 10px 30px rgba(0,0,0,0.05)',
         '&:hover': {
-          transform: 'translate(-8px, -8px)',
-          boxShadow: isDarkMode ? '12px 12px 0px #FFFFFF' : '12px 12px 0px #000000',
+          transform: 'translateY(-4px)',
+          boxShadow: isDarkMode ? '0 20px 40px rgba(0,0,0,0.4)' : '0 20px 40px rgba(0,0,0,0.1)',
         }
       }}
     >

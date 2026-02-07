@@ -13,6 +13,7 @@ import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { ServiceSuperCategory } from '../types/service';
 import { ROUTES } from '../utils/constants';
 import { scrollToTop } from '../utils/helpers';
+import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
 
 const Home = () => {
   const colors = useColors();
@@ -128,10 +129,8 @@ const Home = () => {
                       p: 6,
                       display: 'flex',
                       flexDirection: 'column',
-                      borderWidth: '4px',
                       '&:hover': {
-                        transform: 'translate(8px, -8px)',
-                        boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                        transform: 'translateY(-8px)',
                       }
                     }}
                   >
@@ -215,7 +214,7 @@ const Home = () => {
               <Grid item xs={12} md={5}>
                 <Box sx={{ 
                   p: 6, 
-                  border: `6px solid ${colors.palette.white}`, 
+                  borderRadius: 4,
                   bgcolor: 'rgba(255,255,255,0.03)',
                   backdropFilter: 'blur(20px)',
                   height: 'fit-content'
@@ -297,15 +296,13 @@ const Home = () => {
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         bgcolor: colors.palette.white,
-                        borderColor: colors.palette.black,
-                        borderWidth: '4px',
-                        transition: 'all 0.2s ease',
+                        transition: 'all 0.3s ease',
                         overflow: 'visible',
                         '&:hover': {
                           bgcolor: colors.palette.black,
                           color: colors.palette.white,
-                          transform: 'translate(-8px, -8px)',
-                          boxShadow: `12px 12px 0px ${colors.palette.gray[800]}`,
+                          transform: 'translateY(-8px)',
+                          boxShadow: SHADOW_TOKENS.lg,
                           '& h3, & p, & .idx': { color: colors.palette.white }
                         }
                       }}
@@ -399,7 +396,7 @@ const Home = () => {
                 fontWeight: 900, 
                 bgcolor: colors.palette.white, 
                 color: colors.palette.black,
-                border: `6px solid ${colors.palette.white}`,
+                borderRadius: 0,
                 '&:hover': {
                   bgcolor: colors.palette.black,
                   color: colors.palette.white
@@ -415,7 +412,7 @@ const Home = () => {
                   px: 10, 
                   fontSize: '2rem', 
                   fontWeight: 900, 
-                  borderWidth: '6px',
+                  borderRadius: 0,
                   borderColor: colors.palette.white,
                   color: colors.palette.white,
                   '&:hover': {

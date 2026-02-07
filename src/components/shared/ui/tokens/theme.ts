@@ -14,12 +14,12 @@ export const SHADOW_TOKENS = {
   '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
   inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
   
-  // Sombras AI4U específicas - Minimalistas (sin naranja)
+  // Sombras AI4U específicas - Modernas y suaves
   ai4u: {
-    card: '0 4px 12px rgba(0,0,0,0.05)',
-    cardDark: '0 4px 12px rgba(0,0,0,0.2)',
-    button: '0 4px 12px rgba(0, 0, 0, 0.15)',  // Sombra negra/gris (no naranja)
-    glow: '0 0 20px rgba(0, 0, 0, 0.1)',  // Glow minimalista
+    card: '0 4px 20px rgba(0,0,0,0.06)',
+    cardDark: '0 8px 30px rgba(0,0,0,0.3)',
+    button: '0 4px 12px rgba(0, 0, 0, 0.08)',
+    glow: '0 0 20px rgba(0, 0, 0, 0.05)',
   },
 } as const;
 

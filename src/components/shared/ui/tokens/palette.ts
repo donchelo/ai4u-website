@@ -76,8 +76,8 @@ export const SURFACE_PRESETS = {
       secondary: AI4U_PALETTE.gray[300],
       disabled: AI4U_PALETTE.gray[500],
     },
-    border: AI4U_PALETTE.white,
-    divider: AI4U_PALETTE.gray[800],
+    border: 'none',
+    divider: 'rgba(0,0,0,0.06)',
     effectiveMode: 'dark' as const,
   },
   green: {
@@ -88,8 +88,8 @@ export const SURFACE_PRESETS = {
       secondary: AI4U_PALETTE.gray[800],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: AI4U_PALETTE.black,
-    divider: 'rgba(0,0,0,0.1)',
+    border: 'none',
+    divider: 'rgba(0,0,0,0.06)',
     effectiveMode: 'light' as const,
   },
   orange: {
@@ -100,8 +100,8 @@ export const SURFACE_PRESETS = {
       secondary: AI4U_PALETTE.gray[800],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: AI4U_PALETTE.black,
-    divider: 'rgba(0,0,0,0.1)',
+    border: 'none',
+    divider: 'rgba(0,0,0,0.06)',
     effectiveMode: 'light' as const,
   },
 } as const;
@@ -110,13 +110,12 @@ export type SurfaceType = 'theme' | keyof typeof SURFACE_PRESETS;
 
 // Variantes de componentes simplificadas - Minimalista (sin naranja como primario)
 export const COMPONENT_VARIANTS = {
-  // Botones minimalistas - Usar gris/negro como primario
+  // Botones modernos - Sin bordes marcados
   button: {
     primary: {
-      // Primario ahora es negro/gris oscuro (no naranja)
       background: AI4U_PALETTE.black,
       text: AI4U_PALETTE.white,
-      hover: AI4U_PALETTE.gray[800],
+      hover: AI4U_PALETTE.gray[900],
     },
     secondary: {
       background: AI4U_PALETTE.gray[100],
@@ -124,13 +123,11 @@ export const COMPONENT_VARIANTS = {
       hover: AI4U_PALETTE.gray[200],
     },
     outline: {
-      // Outline usa borde negro/gris (no naranja)
       background: 'transparent',
       text: AI4U_PALETTE.black,
-      border: AI4U_PALETTE.gray[400],
-      hover: AI4U_PALETTE.gray[50],
+      border: AI4U_PALETTE.gray[300],
+      hover: 'rgba(0,0,0,0.04)',
     },
-    // Variante minimalista adicional
     minimal: {
       background: 'transparent',
       text: AI4U_PALETTE.black,
@@ -139,17 +136,17 @@ export const COMPONENT_VARIANTS = {
     },
   },
   
-  // Cards minimalistas
+  // Cards modernas
   card: {
     light: {
       background: AI4U_PALETTE.white,
       text: AI4U_PALETTE.black,
-      border: AI4U_PALETTE.gray[200],
+      border: 'none',
     },
     dark: {
       background: AI4U_PALETTE.gray[900],
       text: AI4U_PALETTE.white,
-      border: AI4U_PALETTE.gray[800],
+      border: 'none',
     },
   },
 } as const;

@@ -149,6 +149,7 @@ const Navbar = () => {
               sx={{
                 color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
                 transition: 'color 0.3s ease-in-out',
+                border: 'none', // Asegurar que no tenga bordes del tema
                 '&:hover': {
                   backgroundColor: 'transparent',
                   opacity: 0.7,

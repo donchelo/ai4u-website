@@ -17,34 +17,31 @@ const StyledButton = styled(MuiButton, {
   const isLight = theme.palette.mode === 'light';
   const buttonVariants = COMPONENT_VARIANTS.button;
   
-  // Estilos base minimalistas/brutalistas
+  // Estilos base modernos y limpios
   const baseStyles = {
-    borderRadius: 0, // Sharp edges
-    fontWeight: 800, // Thicker
-    textTransform: 'none' as const, // Permite normal case y camelCase
+    borderRadius: 0, // Ángulos rectos
+    fontWeight: 600, // Semi-bold
+    textTransform: 'none' as const,
     fontFamily: '"Red Hat Display", sans-serif',
     transition: theme.transitions.create(['background-color', 'border-color', 'color', 'transform', 'box-shadow'], {
-      duration: '0.1s',
+      duration: '0.2s',
       easing: theme.transitions.easing.easeInOut,
     }),
-    borderWidth: '3px',
-    borderStyle: 'solid',
+    border: 'none',
   };
 
-  // Variantes usando tokens del sistema (alto contraste)
+  // Variantes usando tokens del sistema
   switch (customVariant) {
     case 'primary':
       return {
         ...baseStyles,
         backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-        borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        boxShadow: 'none',
+        boxShadow: SHADOW_TOKENS.ai4u.button,
         '&:hover': {
-          backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-          color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-          boxShadow: isLight ? '6px 6px 0px #000000' : '6px 6px 0px #FFFFFF',
-          transform: 'translate(-4px, -4px)',
+          backgroundColor: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[100],
+          boxShadow: SHADOW_TOKENS.md,
+          transform: 'translateY(-2px)',
         },
       };
     
@@ -53,10 +50,10 @@ const StyledButton = styled(MuiButton, {
         ...baseStyles,
         backgroundColor: 'transparent',
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+        border: `1px solid ${isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)'}`,
         '&:hover': {
-          backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-          color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+          backgroundColor: isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)',
+          borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         },
       };
     
