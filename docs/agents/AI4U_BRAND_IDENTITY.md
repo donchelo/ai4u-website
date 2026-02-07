@@ -17,7 +17,7 @@
 
 ### Filosofía del Tiempo:
 - **"Time is Gold"**: El tiempo es el único recurso verdaderamente irreemplazable
-- **Liberación de Potencial**: 70% del tiempo operativo devuelto al cliente
+- **Liberación de Potencial**: Gran parte del tiempo operativo devuelto al cliente
 - **Enfoque Estratégico**: Tiempo libre para crecimiento, no supervivencia
 
 ## 👥 CLIENTE IDEAL
@@ -87,7 +87,7 @@
 
 - **TRUE (Moda)**: Flujos automatizados generación catálogos visuales con IA
 - **Universidad EAFIT**: Formaciones IA Generativa para docentes
-- **Múltiples industrias**: Liberación 70% tiempo operativo
+- **Múltiples industrias**: Liberación significativa de tiempo operativo
 
 ## 🎯 MENSAJES CLAVE PARA AGENTES
 

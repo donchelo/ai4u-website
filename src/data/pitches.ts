@@ -40,7 +40,7 @@ export const PITCHES: Record<string, PitchData> = {
                 subtitle: 'Estrategia • Automatización • Educación • Transformación',
                 content: [
                     'Estrategia: Diagnóstico y planificación con IA para transformar tu negocio desde la raíz.',
-                    'Automatización: Asistentes robóticos 24/7 que liberan el 70% de tu tiempo operativo.',
+                    'Automatización: Asistentes robóticos continuos que liberan gran parte de tu tiempo operativo.',
                     'Educación: Capacitación para que tu equipo evolucione junto a la tecnología.',
                     'Transformación Digital: Integración de soluciones para alcanzar el máximo nivel de eficiencia.'
                 ],
@@ -214,8 +214,8 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'Automatizaciones',
-                subtitle: 'Lo Operativo: Eficiencia 24/7',
-                content: 'Transformamos tareas repetitivas en procesos autónomos e infalibles.',
+                subtitle: 'Eficiencia Continua',
+                content: 'Transformamos tareas repetitivas en procesos ágiles y confiables.',
                 type: 'section',
                 theme: 'BLACK_MODERN',
                 category: 'OPERATIVO'
@@ -234,11 +234,11 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'Data Entry Automático',
-                subtitle: 'Cero Errores de Digitación',
+                subtitle: 'Precisión en Digitación',
                 content: [
                     'Extracción inteligente de datos de facturas y documentos (OCR).',
-                    'Ingreso automático a ERP y sistemas contables.',
-                    'Liberación de +20 horas semanales de carga administrativa.'
+                    'Ingreso ágil a ERP y sistemas contables.',
+                    'Recupera horas valiosas cada semana de carga administrativa.'
                 ],
                 type: 'product',
                 theme: 'BLACK_MODERN',
@@ -246,11 +246,11 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'Auditorías Internas con IA',
-                subtitle: 'Control y Calidad Garantizada',
+                subtitle: 'Control y Calidad Reforzada',
                 content: [
-                    'Validación automática de procesos operativos y cumplimiento.',
+                    'Validación ágil de procesos operativos y cumplimiento.',
                     'Detección de anomalías en facturación y logística.',
-                    'Reportes de auditoría generados en segundos, no semanas.'
+                    'Reportes de auditoría generados con alta velocidad.'
                 ],
                 type: 'product',
                 theme: 'GREEN_FRESH',
@@ -314,31 +314,31 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'El Siguiente Nivel',
-                subtitle: 'Super AI Infrastructure',
-                content: 'La cúspide de la autonomía: una IA que no solo sugiere, sino que ejecuta.',
+                subtitle: 'IA Infrastructure',
+                content: 'La capacidad ejecutiva de la IA: tecnología que apoya la toma de decisiones.',
                 type: 'section',
                 theme: 'SUPER_AI_NEON',
                 category: 'SUPER AI'
             },
             {
                 title: 'Super AI',
-                subtitle: 'Tu Empleado Digital Autónomo',
+                subtitle: 'Tu Asistente Digital Inteligente',
                 content: [
-                    'IA conectada directamente a todos tus sistemas operativos.',
-                    'Capacidad de actuar y decidir con base en objetivos de negocio.',
-                    'Integración profunda que sustituye procesos complejos.'
+                    'IA con capacidad de conexión a tus sistemas operativos.',
+                    'Capacidad de sugerir y apoyar con base en objetivos de negocio.',
+                    'Integración que optimiza procesos complejos.'
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',
                 category: 'SUPER AI'
             },
             {
-                title: 'Autonomía Total',
-                subtitle: 'Control de Sistemas y Objetivos',
+                title: 'Capacidad Ejecutiva',
+                subtitle: 'Optimización de Sistemas y Objetivos',
                 content: [
-                    'La IA opera el computador y los sistemas como un humano experto.',
-                    'Ejecución autónoma de tareas administrativas y logísticas.',
-                    'Enfoque total en resultados y cumplimiento de KPIs.'
+                    'La IA interactúa con sistemas de forma experta.',
+                    'Ejecución asistida de tareas administrativas y logísticas.',
+                    'Enfoque en resultados y cumplimiento de indicadores.'
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',

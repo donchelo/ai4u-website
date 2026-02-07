@@ -94,9 +94,9 @@ Esta es la versión pública de la guía completa para el desarrollo del proyect
 ### **TRUE (Marca de Moda):**
 - **Problema**: 6h diarias creando contenido producto
 - **Solución**: SuperAI Make.com + Claude + DALL-E
-- **Resultado**: 70% tiempo liberado para estrategia
+- **Resultado**: Gran cantidad de tiempo liberado para estrategia
 - **Stack**: Make.com + OpenAI + Airtable + e-commerce integration
-- **Implementación**: 3 días
+- **Implementación**: Ágil
 
 ### **UNIVERSIDAD EAFIT (Educación):**
 - **Problema**: Docentes necesitaban alfabetización IA
@@ -105,12 +105,19 @@ Esta es la versión pública de la guía completa para el desarrollo del proyect
 - **Enfoque**: IA como asistente, no reemplazo
 - **Contexto**: Sector educativo colombiano
 
+### **LA MAGDALENA (Impact Storytelling):**
+- **Problema**: Dificultad para conectar historias de memoria social y ambiental del Río Magdalena de forma inmersiva.
+- **Solución**: Plataforma de storytelling multimedia con realismo mágico digital.
+- **Resultado**: Preservación y difusión de la memoria del río con alto impacto narrativo.
+- **Enfoque**: Storytelling multimedia e inmersivo.
+- **Contexto**: Impacto social y ambiental.
+
 ### **PYMES TRADICIONALES (Patrón Típico):**
 - **Problema**: Procesos operativos manuales repetitivos
 - **Solución**: SuperAI Empresarial personalizado
-- **Resultado**: 126 horas mensuales liberadas promedio
-- **ROI**: $6.3M COP mensuales de capacidad productiva
-- **Timeline**: 3 días implementación + 1 semana adopción
+- **Resultado**: Horas mensuales liberadas para crecimiento
+- **ROI**: Capacidad productiva recuperada significativamente
+- **Timeline**: Implementación ágil y adopción progresiva
 
 ---
 

@@ -65,8 +65,8 @@ const Services: React.FC = () => {
     {
       id: ServiceSuperCategory.OPERATION,
       title: 'OPERACIÓN',
-      subtitle: 'EFICIENCIA 24/7',
-      description: 'PROCESOS AUTÓNOMOS QUE LIBERAN EL 70% DE TU TIEMPO OPERATIVO.',
+      subtitle: 'EFICIENCIA CONTINUA',
+      description: 'PROCESOS QUE OPTIMIZAN TU TIEMPO OPERATIVO Y RECURSOS.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.orange,
       textColor: colors.palette.black,
@@ -95,8 +95,8 @@ const Services: React.FC = () => {
     {
       id: ServiceSuperCategory.TRANSFORMATION,
       title: 'TRANSFORMACIÓN',
-      subtitle: 'SUPER AI INFRASTRUCTURE',
-      description: 'LA CÚSPIDE DE LA AUTONOMÍA: INFRAESTRUCTURA DONDE LA IA ES EL MOTOR.',
+      subtitle: 'IA INFRASTRUCTURE',
+      description: 'INFRAESTRUCTURA INTELIGENTE DISEÑADA PARA LA ESCALABILIDAD.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.green,
       textColor: colors.palette.black,
@@ -316,9 +316,9 @@ const Services: React.FC = () => {
             <Grid container spacing={6}>
               {[
                 { n: '01', t: 'DIAGNÓSTICO', d: 'IDENTIFICAMOS OPORTUNIDADES REALES.' },
-                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN EL MÁXIMO ROI.' },
+                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN RESULTADOS DE NEGOCIO.' },
                 { n: '03', t: 'DESARROLLO', d: 'INGENIERÍA DE IA A MEDIDA.' },
-                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN TOTAL 24/7.' }
+                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN Y SOPORTE CONTINUO.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>

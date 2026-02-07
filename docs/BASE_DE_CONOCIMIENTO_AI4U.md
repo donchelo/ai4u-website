@@ -54,7 +54,7 @@
     ### 2.2 Diferenciadores Clave
 
     1. **Diagnóstico Gratuito**: Evaluación del negocio sin costo para identificar oportunidades de automatización.
-    3. **Resultados Garantizados**: Implementación en 72 horas promedio con ROI medible desde el primer mes.
+    3. **Enfoque en Resultados**: Implementación ágil y enfoque en ROI medible desde las primeras etapas.
     4. **Metodología AI-First**: Construimos sobre IA desde el núcleo, no adaptamos herramientas existentes.
     5. **Equipo de ingeniería dedicado**: No somos un proveedor de software genérico, sino tu equipo personalizado de ingeniería de IA.
     6. **100% propiedad del cliente**: Todo el código, documentación y propiedad intelectual pertenece al cliente.
@@ -71,16 +71,16 @@
     - "Cada segundo cuenta"
     - "La libertad comienza aquí"
 
-    ### 2.4 Estadísticas del Negocio
+    ### 2.4 Estadísticas del Negocio (Referenciales)
 
     | Métrica | Valor |
     |---------|-------|
     | Total de servicios | 25+ |
     | Servicios de estrategia | 12 |
     | Servicios de operación | 13 |
-    | ROI promedio | 300% |
-    | Reducción tiempo operativo | Hasta 95% |
-    | Tiempo de implementación típico | 3 días |
+    | ROI | Optimizado |
+    | Optimización tiempo operativo | Significativa |
+    | Tiempo de implementación típico | Ágil |
 
     ---
 
@@ -88,28 +88,28 @@
 
     AI4U organiza sus servicios en **4 ejes principales**: Operación, Estrategia, Educación y Transformación.
 
-    ### 3.1 EJE: OPERACIÓN — Eficiencia 24/7
+    ### 3.1 EJE: OPERACIÓN — Eficiencia Continua
 
     Servicios enfocados en automatizar procesos operativos repetitivos.
 
     #### 3.1.1 coutureLAB (Fashion Agent) ⭐ DESTACADO
     - **Descripción**: Transforma diseños de moda (figurines) en fotos de producto reales con modelos generados por IA, listas para ecommerce.
-    - **Beneficio**: Ahorra hasta el 90% en costos de fotografía de producto.
+    - **Beneficio**: Optimización drástica en costos de fotografía de producto.
     - **Capacidades**: Probador virtual (Virtual Try-On), casting digital de modelos, lookbooks editoriales, generación de colecciones.
-    - **Tiempo de entrega**: 24 horas.
+    - **Tiempo de entrega**: Ágil.
     - **Demo**: true-vton.vercel.app
 
     #### 3.1.2 Data Entry Automático
     - **Descripción**: Extrae datos automáticamente de PDFs, imágenes o correos y los ingresa en tu ERP/CRM.
-    - **Beneficio**: Elimina errores humanos y libera hasta 20 horas semanales.
+    - **Beneficio**: Minimiza errores operativos y recupera horas valiosas cada semana.
     - **Tecnología**: OCR + IA para extracción inteligente de datos.
-    - **Tiempo de entrega**: 7 días.
+    - **Tiempo de entrega**: Ágil.
 
     #### 3.1.3 Chatbots WhatsApp
-    - **Descripción**: Sistema de ventas automatizado por WhatsApp, conectado al inventario del negocio.
-    - **Beneficio**: Gestión de pedidos 24/7 sin intervención humana.
+    - **Descripción**: Sistema de atención y ventas por WhatsApp, conectado al inventario del negocio.
+    - **Beneficio**: Gestión de pedidos continua sin interrupciones.
     - **Tecnología**: WhatsApp Business API + IA conversacional.
-    - **Tiempo de entrega**: 3 días.
+    - **Tiempo de entrega**: Ágil.
 
     #### 3.1.4 Auditorías IA
     - **Descripción**: Detección automática de errores en facturación y logística con reportes instantáneos.
@@ -211,8 +211,8 @@
     Servicios de transformación profunda para empresas que quieren operar con IA desde el núcleo.
 
     #### 3.4.1 Super AI ⭐ DESTACADO
-    - **Descripción**: IA Autónoma Inteligente (AIA) que no solo sugiere, sino que ejecuta. Conectada a tus sistemas para tomar decisiones de forma autónoma.
-    - **Beneficio**: Autonomía total — la IA administra, ejecuta y reporta.
+    - **Descripción**: IA con Capacidad Ejecutiva que apoya la toma de decisiones. Conectada a tus sistemas para optimizar flujos complejos.
+    - **Beneficio**: Ejecución asistida — la IA apoya, sugiere y reporta.
     - **Tiempo de entrega**: A medida, según la complejidad del proyecto.
 
     #### 3.4.2 Metodología AI-First
@@ -250,9 +250,9 @@
 
     - **Problema**: 6 horas diarias dedicadas a crear contenido de producto.
     - **Solución**: SuperAI con Make.com + Claude + DALL-E para generación automática de contenido.
-    - **Resultado**: 70% del tiempo liberado para dedicarse a estrategia.
+    - **Resultado**: Gran cantidad de tiempo liberado para dedicarse a estrategia.
     - **Stack tecnológico**: Make.com + OpenAI + Airtable + integración e-commerce.
-    - **Implementación**: 3 días.
+    - **Implementación**: Ágil.
 
     ### 4.4 Caso de Éxito: Universidad EAFIT (Educación)
 
@@ -262,13 +262,20 @@
     - **Enfoque**: IA como asistente del docente, no como reemplazo.
     - **Contexto**: Impulso rural con impacto social.
 
-    ### 4.5 Caso de Éxito: Pymes Tradicionales (Patrón Típico)
+    ### 4.5 Caso de Éxito: La Magdalena (Impact Storytelling)
+
+    - **Problema**: Dificultad para conectar historias de memoria social y ambiental del Río Magdalena con audiencias digitales de forma inmersiva.
+    - **Solución**: Arquitectura de storytelling multimedia con enfoque en realismo mágico digital y UX inmersiva.
+    - **Resultado**: Plataforma robusta que preserva y difunde la memoria del río, potenciando el impacto social de la narrativa.
+    - **Link**: [lamagdalena.com.co](https://donchelo.github.io/www.lamagdalena.com/#inicio)
+
+    ### 4.6 Caso de Éxito: Pymes Tradicionales (Patrón Típico)
 
     - **Problema**: Procesos operativos manuales y repetitivos que consumen horas.
     - **Solución**: SuperAI Empresarial personalizado según el negocio.
-    - **Resultado**: 126 horas mensuales liberadas en promedio.
-    - **ROI**: $6.3 millones COP mensuales de capacidad productiva recuperada.
-    - **Timeline**: 3 días de implementación + 1 semana de adopción.
+    - **Resultado**: Horas mensuales liberadas para crecimiento.
+    - **ROI**: Capacidad productiva recuperada significativamente.
+    - **Timeline**: Implementación ágil y adopción progresiva.
 
     ---
 

@@ -474,9 +474,9 @@ const UseCases = () => {
             <Grid item xs={12} md={6}>
               <Stack spacing={4}>
                 {[
-                  { label: 'REDUCCIÓN TIEMPO OPERATIVO', value: '95%' },
-                  { label: 'INCREMENTO EFICIENCIA', value: '300%' },
-                  { label: 'AUTOMATIZACIÓN CONTINUA', value: '24/7' }
+                  { label: 'OPTIMIZACIÓN TIEMPO OPERATIVO', value: 'ALTA' },
+                  { label: 'INCREMENTO EFICIENCIA', value: 'SIGNIFICATIVO' },
+                  { label: 'DISPONIBILIDAD CONTINUA', value: '24/7' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
                     <H2 sx={{ fontWeight: 900, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>

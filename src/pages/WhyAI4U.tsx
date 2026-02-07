@@ -172,8 +172,8 @@ const WhyAI4U = () => {
                   description: 'NUESTROS ASISTENTES APRENDEN Y MEJORAN CONTINUAMENTE.',
                 },
                 {
-                  title: 'RESULTADOS GARANTIZADOS',
-                  description: '72 HORAS PARA IMPLEMENTACIÓN. ROI MEDIBLE DESDE EL PRIMER MES.',
+                  title: 'ENFOQUE EN RESULTADOS',
+                  description: 'IMPLEMENTACIÓN ÁGIL Y ENFOQUE EN ROI MEDIBLE DESDE LAS PRIMERAS ETAPAS.',
                 }
               ].map((benefit, idx) => (
                 <Grid item xs={12} md={4} key={idx}>
@@ -233,7 +233,7 @@ const WhyAI4U = () => {
                 { title: 'SERVICIOS', value: '25+' },
                 { title: 'ESTRATEGIA', value: '12' },
                 { title: 'OPERACIÓN', value: '13' },
-                { title: 'ROI PROMEDIO', value: '300%' }
+                { title: 'ROI', value: 'OPTIMIZADO' }
               ].map((stat, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <MetricCard

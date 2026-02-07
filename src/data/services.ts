@@ -7,7 +7,7 @@ export const services: Service[] = [
     id: 'fashion-agent',
     title: 'coutureLAB',
     subtitle: 'De figurines a ecommerce real',
-    description: 'Fotos de producto con modelos IA. Ahorro del 90% en producción.',
+    description: 'Fotos de producto con modelos IA. Optimización drástica en producción.',
     benefits: [
       'Modelos personalizados',
       'Cero costos de estudio'
@@ -29,11 +29,11 @@ export const services: Service[] = [
   {
     id: 'data-entry-automatico',
     title: 'Data Entry Automático',
-    subtitle: 'Cero digitación manual',
-    description: 'Extracción automática de datos desde PDF o imágenes hacia tu ERP.',
+    subtitle: 'Automatización de digitación',
+    description: 'Extracción inteligente de datos desde PDF o imágenes hacia tu ERP.',
     benefits: [
-      'Elimina errores humanos',
-      'Libera 20h semanales',
+      'Minimiza errores operativos',
+      'Recupera horas valiosas cada semana',
       'Integración inmediata'
     ],
     deliveryTime: '7 días',
@@ -53,10 +53,10 @@ export const services: Service[] = [
   {
     id: 'chatbot-inteligente',
     title: 'Chatbots WhatsApp',
-    subtitle: 'Pedidos 24/7 sin humanos',
-    description: 'Ventas y atención por WhatsApp conectadas a tu inventario 24/7.',
+    subtitle: 'Gestión de pedidos 24/7',
+    description: 'Ventas y atención por WhatsApp conectadas a tu inventario sin interrupciones.',
     benefits: [
-      'Atención 24/7 real',
+      'Atención continua real',
       'Ventas automáticas',
       'Fácil integración'
     ],
@@ -73,12 +73,12 @@ export const services: Service[] = [
   {
     id: 'auditoria-ia',
     title: 'Auditorías IA',
-    subtitle: 'Control total operativo',
-    description: 'Control automático de errores en facturación y procesos logísticos.',
+    subtitle: 'Control estratégico operativo',
+    description: 'Supervisión inteligente de procesos en facturación y logística.',
     benefits: [
-      'Reportes en segundos',
-      'Cero fraude/error',
-      'Visibilidad total'
+      'Reportes ágiles',
+      'Control de anomalías',
+      'Visibilidad estratégica'
     ],
     deliveryTime: '5 días',
     category: ServiceCategory.ANALYTICS,
@@ -96,7 +96,7 @@ export const services: Service[] = [
     subtitle: 'Cámaras inteligentes',
     description: 'Monitoreo de stock y calidad visual en tiempo real para bodegas.',
     benefits: [
-      'Control 24/7 visual',
+      'Monitoreo inteligente visual',
       'Detección de mermas',
       'Seguridad proactiva'
     ],
@@ -117,7 +117,7 @@ export const services: Service[] = [
     description: 'Construcción de plataformas web de alto rendimiento y diseño minimalista.',
     benefits: [
       'Optimización SEO/LCP',
-      'Diseño ultra-rápido'
+      'Arquitectura optimizada'
     ],
     deliveryTime: '14 días',
     category: ServiceCategory.ECOMMERCE,
@@ -135,8 +135,8 @@ export const services: Service[] = [
     subtitle: 'Presupuestos al instante',
     description: 'Conversión de voz o texto en presupuestos enviados al instante.',
     benefits: [
-      'Cero errores manuales',
-      'Envío instantáneo',
+      'Precisión en cotizaciones',
+      'Envío ágil',
       'Ahorro operativo'
     ],
     deliveryTime: '5 días',
@@ -152,12 +152,12 @@ export const services: Service[] = [
   {
     id: 'gestor-pedidos',
     title: 'Gestor de Pedidos',
-    subtitle: 'Automatiza tus órdenes',
-    description: 'Procesamiento automático de órdenes de compra desde cualquier formato.',
+    subtitle: 'Optimiza tus órdenes',
+    description: 'Procesamiento ágil de órdenes de compra desde diversos formatos.',
     benefits: [
-      'Elimina digitación',
-      'Cero errores ERP',
-      'Proceso inmediato'
+      'Automatiza el ingreso de datos',
+      'Sincronización precisa con ERP',
+      'Proceso ágil'
     ],
     deliveryTime: '7 días',
     category: ServiceCategory.AUTOMATION,
@@ -173,7 +173,7 @@ export const services: Service[] = [
     id: 'the-builder',
     title: 'The Builder',
     subtitle: 'Tiendas Shopify Pro',
-    description: 'Tiendas Shopify profesionales optimizadas para máxima conversión.',
+    description: 'Tiendas Shopify profesionales enfocadas en alta conversión.',
     benefits: [
       'Diseño profesional',
       'Pagos configurados',
@@ -194,12 +194,12 @@ export const services: Service[] = [
   {
     id: 'estratega-ejecutivo',
     title: 'Estratega Ejecutivo',
-    subtitle: 'Consultor IA en tu bolsillo',
-    description: 'Análisis de KPIs y reportes estratégicos generados automáticamente.',
+    subtitle: 'Asistente IA estratégico',
+    description: 'Análisis de indicadores clave y reportes estratégicos.',
     benefits: [
-      'Data real, no instinto',
-      'Reportes 24/7',
-      'Análisis instantáneo'
+      'Decisiones basadas en datos',
+      'Reportes continuos',
+      'Análisis ágil'
     ],
     deliveryTime: '3 días',
     category: ServiceCategory.AI_ASSISTANT,
@@ -298,8 +298,8 @@ export const services: Service[] = [
     description: 'Monitoreo de competencia y tendencias de mercado en tiempo real.',
     benefits: [
       'Análisis competencia',
-      'Ahorro 15h semanales',
-      'Reportes diarios'
+      'Optimización de tiempo semanal',
+      'Reportes periódicos'
     ],
     deliveryTime: 'Inmediato',
     category: ServiceCategory.ANALYTICS,
@@ -359,7 +359,7 @@ export const services: Service[] = [
     subtitle: 'Prompt Engineering 1a1',
     description: 'Capacitación personalizada en productividad extrema con ChatGPT.',
     benefits: [
-      'Productividad x10',
+      'Salto en productividad',
       'GPTs personalizados',
       'Mentoría directa'
     ],
@@ -398,12 +398,12 @@ export const services: Service[] = [
   {
     id: 'super-ai',
     title: 'Super AI',
-    subtitle: 'Autonomía Total (AIA)',
-    description: 'IA autónoma que ejecuta decisiones conectada a tus sistemas.',
+    subtitle: 'Capacidad Ejecutiva (AIA)',
+    description: 'IA con capacidad ejecutiva que apoya la toma de decisiones conectada a tus sistemas.',
     benefits: [
-      'Ejecución autónoma',
-      'Cero intervención',
-      'Sustitución de flujos'
+      'Ejecución asistida',
+      'Mínima intervención manual',
+      'Optimización de flujos'
     ],
     deliveryTime: 'A medida',
     category: ServiceCategory.AUTOMATION,

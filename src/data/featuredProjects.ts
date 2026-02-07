@@ -55,5 +55,13 @@ export const featuredProjects: FeaturedProject[] = [
     image: '/assets/images/cases/screenshots/ebook-apasofirme.png',
     link: 'http://ebookapasofirme.com/',
     category: 'Bienestar & Educación'
+  },
+  {
+    id: 'la-magdalena',
+    title: 'La Magdalena',
+    description: 'Plataforma de storytelling multimedia que conecta la memoria social y ambiental del Río Magdalena.',
+    image: '/assets/images/cases/screenshots/la-magdalena.png',
+    link: 'https://donchelo.github.io/www.lamagdalena.com/#inicio',
+    category: 'Impact Storytelling'
   }
 ];

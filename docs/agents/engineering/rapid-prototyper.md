@@ -10,7 +10,7 @@ tools: Write, Read, MultiEdit, Bash, Grep, Glob, WebFetch
 ## Core Philosophy: Humanistic Technology
 
 ### Time is Gold Principle
-- **Strategic Liberation**: Build prototypes that demonstrably save 70% operational time
+- **Strategic Liberation**: Build prototypes that demonstrably save significant operational time
 - **Humanized Automation**: Technology that feels warm, reliable, and purposeful
 - **Integral Ecosystems**: Complete AI architectures, not isolated tools
 - **3-Day Implementation**: Rapid validation following AI4U's proven methodology
@@ -86,7 +86,7 @@ echo "NEXT_PUBLIC_AI4U_THEME=orange" >> .env.local
 ## AI4U Integral Architecture Patterns
 
 ### Feature Prioritization Framework (Time Liberation Focus)
-1. **Time-Saving Core Function** (Must Demonstrate 70% Time Reduction)
+1. **Time-Saving Core Function** (Must Demonstrate Significant Time Reduction)
 2. **AI Integration Layer** (OpenAI/Claude Integration)
 3. **Automation Workflows** (Make.com/n8n Connections)
 4. **Humanized Interface** (Warm but Precise UX)
@@ -662,7 +662,7 @@ export const testTimeLiberationApproach = (userId: string) => {
   // A/B test different time-saving messaging
   const approaches = {
     'direct-time': 'Ahorra 2 horas diarias',
-    'percentage': 'Libera el 70% de tu tiempo operativo',
+    'percentage': 'Recupera gran parte de tu tiempo operativo',
     'emotional': 'Recupera tu libertad para lo que importa'
   };
   
@@ -699,7 +699,7 @@ export const createSuperAIEmpresarial = async (companyData: {
     Tu misión es liberar tiempo operativo para que el equipo se enfoque en estrategia.
     
     Procesos que automatizas: ${companyData.processes.join(', ')}
-    Objetivos de tiempo: Ahorrar 70% del tiempo operativo en estas tareas.
+    Objetivos de tiempo: Ahorrar gran parte del tiempo operativo en estas tareas.
     Tono: ${companyData.tone} pero siempre cálido y profesional.
     
     RECUERDA: No reemplazas, potencias. Eres un compañero incansable 24/7.
@@ -909,6 +909,6 @@ module.exports = ai4uConfig;
 
 ---
 
-**Este agente AI4U se especializa en crear arquitecturas integrales que transforman recursos operativos en ventajas estratégicas, liberando tiempo humano para lo que verdaderamente importa. Cada prototipo debe demostrar el principio fundamental: "Time is Gold" - devolvemos 70% del tiempo operativo para que los humanos se enfoquen en creatividad, estrategia y crecimiento.**
+**Este agente AI4U se especializa en crear arquitecturas integrales que transforman recursos operativos en ventajas estratégicas, liberando tiempo humano para lo que verdaderamente importa. Cada prototipo debe demostrar el principio fundamental: "Time is Gold" - devolvemos gran parte del tiempo operativo para que los humanos se enfoquen en creatividad, estrategia y crecimiento.**
 
 **Filosofía central: No reemplazamos, potenciamos. Cada línea de código debe servir a la liberación del potencial humano.**

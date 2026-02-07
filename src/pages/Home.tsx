@@ -45,11 +45,11 @@ const Home = () => {
     },
     {
       title: 'No compres software, compra tiempo',
-      description: 'Nuestros motores de ejecución autónoma no solo procesan datos; devuelven el 70% de tu jornada. ROI medible que se traduce en libertad para decidir dónde realmente importa estar.'
+      description: 'Nuestros motores de ejecución asistida no solo procesan datos; devuelven gran parte de tu jornada. Enfoque en resultados medibles que se traducen en libertad para decidir dónde realmente importa estar.'
     },
     {
-      title: 'Tu competencia ya está ejecutando',
-      description: 'Mientras otros debaten sobre el futuro, nuestros agentes ya están facturando, atendiendo y operando 24/7. ¿Vas a seguir invirtiendo tu tiempo en lo que un agente de élite puede hacer mejor?'
+      title: 'Tu competencia ya está explorando',
+      description: 'Mientras otros debaten sobre el futuro, nuestros agentes ya apoyan la operación de forma continua. ¿Vas a seguir invirtiendo tu tiempo en lo que la tecnología puede potenciar?'
     },
   ];
 
@@ -79,10 +79,10 @@ const Home = () => {
 
   // Características del robot en español
   const robotFeatures = [
-    'Generan ROI desde el primer mes',
+    'Enfoque en resultados desde el primer mes',
     'Aprenden y evolucionan con tu empresa',
-    'Trabajan 24/7 para tu crecimiento',
-    'Se integran perfectamente con tus sistemas'
+    'Apoyan tu crecimiento continuamente',
+    'Se integran con tus sistemas actuales'
   ];
 
   return (
@@ -99,7 +99,7 @@ const Home = () => {
       {/* Hero Section */}
       <HeroSection 
         customTitle="¿CUÁNTO VALE TU TIEMPO?"
-        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución autónoma que recuperan tus horas más valiosas en solo 72 horas."
+        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución asistida que recuperan tus horas más valiosas en tiempo récord."
         primaryButtonText="DESPLEGAR MI AGENTE"
       />
 
@@ -188,7 +188,7 @@ const Home = () => {
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
           <Stack direction="column" spacing={10}>
             <Giant sx={{ color: colors.palette.white, maxWidth: '1100px', lineHeight: 1.0 }}>
-              // FUERZA DE TRABAJO AUTÓNOMA DE ÉLITE
+              // FUERZA DE TRABAJO INTELIGENTE
             </Giant>
             
             <Grid container spacing={8}>
@@ -227,7 +227,7 @@ const Home = () => {
                     letterSpacing: '-0.04em',
                     textTransform: 'uppercase'
                   }}>
-                    "LA CÚSPIDE DE LA AUTONOMÍA: UNA IA QUE NO SOLO SUGIERE, SINO QUE EJECUTA Y MULTIPLICA TU TIEMPO."
+                    "IA DE ALTO NIVEL: CAPACIDAD EJECUTIVA QUE OPTIMIZA TU OPERACIÓN Y TU TIEMPO."
                   </BodyText>
                 </Box>
               </Grid>

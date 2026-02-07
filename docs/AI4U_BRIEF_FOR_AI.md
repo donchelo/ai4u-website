@@ -215,6 +215,7 @@ AI4U es una **agencia de desarrollo de software** que combina:
 - **Timeline:** 8-15 días
 
 ### 3. **Otros Proyectos Mencionados**
+- La Magdalena (Impact Storytelling)
 - TRUE (sector moda)
 - EAFIT (sector educación)
 

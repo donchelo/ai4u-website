@@ -147,7 +147,7 @@ DÍA 1: Arquitectura Integral
 │ OUTPUT:                             │
 │ - Arquitectura Make.com + Claude    │
 │ - Plan implementación 3 días        │
-│ - ROI esperado (70% tiempo)         │
+│ - ROI esperado (tiempo liberado)         │
 └─────────────────────────────────────┘
 
 DÍA 2: Desarrollo e Integración
@@ -427,7 +427,7 @@ ESTRUCTURA NARRATIVA STANDARD:
    "Ahora María dedica esas 6 horas a estrategia creativa..."
 
 4. RESULTADO MEDIBLE
-   "70% tiempo operativo liberado = 126 horas mensuales estratégicas"
+   "Tiempo operativo liberado = horas mensuales estratégicas"
 
 5. CALL TO ACTION HUMANÍSTICO
    "¿Listo para que tu equipo recupere su libertad estratégica?"
@@ -495,13 +495,13 @@ MÉTRICAS TÉCNICAS:
 - Errores por 1000 requests: ≤1
 
 MÉTRICAS HUMANÍSTICAS:
-- % tiempo operativo liberado: ≥70%
+- % tiempo operativo liberado: significativo
 - Satisfacción usuario final: ≥9/10
 - Adopción equipo cliente: ≥90%
 - Retención servicio: ≥95%
 
 MÉTRICAS NEGOCIO:
-- ROI cliente 6 meses: ≥300%
+- ROI cliente 6 meses: optimizado
 - Time-to-value: ≤1 semana
 - Casos éxito documentados: 100%
 - Renovación contrato: ≥80%

@@ -15,7 +15,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   customTitle = 'TU TIEMPO ES ORO',
-  customSubtitle = 'Mientras otros pierden el 70% de su día en tareas operativas, nuestros asistentes robóticos trabajan 24/7.',
+  customSubtitle = 'Mientras otros pierden gran parte de su día en tareas operativas, la tecnología puede potenciar tu productividad.',
   primaryButtonText = 'RECUPERA TU TIEMPO',
   secondaryButtonText = 'CALCULA TU ROI'
 }) => {
