@@ -52,7 +52,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <Box 
       sx={{ 
         position: 'relative',
-        minHeight: { xs: 'auto', md: '80vh' },
+        minHeight: { xs: 'auto', md: '100vh' },
         maxHeight: { xs: '100vh', md: 'none' },
         width: '100%',
         overflow: 'hidden',
@@ -60,7 +60,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         bgcolor: colors.palette.black,
-        py: { xs: 2, sm: 3, md: 10 }
+        py: { xs: 4, sm: 6, md: 12 }
       }}
     >
       {/* Fondo Minimalista con Alto Contraste */}
@@ -91,9 +91,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: idx === currentImage ? 0.55 : 0,
-                transition: 'opacity 1.5s ease-in-out',
-                filter: 'grayscale(100%)' // Estilo moderno/brutalista
+                opacity: idx === currentImage ? 0.6 : 0,
+                transition: 'opacity 1.5s ease-in-out, transform 10s ease-out',
+                filter: 'grayscale(100%)', // Estilo moderno/brutalista
+                transform: idx === currentImage ? 'scale(1.15)' : 'scale(1)', // Zoom progresivo
               }}
             />
           </Box>
@@ -112,19 +113,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <Stack
           direction="column"
-          spacing={{ xs: 1.5, sm: 2, md: 8 }}
-          alignItems="flex-start"
-          sx={{ width: '100%', mx: 0 }}
+          spacing={{ xs: 2, sm: 3, md: 6 }}
+          alignItems="center"
+          sx={{ width: '100%', mx: 0, textAlign: 'center' }}
         >
-          <Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Giant 
               sx={{ 
                 color: colors.palette.white,
-                mb: { xs: 0.5, sm: 1, md: 3 },
-                maxWidth: '1100px',
-                fontSize: { xs: '1.8rem', sm: '2.5rem', md: '5rem', lg: '7rem' },
-                lineHeight: { xs: 1, sm: 0.95, md: 0.85 },
-                letterSpacing: '-0.05em'
+                mb: { xs: 1, sm: 1.5, md: 2 },
+                maxWidth: '900px',
+                fontSize: { xs: '1.8rem', sm: '2.5rem', md: '4rem', lg: '5rem' },
+                lineHeight: { xs: 1.1, md: 1.05 },
+                letterSpacing: '-0.02em',
+                textAlign: 'center'
               }}
             >
               {customTitle}
@@ -133,12 +135,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <H1 
               sx={{ 
                 color: colors.palette.white,
-                maxWidth: '900px',
-                mb: { xs: 1, sm: 1.5, md: 4 },
-                opacity: 0.9,
+                maxWidth: '700px',
+                mb: { xs: 2, sm: 3, md: 4 },
+                opacity: 0.8,
                 fontWeight: 300,
-                fontSize: { xs: '0.75rem', sm: '1rem', md: '2.5rem' },
-                lineHeight: { xs: 1.2, md: 1.1 }
+                fontSize: { xs: '0.8rem', sm: '1rem', md: '1.8rem' },
+                lineHeight: { xs: 1.3, md: 1.2 },
+                textAlign: 'center'
               }}
             >
               {customSubtitle}
@@ -147,8 +150,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
           <Stack
             direction={{ xs: 'column', md: 'row' }}
-            spacing={{ xs: 1.5, sm: 2, md: 4 }}
+            spacing={{ xs: 2, sm: 2.5, md: 4 }}
             alignItems="center"
+            justifyContent="center"
           >
             <DiagnosticCTA 
               variant="primary" 
@@ -156,10 +160,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               size="large"
               showIcon={false}
               sx={{ 
-                height: { xs: '45px', sm: '60px', md: '100px' }, 
-                px: { xs: 3, sm: 4, md: 8 }, 
-                fontSize: { xs: '0.75rem', sm: '1rem', md: '1.6rem' },
-                fontWeight: 900,
+                height: { xs: '45px', sm: '55px', md: '80px' }, 
+                px: { xs: 3, sm: 4, md: 6 }, 
+                fontSize: { xs: '0.75rem', sm: '0.9rem', md: '1.4rem' },
+                fontWeight: 400,
                 borderRadius: 0,
                 bgcolor: colors.palette.white,
                 color: colors.palette.black,
@@ -172,17 +176,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             />
             
             <Box sx={{ 
-              borderLeft: { xs: `2px solid ${colors.palette.accentColors.orange}`, md: `4px solid ${colors.palette.accentColors.orange}` }, 
-              pl: { xs: 1.5, sm: 2, md: 3 } 
+              borderLeft: 'none',
+              borderTop: { xs: `1px solid ${colors.palette.accentColors.orange}`, md: `2px solid ${colors.palette.accentColors.orange}` },
+              pt: { xs: 1, md: 2 },
+              px: 2
             }}>
               <BodyText 
                 sx={{ 
                   color: colors.palette.white,
-                  fontWeight: 800,
-                  fontSize: { xs: '0.6rem', sm: '0.8rem', md: '1.4rem' },
-                  letterSpacing: '0.08em',
+                  fontWeight: 400,
+                  fontSize: { xs: '0.65rem', sm: '0.85rem', md: '1.2rem' },
+                  letterSpacing: '0.1em',
                   textTransform: 'none',
-                  lineHeight: 1.1
+                  lineHeight: 1.2,
+                  textAlign: 'center'
                 }}
               >
                 {humanElementText}

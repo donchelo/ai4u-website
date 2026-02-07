@@ -20,7 +20,7 @@ const StyledButton = styled(MuiButton, {
   // Estilos base modernos y limpios
   const baseStyles = {
     borderRadius: 0, // Ángulos rectos
-    fontWeight: 600, // Semi-bold
+    fontWeight: 400, // Regular
     textTransform: 'none' as const,
     fontFamily: '"Red Hat Display", sans-serif',
     transition: theme.transitions.create(['background-color', 'border-color', 'color', 'transform', 'box-shadow'], {

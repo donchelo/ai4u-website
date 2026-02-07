@@ -182,7 +182,7 @@ const ServiceThumbnail = ({
           <Box
             sx={{
               fontSize: '0.6rem',
-              fontWeight: 600,
+              fontWeight: 400,
               color: color,
               textTransform: 'none',
               letterSpacing: '0.5px',

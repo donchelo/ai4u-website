@@ -213,7 +213,7 @@ const ChatButton: React.FC = () => {
               }}
             />
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              <Typography variant="h6" sx={{ fontWeight: 400 }}>
                 Asistente AI4U
               </Typography>
               <Typography variant="caption" color="text.secondary">

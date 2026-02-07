@@ -11,7 +11,7 @@ export const featuredProjects: FeaturedProject[] = [
   {
     id: 'la-magdalena',
     title: 'La Magdalena',
-    description: 'Storytelling multimedia del Río Magdalena.',
+    description: 'Storytelling de impacto social y ambiental.',
     image: '/assets/images/cases/screenshots/la-magdalena.png',
     link: 'https://donchelo.github.io/www.lamagdalena.com/#inicio',
     category: 'Impact Storytelling'

@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
-import { ServicesPremiumHero, SuperAIModal } from '@/components/shared/ui/organisms';
+import { SuperAIModal } from '@/components/shared/ui/organisms';
 import { AI4U_PALETTE } from '@/components/shared/ui/tokens/palette';
 import { useServicesContext } from '@/context';
 import { useColors, usePerformanceMonitoring } from '@/hooks';
@@ -65,7 +65,7 @@ const Services: React.FC = () => {
   const axes = [
     {
       id: ServiceSuperCategory.OPERATION,
-      title: 'operación',
+      title: 'Operación',
       subtitle: 'Eficiencia continua',
       description: 'Optimiza tiempo y recursos.',
       color: colors.palette.black,
@@ -75,7 +75,7 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.STRATEGY,
-      title: 'estrategia',
+      title: 'Estrategia',
       subtitle: 'Data real',
       description: 'Decisiones con ventaja competitiva.',
       color: colors.palette.black,
@@ -85,7 +85,7 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.EDUCATION,
-      title: 'educación',
+      title: 'Educación',
       subtitle: 'Evolución humana',
       description: 'Tu equipo dominando la IA.',
       color: colors.palette.white,
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
-      title: 'transformación',
+      title: 'Transformación',
       subtitle: 'Infraestructura IA',
       description: 'Diseñada para escalar.',
       color: colors.palette.black,
@@ -119,12 +119,146 @@ const Services: React.FC = () => {
         structuredData={structuredData}
       />
 
-      {/* Lab Hero - Inspirado en CoutureLab / Fashion Agent */}
-      <Box sx={{ position: 'relative', zIndex: 1 }}>
-        <ServicesPremiumHero 
-          title="AI4U LAB // 2026"
-          maxItems={2}
-        />
+      {/* Hero Section - Los 4 Ejes de AI4U */}
+      <Box sx={{ 
+        py: { xs: 15, md: 25 }, 
+        px: { xs: 4, md: 8, lg: 12 },
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
+        borderBottom: `8px solid ${colors.palette.white}`,
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background Decorative Element */}
+        <Typography 
+          sx={{ 
+            position: 'absolute', 
+            top: -100, 
+            right: -50, 
+            fontSize: { xs: '20rem', md: '35rem' }, 
+            fontWeight: 400, 
+            color: colors.palette.white, 
+            opacity: 0.03,
+            zIndex: 0,
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+        >
+          04
+        </Typography>
+
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+          <Grid container spacing={10} alignItems="center">
+            <Grid item xs={12} lg={7}>
+              <Typography 
+                variant="overline" 
+                sx={{ 
+                  color: colors.palette.accentColors.orange, 
+                  fontWeight: 400, 
+                  letterSpacing: 4,
+                  fontSize: '1.2rem',
+                  mb: 2,
+                  display: 'block',
+                  fontFamily: '"Necto Mono", monospace'
+                }}
+              >
+                // AI4U LAB // 2026
+              </Typography>
+              <Giant sx={{ 
+                color: colors.palette.white, 
+                mb: 4,
+                lineHeight: 0.85,
+                fontSize: { xs: '3.5rem', md: '6.5rem', lg: '8.5rem' },
+                maxWidth: '900px'
+              }}>
+                Nuestros 4 <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ejes</Box> de servicio
+              </Giant>
+              <BodyText sx={{ 
+                fontSize: { xs: '1.4rem', md: '1.8rem' }, 
+                fontWeight: 400, 
+                color: colors.palette.white,
+                maxWidth: '700px',
+                mb: 8,
+                lineHeight: 1.2,
+                opacity: 0.9
+              }}>
+                En AI4U, abordamos la inteligencia artificial desde cuatro frentes clave para transformar tu operación, potenciar tu estrategia, educar a tu equipo y escalar tu infraestructura.
+              </BodyText>
+
+              {/* Quick Links to Axes */}
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: { xs: 8, lg: 0 } }}>
+                {axes.map((axis) => (
+                  <Button 
+                    key={axis.id}
+                    variant="outline"
+                    onClick={() => toggleAxis(axis.id)}
+                    sx={{ 
+                      borderColor: 'rgba(255,255,255,0.3)',
+                      color: colors.palette.white,
+                      borderRadius: 0,
+                      px: 3,
+                      height: '60px',
+                      '&:hover': {
+                        borderColor: axis.bgColor,
+                        bgcolor: axis.bgColor,
+                        color: axis.textColor
+                      }
+                    }}
+                  >
+                    {axis.title}
+                  </Button>
+                ))}
+              </Stack>
+            </Grid>
+
+            <Grid item xs={12} lg={5}>
+              <Box sx={{ 
+                p: 6, 
+                bgcolor: 'rgba(255,255,255,0.03)', 
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}>
+                <Stack spacing={4}>
+                  {axes.map((axis, idx) => (
+                    <Box 
+                      key={axis.id} 
+                      onClick={() => toggleAxis(axis.id)}
+                      sx={{ 
+                        display: 'flex', 
+                        gap: 3, 
+                        alignItems: 'flex-start',
+                        cursor: 'pointer',
+                        p: 1,
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          bgcolor: 'rgba(255,255,255,0.05)',
+                          transform: 'translateX(8px)'
+                        }
+                      }}
+                    >
+                      <Typography sx={{ 
+                        fontWeight: 400, 
+                        color: axis.accentColor === colors.palette.white ? colors.palette.accentColors.orange : axis.accentColor,
+                        fontFamily: '"Necto Mono", monospace',
+                        mt: 0.5
+                      }}>
+                        0{idx + 1}
+                      </Typography>
+                      <Box>
+                        <Typography variant="h6" sx={{ fontWeight: 400, color: colors.palette.white, textTransform: 'none', mb: 0.5 }}>
+                          {axis.title}
+                        </Typography>
+                        <Typography sx={{ color: colors.palette.white, opacity: 0.7, fontWeight: 400 }}>
+                          {axis.description}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  ))}
+                </Stack>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
       </Box>
 
       {/* Secciones de los 4 Ejes */}
@@ -153,7 +287,7 @@ const Services: React.FC = () => {
                 top: -50, 
                 right: 20, 
                 fontSize: { xs: '15rem', md: '25rem' }, 
-                fontWeight: 900, 
+                fontWeight: 400, 
                 color: axis.accentColor, 
                 opacity: expandedAxes[axis.id] ? 0.2 : 0.1,
                 zIndex: 0,
@@ -174,7 +308,7 @@ const Services: React.FC = () => {
                       variant="overline" 
                       sx={{ 
                         color: axis.accentColor, 
-                        fontWeight: 900, 
+                        fontWeight: 400, 
                         letterSpacing: 4,
                         fontSize: '1.2rem',
                         mb: 2,
@@ -184,7 +318,7 @@ const Services: React.FC = () => {
                       // {axis.subtitle}
                     </Typography>
                     <H1 sx={{ 
-                      fontWeight: 900, 
+                      fontWeight: 400, 
                       textTransform: 'none', 
                       fontSize: { xs: '3.5rem', md: '5rem', lg: '6.5rem' },
                       lineHeight: 0.9,
@@ -195,7 +329,7 @@ const Services: React.FC = () => {
                     </H1>
                     <BodyText sx={{ 
                       fontSize: '1.5rem', 
-                      fontWeight: 600, 
+                      fontWeight: 400, 
                       lineHeight: 1.2,
                       maxWidth: '400px',
                       mb: 6,
@@ -281,7 +415,7 @@ const Services: React.FC = () => {
                     }}
                     onClick={() => toggleAxis(axis.id)}
                     >
-                      <Typography sx={{ fontWeight: 900, letterSpacing: 2, fontSize: '0.8rem' }}>
+                      <Typography sx={{ fontWeight: 400, letterSpacing: 2, fontSize: '0.8rem' }}>
                         // Click para desplegar soluciones
                       </Typography>
                     </Box>
@@ -305,7 +439,7 @@ const Services: React.FC = () => {
         <Container maxWidth="xl">
           <Stack spacing={10}>
             <H1 sx={{ 
-              fontWeight: 900, 
+              fontWeight: 400, 
               textTransform: 'none', 
               mb: 4, 
               fontSize: { xs: '3rem', md: '6rem' },
@@ -322,9 +456,9 @@ const Services: React.FC = () => {
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <Box sx={{ borderLeft: `4px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
-                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 900, mb: 1, color: colors.palette.white }}>{step.n}</H2>
-                    <Typography sx={{ fontWeight: 900, fontSize: '1.5rem', mb: 1, color: colors.palette.white }}>{step.t}</Typography>
-                    <BodyText sx={{ fontWeight: 500, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
+                    <H2 sx={{ fontSize: '2.5rem', fontWeight: 400, mb: 1, color: colors.palette.white }}>{step.n}</H2>
+                    <Typography sx={{ fontWeight: 400, fontSize: '1.5rem', mb: 1, color: colors.palette.white }}>{step.t}</Typography>
+                    <BodyText sx={{ fontWeight: 400, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
                   </Box>
                 </Grid>
               ))}

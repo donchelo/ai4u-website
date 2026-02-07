@@ -135,7 +135,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             )}
             <H4 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 600
+              fontWeight: 400
             }}>
               {data.location}
             </H4>
@@ -183,7 +183,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           </Box>
           <H1 sx={{ 
             fontSize: '3.5rem',
-            fontWeight: 700,
+            fontWeight: 400,
             color: colors.helpers.text.primary,
             mb: 1,
             lineHeight: 1
@@ -193,13 +193,13 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
           <H4 sx={{ 
             color: colors.helpers.text.primary,
             mb: 1,
-            fontWeight: 600
+            fontWeight: 400
           }}>
             {data.condition}
           </H4>
           <BodyText sx={{ 
             color: colors.helpers.text.secondary,
-            fontWeight: 500
+            fontWeight: 400
           }}>
             Máx {data.high}° — Mín {data.low}°
           </BodyText>
@@ -226,7 +226,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             </SmallText>
             <H4 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 600
+              fontWeight: 400
             }}>
               {data.wind} km/h
             </H4>
@@ -242,7 +242,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             </SmallText>
             <H4 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 600
+              fontWeight: 400
             }}>
               {data.precipitation}%
             </H4>
@@ -256,7 +256,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             borderColor: colors.helpers.border.secondary + '40'
           }} />
           <H4 sx={{ 
-            fontWeight: 600,
+            fontWeight: 400,
             mb: 3,
             color: colors.helpers.text.primary
           }}>
@@ -284,7 +284,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
                   <SmallText sx={{ 
                     color: colors.helpers.text.secondary,
                     minWidth: '60px',
-                    fontWeight: 500
+                    fontWeight: 400
                   }}>
                     {forecast.time}
                   </SmallText>
@@ -293,7 +293,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
                   color: colors.helpers.text.secondary,
                   flex: 1,
                   textAlign: 'center',
-                  fontWeight: 500
+                  fontWeight: 400
                 }}>
                   {forecast.condition}
                 </BodyText>
@@ -306,7 +306,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
                     {forecast.precipitation}%
                   </SmallText>
                   <H4 sx={{ 
-                    fontWeight: 600,
+                    fontWeight: 400,
                     color: colors.helpers.text.primary,
                     minWidth: '50px',
                     textAlign: 'right'

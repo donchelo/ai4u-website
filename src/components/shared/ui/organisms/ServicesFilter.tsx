@@ -59,7 +59,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
       >
         <Box sx={{ 
           fontSize: '1.25rem', 
-          fontWeight: 900,
+          fontWeight: 400,
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
           color: colors.contrast.text.primary 
@@ -74,7 +74,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             onClick={onClearFilters}
             sx={{
               color: colors.contrast.text.primary,
-              fontWeight: 800,
+              fontWeight: 400,
               textTransform: 'uppercase',
               textDecoration: 'underline',
               '&:hover': {
@@ -111,7 +111,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             },
             '& .MuiOutlinedInput-input': {
               fontSize: '1rem',
-              fontWeight: 700,
+              fontWeight: 400,
               padding: '12px 16px',
               color: colors.contrast.text.primary,
               textTransform: 'uppercase',
@@ -141,7 +141,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             '& .MuiTab-root': {
               minHeight: 48,
               fontSize: '0.9rem',
-              fontWeight: 800,
+              fontWeight: 400,
               textTransform: 'uppercase',
               borderRadius: 0,
               mx: 0.5,

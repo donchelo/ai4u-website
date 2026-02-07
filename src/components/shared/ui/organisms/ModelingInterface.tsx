@@ -166,7 +166,7 @@ const ModelingInterface: React.FC<ModelingInterfaceProps> = ({
               {/* Forms */}
               <Box>
                 <Typography variant="subtitle2" sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: theme.palette.text.primary,
                   mb: 1.5
                 }}>
@@ -188,7 +188,7 @@ const ModelingInterface: React.FC<ModelingInterfaceProps> = ({
               {/* Tools */}
               <Box>
                 <Typography variant="subtitle2" sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: theme.palette.text.primary,
                   mb: 1.5
                 }}>
@@ -299,7 +299,7 @@ const ModelingInterface: React.FC<ModelingInterfaceProps> = ({
                       Rotation
                     </Typography>
                     <Typography variant="h4" sx={{ 
-                      fontWeight: 700,
+                      fontWeight: 400,
                       color: theme.palette.text.primary
                     }}>
                       {rotationAngle}°
@@ -337,7 +337,7 @@ const ModelingInterface: React.FC<ModelingInterfaceProps> = ({
               {/* Lightning */}
               <Box>
                 <Typography variant="subtitle2" sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: theme.palette.text.primary,
                   mb: 1.5
                 }}>

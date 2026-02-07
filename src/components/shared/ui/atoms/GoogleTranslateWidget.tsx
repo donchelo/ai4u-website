@@ -158,7 +158,7 @@ const GoogleTranslateWidget: React.FC<GoogleTranslateWidgetProps> = ({ light = f
             backgroundColor: light ? 'transparent' : colors.contrast.surface,
             fontFamily: theme.typography.fontFamily,
             fontSize: size.fontSize,
-            fontWeight: 600,
+            fontWeight: 400,
             cursor: 'pointer',
             '&:hover': {
               backgroundColor: light ? 'rgba(255, 255, 255, 0.1)' : colors.helpers.state.hover,
@@ -234,7 +234,7 @@ const GoogleTranslateWidget: React.FC<GoogleTranslateWidgetProps> = ({ light = f
               <Box
                 component="span"
                 sx={(theme) => ({
-                  fontWeight: 600,
+                  fontWeight: 400,
                   minWidth: theme.spacing(3),
                   color: currentLanguage === lang.short 
                     ? colors.palette.black 

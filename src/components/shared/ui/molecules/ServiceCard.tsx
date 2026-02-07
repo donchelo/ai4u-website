@@ -106,7 +106,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 sx={{
                   background: AI4U_PALETTE.black,
                   color: AI4U_PALETTE.white,
-                  fontWeight: 900,
+                  fontWeight: 400,
                   fontSize: '0.6rem',
                   height: 20,
                   borderRadius: 0,
@@ -131,7 +131,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               sx={{ 
                 color: AI4U_PALETTE.black, // Forzar negro para el título
                 fontSize: { xs: '1.4rem', md: '1.8rem' },
-                fontWeight: 900,
+                fontWeight: 400,
                 lineHeight: 1.1,
                 textAlign: 'left',
                 textTransform: 'none',
@@ -155,7 +155,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               fontSize: '1rem',
               textAlign: 'left',
               mb: 0,
-              fontWeight: 500,
+              fontWeight: 400,
               opacity: 0.9,
               pl: 4 
             }}>
@@ -177,14 +177,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                 mb: 1
               }}>
                 <BodyText sx={{ 
-                  fontWeight: 500,
+                  fontWeight: 400,
                   color: colors.contrast.text.secondary,
                   fontSize: '0.85rem'
                 }}>
                   Precio:
                 </BodyText>
                 <Typography sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: colors.contrast.text.primary,
                   fontSize: '1.1rem'
                 }}>

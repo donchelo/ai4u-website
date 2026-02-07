@@ -27,7 +27,7 @@ const MetricValue = styled(Typography, {
     : metricSize === 'large'
       ? '8rem'
       : '6rem',
-  fontWeight: 900,
+  fontWeight: 400,
   lineHeight: 0.8,
   fontFamily: '"Red Hat Display", sans-serif',
   letterSpacing: '-0.05em',
@@ -121,7 +121,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
         <Typography
           sx={{
             fontSize: size === 'compact' ? '0.875rem' : '1.125rem',
-            fontWeight: 800,
+            fontWeight: 400,
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             color: 'inherit',
@@ -148,7 +148,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             opacity: 0.7,
             textAlign: 'center',
             lineHeight: 1.4,
-            fontWeight: 500,
+            fontWeight: 400,
             maxWidth: '90%',
           }}
         >

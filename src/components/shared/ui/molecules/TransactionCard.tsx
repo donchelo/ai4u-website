@@ -250,13 +250,13 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                     mb: 1
                   }}>
                     <H4 sx={{ 
-                      fontWeight: 600,
+                      fontWeight: 400,
                       color: colors.helpers.text.primary
                     }}>
                       {transaction.merchant}
                     </H4>
                     <H3 sx={{ 
-                      fontWeight: 700,
+                      fontWeight: 400,
                       color: colors.helpers.text.primary
                     }}>
                       ${transaction.amount.toFixed(2)}
@@ -276,7 +276,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
                         color: categoryColors.text,
                         fontSize: '0.75rem',
                         height: 24,
-                        fontWeight: 600,
+                        fontWeight: 400,
                         '& .MuiChip-label': {
                           px: 1.5,
                         },

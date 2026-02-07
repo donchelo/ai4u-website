@@ -24,7 +24,7 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
       <Box sx={{ 
         mb: 2,
         fontSize: '1rem', 
-        fontWeight: 900,
+        fontWeight: 400,
         textTransform: 'uppercase',
         letterSpacing: '0.1em',
         color: colors.contrast.text.primary 
@@ -49,7 +49,7 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
                 : colors.contrast.text.primary,
               border: `3px solid ${colors.contrast.text.primary}`,
               fontSize: '0.9rem',
-              fontWeight: 800,
+              fontWeight: 400,
               textTransform: 'uppercase',
               px: 2,
               height: '40px',

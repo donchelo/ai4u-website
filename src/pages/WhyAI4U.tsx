@@ -55,7 +55,7 @@ const WhyAI4U = () => {
                 <Box sx={{ textAlign: 'left' }}>
                   <H1 sx={{ 
                     mb: 6, 
-                    fontWeight: 900,
+                    fontWeight: 400,
                     textTransform: 'none',
                     color: colors.palette.white,
                     lineHeight: 0.9
@@ -70,7 +70,7 @@ const WhyAI4U = () => {
                       'Especialista en automatización'
                     ].map((text, idx) => (
                       <Box key={idx} sx={{ borderLeft: `6px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 800, textTransform: 'none', color: colors.palette.white }}>
+                        <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, textTransform: 'none', color: colors.palette.white }}>
                           {text}
                         </BodyText>
                       </Box>
@@ -155,7 +155,7 @@ const WhyAI4U = () => {
             <H1 sx={{ 
               mb: 10, 
               textAlign: 'left',
-              fontWeight: 900,
+              fontWeight: 400,
               textTransform: 'none',
               color: colors.palette.black
             }}>
@@ -189,7 +189,7 @@ const WhyAI4U = () => {
                   }}>
                     <H3 sx={{ 
                       fontSize: '2rem',
-                      fontWeight: 900,
+                      fontWeight: 400,
                       mb: 3,
                       lineHeight: 1,
                       color: 'inherit',
@@ -197,7 +197,7 @@ const WhyAI4U = () => {
                     }}>
                       {benefit.title}
                     </H3>
-                    <BodyText sx={{ color: 'inherit', fontSize: '1.25rem', fontWeight: 500 }}>
+                    <BodyText sx={{ color: 'inherit', fontSize: '1.25rem', fontWeight: 400 }}>
                       {benefit.description}
                     </BodyText>
                   </Card>
@@ -251,7 +251,7 @@ const WhyAI4U = () => {
           <H3 sx={{ 
             textAlign: 'center', 
             mb: 6, 
-            fontWeight: 800, 
+            fontWeight: 400, 
             textTransform: 'none', 
             color: colors.palette.black 
           }}>

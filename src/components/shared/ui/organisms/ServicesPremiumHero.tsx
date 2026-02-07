@@ -65,7 +65,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
               <H1
                 sx={{
                   color: colors.palette.white,
-                  fontWeight: 900,
+                  fontWeight: 400,
                   fontSize: { xs: '3rem', md: '5rem' },
                   textTransform: 'none',
                   lineHeight: 0.85,
@@ -97,7 +97,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     px: 4,
                     py: 2,
                     fontSize: '1.25rem',
-                    fontWeight: 900,
+                    fontWeight: 400,
                     textTransform: 'none',
                     color: idx === activeIndex 
                       ? (service.color === '#FFFFFF' || service.color === '#FF5C00' || service.color === '#B6CA40' || service.color === '#3B82F6' 
@@ -180,7 +180,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                   <Box>
                     <H3 sx={{ 
                       color: colors.palette.white, 
-                      fontWeight: 900, 
+                      fontWeight: 400, 
                       fontSize: { xs: '2.5rem', md: '4rem' },
                       lineHeight: 0.9,
                       mb: 2,
@@ -214,7 +214,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       sx={{ 
                         height: '80px', 
                         fontSize: '1.2rem', 
-                        fontWeight: 900, 
+                        fontWeight: 400, 
                         bgcolor: colors.palette.white,
                         borderColor: colors.palette.white,
                         color: colors.palette.black,
@@ -235,7 +235,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                       sx={{ 
                         height: '80px', 
                         fontSize: '1.2rem', 
-                        fontWeight: 900, 
+                        fontWeight: 400, 
                         bgcolor: colors.palette.white,
                         borderColor: colors.palette.white,
                         color: colors.palette.black,

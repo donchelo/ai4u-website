@@ -137,11 +137,11 @@ const Footer = () => {
                 opacity: 0.9,
                 fontSize: '0.65rem',
                 letterSpacing: '0.05em',
-                fontWeight: 500,
+                fontWeight: 400,
                 fontFamily: 'inherit'
               }}
             >
-              architecture by <Box component="span" sx={{ fontWeight: 700 }}>MARIANO | 마리아노</Box>
+              architecture by <Box component="span" sx={{ fontWeight: 400 }}>MARIANO | 마리아노</Box>
             </MuiTypography>
           </Stack>
           

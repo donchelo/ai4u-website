@@ -49,7 +49,7 @@ const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
           trackingLabel={`service_cross_link_${serviceSlug}`}
           ariaLabel={`Conoce más sobre ${serviceName}`}
         >
-          <SmallText sx={{ fontWeight: 500 }}>
+          <SmallText sx={{ fontWeight: 400 }}>
             {serviceName}
           </SmallText>
         </ContextualLink>
@@ -92,7 +92,7 @@ const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
             trackingLabel={`service_detailed_${serviceSlug}`}
             ariaLabel={`Conoce el servicio ${serviceName}`}
           >
-            <SmallText sx={{ fontWeight: 600, fontSize: '0.9rem' }}>
+            <SmallText sx={{ fontWeight: 400, fontSize: '0.9rem' }}>
               {serviceName}
             </SmallText>
           </ContextualLink>
@@ -127,7 +127,7 @@ const ServiceCrossLink: React.FC<ServiceCrossLinkProps> = (props) => {
               trackingLabel={`case_from_service_${serviceSlug}_to_${caseStudy.slug}`}
               ariaLabel={`Ver caso de uso en ${caseStudy.sector} con ${caseStudy.client}`}
             >
-              <SmallText sx={{ fontWeight: 500, fontSize: '0.8rem' }}>
+              <SmallText sx={{ fontWeight: 400, fontSize: '0.8rem' }}>
                 {caseStudy.client} - {caseStudy.sector}
               </SmallText>
             </ContextualLink>

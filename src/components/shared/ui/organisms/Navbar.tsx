@@ -27,7 +27,7 @@ const StyledNavButton = styled(Button, {
 })<{ colors: ReturnType<typeof useColors>; isScrolled: boolean }>(({ theme, colors, isScrolled }) => ({
   marginX: theme.spacing(0.5),
   color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
-  fontWeight: 600,
+  fontWeight: 400,
   textTransform: 'none',
   fontSize: '0.95rem',
   transition: 'all 0.3s ease-in-out',

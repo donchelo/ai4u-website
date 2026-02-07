@@ -11,8 +11,8 @@ export const TYPOGRAPHY_TOKENS = {
     light: 300,
     regular: 400,
     medium: 500,
-    semiBold: 600,
-    bold: 700,
+    semiBold: 500,
+    bold: 500,
   },
   
   // Tamaños de fuente (escala más dramática para estilo moderno/brutalista)
@@ -56,26 +56,26 @@ export const TEXT_VARIANTS = {
   display: {
     giant: {
       fontSize: { xs: '3.5rem', md: '6rem', lg: '9rem' }, // Reducido de 12rem
-      fontWeight: 900,
+      fontWeight: 500,
       lineHeight: 0.95,
       letterSpacing: '-0.04em',
       textTransform: 'none' as const,
     },
     large: {
       fontSize: { xs: '2.5rem', md: '4.5rem', lg: '6.5rem' }, // Reducido de 8rem
-      fontWeight: 800,
+      fontWeight: 500,
       lineHeight: 1.0,
       letterSpacing: '-0.03em',
     },
     medium: {
       fontSize: { xs: '2rem', md: '3.5rem', lg: '4.5rem' }, // Reducido de 5rem
-      fontWeight: 700,
+      fontWeight: 500,
       lineHeight: 1.1,
       letterSpacing: '-0.02em',
     },
     small: {
       fontSize: { xs: '1.75rem', md: '2.25rem', lg: '2.75rem' }, // Reducido de 3rem
-      fontWeight: 600,
+      fontWeight: 500,
       lineHeight: 1.2,
       letterSpacing: '-0.01em',
     },
@@ -105,7 +105,7 @@ export const TEXT_VARIANTS = {
   ui: {
     button: {
       fontSize: '1rem',
-      fontWeight: 600,
+      fontWeight: 500,
       lineHeight: 1.4,
       letterSpacing: '0.01em',
     },
@@ -116,7 +116,7 @@ export const TEXT_VARIANTS = {
     },
     code: {
       fontSize: '0.875rem',
-      fontWeight: 500,
+      fontWeight: 400,
       lineHeight: 1.4,
       fontFamily: '"Necto Mono", monospace',
     },

@@ -74,7 +74,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
               component="span"
               sx={{
                 color: 'text.primary',
-                fontWeight: 500,
+                fontWeight: 400,
                 fontSize: 'inherit'
               }}
             >

@@ -56,7 +56,7 @@ export const H4 = (props: TypographyExtendedProps) => (
     variant="h4" 
     sx={{
       fontSize: { xs: '1.5rem', md: '2rem' },
-      fontWeight: 700,
+      fontWeight: 500,
       lineHeight: 1.2,
       textTransform: 'none',
       ...props.sx
@@ -70,7 +70,7 @@ export const H5 = (props: TypographyExtendedProps) => (
     variant="h5" 
     sx={{
       fontSize: '1.25rem',
-      fontWeight: 600,
+      fontWeight: 400,
       lineHeight: 1.3,
       ...props.sx
     }}
@@ -83,7 +83,7 @@ export const H6 = (props: TypographyExtendedProps) => (
     variant="h6" 
     sx={{
       fontSize: '1.125rem',
-      fontWeight: 600,
+      fontWeight: 400,
       lineHeight: 1.4,
       ...props.sx
     }}
@@ -127,7 +127,7 @@ export const CodeText = (props: TypographyExtendedProps) => {
         borderRadius: 1,
         px: 0.5,
         fontSize: '0.875rem',
-        fontWeight: 500,
+        fontWeight: 400,
         lineHeight: 1.4,
         ...props.sx
       }}

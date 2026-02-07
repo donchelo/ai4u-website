@@ -59,14 +59,14 @@ const Home = () => {
   // Categorías de servicios en español
   const serviceCategories = [
     {
+      id: ServiceSuperCategory.OPERATION,
+      title: 'Operación',
+      description: 'Sistemas que trabajan 24/7 por ti.'
+    },
+    {
       id: ServiceSuperCategory.STRATEGY,
       title: 'Estrategia',
       description: 'Decisiones basadas en datos reales.'
-    },
-    {
-      id: ServiceSuperCategory.OPERATION,
-      title: 'Automatizaciones',
-      description: 'Sistemas que trabajan 24/7 por ti.'
     },
     {
       id: ServiceSuperCategory.EDUCATION,
@@ -75,7 +75,7 @@ const Home = () => {
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
-      title: 'Transformación Digital',
+      title: 'Transformación',
       description: 'Infraestructura inteligente y escalable.'
     },
   ];
@@ -116,7 +116,7 @@ const Home = () => {
       }}>
         <SurfaceProvider surface="green">
           <Container maxWidth="xl">
-            <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'none', maxWidth: '1200px' }}>
+            <H1 sx={{ mb: 8, fontWeight: 400, color: colors.palette.black, textTransform: 'none', maxWidth: '1200px' }}>
               ¿Cuántas horas <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>pierdes</Box> al día?
             </H1>
             <Grid container spacing={6}>
@@ -136,7 +136,7 @@ const Home = () => {
                   >
                   <H3 sx={{ 
                     mb: 3,
-                    fontWeight: 900,
+                    fontWeight: 400,
                     textTransform: 'none',
                     color: colors.palette.black,
                     fontSize: '2.25rem',
@@ -144,7 +144,7 @@ const Home = () => {
                   }}>
                     {feature.title}
                   </H3>
-                  <BodyText sx={{ fontSize: '1.25rem', color: colors.palette.black, fontWeight: 500, lineHeight: 1.4 }}>
+                  <BodyText sx={{ fontSize: '1.25rem', color: colors.palette.black, fontWeight: 400, lineHeight: 1.4 }}>
                     {feature.description}
                   </BodyText>
                 </Card>
@@ -173,7 +173,7 @@ const Home = () => {
             bottom: -100, 
             right: -20, 
             fontSize: '35rem', 
-            fontWeight: 900, 
+            fontWeight: 400, 
             color: colors.palette.white, 
             opacity: 0.03,
             zIndex: 1,
@@ -199,7 +199,7 @@ const Home = () => {
                       <H2 sx={{ 
                         color: colors.palette.white,
                         fontSize: { xs: '2rem', md: '3rem', lg: '3.5rem' }, // Reducido para evitar cortes
-                        fontWeight: 900,
+                        fontWeight: 400,
                         textTransform: 'none',
                         lineHeight: 1.0,
                         letterSpacing: '-0.02em',
@@ -251,7 +251,7 @@ const Home = () => {
             <Grid item xs={12} lg={5}>
               <Box sx={{ position: { lg: 'sticky' }, top: 100 }}>
                 <H1 sx={{ 
-                  fontWeight: 900, 
+                  fontWeight: 400, 
                   textTransform: 'none', 
                   color: colors.palette.black, 
                   fontSize: { xs: '3rem', md: '4.5rem', lg: '5.5rem' }, // Reducido ligeramente
@@ -261,7 +261,7 @@ const Home = () => {
                 }}>
                   Servicios que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>transforman</Box>
                 </H1>
-                <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
+                <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
                   IA aplicada a tu negocio.
                 </BodyText>
                 <Button 
@@ -312,7 +312,7 @@ const Home = () => {
                           className="idx"
                           sx={{ 
                             fontSize: '1.5rem', 
-                            fontWeight: 900, 
+                            fontWeight: 400, 
                             color: colors.palette.gray[400],
                             mb: 2,
                             fontFamily: '"Necto Mono", monospace'
@@ -321,7 +321,7 @@ const Home = () => {
                           // 0{idx + 1}
                         </Typography>
                         <H3 sx={{ 
-                          fontWeight: 900,
+                          fontWeight: 400,
                           fontSize: { xs: '2rem', md: '2.4rem' }, // Reducido de 2.8rem para evitar cortes
                           mb: 3,
                           lineHeight: 1.0,
@@ -332,7 +332,7 @@ const Home = () => {
                         }}>
                           {cat.title}
                         </H3>
-                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 500, opacity: 0.9, mb: 4 }}>
+                        <BodyText sx={{ fontSize: '1.1rem', fontWeight: 400, opacity: 0.9, mb: 4 }}>
                           {cat.description}
                         </BodyText>
                       </Box>
@@ -355,7 +355,7 @@ const Home = () => {
                         }}
                       >
                         <GeometricIcon type="arrow-right" size="small" color="inherit" />
-                        <Typography sx={{ fontWeight: 800, textTransform: 'none', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
+                        <Typography sx={{ fontWeight: 400, textTransform: 'none', fontSize: '0.9rem', letterSpacing: '0.1em' }}>
                           Saber más
                         </Typography>
                       </Box>
@@ -393,7 +393,7 @@ const Home = () => {
                 height: '120px', 
                 px: 10, 
                 fontSize: '2rem', 
-                fontWeight: 900, 
+                fontWeight: 400, 
                 bgcolor: colors.palette.white, 
                 color: colors.palette.black,
                 borderRadius: 0,
@@ -411,7 +411,7 @@ const Home = () => {
                   height: '120px', 
                   px: 10, 
                   fontSize: '2rem', 
-                  fontWeight: 900, 
+                  fontWeight: 400, 
                   borderRadius: 0,
                   borderColor: colors.palette.white,
                   color: colors.palette.white,

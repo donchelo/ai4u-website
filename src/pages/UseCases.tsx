@@ -229,7 +229,7 @@ const UseCases = () => {
         <Container maxWidth="xl">
           <H1 sx={{ 
             mb: 10, 
-            fontWeight: 900,
+            fontWeight: 400,
             textTransform: 'none',
             color: colors.palette.black,
             fontSize: { xs: '3rem', md: '6rem' }
@@ -284,7 +284,7 @@ const UseCases = () => {
                         sx={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
                       />
                     </Box>
-                    <BodyText sx={{ textAlign: 'center', fontWeight: 800, textTransform: 'none', mt: 2 }}>
+                    <BodyText sx={{ textAlign: 'center', fontWeight: 400, textTransform: 'none', mt: 2 }}>
                       {client.sector}
                     </BodyText>
                   </Card>
@@ -321,7 +321,7 @@ const UseCases = () => {
             </IconButton>
           </Box>
 
-          <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, maxWidth: '800px' }}>
+          <BodyText sx={{ fontSize: '1.5rem', fontWeight: 400, maxWidth: '800px' }}>
             Alianzas en innovación.
           </BodyText>
         </Container>
@@ -340,7 +340,7 @@ const UseCases = () => {
           <Container maxWidth="xl">
             <H1 sx={{ 
               mb: 10, 
-              fontWeight: 900,
+              fontWeight: 400,
               textTransform: 'none',
               color: colors.palette.white,
               fontSize: { xs: '3rem', md: '6rem' },
@@ -400,14 +400,14 @@ const UseCases = () => {
                       py: 0.5,
                       mb: 2,
                       alignSelf: 'flex-start',
-                      fontWeight: 800,
+                      fontWeight: 400,
                       fontSize: '0.8rem',
                       textTransform: 'none'
                     }}>
                       {project.category}
                     </Box>
                     <H3 sx={{ 
-                      fontWeight: 900, 
+                      fontWeight: 400, 
                       textTransform: 'none', 
                       mb: 2,
                       color: colors.palette.white
@@ -431,7 +431,7 @@ const UseCases = () => {
                         borderColor: colors.palette.white,
                         color: colors.palette.white,
                         borderWidth: '3px',
-                        fontWeight: 900,
+                        fontWeight: 400,
                         '&:hover': {
                           bgcolor: colors.palette.white,
                           color: colors.palette.black,
@@ -463,10 +463,10 @@ const UseCases = () => {
           <Container maxWidth="xl">
             <Grid container spacing={10} alignItems="center">
             <Grid item xs={12} md={6}>
-              <H1 sx={{ fontWeight: 900, textTransform: 'none', mb: 6, lineHeight: 0.9 }}>
+              <H1 sx={{ fontWeight: 400, textTransform: 'none', mb: 6, lineHeight: 0.9 }}>
                 Resultados que <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>hablan</Box>
               </H1>
-              <BodyText sx={{ fontSize: '2rem', fontWeight: 600, lineHeight: 1.2 }}>
+              <BodyText sx={{ fontSize: '2rem', fontWeight: 400, lineHeight: 1.2 }}>
                 IA que genera crecimiento real.
               </BodyText>
             </Grid>
@@ -479,8 +479,8 @@ const UseCases = () => {
                   { label: 'Disponibilidad continua', value: '24/7' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ borderLeft: `12px solid ${colors.palette.accentColors.orange}`, pl: 4 }}>
-                    <H2 sx={{ fontWeight: 900, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
-                    <BodyText sx={{ fontWeight: 800, textTransform: 'none' }}>{item.label}</BodyText>
+                    <H2 sx={{ fontWeight: 400, fontSize: '5rem', lineHeight: 1 }}>{item.value}</H2>
+                    <BodyText sx={{ fontWeight: 400, textTransform: 'none' }}>{item.label}</BodyText>
                   </Box>
                 ))}
               </Stack>

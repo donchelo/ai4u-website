@@ -64,7 +64,7 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
       alignItems: 'center',
       justifyContent: 'center',
       fontSize: size === 'small' ? '14px' : size === 'large' ? '24px' : '18px',
-      fontWeight: 500,
+      fontWeight: 400,
       fontFamily: '"Red Hat Display", sans-serif',
     };
 

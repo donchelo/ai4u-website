@@ -70,7 +70,7 @@ const DesignSystem = () => {
                         mb: 1
                       }}
                     />
-                  <SmallText sx={{ fontWeight: 600 }}>White</SmallText>
+                  <SmallText sx={{ fontWeight: 400 }}>White</SmallText>
                   <CodeText>{AI4U_PALETTE.white}</CodeText>
                 </Paper>
               </Grid>
@@ -92,7 +92,7 @@ const DesignSystem = () => {
                       mb: 1
                     }}
                   />
-                  <SmallText sx={{ fontWeight: 600 }}>Black</SmallText>
+                  <SmallText sx={{ fontWeight: 400 }}>Black</SmallText>
                   <CodeText>{AI4U_PALETTE.black}</CodeText>
                 </Paper>
               </Grid>
@@ -124,7 +124,7 @@ const DesignSystem = () => {
                         boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.05)'
                       }}
                     />
-                    <SmallText sx={{ fontWeight: 600 }}>Gray {key}</SmallText>
+                    <SmallText sx={{ fontWeight: 400 }}>Gray {key}</SmallText>
                     <CodeText>{value}</CodeText>
                   </Paper>
                 </Grid>
@@ -154,7 +154,7 @@ const DesignSystem = () => {
                       mb: 1
                     }}
                   />
-                  <SmallText sx={{ fontWeight: 600 }}>Orange</SmallText>
+                  <SmallText sx={{ fontWeight: 400 }}>Orange</SmallText>
                   <CodeText>{AI4U_PALETTE.accentColors.orange}</CodeText>
                 </Paper>
               </Grid>
@@ -176,7 +176,7 @@ const DesignSystem = () => {
                       mb: 1
                     }}
                   />
-                  <SmallText sx={{ fontWeight: 600 }}>Green</SmallText>
+                  <SmallText sx={{ fontWeight: 400 }}>Green</SmallText>
                   <CodeText>{AI4U_PALETTE.accentColors.green}</CodeText>
                 </Paper>
               </Grid>
@@ -212,7 +212,7 @@ const DesignSystem = () => {
                         mb: 1
                       }}
                     />
-                    <SmallText sx={{ fontWeight: 600, textTransform: 'capitalize' }}>{key}</SmallText>
+                    <SmallText sx={{ fontWeight: 400, textTransform: 'capitalize' }}>{key}</SmallText>
                     <CodeText>{value}</CodeText>
                   </Paper>
                 </Grid>

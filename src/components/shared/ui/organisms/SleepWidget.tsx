@@ -152,7 +152,7 @@ default:
               </SmallText>
               <H3 sx={{ 
                 color: colors.helpers.text.primary,
-                fontWeight: 700
+                fontWeight: 400
               }}>
                 {time}
               </H3>
@@ -203,7 +203,7 @@ default:
                 sx={{
                   backgroundColor: getQualityColor(data.quality) + '20',
                   color: getQualityColor(data.quality),
-                  fontWeight: 600,
+                  fontWeight: 400,
                   fontSize: '0.75rem',
                   height: 24,
                   '& .MuiChip-label': {
@@ -232,7 +232,7 @@ default:
           }}>
             <H4 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 600
+              fontWeight: 400
             }}>
               Duración del Sueño
             </H4>
@@ -241,7 +241,7 @@ default:
               sx={{
                 backgroundColor: colors.palette.accent,
                 color: colors.palette.white,
-                fontWeight: 600,
+                fontWeight: 400,
                 fontSize: '0.875rem',
                 height: 32,
                 '& .MuiChip-label': {
@@ -294,7 +294,7 @@ default:
               position: 'absolute',
               top: 4,
               left: 8,
-              fontWeight: 600,
+              fontWeight: 400,
               color: colors.palette.white
             }}>
               {data.remStart}
@@ -303,7 +303,7 @@ default:
               position: 'absolute',
               top: 4,
               right: 8,
-              fontWeight: 600,
+              fontWeight: 400,
               color: colors.palette.white
             }}>
               {data.remEnd}
@@ -349,7 +349,7 @@ default:
             </SmallText>
             <H4 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 600
+              fontWeight: 400
             }}>
               {data.temperature}°C
             </H4>

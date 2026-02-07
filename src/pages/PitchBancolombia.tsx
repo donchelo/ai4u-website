@@ -348,7 +348,7 @@ const PitchBancolombia: React.FC = () => {
                                         variant="overline"
                                         sx={{
                                             color: styles.accent,
-                                            fontWeight: 900,
+                                            fontWeight: 400,
                                             letterSpacing: 4,
                                             fontSize: { xs: '0.65rem', md: '0.85rem' },
                                             mb: 1,
@@ -371,7 +371,7 @@ const PitchBancolombia: React.FC = () => {
                                         InputProps={{
                                             sx: {
                                                 color: styles.text,
-                                                fontWeight: 900,
+                                                fontWeight: 400,
                                                 fontSize: isTitleOnly 
                                                     ? { xs: '2.5rem', md: '5rem', lg: '7rem' } 
                                                     : { xs: '1.8rem', md: '3rem', lg: '4rem' },
@@ -386,7 +386,7 @@ const PitchBancolombia: React.FC = () => {
                                     <Typography
                                         sx={{
                                             color: styles.text,
-                                            fontWeight: 900,
+                                            fontWeight: 400,
                                             fontSize: isTitleOnly 
                                                 ? { xs: '2.5rem', md: '5rem', lg: '8rem' } 
                                                 : { xs: '1.8rem', md: '3rem', lg: '4.2rem' },
@@ -658,7 +658,7 @@ const PitchBancolombia: React.FC = () => {
                         bottom: -20,
                         left: 20,
                         fontSize: { xs: '15rem', md: '25rem' },
-                        fontWeight: 900,
+                        fontWeight: 400,
                         color: styles.text,
                         opacity: 0.02,
                         zIndex: 1,
@@ -769,7 +769,7 @@ const PitchBancolombia: React.FC = () => {
 
                 <Box sx={{ width: 1, height: 16, bgcolor: 'rgba(255,255,255,0.2)', mx: 0.5 }} />
 
-                <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.75rem', opacity: 0.8, minWidth: 40, textAlign: 'center' }}>
+                <Typography sx={{ color: 'white', fontWeight: 400, fontSize: '0.75rem', opacity: 0.8, minWidth: 40, textAlign: 'center' }}>
                     {currentSlideIndex + 1}/{slides.length}
                 </Typography>
 
@@ -818,7 +818,7 @@ const PitchBancolombia: React.FC = () => {
             >
                 <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 1 }}>
+                        <Typography variant="h6" sx={{ fontWeight: 400, letterSpacing: 1 }}>
                             Organizador
                         </Typography>
                         <IconButton onClick={() => setIsOrganizerOpen(false)} sx={{ color: 'white' }}>
@@ -849,7 +849,7 @@ const PitchBancolombia: React.FC = () => {
                                 >
                                     <ListItemText
                                         primary={
-                                            <Typography variant="body2" sx={{ fontWeight: 700, color: currentSlideIndex === index ? '#FDDA24' : 'white', noWrap: true }}>
+                                            <Typography variant="body2" sx={{ fontWeight: 400, color: currentSlideIndex === index ? '#FDDA24' : 'white', noWrap: true }}>
                                                 {index + 1}. {slide.title}
                                             </Typography>
                                         }

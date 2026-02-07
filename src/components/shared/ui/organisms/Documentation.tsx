@@ -102,11 +102,11 @@ const PropsTable: React.FC<{ props: DocumentationProps['props'] }> = ({ props })
       <Table>
         <TableHead>
           <TableRow sx={{ backgroundColor: theme.palette.grey[50] }}>
-            <TableCell sx={{ fontWeight: 600 }}>Propiedad</TableCell>
-            <TableCell sx={{ fontWeight: 600 }}>Tipo</TableCell>
-            <TableCell sx={{ fontWeight: 600 }}>Requerido</TableCell>
-            <TableCell sx={{ fontWeight: 600 }}>Descripción</TableCell>
-            <TableCell sx={{ fontWeight: 600 }}>Default</TableCell>
+            <TableCell sx={{ fontWeight: 400 }}>Propiedad</TableCell>
+            <TableCell sx={{ fontWeight: 400 }}>Tipo</TableCell>
+            <TableCell sx={{ fontWeight: 400 }}>Requerido</TableCell>
+            <TableCell sx={{ fontWeight: 400 }}>Descripción</TableCell>
+            <TableCell sx={{ fontWeight: 400 }}>Default</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

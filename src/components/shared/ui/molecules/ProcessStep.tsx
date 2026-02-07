@@ -18,7 +18,7 @@ const StepNumber = styled(Typography)<{ stepSize: string }>(({ stepSize, theme }
     : stepSize === 'large' 
       ? '4rem' 
       : '3rem',
-  fontWeight: 700,
+  fontWeight: 400,
   lineHeight: 0.9,
   fontFamily: '"Red Hat Display", sans-serif',
   letterSpacing: '-0.02em',
@@ -123,7 +123,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
           stepSize={size}
           sx={{
             textAlign: 'center',
-            fontWeight: 700,
+            fontWeight: 400,
             color: colors.contrast.text.secondary,
           }}
         >
@@ -133,7 +133,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
       <Box sx={{ flex: 1, pt: size === 'large' ? 1.5 : size === 'medium' ? 1 : 0.5 }}>
         <BodyText 
           sx={{ 
-            fontWeight: 600, 
+            fontWeight: 400, 
             fontSize: titleSize,
             mb: 1,
             color: colors.contrast.text.primary,

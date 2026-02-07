@@ -64,7 +64,7 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
                 color: stat.color, 
                 mb: 1,
                 fontSize: '2.5rem',
-                fontWeight: 700,
+                fontWeight: 400,
                 lineHeight: 1
               }}>
                 {stat.value}
@@ -72,7 +72,7 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
               <BodyText sx={{ 
                 color: 'text.primary',
                 fontSize: '0.95rem',
-                fontWeight: 600,
+                fontWeight: 400,
                 mb: 0.5,
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'

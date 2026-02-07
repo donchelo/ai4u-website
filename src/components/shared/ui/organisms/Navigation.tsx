@@ -49,7 +49,7 @@ const Navigation = ({
     const isActive = activeItem === item.id;
 
     const baseStyles = {
-      fontWeight: 600,
+      fontWeight: 400,
       textTransform: 'none' as const,
       transition: 'all 0.3s ease',
     };

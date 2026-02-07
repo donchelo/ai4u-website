@@ -164,7 +164,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
             mb: 2 
           }}>
             <SmallText sx={{ 
-              fontWeight: 600,
+              fontWeight: 400,
               color: colors.helpers.text.primary,
               textTransform: 'uppercase',
               letterSpacing: 0.5
@@ -173,7 +173,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
             </SmallText>
             <H3 sx={{ 
               color: colors.helpers.text.primary,
-              fontWeight: 700
+              fontWeight: 400
             }}>
               ${totalAmount?.toFixed(1) || '0.0'}
             </H3>
@@ -251,14 +251,14 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
                   </Box>
                 )}
                 <BodyText sx={{ 
-                  fontWeight: 600,
+                  fontWeight: 400,
                   color: colors.helpers.text.primary
                 }}>
                   {category.name}
                 </BodyText>
               </Box>
               <H4 sx={{ 
-                fontWeight: 700,
+                fontWeight: 400,
                 color: colors.helpers.text.primary
               }}>
                 ${category.amount.toFixed(1)}
@@ -285,13 +285,13 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
               backdropFilter: 'blur(10px)'
             }}>
               <H4 sx={{ 
-                fontWeight: 600,
+                fontWeight: 400,
                 color: colors.helpers.text.primary
               }}>
                 Total Disponible
               </H4>
               <H3 sx={{ 
-                fontWeight: 700,
+                fontWeight: 400,
                 color: colors.palette.accent
               }}>
                 ${totalAmount.toFixed(1)}

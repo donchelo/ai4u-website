@@ -103,7 +103,7 @@ body {
   background-color: var(--ai4u-black); /* Primario ahora es negro (no naranja) */
   color: var(--ai4u-white);
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   border: none;
@@ -119,7 +119,7 @@ body {
   background-color: var(--ai4u-gray-100);
   color: var(--ai4u-black);
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   border: none;
@@ -135,7 +135,7 @@ body {
   background-color: transparent;
   color: var(--ai4u-black);
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   border: 2px solid var(--ai4u-gray-400); /* Borde gris (no naranja) */
@@ -150,7 +150,7 @@ body {
 /* Typography styles */
 .ai4u-h1 {
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 900;
+  font-weight: 500;
   font-size: clamp(48px, 5vw, 64px);
   color: var(--ai4u-black);
   letter-spacing: 0.02em;
@@ -159,7 +159,7 @@ body {
 
 .ai4u-h2 {
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: clamp(36px, 4vw, 48px);
   color: var(--ai4u-black);
   letter-spacing: 0.02em;
@@ -168,7 +168,7 @@ body {
 
 .ai4u-h3 {
   font-family: 'Red Hat Display', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: clamp(24px, 3vw, 36px);
   color: var(--ai4u-black);
   letter-spacing: 0.02em;

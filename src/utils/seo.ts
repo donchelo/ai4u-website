@@ -22,28 +22,35 @@ export const getServicesStructuredData = () => ({
   "name": "Servicios de Inteligencia Artificial",
   "description": "Catálogo completo de servicios de IA personalizados",
   "url": "https://www.ai4u.com.co/servicios",
-  "numberOfItems": 6,
+  "numberOfItems": 4,
   "itemListElement": [
     {
       "@type": "Service",
       "position": 1,
-      "name": "SuperAI Empresarial",
-      "description": "Solución integral de IA para empresas",
-      "url": "https://www.ai4u.com.co/servicios#superai-empresarial"
+      "name": "Operación",
+      "description": "Eficiencia continua. Optimiza tiempo y recursos.",
+      "url": "https://www.ai4u.com.co/servicios#OPERATION"
     },
     {
       "@type": "Service",
       "position": 2,
-      "name": "GPT Personalizado",
-      "description": "Chatbots inteligentes personalizados",
-      "url": "https://www.ai4u.com.co/servicios#gpt-personalizado"
+      "name": "Estrategia",
+      "description": "Data real. Decisiones con ventaja competitiva.",
+      "url": "https://www.ai4u.com.co/servicios#STRATEGY"
     },
     {
       "@type": "Service",
       "position": 3,
-      "name": "Automatización Inteligente",
-      "description": "Automatización de procesos con IA",
-      "url": "https://www.ai4u.com.co/servicios#automatizacion"
+      "name": "Educación",
+      "description": "Evolución humana. Tu equipo dominando la IA.",
+      "url": "https://www.ai4u.com.co/servicios#EDUCATION"
+    },
+    {
+      "@type": "Service",
+      "position": 4,
+      "name": "Transformación",
+      "description": "Infraestructura IA. Diseñada para escalar.",
+      "url": "https://www.ai4u.com.co/servicios#TRANSFORMATION"
     }
   ]
 });
@@ -132,13 +139,13 @@ export const getPageMetaTags = (page: string) => {
   const metaTags = {
     home: {
       title: "AI4U - Inteligencia Artificial para tu Negocio",
-      description: "Soluciones de Inteligencia Artificial personalizadas para tu negocio. Automatización inteligente, GPT personalizado, SuperAI empresarial.",
+      description: "Soluciones de Inteligencia Artificial personalizadas. Implementamos IA real a través de nuestros 4 ejes: Operación, Estrategia, Educación y Transformación.",
       keywords: "inteligencia artificial, IA, automatización, GPT personalizado, SuperAI, AI empresarial, Colombia"
     },
     services: {
       title: "Servicios de Inteligencia Artificial | AI4U",
-      description: "Descubre nuestros servicios de IA: SuperAI empresarial, GPT personalizado, automatización inteligente. Soluciones a medida para tu negocio.",
-      keywords: "servicios IA, SuperAI, GPT personalizado, automatización, chatbot, machine learning"
+      description: "Soluciones de IA organizadas en 4 ejes: Operación, Estrategia, Educación y Transformación. IA diseñada para resolver problemas reales.",
+      keywords: "servicios IA, operación IA, estrategia IA, educación IA, transformación digital IA, SuperAI"
     },
     why: {
       title: "¿Por qué AI4U? | Ventajas de Nuestras Soluciones de IA",

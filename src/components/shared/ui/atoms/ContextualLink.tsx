@@ -55,7 +55,7 @@ const ContextualLink: React.FC<ContextualLinkProps> = (props) => {
       case 'accent':
         return {
           color: colors.palette.accent,
-          fontWeight: 500,
+          fontWeight: 400,
           textDecoration: 'none',
           borderBottom: `1px solid ${colors.palette.accent}`,
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',

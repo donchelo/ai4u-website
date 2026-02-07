@@ -83,7 +83,7 @@ const ExpandableSection = ({
         <Box sx={{ flex: 1 }}>
           <H4 sx={{ 
             color: 'inherit',
-            fontWeight: 800,
+            fontWeight: 400,
             fontSize: '1.25rem',
             textTransform: 'uppercase',
             letterSpacing: '0.05em'

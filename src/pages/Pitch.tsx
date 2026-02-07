@@ -371,7 +371,7 @@ const Pitch: React.FC = () => {
                   variant="overline" 
                   sx={{ 
                     color: styles.accent, 
-                    fontWeight: 900, 
+                    fontWeight: 400, 
                     letterSpacing: 4,
                     fontSize: { xs: '0.75rem', md: '0.85rem' },
                     mb: 1,
@@ -387,7 +387,7 @@ const Pitch: React.FC = () => {
               <Typography 
                 sx={{ 
                   color: styles.text,
-                  fontWeight: 900,
+                  fontWeight: 400,
                   fontSize: { xs: '2.2rem', md: '3.5rem', lg: '4.8rem' },
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
@@ -510,7 +510,7 @@ const Pitch: React.FC = () => {
             bottom: -20, 
             left: 20, 
             fontSize: { xs: '15rem', md: '25rem' }, 
-            fontWeight: 900, 
+            fontWeight: 400, 
             color: styles.text, 
             opacity: 0.02,
             zIndex: 1,
@@ -583,7 +583,7 @@ const Pitch: React.FC = () => {
 
         <Box sx={{ width: 1, height: 16, bgcolor: 'rgba(255,255,255,0.2)', mx: 0.5 }} />
 
-        <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.75rem', opacity: 0.8, minWidth: 40, textAlign: 'center' }}>
+        <Typography sx={{ color: 'white', fontWeight: 400, fontSize: '0.75rem', opacity: 0.8, minWidth: 40, textAlign: 'center' }}>
           {currentSlide + 1}/{slides.length}
         </Typography>
 

@@ -15,32 +15,32 @@ const typography: TypographyVariantsOptions = {
 	fontFamily: '"Red Hat Display", sans-serif',
 	h1: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 900,
+		fontWeight: 500,
 		fontSize: '2.5rem',
 	},
 	h2: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 700,
+		fontWeight: 500,
 		fontSize: '2rem',
 	},
 	h3: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600,
+		fontWeight: 500,
 		fontSize: '1.75rem',
 	},
 	h4: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600,
+		fontWeight: 500,
 		fontSize: '1.5rem',
 	},
 	h5: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
+		fontWeight: 400,
 		fontSize: '1.25rem',
 	},
 	h6: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
+		fontWeight: 400,
 		fontSize: '1.1rem',
 	},
 	body1: {
@@ -55,7 +55,7 @@ const typography: TypographyVariantsOptions = {
 	},
 	button: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 600,
+		fontWeight: 400,
 		textTransform: 'none' as const,
 	},
 	caption: {
@@ -65,7 +65,7 @@ const typography: TypographyVariantsOptions = {
 	},
 	overline: {
 		fontFamily: '"Red Hat Display", sans-serif',
-		fontWeight: 500,
+		fontWeight: 400,
 		fontSize: '0.75rem',
 		textTransform: 'none',
 		letterSpacing: '0.08em',
@@ -81,7 +81,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					borderRadius: 0, // Ángulos rectos para un look más minimalista/limpio
-					fontWeight: 600,
+					fontWeight: 400,
 					textTransform: 'none',
 					boxShadow: 'none',
 					padding: '10px 20px',
@@ -117,7 +117,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 				},
 				text: {
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-					fontWeight: 600,
+					fontWeight: 400,
 					textDecoration: 'none',
 					'&:hover': {
 						backgroundColor: isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.08)',
@@ -183,7 +183,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 					backgroundColor: isLight ? AI4U_PALETTE.gray[100] : AI4U_PALETTE.gray[800],
 					border: 'none',
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-					fontWeight: 600,
+					fontWeight: 400,
 				},
 			},
 		},
