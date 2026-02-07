@@ -668,6 +668,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <Button
                 variant="outline"
                 size="large"
+                href="https://calendly.com/mgarciap333/ai4u"
+                target="_blank"
                 sx={{
                   px: 6,
                   height: '80px',

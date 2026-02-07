@@ -208,7 +208,6 @@ const Services: React.FC = () => {
                       variant={axis.bgColor === colors.palette.black || axis.bgColor === colors.palette.info ? 'outline' : 'primary'}
                       sx={{ 
                         borderColor: axis.textColor, 
-                        color: axis.textColor,
                         height: '70px',
                         px: 6,
                         fontSize: '1.1rem',
