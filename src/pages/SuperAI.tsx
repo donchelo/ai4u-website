@@ -610,6 +610,40 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               </Grid>
             ))}
           </Grid>
+
+          {/* Consideraciones de Operación */}
+          <Box 
+            sx={{ 
+              mt: 12, 
+              p: { xs: 4, md: 6 }, 
+              border: `1px solid ${colors.palette.gray[900]}`,
+              bgcolor: 'rgba(255,255,255,0.02)',
+              maxWidth: '900px',
+              mx: 'auto'
+            }}
+          >
+            <H3 sx={{ color: colors.palette.white, mb: 4, fontSize: '1.5rem', fontWeight: 900 }}>
+              // CONSIDERACIONES DE OPERACIÓN
+            </H3>
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={6}>
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 800, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
+                  CONSUMO DE LLM & APIs
+                </Typography>
+                <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
+                  Los costos de consumo de modelos (OpenAI, Anthropic, etc.) se facturan directamente a tu tarjeta. La inversión depende de la inteligencia y el volumen de ejecución requerido.
+                </BodyText>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 800, mb: 1, fontSize: '0.8rem', letterSpacing: '0.1em' }}>
+                  HARDWARE DEDICADO
+                </Typography>
+                <BodyText sx={{ color: colors.palette.gray[400], fontSize: '0.95rem' }}>
+                  SuperAI requiere una estación de trabajo (PC/Servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
+                </BodyText>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </Box>
 
