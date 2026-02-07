@@ -66,7 +66,7 @@ const Services: React.FC = () => {
       id: ServiceSuperCategory.OPERATION,
       title: 'OPERACIÓN',
       subtitle: 'EFICIENCIA CONTINUA',
-      description: 'PROCESOS QUE OPTIMIZAN TU TIEMPO OPERATIVO Y RECURSOS.',
+      description: 'OPTIMIZA TIEMPO Y RECURSOS.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.orange,
       textColor: colors.palette.black,
@@ -75,8 +75,8 @@ const Services: React.FC = () => {
     {
       id: ServiceSuperCategory.STRATEGY,
       title: 'ESTRATEGIA',
-      subtitle: 'EL PODER DE LOS DATOS',
-      description: 'TOMA DECISIONES BASADAS EN DATA REAL Y VENTAJA COMPETITIVA.',
+      subtitle: 'DATA REAL',
+      description: 'DECISIONES CON VENTAJA COMPETITIVA.',
       color: colors.palette.black,
       bgColor: colors.palette.info,
       textColor: colors.palette.black,
@@ -86,7 +86,7 @@ const Services: React.FC = () => {
       id: ServiceSuperCategory.EDUCATION,
       title: 'EDUCACIÓN',
       subtitle: 'EVOLUCIÓN HUMANA',
-      description: 'CAPACITAMOS A TU EQUIPO PARA DOMINAR EL MERCADO GLOBAL CON IA.',
+      description: 'TU EQUIPO DOMINANDO LA IA.',
       color: colors.palette.white,
       bgColor: colors.palette.black,
       textColor: colors.palette.white,
@@ -95,8 +95,8 @@ const Services: React.FC = () => {
     {
       id: ServiceSuperCategory.TRANSFORMATION,
       title: 'TRANSFORMACIÓN',
-      subtitle: 'IA INFRASTRUCTURE',
-      description: 'INFRAESTRUCTURA INTELIGENTE DISEÑADA PARA LA ESCALABILIDAD.',
+      subtitle: 'INFRAESTRUCTURA IA',
+      description: 'DISEÑADA PARA ESCALAR.',
       color: colors.palette.black,
       bgColor: colors.palette.accentColors.green,
       textColor: colors.palette.black,
@@ -315,10 +315,10 @@ const Services: React.FC = () => {
             </H1>
             <Grid container spacing={6}>
               {[
-                { n: '01', t: 'DIAGNÓSTICO', d: 'IDENTIFICAMOS OPORTUNIDADES REALES.' },
-                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN RESULTADOS DE NEGOCIO.' },
-                { n: '03', t: 'DESARROLLO', d: 'INGENIERÍA DE IA A MEDIDA.' },
-                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN Y SOPORTE CONTINUO.' }
+                { n: '01', t: 'DIAGNÓSTICO', d: 'OPORTUNIDADES REALES.' },
+                { n: '02', t: 'PRIORIZACIÓN', d: 'FOCO EN RESULTADOS.' },
+                { n: '03', t: 'DESARROLLO', d: 'IA A TU MEDIDA.' },
+                { n: '04', t: 'DESPLIEGUE', d: 'INTEGRACIÓN + SOPORTE.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
                   <Box sx={{ borderLeft: `8px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>

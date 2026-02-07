@@ -7,7 +7,7 @@ export const services: Service[] = [
     id: 'fashion-agent',
     title: 'coutureLAB',
     subtitle: 'De figurines a ecommerce real',
-    description: 'Fotos de producto con modelos IA. Optimización drástica en producción.',
+    description: 'Fotos de producto con modelos IA.',
     benefits: [
       'Modelos personalizados',
       'Cero costos de estudio'
@@ -30,7 +30,7 @@ export const services: Service[] = [
     id: 'data-entry-automatico',
     title: 'Data Entry Automático',
     subtitle: 'Automatización de digitación',
-    description: 'Extracción inteligente de datos desde PDF o imágenes hacia tu ERP.',
+    description: 'De PDF e imágenes a tu ERP, automático.',
     benefits: [
       'Minimiza errores operativos',
       'Recupera horas valiosas cada semana',
@@ -54,7 +54,7 @@ export const services: Service[] = [
     id: 'chatbot-inteligente',
     title: 'Chatbots WhatsApp',
     subtitle: 'Gestión de pedidos 24/7',
-    description: 'Ventas y atención por WhatsApp conectadas a tu inventario sin interrupciones.',
+    description: 'Ventas y atención por WhatsApp 24/7.',
     benefits: [
       'Atención continua real',
       'Ventas automáticas',
@@ -74,7 +74,7 @@ export const services: Service[] = [
     id: 'auditoria-ia',
     title: 'Auditorías IA',
     subtitle: 'Control estratégico operativo',
-    description: 'Supervisión inteligente de procesos en facturación y logística.',
+    description: 'Supervisión IA de facturación y logística.',
     benefits: [
       'Reportes ágiles',
       'Control de anomalías',
@@ -94,7 +94,7 @@ export const services: Service[] = [
     id: 'vision-computadora',
     title: 'Visión Artificial',
     subtitle: 'Cámaras inteligentes',
-    description: 'Monitoreo de stock y calidad visual en tiempo real para bodegas.',
+    description: 'Monitoreo de stock y calidad en tiempo real.',
     benefits: [
       'Monitoreo inteligente visual',
       'Detección de mermas',
@@ -114,7 +114,7 @@ export const services: Service[] = [
     id: 'desarrollo-web',
     title: 'Desarrollo Web',
     subtitle: 'Arquitectura digital pro',
-    description: 'Construcción de plataformas web de alto rendimiento y diseño minimalista.',
+    description: 'Plataformas web de alto rendimiento.',
     benefits: [
       'Optimización SEO/LCP',
       'Arquitectura optimizada'
@@ -133,7 +133,7 @@ export const services: Service[] = [
     id: 'cotizador-automatico',
     title: 'Cotizador Automático',
     subtitle: 'Presupuestos al instante',
-    description: 'Conversión de voz o texto en presupuestos enviados al instante.',
+    description: 'De voz o texto a presupuesto al instante.',
     benefits: [
       'Precisión en cotizaciones',
       'Envío ágil',
@@ -153,7 +153,7 @@ export const services: Service[] = [
     id: 'gestor-pedidos',
     title: 'Gestor de Pedidos',
     subtitle: 'Optimiza tus órdenes',
-    description: 'Procesamiento ágil de órdenes de compra desde diversos formatos.',
+    description: 'Procesamiento ágil de órdenes de compra.',
     benefits: [
       'Automatiza el ingreso de datos',
       'Sincronización precisa con ERP',
@@ -173,7 +173,7 @@ export const services: Service[] = [
     id: 'the-builder',
     title: 'The Builder',
     subtitle: 'Tiendas Shopify Pro',
-    description: 'Tiendas Shopify profesionales enfocadas en alta conversión.',
+    description: 'Tiendas Shopify de alta conversión.',
     benefits: [
       'Diseño profesional',
       'Pagos configurados',
@@ -195,7 +195,7 @@ export const services: Service[] = [
     id: 'estratega-ejecutivo',
     title: 'Estratega Ejecutivo',
     subtitle: 'Asistente IA estratégico',
-    description: 'Análisis de indicadores clave y reportes estratégicos.',
+    description: 'KPIs y reportes estratégicos con IA.',
     benefits: [
       'Decisiones basadas en datos',
       'Reportes continuos',
@@ -215,7 +215,7 @@ export const services: Service[] = [
     id: 'dashboards-inteligentes',
     title: 'Dashboards IA',
     subtitle: 'Tu negocio en tiempo real',
-    description: 'Visualización de rentabilidad y predicción de tendencias en tiempo real.',
+    description: 'Rentabilidad y predicción en tiempo real.',
     benefits: [
       'Visibilidad 360°',
       'Predicción IA',
@@ -235,7 +235,7 @@ export const services: Service[] = [
     id: 'investigacion-horeca',
     title: 'Investigación HORECA',
     subtitle: 'Expansión basada en datos',
-    description: 'Mapeo de mercado con IA para identificar zonas de alto crecimiento.',
+    description: 'Mapeo de mercado con IA.',
     benefits: [
       'Leads calificados',
       'Mapeo competencia',
@@ -255,7 +255,7 @@ export const services: Service[] = [
     id: 'asesoria-estrategica',
     title: 'Consultoría Permanente',
     subtitle: 'Tu equipo IA dedicado',
-    description: 'Acceso ilimitado a innovación IA y asesoramiento mensual dedicado.',
+    description: 'Asesoría IA dedicada y continua.',
     benefits: [
       'Actualizaciones IA',
       'Soporte preferencial',
@@ -275,7 +275,7 @@ export const services: Service[] = [
     id: 'cazador-leads',
     title: 'Cazador de Leads',
     subtitle: 'Clientes calificados',
-    description: 'Generación automática de prospectos calificados con Meta Ads e IA.',
+    description: 'Prospectos calificados con Meta Ads e IA.',
     benefits: [
       'Pipeline siempre lleno',
       'Leads de alta calidad',
@@ -295,7 +295,7 @@ export const services: Service[] = [
     id: 'investigador-digital',
     title: 'Investigador Digital',
     subtitle: 'Monitor de tendencias',
-    description: 'Monitoreo de competencia y tendencias de mercado en tiempo real.',
+    description: 'Competencia y tendencias en tiempo real.',
     benefits: [
       'Análisis competencia',
       'Optimización de tiempo semanal',
@@ -315,7 +315,7 @@ export const services: Service[] = [
     id: 'analista-comentarios',
     title: 'Analista de Comentarios',
     subtitle: 'Insights automáticos',
-    description: 'Detección de patrones y sentimientos en comentarios de clientes.',
+    description: 'Patrones y sentimientos de clientes.',
     benefits: [
       'Análisis sentimientos',
       'Insights de clientes',
@@ -337,7 +337,7 @@ export const services: Service[] = [
     id: 'the-master',
     title: 'The Master',
     subtitle: 'Estrategia para líderes',
-    description: 'Estrategia de IA y automatización exclusiva para dueños de negocio.',
+    description: 'IA y automatización para líderes.',
     benefits: [
       'Sesión exclusiva',
       'Roadmap real',
@@ -357,7 +357,7 @@ export const services: Service[] = [
     id: 'the-mentor',
     title: 'The Mentor',
     subtitle: 'Prompt Engineering 1a1',
-    description: 'Capacitación personalizada en productividad extrema con ChatGPT.',
+    description: 'Productividad extrema con ChatGPT.',
     benefits: [
       'Salto en productividad',
       'GPTs personalizados',
@@ -377,7 +377,7 @@ export const services: Service[] = [
     id: 'the-artist',
     title: 'The Artist',
     subtitle: 'Master Midjourney 1a1',
-    description: 'Dominio de creación de imágenes IA para marketing y diseño pro.',
+    description: 'Creación de imágenes IA para marketing.',
     benefits: [
       'Control Midjourney',
       'Feedback en vivo',
@@ -399,7 +399,7 @@ export const services: Service[] = [
     id: 'super-ai',
     title: 'Super AI',
     subtitle: 'Capacidad Ejecutiva (AIA)',
-    description: 'IA con capacidad ejecutiva que apoya la toma de decisiones conectada a tus sistemas.',
+    description: 'IA ejecutiva conectada a tus sistemas.',
     benefits: [
       'Ejecución asistida',
       'Mínima intervención manual',
@@ -423,7 +423,7 @@ export const services: Service[] = [
     id: 'metodologia-ai-first',
     title: 'Metodología AI-First',
     subtitle: 'Infraestructura del futuro',
-    description: 'Arquitectura de negocio diseñada desde el núcleo con IA.',
+    description: 'Arquitectura de negocio con IA.',
     benefits: [
       'Arquitectura IA',
       'Ventaja competitiva',

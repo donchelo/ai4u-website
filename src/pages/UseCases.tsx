@@ -322,7 +322,7 @@ const UseCases = () => {
           </Box>
 
           <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, maxWidth: '800px' }}>
-            EMPRESAS LÍDERES QUE CONFÍAN EN AI4U PARA SU TRANSFORMACIÓN DIGITAL. CADA LOGO REPRESENTA UNA ALIANZA EXITOSA EN INNOVACIÓN.
+            ALIANZAS EN INNOVACIÓN.
           </BodyText>
         </Container>
       </Box>
@@ -467,7 +467,7 @@ const UseCases = () => {
                 RESULTADOS QUE <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>HABLAN</Box>
               </H1>
               <BodyText sx={{ fontSize: '2rem', fontWeight: 600, lineHeight: 1.2 }}>
-                NUESTRAS SOLUCIONES DE IA HAN TRANSFORMADO EMPRESAS GENERANDO CRECIMIENTO SOSTENIBLE.
+                IA QUE GENERA CRECIMIENTO REAL.
               </BodyText>
             </Grid>
             

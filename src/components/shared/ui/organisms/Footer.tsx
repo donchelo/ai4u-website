@@ -59,7 +59,7 @@ const Footer = () => {
               }}
             />
             <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-              Transformando el futuro con inteligencia artificial.
+              IA para tu negocio.
             </MuiTypography>
           </Grid>
           

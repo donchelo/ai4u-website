@@ -44,58 +44,25 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const colors = useColors();
 
   const problems = [
-    {
-      title: 'Generando propuestas',
-      desc: 'Cuando podrían ser automáticas'
-    },
-    {
-      title: 'Respondiendo emails',
-      desc: 'Cuando podrían fluir solos'
-    },
-    {
-      title: 'Persiguiendo clientes',
-      desc: 'Cuando podrían escalar sin ti'
-    },
-    {
-      title: 'Ejecutando workflows',
-      desc: 'Cuando podrían correr 24/7'
-    }
+    { title: 'Generando propuestas', desc: 'Podrían ser automáticas' },
+    { title: 'Respondiendo emails', desc: 'Podrían fluir solos' },
+    { title: 'Persiguiendo clientes', desc: 'Podrían escalar sin ti' },
+    { title: 'Ejecutando workflows', desc: 'Podrían correr 24/7' }
   ];
 
   const benefits = [
-    {
-      icon: Bolt,
-      title: 'EJECUTA',
-      description: 'No pregunta qué hacer. Entiende tu negocio y actúa.'
-    },
-    {
-      icon: Autorenew,
-      title: 'AUTOMATIZA',
-      description: 'Propuestas, reportes, prospecting, seguimiento. Sin intervención.'
-    },
-    {
-      icon: RocketLaunch,
-      title: 'ESCALA INFINITO',
-      description: 'Crece contigo sin costo marginal. 10 clientes o 1000, mismo costo.'
-    },
-    {
-      icon: Psychology,
-      title: 'APRENDE TU LÓGICA',
-      description: 'Conoce tu filosofía, tus métricas, tus prioridades. Como un socio senior.'
-    },
-    {
-      icon: IntegrationInstructions,
-      title: 'INTEGRADO A TU STACK',
-      description: 'Gmail, Drive, Sheets, APIs custom, Make.com, anything. Todo conectado.'
-    }
+    { icon: Bolt, title: 'EJECUTA', description: 'Entiende tu negocio y actúa.' },
+    { icon: Autorenew, title: 'AUTOMATIZA', description: 'Propuestas, reportes, seguimiento.' },
+    { icon: RocketLaunch, title: 'ESCALA', description: '10 o 1000 clientes, mismo costo.' },
+    { icon: Psychology, title: 'APRENDE', description: 'Tu lógica, métricas y prioridades.' },
+    { icon: IntegrationInstructions, title: 'SE INTEGRA', description: 'Gmail, Drive, Sheets, APIs. Todo.' }
   ];
 
   const results = [
-    '15-20 horas/semana recuperadas',
-    'Propuestas → 90% más rápido',
-    'Prospecting → Automatizado',
-    'Reportes → Generados sin pedir',
-    'Decisiones estratégicas → Basadas en datos reales'
+    '+15 horas/semana recuperadas',
+    'Propuestas 90% más rápido',
+    'Prospecting automatizado',
+    'Reportes sin intervención'
   ];
 
   const steps = [
@@ -103,57 +70,53 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       num: '01',
       title: 'INTEGRACIÓN',
       subtitle: 'Semana 1',
-      description: 'Conectamos SuperAI a tu email, calendario, documentos, bases de datos, APIs. Toma 24 horas. Cero disruption a tu operación.'
+      description: 'Conectamos a tu email, calendario, docs y APIs. 24 horas, cero disrupción.'
     },
     {
       num: '02',
       title: 'APRENDIZAJE',
       subtitle: 'Semana 2-3',
-      description: 'SuperAI observa cómo trabajas: qué prioridades, qué métricas importan, cómo tomas decisiones. No pedimos 50 preguntas. Observamos y aprendemos.'
+      description: 'Observa tus prioridades, métricas y decisiones. Aprende tu lógica.'
     },
     {
       num: '03',
       title: 'EJECUCIÓN',
       subtitle: 'Día 1 en adelante',
-      description: 'SuperAI comienza a ejecutar: Propuestas, emails estratégicos, reportes, identificación de oportunidades y workflows 24/7.'
+      description: 'Propuestas, reportes, oportunidades y workflows. 24/7.'
     }
   ];
 
   const useCases = [
     {
-      category: 'Emprendedores de IA/Tech',
+      category: 'Tech / IA',
       items: [
-        'Genera propuestas técnicas en 3 minutos (vs 3 horas)',
-        'Automatiza prospecting via email + LinkedIn',
-        'Crea reportes de performance en tiempo real',
-        'Ejecuta workflows de integración sin intervención'
+        'Propuestas técnicas en 3 min',
+        'Prospecting automatizado',
+        'Reportes en tiempo real'
       ]
     },
     {
-      category: 'Empresas de Consultoría',
+      category: 'Consultoría',
       items: [
-        'Propuestas personalizadas basadas en brief del cliente (automático)',
-        'Seguimiento de clientes sin recordar manualmente',
-        'Reportes de ROI que se actualizan solos',
-        'Identificación de upsell opportunities'
+        'Propuestas personalizadas automáticas',
+        'Seguimiento sin intervención',
+        'ROI que se actualiza solo'
       ]
     },
     {
       category: 'E-commerce / SaaS',
       items: [
-        'Análisis de data de clientes en tiempo real',
-        'Automatización de comunicación personalizada',
-        'Generación de reportes de cohort/LTV automáticos',
-        'Prospecting y outreach escalado'
+        'Análisis de clientes en tiempo real',
+        'Comunicación personalizada',
+        'Prospecting escalado'
       ]
     },
     {
-      category: 'Negocios de Servicios',
+      category: 'Servicios',
       items: [
-        'Agendamiento y seguimiento automático',
-        'Generación de contratos y propuestas',
-        'Pipeline management sin tocar nada',
-        'Recordatorios y escalación inteligente'
+        'Agendamiento automático',
+        'Contratos y propuestas al instante',
+        'Pipeline management autónomo'
       ]
     }
   ];
@@ -173,25 +136,23 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       price: '$1,000',
       period: 'USD/mes',
       features: [
-        'Integración básica (3-5 herramientas)',
-        'Automatización de propuestas + emails',
-        'Reportes semanales',
-        'Soporte prioritario'
+        '3-5 herramientas integradas',
+        'Propuestas + emails automáticos',
+        'Reportes semanales'
       ],
-      for: 'Freelancers, startups early-stage'
+      for: 'Freelancers y startups'
     },
     {
       name: 'PROFESSIONAL',
       price: '$2,000',
       period: 'USD/mes',
       features: [
-        'Integración completa (10+ herramientas)',
-        'Automatización completa de operaciones',
-        'Análisis de datos + insights',
-        'Prospecting automático',
+        '10+ herramientas integradas',
+        'Operaciones automatizadas',
+        'Prospecting + insights',
         'Reportes diarios + alertas'
       ],
-      for: 'Empresas de 5-50 personas',
+      for: 'Empresas 5-50 personas',
       highlight: true
     },
     {
@@ -199,36 +160,35 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       price: 'CUSTOM',
       period: '',
       features: [
-        'Integración completa + custom APIs',
-        'Automatización de procesos únicos',
-        'Data science + predictive analytics',
-        'Dedicated account manager',
+        'APIs custom + integración total',
+        'Procesos únicos automatizados',
+        'Predictive analytics',
         'SLA garantizado'
       ],
-      for: 'Empresas 50+ personas, operaciones complejas'
+      for: 'Empresas 50+ personas'
     }
   ];
 
   const faqs = [
     {
       q: '¿Cuánto tiempo de implementación?',
-      a: 'Integración inicial = 1-2 semanas. ROI visible en 30 días. Full optimization en 90.'
+      a: '1-2 semanas. ROI visible en 30 días.'
     },
     {
-      q: '¿Y si tenemos procesos muy únicos?',
-      a: 'Eso es lo que hacemos. Procesos únicos = oportunidades para SuperAI brillar. Si es automático una vez, es automático para siempre.'
+      q: '¿Procesos muy únicos?',
+      a: 'Justamente. Si se automatiza una vez, es automático para siempre.'
     },
     {
       q: '¿Seguridad de datos?',
-      a: 'Enterprise-grade. Encriptación end-to-end. Cumplimiento GDPR, CCPA. Tus datos son tuyos, siempre.'
+      a: 'Enterprise-grade. Encriptación end-to-end. GDPR, CCPA.'
     },
     {
-      q: '¿Puedo dejar de usar SuperAI cuando quiera?',
-      a: 'Sí. Pero después de 90 días, no querrás dejar. La mayoría renuevan por años.'
+      q: '¿Puedo cancelar?',
+      a: 'Sí, cuando quieras. Sin contratos de permanencia.'
     },
     {
       q: '¿Cuál es el ROI real?',
-      a: 'Si recuperas 15 horas/semana a $150/hora (tu costo de oportunidad), son $2,250/semana = $117k/año. El plan Starter cuesta $12k/año. ROI = 9.75x en valor de tiempo recuperado. Sin contar nuevos clientes que cierras.'
+      a: '15 horas/semana recuperadas × tu costo/hora = ROI 9.75x en el plan Starter.'
     }
   ];
 
@@ -328,7 +288,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 lineHeight: 1.4,
               }}
             >
-              No contratas. No acuerdos. No más tiempo gastado en operaciones. Tu Propio CEO de IA que entiende tu negocio, ejecuta tus estrategias, y genera revenue.
+              Tu propio CEO de IA. Ejecuta estrategias y genera revenue.
             </BodyText>
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 4 }}>
@@ -369,10 +329,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 Eres Inteligente. <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Sistema No.</Box>
               </H1>
               <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.2rem', mb: 4 }}>
-                Pasas 40+ horas por semana en tareas que una máquina podría hacer en 40 minutos.
-              </BodyText>
-              <BodyText sx={{ color: colors.palette.white, fontWeight: 700, fontSize: '1.1rem' }}>
-                Resultado: Crecimiento lento, burnout temprano, oportunidades perdidas.
+                40+ horas/semana en tareas que la IA resuelve en minutos.
               </BodyText>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -400,7 +357,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           </Grid>
           <Box sx={{ mt: 10, textAlign: 'center' }}>
             <H3 sx={{ color: colors.palette.white, fontWeight: 300 }}>
-              El problema no es falta de talento. Es que necesitas un <Box component="span" sx={{ fontWeight: 800, color: colors.palette.white }}>equipo de ejecución que no cuesta nómina.</Box>
+              No falta talento. Falta <Box component="span" sx={{ fontWeight: 800, color: colors.palette.white }}>capacidad de ejecución.</Box>
             </H3>
           </Box>
         </Container>
@@ -415,7 +372,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 Presenta SuperAI: <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Execution Partner Inteligente</Box>
               </H1>
               <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.3rem' }}>
-                SuperAI no es un chatbot. Es un agente estratégico personal que:
+                No es un chatbot. Es un agente que ejecuta.
               </BodyText>
             </Box>
 
@@ -512,7 +469,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           </Grid>
           <Box sx={{ mt: 10, textAlign: 'center', p: 4, border: `1px solid ${colors.palette.gray[900]}` }}>
             <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.1rem' }}>
-              Después del primer mes, el ROI es obvio. Después de 3 meses, es <Box component="span" sx={{ color: colors.palette.white, fontWeight: 800 }}>transformacional.</Box>
+              Mes 1: ROI obvio. Mes 3: <Box component="span" sx={{ color: colors.palette.white, fontWeight: 800 }}>transformacional.</Box>
             </BodyText>
           </Box>
         </Container>
@@ -584,8 +541,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
             <Box sx={{ textAlign: 'center', mt: 4 }}>
               <H3 sx={{ color: colors.palette.white, fontWeight: 300, lineHeight: 1.4 }}>
-                La diferencia: SuperAI no te ayuda a ser más productivo.<br />
-                <Box component="span" sx={{ fontWeight: 900, color: colors.palette.accentColors.orange }}>SuperAI IS la productividad.</Box>
+                SuperAI no ayuda. <Box component="span" sx={{ fontWeight: 900, color: colors.palette.accentColors.orange }}>SuperAI ejecuta.</Box>
               </H3>
             </Box>
           </Stack>
@@ -684,14 +640,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           <Stack spacing={6} alignItems="center">
             <Giant sx={{ color: colors.palette.white }}>¿Listo para Ejecutar a Velocidad?</Giant>
 
-            <Stack spacing={2}>
-              <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.2rem' }}>No más tiempo gastado en tareas repetitivas.</BodyText>
-              <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.2rem' }}>No más deuda de operaciones.</BodyText>
-              <BodyText sx={{ color: colors.palette.gray[400], fontSize: '1.2rem' }}>No más crecimiento limitado por tu disponibilidad.</BodyText>
-            </Stack>
-
             <BodyText sx={{ color: colors.palette.white, fontWeight: 800, fontSize: '1.4rem', maxWidth: '700px' }}>
-              SuperAI es tu próximo hire. Excepto que cuesta menos que un freelancer y trabaja 24/7.
+              Cuesta menos que un freelancer. Trabaja 24/7.
             </BodyText>
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} sx={{ mt: 4 }}>
@@ -763,10 +713,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       {/* Footer Branding */}
       <Box sx={{ py: 6, background: colors.palette.black, borderTop: `1px solid ${colors.palette.gray[900]}`, textAlign: 'center' }}>
         <Container maxWidth="lg">
-          <Typography sx={{ color: colors.palette.gray[700], fontSize: '0.8rem', fontWeight: 900, letterSpacing: '0.2em', mb: 2 }}>
-            EL FUTURO NO TIENE OPERADORES MANUALES. TIENE AGENTES INTELIGENTES.
-          </Typography>
-          <H2 sx={{ color: colors.palette.white, opacity: 0.5, fontWeight: 900 }}>SuperAI. Tu Execution Partner.</H2>
+          <H2 sx={{ color: colors.palette.white, opacity: 0.5, fontWeight: 900 }}>SuperAI</H2>
         </Container>
       </Box>
     </SurfaceProvider>

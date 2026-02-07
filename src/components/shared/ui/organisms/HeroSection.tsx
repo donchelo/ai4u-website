@@ -15,7 +15,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   customTitle = 'TU TIEMPO ES ORO',
-  customSubtitle = 'Mientras otros pierden gran parte de su día en tareas operativas, la tecnología puede potenciar tu productividad.',
+  customSubtitle = 'IA que potencia tu productividad.',
   primaryButtonText = 'RECUPERA TU TIEMPO',
   secondaryButtonText = 'CALCULA TU ROI'
 }) => {
@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     "/assets/images/hero-image3.png"
   ];
 
-  const humanElementText = 'TECNOLOGÍA QUE LIBERA TU POTENCIAL HUMANO';
+  const humanElementText = 'IA CON ENFOQUE HUMANO';
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -88,7 +88,7 @@ const WhyAI4U = () => {
                     fontWeight: 300,
                     opacity: 0.9
                   }}>
-                    DETRÁS DE CADA AUTOMATIZACIÓN HAY UNA MENTE HUMANA QUE ENTIENDE TU NEGOCIO. MARIANO, FUNDADOR DE AI4U, COMBINA EXPERIENCIA EN STARTUPS, MOVILIDAD Y TECNOLOGÍA PARA CREAR SOLUCIONES QUE REALMENTE FUNCIONAN.
+                    EXPERIENCIA EN STARTUPS, MOVILIDAD Y TECNOLOGÍA. SOLUCIONES QUE FUNCIONAN.
                   </BodyText>
                 </ExpandableSection>
                 
@@ -165,15 +165,15 @@ const WhyAI4U = () => {
               {[
                 {
                   title: 'DIAGNÓSTICO GRATUITO',
-                  description: 'EVALUAMOS TU NEGOCIO SIN COSTO PARA IDENTIFICAR OPORTUNIDADES.',
+                  description: 'IDENTIFICAMOS OPORTUNIDADES REALES SIN COSTO.',
                 },
                 {
-                  title: 'ASISTENTES QUE EVOLUCIONAN',
-                  description: 'NUESTROS ASISTENTES APRENDEN Y MEJORAN CONTINUAMENTE.',
+                  title: 'IA QUE EVOLUCIONA',
+                  description: 'APRENDE Y MEJORA CON TU NEGOCIO.',
                 },
                 {
-                  title: 'ENFOQUE EN RESULTADOS',
-                  description: 'IMPLEMENTACIÓN ÁGIL Y ENFOQUE EN ROI MEDIBLE DESDE LAS PRIMERAS ETAPAS.',
+                  title: 'ROI MEDIBLE',
+                  description: 'RESULTADOS DESDE LAS PRIMERAS SEMANAS.',
                 }
               ].map((benefit, idx) => (
                 <Grid item xs={12} md={4} key={idx}>

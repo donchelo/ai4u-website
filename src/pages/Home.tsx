@@ -40,16 +40,16 @@ const Home = () => {
   // Features estáticas en español
   const features = [
     {
-      title: 'El costo de la inacción es tu libertad',
-      description: 'Cada hora que pasas en tareas operativas es una hora que le robas a tu estrategia y a tu vida. La automatización no es un lujo, es la única forma de escalar sin quemarte en el proceso.'
+      title: 'Cada hora cuenta',
+      description: 'Automatiza lo operativo. Enfócate en lo estratégico.'
     },
     {
-      title: 'No compres software, compra tiempo',
-      description: 'Nuestros motores de ejecución asistida no solo procesan datos; devuelven gran parte de tu jornada. Enfoque en resultados medibles que se traducen en libertad para decidir dónde realmente importa estar.'
+      title: 'Compra tiempo, no software',
+      description: 'Resultados medibles desde el primer mes.'
     },
     {
-      title: 'Tu competencia ya está explorando',
-      description: 'Mientras otros debaten sobre el futuro, nuestros agentes ya apoyan la operación de forma continua. ¿Vas a seguir invirtiendo tu tiempo en lo que la tecnología puede potenciar?'
+      title: 'Tu competencia ya empezó',
+      description: 'Nuestros agentes trabajan mientras tú decides.'
     },
   ];
 
@@ -58,31 +58,30 @@ const Home = () => {
     {
       id: ServiceSuperCategory.STRATEGY,
       title: 'Estrategia',
-      description: 'Acompañamiento estratégico continuo, diagnóstico y planificación empresarial con IA para transformar tu negocio desde la raíz.'
+      description: 'Decisiones basadas en datos reales.'
     },
     {
       id: ServiceSuperCategory.OPERATION,
       title: 'Automatizaciones',
-      description: 'Implementación de asistentes robóticos, chatbots y sistemas automáticos que trabajan 24/7 para liberar tu tiempo y potenciar tu empresa.'
+      description: 'Sistemas que trabajan 24/7 por ti.'
     },
     {
       id: ServiceSuperCategory.EDUCATION,
       title: 'Educación',
-      description: 'Capacitación y formación en inteligencia artificial y automatización para que tu equipo evolucione junto a la tecnología.'
+      description: 'Tu equipo dominando la IA.'
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
       title: 'Transformación Digital',
-      description: 'Integración de soluciones digitales y automatizadas para llevar tu empresa al siguiente nivel de eficiencia y competitividad.'
+      description: 'Infraestructura inteligente y escalable.'
     },
   ];
 
   // Características del robot en español
   const robotFeatures = [
-    'Enfoque en resultados desde el primer mes',
-    'Aprenden y evolucionan con tu empresa',
-    'Apoyan tu crecimiento continuamente',
-    'Se integran con tus sistemas actuales'
+    'Resultados desde el mes uno',
+    'Evoluciona con tu negocio',
+    'Integración con tus sistemas'
   ];
 
   return (
@@ -99,7 +98,7 @@ const Home = () => {
       {/* Hero Section */}
       <HeroSection 
         customTitle="¿CUÁNTO VALE TU TIEMPO?"
-        customSubtitle="Olvida las soluciones convencionales. Implementamos motores de ejecución asistida que recuperan tus horas más valiosas en tiempo récord."
+        customSubtitle="Implementamos IA que recupera tus horas más valiosas."
         primaryButtonText="DESPLEGAR MI AGENTE"
       />
 
@@ -115,7 +114,7 @@ const Home = () => {
         <SurfaceProvider surface="green">
           <Container maxWidth="xl">
             <H1 sx={{ mb: 8, fontWeight: 900, color: colors.palette.black, textTransform: 'uppercase', maxWidth: '1200px' }}>
-              ¿EL TRABAJO TE ESTÁ ROBANDO <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>MOMENTOS IRREEMPLAZABLES</Box>?
+              ¿CUÁNTAS HORAS <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2 }}>PIERDES</Box> AL DÍA?
             </H1>
             <Grid container spacing={6}>
               {features.map((feature, idx) => (
@@ -227,7 +226,7 @@ const Home = () => {
                     letterSpacing: '-0.04em',
                     textTransform: 'uppercase'
                   }}>
-                    "IA DE ALTO NIVEL: CAPACIDAD EJECUTIVA QUE OPTIMIZA TU OPERACIÓN Y TU TIEMPO."
+                    "IA QUE EJECUTA POR TI."
                   </BodyText>
                 </Box>
               </Grid>
@@ -262,7 +261,7 @@ const Home = () => {
                   SERVICIOS QUE <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>TRANSFORMAN</Box>
                 </H1>
                 <BodyText sx={{ fontSize: '1.5rem', fontWeight: 500, color: colors.palette.black, maxWidth: '500px', mb: 6 }}>
-                  SOLUCIONES INTEGRALES PARA EMPRESAS QUE BUSCAN LIDERAR LA ERA DE LA INTELIGENCIA ARTIFICIAL.
+                  IA APLICADA A TU NEGOCIO.
                 </BodyText>
                 <Button 
                   variant="primary" 
