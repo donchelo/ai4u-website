@@ -11,6 +11,8 @@ import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { ServiceSuperCategory } from '../types/service';
+import { ROUTES } from '../utils/constants';
+import { scrollToTop } from '../utils/helpers';
 
 const Home = () => {
   const colors = useColors();
@@ -266,6 +268,9 @@ const Home = () => {
                 <Button 
                   variant="primary" 
                   size="large"
+                  component={Link}
+                  to={ROUTES.SERVICES}
+                  onClick={() => scrollToTop()}
                   sx={{ 
                     height: '80px', 
                     px: 6, 
@@ -402,6 +407,9 @@ const Home = () => {
               }} />
               <Button 
                 variant="outline" 
+                component={Link}
+                to={ROUTES.SERVICES}
+                onClick={() => scrollToTop()}
                 sx={{ 
                   height: '120px', 
                   px: 10, 

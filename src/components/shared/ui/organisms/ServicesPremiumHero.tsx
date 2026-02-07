@@ -210,7 +210,6 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     <Button 
                       variant="primary"
                       size="large"
-                      text="CONOCER SUPER AI"
                       onClick={() => setIsModalOpen(true)}
                       sx={{ 
                         height: '80px', 
@@ -225,7 +224,9 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                           borderColor: colors.palette.white
                         }
                       }}
-                    />
+                    >
+                      CONOCER SUPER AI
+                    </Button>
                   ) : (
                     <DiagnosticCTA 
                       variant="primary"

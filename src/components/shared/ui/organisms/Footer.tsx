@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Typography as MuiTypography, Divider, IconButton, Stack, useTheme } from '@mui/material';
 import { SmallText } from '../atoms';
 import { useColors } from '../../../../hooks';
@@ -13,6 +13,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { ROUTES } from '../../../../utils/constants';
+import { scrollToTop } from '../../../../utils/helpers';
 
 const FOOTER_LOGO_PATH = '/assets/images/Isotipo Crema.png';
 
@@ -20,7 +21,6 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
   const colors = useColors();
-  const navigate = useNavigate();
 
   const socialLinks = [
     { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
@@ -72,14 +72,9 @@ const Footer = () => {
                 {quickLinks.map((link) => (
                   <Box component="li" key={link.name} sx={{ mb: 1 }}>
                     <Box
-                      component="a"
-                      onClick={() => {
-                        navigate(link.path);
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth'
-                        });
-                      }}
+                      component={Link}
+                      to={link.path}
+                      onClick={() => scrollToTop()}
                       sx={{
                         color: colors.contrast.text.secondary,
                         textDecoration: 'none',

@@ -160,15 +160,13 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
     {
       name: 'ENTERPRISE',
       implementation: null,
-      price: 'Por cotización',
+      price: 'A MEDIDA',
       period: '',
       features: [
-        'APIs custom + integración total',
-        'Procesos únicos automatizados',
-        'Predictive analytics',
-        'SLA garantizado'
+        'Agenda una consultoría estratégica para diseñar la infraestructura personalizada que tu operación a gran escala necesita.'
       ],
-      for: 'Empresas 50+ personas'
+      for: 'Empresas 50+ personas',
+      buttonText: 'AGENDAR CONSULTA'
     }
   ];
 
@@ -606,7 +604,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     target="_blank"
                     sx={{ height: '60px', fontWeight: 900 }}
                   >
-                    EMPEZAR AHORA
+                    {tier.buttonText || 'EMPEZAR AHORA'}
                   </Button>
                 </Box>
               </Grid>
