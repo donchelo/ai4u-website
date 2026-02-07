@@ -10,11 +10,12 @@ import {
   alpha
 } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
-import { Card, DiagnosticCTA, ServicesButton, MetricCard, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
+import { Card, DiagnosticCTA, ServicesButton, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { SurfaceProvider } from '../context';
 import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
+import { clients } from '../data/clients';
 
 const WhyAI4U = () => {
   const colors = useColors();
@@ -207,48 +208,6 @@ const WhyAI4U = () => {
         </SurfaceProvider>
       </Box>
 
-            {/* Stats Section - Inspiración BLACK_MODERN */}
-      <Box sx={{ 
-        py: { xs: 10, md: 18 }, 
-        px: { xs: 4, md: 8, lg: 12 },
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
-        display: 'flex',
-        justifyContent: 'center'
-      }}>
-        <SurfaceProvider surface="black">
-          <Container maxWidth="xl">
-            <H1 sx={{ 
-              mb: 10, 
-              textAlign: 'left',
-              fontWeight: 900,
-              textTransform: 'uppercase',
-              color: colors.palette.white
-            }}>
-              NUESTROS <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>NÚMEROS</Box>
-            </H1>
-            
-            <Grid container spacing={6}>
-              {[
-                { title: 'SERVICIOS', value: '25+' },
-                { title: 'ESTRATEGIA', value: '12' },
-                { title: 'OPERACIÓN', value: '13' },
-                { title: 'ROI', value: 'OPTIMIZADO' }
-              ].map((stat, idx) => (
-                <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <MetricCard
-                    title={stat.title}
-                    value={stat.value}
-                    variant="default"
-                    size="large"
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </SurfaceProvider>
-      </Box>
-
       {/* Final CTA Section - Inspiración ORANGE_PUNCH */}
       <Box sx={{ 
         py: { xs: 15, md: 25 }, 
@@ -278,6 +237,67 @@ const WhyAI4U = () => {
             </Stack>
           </Container>
         </SurfaceProvider>
+      </Box>
+
+      {/* Nuestros clientes - solo logos */}
+      <Box sx={{ 
+        py: { xs: 8, md: 12 }, 
+        px: { xs: 2, md: 4 },
+        bgcolor: colors.palette.gray[100],
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="lg">
+          <H3 sx={{ 
+            textAlign: 'center', 
+            mb: 6, 
+            fontWeight: 800, 
+            textTransform: 'uppercase', 
+            color: colors.palette.black 
+          }}>
+            Nuestros clientes
+          </H3>
+          <Grid container spacing={4} justifyContent="center" alignItems="center">
+            {clients.map((client) => (
+              <Grid item xs={6} sm={4} md={2} key={client.id}>
+                <Box
+                  component="a"
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: 80,
+                    p: 2,
+                    transition: 'opacity 0.2s ease',
+                    '&:hover': { opacity: 0.7 },
+                    '& img': {
+                      maxHeight: '100%',
+                      maxWidth: '100%',
+                      objectFit: 'contain',
+                      filter: 'grayscale(1)',
+                      opacity: 0.85,
+                      transition: 'filter 0.2s ease, opacity 0.2s ease'
+                    },
+                    '&:hover img': {
+                      filter: 'grayscale(0)',
+                      opacity: 1
+                    }
+                  }}
+                  aria-label={`Ir al sitio de ${client.name}`}
+                >
+                  <Box
+                    component="img"
+                    src={client.logo}
+                    alt={client.name}
+                  />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}
