@@ -22,7 +22,6 @@ import {
 } from '@mui/icons-material';
 import Typography, { Giant, H1, H2, H3, H4, BodyText } from '@/components/shared/ui/atoms/Typography';
 import { Button, SEOHead, OptimizedImage } from '@/components/shared/ui/atoms';
-import { ExpandableSection } from '@/components/shared/ui/molecules';
 import { useColors } from '@/hooks';
 import { SurfaceProvider } from '@/context';
 import { COMPONENT_SPACING, SPACING_TOKENS } from '@/components/shared/ui/tokens/spacing';
@@ -261,14 +260,15 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               sx={{
                 color: colors.palette.white,
                 maxWidth: '1100px',
-                lineHeight: 0.85,
+                lineHeight: 0.95,
                 fontWeight: 400,
-                letterSpacing: '-0.05em',
+                letterSpacing: '-0.02em',
                 fontSize: isModal ? { xs: '3rem', md: '5rem' } : { xs: '3.5rem', md: '8rem' },
                 '& span': {
                   color: colors.palette.accentColors.orange,
                   display: 'inline-block',
-                  transform: 'rotate(1deg)'
+                  transform: 'rotate(1deg)',
+                  fontWeight: 500
                 }
               }}
             >
@@ -388,13 +388,13 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <H1 sx={{ 
                 color: colors.palette.black, 
                 fontSize: { xs: '3.5rem', md: '7rem' },
-                lineHeight: 0.85,
+                lineHeight: 0.95,
                 fontWeight: 400,
-                letterSpacing: '-0.05em',
+                letterSpacing: '-0.02em',
                 mb: 4 
               }}>
                 SuperAI: <br/>
-                <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu partner de ejecución</Box>
+                <Box component="span" sx={{ color: colors.palette.accentColors.orange, fontWeight: 500 }}>Tu partner de ejecución</Box>
               </H1>
               <BodyText sx={{ color: colors.palette.black, fontSize: '2rem', fontWeight: 400, opacity: 0.5 }}>
                 No es un chatbot. Es un agente que ejecuta.
@@ -407,6 +407,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   <Box
                     sx={{
                       bgcolor: colors.palette.white,
+                      color: colors.palette.black,
                       p: 6,
                       height: '100%',
                       border: `1px solid rgba(0,0,0,0.05)`,
@@ -470,13 +471,13 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             <H1 sx={{ 
               color: colors.palette.white, 
               fontSize: { xs: '3.5rem', md: '7rem' },
-              lineHeight: 0.85,
+              lineHeight: 0.95,
               fontWeight: 400,
-              letterSpacing: '-0.05em',
+              letterSpacing: '-0.02em',
               mb: 4 
             }}>
               3 pasos hacia tu <br/>
-              <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>nuevo superpoder</Box>
+              <Box component="span" sx={{ color: colors.palette.accentColors.orange, fontWeight: 500 }}>nuevo superpoder</Box>
             </H1>
           </Box>
           <Grid container spacing={0}>
@@ -528,9 +529,9 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             mb: 12, 
             color: colors.palette.black,
             fontSize: { xs: '3.5rem', md: '6.5rem' },
-            lineHeight: 0.9,
+            lineHeight: 1.0,
             fontWeight: 400,
-            letterSpacing: '-0.04em'
+            letterSpacing: '-0.02em'
           }}>
             Mira lo que <br/>
             <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2, display: 'inline-block' }}>SuperAI hace</Box> en la práctica
@@ -788,41 +789,32 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 8: PREGUNTAS FRECUENTES */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.white }}>
+      <Box sx={{ py: 12, background: colors.palette.white }}>
         <Container maxWidth="lg">
-          <H1 sx={{ 
+          <Typography sx={{ 
             textAlign: 'left', 
-            mb: 12, 
+            mb: 4, 
             color: colors.palette.black,
-            fontSize: { xs: '3.5rem', md: '6.5rem' },
-            lineHeight: 0.9,
+            fontSize: '0.9rem',
             fontWeight: 400,
-            letterSpacing: '-0.04em'
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            opacity: 0.5
           }}>
-            Preguntas <br/>
-            <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>frecuentes</Box>
-          </H1>
-          <Stack spacing={0}>
+            Preguntas frecuentes
+          </Typography>
+          <Box sx={{ maxWidth: '900px' }}>
             {faqs.map((faq, idx) => (
-              <ExpandableSection
-                key={idx}
-                title={faq.q}
-                variant="card"
-                sx={{ 
-                  borderRadius: 0, 
-                  border: 'none', 
-                  borderBottom: `1px solid rgba(0,0,0,0.1)`,
-                  bgcolor: 'transparent',
-                  p: 4,
-                  '& .MuiButtonBase-root': { px: 0 }
-                }}
-              >
-                <BodyText sx={{ color: colors.palette.black, opacity: 0.9, lineHeight: 1.6, fontSize: '1.2rem', py: 4 }}>
+              <Box key={idx} sx={{ mb: 2 }}>
+                <Typography component="span" sx={{ fontWeight: 400, fontSize: '1rem', color: colors.palette.black, mr: 1.5 }}>
+                  {faq.q}
+                </Typography>
+                <Typography component="span" sx={{ color: colors.palette.black, opacity: 0.5, fontSize: '1rem', lineHeight: 1.6 }}>
                   {faq.a}
-                </BodyText>
-              </ExpandableSection>
+                </Typography>
+              </Box>
             ))}
-          </Stack>
+          </Box>
         </Container>
       </Box>
 

@@ -86,9 +86,9 @@ const ExpandableSection = ({
           <H4 sx={{ 
             color: 'inherit',
             fontWeight: 400,
-            fontSize: '1.25rem',
+            fontSize: '1.2rem',
             textTransform: 'none',
-            letterSpacing: '0.05em'
+            letterSpacing: '0em'
           }}>
             {title}
           </H4>
@@ -105,16 +105,15 @@ const ExpandableSection = ({
         </Box>
         {showIcon && (
           <IconButton
-            size="large"
+            size="medium"
             sx={{
               color: 'inherit',
               transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-              transition: 'transform 0.1s ease',
-              border: `2px solid currentColor`,
-              borderRadius: 0,
+              transition: 'transform 0.2s ease',
+              opacity: 0.5,
               '&:hover': {
-                background: 'currentColor',
-                color: isDarkMode ? colors.palette.black : colors.palette.white
+                opacity: 1,
+                background: 'transparent'
               }
             }}
           >
