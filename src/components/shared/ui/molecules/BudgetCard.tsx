@@ -166,7 +166,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
             <SmallText sx={{ 
               fontWeight: 400,
               color: colors.helpers.text.primary,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               letterSpacing: 0.5
             }}>
               Presupuesto Total
@@ -206,10 +206,10 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
           <SmallText sx={{ 
             textAlign: 'center',
             color: colors.helpers.text.secondary,
-            textTransform: 'uppercase',
+            textTransform: 'none',
             letterSpacing: 0.5
           }}>
-            Agregar Categoría
+            Agregar categoría
           </SmallText>
         </Box>
 

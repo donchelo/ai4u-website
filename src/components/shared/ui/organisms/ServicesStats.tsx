@@ -74,7 +74,7 @@ const ServicesStats: React.FC<ServicesStatsProps> = ({ stats, getCategories }) =
                 fontSize: '0.95rem',
                 fontWeight: 400,
                 mb: 0.5,
-                textTransform: 'uppercase',
+                textTransform: 'none',
                 letterSpacing: '0.05em'
               }}>
                 {stat.label}

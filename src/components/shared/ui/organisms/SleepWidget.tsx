@@ -192,7 +192,7 @@ default:
             }}>
               <SmallText sx={{ 
                 color: colors.helpers.text.secondary,
-                textTransform: 'uppercase',
+                textTransform: 'none',
                 letterSpacing: 0.5
               }}>
                 Calidad del Sueño
@@ -342,7 +342,7 @@ default:
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <SmallText sx={{ 
               color: colors.helpers.text.secondary,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               letterSpacing: 0.5
             }}>
               Temperatura:

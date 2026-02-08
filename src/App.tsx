@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout, ScrollToTop, BasicLoadingWrapper } from './components/shared/ui/layouts';
 import { ErrorBoundary } from './components/shared/ui/molecules';
@@ -10,7 +10,7 @@ import './utils/errorTracking';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import WhyAI4U from './pages/WhyAI4U';
-import UseCases from './pages/UseCases';
+import Portfolio from './pages/Portfolio';
 import SuperAI from './pages/SuperAI';
 import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
@@ -44,16 +44,22 @@ function App() {
                       element={<Services />}
                     />
 
-                    {/* Why AI4U Route */}
+                    {/* Why AI4U Route (Merged with Cases) */}
                     <Route
                       path={ROUTES.WHY_AI4U}
                       element={<WhyAI4U />}
                     />
 
-                    {/* Success Cases Route */}
+                    {/* Portfolio Route */}
                     <Route
-                      path={ROUTES.SUCCESS_CASES}
-                      element={<UseCases />}
+                      path={ROUTES.PORTFOLIO}
+                      element={<Portfolio />}
+                    />
+
+                    {/* Redirect Success Cases to Why AI4U */}
+                    <Route
+                      path="/casos-de-uso"
+                      element={<Navigate to={ROUTES.WHY_AI4U} replace />}
                     />
 
                     {/* SuperAI Route */}

@@ -31,23 +31,23 @@ const slides: Slide[] = [
   {
     title: 'Transformación Inteligente',
     subtitle: 'AI4U + Alimentos Corona',
-    content: 'Elevando la distribución de proteínas al siguiente nivel con Infraestructura de IA.',
+    content: 'Elevando la distribución de proteínas al siguiente nivel con infraestructura de IA.',
     type: 'title',
     theme: 'BLACK_MODERN'
   },
   {
     title: 'Investigación: Alimentos Corona',
-    subtitle: 'Líder en Distribución de Proteínas',
+    subtitle: 'Líder en distribución de proteínas',
     content: [
-      'Operación masiva de Pollo, Pescado y Cerdo en Antioquia.',
-      'Canales críticos: Minimercados, Tienda a Tienda (TAT) y HORECA.',
+      'Operación masiva de pollo, pescado y cerdo en Antioquia.',
+      'Canales críticos: minimercados, tienda a tienda (tat) y horeca.',
       'Modelo de negocio basado en frescura y logística capilar.'
     ],
     type: 'content',
     theme: 'WHITE_MINIMAL'
   },
   {
-    title: 'Dolores Operativos',
+    title: 'Dolores operativos',
     subtitle: 'Identificando barreras de crecimiento',
     content: [
       'Cuellos de botella por procesos manuales y digitación lenta.',
@@ -59,18 +59,18 @@ const slides: Slide[] = [
   },
   {
     title: 'Automatizaciones',
-    subtitle: 'Lo Operativo: Eficiencia 24/7',
+    subtitle: 'Lo operativo: Eficiencia 24/7',
     content: 'Transformamos tareas repetitivas en procesos autónomos e infalibles.',
     type: 'section',
     theme: 'BLACK_MODERN',
     category: 'operativo'
   },
   {
-    title: 'Chatbots Inteligentes',
-    subtitle: 'Pedidos Omnicanal WhatsApp',
+    title: 'Chatbots inteligentes',
+    subtitle: 'Pedidos omnicanal WhatsApp',
     content: [
       'Gestión automática de órdenes de compra sin intervención humana.',
-      'Atención 24/7 para el canal TAT y Minimercados.',
+      'Atención 24/7 para el canal TaT y minimercados.',
       'Sincronización instantánea con el inventario y CRM.'
     ],
     type: 'product',
@@ -78,8 +78,8 @@ const slides: Slide[] = [
     category: 'operativo'
   },
   {
-    title: 'Data Entry Automático',
-    subtitle: 'Cero Errores de Digitación',
+    title: 'Data entry automático',
+    subtitle: 'Cero errores de digitación',
     content: [
       'Extracción inteligente de datos de facturas y documentos (OCR).',
       'Ingreso automático a ERP y sistemas contables.',
@@ -90,8 +90,8 @@ const slides: Slide[] = [
     category: 'operativo'
   },
   {
-    title: 'Auditorías Internas con IA',
-    subtitle: 'Control y Calidad Garantizada',
+    title: 'Auditorías internas con IA',
+    subtitle: 'Control y calidad garantizada',
     content: [
       'Validación automática de procesos operativos y cumplimiento.',
       'Detección de anomalías en facturación y logística.',
@@ -102,8 +102,8 @@ const slides: Slide[] = [
     category: 'operativo'
   },
   {
-    title: 'Visión por Computadora',
-    subtitle: 'Cámaras Inteligentes en Bodegas',
+    title: 'Visión por computadora',
+    subtitle: 'Cámaras inteligentes en bodegas',
     content: [
       'Monitoreo automático de stock y movimiento de mercancía.',
       'Control de calidad visual de proteínas y empaques.',
@@ -114,8 +114,8 @@ const slides: Slide[] = [
     category: 'operativo'
   },
   {
-    title: 'Sitios Web con IA',
-    subtitle: 'Optimización para Conversión',
+    title: 'Sitios web con IA',
+    subtitle: 'Optimización para conversión',
     content: [
       'Diseño de plataformas B2B inteligentes para pedidos web.',
       'Experiencia de usuario personalizada según el perfil del cliente.',
@@ -127,15 +127,15 @@ const slides: Slide[] = [
   },
   {
     title: 'Data Analysis',
-    subtitle: 'Lo Estratégico: El Poder de los Datos',
+    subtitle: 'Lo estratégico: el poder de los datos',
     content: 'Convierte la información de tu operación en tu mayor ventaja competitiva.',
     type: 'section',
     theme: 'BLACK_MODERN',
     category: 'estratégico'
   },
   {
-    title: 'Dashboards Inteligentes',
-    subtitle: 'Visibilidad Total del Negocio',
+    title: 'Dashboards inteligentes',
+    subtitle: 'Visibilidad total del negocio',
     content: [
       'Análisis avanzado de ventas, mermas y rentabilidad por zona.',
       'Visualización clara para la toma de decisiones ejecutivas.',
@@ -146,10 +146,10 @@ const slides: Slide[] = [
     category: 'estratégico'
   },
   {
-    title: 'Investigación HORECA',
-    subtitle: 'Expansión Nacional Nacional',
+    title: 'Investigación Horeca',
+    subtitle: 'Expansión nacional',
     content: [
-      'Mapeo exhaustivo de Hoteles y Restaurantes en todo el país.',
+      'Mapeo exhaustivo de hoteles y restaurantes en todo el país.',
       'Identificación de zonas con mayor potencial de crecimiento.',
       'Estrategia de penetración de mercado basada en datos geográficos.'
     ],
@@ -158,16 +158,16 @@ const slides: Slide[] = [
     category: 'estratégico'
   },
   {
-    title: 'El Siguiente Nivel',
+    title: 'El siguiente nivel',
     subtitle: 'Super AI Infrastructure',
     content: 'La cúspide de la autonomía: una IA que no solo sugiere, sino que ejecuta.',
     type: 'section',
     theme: 'SUPER_AI_NEON',
-    category: 'superAi'
+    category: 'super-ai'
   },
   {
     title: 'Super AI',
-    subtitle: 'Tu Empleado Digital Autónomo',
+    subtitle: 'Tu empleado digital autónomo',
     content: [
       'IA conectada directamente a todos tus sistemas operativos.',
       'Capacidad de actuar y decidir con base en objetivos de negocio.',
@@ -175,11 +175,11 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'SUPER_AI_NEON',
-    category: 'superAi'
+    category: 'super-ai'
   },
   {
-    title: 'Autonomía Total',
-    subtitle: 'Control de Sistemas y Objetivos',
+    title: 'Autonomía total',
+    subtitle: 'Control de sistemas y objetivos',
     content: [
       'La IA opera el computador y los sistemas como un humano experto.',
       'Ejecución autónoma de tareas administrativas y logísticas.',
@@ -187,17 +187,17 @@ const slides: Slide[] = [
     ],
     type: 'product',
     theme: 'SUPER_AI_NEON',
-    category: 'superAi'
+    category: 'super-ai'
   },
   {
     title: 'Metodología AI-First',
-    subtitle: 'Transformación Real desde el Núcleo',
+    subtitle: 'Transformación real desde el núcleo',
     content: 'No adaptamos la IA a tu negocio; construimos tu infraestructura personalizada.',
     type: 'content',
     theme: 'BLACK_MODERN'
   },
   {
-    title: 'Casos de Éxito',
+    title: 'Casos de éxito',
     subtitle: 'Líderes que ya confían en AI4U',
     content: 'Empresas que han transformado su operación mediante nuestra infraestructura de IA.',
     type: 'content',
@@ -205,25 +205,25 @@ const slides: Slide[] = [
   },
   {
     title: '¿Por qué AI4U?',
-    subtitle: 'Tu Socio de Ingeniería Dedicado',
+    subtitle: 'Tu socio de ingeniería dedicado',
     content: 'No somos un proveedor de software; somos tu equipo de ingeniería de IA personalizado.',
     type: 'content',
     theme: 'GRAY_MODERN'
   },
   {
-    title: 'Diagnóstico Gratuito',
-    subtitle: 'Inicia tu Transformación',
+    title: 'Diagnóstico gratuito',
+    subtitle: 'Inicia tu transformación',
     content: [
       'Evaluación profunda de tu operación actual sin costo.',
       'Identificación de Quick Wins con IA para Alimentos Corona.',
-      'Entrega de un Roadmap estratégico de implementación.'
+      'Entrega de un roadmap estratégico de implementación.'
     ],
     type: 'offer',
     theme: 'GRAY_MODERN'
   },
   {
-    title: 'Agendemos Ahora',
-    subtitle: 'El Futuro es Hoy',
+    title: 'Agendemos ahora',
+    subtitle: 'El futuro es hoy',
     content: 'Conversemos sobre cómo potenciar Alimentos Corona con Inteligencia Artificial.',
     type: 'cta',
     theme: 'BLACK_MODERN'
@@ -231,11 +231,12 @@ const slides: Slide[] = [
 ];
 
 const clientLogos = [
+  '/assets/images/cases/logo-magdalena.png',
   '/assets/images/cases/logo-true.png',
+  '/assets/images/cases/logo-rascal.png',
   '/assets/images/cases/logo-eafit.png',
   '/assets/images/cases/logo-tamaprint.png',
   '/assets/images/cases/logo-flexoimpresos.png',
-  '/assets/images/cases/logo-magdalena.png',
   '/assets/images/cases/logo-hua-naturals.png'
 ];
 

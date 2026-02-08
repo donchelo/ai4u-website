@@ -25,11 +25,11 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
         mb: 2,
         fontSize: '1rem', 
         fontWeight: 400,
-        textTransform: 'uppercase',
+        textTransform: 'none',
         letterSpacing: '0.1em',
         color: colors.contrast.text.primary 
       }}>
-        // TIPO DE SERVICIO
+        // Tipo de servicio
       </Box>
       
       <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
@@ -50,7 +50,7 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
               border: `3px solid ${colors.contrast.text.primary}`,
               fontSize: '0.9rem',
               fontWeight: 400,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               px: 2,
               height: '40px',
               cursor: 'pointer',

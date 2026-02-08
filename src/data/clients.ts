@@ -22,11 +22,11 @@ export const clients: Client[] = [
     sector: 'Fashion'
   },
   {
-    id: 'hua-naturals',
-    name: 'HUA Naturals',
-    website: 'https://www.huanaturals.com',
-    logo: '/assets/images/cases/logo-hua-naturals.png',
-    sector: 'Reality-Hacking'
+    id: 'rascal',
+    name: 'Rascal',
+    website: 'https://rascal-three.vercel.app/',
+    logo: '/assets/images/cases/logo-rascal.png',
+    sector: 'E-Mobility'
   },
   {
     id: 'EAFIT',
@@ -48,5 +48,12 @@ export const clients: Client[] = [
     website: 'https://www.flexoimpresos.com.co',
     logo: '/assets/images/cases/logo-flexoimpresos.png',
     sector: 'Manufactura'
+  },
+  {
+    id: 'hua-naturals',
+    name: 'HUA Naturals',
+    website: 'https://www.huanaturals.com',
+    logo: '/assets/images/cases/logo-hua-naturals.png',
+    sector: 'Reality-Hacking'
   }
 ];

@@ -7,7 +7,8 @@ import {
   Stack,
   Divider,
   useTheme,
-  Collapse
+  Collapse,
+  alpha
 } from '@mui/material';
 import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
@@ -82,8 +83,8 @@ const Services: React.FC = () => {
       description: 'Decisiones con ventaja competitiva.',
       color: colors.palette.black,
       bgColor: colors.palette.info,
-      textColor: colors.palette.black,
-      accentColor: colors.palette.black
+      textColor: colors.palette.white,
+      accentColor: colors.palette.white
     },
     {
       id: ServiceSuperCategory.EDUCATION,
@@ -126,7 +127,6 @@ const Services: React.FC = () => {
         py: COMPONENT_SPACING.layout.section, 
         bgcolor: colors.palette.black,
         color: colors.palette.white,
-        borderBottom: `${SPACING_TOKENS.spacing[1]}px solid ${colors.palette.white}`,
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -149,41 +149,42 @@ const Services: React.FC = () => {
         </Typography>
 
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={10} alignItems="center">
-            <Grid item xs={12} lg={7}>
+          <Grid container spacing={0} alignItems="center">
+            <Grid item xs={12} lg={8} sx={{ pr: { lg: 10 } }}>
               <Typography 
-                variant="overline" 
                 sx={{ 
                   color: colors.palette.accentColors.orange, 
                   fontWeight: 400, 
                   letterSpacing: 4,
-                  fontSize: TEXT_VARIANTS.body.regular.fontSize,
-                  mb: 2,
+                  fontSize: '1.2rem',
+                  mb: 4,
                   display: 'block',
                   ...TEXT_VARIANTS.ui.code
                 }}
               >
-                // AI4U LAB // 2026
+                // ai4u lab // 2026
               </Typography>
               <Giant sx={{ 
                 color: colors.palette.white, 
-                mb: 4,
+                mb: 6,
                 lineHeight: 0.85,
-                ...TEXT_VARIANTS.display.giant,
-                maxWidth: '900px'
+                fontSize: { xs: '3.5rem', md: '8rem' },
+                letterSpacing: '-0.05em',
+                fontWeight: 400,
+                maxWidth: '1000px'
               }}>
                 Nuestros 4 <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ejes</Box> de servicio
               </Giant>
               <BodyText sx={{ 
-                ...TEXT_VARIANTS.body.large, 
+                fontSize: '1.8rem', 
                 fontWeight: 400, 
                 color: colors.palette.white,
-                maxWidth: '700px',
-                mb: 8,
-                lineHeight: 1.2,
+                maxWidth: '800px',
+                mb: 10,
+                lineHeight: 1.1,
                 opacity: 0.9
               }}>
-                En AI4U, abordamos la inteligencia artificial desde cuatro frentes clave para transformar tu operación, potenciar tu estrategia, educar a tu equipo y escalar tu infraestructura.
+                En AI4U, abordamos la Inteligencia Artificial desde cuatro frentes clave para transformar tu operación, potenciar tu estrategia, educar a tu equipo y escalar tu infraestructura.
               </BodyText>
 
               {/* Quick Links to Axes */}
@@ -194,15 +195,18 @@ const Services: React.FC = () => {
                     variant="outline"
                     onClick={() => toggleAxis(axis.id)}
                     sx={{ 
-                      borderColor: 'rgba(255,255,255,0.3)',
+                      borderColor: 'rgba(255,255,255,0.2)',
                       color: colors.palette.white,
                       borderRadius: 0,
-                      px: 3,
-                      height: 7,
+                      px: 4,
+                      py: 2,
+                      textTransform: 'none',
+                      fontSize: '1.1rem',
                       '&:hover': {
                         borderColor: axis.bgColor,
                         bgcolor: axis.bgColor,
-                        color: axis.textColor
+                        color: axis.textColor,
+                        transform: 'translateY(-5px)'
                       }
                     }}
                   >
@@ -212,44 +216,46 @@ const Services: React.FC = () => {
               </Stack>
             </Grid>
 
-            <Grid item xs={12} lg={5}>
+            <Grid item xs={12} lg={4} sx={{ mt: { xs: 8, lg: 0 } }}>
               <Box sx={{ 
                 p: 6, 
-                bgcolor: 'rgba(255,255,255,0.03)', 
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.1)'
+                bgcolor: 'rgba(255,255,255,0.02)', 
+                border: '1px solid rgba(255,255,255,0.1)',
+                position: 'relative'
               }}>
-                <Stack spacing={4}>
+                <Box sx={{ position: 'absolute', top: -1, left: -1, width: 40, height: 40, borderTop: '1px solid orange', borderLeft: '1px solid orange' }} />
+                <Stack spacing={6}>
                   {axes.map((axis, idx) => (
                     <Box 
                       key={axis.id} 
                       onClick={() => toggleAxis(axis.id)}
                       sx={{ 
                         display: 'flex', 
-                        gap: 3, 
+                        gap: 4, 
                         alignItems: 'flex-start',
                         cursor: 'pointer',
-                        p: 1,
-                        transition: 'all 0.2s ease',
+                        transition: 'all 0.3s ease',
                         '&:hover': {
-                          bgcolor: 'rgba(255,255,255,0.05)',
-                          transform: 'translateX(8px)'
+                          transform: 'translateX(15px)',
+                          '& .idx': { color: colors.palette.accentColors.orange }
                         }
                       }}
                     >
-                      <Typography sx={{ 
+                      <Typography className="idx" sx={{ 
                         fontWeight: 400, 
-                        color: axis.accentColor === colors.palette.white ? colors.palette.accentColors.orange : axis.accentColor,
+                        fontSize: '1.2rem', 
+                        color: 'rgba(255,255,255,0.7)',
                         fontFamily: '"Necto Mono", monospace',
-                        mt: 0.5
+                        mt: 0.5,
+                        transition: 'color 0.3s ease'
                       }}>
                         0{idx + 1}
                       </Typography>
                       <Box>
-                        <Typography variant="h6" sx={{ fontWeight: 400, color: colors.palette.white, textTransform: 'none', mb: 0.5 }}>
+                        <Typography sx={{ fontSize: '1.5rem', fontWeight: 400, color: colors.palette.white, textTransform: 'none', mb: 1, lineHeight: 1 }}>
                           {axis.title}
                         </Typography>
-                        <Typography sx={{ color: colors.palette.white, opacity: 0.7, fontWeight: 400 }}>
+                        <Typography sx={{ color: colors.palette.white, opacity: 0.95, fontWeight: 400, fontSize: '1rem' }}>
                           {axis.description}
                         </Typography>
                       </Box>
@@ -300,19 +306,19 @@ const Services: React.FC = () => {
             </Typography>
 
             <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-              <Grid container spacing={10}>
+              <Grid container spacing={0} alignItems="flex-start">
                 {/* Header del Eje */}
-                <Grid item xs={12} lg={4}>
-                  <Box sx={{ position: { lg: 'sticky' }, top: 120 }}>
+                <Grid item xs={12} lg={4} sx={{ pr: { lg: 10 }, mb: { xs: 8, lg: 0 } }}>
+                  <Box sx={{ position: { lg: 'sticky' }, top: 150 }}>
                     <Typography 
-                      variant="overline" 
                       sx={{ 
                         color: axis.accentColor, 
                         fontWeight: 400, 
                         letterSpacing: 4,
-                        fontSize: TEXT_VARIANTS.body.regular.fontSize,
-                        mb: 2,
-                        display: 'block'
+                        fontSize: '1rem',
+                        mb: 4,
+                        display: 'block',
+                        ...TEXT_VARIANTS.ui.code
                       }}
                     >
                       // {axis.subtitle}
@@ -320,49 +326,49 @@ const Services: React.FC = () => {
                     <H1 sx={{ 
                       fontWeight: 400, 
                       textTransform: 'none', 
-                      ...TEXT_VARIANTS.display.large,
-                      lineHeight: 0.9,
-                      mb: 4,
+                      fontSize: { xs: '3.5rem', md: '6.5rem' },
+                      lineHeight: 0.85,
+                      letterSpacing: '-0.05em',
+                      mb: 6,
                       color: 'inherit'
                     }}>
                       {axis.title}
                     </H1>
                     <BodyText sx={{ 
-                      ...TEXT_VARIANTS.body.large, 
+                      fontSize: '1.5rem', 
                       fontWeight: 400, 
-                      lineHeight: 1.2,
-                      maxWidth: '400px',
-                      mb: 6,
+                      lineHeight: 1.1,
+                      maxWidth: '500px',
+                      mb: 8,
                       color: 'inherit',
                       opacity: 0.9
                     }}>
                       {axis.description}
                     </BodyText>
                     <Button 
-                      variant={axis.bgColor === colors.palette.black || axis.bgColor === colors.palette.info ? 'outline' : 'primary'}
+                      variant="outline"
                       sx={{ 
                         borderColor: axis.textColor, 
-                        height: 9,
-                        px: 6,
-                        fontSize: TEXT_VARIANTS.ui.button.fontSize,
-                        bgcolor: expandedAxes[axis.id] ? axis.textColor : (axis.bgColor === colors.palette.accentColors.orange || axis.bgColor === colors.palette.accentColors.green ? 'transparent' : undefined),
-                        color: expandedAxes[axis.id] ? axis.bgColor : axis.textColor,
+                        color: axis.textColor,
                         borderRadius: 0,
-                        border: 'none',
+                        px: 6,
+                        py: 3,
+                        fontSize: '1.2rem',
+                        borderWidth: '2px',
                         '&:hover': {
                           bgcolor: axis.textColor,
                           color: axis.bgColor,
-                          transform: 'translateY(-4px)',
-                          boxShadow: SHADOW_TOKENS.md
+                          transform: 'translateY(-5px)',
+                          borderColor: axis.textColor
                         },
-                        transition: 'all 0.2s ease',
+                        transition: 'all 0.3s ease',
                         display: 'flex',
                         alignItems: 'center',
                         gap: 2
                       }}
                       onClick={() => toggleAxis(axis.id)}
                     >
-                      {expandedAxes[axis.id] ? 'Cerrar eje' : 'Explorar eje'}
+                      {expandedAxes[axis.id] ? 'Cerrar eje' : 'Explorar soluciones'}
                       <Box sx={{ 
                         display: 'flex', 
                         transform: expandedAxes[axis.id] ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -379,12 +385,12 @@ const Services: React.FC = () => {
                   <Collapse in={expandedAxes[axis.id]} timeout={600}>
                     <Grid container spacing={4}>
                       {axisServices.map((service, sIdx) => (
-                        <Grid item xs={12} sm={6} key={service.id}>
+                        <Grid item xs={12} sm={6} key={service.id} sx={{ mt: { md: sIdx % 2 !== 0 ? 10 : 0 } }}>
                           <Box sx={{ 
                             animation: expandedAxes[axis.id] ? `fadeInUp 0.6s ease forwards ${sIdx * 0.1}s` : 'none',
                             opacity: 0,
                             '@keyframes fadeInUp': {
-                              from: { opacity: 0, transform: 'translateY(20px)' },
+                              from: { opacity: 0, transform: 'translateY(40px)' },
                               to: { opacity: 1, transform: 'translateY(0)' }
                             }
                           }}>
@@ -401,23 +407,42 @@ const Services: React.FC = () => {
                   
                   {!expandedAxes[axis.id] && (
                     <Box sx={{ 
-                      height: '300px', 
+                      height: '400px', 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'center',
-                      border: `2px dashed ${axis.accentColor}`,
-                      opacity: 0.3,
+                      border: `1px solid ${alpha(axis.textColor, 0.1)}`,
                       cursor: 'pointer',
+                      position: 'relative',
+                      overflow: 'hidden',
                       '&:hover': {
-                        opacity: 0.6,
-                        bgcolor: 'rgba(0,0,0,0.02)'
+                        '& .bg-text': { opacity: 0.1, transform: 'scale(1.1)' },
+                        '& .btn-explore': { opacity: 1, transform: 'translateY(0)' }
                       }
                     }}
                     onClick={() => toggleAxis(axis.id)}
                     >
-                      <Typography sx={{ fontWeight: 400, letterSpacing: 2, fontSize: '0.8rem' }}>
-                        // Click para desplegar soluciones
+                      <Typography className="bg-text" sx={{ 
+                        fontWeight: 400, 
+                        fontSize: '12rem', 
+                        color: axis.textColor, 
+                        opacity: 0.05,
+                        transition: 'all 0.5s ease',
+                        userSelect: 'none'
+                      }}>
+                        {axis.title.substring(0, 3)}
                       </Typography>
+                      <Box className="btn-explore" sx={{ 
+                        position: 'absolute', 
+                        opacity: 0.5, 
+                        transform: 'translateY(20px)',
+                        transition: 'all 0.5s ease',
+                        textAlign: 'center'
+                      }}>
+                        <Typography sx={{ fontWeight: 400, letterSpacing: 4, fontSize: '0.9rem', ...TEXT_VARIANTS.ui.code }}>
+                          // CLICK PARA EXPLORAR //
+                        </Typography>
+                      </Box>
                     </Box>
                   )}
                 </Grid>
@@ -433,31 +458,64 @@ const Services: React.FC = () => {
         bgcolor: colors.palette.black,
         color: colors.palette.white,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <Container maxWidth="xl">
-          <Stack spacing={10}>
+        {/* Background Decorative */}
+        <Box sx={{ 
+          position: 'absolute', 
+          bottom: '10%', 
+          left: '5%', 
+          fontSize: '12rem', 
+          fontWeight: 400, 
+          color: 'rgba(255,255,255,0.03)',
+          zIndex: 0,
+          userSelect: 'none',
+          pointerEvents: 'none'
+        }}>
+          método
+        </Box>
+
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+          <Stack spacing={12}>
             <H1 sx={{ 
               fontWeight: 400, 
               textTransform: 'none', 
-              mb: 4, 
-              ...TEXT_VARIANTS.display.large,
+              fontSize: { xs: '3.5rem', md: '7rem' },
+              lineHeight: 0.85,
+              letterSpacing: '-0.05em',
               color: colors.palette.white
             }}>
-              Método <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2 }}>directo</Box>
+              Método <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
             </H1>
-            <Grid container spacing={6}>
+            <Grid container spacing={0}>
               {[
-                { n: '01', t: 'diagnóstico', d: 'Oportunidades reales.' },
-                { n: '02', t: 'priorización', d: 'Foco en resultados.' },
-                { n: '03', t: 'desarrollo', d: 'IA a tu medida.' },
-                { n: '04', t: 'despliegue', d: 'Integración + soporte.' }
+                { n: '01', t: 'Diagnóstico', d: 'Oportunidades reales.' },
+                { n: '02', t: 'Priorización', d: 'Foco en resultados.' },
+                { n: '03', t: 'Desarrollo', d: 'IA a tu medida.' },
+                { n: '04', t: 'Despliegue', d: 'Integración + Soporte.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ borderLeft: `${SPACING_TOKENS.borderWidth.thick}px solid ${colors.palette.accentColors.orange}`, pl: 3 }}>
-                    <H2 sx={{ ...TEXT_VARIANTS.display.small, fontWeight: 400, mb: 1, color: colors.palette.white }}>{step.n}</H2>
-                    <Typography sx={{ fontWeight: 400, ...TEXT_VARIANTS.body.large, mb: 1, color: colors.palette.white }}>{step.t}</Typography>
-                    <BodyText sx={{ fontWeight: 400, color: colors.palette.white, opacity: 0.8 }}>{step.d}</BodyText>
+                  <Box sx={{ 
+                    borderLeft: `1px solid rgba(255,255,255,0.1)`, 
+                    p: 6,
+                    height: '100%',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: 'rgba(255,255,255,0.02)',
+                      borderColor: colors.palette.accentColors.orange
+                    }
+                  }}>
+                    <Typography sx={{ color: colors.palette.accentColors.orange, fontSize: '1.2rem', mb: 4, ...TEXT_VARIANTS.ui.code }}>
+                      // {step.n}
+                    </Typography>
+                    <Typography sx={{ fontSize: '2rem', fontWeight: 400, mb: 2, color: colors.palette.white, textTransform: 'none', lineHeight: 1 }}>
+                      {step.t}
+                    </Typography>
+                    <BodyText sx={{ fontWeight: 400, color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem' }}>
+                      {step.d}
+                    </BodyText>
                   </Box>
                 </Grid>
               ))}
@@ -468,29 +526,46 @@ const Services: React.FC = () => {
 
       {/* CTA Final */}
       <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.white,
+        py: 30, 
+        bgcolor: colors.palette.accentColors.orange,
+        color: colors.palette.black,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <Container maxWidth="lg">
-          <Stack spacing={6} alignItems="center" textAlign="center">
-            <Giant sx={{ color: colors.palette.black }}>
+        {/* Background Decoration */}
+        <Box sx={{ position: 'absolute', top: '10%', right: '10%', width: 300, height: 300, border: '1px solid rgba(0,0,0,0.1)', transform: 'rotate(15deg)' }} />
+        <Box sx={{ position: 'absolute', bottom: '10%', left: '10%', width: 200, height: 200, border: '1px solid rgba(0,0,0,0.1)', transform: 'rotate(-10deg)' }} />
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Stack spacing={10} alignItems="center" textAlign="center">
+            <Giant sx={{ 
+              color: colors.palette.black,
+              fontSize: { xs: '4rem', md: '10rem' },
+              lineHeight: 0.8,
+              fontWeight: 400,
+              letterSpacing: '-0.05em'
+            }}>
               ¿Empezamos?
             </Giant>
             <DiagnosticCTA 
-              variant="primary"
-              size="large"
-              text="Agendar consulta gratuita"
               sx={{ 
-                height: 13, 
-                px: 6, 
-                fontSize: TEXT_VARIANTS.display.small.fontSize,
+                height: 'auto',
+                py: 4,
+                px: 12, 
+                fontSize: '2rem',
                 borderRadius: 0,
                 bgcolor: colors.palette.black,
                 color: colors.palette.white,
-                border: 'none'
+                border: 'none',
+                fontWeight: 400,
+                '&:hover': {
+                  transform: 'scale(1.05) translateY(-10px)',
+                  boxShadow: `0px 20px 40px rgba(0,0,0,0.2)`
+                }
               }}
+              text="Agendar consulta gratuita"
             />
           </Stack>
         </Container>

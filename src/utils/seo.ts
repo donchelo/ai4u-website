@@ -148,14 +148,14 @@ export const getPageMetaTags = (page: string) => {
       keywords: "servicios IA, operación IA, estrategia IA, educación IA, transformación digital IA, SuperAI"
     },
     why: {
-      title: "¿Por qué AI4U? | Ventajas de Nuestras Soluciones de IA",
-      description: "Conoce por qué AI4U es la mejor opción para tu negocio. Experiencia, tecnología avanzada y resultados comprobados en inteligencia artificial.",
-      keywords: "por qué AI4U, ventajas IA, experiencia inteligencia artificial, resultados IA"
+      title: "¿Por qué AI4U? | Casos de Éxito e Infraestructura de IA",
+      description: "Descubre por qué somos tu mejor aliado en IA. Explora nuestros casos de éxito y la metodología que genera resultados reales.",
+      keywords: "por qué AI4U, casos de éxito IA, ventajas IA, experiencia inteligencia artificial, resultados IA, Colombia"
     },
-    cases: {
-      title: "Casos de Uso de Inteligencia Artificial | AI4U",
-      description: "Casos de éxito y aplicaciones reales de inteligencia artificial. Descubre cómo la IA transforma negocios en Colombia.",
-      keywords: "casos de uso IA, éxito inteligencia artificial, aplicaciones IA, transformación digital"
+    portfolio: {
+      title: "Portafolio de Innovación | Proyectos de IA | AI4U",
+      description: "Explora nuestro portafolio de innovación. Proyectos reales de IA aplicados a diferentes industrias: desde Fashion Tech hasta E-Mobility.",
+      keywords: "portafolio innovación, proyectos IA, casos éxito IA, IA aplicada, Fashion Tech IA, E-Mobility IA"
     }
   };
 

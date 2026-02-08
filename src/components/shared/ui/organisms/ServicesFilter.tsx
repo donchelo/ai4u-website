@@ -60,11 +60,11 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
         <Box sx={{ 
           fontSize: '1.25rem', 
           fontWeight: 400,
-          textTransform: 'uppercase',
+          textTransform: 'none',
           letterSpacing: '0.05em',
           color: colors.contrast.text.primary 
         }}>
-          {filteredCount} servicios
+          {filteredCount} Servicios
         </Box>
         
         {searchValue && (
@@ -75,7 +75,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
             sx={{
               color: colors.contrast.text.primary,
               fontWeight: 400,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               textDecoration: 'underline',
               '&:hover': {
                 background: 'transparent',
@@ -92,7 +92,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
       <Box sx={{ mb: 3 }}>
         <TextField
           fullWidth
-          placeholder="BUSCAR SERVICIOS..."
+          placeholder="Buscar servicios..."
           value={searchValue}
           onChange={onSearchChange}
           sx={{
@@ -114,7 +114,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               fontWeight: 400,
               padding: '12px 16px',
               color: colors.contrast.text.primary,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               '&::placeholder': {
                 color: colors.contrast.text.primary,
                 opacity: 0.5
@@ -142,7 +142,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               minHeight: 48,
               fontSize: '0.9rem',
               fontWeight: 400,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               borderRadius: 0,
               mx: 0.5,
               transition: 'all 0.1s ease',

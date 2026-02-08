@@ -141,7 +141,7 @@ const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
           fontWeight: 400,
           mb: 3,
           fontSize: '0.8rem',
-          textTransform: 'uppercase',
+          textTransform: 'none',
           letterSpacing: '0.5px'
         }}
       >

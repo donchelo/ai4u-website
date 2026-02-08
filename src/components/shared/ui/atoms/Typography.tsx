@@ -59,7 +59,7 @@ export const H4 = (props: TypographyExtendedProps) => (
     variant="h4" 
     sx={{
       fontSize: TEXT_VARIANTS.display.small.fontSize,
-      fontWeight: 500,
+      fontWeight: 400,
       lineHeight: 1.2,
       textTransform: 'none',
       ...props.sx

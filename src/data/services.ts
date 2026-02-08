@@ -5,7 +5,7 @@ export const services: Service[] = [
   // --- EJE 1: OPERACIÓN (ORANGE) ---
   {
     id: 'fashion-agent',
-    title: 'coutureLab',
+    title: 'CoutureLab',
     subtitle: 'De figurines a ecommerce real',
     description: 'Fotos de producto con modelos IA.',
     benefits: [

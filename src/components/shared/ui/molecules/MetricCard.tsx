@@ -123,7 +123,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
             fontSize: size === 'compact' ? '0.875rem' : '1.125rem',
             fontWeight: 400,
             letterSpacing: '0.15em',
-            textTransform: 'uppercase',
+            textTransform: 'none',
             color: 'inherit',
           }}
         >

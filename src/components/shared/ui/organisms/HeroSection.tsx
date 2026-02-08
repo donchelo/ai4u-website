@@ -5,6 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Giant, H1, BodyText, LazyImage } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
+import { TEXT_VARIANTS } from '../tokens/typography';
 
 interface HeroSectionProps {
   customTitle?: string;
@@ -58,7 +59,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start', // Cambio a alineación a la izquierda
         bgcolor: colors.palette.black,
         py: { xs: 4, sm: 6, md: 12 }
       }}
@@ -76,7 +77,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: alpha(colors.palette.black, 0.55), // Overlay más suave para que se vea la imagen de fondo
+            backgroundColor: alpha(colors.palette.black, 0.4), // Overlay más suave
             zIndex: 1
           }
         }}
@@ -91,57 +92,98 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: idx === currentImage ? 0.6 : 0,
+                opacity: idx === currentImage ? 0.7 : 0, // Un poco más de opacidad para la imagen
                 transition: 'opacity 1.5s ease-in-out, transform 10s ease-out',
-                filter: 'grayscale(100%)', // Estilo moderno/brutalista
-                transform: idx === currentImage ? 'scale(1.15)' : 'scale(1)', // Zoom progresivo
+                filter: 'grayscale(100%) contrast(1.2)', // Más contraste en el fondo
+                transform: idx === currentImage ? 'scale(1.1)' : 'scale(1)',
               }}
             />
           </Box>
         ))}
       </Box>
 
+      {/* Texto de fondo asimétrico */}
+      <Typography
+        sx={{
+          position: 'absolute',
+          top: '10%',
+          right: '-5%',
+          fontSize: { xs: '10rem', md: '25rem' },
+          fontWeight: 400,
+          color: colors.palette.white,
+          opacity: 0.05,
+          zIndex: 1,
+          lineHeight: 0.8,
+          pointerEvents: 'none',
+          userSelect: 'none',
+          whiteSpace: 'nowrap'
+        }}
+      >
+        AI 4U
+      </Typography>
+
       <Container 
         maxWidth="xl" 
         sx={{ 
           position: 'relative',
           zIndex: 5,
-          px: { xs: 2, sm: 3, md: 12, lg: 20 },
+          px: { xs: 2, sm: 3, md: 10, lg: 15 }, // Ajuste de padding para asimetría
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'flex-start'
         }}
       >
         <Stack
           direction="column"
-          spacing={{ xs: 2, sm: 3, md: 6 }}
-          alignItems="center"
-          sx={{ width: '100%', mx: 0, textAlign: 'center' }}
+          spacing={{ xs: 2, sm: 3, md: 4 }}
+          alignItems="flex-start" // Alineación a la izquierda
+          sx={{ width: '100%', maxWidth: '900px', textAlign: 'left' }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Box 
+              sx={{ 
+                bgcolor: colors.palette.accentColors.orange, 
+                color: colors.palette.black,
+                px: 2,
+                py: 0.5,
+                mb: 4,
+                ...TEXT_VARIANTS.ui.code,
+                fontSize: '0.9rem',
+                transform: 'rotate(-2deg)' // Toque asimétrico
+              }}
+            >
+              Estrategia + IA
+            </Box>
             <Giant 
               sx={{ 
                 color: colors.palette.white,
                 mb: { xs: 1, sm: 1.5, md: 2 },
-                maxWidth: '900px',
-                fontSize: { xs: '1.8rem', sm: '2.5rem', md: '4rem', lg: '5rem' },
-                lineHeight: { xs: 1.1, md: 1.05 },
-                letterSpacing: '-0.02em',
-                textAlign: 'center'
+                maxWidth: '850px',
+                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '6rem', lg: '8rem' }, // Más grande para impacto
+                lineHeight: 0.9,
+                letterSpacing: '-0.04em',
+                textAlign: 'left',
+                fontWeight: 400
               }}
             >
-              {customTitle}
+              {customTitle.split(' ').map((word, i) => (
+                <span key={i} style={{ display: 'inline-block', marginRight: '0.2em' }}>
+                  {word}
+                </span>
+              ))}
             </Giant>
             
             <H1 
               sx={{ 
                 color: colors.palette.white,
-                maxWidth: '700px',
-                mb: { xs: 2, sm: 3, md: 4 },
-                opacity: 0.8,
+                maxWidth: '600px',
+                mb: { xs: 4, sm: 5, md: 6 },
+                opacity: 0.9,
                 fontWeight: 300,
-                fontSize: { xs: '0.8rem', sm: '1rem', md: '1.8rem' },
-                lineHeight: { xs: 1.3, md: 1.2 },
-                textAlign: 'center'
+                fontSize: { xs: '1rem', sm: '1.2rem', md: '2rem' },
+                lineHeight: 1.1,
+                textAlign: 'left',
+                borderLeft: `4px solid ${colors.palette.white}`,
+                pl: 3
               }}
             >
               {customSubtitle}
@@ -150,9 +192,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
           <Stack
             direction={{ xs: 'column', md: 'row' }}
-            spacing={{ xs: 2, sm: 2.5, md: 4 }}
-            alignItems="center"
-            justifyContent="center"
+            spacing={{ xs: 3, md: 4 }}
+            alignItems="flex-start"
           >
             <DiagnosticCTA 
               variant="primary" 
@@ -160,39 +201,40 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               size="large"
               showIcon={false}
               sx={{ 
-                height: { xs: '45px', sm: '55px', md: '80px' }, 
-                px: { xs: 3, sm: 4, md: 6 }, 
-                fontSize: { xs: '0.75rem', sm: '0.9rem', md: '1.4rem' },
+                height: { xs: '55px', md: '90px' }, 
+                px: { xs: 4, md: 8 }, 
+                fontSize: { xs: '0.9rem', md: '1.5rem' },
                 fontWeight: 400,
                 borderRadius: 0,
                 bgcolor: colors.palette.white,
                 color: colors.palette.black,
                 border: 'none',
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: colors.palette.black,
-                  color: colors.palette.white
+                  bgcolor: colors.palette.accentColors.orange,
+                  color: colors.palette.black,
+                  transform: 'translateY(-5px) rotate(1deg)'
                 }
               }}
             />
             
             <Box sx={{ 
-              borderLeft: 'none',
-              borderTop: { xs: `1px solid ${colors.palette.accentColors.orange}`, md: `2px solid ${colors.palette.accentColors.orange}` },
               pt: { xs: 1, md: 2 },
-              px: 2
+              position: 'relative'
             }}>
               <BodyText 
                 sx={{ 
                   color: colors.palette.white,
                   fontWeight: 400,
-                  fontSize: { xs: '0.65rem', sm: '0.85rem', md: '1.2rem' },
+                  fontSize: { xs: '0.8rem', md: '1.2rem' },
                   letterSpacing: '0.1em',
                   textTransform: 'none',
                   lineHeight: 1.2,
-                  textAlign: 'center'
+                  textAlign: 'left',
+                  opacity: 0.6
                 }}
               >
-                {humanElementText}
+                // {humanElementText}
               </BodyText>
             </Box>
           </Stack>

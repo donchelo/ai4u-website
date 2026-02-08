@@ -34,8 +34,8 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Inicio', path: ROUTES.HOME },
     { name: 'Servicios', path: ROUTES.SERVICES },
-    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
-    { name: 'Casos de uso', path: ROUTES.SUCCESS_CASES }
+    { name: 'Portafolio', path: ROUTES.PORTFOLIO },
+    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U }
   ];
 
   return (
@@ -67,7 +67,7 @@ const Footer = () => {
           
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
-              Enlaces Rápidos
+              Enlaces rápidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces Rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
@@ -143,7 +143,7 @@ const Footer = () => {
                 ...TEXT_VARIANTS.ui.code
               }}
             >
-              architecture by <Box component="span" sx={{ fontWeight: 400 }}>MARIANO | 마리아노</Box>
+              Architecture by <Box component="span" sx={{ fontWeight: 400 }}>Mariano | 마리아노</Box>
             </MuiTypography>
           </Stack>
           

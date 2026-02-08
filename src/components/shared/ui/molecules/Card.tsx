@@ -18,7 +18,7 @@ const StyledCard = styled(MuiCard, {
 
   // Estilos base modernos y limpios
   const baseStyles = {
-    borderRadius: 16, // Rounded corners for modern look
+    borderRadius: 0, // Brutalist zero radius
     transition: theme.transitions.create(['box-shadow', 'border-color', 'transform', 'background-color'], {
       duration: '0.3s',
       easing: theme.transitions.easing.easeInOut,
@@ -26,7 +26,7 @@ const StyledCard = styled(MuiCard, {
     position: 'relative' as const,
     overflow: 'hidden' as const,
     fontFamily: theme.typography.fontFamily,
-    border: 'none',
+    border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)'}`,
     boxShadow: 'none',
   };
 
@@ -35,12 +35,13 @@ const StyledCard = styled(MuiCard, {
     case 'elevated':
       return {
         ...baseStyles,
-        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.gray[900],
+        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        boxShadow: isLight ? '0 10px 30px rgba(0,0,0,0.08)' : '0 10px 30px rgba(0,0,0,0.3)',
+        border: `1px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
+        boxShadow: isLight ? `10px 10px 0px ${AI4U_PALETTE.black}` : `10px 10px 0px ${AI4U_PALETTE.white}`,
         '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: isLight ? '0 20px 40px rgba(0,0,0,0.12)' : '0 20px 40px rgba(0,0,0,0.4)',
+          transform: 'translate(-4px, -4px)',
+          boxShadow: isLight ? `15px 15px 0px ${AI4U_PALETTE.black}` : `15px 15px 0px ${AI4U_PALETTE.white}`,
         },
       };
     
@@ -48,22 +49,24 @@ const StyledCard = styled(MuiCard, {
       return {
         ...baseStyles,
         backgroundColor: 'transparent',
-        border: `1px solid ${isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}`,
+        border: `1px solid ${isLight ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)'}`,
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         '&:hover': {
           borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+          bgcolor: isLight ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)'
         },
       };
     
     default:
       return {
         ...baseStyles,
-        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.gray[900],
+        backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        boxShadow: isLight ? '0 4px 20px rgba(0,0,0,0.05)' : '0 4px 20px rgba(0,0,0,0.2)',
+        border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)'}`,
         '&:hover': {
+          borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
           transform: 'translateY(-4px)',
-          boxShadow: isLight ? '0 12px 28px rgba(0,0,0,0.08)' : '0 12px 28px rgba(0,0,0,0.3)',
+          boxShadow: isLight ? '0 10px 20px rgba(0,0,0,0.05)' : '0 10px 20px rgba(0,0,0,0.3)',
         },
       };
   }

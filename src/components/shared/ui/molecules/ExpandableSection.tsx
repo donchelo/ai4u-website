@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Collapse, IconButton } from '@mui/material';
+import { Box, Collapse, IconButton, SxProps, Theme } from '@mui/material';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
 import { H4, BodyText } from '../atoms';
@@ -11,6 +11,7 @@ interface ExpandableSectionProps {
   defaultExpanded?: boolean;
   variant?: 'minimal' | 'card' | 'bordered';
   showIcon?: boolean;
+  sx?: SxProps<Theme>;
 }
 
 const ExpandableSection = ({
@@ -20,6 +21,7 @@ const ExpandableSection = ({
   defaultExpanded = false,
   variant = 'minimal',
   showIcon = true,
+  sx = {},
 }: ExpandableSectionProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const colors = useColors();
@@ -68,7 +70,7 @@ const ExpandableSection = ({
   const variantStyles = getVariantStyles();
 
   return (
-    <Box sx={variantStyles.container}>
+    <Box sx={{ ...variantStyles.container, ...sx }}>
       <Box
         sx={{
           display: 'flex',
@@ -85,7 +87,7 @@ const ExpandableSection = ({
             color: 'inherit',
             fontWeight: 400,
             fontSize: '1.25rem',
-            textTransform: 'uppercase',
+            textTransform: 'none',
             letterSpacing: '0.05em'
           }}>
             {title}

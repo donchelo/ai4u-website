@@ -35,18 +35,26 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       semantic: 'progression'
     },
     {
-      to: '/casos-de-uso',
-      label: 'Ver casos reales',
-      context: 'Empresas que ya transformaron sus procesos',
-      trackingLabel: 'home_to_cases',
+      to: '/portafolio',
+      label: 'Portafolio de innovación',
+      context: 'Proyectos reales y aplicaciones de vanguardia',
+      trackingLabel: 'home_to_portfolio',
       priority: 'high',
       semantic: 'evidence'
     },
     {
       to: '/por-que-ai4u',
-      label: 'Nuestro diferencial',
-      context: 'Por qué elegir AI4U para tu transformación',
+      label: 'Resultados y metodología',
+      context: 'Empresas que ya transformaron sus procesos',
       trackingLabel: 'home_to_why',
+      priority: 'high',
+      semantic: 'evidence'
+    },
+    {
+      to: '/super-ai',
+      label: 'Nuestra tecnología',
+      context: 'Conoce SuperAI Infrastructure',
+      trackingLabel: 'home_to_superai',
       priority: 'medium',
       semantic: 'related'
     }
@@ -55,18 +63,26 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
   // Servicios (/servicios) - Conversion Focus
   '/servicios': [
     {
-      to: '/casos-de-uso',
-      label: 'Ver resultados reales',
-      context: 'Casos de éxito con estos servicios',
-      trackingLabel: 'services_to_cases',
+      to: '/portafolio',
+      label: 'Ver portafolio de innovación',
+      context: 'Proyectos reales y aplicaciones de IA',
+      trackingLabel: 'services_to_portfolio',
       priority: 'high',
       semantic: 'evidence'
     },
     {
       to: '/por-que-ai4u',
-      label: '¿Por qué elegir AI4U?',
-      context: 'Nuestras ventajas competitivas',
+      label: 'Nuestra metodología',
+      context: 'Por qué elegir AI4U',
       trackingLabel: 'services_to_why',
+      priority: 'high',
+      semantic: 'evidence'
+    },
+    {
+      to: '/super-ai',
+      label: 'Tecnología SuperAI',
+      context: 'La infraestructura detrás de la IA',
+      trackingLabel: 'services_to_superai',
       priority: 'medium',
       semantic: 'related'
     },
@@ -80,41 +96,13 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
     }
   ],
 
-  // Casos de Uso (/casos-de-uso) - Social Proof
-  '/casos-de-uso': [
-    {
-      to: '/servicios',
-      label: 'Servicios utilizados',
-      context: 'Conoce los servicios detrás de estos resultados',
-      trackingLabel: 'cases_to_services',
-      priority: 'high',
-      semantic: 'cross-sell'
-    },
-    {
-      to: '/por-que-ai4u',
-      label: 'Tu empresa podría ser la siguiente',
-      context: 'Descubre por qué estos clientes eligieron AI4U',
-      trackingLabel: 'cases_to_why',
-      priority: 'medium',
-      semantic: 'progression'
-    },
-    {
-      to: '/',
-      label: 'Comenzar tu transformación',
-      context: 'Inicia tu proceso de automatización',
-      trackingLabel: 'cases_to_home',
-      priority: 'medium',
-      semantic: 'progression'
-    }
-  ],
-
-  // Por qué AI4U (/por-que-ai4u) - Differentiation
+  // Por qué AI4U (/por-que-ai4u) - Differentiation & Evidence
   '/por-que-ai4u': [
     {
-      to: '/casos-de-uso',
-      label: 'Resultados comprobables',
-      context: 'Ve la evidencia de nuestras ventajas',
-      trackingLabel: 'why_to_cases',
+      to: '/portafolio',
+      label: 'Ver portafolio',
+      context: 'Proyectos de innovación destacados',
+      trackingLabel: 'why_to_portfolio',
       priority: 'high',
       semantic: 'evidence'
     },
@@ -127,12 +115,48 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       semantic: 'progression'
     },
     {
+      to: '/super-ai',
+      label: 'SuperAI Infrastructure',
+      context: 'Nuestra tecnología de vanguardia',
+      trackingLabel: 'why_to_superai',
+      priority: 'medium',
+      semantic: 'related'
+    },
+    {
       to: '/',
-      label: 'Agendar diagnóstico',
-      context: 'Comienza tu proceso de transformación',
+      label: 'Comenzar ahora',
+      context: 'Agendar diagnóstico gratuito',
       trackingLabel: 'why_to_home',
       priority: 'medium',
       semantic: 'progression'
+    }
+  ],
+
+  // Portafolio (/portafolio) - Evidence & Innovation
+  '/portafolio': [
+    {
+      to: '/servicios',
+      label: 'Ver servicios',
+      context: 'Cómo implementamos estas tecnologías',
+      trackingLabel: 'portfolio_to_services',
+      priority: 'high',
+      semantic: 'progression'
+    },
+    {
+      to: '/por-que-ai4u',
+      label: 'Nuestra metodología',
+      context: 'Por qué somos líderes en IA',
+      trackingLabel: 'portfolio_to_why',
+      priority: 'high',
+      semantic: 'evidence'
+    },
+    {
+      to: '/super-ai',
+      label: 'SuperAI Infrastructure',
+      context: 'La tecnología que lo hace posible',
+      trackingLabel: 'portfolio_to_superai',
+      priority: 'medium',
+      semantic: 'related'
     }
   ]
 };
@@ -184,7 +208,7 @@ export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
 export const CONTEXTUAL_CTA_LINKS = {
   heroSection: {
     primary: { to: '/servicios', label: 'Conoce nuestros servicios' },
-    secondary: { to: '/casos-de-uso', label: 'Ver casos reales' }
+    secondary: { to: '/por-que-ai4u', label: 'Ver casos reales' }
   },
   featuresSection: {
     automation: { to: '/servicios#automatizacion-inteligente', label: 'Automatización Inteligente' },
@@ -192,7 +216,7 @@ export const CONTEXTUAL_CTA_LINKS = {
     personalization: { to: '/servicios#gpt-personalizado', label: 'GPT Personalizado' }
   },
   socialProof: {
-    cases: { to: '/casos-de-uso', label: 'Ver todos los casos' },
+    cases: { to: '/portafolio', label: 'Ver portafolio' },
     why: { to: '/por-que-ai4u', label: '¿Por qué nos eligen?' }
   }
 };

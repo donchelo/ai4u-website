@@ -73,10 +73,10 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.black, color: colors.palette.white }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: 2, ...TEXT_VARIANTS.ui.code }}>
-            // designSystem
+            // Design System
           </SmallText>
           <H1 sx={{ color: colors.palette.white, fontWeight: 400, mb: 3, maxWidth: 700 }}>
-            7 principios. Una identidad.
+            7 Principios. Una identidad.
           </H1>
           <BodyText sx={{ color: colors.palette.gray[400], maxWidth: 520, ...TEXT_VARIANTS.body.regular }}>
             Cada decisión visual en AI4U responde a un principio de diseño. Esta guía documenta cómo y por qué.
@@ -103,7 +103,7 @@ const DesignSystem = () => {
                     </MuiTypography>
                   </Grid>
                   <Grid item xs={12} sm={4} md={3}>
-                    <H3 sx={{ fontWeight: 500, lineHeight: 1.2 }}>{p.title}</H3>
+                    <H3 sx={{ fontWeight: 400, lineHeight: 1.2 }}>{p.title}</H3>
                   </Grid>
                   <Grid item xs={12} sm={6} md={8}>
                     <BodyText sx={{ color: colors.palette.gray[600], ...TEXT_VARIANTS.body.regular }}>
@@ -121,7 +121,7 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.gray[50] }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // énfasis + contraste
+            // Énfasis + Contraste
           </SmallText>
 
           <Stack spacing={{ xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }}>
@@ -133,9 +133,9 @@ const DesignSystem = () => {
                 <H2>Heading 2</H2>
                 <H3>Heading 3</H3>
                 <H4>Heading 4</H4>
-                <BodyText>Body — texto de lectura continua para párrafos y descripciones.</BodyText>
-                <SmallText sx={{ color: colors.palette.gray[500] }}>Small — etiquetas, captions, metadata.</SmallText>
-                <CodeText>Code — fragmentos técnicos y tokens.</CodeText>
+                <BodyText>Body — Texto de lectura continua para párrafos y descripciones.</BodyText>
+                <SmallText sx={{ color: colors.palette.gray[500] }}>Small — Etiquetas, captions, metadata.</SmallText>
+                <CodeText>Code — Fragmentos técnicos y tokens.</CodeText>
               </Stack>
             </Box>
 
@@ -166,7 +166,7 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.white }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // balance + alineación
+            // Balance + Alineación
           </SmallText>
 
           <Grid container spacing={{ xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }}>
@@ -217,7 +217,7 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.gray[50] }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // repetición
+            // Repetición
           </SmallText>
 
           <Grid container spacing={{ xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }}>
@@ -264,7 +264,7 @@ const DesignSystem = () => {
       <Box sx={{ py: { xs: SPACING_TOKENS.spacing[8], md: SPACING_TOKENS.spacing[12] }, bgcolor: colors.palette.white }}>
         <Container maxWidth="sm" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.code, mb: { xs: SPACING_TOKENS.spacing[3], md: SPACING_TOKENS.spacing[4] } }}>
-            // aire
+            // Aire
           </SmallText>
           <H2 sx={{ fontWeight: 400, mb: 3, textAlign: 'center' }}>El espacio dice tanto como el contenido.</H2>
           <BodyText sx={{ color: colors.palette.gray[500], ...TEXT_VARIANTS.body.regular, textAlign: 'center' }}>
@@ -277,14 +277,14 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.black, color: colors.palette.white }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // unidad — componentes
+            // Unidad — Componentes
           </SmallText>
 
           <Grid container spacing={{ xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }}>
             {/* Botones */}
             <Grid item xs={12} md={6}>
               <Box sx={{ p: { xs: SPACING_TOKENS.spacing[3], md: SPACING_TOKENS.spacing[4] }, border: `1px solid ${colors.palette.gray[800]}`, height: '100%' }}>
-                <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>botones</SmallText>
+                <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>Botones</SmallText>
                 <Stack spacing={2}>
                   <Button variant="primary">Primary</Button>
                   <Button variant="outline">Outline</Button>
@@ -297,7 +297,7 @@ const DesignSystem = () => {
             {/* Cards */}
             <Grid item xs={12} md={6}>
               <Box sx={{ p: { xs: SPACING_TOKENS.spacing[3], md: SPACING_TOKENS.spacing[4] }, border: `1px solid ${colors.palette.gray[800]}`, height: '100%' }}>
-                <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>tarjetas</SmallText>
+                <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>Tarjetas</SmallText>
                 <Stack spacing={2}>
                   <Card variant="default" sx={{ p: 3 }}>
                     <SmallText>Default</SmallText>
@@ -319,7 +319,7 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.white }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // tokens — paleta
+            // Tokens — Paleta
           </SmallText>
 
           {/* Colores principales */}
@@ -343,7 +343,7 @@ const DesignSystem = () => {
           </Grid>
 
           {/* Escala de grises */}
-          <SmallText sx={{ color: colors.palette.gray[500], mb: 2, ...TEXT_VARIANTS.ui.code }}>escala de grises</SmallText>
+          <SmallText sx={{ color: colors.palette.gray[500], mb: 2, ...TEXT_VARIANTS.ui.code }}>Escala de grises</SmallText>
           <Stack direction="row" sx={{ width: '100%' }}>
             {grayScale.map((g) => (
               <Box
@@ -378,21 +378,21 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.gray[50] }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // tokens — tipografía
+            // Tokens — Tipografía
           </SmallText>
 
           <Grid container spacing={{ xs: SPACING_TOKENS.spacing[3], md: SPACING_TOKENS.spacing[4] }}>
             <Grid item xs={12} md={6}>
               <Stack spacing={3}>
                 <Box>
-                  <SmallText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.code, mb: 1 }}>familia primaria</SmallText>
+                  <SmallText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.code, mb: 1 }}>Familia primaria</SmallText>
                   <H3 sx={{ fontWeight: 400 }}>Red Hat Display</H3>
                   <BodyText sx={{ color: colors.palette.gray[500], mt: 1 }}>
                     Peso 300 · 400 · 500
                   </BodyText>
                 </Box>
                 <Box>
-                  <SmallText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.code, mb: 1 }}>familia monoespaciada</SmallText>
+                  <SmallText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.code, mb: 1 }}>Familia monoespaciada</SmallText>
                   <H3 sx={{ fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code, fontWeight: 400 }}>Necto Mono</H3>
                   <BodyText sx={{ color: colors.palette.gray[500], fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code, mt: 1 }}>
                     Código, tokens, etiquetas técnicas
@@ -429,7 +429,7 @@ const DesignSystem = () => {
       <Box sx={{ py: COMPONENT_SPACING.layout.section, bgcolor: colors.palette.white }}>
         <Container maxWidth="lg" sx={{ px: COMPONENT_SPACING.layout.container }}>
           <SmallText sx={{ color: colors.palette.gray[500], mb: { xs: SPACING_TOKENS.spacing[2], md: SPACING_TOKENS.spacing[3] }, ...TEXT_VARIANTS.ui.code }}>
-            // tokens — espaciado
+            // Tokens — Espaciado
           </SmallText>
 
           <Stack spacing={1}>

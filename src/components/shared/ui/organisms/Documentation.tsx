@@ -66,7 +66,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'tsx', className
       }}>
         <SmallText sx={{ 
           color: colors.helpers.text.mediumContrast,
-          textTransform: 'uppercase',
+          textTransform: 'none',
           letterSpacing: '0.05em'
         }}>
           {language}

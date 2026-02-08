@@ -219,7 +219,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             <SmallText sx={{ 
               color: colors.helpers.text.secondary,
               mb: 0.5,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               letterSpacing: 0.5
             }}>
               Viento
@@ -235,7 +235,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({
             <SmallText sx={{ 
               color: colors.helpers.text.secondary,
               mb: 0.5,
-              textTransform: 'uppercase',
+              textTransform: 'none',
               letterSpacing: 0.5
             }}>
               Lluvia

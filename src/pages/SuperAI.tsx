@@ -10,28 +10,18 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-  Paper
+  TableRow
 } from '@mui/material';
 import { 
-  CheckCircle, 
-  TrendingUp, 
   Psychology, 
-  Settings, 
-  Speed,
-  Autorenew,
-  RocketLaunch,
-  IntegrationInstructions,
-  CompareArrows,
+  Autorenew, 
+  RocketLaunch, 
+  IntegrationInstructions, 
   Bolt,
-  Schedule,
-  Security,
-  Undo,
-  AttachMoney,
-  ChevronRight,
   Add
 } from '@mui/icons-material';
-import { Typography, Giant, H1, H2, H3, H4, BodyText, Button, SEOHead, OptimizedImage } from '@/components/shared/ui/atoms';
+import Typography, { Giant, H1, H2, H3, H4, BodyText } from '@/components/shared/ui/atoms/Typography';
+import { Button, SEOHead, OptimizedImage } from '@/components/shared/ui/atoms';
 import { ExpandableSection } from '@/components/shared/ui/molecules';
 import { useColors } from '@/hooks';
 import { SurfaceProvider } from '@/context';
@@ -53,11 +43,11 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   ];
 
   const benefits = [
-    { icon: Bolt, title: 'ejecuta', description: 'Entiende tu negocio y actúa.' },
-    { icon: Autorenew, title: 'automatiza', description: 'Propuestas, reportes, seguimiento.' },
-    { icon: RocketLaunch, title: 'escala', description: '10 o 1000 clientes, mismo costo.' },
-    { icon: Psychology, title: 'aprende', description: 'Tu lógica, métricas y prioridades.' },
-    { icon: IntegrationInstructions, title: 'seIntegra', description: 'Gmail, Drive, Sheets, APIs. Todo.' }
+    { icon: Bolt, title: 'Ejecuta', description: 'Entiende tu negocio y actúa.' },
+    { icon: Autorenew, title: 'Automatiza', description: 'Propuestas, reportes, seguimiento.' },
+    { icon: RocketLaunch, title: 'Escala', description: '10 o 1000 clientes, mismo costo.' },
+    { icon: Psychology, title: 'Aprende', description: 'Tu lógica, métricas y prioridades.' },
+    { icon: IntegrationInstructions, title: 'Se integra', description: 'Gmail, Drive, Sheets, APIs. Todo.' }
   ];
 
   const results = [
@@ -72,7 +62,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       num: '01',
       title: 'Integración',
       subtitle: 'Semana 1',
-      description: 'Conectamos a tu email, calendario, docs y APIs. 24 horas, cero disrupción.'
+      description: 'Conectamos a tu email, calendario, docs y apis. 24 horas, cero disrupción.'
     },
     {
       num: '02',
@@ -125,10 +115,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
   const comparison = [
     { feature: 'Pregunta qué hacer', chatbot: true, copilot: true, superai: false },
-    { feature: 'Entiende tu contexto', chatbot: false, copilot: 'Parcial', superai: true },
-    { feature: 'Integrado a tu stack', chatbot: false, copilot: 'Parcial', superai: true },
+    { feature: 'Entiende tu contexto', chatbot: false, copilot: 'parcial', superai: true },
+    { feature: 'Integrado a tu stack', chatbot: false, copilot: 'parcial', superai: true },
     { feature: 'Ejecuta 24/7', chatbot: false, copilot: false, superai: true },
-    { feature: 'Aprende de ti', chatbot: false, copilot: 'Parcial', superai: true },
+    { feature: 'Aprende de ti', chatbot: false, copilot: 'parcial', superai: true },
     { feature: 'ROI visible en 30 días', chatbot: false, copilot: false, superai: true },
   ];
 
@@ -143,7 +133,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
         'Propuestas + emails automáticos',
         'Reportes semanales'
       ],
-      for: 'Freelancers y startups'
+      for: 'Freelancers y Startups'
     },
     {
       name: 'Professional',
@@ -162,13 +152,13 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
     {
       name: 'Enterprise',
       implementation: null,
-      price: 'aMedida',
+      price: 'A medida',
       period: '',
       features: [
         'Agenda una consultoría estratégica para diseñar la infraestructura personalizada que tu operación a gran escala necesita.'
       ],
       for: 'Empresas 25+ personas',
-      buttonText: 'agendarConsulta'
+      buttonText: 'Agendar consulta'
     }
   ];
 
@@ -271,133 +261,171 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               sx={{
                 color: colors.palette.white,
                 maxWidth: '1100px',
-                lineHeight: 0.9,
-                fontSize: isModal ? TEXT_VARIANTS.display.medium.fontSize : TEXT_VARIANTS.display.large.fontSize,
+                lineHeight: 0.85,
+                fontWeight: 400,
+                letterSpacing: '-0.05em',
+                fontSize: isModal ? { xs: '3rem', md: '5rem' } : { xs: '3.5rem', md: '8rem' },
                 '& span': {
                   color: colors.palette.accentColors.orange,
+                  display: 'inline-block',
+                  transform: 'rotate(1deg)'
                 }
               }}
             >
-              Tu Agente de IA Personal que <span>Escala tu Negocio</span> Mientras Duermes
+              Tu agente de IA personal que <span>escala tu negocio</span> mientras duermes
             </Giant>
 
             <BodyText
               sx={{
-                ...TEXT_VARIANTS.body.large,
-                color: colors.palette.gray[400],
+                fontSize: '1.8rem',
+                color: colors.palette.white,
                 maxWidth: '850px',
-                fontWeight: 300,
+                fontWeight: 400,
+                lineHeight: 1.1,
+                opacity: 0.9
               }}
             >
               Tu propio CEO de IA. Ejecuta estrategias y genera revenue.
             </BodyText>
 
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ pt: 4 }}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} sx={{ pt: 6 }}>
               <Button
                 variant="primary"
                 size="large"
                 href="https://calendly.com/mgarciap333/ai4u"
                 target="_blank"
                 sx={{
-                  px: 6,
-                  height: 10,
-                  fontSize: TEXT_VARIANTS.ui.button.fontSize,
+                  px: 8,
+                  py: 4,
+                  height: 'auto',
+                  fontSize: '1.5rem',
                   fontWeight: 400,
                   bgcolor: colors.palette.white,
                   color: colors.palette.black,
+                  borderRadius: 0,
                   '&:hover': {
                     bgcolor: colors.palette.accentColors.orange,
-                    color: colors.palette.white,
+                    color: colors.palette.black,
+                    transform: 'translateY(-10px)'
                   },
                 }}
               >
                 Solicita tu SuperAI hoy
               </Button>
-              <Typography sx={{ color: colors.palette.gray[500], alignSelf: 'center', ...TEXT_VARIANTS.ui.caption }}>
-                Llamada estratégica gratuita (30 min)
-              </Typography>
             </Stack>
           </Stack>
         </Container>
       </Box>
 
       {/* Section 1: EL PROBLEMA */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={8} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <H1 sx={{ color: colors.palette.white, mb: 4 }}>
-                Eres Inteligente. <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Sistema No.</Box>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black, position: 'relative' }}>
+        <Box sx={{ position: 'absolute', top: '10%', right: '5%', fontSize: '15rem', fontWeight: 400, color: 'rgba(255,255,255,0.02)', zIndex: 0, pointerEvents: 'none' }}>
+          fail
+        </Box>
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+          <Grid container spacing={0} alignItems="center">
+            <Grid item xs={12} md={7} sx={{ pr: { md: 10 } }}>
+              <H1 sx={{ 
+                color: colors.palette.white, 
+                fontSize: { xs: '3.5rem', md: '7rem' },
+                lineHeight: 0.85,
+                fontWeight: 400,
+                letterSpacing: '-0.05em',
+                mb: 6 
+              }}>
+                Eres inteligente. <br/>
+                <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.black, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>Tu sistema no.</Box>
               </H1>
-              <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.large, mb: 4 }}>
+              <BodyText sx={{ color: colors.palette.white, fontSize: '1.8rem', fontWeight: 400, mb: 6, opacity: 0.9 }}>
                 40+ horas/semana en tareas que la IA resuelve en minutos.
               </BodyText>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Stack spacing={3}>
+            <Grid item xs={12} md={5}>
+              <Stack spacing={2}>
                 {problems.map((prob, idx) => (
                   <Box 
                     key={idx} 
                     sx={{ 
-                      p: 3, 
-                      border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, 
-                      bgcolor: 'rgba(255,255,255,0.02)',
+                      p: 4, 
+                      border: `1px solid rgba(255,255,255,0.1)`, 
+                      bgcolor: 'transparent',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: 0.5
+                      gap: 1,
+                      transform: `translateX(${idx * 20}px)`,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        bgcolor: 'rgba(255,255,255,0.05)',
+                        borderColor: colors.palette.accentColors.orange
+                      }
                     }}
                   >
-                    <H4 sx={{ color: colors.palette.white, fontSize: TEXT_VARIANTS.body.regular.fontSize }}>- {prob.title}</H4>
-                    <BodyText sx={{ color: colors.palette.gray[500], fontSize: TEXT_VARIANTS.ui.caption.fontSize, pl: 2 }}>
-                      ({prob.desc})
+                    <Typography sx={{ color: colors.palette.accentColors.orange, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                      // problem.0{idx + 1}
+                    </Typography>
+                    <Typography sx={{ color: colors.palette.white, fontSize: '1.5rem', fontWeight: 400, textTransform: 'none', lineHeight: 1 }}>{prob.title}</Typography>
+                    <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1rem' }}>
+                      {prob.desc}
                     </BodyText>
                   </Box>
                 ))}
               </Stack>
             </Grid>
           </Grid>
-          <Box sx={{ mt: 10, textAlign: 'center' }}>
-            <H3 sx={{ color: colors.palette.white, fontWeight: 300 }}>
-              No falta talento. Falta <Box component="span" sx={{ fontWeight: 400, color: colors.palette.white }}>capacidad de ejecución.</Box>
-            </H3>
-          </Box>
         </Container>
       </Box>
 
       {/* Section 2: LA SOLUCIÓN */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900], borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}`, borderBottom: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}` }}>
-        <Container maxWidth="lg">
-          <Stack spacing={8}>
-            <Box textAlign="center">
-              <H1 sx={{ color: colors.palette.white, mb: 3 }}>
-                Presenta SuperAI: <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu Execution Partner Inteligente</Box>
+      <Box sx={{ 
+        py: COMPONENT_SPACING.layout.section, 
+        background: colors.palette.white, 
+        color: colors.palette.black,
+        position: 'relative'
+      }}>
+        <Container maxWidth="xl">
+          <Stack spacing={12}>
+            <Box textAlign="left">
+              <H1 sx={{ 
+                color: colors.palette.black, 
+                fontSize: { xs: '3.5rem', md: '7rem' },
+                lineHeight: 0.85,
+                fontWeight: 400,
+                letterSpacing: '-0.05em',
+                mb: 4 
+              }}>
+                SuperAI: <br/>
+                <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Tu partner de ejecución</Box>
               </H1>
-              <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.large }}>
+              <BodyText sx={{ color: colors.palette.black, fontSize: '2rem', fontWeight: 400, opacity: 0.5 }}>
                 No es un chatbot. Es un agente que ejecuta.
               </BodyText>
             </Box>
 
-            <Grid container spacing={3}>
+            <Grid container spacing={0}>
               {benefits.map((benefit, idx) => (
                 <Grid item xs={12} sm={6} md={4} key={idx}>
                   <Box
                     sx={{
-                      bgcolor: colors.palette.black,
-                      p: 4,
+                      bgcolor: colors.palette.white,
+                      p: 6,
                       height: '100%',
-                      border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[800]}`,
-                      transition: 'all 0.2s ease',
+                      border: `1px solid rgba(0,0,0,0.05)`,
+                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                       '&:hover': {
-                        borderColor: colors.palette.accentColors.orange,
-                        transform: 'translateY(-5px)',
+                        bgcolor: colors.palette.black,
+                        color: colors.palette.white,
+                        zIndex: 2,
+                        transform: 'scale(1.05) translateY(-10px)',
+                        boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+                        '& .icon': { color: colors.palette.white }
                       },
                     }}
                   >
-                    <benefit.icon sx={{ fontSize: 40, color: colors.palette.accentColors.orange, mb: 2 }} />
-                    <H4 sx={{ mb: 1, color: colors.palette.white, letterSpacing: '0.1em', ...TEXT_VARIANTS.ui.button }}>
-                      ✓ {benefit.title}
+                    <benefit.icon className="icon" sx={{ fontSize: 60, color: colors.palette.accentColors.orange, mb: 4, transition: 'color 0.4s ease' }} />
+                    <H4 sx={{ mb: 2, fontSize: '1.8rem', fontWeight: 400, letterSpacing: '-0.02em', textTransform: 'none' }}>
+                      {benefit.title}
                     </H4>
-                    <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
+                    <BodyText sx={{ fontSize: '1.1rem', fontWeight: 400, opacity: 0.9 }}>
                       {benefit.description}
                     </BodyText>
                   </Box>
@@ -406,20 +434,25 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box
                   sx={{
-                    bgcolor: colors.palette.accentColors.orange,
-                    p: 4,
+                    bgcolor: colors.palette.black,
+                    color: colors.palette.white,
+                    p: 6,
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    border: `1px solid ${colors.palette.black}`
                   }}
                 >
-                  <H3 sx={{ color: colors.palette.white, mb: 3, fontWeight: 400 }}>Resultados:</H3>
-                  <Stack spacing={1.5}>
+                  <H3 sx={{ color: colors.palette.accentColors.orange, mb: 4, fontWeight: 400, fontSize: '2rem' }}>resultados:</H3>
+                  <Stack spacing={3}>
                     {results.map((res, idx) => (
-                      <BodyText key={idx} sx={{ color: colors.palette.white, fontWeight: 400, fontSize: TEXT_VARIANTS.body.small.fontSize }}>
-                        • {res}
-                      </BodyText>
+                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <Box sx={{ width: 20, height: 1, bgcolor: colors.palette.accentColors.orange }} />
+                        <BodyText sx={{ fontWeight: 400, fontSize: '1.2rem' }}>
+                          {res}
+                        </BodyText>
+                      </Box>
                     ))}
                   </Stack>
                 </Box>
@@ -430,68 +463,99 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 3: CÓMO FUNCIONA */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
-        <Container maxWidth="lg">
-          <Box textAlign="center" mb={10}>
-            <H1 sx={{ color: colors.palette.white, mb: 2 }}>
-              3 Pasos Hacia tu <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Nuevo Superpoder</Box>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black, position: 'relative' }}>
+        <Box sx={{ position: 'absolute', top: 0, left: '50%', width: '1px', height: '100%', bgcolor: 'rgba(255,255,255,0.05)' }} />
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+          <Box textAlign="left" mb={12}>
+            <H1 sx={{ 
+              color: colors.palette.white, 
+              fontSize: { xs: '3.5rem', md: '7rem' },
+              lineHeight: 0.85,
+              fontWeight: 400,
+              letterSpacing: '-0.05em',
+              mb: 4 
+            }}>
+              3 pasos hacia tu <br/>
+              <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>nuevo superpoder</Box>
             </H1>
           </Box>
-          <Grid container spacing={4}>
+          <Grid container spacing={0}>
             {steps.map((step, idx) => (
               <Grid item xs={12} md={4} key={idx}>
-                <Box sx={{ position: 'relative', pt: 6 }}>
+                <Box sx={{ 
+                  p: 6, 
+                  borderLeft: `1px solid rgba(255,255,255,0.1)`,
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    bgcolor: 'rgba(255,255,255,0.02)',
+                    borderColor: colors.palette.accentColors.orange
+                  }
+                }}>
                   <Typography
                     sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      fontSize: TEXT_VARIANTS.display.large.fontSize,
+                      fontSize: '4rem',
                       fontWeight: 400,
-                      color: colors.palette.gray[900],
+                      color: 'rgba(255,255,255,0.05)',
                       lineHeight: 1,
-                      zIndex: 0
+                      mb: 4,
+                      fontFamily: '"Necto Mono", monospace'
                     }}
                   >
                     {step.num}
                   </Typography>
-                  <Box sx={{ position: 'relative', zIndex: 1, pl: 2 }}>
-                    <H3 sx={{ color: colors.palette.white, mb: 1 }}>{step.title}</H3>
-                    <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code }}>
-                      {step.subtitle}
+                  <Box sx={{ pl: 2 }}>
+                    <H3 sx={{ color: colors.palette.white, mb: 2, fontSize: '2rem', fontWeight: 400, textTransform: 'none' }}>{step.title}</H3>
+                    <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 3, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                      // {step.subtitle.toLowerCase()}
                     </Typography>
-                    <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.regular }}>
-                      {step.description}
+                    <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', fontWeight: 400 }}>
+                      {step.description.toLowerCase()}
                     </BodyText>
                   </Box>
                 </Box>
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ mt: 10, textAlign: 'center', p: 4, border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}` }}>
-            <BodyText sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.body.regular }}>
-              Mes 1: ROI obvio. Mes 3: <Box component="span" sx={{ color: colors.palette.white, fontWeight: 400 }}>transformacional.</Box>
-            </BodyText>
-          </Box>
         </Container>
       </Box>
 
       {/* Section 4: CASOS DE USO */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900] }}>
-        <Container maxWidth="lg">
-          <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>
-            Mira lo que <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>SuperAI Hace</Box> en la Práctica
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.accentColors.green, color: colors.palette.black }}>
+        <Container maxWidth="xl">
+          <H1 sx={{ 
+            textAlign: 'left', 
+            mb: 12, 
+            color: colors.palette.black,
+            fontSize: { xs: '3.5rem', md: '6.5rem' },
+            lineHeight: 0.9,
+            fontWeight: 400,
+            letterSpacing: '-0.04em'
+          }}>
+            Mira lo que <br/>
+            <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2, display: 'inline-block' }}>SuperAI hace</Box> en la práctica
           </H1>
           <Grid container spacing={4}>
             {useCases.map((useCase, idx) => (
-              <Grid item xs={12} md={6} key={idx}>
-                <Box sx={{ bgcolor: colors.palette.black, p: 5, height: '100%', borderLeft: '5px solid ${colors.palette.accentColors.orange}' }}>
-                  <H3 sx={{ color: colors.palette.white, mb: 4, textTransform: 'none' }}>Para {useCase.category}</H3>
-                  <Stack spacing={2.5}>
+              <Grid item xs={12} sm={6} md={4} key={idx}>
+                <Box sx={{ 
+                  bgcolor: colors.palette.white, 
+                  p: 6, 
+                  height: '100%', 
+                  border: `2px solid ${colors.palette.black}`,
+                  boxShadow: `15px 15px 0px ${colors.palette.black}`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translate(-5px, -5px)',
+                    boxShadow: `25px 25px 0px ${colors.palette.black}`,
+                  }
+                }}>
+                  <H3 sx={{ color: colors.palette.black, mb: 4, textTransform: 'none', fontSize: '2rem', fontWeight: 400 }}>para {useCase.category}</H3>
+                  <Stack spacing={3}>
                     {useCase.items.map((item, i) => (
-                      <Box key={i} sx={{ display: 'flex', gap: 2 }}>
-                        <CheckCircle sx={{ color: colors.palette.accentColors.orange, fontSize: SPACING_TOKENS.sizes.iconSm, mt: 0.5 }} />
-                        <BodyText sx={{ color: colors.palette.gray[300], ...TEXT_VARIANTS.body.regular }}>{item}</BodyText>
+                      <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                        <Box sx={{ width: 10, height: 10, bgcolor: colors.palette.black, mt: 1.5 }} />
+                        <BodyText sx={{ color: colors.palette.black, fontSize: '1.2rem', fontWeight: 400, opacity: 0.8 }}>{item.toLowerCase()}</BodyText>
                       </Box>
                     ))}
                   </Stack>
@@ -504,95 +568,148 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
       {/* Section 5: DIFERENCIACIÓN */}
       <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
-        <Container maxWidth="lg">
-          <Stack spacing={6} alignItems="center">
-            <Box textAlign="center">
-              <H2 sx={{ color: colors.palette.white, mb: 2 }}>No es un ChatBot. No es un Copilot.</H2>
-              <H1 sx={{ color: colors.palette.accentColors.orange }}>Es Tu Socio Ejecutivo.</H1>
-            </Box>
+        <Container maxWidth="xl">
+          <Grid container spacing={0} alignItems="center">
+            <Grid item xs={12} md={5} sx={{ pr: { md: 10 }, mb: { xs: 8, md: 0 } }}>
+              <H2 sx={{ color: colors.palette.white, mb: 4, fontSize: '3rem', fontWeight: 400, lineHeight: 1 }}>No es un chatbot. <br/>No es un copilot.</H2>
+              <H1 sx={{ 
+                color: colors.palette.accentColors.orange,
+                fontSize: { xs: '3.5rem', md: '6rem' },
+                lineHeight: 0.85,
+                fontWeight: 400,
+                letterSpacing: '-0.05em'
+              }}>
+                Es tu socio <br/>ejecutivo.
+              </H1>
+            </Grid>
 
-            <TableContainer component={Paper} sx={{ bgcolor: 'transparent', boxShadow: 'none', borderRadius: 0, border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}` }}>
-              <Table>
-                <TableHead>
-                  <TableRow sx={{ borderBottom: `${SPACING_TOKENS.borderWidth[2]}px solid ${colors.palette.gray[800]}` }}>
-                    <TableCell sx={{ color: colors.palette.gray[500], fontWeight: 400, py: 3, border: 'none' }}></TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.regular, py: 3, border: 'none' }}>ChatBot</TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.regular, py: 3, border: 'none' }}>Copilot</TableCell>
-                    <TableCell align="center" sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, ...TEXT_VARIANTS.body.large, py: 3, border: 'none' }}>SuperAI</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {comparison.map((row, idx) => (
-                    <TableRow key={idx} sx={{ borderBottom: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' } }}>
-                      <TableCell sx={{ color: colors.palette.white, fontWeight: 400, py: 2.5, border: 'none' }}>{row.feature}</TableCell>
-                      <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
-                        {row.chatbot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>}
-                      </TableCell>
-                      <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
-                        {row.copilot === true ? <CheckCircle sx={{ color: colors.palette.gray[700] }} /> : (row.copilot === 'Parcial' ? <Typography sx={{ color: colors.palette.gray[600], fontWeight: 400, ...TEXT_VARIANTS.ui.caption }}>parcial</Typography> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>)}
-                      </TableCell>
-                      <TableCell align="center" sx={{ py: 2.5, border: 'none' }}>
-                        {row.superai === true ? <CheckCircle sx={{ color: colors.palette.accentColors.orange }} /> : <Typography sx={{ color: colors.palette.gray[800], fontWeight: 400 }}>✗</Typography>}
-                      </TableCell>
+            <Grid item xs={12} md={7}>
+              <TableContainer component={Box} sx={{ bgcolor: 'transparent', boxShadow: 'none', borderRadius: 0 }}>
+                <Table>
+                  <TableHead>
+                    <TableRow sx={{ borderBottom: `1px solid rgba(255,255,255,0.2)` }}>
+                      <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 400, py: 4, border: 'none', ...TEXT_VARIANTS.ui.code }}>// feature</TableCell>
+                      <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '1.2rem', py: 4, border: 'none' }}>chatbot</TableCell>
+                      <TableCell align="center" sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '1.2rem', py: 4, border: 'none' }}>copilot</TableCell>
+                      <TableCell align="center" sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, fontSize: '1.5rem', py: 4, border: 'none' }}>superai</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-
-            <Box sx={{ textAlign: 'center', mt: 4 }}>
-              <H3 sx={{ color: colors.palette.white, fontWeight: 300, lineHeight: 1.4 }}>
-                SuperAI no ayuda. <Box component="span" sx={{ fontWeight: 400, color: colors.palette.accentColors.orange }}>SuperAI ejecuta.</Box>
-              </H3>
-            </Box>
-          </Stack>
+                  </TableHead>
+                  <TableBody>
+                    {comparison.map((row, idx) => (
+                      <TableRow key={idx} sx={{ borderBottom: `1px solid rgba(255,255,255,0.1)`, '&:hover': { bgcolor: 'rgba(255,255,255,0.02)' } }}>
+                        <TableCell sx={{ color: colors.palette.white, fontWeight: 400, py: 3, border: 'none', fontSize: '1.1rem', opacity: 0.9 }}>{row.feature}</TableCell>
+                        <TableCell align="center" sx={{ py: 3, border: 'none' }}>
+                          {row.chatbot === true ? <Box sx={{ width: 12, height: 12, bgcolor: 'rgba(255,255,255,0.4)', mx: 'auto' }} /> : <Typography sx={{ color: 'rgba(255,255,255,0.2)', fontWeight: 400 }}>-</Typography>}
+                        </TableCell>
+                        <TableCell align="center" sx={{ py: 3, border: 'none' }}>
+                          {row.copilot === true ? <Box sx={{ width: 12, height: 12, bgcolor: 'rgba(255,255,255,0.4)', mx: 'auto' }} /> : (row.copilot === 'parcial' ? <Typography sx={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400, fontSize: '0.8rem' }}>parcial</Typography> : <Typography sx={{ color: 'rgba(255,255,255,0.2)', fontWeight: 400 }}>-</Typography>)}
+                        </TableCell>
+                        <TableCell align="center" sx={{ py: 3, border: 'none' }}>
+                          {row.superai === true ? <Box sx={{ width: 16, height: 16, bgcolor: colors.palette.accentColors.orange, mx: 'auto', transform: 'rotate(45deg)' }} /> : <Typography sx={{ color: 'rgba(255,255,255,0.05)', fontWeight: 400 }}>-</Typography>}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
       {/* Section 7: PRECIOS */}
       <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.black }}>
-        <Container maxWidth="lg">
-          <Box textAlign="center" mb={10}>
-            <H1 sx={{ color: colors.palette.white, mb: 2 }}>Inversión Mínima. <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Retorno Máximo.</Box></H1>
+        <Container maxWidth="xl">
+          <Box textAlign="left" mb={12}>
+            <H1 sx={{ 
+              color: colors.palette.white, 
+              fontSize: { xs: '3.5rem', md: '7rem' },
+              lineHeight: 0.85,
+              fontWeight: 400,
+              letterSpacing: '-0.05em',
+              mb: 4 
+            }}>
+              Inversión mínima. <br/>
+              <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Retorno máximo.</Box>
+            </H1>
+            
+            <Box
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1.5,
+                px: 2,
+                py: 1,
+                border: `1px solid ${colors.palette.accentColors.orange}40`,
+                bgcolor: 'rgba(255,102,0,0.05)',
+                mt: 2
+              }}
+            >
+              <RocketLaunch sx={{ color: colors.palette.accentColors.orange, fontSize: '1.2rem' }} />
+              <Typography
+                sx={{
+                  color: colors.palette.accentColors.orange,
+                  ...TEXT_VARIANTS.ui.code,
+                  fontSize: '0.9rem',
+                  letterSpacing: '0.1em',
+                  textTransform: 'none',
+                  fontWeight: 600
+                }}
+              >
+                // precio de lanzamiento por tiempo limitado
+              </Typography>
+            </Box>
           </Box>
-          <Grid container spacing={4} alignItems="stretch">
+          <Grid container spacing={0} alignItems="stretch">
             {pricing.map((tier, idx) => (
               <Grid item xs={12} md={4} key={idx}>
                 <Box
                   sx={{
                     bgcolor: tier.highlight ? 'rgba(255,255,255,0.03)' : 'transparent',
-                    border: tier.highlight ? `${SPACING_TOKENS.borderWidth[2]}px solid ${colors.palette.accentColors.orange}` : `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
-                    p: 5,
+                    border: tier.highlight ? `1px solid ${colors.palette.accentColors.orange}` : `1px solid rgba(255,255,255,0.1)`,
+                    p: 6,
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    position: 'relative'
+                    position: 'relative',
+                    transition: 'all 0.3s ease',
+                    zIndex: tier.highlight ? 2 : 1,
+                    '&:hover': {
+                      bgcolor: 'rgba(255,255,255,0.05)',
+                      transform: 'translateY(-10px)',
+                      zIndex: 3
+                    }
                   }}
                 >
                   {tier.highlight && (
-                    <Box sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 3, py: 0.5, fontWeight: 400, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
-                      Más popular
+                    <Box sx={{ position: 'absolute', top: 0, left: 0, bgcolor: colors.palette.accentColors.orange, color: colors.palette.black, px: 2, py: 0.5, fontWeight: 400, fontSize: '0.8rem', ...TEXT_VARIANTS.ui.code }}>
+                      // más popular
                     </Box>
                   )}
-                  <Typography sx={{ color: colors.palette.gray[500], fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.code, letterSpacing: '0.1em' }}>
-                    SuperAI {tier.name}
+                  <Typography sx={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400, mb: 4, ...TEXT_VARIANTS.ui.code, fontSize: '1rem' }}>
+                    superai {tier.name}
                   </Typography>
                   {tier.implementation != null && (
-                    <Typography sx={{ color: colors.palette.gray[400], ...TEXT_VARIANTS.ui.caption, mb: 0.5 }}>
-                      Implementación: {tier.implementation} USD <Box component="span" sx={{ color: colors.palette.gray[500] }}>(una vez)</Box>
+                    <Typography sx={{ color: colors.palette.white, opacity: 0.5, mb: 1, fontSize: '0.9rem' }}>
+                      implementación: {tier.implementation} usd (una vez)
                     </Typography>
                   )}
                   <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 1 }}>
-                    <Typography sx={{ color: colors.palette.white, ...TEXT_VARIANTS.display.medium, fontWeight: 400 }}>{tier.price}</Typography>
-                    {tier.period && <Typography sx={{ color: colors.palette.gray[500], ml: 1, fontWeight: 400 }}>{tier.period}</Typography>}
+                    <Typography sx={{ color: colors.palette.white, fontSize: '4rem', fontWeight: 400, lineHeight: 1 }}>{tier.price}</Typography>
+                    {tier.period && <Typography sx={{ color: 'rgba(255,255,255,0.3)', ml: 1, fontWeight: 400 }}>{tier.period}</Typography>}
                   </Box>
-                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 4, ...TEXT_VARIANTS.body.small }}>{tier.for}</Typography>
+                  {tier.price !== 'A medida' && (
+                    <Typography sx={{ color: colors.palette.accentColors.green, fontSize: '0.8rem', mb: 2, ...TEXT_VARIANTS.ui.code }}>
+                      // precio de lanzamiento
+                    </Typography>
+                  )}
+                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 6, fontSize: '1.2rem' }}>{tier.for}</Typography>
                   
-                  <Stack spacing={2} sx={{ mb: 6, flexGrow: 1 }}>
+                  <Stack spacing={2} sx={{ mb: 8, flexGrow: 1 }}>
                     {tier.features.map((feat, i) => (
-                      <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
-                        <Add sx={{ color: colors.palette.accentColors.orange, fontSize: SPACING_TOKENS.sizes.iconXs }} />
-                        <BodyText sx={{ color: colors.palette.gray[300], fontSize: TEXT_VARIANTS.body.small.fontSize }}>{feat}</BodyText>
+                      <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                        <Box sx={{ width: 8, height: 8, bgcolor: colors.palette.accentColors.orange, mt: 1 }} />
+                        <BodyText sx={{ color: colors.palette.white, opacity: 0.9, fontSize: '1rem' }}>{feat.toLowerCase()}</BodyText>
                       </Box>
                     ))}
                   </Stack>
@@ -602,44 +719,67 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     fullWidth
                     href="https://calendly.com/mgarciap333/ai4u"
                     target="_blank"
-                    sx={{ height: 7.5, fontWeight: 400 }}
+                    sx={{ 
+                      height: 'auto', 
+                      py: 3,
+                      fontWeight: 400, 
+                      borderRadius: 0,
+                      fontSize: '1.2rem',
+                      borderColor: tier.highlight ? colors.palette.accentColors.orange : 'rgba(255,255,255,0.3)',
+                      bgcolor: tier.highlight ? colors.palette.accentColors.orange : 'transparent',
+                      color: tier.highlight ? colors.palette.black : colors.palette.white,
+                      '&:hover': {
+                        bgcolor: colors.palette.white,
+                        color: colors.palette.black,
+                        borderColor: colors.palette.white
+                      }
+                    }}
                   >
-                    {tier.buttonText || 'empezarAhora'}
+                    {tier.buttonText || 'empezar ahora'}
                   </Button>
                 </Box>
               </Grid>
             ))}
           </Grid>
+        </Container>
+      </Box>
 
-          {/* Consideraciones de Operación */}
+      {/* Considerations */}
+      <Box sx={{ 
+        py: COMPONENT_SPACING.layout.section, 
+        bgcolor: colors.palette.black,
+        color: colors.palette.white,
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <Container maxWidth="xl">
           <Box 
             sx={{ 
-              mt: 12, 
-              p: { xs: 4, md: 6 }, 
-              border: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
+              p: 8, 
+              border: `1px solid rgba(255,255,255,0.1)`,
               bgcolor: 'rgba(255,255,255,0.02)',
-              maxWidth: '900px',
-              mx: 'auto'
+              position: 'relative'
             }}
           >
-            <H3 sx={{ color: colors.palette.white, mb: 4, ...TEXT_VARIANTS.body.large, fontWeight: 400 }}>
-              // Consideraciones de operación
+            <Box sx={{ position: 'absolute', top: -1, right: -1, width: 60, height: 60, borderTop: '1px solid orange', borderRight: '1px solid orange' }} />
+            <H3 sx={{ color: colors.palette.white, mb: 6, fontSize: '1.8rem', fontWeight: 400 }}>
+              // consideraciones de operación
             </H3>
-            <Grid container spacing={4}>
+            <Grid container spacing={8}>
               <Grid item xs={12} md={6}>
-                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
-                  Consumo de LLM & APIs
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                  // consumo de llm & apis
                 </Typography>
-                <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
-                  Los costos de consumo de modelos (OpenAI, Anthropic, etc.) se facturan directamente a tu tarjeta. La inversión depende de la inteligencia y el volumen de ejecución requerido.
+                <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.4 }}>
+                  los costos de consumo de modelos (openai, anthropic, etc.) se facturan directamente a tu tarjeta. la inversión depende de la inteligencia y el volumen de ejecución requerido.
                 </BodyText>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 1, ...TEXT_VARIANTS.ui.caption, letterSpacing: '0.1em' }}>
-                  Hardware dedicado
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                  // hardware dedicado
                 </Typography>
-                <BodyText sx={{ color: colors.palette.gray[400], fontSize: TEXT_VARIANTS.body.small.fontSize }}>
-                  SuperAI requiere una estación de trabajo (PC/Servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
+                <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.4 }}>
+                  superai requiere una estación de trabajo (pc/servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
                 </BodyText>
               </Grid>
             </Grid>
@@ -648,17 +788,36 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       </Box>
 
       {/* Section 8: PREGUNTAS FRECUENTES */}
-      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.gray[900] }}>
-        <Container maxWidth="md">
-          <H1 sx={{ textAlign: 'center', mb: 8, color: colors.palette.white }}>Preguntas Frecuentes</H1>
-          <Stack spacing={2}>
+      <Box sx={{ py: COMPONENT_SPACING.layout.section, background: colors.palette.white }}>
+        <Container maxWidth="lg">
+          <H1 sx={{ 
+            textAlign: 'left', 
+            mb: 12, 
+            color: colors.palette.black,
+            fontSize: { xs: '3.5rem', md: '6.5rem' },
+            lineHeight: 0.9,
+            fontWeight: 400,
+            letterSpacing: '-0.04em'
+          }}>
+            Preguntas <br/>
+            <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.white, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>frecuentes</Box>
+          </H1>
+          <Stack spacing={0}>
             {faqs.map((faq, idx) => (
               <ExpandableSection
                 key={idx}
                 title={faq.q}
                 variant="card"
+                sx={{ 
+                  borderRadius: 0, 
+                  border: 'none', 
+                  borderBottom: `1px solid rgba(0,0,0,0.1)`,
+                  bgcolor: 'transparent',
+                  p: 4,
+                  '& .MuiButtonBase-root': { px: 0 }
+                }}
               >
-                <BodyText sx={{ color: colors.palette.gray[400], lineHeight: 1.7 }}>
+                <BodyText sx={{ color: colors.palette.black, opacity: 0.9, lineHeight: 1.6, fontSize: '1.2rem', py: 4 }}>
                   {faq.a}
                 </BodyText>
               </ExpandableSection>
@@ -671,82 +830,53 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       <Box
         sx={{
           background: colors.palette.black,
-          py: COMPONENT_SPACING.layout.section,
-          textAlign: 'center',
-          borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`,
+          py: 30,
+          textAlign: 'left',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
-        <Container maxWidth="md">
-          <Stack spacing={6} alignItems="center">
-            <Giant sx={{ color: colors.palette.white }}>¿Listo para Ejecutar a Velocidad?</Giant>
+        <Container maxWidth="xl">
+          <Stack spacing={10} alignItems="flex-start">
+            <Giant sx={{ 
+              color: colors.palette.white,
+              fontSize: { xs: '3.5rem', md: '10rem' },
+              lineHeight: 0.8,
+              fontWeight: 400,
+              letterSpacing: '-0.05em'
+            }}>
+              ¿Listo para <br/>
+              ejecutar a <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>velocidad</Box>?
+            </Giant>
 
-            <BodyText sx={{ color: colors.palette.white, fontWeight: 400, ...TEXT_VARIANTS.body.large, maxWidth: '700px' }}>
+            <BodyText sx={{ color: colors.palette.white, fontWeight: 400, fontSize: '2rem', opacity: 0.9, maxWidth: '800px' }}>
               Cuesta menos que un freelancer. Trabaja 24/7.
             </BodyText>
 
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} sx={{ mt: 4 }}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} sx={{ pt: 4 }}>
               <Button
                 variant="primary"
                 size="large"
                 href="https://calendly.com/mgarciap333/ai4u"
                 target="_blank"
                 sx={{
-                  px: 8,
-                  height: 10,
-                  fontSize: TEXT_VARIANTS.body.large.fontSize,
+                  px: 10,
+                  py: 4,
+                  height: 'auto',
+                  fontSize: '1.8rem',
                   fontWeight: 400,
                   bgcolor: colors.palette.accentColors.orange,
-                  color: colors.palette.white,
+                  color: colors.palette.black,
+                  borderRadius: 0,
                   '&:hover': {
                     bgcolor: colors.palette.white,
                     color: colors.palette.black,
+                    transform: 'translateY(-10px)'
                   }
                 }}
               >
                 Solicita tu demo gratuita
               </Button>
-              <Button
-                variant="outline"
-                size="large"
-                href="https://calendly.com/mgarciap333/ai4u"
-                target="_blank"
-                sx={{
-                  px: 6,
-                  height: 10,
-                  fontSize: TEXT_VARIANTS.ui.button.fontSize,
-                  fontWeight: 400,
-                  borderColor: colors.palette.gray[700],
-                  color: colors.palette.white,
-                }}
-              >
-                Ver cómo funciona
-              </Button>
-            </Stack>
-
-            <Stack direction="row" spacing={4} sx={{ mt: 4 }}>
-              <Typography 
-                component="a" 
-                href={`https://wa.me/573218175744`} 
-                target="_blank"
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
-              >
-                Whatsapp
-              </Typography>
-              <Typography 
-                component="a" 
-                href="mailto:contacto@ai4u.com.co" 
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
-              >
-                Email
-              </Typography>
-              <Typography 
-                component="a" 
-                href="https://calendly.com/mgarciap333/ai4u" 
-                target="_blank"
-                sx={{ color: colors.palette.gray[500], fontWeight: 400, textDecoration: 'none', ...TEXT_VARIANTS.ui.caption, '&:hover': { color: colors.palette.white } }}
-              >
-                Calendario
-              </Typography>
             </Stack>
           </Stack>
         </Container>
@@ -755,7 +885,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       {/* Footer Branding */}
       <Box sx={{ py: 6, background: colors.palette.black, borderTop: `${SPACING_TOKENS.borderWidth.default}px solid ${colors.palette.gray[900]}`, textAlign: 'center' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ color: colors.palette.white, opacity: 0.5, fontWeight: 400 }}>SuperAI</H2>
+          <H2 sx={{ color: colors.palette.white, opacity: 0.8, fontWeight: 400 }}>SuperAI</H2>
         </Container>
       </Box>
     </SurfaceProvider>

@@ -3,7 +3,7 @@ export const ROUTES = {
   HOME: '/',
   SERVICES: '/servicios',
   WHY_AI4U: '/por-que-ai4u',
-  SUCCESS_CASES: '/casos-de-uso',
+  PORTFOLIO: '/portafolio',
   SUPER_AI: '/super-ai',
   TIENDA_AI: '/tienda-ai',
   DESIGN_SYSTEM: '/design-system',
