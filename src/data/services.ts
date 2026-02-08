@@ -398,12 +398,13 @@ export const services: Service[] = [
   {
     id: 'super-ai',
     title: 'SuperAI',
-    subtitle: 'Capacidad Ejecutiva (AIA)',
-    description: 'IA ejecutiva conectada a tus sistemas.',
+    subtitle: 'Tu Primer Empleado IA (Agent v1.0)',
+    description: 'No es software, es tu primer empleado digital. Un agente autónomo que entrenamos y al que le enseñamos "Skills" para que ejecute tu operación.',
     benefits: [
-      'Ejecución asistida',
-      'Mínima intervención manual',
-      'Optimización de flujos'
+      'Skills base incluidos según plan',
+      'Entrenamiento continuo y evolutivo',
+      'Ejecución en tus sistemas vía Skills',
+      'Skills adicionales a la medida'
     ],
     deliveryTime: 'A medida',
     category: ServiceCategory.AUTOMATION,

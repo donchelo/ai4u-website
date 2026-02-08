@@ -214,6 +214,7 @@
     - **Descripción**: IA con Capacidad Ejecutiva que apoya la toma de decisiones. Conectada a tus sistemas para optimizar flujos complejos.
     - **Beneficio**: Ejecución asistida — la IA apoya, sugiere y reporta.
     - **Tiempo de entrega**: A medida, según la complejidad del proyecto.
+    - **Compromiso**: Contrato mínimo de 6 meses para garantizar optimización y ROI.
 
     #### 3.4.2 Metodología AI-First
     - **Descripción**: Construcción de la infraestructura del negocio sobre IA desde el núcleo (no adaptación).
