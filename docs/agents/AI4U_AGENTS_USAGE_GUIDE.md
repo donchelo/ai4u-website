@@ -284,7 +284,7 @@ PASO 3: Distribución Multicanal
 
 ```markdown
 1. 🤖 RAPID-PROTOTYPER: Arquitectura integral
-   "Sistema Make.com + Claude + DALL-E que mantiene voz marca..."
+   "Sistema Make.com + Claude + nano banana que mantiene voz marca..."
 
 2. 🤖 AI-ENGINEER: Implementación técnica
    "Flujos configurados, GPT entrenado con catálogo existente..."

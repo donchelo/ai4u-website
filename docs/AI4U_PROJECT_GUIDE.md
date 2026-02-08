@@ -93,7 +93,7 @@ Esta es la versión pública de la guía completa para el desarrollo del proyect
 
 ### **TRUE (Marca de Moda):**
 - **Problema**: 6h diarias creando contenido producto
-- **Solución**: SuperAI Make.com + Claude + DALL-E
+- **Solución**: SuperAI Make.com + Claude + nano banana
 - **Resultado**: Gran cantidad de tiempo liberado para estrategia
 - **Stack**: Make.com + OpenAI + Airtable + e-commerce integration
 - **Implementación**: Ágil

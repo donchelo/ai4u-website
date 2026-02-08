@@ -250,7 +250,7 @@
     ### 4.3 Caso de Éxito: TRUE (Fashion)
 
     - **Problema**: 6 horas diarias dedicadas a crear contenido de producto.
-    - **Solución**: SuperAI con Make.com + Claude + DALL-E para generación automática de contenido.
+    - **Solución**: SuperAI con Make.com + Claude + nano banana para generación automática de contenido.
     - **Resultado**: Gran cantidad de tiempo liberado para dedicarse a estrategia.
     - **Stack tecnológico**: Make.com + OpenAI + Airtable + integración e-commerce.
     - **Implementación**: Ágil.

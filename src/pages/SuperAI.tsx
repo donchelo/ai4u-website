@@ -145,7 +145,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
     {
       category: 'Creatividad',
       icon: Palette,
-      skills: ['Image Gen (DALL-E)', 'YouTube Transcript', 'Video Compress', 'Podcast Summarizer', 'Text to Speech']
+      skills: ['Image Gen (nano banana)', 'YouTube Transcript', 'Video Compress', 'Podcast Summarizer', 'Text to Speech']
     },
     {
       category: 'Comunicación',
