@@ -17,7 +17,7 @@ import {
 import { 
   CheckCircleOutline as CheckIcon,
   WarningAmber as ProblemIcon,
-  AutoAwesome as MagnusIcon,
+  AutoAwesome as SuperAIIcon,
   EditNote as CopyIcon,
   Groups as CoordinationIcon,
   AttachMoney as InversionIcon,
@@ -108,7 +108,7 @@ const PropuestaElBarril: React.FC = () => {
               textTransform: 'none'
             }}
           >
-            El Barril ya tiene el mejor producto.
+            Asadores El Barril ya tiene el mejor producto.
             <br />
             <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.orange }}>Ahora necesita la mejor operación.</Box>
           </Typography>
@@ -134,7 +134,7 @@ const PropuestaElBarril: React.FC = () => {
           
           <Paper elevation={0} sx={{ p: 4, bgcolor: AI4U_PALETTE.gray[50], borderRadius: 4, mb: 4, borderLeft: `4px solid ${AI4U_PALETTE.accentColors.orange}`, border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
             <Typography sx={{ fontSize: '1.15rem', color: AI4U_PALETTE.black, lineHeight: 1.7, fontWeight: 600 }}>
-              Hoy, El Barril tiene un producto de clase mundial, pero una operación fragmentada. El Jefe de Mercadeo actúa como una "isla tecnológica" intentando coordinar áreas que no hablan el mismo idioma.
+              Hoy, Asadores El Barril tiene un producto de clase mundial, pero una operación fragmentada. El Jefe de Mercadeo actúa como una "isla tecnológica" intentando coordinar áreas que no hablan el mismo idioma.
             </Typography>
           </Paper>
 
@@ -148,7 +148,7 @@ const PropuestaElBarril: React.FC = () => {
                   Problema 01: El "Copy" sin alma
                 </Typography>
                 <Typography variant="body1" sx={{ color: AI4U_PALETTE.black, lineHeight: 1.6, fontWeight: 500 }}>
-                  La desconfianza en la IA nace de resultados genéricos. El Barril no necesita IA que invente, necesita un asistente que <Box component="span" sx={{ fontWeight: 900 }}>entienda su esencia y organice su potencial</Box>.
+                  La desconfianza en la IA nace de resultados genéricos. Asadores El Barril no necesita IA que invente, necesita un asistente que <Box component="span" sx={{ fontWeight: 900 }}>entienda su esencia y organice su potencial</Box>.
                 </Typography>
               </Box>
             </Grid>
@@ -172,29 +172,29 @@ const PropuestaElBarril: React.FC = () => {
             <Stack direction="row" spacing={2} alignItems="center">
               <TimeIcon sx={{ color: AI4U_PALETTE.accentColors.orange, fontSize: 28 }} />
               <Typography sx={{ color: AI4U_PALETTE.black, fontSize: '1rem', fontWeight: 600, lineHeight: 1.5 }}>
-                Estimamos que la coordinación manual, los reprocesos de contenido y la falta de visibilidad le cuestan a El Barril entre <Box component="span" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>$3,000 y $5,000 USD al mes</Box> en tiempo perdido, oportunidades no capturadas y sobrecarga del equipo.
+                Estimamos que la coordinación manual, los reprocesos de contenido y la falta de visibilidad le cuestan a Asadores El Barril entre <Box component="span" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>$3,000 y $5,000 USD al mes</Box> en tiempo perdido, oportunidades no capturadas y sobrecarga del equipo.
               </Typography>
             </Stack>
           </Box>
         </Box>
 
         {/* ═══════════════════════════════════════════ */}
-        {/* 2. LA VISIÓN: EL BARRIL EN 90 DÍAS          */}
+        {/* 2. LA VISIÓN: Asadores El Barril EN 90 DÍAS          */}
         {/* ═══════════════════════════════════════════ */}
         <Box sx={{ mb: 12 }}>
           <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 4 }}>
             <Box sx={{ p: 1, borderRadius: 1, bgcolor: AI4U_PALETTE.accentColors.green, color: AI4U_PALETTE.black, display: 'flex' }}>
               <GrowthIcon fontSize="small" />
             </Box>
-            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>2. Imagina El Barril en 90 días</Typography>
+            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>2. Imagina Asadores El Barril en 90 días</Typography>
           </Stack>
 
           <Grid container spacing={3}>
             {[
               { icon: <BrainIcon />, title: 'Guiones coordinados sin reuniones extras', desc: 'Cada persona de tu equipo sabe exactamente qué entregar, cuándo y en qué formato. Sin perseguir a nadie.' },
-              { icon: <ListeningIcon />, title: 'Sabes qué dice tu cliente (y tu competencia)', desc: 'Recibes reportes accionables sobre lo que funciona en redes, lo que se comenta de El Barril y las oportunidades que tu competencia está dejando pasar.' },
-              { icon: <SkillIcon />, title: 'Contenido listo para cada red, cada semana', desc: 'Instagram, WhatsApp, Email — Magnus adapta tu mensaje al formato correcto. Tu equipo solo valida y publica.' },
-              { icon: <SpeedIcon />, title: 'Un equipo que opera como reloj', desc: 'La operación de mercadeo deja de depender de una sola persona. Magnus es el hilo conductor que conecta todas las áreas.' }
+              { icon: <ListeningIcon />, title: 'Sabes qué dice tu cliente (y tu competencia)', desc: 'Recibes reportes accionables sobre lo que funciona en redes, lo que se comenta de Asadores El Barril y las oportunidades que tu competencia está dejando pasar.' },
+              { icon: <SkillIcon />, title: 'Contenido listo para cada red, cada semana', desc: 'Instagram, WhatsApp, Email — super AI adapta tu mensaje al formato correcto. Tu equipo solo valida y publica.' },
+              { icon: <SpeedIcon />, title: 'Un equipo que opera como reloj', desc: 'La operación de mercadeo deja de depender de una sola persona. super AI es el hilo conductor que conecta todas las áreas.' }
             ].map((item, i) => (
               <Grid item xs={12} sm={6} key={i}>
                 <Box sx={{ p: 3, height: '100%', borderRadius: 4, bgcolor: AI4U_PALETTE.gray[50], border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
@@ -220,9 +220,9 @@ const PropuestaElBarril: React.FC = () => {
           boxShadow: `0 30px 60px ${alpha(AI4U_PALETTE.black, 0.4)}`
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-            <MagnusIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 40 }} />
+            <SuperAIIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 40 }} />
             <Typography variant="h3" sx={{ fontWeight: 900, letterSpacing: -1, color: AI4U_PALETTE.white }}>
-              3. Cómo lo logramos: Magnus
+              3. Cómo lo logramos: super AI
             </Typography>
           </Box>
           <Typography variant="h6" sx={{ mb: 5, color: AI4U_PALETTE.accentColors.green, fontWeight: 700 }}>
@@ -230,7 +230,7 @@ const PropuestaElBarril: React.FC = () => {
           </Typography>
           
           <Typography sx={{ mb: 6, fontSize: '1.25rem', color: AI4U_PALETTE.white, lineHeight: 1.7, maxWidth: '800px', fontWeight: 400 }}>
-            Magnus es la primera empleada IA de El Barril. Arranca con los skills que identificamos juntos en la reunión inicial, pero su arquitectura permite <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>enseñarle habilidades ilimitadas</Box> y crear <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>agentes infinitos</Box> a medida que la operación crezca. Hoy es una. Mañana puede ser un equipo entero de IA.
+            super AI es la primera empleada IA de Asadores El Barril. Arranca con los skills que identificamos juntos en la reunión inicial, pero su arquitectura permite <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>enseñarle habilidades ilimitadas</Box> y crear <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>agentes infinitos</Box> a medida que la operación crezca. Hoy es una. Mañana puede ser un equipo entero de IA.
           </Typography>
 
           {/* Skills Iniciales */}
@@ -240,9 +240,9 @@ const PropuestaElBarril: React.FC = () => {
 
           <Grid container spacing={4} sx={{ mb: 6 }}>
             {[
-              { num: '01', icon: <BrainIcon sx={{ fontSize: 22 }} />, title: 'Orquestador de Guiones', desc: 'Coordina al equipo creativo. Define encargados, copys y obligaciones por rol. Cada pieza del guion se ejecuta bajo el estándar de El Barril.' },
+              { num: '01', icon: <BrainIcon sx={{ fontSize: 22 }} />, title: 'Orquestador de Guiones', desc: 'Coordina al equipo creativo. Define encargados, copys y obligaciones por rol. Cada pieza del guion se ejecuta bajo el estándar de Asadores El Barril.' },
               { num: '02', icon: <ListeningIcon sx={{ fontSize: 22 }} />, title: 'Social Listening', desc: 'Monitorea qué dicen tus clientes y qué hace la competencia. Convierte el ruido digital en decisiones estratégicas concretas.' },
-              { num: '03', icon: <SkillIcon sx={{ fontSize: 22 }} />, title: 'Generación de Contenido', desc: 'Crea y adapta el mensaje de El Barril para cada red y formato: Reels, WhatsApp, Email Marketing, TikTok y más.' }
+              { num: '03', icon: <SkillIcon sx={{ fontSize: 22 }} />, title: 'Generación de Contenido', desc: 'Crea y adapta el mensaje de Asadores El Barril para cada red y formato: Reels, WhatsApp, Email Marketing, TikTok y más.' }
             ].map((skill) => (
               <Grid item xs={12} md={4} key={skill.num}>
                 <Box sx={{ p: 3, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.white, 0.06), border: `1px solid ${alpha(AI4U_PALETTE.white, 0.12)}`, height: '100%' }}>
@@ -264,7 +264,7 @@ const PropuestaElBarril: React.FC = () => {
               <Box>
                 <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, mb: 1 }}>¿Y después de estos 3 skills?</Typography>
                 <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7 }}>
-                  Le enseñas los que necesites: atención al cliente, gestión de proveedores, análisis financiero, entrenamiento de personal — lo que sea. Además, puedes crear nuevos agentes especializados por área (Ventas, Logística, RRHH) que comparten el conocimiento central de El Barril. <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>Este es el futuro de cómo operan las empresas.</Box>
+                  Le enseñas los que necesites: atención al cliente, gestión de proveedores, análisis financiero, entrenamiento de personal — lo que sea. Además, puedes crear nuevos agentes especializados por área (Ventas, Logística, RRHH) que comparten el conocimiento central de Asadores El Barril. <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>Este es el futuro de cómo operan las empresas.</Box>
                 </Typography>
               </Box>
             </Stack>
@@ -293,9 +293,9 @@ const PropuestaElBarril: React.FC = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Box sx={{ p: 3, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.08), border: `2px solid ${AI4U_PALETTE.accentColors.green}`, height: '100%' }}>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800, display: 'block', mb: 1 }}>Magnus: tu SuperAI que no renuncia</Typography>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800, display: 'block', mb: 1 }}>super AI: tu SuperAI que no renuncia</Typography>
                 <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$200 USD/mes</Typography>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 600 }}>Disponible 24/7, skills ilimitados, agentes infinitos y es propiedad de El Barril.</Typography>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 600 }}>Disponible 24/7, skills ilimitados, agentes infinitos y es propiedad de Asadores El Barril.</Typography>
               </Box>
             </Grid>
           </Grid>
@@ -327,7 +327,7 @@ const PropuestaElBarril: React.FC = () => {
                 letterSpacing: 1
               }}
             >
-              SuperAI para El Barril
+              SuperAI para Asadores El Barril
             </Box>
             
             <Grid container spacing={4} sx={{ pt: 2 }}>
@@ -346,7 +346,7 @@ const PropuestaElBarril: React.FC = () => {
 
                 <Box sx={{ p: 2, borderRadius: 2, bgcolor: AI4U_PALETTE.gray[50], border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
                   <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 600, lineHeight: 1.5 }}>
-                    La mensualidad garantiza que Magnus siga aprendiendo nuevos skills, se mantenga conectada a tus sistemas y reciba mejoras continuas.
+                    La mensualidad garantiza que super AI siga aprendiendo nuevos skills, se mantenga conectada a tus sistemas y reciba mejoras continuas.
                   </Typography>
                 </Box>
               </Grid>
@@ -362,7 +362,7 @@ const PropuestaElBarril: React.FC = () => {
                     { text: 'Integración con WhatsApp, Email y CRM', highlight: false },
                     { text: 'Reunión estratégica de optimización mensual', highlight: false },
                     { text: 'Soporte técnico preferencial vía WhatsApp', highlight: false },
-                    { text: 'Magnus es propiedad 100% de El Barril', highlight: false },
+                    { text: 'super AI es propiedad 100% de Asadores El Barril', highlight: false },
                   ].map((item) => (
                     <Grid item xs={12} key={item.text}>
                       <ListItem disableGutters sx={{ py: 0.6 }}>
@@ -408,7 +408,7 @@ const PropuestaElBarril: React.FC = () => {
             <Typography variant="subtitle2" sx={{ mb: 3, fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>Importante saber</Typography>
             <Grid container spacing={3}>
               {[
-                { label: 'Tu IA es tuya', desc: 'Al terminar, Magnus no se apaga. Todo lo construido es propiedad permanente de El Barril.' },
+                { label: 'Tu IA es tuya', desc: 'Al terminar, super AI no se apaga. Todo lo construido es propiedad permanente de Asadores El Barril.' },
                 { label: 'Consumo por uso', desc: 'Los modelos de IA (OpenAI, etc.) se facturan según volumen de uso real. Sin sorpresas.' },
                 { label: 'Hardware dedicado', desc: 'SuperAI opera en una estación dedicada que garantiza disponibilidad 24/7 y soberanía total de tus datos.' },
                 { label: 'Crece sin techo', desc: 'Nuevos skills desde $100 USD. Nuevos agentes por área cuando los necesites. Sin límite.' }
@@ -442,7 +442,7 @@ const PropuestaElBarril: React.FC = () => {
               <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.green }}>Nuestro compromiso</Typography>
             </Stack>
             <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontWeight: 500 }}>
-              Si en los primeros 30 días Magnus no demuestra un impacto tangible en la operación de El Barril, ajustamos el enfoque sin costo adicional hasta que lo haga. No estamos vendiendo un producto — estamos construyendo un resultado.
+              Si en los primeros 30 días super AI no demuestra un impacto tangible en la operación de Asadores El Barril, ajustamos el enfoque sin costo adicional hasta que lo haga. No estamos vendiendo un producto — estamos construyendo un resultado.
             </Typography>
           </Box>
 
@@ -453,7 +453,7 @@ const PropuestaElBarril: React.FC = () => {
           
           <Grid container spacing={2} justifyContent="center" sx={{ mb: 6, maxWidth: 700, mx: 'auto' }}>
             {[
-              'Voz de marca y estilo de El Barril',
+              'Voz de marca y estilo de Asadores El Barril',
               'Acceso a herramientas actuales',
               'Plan de contenidos del mes',
               'Roles del equipo creativo'

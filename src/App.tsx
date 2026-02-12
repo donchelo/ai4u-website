@@ -86,7 +86,7 @@ function App() {
                       element={<PitchBancolombia />}
                     />
 
-                    {/* Propuesta El Barril Route */}
+                    {/* Propuesta Asadores El Barril Route */}
                     <Route
                       path={ROUTES.PROPUESTA_EL_BARRIL}
                       element={<PropuestaElBarril />}
