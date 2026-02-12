@@ -15,6 +15,7 @@ import SuperAI from './pages/SuperAI';
 import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
 import PitchBancolombia from './pages/PitchBancolombia';
+import PropuestaElBarril from './pages/PropuestaElBarril';
 
 function App() {
   return (
@@ -83,6 +84,12 @@ function App() {
                     <Route
                       path={ROUTES.PITCH_BANCOLOMBIA}
                       element={<PitchBancolombia />}
+                    />
+
+                    {/* Propuesta El Barril Route */}
+                    <Route
+                      path={ROUTES.PROPUESTA_EL_BARRIL}
+                      element={<PropuestaElBarril />}
                     />
 
                     {/* Fallback Route - Siempre al final */}

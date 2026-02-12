@@ -9,6 +9,14 @@ export interface FeaturedProject {
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    id: 'ai4u',
+    title: 'AI4U',
+    description: 'Ecosistema de IA humanística que transforma recursos operativos en ventaja estratégica.',
+    image: '/assets/images/cases/screenshots/ai4u.png',
+    link: 'https://www.ai4u.com.co',
+    category: 'IA & Automatización'
+  },
+  {
     id: 'la-magdalena',
     title: 'La Magdalena',
     description: 'Storytelling de impacto social y ambiental.',

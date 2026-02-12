@@ -8,7 +8,8 @@ export const ROUTES = {
   TIENDA_AI: '/tienda-ai',
   DESIGN_SYSTEM: '/design-system',
   PITCH: '/pitch',
-  PITCH_BANCOLOMBIA: '/pitch-bancolombia'
+  PITCH_BANCOLOMBIA: '/pitch-bancolombia',
+  PROPUESTA_EL_BARRIL: '/propuesta-el-barril'
 } as const;
 
 // Configuración de la aplicación

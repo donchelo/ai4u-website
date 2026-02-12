@@ -27,7 +27,13 @@ import {
   BusinessCenter,
   Chat,
   HealthAndSafety,
-  Build
+  Build,
+  Groups,
+  PrecisionManufacturing,
+  ShowChart,
+  TrendingUp,
+  Biotech,
+  LocalShipping
 } from '@mui/icons-material';
 import Typography, { Giant, H1, H2, H3, H4, BodyText } from '@/components/shared/ui/atoms/Typography';
 import { Button, SEOHead, OptimizedImage } from '@/components/shared/ui/atoms';
@@ -44,203 +50,219 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const colors = useColors();
 
   const problems = [
-    { title: 'El drenaje de los correos', desc: 'Pasas horas respondiendo lo mismo. Lo automatizamos al nivel del cliente.' },
-    { title: 'Sistemas desconectados', desc: 'Tu info vive en 10 pestañas. Tiramos el cable y conectamos todo.' },
-    { title: 'La tiranía de lo repetitivo', desc: 'Tareas que no requieren tu cerebro pero sí tu tiempo.' },
-    { title: 'Pérdida de trazabilidad', desc: 'SuperAI lleva el control absoluto de cada interacción y proceso.' }
+    { title: 'Incapacidad de Escalar', desc: 'Tu operación depende de procesos manuales que no pueden crecer sin contratar más personal.' },
+    { title: 'Silos de Información', desc: 'Datos dispersos en múltiples plataformas que no se comunican entre sí, causando errores.' },
+    { title: 'Costos Operativos Altos', desc: 'Tareas repetitivas consumen el 70% del tiempo de tu equipo senior.' },
+    { title: 'Falta de Trazabilidad', desc: 'Dificultad para auditar decisiones y acciones tomadas en procesos críticos de negocio.' }
   ];
 
   const benefits = [
-    { icon: Bolt, title: 'Agente, no Chatbot', description: 'Tiene "manos" digitales. Ejecuta acciones mientras tú duermes.' },
-    { icon: Autorenew, title: 'Skills Evolutivos', description: 'Le enseñamos nuevas habilidades mes a mes según tu negocio.' },
-    { icon: RocketLaunch, title: 'Integración Total', description: 'Le enseñamos Skills para operar tu Email, CRM, ERP o cualquier sistema.' },
-    { icon: Psychology, title: 'Memoria de Negocio', description: 'Aprende tu lógica, tus clientes y tus preferencias.' },
-    { icon: IntegrationInstructions, title: 'Protocolo a Medida', description: 'Diseñamos la infraestructura privada para tu empresa.' }
+    { icon: Bolt, title: 'Agentes Ejecutores', description: 'No solo responden dudas; tienen autonomía para operar en tus sistemas (Email, CRM, ERP).' },
+    { icon: Autorenew, title: 'Optimización de Procesos', description: 'Diseñamos y refinamos el protocolo operativo de cada área de tu empresa.' },
+    { icon: RocketLaunch, title: 'Integración vía Skills', description: 'Conectamos tu infraestructura actual con capacidades avanzadas de IA sin cambiar tu software.' },
+    { icon: Psychology, title: 'Gobernanza de Datos', description: 'Toda la ejecución ocurre bajo protocolos de seguridad privados y auditables.' },
+    { icon: IntegrationInstructions, title: 'Arquitectura a Medida', description: 'Construimos la infraestructura de IA específica para los KPIs de tu negocio.' }
   ];
 
   const results = [
-    'Operación 24/7 sin fatiga',
-    'Avances claros mes a mes',
-    'Sistemas 100% integrados',
-    'Control total vía WhatsApp/Slack'
+    'Reducción del 40% en carga operativa',
+    'Disponibilidad de ejecución 24/7',
+    'Integración total de sistemas core',
+    'Reportabilidad estratégica en tiempo real'
   ];
 
   const steps = [
     {
       num: '01',
-      title: 'Auditoría e Instalación',
-      subtitle: 'Semana 1',
-      description: 'Definimos el protocolo y conectamos SuperAI a tus sistemas.'
+      title: 'Diagnóstico & Viabilidad',
+      subtitle: 'Sesión Inicial',
+      description: 'Analizamos tus procesos actuales y definimos el potencial de retorno de inversión (ROI).'
     },
     {
       num: '02',
-      title: 'Entrenamiento de Skills',
-      subtitle: 'Semana 2-3',
-      description: 'Le enseñamos las habilidades críticas para tu flujo de trabajo.'
+      title: 'Implementación de Protocolo',
+      subtitle: 'Semanas 1-4',
+      description: 'Configuramos la infraestructura y entrenamos los primeros agentes ejecutores.'
     },
     {
       num: '03',
-      title: 'Optimización Mensual',
+      title: 'Escalamiento de Skills',
       subtitle: 'Recurrente',
-      description: '1 reunión al mes para auditar, ajustar y agregar nuevos skills.'
+      description: 'Auditoría mensual y despliegue de nuevas habilidades según el crecimiento del negocio.'
     }
   ];
 
   const useCases = [
     {
-      category: 'Skill: Comunicación',
+      category: 'Área: Ventas & CRM',
       items: [
-        'Chatea con tu empresa (WhatsApp)',
-        'Respuesta automática a clientes',
-        'Triaje inteligente de correos'
+        'Cualificación autónoma de leads',
+        'Sincronización de datos entre sistemas',
+        'Seguimiento proactivo de propuestas'
       ]
     },
     {
-      category: 'Skill: Operaciones',
+      category: 'Área: Operaciones',
       items: [
-        'Cualificación de leads 24/7',
-        'Generación de reportes PDF',
-        'Sincronización entre CRM/ERP'
+        'Automatización de logística y despacho',
+        'Monitoreo de inventarios inteligente',
+        'Gestión de proveedores automatizada'
       ]
     },
     {
-      category: 'Skill: Administrativo',
+      category: 'Área: Finanzas',
       items: [
-        'Gestión proactiva de agenda',
-        'Búsqueda de archivos y datos',
-        'Automatización de facturación'
+        'Conciliación bancaria automática',
+        'Gestión de facturación y cobros',
+        'Reportes de flujo de caja en tiempo real'
       ]
     },
     {
-      category: 'Skill: A medida',
+      category: 'Área: RRHH',
       items: [
-        'Desarrollamos el skill que necesites',
-        'Protocolo de seguridad privado',
-        'Entrenamiento en tu lógica única'
+        'Filtrado inteligente de candidatos',
+        'Onboarding asistido por agentes',
+        'Gestión de consultas internas 24/7'
       ]
     }
   ];
 
   const skillsLibrary = [
     {
-      category: 'Productividad',
-      icon: Psychology,
-      skills: ['Google Workspace', 'Notion Integration', 'Todoist', 'Morning Briefing', 'Email Triage', 'Meeting Prep']
+      category: 'Recursos Humanos',
+      icon: Groups,
+      skills: ['Filtro de CVs', 'Programación de Entrevistas', 'Onboarding Digital', 'Análisis de Clima', 'Gestión de Permisos', 'Payroll Assistant']
     },
     {
-      category: 'Desarrollo & DevOps',
-      icon: Code,
-      skills: ['GitHub Integration', 'Docker Manage', 'AWS CLI', 'Code Review', 'Log Analyzer', 'CI/CD Monitor']
+      category: 'Producción',
+      icon: PrecisionManufacturing,
+      skills: ['Control de Inventario', 'Predictivo de Mantenimiento', 'Gestión de Órdenes', 'Optimización de Rutas', 'Control de Calidad', 'IoT Monitor']
     },
     {
-      category: 'Navegación & Web',
-      icon: Public,
-      skills: ['Web Scraper', 'Google Search', 'Flight Checkin', 'Price Monitor', 'Competitor Watch', 'Form Filler']
+      category: 'Ventas',
+      icon: TrendingUp,
+      skills: ['Cualificación de Leads', 'Booking Automático', 'Update de CRM', 'Análisis de Pipeline', 'Personalización Outbound', 'Competitor Analysis']
     },
     {
-      category: 'Datos & Negocios',
+      category: 'Mercadeo',
+      icon: ShowChart,
+      skills: ['Gestión de Ads', 'Social Media Triage', 'Email Marketing Flow', 'Content Personalization', 'ROI Tracker', 'Market Research']
+    },
+    {
+      category: 'Finanzas',
       icon: BusinessCenter,
-      skills: ['Crypto Price', 'HubSpot CRM', 'Salesforce Query', 'Stripe Stats', 'Company Research', 'Receipt OCR']
+      skills: ['Conciliación Bancaria', 'OCR de Facturas', 'Control de Gastos', 'Cashflow Forecast', 'Tax Compliance Prep', 'Audit Log Assist']
     },
     {
-      category: 'Creatividad',
-      icon: Palette,
-      skills: ['Image Gen (nano banana)', 'YouTube Transcript', 'Video Compress', 'Podcast Summarizer', 'Text to Speech']
-    },
-    {
-      category: 'Comunicación',
-      icon: Chat,
-      skills: ['Slack Bot', 'Discord Bot', 'LinkedIn Post', 'WhatsApp Msg', 'Meeting Scheduler', 'Contact Sync']
+      category: 'I+D & Delivery',
+      icon: Biotech,
+      skills: ['Búsqueda de Patentes', 'Resumen de Papers', 'Tracking de Envíos', 'Optimización Logística', 'Feedback Analysis', 'Fleet Management']
     }
   ];
 
   const marqueeSkills = [
-    'google-workspace', 'notion-integration', 'todoist', 'apple-notes', 'obsidian-vault',
-    'trello-boards', 'asana-tasks', 'morning-briefing', 'email-triage', 'github-integration',
-    'docker-manage', 'k8s-kubectl', 'aws-cli', 'vercel-deploy', 'code-review',
-    'agent-browser', 'web-scraper', 'google-search', 'price-monitor', 'philips-hue',
-    'home-assistant', 'sonos-control', 'robot-vacuum', 'tesla-control', 'image-gen-dalle',
-    'youtube-transcript', 'spotify-control', 'crypto-price', 'hubspot-crm', 'salesforce-query',
-    'stripe-stats', 'slack-bot', 'discord-bot', 'whatsapp-msg', 'gmail-draft',
-    'oura-ring', 'fitbit-stats', 'apple-health', 'system-stats', 'file-organizer', 'qr-generator'
+    'salesforce-sync', 'hubspot-automation', 'sap-integration', 'oracle-data-flow', 'microsoft-365-exec',
+    'logistics-tracking', 'inventory-ai', 'hr-screening', 'payroll-automation', 'financial-reconciliation',
+    'compliance-check', 'leads-qualification', 'whatsapp-crm', 'slack-ops', 'bi-reporting',
+    'customer-success-bot', 'ticket-triage', 'legal-review', 'market-analysis', 'competitor-watch',
+    'fleet-optimization', 'warehouse-ai', 'order-processing', 'invoicing-automation', 'tax-prep'
   ];
 
   const comparison = [
-    { feature: 'Espera a que le hables', chatbot: true, copilot: true, superai: false },
-    { feature: 'Tiene "manos" (ejecuta)', chatbot: false, copilot: 'parcial', superai: true },
-    { feature: 'Conectado a tus sistemas', chatbot: false, copilot: 'parcial', superai: true },
-    { feature: 'Aprende Skills nuevos', chatbot: false, copilot: false, superai: true },
-    { feature: 'Mantenimiento y auditoría', chatbot: false, copilot: false, superai: true },
-    { feature: '1 Reunión estratégica al mes', chatbot: false, copilot: false, superai: true },
+    { feature: 'Autonomía de Ejecución', chatbot: false, copilot: 'limitada', superai: true },
+    { feature: 'Conectividad Multi-Sistema', chatbot: false, copilot: 'parcial', superai: true },
+    { feature: 'Aprende Procesos Únicos', chatbot: false, copilot: false, superai: true },
+    { feature: 'Gobernanza y Auditoría', chatbot: false, copilot: false, superai: true },
+    { feature: 'Mantenimiento Proactivo', chatbot: false, copilot: false, superai: true },
+    { feature: 'Consultoría Estratégica Mensual', chatbot: false, copilot: false, superai: true },
   ];
 
   const pricing = [
     {
-      name: 'Agent v1.0',
-      implementation: '$1,000',
-      price: '$100',
-      period: 'USD/mes',
-      features: [
-        '5 Skills base incluidos',
-        '1 Reunión mensual de control',
-        'Mantenimiento y actualizaciones',
-        'Skills adicionales con costo extra',
-        'Contrato mínimo 6 meses'
-      ],
-      for: 'Hasta 10 empleados'
-    },
-    {
-      name: 'Business Agent',
-      implementation: '$2,000',
-      price: '$200',
-      period: 'USD/mes',
-      features: [
-        '10 Skills base incluidos',
-        '1 Reunión mensual estratégica',
-        'Skills avanzados de ejecución',
-        'Soporte prioritario',
-        'Contrato mínimo 6 meses'
-      ],
-    for: 'Hasta 20 empleados',
-      highlight: true
-    },
-    {
-      name: 'Custom Enterprise',
+      name: 'Discovery',
       implementation: null,
-      price: 'A medida',
+      price: 'Gratis',
       period: '',
       features: [
-        'Arquitectura de Agentes privada',
-        'Skills complejos a medida',
-        'Infraestructura on-premise',
-        'Soporte 24/7 dedicado',
-        'Contrato mínimo 6 meses'
+        'Llamada diagnóstica de 30 min',
+        'Roadmap de arquitectura IA personalizado',
+        'Proyección de ahorro y ROI',
+        'Mapa de integración con tus sistemas',
+        'Plan de implementación detallado'
       ],
-      for: 'Más de 20 empleados',
+      for: 'Para empresas explorando IA',
+      buttonText: 'Agendar diagnóstico'
+    },
+    {
+      name: 'Starter',
+      implementation: '$1,000',
+      price: '$100',
+      period: 'usd/mes',
+      includes: 'Incluye:',
+      features: [
+        'Suite completo: email, drive, tasks, dashboard',
+        '8 agentes + 8 skills pre-construidos',
+        'Sesión de onboarding 1-a-1',
+        '1 reunión mensual de seguimiento (45 min)',
+        'Capacitación para entrenar tu propio asistente',
+        'Soporte WhatsApp en horario de oficina',
+        'Tu asistente sigue operando al terminar el contrato'
+      ],
+      for: 'Emprendedores y equipos de 1-10 personas',
+      buttonText: 'Empezar ahora'
+    },
+    {
+      name: 'Business',
+      implementation: '$2,000',
+      price: '$200',
+      period: 'usd/mes',
+      includes: 'Todo lo de Starter, más:',
+      features: [
+        '3 skills adicionales configurados a medida',
+        'Reunión mensual con enfoque estratégico',
+        'Capacitación para que todo tu equipo entrene el asistente'
+      ],
+      for: 'Empresas en crecimiento de 10-50 personas',
+      highlight: true,
+      buttonText: 'Empezar ahora'
+    },
+    {
+      name: 'Enterprise',
+      implementation: '$3,000',
+      price: '$300',
+      period: 'usd/mes',
+      includes: 'Todo lo de Business, más:',
+      features: [
+        '2 skills adicionales a medida (5 total)',
+        '2 reuniones mensuales estratégicas (45 min c/u)',
+        'Workshop virtual trimestral de educación IA',
+        'Consultoría estratégica: agentes con visión de negocio'
+      ],
+      for: 'Empresas de 50+ personas',
       buttonText: 'Consultar viabilidad'
     }
   ];
 
   const faqs = [
     {
-      q: '¿Qué es un Agente y en qué se diferencia de un software?',
-      a: 'Un Agente no es solo una herramienta, es tu primer empleado digital. Tiene "manos" para ejecutar tareas, aprende de tu negocio y evoluciona con cada nuevo Skill que le enseñamos.'
+      q: '¿Qué es SuperAI y cómo impacta mi negocio?',
+      a: 'SuperAI es un protocolo de ejecución autónoma. A diferencia de un chatbot, este sistema realiza acciones concretas en tus herramientas (Vender, Conciliar, Filtrar, Reportar) sin intervención humana constante.'
     },
     {
-      q: '¿Cómo funcionan los Skills?',
-      a: 'Los Skills son habilidades modulares y conexiones a tus sistemas. Cada plan incluye un set de Skills base (como responder WhatsApp o filtrar correos). Si necesitas algo muy específico, desarrollamos Skills adicionales.'
+      q: '¿Cómo garantizan la seguridad de mis datos?',
+      a: 'Implementamos infraestructuras privadas. Tu información nunca se usa para entrenar modelos públicos y toda la ejecución es auditable mediante logs de seguridad corporativos.'
     },
     {
-      q: '¿A qué sistemas se puede conectar?',
-      a: 'Nos podemos conectar a cualquier sistema que permita interacción vía Skills: Email, WhatsApp, CRM, ERP, Google Drive, o cualquier API propietaria.'
+      q: '¿Qué tan rápido es el retorno de inversión (ROI)?',
+      a: 'La mayoría de nuestros clientes recuperan la inversión inicial en los primeros 3 meses al reducir drásticamente el tiempo dedicado a tareas administrativas y operativas de bajo valor.'
     },
     {
-      q: '¿Cómo es el proceso de entrenamiento?',
-      a: 'El Agente inicia con una base y lo vamos entrenando mes a mes. En la reunión mensual revisamos su desempeño y ajustamos sus Skills para que cada vez sea más eficiente.'
+      q: '¿Es compatible con mi software actual?',
+      a: 'Sí. Nos conectamos a través de APIs, Webhooks o RPA (automatización de interfaz) a cualquier CRM, ERP o sistema propietario que utilices actualmente.'
     },
     {
-      q: '¿Cuál es el costo de un Skill adicional?',
-      a: 'Depende de la complejidad. Los Skills base cubren la mayoría de necesidades, pero para procesos únicos de tu empresa, cotizamos el desarrollo del Skill según el requerimiento.'
+      q: '¿Qué pasa cuando termina mi contrato?',
+      a: 'Tu asistente sigue trabajando. No se apaga, no se bloquea, no pierde memoria. Todo lo que construimos juntos es tuyo: los agentes, los skills, la configuración. Es tu empleado digital y opera para ti, no para nosotros. El mantenimiento mensual existe para optimizar, no para mantener vivo.'
     }
   ];
 
@@ -312,7 +334,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   textTransform: 'none'
                 }}
               >
-                SuperAI // theExecutionPartner
+                SuperAI // theBusinessProtocol
               </Typography>
             </Box>
 
@@ -332,7 +354,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 }
               }}
             >
-              Tu primer <span>Empleado IA</span>. Un agente que evoluciona contigo
+              Tu primer <span>Protocolo Operativo IA</span>. Ejecución autónoma
             </Giant>
 
             <BodyText
@@ -345,7 +367,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 opacity: 0.9
               }}
             >
-              No es solo software. Es un agente autónomo que entrenamos mes a mes para ejecutar tu operación.
+              Infraestructura de agentes autónomos diseñada para escalar la ejecución de tu negocio sin aumentar la nómina.
             </BodyText>
 
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} sx={{ pt: 6 }}>
@@ -638,7 +660,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           <Stack spacing={8}>
             <Box>
               <Typography sx={{ color: colors.palette.accentColors.orange, ...TEXT_VARIANTS.ui.code, mb: 2 }}>
-                // openclaw skills ecosystem
+                // business skills ecosystem
               </Typography>
               <H1 sx={{ 
                 color: colors.palette.white, 
@@ -648,10 +670,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 letterSpacing: '-0.02em'
               }}>
                 Librería de Skills: <br/>
-                <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>100+ habilidades</Box> listas para instalar
+                <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>Capacidades Corporativas</Box> listas para desplegar
               </H1>
               <BodyText sx={{ color: colors.palette.white, mt: 4, opacity: 0.6, maxWidth: '700px' }}>
-                Basado en el ecosistema OpenClaw. Tu agente no tiene límites: si existe una API o una web, tu agente puede aprender el Skill para operarlo.
+                Tu agente no tiene límites: si existe un proceso documentado o una interfaz digital, tu agente puede aprender el Skill para operarlo con precisión empresarial.
               </BodyText>
             </Box>
 
@@ -804,12 +826,12 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           </Box>
           <Grid container spacing={0} alignItems="stretch">
             {pricing.map((tier, idx) => (
-              <Grid item xs={12} md={4} key={idx}>
+              <Grid item xs={12} sm={6} md={3} key={idx}>
                 <Box
                   sx={{
                     bgcolor: tier.highlight ? 'rgba(255,255,255,0.03)' : 'transparent',
                     border: tier.highlight ? `1px solid ${colors.palette.accentColors.orange}` : `1px solid rgba(255,255,255,0.1)`,
-                    p: 6,
+                    p: { xs: 4, md: 5 },
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -824,34 +846,45 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   }}
                 >
                   {tier.highlight && (
-                    <Box sx={{ position: 'absolute', top: 0, left: 0, bgcolor: colors.palette.accentColors.orange, color: colors.palette.black, px: 2, py: 0.5, fontWeight: 400, fontSize: '0.8rem', ...TEXT_VARIANTS.ui.code }}>
-                      // más popular
+                    <Box sx={{ position: 'absolute', top: 0, left: 0, bgcolor: colors.palette.accentColors.orange, color: colors.palette.black, px: 2, py: 0.5, fontWeight: 400, fontSize: '0.75rem', ...TEXT_VARIANTS.ui.code }}>
+                      // recomendado
                     </Box>
                   )}
-                  <Typography sx={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400, mb: 4, ...TEXT_VARIANTS.ui.code, fontSize: '1rem' }}>
-                    superai {tier.name}
+                  <Typography sx={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400, mb: 3, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                    superai.{tier.name.toLowerCase()}
                   </Typography>
                   {tier.implementation != null && (
-                    <Typography sx={{ color: colors.palette.white, opacity: 0.5, mb: 1, fontSize: '0.9rem' }}>
+                    <Typography sx={{ color: colors.palette.white, opacity: 0.5, mb: 1, fontSize: '0.85rem' }}>
                       implementación: {tier.implementation} usd (una vez)
                     </Typography>
                   )}
                   <Box sx={{ display: 'flex', alignItems: 'baseline', mb: 1 }}>
-                    <Typography sx={{ color: colors.palette.white, fontSize: '4rem', fontWeight: 400, lineHeight: 1 }}>{tier.price}</Typography>
-                    {tier.period && <Typography sx={{ color: 'rgba(255,255,255,0.3)', ml: 1, fontWeight: 400 }}>{tier.period}</Typography>}
+                    <Typography sx={{ color: colors.palette.white, fontSize: { xs: '3rem', md: '3.5rem' }, fontWeight: 400, lineHeight: 1 }}>{tier.price}</Typography>
+                    {tier.period && <Typography sx={{ color: 'rgba(255,255,255,0.3)', ml: 1, fontWeight: 400, fontSize: '0.9rem' }}>{tier.period}</Typography>}
                   </Box>
-                  {tier.price !== 'A medida' && (
-                    <Typography sx={{ color: colors.palette.accentColors.green, fontSize: '0.8rem', mb: 2, ...TEXT_VARIANTS.ui.code }}>
+                  {tier.price !== 'Gratis' && (
+                    <Typography sx={{ color: colors.palette.accentColors.green, fontSize: '0.75rem', mb: 2, ...TEXT_VARIANTS.ui.code }}>
                       // precio de lanzamiento
                     </Typography>
                   )}
-                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 6, fontSize: '1.2rem' }}>{tier.for}</Typography>
+                  <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 4, fontSize: '1rem' }}>{tier.for}</Typography>
                   
-                  <Stack spacing={2} sx={{ mb: 8, flexGrow: 1 }}>
+                  <Stack spacing={1.5} sx={{ mb: 6, flexGrow: 1 }}>
+                    {tier.includes && (
+                      <Typography sx={{ 
+                        color: colors.palette.white, 
+                        opacity: 0.4, 
+                        fontSize: '0.8rem', 
+                        ...TEXT_VARIANTS.ui.code,
+                        mb: 0.5
+                      }}>
+                        {tier.includes.toLowerCase()}
+                      </Typography>
+                    )}
                     {tier.features.map((feat, i) => (
-                      <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                        <Box sx={{ width: 8, height: 8, bgcolor: colors.palette.accentColors.orange, mt: 1 }} />
-                        <BodyText sx={{ color: colors.palette.white, opacity: 0.9, fontSize: '1rem' }}>{feat.toLowerCase()}</BodyText>
+                      <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
+                        <Box sx={{ width: 6, height: 6, bgcolor: colors.palette.accentColors.orange, mt: 1, flexShrink: 0 }} />
+                        <BodyText sx={{ color: colors.palette.white, opacity: 0.9, fontSize: '0.9rem', lineHeight: 1.4 }}>{feat.toLowerCase()}</BodyText>
                       </Box>
                     ))}
                   </Stack>
@@ -863,10 +896,10 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     target="_blank"
                     sx={{ 
                       height: 'auto', 
-                      py: 3,
+                      py: 2.5,
                       fontWeight: 400, 
                       borderRadius: 0,
-                      fontSize: '1.2rem',
+                      fontSize: '1rem',
                       borderColor: tier.highlight ? colors.palette.accentColors.orange : 'rgba(255,255,255,0.3)',
                       bgcolor: tier.highlight ? colors.palette.accentColors.orange : 'transparent',
                       color: tier.highlight ? colors.palette.black : colors.palette.white,
@@ -883,6 +916,28 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               </Grid>
             ))}
           </Grid>
+
+          {/* Add-ons */}
+          <Box sx={{ mt: 6, display: 'flex', justifyContent: 'center', gap: 3, flexWrap: 'wrap' }}>
+            <Box sx={{ 
+              p: 3, 
+              border: `1px dashed ${colors.palette.accentColors.orange}40`,
+              bgcolor: 'rgba(255,102,0,0.03)'
+            }}>
+              <Typography sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '0.95rem' }}>
+                skills adicionales desde <Box component="span" sx={{ color: colors.palette.accentColors.orange, fontWeight: 600 }}>$100 usd</Box> c/u
+              </Typography>
+            </Box>
+            <Box sx={{ 
+              p: 3, 
+              border: `1px dashed ${colors.palette.accentColors.orange}40`,
+              bgcolor: 'rgba(255,102,0,0.03)'
+            }}>
+              <Typography sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '0.95rem' }}>
+                reuniones adicionales <Box component="span" sx={{ color: colors.palette.accentColors.orange, fontWeight: 600 }}>$100 usd</Box> c/u
+              </Typography>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
@@ -908,7 +963,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               // consideraciones de operación
             </H3>
             <Grid container spacing={8}>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={3}>
                 <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
                   // consumo de llm & apis
                 </Typography>
@@ -916,20 +971,28 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   los costos de consumo de modelos (openai, anthropic, etc.) se facturan directamente a tu tarjeta. la inversión depende de la inteligencia y el volumen de ejecución requerido.
                 </BodyText>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={3}>
                 <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
                   // hardware dedicado
                 </Typography>
                 <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.4 }}>
-                  SuperAI requiere una estación de trabajo (PC/servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía. El nivel de privacidad y control depende de hasta dónde quieras llevar tu propia infraestructura.
+                  superai requiere una estación de trabajo (pc/servidor) dedicada para garantizar ejecución continua 24/7 y total soberanía sobre tus datos.
                 </BodyText>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={3}>
                 <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
-                  // compromiso de permanencia
+                  // compromiso mínimo
                 </Typography>
                 <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.4 }}>
-                  el contrato mínimo para superai es de 6 meses. este tiempo garantiza la correcta integración, aprendizaje del agente y el retorno de inversión esperado.
+                  el contrato mínimo es de 6 meses. este tiempo garantiza la correcta integración, aprendizaje del agente y el retorno de inversión esperado.
+                </BodyText>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography sx={{ color: colors.palette.accentColors.orange, fontWeight: 400, mb: 2, ...TEXT_VARIANTS.ui.code, fontSize: '0.9rem' }}>
+                  // tu asistente es tuyo
+                </Typography>
+                <BodyText sx={{ color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.4 }}>
+                  cuando termina tu contrato, tu asistente no se apaga. todo lo que construimos juntos sigue funcionando. es tu empleado digital y trabaja para ti, no para nosotros.
                 </BodyText>
               </Grid>
             </Grid>
@@ -1016,7 +1079,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   }
                 }}
               >
-                Agendar Instalación (15 min)
+                Solicitar Diagnóstico Gratuito
               </Button>
             </Stack>
           </Stack>

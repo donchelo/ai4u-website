@@ -246,6 +246,7 @@
     | **VisualFeast / Gourmet AI** | Solución de diseño y visualización gastronómica para menús y marketing de restaurantes | Gastronomía | gourmet-ai-ten.vercel.app |
     | **RASCAL** | Ecosistema digital para marca de movilidad eléctrica disruptiva con enfoque en libertad y diseño | E-Mobility | rascal-three.vercel.app |
     | **A Paso Firme** | Plataforma de coaching y neurociencia para el desarrollo de confianza y regulación emocional | Bienestar & Educación | ebookapasofirme.com |
+| **AI4U** | Ecosistema de IA humanística que transforma recursos operativos en ventaja estratégica | IA & Automatización | www.ai4u.com.co |
 
     ### 4.3 Caso de Éxito: TRUE (Fashion)
 

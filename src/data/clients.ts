@@ -55,5 +55,12 @@ export const clients: Client[] = [
     website: 'https://www.huanaturals.com',
     logo: '/assets/images/cases/logo-hua-naturals.png',
     sector: 'Reality-Hacking'
+  },
+  {
+    id: 'ai4u',
+    name: 'AI4U',
+    website: 'https://www.ai4u.com.co',
+    logo: '/assets/images/ai4u-logo.png',
+    sector: 'IA & Automatización'
   }
 ];
