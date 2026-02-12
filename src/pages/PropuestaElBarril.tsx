@@ -27,9 +27,11 @@ import {
   SettingsSuggest as BaseSkillsIcon,
   Psychology as BrainIcon,
   Extension as SkillIcon,
-  Handshake as CommitmentIcon,
-  Assignment as DiscoveryIcon,
-  Hearing as ListeningIcon
+  Hearing as ListeningIcon,
+  TrendingUp as GrowthIcon,
+  Shield as ShieldIcon,
+  Speed as SpeedIcon,
+  AccessTime as TimeIcon
 } from '@mui/icons-material';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
@@ -45,7 +47,7 @@ const PropuestaElBarril: React.FC = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Decorative Background Elements - Subtle to not affect readability */}
+      {/* Decorative Background Elements */}
       <Box sx={{ 
         position: 'absolute', 
         top: -100, 
@@ -68,10 +70,22 @@ const PropuestaElBarril: React.FC = () => {
       }} />
 
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
-        {/* Header Section */}
+
+        {/* ═══════════════════════════════════════════ */}
+        {/* HEADER                                      */}
+        {/* ═══════════════════════════════════════════ */}
         <Box sx={{ pt: { xs: 6, md: 10 }, mb: 10 }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="flex-start" sx={{ mb: 6 }}>
-            <Logo variant="desktop" sx={{ height: 40 }} />
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 6 }}>
+            <Stack direction="row" spacing={3} alignItems="center">
+              <Logo variant="desktop" sx={{ height: 40 }} />
+              <Box sx={{ width: 1, height: 30, bgcolor: AI4U_PALETTE.gray[300] }} />
+              <Box 
+                component="img" 
+                src="/assets/images/LOGO chumi.png" 
+                alt="Casa de David Producciones" 
+                sx={{ height: 50, objectFit: 'contain' }} 
+              />
+            </Stack>
             <Box sx={{ textAlign: 'right' }}>
               <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, letterSpacing: 2, display: 'block' }}>
                 Ai4U // Cotización SuperAI
@@ -88,30 +102,34 @@ const PropuestaElBarril: React.FC = () => {
               ...TEXT_VARIANTS.display.medium,
               color: AI4U_PALETTE.black,
               mb: 3,
-              fontSize: { xs: '2.8rem', md: '4rem' },
+              fontSize: { xs: '2.5rem', md: '3.8rem' },
               lineHeight: 1.1,
               fontWeight: 900,
               textTransform: 'none'
             }}
           >
-            El Barril: SuperAI y transformaciónOperativa
+            El Barril ya tiene el mejor producto.
+            <br />
+            <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.orange }}>Ahora necesita la mejor operación.</Box>
           </Typography>
           
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack direction="row" spacing={2} alignItems="center" sx={{ mt: 4 }}>
             <Box sx={{ width: 40, height: 2, bgcolor: AI4U_PALETTE.black }} />
-            <Typography variant="h5" sx={{ color: AI4U_PALETTE.black, fontWeight: 500, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+            <Typography variant="h6" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 500 }}>
               Preparado para: Jefe de Mercadeo — Asadores El Barril
             </Typography>
           </Stack>
         </Box>
 
-        {/* 1. EL DIAGNÓSTICO */}
+        {/* ═══════════════════════════════════════════ */}
+        {/* 1. EL PROBLEMA (DOLOR)                      */}
+        {/* ═══════════════════════════════════════════ */}
         <Box sx={{ mb: 12 }}>
           <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 4 }}>
             <Box sx={{ p: 1, borderRadius: 1, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white, display: 'flex' }}>
               <ProblemIcon fontSize="small" />
             </Box>
-            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>1. El Diagnóstico: El Costo de la Fragmentación</Typography>
+            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>1. Lo que encontramos</Typography>
           </Stack>
           
           <Paper elevation={0} sx={{ p: 4, bgcolor: AI4U_PALETTE.gray[50], borderRadius: 4, mb: 4, borderLeft: `4px solid ${AI4U_PALETTE.accentColors.orange}`, border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
@@ -130,7 +148,7 @@ const PropuestaElBarril: React.FC = () => {
                   Problema 01: El "Copy" sin alma
                 </Typography>
                 <Typography variant="body1" sx={{ color: AI4U_PALETTE.black, lineHeight: 1.6, fontWeight: 500 }}>
-                  La desconfianza en la IA nace de resultados genéricos. El Barril no necesita IA que invente, necesita un asistente que <Box component="span" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>entienda su esencia y organice su potencial</Box>.
+                  La desconfianza en la IA nace de resultados genéricos. El Barril no necesita IA que invente, necesita un asistente que <Box component="span" sx={{ fontWeight: 900 }}>entienda su esencia y organice su potencial</Box>.
                 </Typography>
               </Box>
             </Grid>
@@ -143,14 +161,55 @@ const PropuestaElBarril: React.FC = () => {
                   Problema 02: El Caos de Coordinación
                 </Typography>
                 <Typography variant="body1" sx={{ color: AI4U_PALETTE.black, lineHeight: 1.6, fontWeight: 500 }}>
-                  La falta de accountability entre áreas frena el crecimiento. Las tareas se "pierden" en la comunicación y falta un hilo conductor claro.
+                  La falta de accountability entre áreas frena el crecimiento. Las tareas se "pierden" en la comunicación y no hay un hilo conductor claro.
                 </Typography>
               </Box>
             </Grid>
           </Grid>
+
+          {/* Costo de la inacción — Ancla psicológica */}
+          <Box sx={{ mt: 4, p: 3, borderRadius: 3, bgcolor: alpha(AI4U_PALETTE.accentColors.orange, 0.08), border: `1px dashed ${AI4U_PALETTE.accentColors.orange}` }}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <TimeIcon sx={{ color: AI4U_PALETTE.accentColors.orange, fontSize: 28 }} />
+              <Typography sx={{ color: AI4U_PALETTE.black, fontSize: '1rem', fontWeight: 600, lineHeight: 1.5 }}>
+                Estimamos que la coordinación manual, los reprocesos de contenido y la falta de visibilidad le cuestan a El Barril entre <Box component="span" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>$3,000 y $5,000 USD al mes</Box> en tiempo perdido, oportunidades no capturadas y sobrecarga del equipo.
+              </Typography>
+            </Stack>
+          </Box>
         </Box>
 
-        {/* 2. LA SOLUCIÓN: SUPERAI (DARK BACKGROUND) */}
+        {/* ═══════════════════════════════════════════ */}
+        {/* 2. LA VISIÓN: EL BARRIL EN 90 DÍAS          */}
+        {/* ═══════════════════════════════════════════ */}
+        <Box sx={{ mb: 12 }}>
+          <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 4 }}>
+            <Box sx={{ p: 1, borderRadius: 1, bgcolor: AI4U_PALETTE.accentColors.green, color: AI4U_PALETTE.black, display: 'flex' }}>
+              <GrowthIcon fontSize="small" />
+            </Box>
+            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>2. Imagina El Barril en 90 días</Typography>
+          </Stack>
+
+          <Grid container spacing={3}>
+            {[
+              { icon: <BrainIcon />, title: 'Guiones coordinados sin reuniones extras', desc: 'Cada persona de tu equipo sabe exactamente qué entregar, cuándo y en qué formato. Sin perseguir a nadie.' },
+              { icon: <ListeningIcon />, title: 'Sabes qué dice tu cliente (y tu competencia)', desc: 'Recibes reportes accionables sobre lo que funciona en redes, lo que se comenta de El Barril y las oportunidades que tu competencia está dejando pasar.' },
+              { icon: <SkillIcon />, title: 'Contenido listo para cada red, cada semana', desc: 'Instagram, WhatsApp, Email — Magnus adapta tu mensaje al formato correcto. Tu equipo solo valida y publica.' },
+              { icon: <SpeedIcon />, title: 'Un equipo que opera como reloj', desc: 'La operación de mercadeo deja de depender de una sola persona. Magnus es el hilo conductor que conecta todas las áreas.' }
+            ].map((item, i) => (
+              <Grid item xs={12} sm={6} key={i}>
+                <Box sx={{ p: 3, height: '100%', borderRadius: 4, bgcolor: AI4U_PALETTE.gray[50], border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
+                  <Box sx={{ color: AI4U_PALETTE.accentColors.green, mb: 2 }}>{item.icon}</Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, mb: 1 }}>{item.title}</Typography>
+                  <Typography variant="body2" sx={{ color: AI4U_PALETTE.gray[800], lineHeight: 1.6, fontWeight: 500 }}>{item.desc}</Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* ═══════════════════════════════════════════ */}
+        {/* 3. LA SOLUCIÓN: MAGNUS (DARK)               */}
+        {/* ═══════════════════════════════════════════ */}
         <Box sx={{ 
           mb: 12, 
           p: { xs: 4, md: 8 }, 
@@ -160,255 +219,178 @@ const PropuestaElBarril: React.FC = () => {
           position: 'relative',
           boxShadow: `0 30px 60px ${alpha(AI4U_PALETTE.black, 0.4)}`
         }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
             <MagnusIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 40 }} />
             <Typography variant="h3" sx={{ fontWeight: 900, letterSpacing: -1, color: AI4U_PALETTE.white }}>
-              2. La Solución: Magnus
+              3. Cómo lo logramos: Magnus
             </Typography>
           </Box>
-          <Typography variant="h5" sx={{ mb: 4, color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>
-            (El Futuro de El Barril: Escalabilidad Infinita)
+          <Typography variant="h6" sx={{ mb: 5, color: AI4U_PALETTE.accentColors.green, fontWeight: 700 }}>
+            Tu primera asistente IA — el inicio de una infraestructura que escala sin límites
           </Typography>
           
-          <Typography sx={{ mb: 6, fontSize: '1.4rem', color: AI4U_PALETTE.white, lineHeight: 1.6, maxWidth: '800px', fontWeight: 400 }}>
-            No estamos instalando un software; estamos <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>sembrando el futuro de tu empresa</Box>. Magnus es tu primera asistente IA, pero su arquitectura le permite aprender <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>habilidades ilimitadas</Box> y clonarse en agentes infinitos según tu operación crezca.
+          <Typography sx={{ mb: 6, fontSize: '1.25rem', color: AI4U_PALETTE.white, lineHeight: 1.7, maxWidth: '800px', fontWeight: 400 }}>
+            Magnus es la primera empleada IA de El Barril. Arranca con los skills que identificamos juntos en la reunión inicial, pero su arquitectura permite <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>enseñarle habilidades ilimitadas</Box> y crear <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900 }}>agentes infinitos</Box> a medida que la operación crezca. Hoy es una. Mañana puede ser un equipo entero de IA.
           </Typography>
 
-          <Grid container spacing={4}>
-            {/* Habilidades Incluidas */}
-            <Grid item xs={12}>
-              <Box sx={{ p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.white, 0.08), border: `1px solid ${alpha(AI4U_PALETTE.white, 0.2)}`, mb: 4 }}>
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 3 }}>
-                  <BaseSkillsIcon sx={{ color: AI4U_PALETTE.accentColors.green }} />
-                  <Typography variant="h6" sx={{ fontWeight: 800, color: AI4U_PALETTE.white }}>Skills Identificados (Fase Inicial)</Typography>
-                </Stack>
-                <Grid container spacing={2}>
-                  {[
-                    'Orquestador de Guiones: Copys, roles y obligaciones',
-                    'Social Listening: Análisis de clientes y competencia',
-                    'Generación de Contenido: Multi-red y multi-formato',
-                    'Capacidad de aprender Skills infinitos a futuro',
-                    'Despliegue de Agentes ilimitados por área'
-                  ].map((skill) => (
-                    <Grid item xs={12} sm={6} key={skill}>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <CheckIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 18 }} />
-                        <Typography variant="body2" sx={{ color: AI4U_PALETTE.white, fontWeight: 500 }}>{skill}</Typography>
-                      </Stack>
-                    </Grid>
-                  ))}
-                </Grid>
+          {/* Skills Iniciales */}
+          <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, letterSpacing: 3, display: 'block', mb: 3 }}>
+            Skills iniciales (identificados en la reunión)
+          </Typography>
+
+          <Grid container spacing={4} sx={{ mb: 6 }}>
+            {[
+              { num: '01', icon: <BrainIcon sx={{ fontSize: 22 }} />, title: 'Orquestador de Guiones', desc: 'Coordina al equipo creativo. Define encargados, copys y obligaciones por rol. Cada pieza del guion se ejecuta bajo el estándar de El Barril.' },
+              { num: '02', icon: <ListeningIcon sx={{ fontSize: 22 }} />, title: 'Social Listening', desc: 'Monitorea qué dicen tus clientes y qué hace la competencia. Convierte el ruido digital en decisiones estratégicas concretas.' },
+              { num: '03', icon: <SkillIcon sx={{ fontSize: 22 }} />, title: 'Generación de Contenido', desc: 'Crea y adapta el mensaje de El Barril para cada red y formato: Reels, WhatsApp, Email Marketing, TikTok y más.' }
+            ].map((skill) => (
+              <Grid item xs={12} md={4} key={skill.num}>
+                <Box sx={{ p: 3, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.white, 0.06), border: `1px solid ${alpha(AI4U_PALETTE.white, 0.12)}`, height: '100%' }}>
+                  <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                    <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, fontSize: '0.7rem' }}>SKILL {skill.num}</Typography>
+                    <Box sx={{ color: AI4U_PALETTE.accentColors.green }}>{skill.icon}</Box>
+                  </Stack>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, mb: 1.5 }}>{skill.title}</Typography>
+                  <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.85), lineHeight: 1.7, fontWeight: 400 }}>{skill.desc}</Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+
+          {/* Escalabilidad */}
+          <Box sx={{ p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.green, 0.3)}` }}>
+            <Stack direction="row" spacing={2} alignItems="flex-start">
+              <GrowthIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 28, mt: 0.3 }} />
+              <Box>
+                <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, mb: 1 }}>¿Y después de estos 3 skills?</Typography>
+                <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7 }}>
+                  Le enseñas los que necesites: atención al cliente, gestión de proveedores, análisis financiero, entrenamiento de personal — lo que sea. Además, puedes crear nuevos agentes especializados por área (Ventas, Logística, RRHH) que comparten el conocimiento central de El Barril. <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>Este es el futuro de cómo operan las empresas.</Box>
+                </Typography>
               </Box>
-            </Grid>
-
-            {/* Skill 1 */}
-            <Grid item xs={12} md={4}>
-              <Stack spacing={2}>
-                <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, letterSpacing: 2 }}>
-                  SKILL 01
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, display: 'flex', alignItems: 'center', gap: 1 }}>
-                  Orquestador de Guiones <BrainIcon sx={{ fontSize: 20 }} />
-                </Typography>
-                <Typography variant="body1" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontSize: '1.05rem', fontWeight: 400 }}>
-                  Magnus coordina a tu equipo creativo. Define <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>encargados, copys y obligaciones</Box> por rol, asegurando que cada pieza del guion se ejecute bajo tu estándar de calidad.
-                </Typography>
-              </Stack>
-            </Grid>
-
-            {/* Skill 2 */}
-            <Grid item xs={12} md={4}>
-              <Stack spacing={2}>
-                <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, letterSpacing: 2 }}>
-                  SKILL 02
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, display: 'flex', alignItems: 'center', gap: 1 }}>
-                  Social Listening <ListeningIcon sx={{ fontSize: 20 }} />
-                </Typography>
-                <Typography variant="body1" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontSize: '1.05rem', fontWeight: 400 }}>
-                  Magnus analiza permanentemente <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>qué dice la competencia y qué dicen tus clientes</Box>. Transforma el ruido digital en insights accionables para ajustar tu estrategia en tiempo real.
-                </Typography>
-              </Stack>
-            </Grid>
-
-            {/* Skill 3 */}
-            <Grid item xs={12} md={4}>
-              <Stack spacing={2}>
-                <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, letterSpacing: 2 }}>
-                  SKILL 03
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, display: 'flex', alignItems: 'center', gap: 1 }}>
-                  Generación de Contenido <SkillIcon sx={{ fontSize: 20 }} />
-                </Typography>
-                <Typography variant="body1" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontSize: '1.05rem', fontWeight: 400 }}>
-                  Especializamos a Magnus en la <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>creación para diferentes redes y formatos</Box>. Adapta el mensaje de El Barril para que sea efectivo tanto en Reels como en WhatsApp o Email Marketing.
-                </Typography>
-              </Stack>
-            </Grid>
-          </Grid>
+            </Stack>
+          </Box>
         </Box>
 
-        {/* SECTION: ROADMAP & DISCOVERY */}
-        <Box sx={{ mb: 12 }}>
-          <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 6 }}>
-            <Box sx={{ p: 1, borderRadius: 1, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white, display: 'flex' }}>
-              <DiscoveryIcon fontSize="small" />
-            </Box>
-            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>Información y Roadmap</Typography>
-          </Stack>
-
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper variant="outlined" sx={{ p: 4, borderRadius: 4, borderColor: AI4U_PALETTE.gray[300], bgcolor: AI4U_PALETTE.white }}>
-                <Typography variant="h6" sx={{ mb: 3, fontWeight: 800, color: AI4U_PALETTE.black }}>Fase 1: Discovery (Lo que necesitamos de ti)</Typography>
-                <Typography variant="body1" sx={{ mb: 4, color: AI4U_PALETTE.black, fontWeight: 500 }}>
-                  Para que Magnus empiece a trabajar, necesitamos una sesión inicial de 1 hora donde definiremos:
-                </Typography>
-                <Grid container spacing={2}>
-                  {[
-                    'Manual de identidad y voz de marca El Barril',
-                    'Acceso a herramientas (WhatsApp, CRM, Email)',
-                    'Plan de contenidos y guiones del mes',
-                    'Roles del equipo creativo y de ventas'
-                  ].map((item) => (
-                    <Grid item xs={12} sm={6} key={item}>
-                      <Stack direction="row" spacing={1}>
-                        <CheckIcon sx={{ color: AI4U_PALETTE.accentColors.orange, fontSize: 20, mt: 0.3 }} />
-                        <Typography variant="body2" sx={{ fontWeight: 600, color: AI4U_PALETTE.black }}>{item}</Typography>
-                      </Stack>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-
-        {/* 3. INVERSIÓN */}
+        {/* ═══════════════════════════════════════════ */}
+        {/* 4. INVERSIÓN                                */}
+        {/* ═══════════════════════════════════════════ */}
         <Box sx={{ mb: 12 }}>
           <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 6 }}>
             <Box sx={{ p: 1, borderRadius: 1, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white, display: 'flex' }}>
               <InversionIcon fontSize="small" />
             </Box>
-            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>3. Inversión: Tu Primer SuperAI (Magnus)</Typography>
+            <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black, letterSpacing: -0.5 }}>4. Inversión</Typography>
           </Stack>
-          
-          <Box sx={{ mb: 6, p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.orange, 0.1), border: `2px solid ${AI4U_PALETTE.accentColors.orange}` }}>
-            <Typography sx={{ color: AI4U_PALETTE.black, fontSize: '1.15rem', lineHeight: 1.6, fontWeight: 600 }}>
-              Magnus es un activo de SuperAI que crece con El Barril. Basados en tu estructura, el costo de la ineficiencia actual (coordinación manual de contenidos y guiones) se estima en más de <Box component="span" sx={{ color: AI4U_PALETTE.black, fontWeight: 900, textDecoration: 'underline', decorationColor: AI4U_PALETTE.accentColors.orange }}>$3,500 USD/mes</Box>.
-            </Typography>
-          </Box>
 
-          <Grid container spacing={4} justifyContent="center">
-            {/* Business Plan (The Only Plan) */}
-            <Grid item xs={12} md={8}>
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: { xs: 4, md: 6 }, 
-                  borderRadius: 6, 
-                  bgcolor: AI4U_PALETTE.white,
-                  color: AI4U_PALETTE.black,
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  border: `4px solid ${AI4U_PALETTE.black}`,
-                  zIndex: 2,
-                  boxShadow: `0 40px 80px ${alpha(AI4U_PALETTE.black, 0.2)}`
-                }}
-              >
-                <Box 
-                  sx={{ 
-                    position: 'absolute', 
-                    top: -16, 
-                    left: '50%', 
-                    transform: 'translateX(-50%)',
-                    bgcolor: AI4U_PALETTE.black, 
-                    color: AI4U_PALETTE.white,
-                    px: 4, py: 1, borderRadius: 100,
-                    fontSize: '0.9rem', fontWeight: 900,
-                    whiteSpace: 'nowrap',
-                    letterSpacing: 1
-                  }}
-                >
-                  PLAN ESTRATÉGICO SUPERAI
-                </Box>
-                
-                <Grid container spacing={4}>
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h4" sx={{ fontWeight: 900, mb: 1, color: AI4U_PALETTE.black }}>Nivel Business</Typography>
-                    <Typography variant="body1" sx={{ color: AI4U_PALETTE.gray[700], mb: 4, fontWeight: 600 }}>
-                      La infraestructura completa de IA para liderar el mercado de Asadores.
-                    </Typography>
-                    
-                    <Stack spacing={0.5} sx={{ mb: 4 }}>
-                      <Typography variant="overline" sx={{ color: AI4U_PALETTE.gray[600], fontWeight: 800 }}>Fee de Implementación (Único)</Typography>
-                      <Typography variant="h2" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$2,000 <Typography component="span" variant="h5" sx={{ fontWeight: 700 }}>USD</Typography></Typography>
-                    </Stack>
-
-                    <Divider sx={{ mb: 4 }} />
-
-                    <Stack spacing={0.5}>
-                      <Typography variant="overline" sx={{ color: AI4U_PALETTE.gray[600], fontWeight: 800 }}>Mantenimiento & Evolución</Typography>
-                      <Typography variant="h3" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$200 <Typography component="span" variant="h6" sx={{ fontWeight: 700 }}>USD/mes</Typography></Typography>
-                    </Stack>
-                  </Grid>
-
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 900, mb: 2, color: AI4U_PALETTE.black }}>¿Qué incluye tu SuperAI?</Typography>
-                    <List disablePadding>
-                      {[
-                        'Orquestador de Guiones completo (Roles y Copys)',
-                        'Social Listening (Clientes y Competencia)',
-                        'Generación de contenido (Multi-red y Multi-formato)',
-                        'Capacidad de crear Agentes Infinitos',
-                        'Entrenamiento de Skills Ilimitados',
-                        '3 Skills a medida iniciales incluidos',
-                        'Reunión estratégica de optimización mensual',
-                        'Soporte técnico preferencial vía WhatsApp',
-                        'Propiedad intelectual total de lo construido'
-                      ].map((item) => (
-                        <ListItem key={item} disableGutters sx={{ py: 0.8 }}>
-                          <ListItemIcon sx={{ minWidth: 32 }}><CheckIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 22, fontWeight: 900 }} /></ListItemIcon>
-                          <ListItemText primary={item} primaryTypographyProps={{ variant: 'body2', sx: { fontWeight: 700, color: AI4U_PALETTE.black } }} />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Grid>
-                </Grid>
-              </Paper>
+          {/* Comparación de costo — Ancla */}
+          <Grid container spacing={3} sx={{ mb: 6 }}>
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ p: 3, borderRadius: 4, bgcolor: AI4U_PALETTE.gray[100], border: `1px solid ${AI4U_PALETTE.gray[300]}`, height: '100%' }}>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[600], fontWeight: 800, display: 'block', mb: 1 }}>Contratar un empleado junior de marketing</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.gray[500], textDecoration: 'line-through' }}>~$800 USD/mes</Typography>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[500], fontWeight: 600 }}>Horario limitado, una sola habilidad, se va y se lleva el conocimiento.</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ p: 3, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.08), border: `2px solid ${AI4U_PALETTE.accentColors.green}`, height: '100%' }}>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800, display: 'block', mb: 1 }}>Magnus: tu SuperAI que no renuncia</Typography>
+                <Typography variant="h4" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$200 USD/mes</Typography>
+                <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 600 }}>Disponible 24/7, skills ilimitados, agentes infinitos y es propiedad de El Barril.</Typography>
+              </Box>
             </Grid>
           </Grid>
 
-          {/* Consideraciones Operativas (DARK) */}
-          <Box sx={{ mt: 6, p: 4, borderRadius: 4, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white, border: `1px solid ${AI4U_PALETTE.gray[800]}` }}>
-            <Typography variant="h6" sx={{ mb: 3, fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>Consideraciones de Operación</Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} sm={6} md={3}>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, display: 'block', mb: 1 }}>// CONSUMO LLM & APIS</Typography>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.white, opacity: 0.9, fontWeight: 500 }}>Los costos de consumo de modelos (OpenAI, Anthropic, etc.) se facturan directamente a tu tarjeta según volumen de uso.</Typography>
+          {/* Tarjeta de Inversión Principal */}
+          <Paper 
+            elevation={0} 
+            sx={{ 
+              p: { xs: 4, md: 6 }, 
+              borderRadius: 6, 
+              bgcolor: AI4U_PALETTE.white,
+              color: AI4U_PALETTE.black,
+              position: 'relative',
+              border: `4px solid ${AI4U_PALETTE.black}`,
+              boxShadow: `0 40px 80px ${alpha(AI4U_PALETTE.black, 0.15)}`
+            }}
+          >
+            <Box 
+              sx={{ 
+                position: 'absolute', 
+                top: -16, 
+                left: '50%', 
+                transform: 'translateX(-50%)',
+                bgcolor: AI4U_PALETTE.black, 
+                color: AI4U_PALETTE.white,
+                px: 4, py: 1, borderRadius: 100,
+                fontSize: '0.85rem', fontWeight: 900,
+                whiteSpace: 'nowrap',
+                letterSpacing: 1
+              }}
+            >
+              SuperAI para El Barril
+            </Box>
+            
+            <Grid container spacing={4} sx={{ pt: 2 }}>
+              <Grid item xs={12} md={5}>
+                <Stack spacing={0.5} sx={{ mb: 4 }}>
+                  <Typography variant="overline" sx={{ color: AI4U_PALETTE.gray[600], fontWeight: 800 }}>Implementación (único pago)</Typography>
+                  <Typography variant="h2" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$2,000 <Typography component="span" variant="h6" sx={{ fontWeight: 700 }}>USD</Typography></Typography>
+                </Stack>
+
+                <Divider sx={{ mb: 4 }} />
+
+                <Stack spacing={0.5} sx={{ mb: 4 }}>
+                  <Typography variant="overline" sx={{ color: AI4U_PALETTE.gray[600], fontWeight: 800 }}>Evolución mensual</Typography>
+                  <Typography variant="h3" sx={{ fontWeight: 900, color: AI4U_PALETTE.black }}>$200 <Typography component="span" variant="body1" sx={{ fontWeight: 700 }}>USD/mes</Typography></Typography>
+                </Stack>
+
+                <Box sx={{ p: 2, borderRadius: 2, bgcolor: AI4U_PALETTE.gray[50], border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
+                  <Typography variant="caption" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 600, lineHeight: 1.5 }}>
+                    La mensualidad garantiza que Magnus siga aprendiendo nuevos skills, se mantenga conectada a tus sistemas y reciba mejoras continuas.
+                  </Typography>
+                </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, display: 'block', mb: 1 }}>// HARDWARE DEDICADO</Typography>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.white, opacity: 0.9, fontWeight: 500 }}>SuperAI requiere una estación de trabajo (PC/Servidor) dedicada para garantizar ejecución 24/7 y soberanía de datos.</Typography>
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, display: 'block', mb: 1 }}>// TU ASISTENTE ES TUYO</Typography>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.white, opacity: 0.9, fontWeight: 500 }}>Al finalizar el contrato, Magnus no se apaga. Todo lo construido es propiedad de El Barril y opera para ti permanentemente.</Typography>
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, display: 'block', mb: 1 }}>// ESCALABILIDAD INFINITA</Typography>
-                <Typography variant="caption" sx={{ color: AI4U_PALETTE.white, opacity: 0.9, fontWeight: 500 }}>Magnus es solo el comienzo. Puedes crear agentes adicionales ilimitados para ventas, logística o RRHH, compartiendo la misma base de conocimiento.</Typography>
+
+              <Grid item xs={12} md={7}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 900, mb: 2, color: AI4U_PALETTE.black }}>¿Qué incluye?</Typography>
+                <Grid container spacing={0}>
+                  {[
+                    { text: 'Skill: Orquestador de Guiones (roles, copys, entregas)', highlight: true },
+                    { text: 'Skill: Social Listening (clientes y competencia)', highlight: true },
+                    { text: 'Skill: Generación de contenido multi-red', highlight: true },
+                    { text: 'Arquitectura para agentes y skills ilimitados', highlight: false },
+                    { text: 'Integración con WhatsApp, Email y CRM', highlight: false },
+                    { text: 'Reunión estratégica de optimización mensual', highlight: false },
+                    { text: 'Soporte técnico preferencial vía WhatsApp', highlight: false },
+                    { text: 'Magnus es propiedad 100% de El Barril', highlight: false },
+                  ].map((item) => (
+                    <Grid item xs={12} key={item.text}>
+                      <ListItem disableGutters sx={{ py: 0.6 }}>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
+                          <CheckIcon sx={{ color: item.highlight ? AI4U_PALETTE.accentColors.green : AI4U_PALETTE.gray[500], fontSize: 20 }} />
+                        </ListItemIcon>
+                        <ListItemText 
+                          primary={item.text} 
+                          primaryTypographyProps={{ 
+                            variant: 'body2', 
+                            sx: { fontWeight: item.highlight ? 800 : 600, color: AI4U_PALETTE.black } 
+                          }} 
+                        />
+                      </ListItem>
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
             </Grid>
-          </Box>
+          </Paper>
 
-          <Paper elevation={0} sx={{ mt: 6, p: 4, borderRadius: 4, bgcolor: AI4U_PALETTE.gray[100], border: `1px solid ${AI4U_PALETTE.gray[300]}` }}>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 900, color: AI4U_PALETTE.black }}>Modelo de Pago</Typography>
+          {/* Modelo de pago */}
+          <Paper elevation={0} sx={{ mt: 4, p: 4, borderRadius: 4, bgcolor: AI4U_PALETTE.gray[50], border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
+            <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 900, color: AI4U_PALETTE.black }}>Modelo de pago de la implementación</Typography>
             <Grid container spacing={2}>
               {[
                 { pct: '50%', label: 'Al iniciar el proyecto' },
-                { pct: '25%', label: 'Fase 2 completada' },
+                { pct: '25%', label: 'Al completar fase 2' },
                 { pct: '25%', label: 'Al entregar producto terminado' }
               ].map((step) => (
                 <Grid item xs={12} sm={4} key={step.pct}>
@@ -421,14 +403,30 @@ const PropuestaElBarril: React.FC = () => {
             </Grid>
           </Paper>
 
-          <Typography variant="body2" sx={{ mt: 8, color: AI4U_PALETTE.gray[700], fontStyle: 'italic', textAlign: 'center', maxWidth: '700px', mx: 'auto', lineHeight: 1.6, fontWeight: 600 }}>
-            * Nota: Una vez realizada la implementación, la tecnología es propiedad de El Barril. La mensualidad garantiza que Magnus (tu SuperAI especializado) siga aprendiendo nuevos Skills mes a mes y se mantenga fortaleciendo tu operación.
-          </Typography>
+          {/* Consideraciones — Reframed as benefits */}
+          <Box sx={{ mt: 4, p: 4, borderRadius: 4, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white }}>
+            <Typography variant="subtitle2" sx={{ mb: 3, fontWeight: 900, color: AI4U_PALETTE.accentColors.orange }}>Importante saber</Typography>
+            <Grid container spacing={3}>
+              {[
+                { label: 'Tu IA es tuya', desc: 'Al terminar, Magnus no se apaga. Todo lo construido es propiedad permanente de El Barril.' },
+                { label: 'Consumo por uso', desc: 'Los modelos de IA (OpenAI, etc.) se facturan según volumen de uso real. Sin sorpresas.' },
+                { label: 'Hardware dedicado', desc: 'SuperAI opera en una estación dedicada que garantiza disponibilidad 24/7 y soberanía total de tus datos.' },
+                { label: 'Crece sin techo', desc: 'Nuevos skills desde $100 USD. Nuevos agentes por área cuando los necesites. Sin límite.' }
+              ].map((item) => (
+                <Grid item xs={12} sm={6} md={3} key={item.label}>
+                  <Typography variant="caption" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, display: 'block', mb: 0.5 }}>{item.label}</Typography>
+                  <Typography variant="caption" sx={{ color: alpha(AI4U_PALETTE.white, 0.85), fontWeight: 500, lineHeight: 1.5 }}>{item.desc}</Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Box>
 
-        {/* 4. EL PASO SIGUIENTE (DARK) */}
+        {/* ═══════════════════════════════════════════ */}
+        {/* 5. GARANTÍA + PRIMER PASO (CTA)             */}
+        {/* ═══════════════════════════════════════════ */}
         <Box sx={{ 
-          py: 10, 
+          py: { xs: 8, md: 10 }, 
           px: { xs: 4, md: 8 },
           borderRadius: 6,
           background: `linear-gradient(135deg, ${AI4U_PALETTE.black} 0%, ${AI4U_PALETTE.gray[900]} 100%)`,
@@ -437,10 +435,37 @@ const PropuestaElBarril: React.FC = () => {
           boxShadow: `0 40px 80px ${alpha(AI4U_PALETTE.black, 0.4)}`,
           border: `1px solid ${alpha(AI4U_PALETTE.white, 0.1)}`
         }}>
-          <Typography variant="h3" sx={{ fontWeight: 900, mb: 4, letterSpacing: -1, color: AI4U_PALETTE.white }}>4. El Paso Siguiente</Typography>
-          <Typography variant="h5" sx={{ mb: 8, color: AI4U_PALETTE.white, fontWeight: 400, lineHeight: 1.6, maxWidth: '750px', mx: 'auto' }}>
-            Agendemos el Kickoff técnico esta semana. Empecemos por organizar la casa para demostrar el valor de Magnus desde el primer día.
+          {/* Garantía — Risk Reversal */}
+          <Box sx={{ mb: 8, p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.green, 0.3)}`, maxWidth: 600, mx: 'auto' }}>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" sx={{ mb: 2 }}>
+              <ShieldIcon sx={{ color: AI4U_PALETTE.accentColors.green }} />
+              <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.green }}>Nuestro compromiso</Typography>
+            </Stack>
+            <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontWeight: 500 }}>
+              Si en los primeros 30 días Magnus no demuestra un impacto tangible en la operación de El Barril, ajustamos el enfoque sin costo adicional hasta que lo haga. No estamos vendiendo un producto — estamos construyendo un resultado.
+            </Typography>
+          </Box>
+
+          <Typography variant="h3" sx={{ fontWeight: 900, mb: 3, letterSpacing: -1, color: AI4U_PALETTE.white }}>5. El paso siguiente</Typography>
+          <Typography variant="h6" sx={{ mb: 2, color: alpha(AI4U_PALETTE.white, 0.8), fontWeight: 400, maxWidth: '650px', mx: 'auto', lineHeight: 1.6 }}>
+            Agendamos una sesión de Discovery de 1 hora donde definimos:
           </Typography>
+          
+          <Grid container spacing={2} justifyContent="center" sx={{ mb: 6, maxWidth: 700, mx: 'auto' }}>
+            {[
+              'Voz de marca y estilo de El Barril',
+              'Acceso a herramientas actuales',
+              'Plan de contenidos del mes',
+              'Roles del equipo creativo'
+            ].map((item) => (
+              <Grid item xs={12} sm={6} key={item}>
+                <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
+                  <CheckIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 18 }} />
+                  <Typography variant="body2" sx={{ color: AI4U_PALETTE.white, fontWeight: 600 }}>{item}</Typography>
+                </Stack>
+              </Grid>
+            ))}
+          </Grid>
 
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="center">
             <Button 
@@ -453,15 +478,15 @@ const PropuestaElBarril: React.FC = () => {
                 bgcolor: AI4U_PALETTE.accentColors.orange, 
                 color: AI4U_PALETTE.white,
                 px: 6, py: 2.5, borderRadius: 3,
-                fontSize: '1.2rem',
+                fontSize: '1.15rem',
                 fontWeight: 900,
                 textTransform: 'none',
                 boxShadow: `0 20px 40px ${alpha(AI4U_PALETTE.accentColors.orange, 0.4)}`,
-                '&:hover': { bgcolor: alpha(AI4U_PALETTE.accentColors.orange, 0.9), transform: 'translateY(-5px)' },
+                '&:hover': { bgcolor: alpha(AI4U_PALETTE.accentColors.orange, 0.9), transform: 'translateY(-4px)' },
                 transition: 'all 0.3s ease'
               }}
             >
-              Agendar Kickoff Técnico
+              Agendar sesión de Discovery
             </Button>
             <Button 
               variant="outlined" 
@@ -470,13 +495,13 @@ const PropuestaElBarril: React.FC = () => {
               href={`https://wa.me/${APP_CONFIG.CONTACT.PHONE.replace(/\s+/g, '')}`}
               target="_blank"
               sx={{ 
-                borderColor: alpha(AI4U_PALETTE.white, 0.5), 
+                borderColor: alpha(AI4U_PALETTE.white, 0.4), 
                 color: AI4U_PALETTE.white,
                 px: 6, py: 2.5, borderRadius: 3,
-                fontSize: '1.2rem',
+                fontSize: '1.15rem',
                 fontWeight: 800,
                 textTransform: 'none',
-                '&:hover': { borderColor: AI4U_PALETTE.white, bgcolor: alpha(AI4U_PALETTE.white, 0.1), transform: 'translateY(-5px)' },
+                '&:hover': { borderColor: AI4U_PALETTE.white, bgcolor: alpha(AI4U_PALETTE.white, 0.1), transform: 'translateY(-4px)' },
                 transition: 'all 0.3s ease'
               }}
             >
@@ -484,9 +509,9 @@ const PropuestaElBarril: React.FC = () => {
             </Button>
           </Stack>
 
-          <Box sx={{ mt: 10, pt: 6, borderTop: `1px solid ${alpha(AI4U_PALETTE.white, 0.2)}` }}>
+          <Box sx={{ mt: 10, pt: 6, borderTop: `1px solid ${alpha(AI4U_PALETTE.white, 0.15)}` }}>
             <Typography variant="h6" sx={{ fontWeight: 900, mb: 0.5, color: AI4U_PALETTE.white }}>Mariano García Posada</Typography>
-            <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.7), letterSpacing: 2, fontWeight: 800, textTransform: 'uppercase' }}>CEO Ai4U</Typography>
+            <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.6), letterSpacing: 2, fontWeight: 800, textTransform: 'uppercase' }}>CEO Ai4U</Typography>
           </Box>
         </Box>
       </Container>
