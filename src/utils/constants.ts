@@ -9,7 +9,8 @@ export const ROUTES = {
   DESIGN_SYSTEM: '/design-system',
   PITCH: '/pitch',
   PITCH_BANCOLOMBIA: '/pitch-bancolombia',
-  PROPUESTA_EL_BARRIL: '/propuesta-el-barril'
+  PROPUESTA_EL_BARRIL: '/propuesta-el-barril',
+  PROPUESTA_MANUFACTURA: '/propuesta-manufactura'
 } as const;
 
 // Configuración de la aplicación

@@ -314,19 +314,19 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'El Siguiente Nivel',
-                subtitle: 'IA Infrastructure',
-                content: 'La capacidad ejecutiva de la IA: tecnología que apoya la toma de decisiones.',
+                subtitle: 'Manufacturing Executive Orchestration',
+                content: 'La capacidad ejecutiva de la IA: el "Action Layer" que orquesta sus sistemas fragmentados.',
                 type: 'section',
                 theme: 'SUPER_AI_NEON',
                 category: 'superAi'
             },
             {
-                title: 'Super AI',
-                subtitle: 'Tu Asistente Digital Inteligente',
+                title: 'Super AI: Executive Assistant',
+                subtitle: 'Orquestación de Ecosistemas Fragmentados',
                 content: [
-                    'IA con capacidad de conexión a tus sistemas operativos.',
-                    'Capacidad de sugerir y apoyar con base en objetivos de negocio.',
-                    'Integración que optimiza procesos complejos.'
+                    'Conexión inteligente entre ERP, CRM, IoT y sistemas legacy.',
+                    'Visibilidad 360° en tiempo real de la operación de planta y logística.',
+                    'Toma de decisiones asistida para el CEO basada en datos unificados.'
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',
@@ -334,11 +334,11 @@ export const PITCHES: Record<string, PitchData> = {
             },
             {
                 title: 'Capacidad Ejecutiva',
-                subtitle: 'Optimización de Sistemas y Objetivos',
+                subtitle: 'De la Fragmentación a la Eficiencia',
                 content: [
-                    'La IA interactúa con sistemas de forma experta.',
-                    'Ejecución asistida de tareas administrativas y logísticas.',
-                    'Enfoque en resultados y cumplimiento de indicadores.'
+                    'Elimina los silos de información entre departamentos.',
+                    'Automatización de reportes de cumplimiento y productividad industrial.',
+                    'Enfoque en resultados estratégicos y cumplimiento de indicadores globales.'
                 ],
                 type: 'product',
                 theme: 'SUPER_AI_NEON',

@@ -16,6 +16,7 @@ import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
 import PitchBancolombia from './pages/PitchBancolombia';
 import PropuestaElBarril from './pages/PropuestaElBarril';
+import PropuestaManufactura from './pages/PropuestaManufactura';
 
 function App() {
   return (
@@ -64,9 +65,9 @@ function App() {
                     />
 
                     {/* SuperAI Route */}
-                    <Route 
-                      path={ROUTES.SUPER_AI} 
-                      element={<SuperAI />} 
+                    <Route
+                      path={ROUTES.SUPER_AI}
+                      element={<SuperAI />}
                     />
 
                     {/* Design System Route - Debe estar antes del fallback */}
@@ -86,10 +87,15 @@ function App() {
                       element={<PitchBancolombia />}
                     />
 
-                    {/* Propuesta Asadores El Barril Route */}
                     <Route
                       path={ROUTES.PROPUESTA_EL_BARRIL}
                       element={<PropuestaElBarril />}
+                    />
+
+                    {/* Propuesta Manufactura Route */}
+                    <Route
+                      path={ROUTES.PROPUESTA_MANUFACTURA}
+                      element={<PropuestaManufactura />}
                     />
 
                     {/* Fallback Route - Siempre al final */}
