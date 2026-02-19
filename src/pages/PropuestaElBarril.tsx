@@ -101,7 +101,7 @@ const PropuestaElBarril: React.FC = () => {
               >
                 <Box
                   component="img"
-                  src="/assets/images/soloBlanco_Mesadetrabajo1-ezgif.com-png-to-webp-converter_110x@2x.avif"
+                  src="/assets/images/el-barril-logo-white.avif"
                   alt="El Barril Logo"
                   sx={{ height: 35, objectFit: 'contain' }}
                 />
