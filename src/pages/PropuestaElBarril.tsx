@@ -101,7 +101,7 @@ const PropuestaElBarril: React.FC = () => {
               >
                 <Box
                   component="img"
-                  src="/assets/images/el-barril-logo-white.avif"
+                  src="/assets/images/el-barril-logo-white.png"
                   alt="El Barril Logo"
                   sx={{ height: 35, objectFit: 'contain' }}
                 />
