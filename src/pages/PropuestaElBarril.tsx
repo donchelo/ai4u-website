@@ -83,20 +83,27 @@ const PropuestaElBarril: React.FC = () => {
               <Logo variant="desktop" sx={{ height: 40 }} />
               <Box sx={{ width: 1, height: 30, bgcolor: AI4U_PALETTE.gray[300] }} />
               <Box
+                component="img"
+                src="/assets/images/LOGO chumi.png"
+                alt="Casa de David Producciones"
+                sx={{ height: 50, objectFit: 'contain' }}
+              />
+              <Box sx={{ width: 1, height: 30, bgcolor: AI4U_PALETTE.gray[300] }} />
+              <Box
                 sx={{
                   bgcolor: AI4U_PALETTE.black,
                   p: 1.5,
                   borderRadius: 2,
                   display: 'flex',
                   alignItems: 'center',
-                  height: 50
+                  boxShadow: `0 4px 12px ${alpha(AI4U_PALETTE.black, 0.1)}`
                 }}
               >
                 <Box
                   component="img"
                   src="/assets/images/soloBlanco_Mesadetrabajo1-ezgif.com-png-to-webp-converter_110x@2x.avif"
-                  alt="Asadores El Barril"
-                  sx={{ height: 28, objectFit: 'contain' }}
+                  alt="El Barril Logo"
+                  sx={{ height: 35, objectFit: 'contain' }}
                 />
               </Box>
             </Stack>
