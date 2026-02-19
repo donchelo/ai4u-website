@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Stack, 
-  Divider, 
-  Paper, 
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  Divider,
+  Paper,
   Grid,
   Button,
   List,
@@ -14,7 +14,7 @@ import {
   ListItemText,
   alpha
 } from '@mui/material';
-import { 
+import {
   CheckCircleOutline as CheckIcon,
   WarningAmber as ProblemIcon,
   AutoAwesome as SuperAIIcon,
@@ -43,31 +43,31 @@ import Logo from '../components/shared/ui/atoms/Logo';
 
 const PropuestaElBarril: React.FC = () => {
   return (
-    <Box sx={{ 
-      bgcolor: AI4U_PALETTE.white, 
-      minHeight: '100vh', 
+    <Box sx={{
+      bgcolor: AI4U_PALETTE.white,
+      minHeight: '100vh',
       pb: { xs: 8, md: 12 },
       position: 'relative',
       overflow: 'hidden'
     }}>
       {/* Decorative Background Elements */}
-      <Box sx={{ 
-        position: 'absolute', 
-        top: -100, 
-        right: -100, 
-        width: 400, 
-        height: 400, 
-        borderRadius: '50%', 
+      <Box sx={{
+        position: 'absolute',
+        top: -100,
+        right: -100,
+        width: 400,
+        height: 400,
+        borderRadius: '50%',
         background: `radial-gradient(circle, ${alpha(AI4U_PALETTE.accentColors.orange, 0.05)} 0%, transparent 70%)`,
         zIndex: 0
       }} />
-      <Box sx={{ 
-        position: 'absolute', 
-        bottom: '20%', 
-        left: -150, 
-        width: 500, 
-        height: 500, 
-        borderRadius: '50%', 
+      <Box sx={{
+        position: 'absolute',
+        bottom: '20%',
+        left: -150,
+        width: 500,
+        height: 500,
+        borderRadius: '50%',
         background: `radial-gradient(circle, ${alpha(AI4U_PALETTE.accentColors.green, 0.05)} 0%, transparent 70%)`,
         zIndex: 0
       }} />
@@ -82,12 +82,23 @@ const PropuestaElBarril: React.FC = () => {
             <Stack direction="row" spacing={3} alignItems="center">
               <Logo variant="desktop" sx={{ height: 40 }} />
               <Box sx={{ width: 1, height: 30, bgcolor: AI4U_PALETTE.gray[300] }} />
-              <Box 
-                component="img" 
-                src="/assets/images/LOGO chumi.png" 
-                alt="Casa de David Producciones" 
-                sx={{ height: 50, objectFit: 'contain' }} 
-              />
+              <Box
+                sx={{
+                  bgcolor: AI4U_PALETTE.black,
+                  p: 1.5,
+                  borderRadius: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: 50
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/assets/images/soloBlanco_Mesadetrabajo1-ezgif.com-png-to-webp-converter_110x@2x.avif"
+                  alt="Asadores El Barril"
+                  sx={{ height: 28, objectFit: 'contain' }}
+                />
+              </Box>
             </Stack>
             <Box sx={{ textAlign: 'right' }}>
               <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.orange, fontWeight: 800, letterSpacing: 2, display: 'block' }}>
@@ -98,10 +109,10 @@ const PropuestaElBarril: React.FC = () => {
               </Typography>
             </Box>
           </Stack>
-          
-          <Typography 
-            variant="h1" 
-            sx={{ 
+
+          <Typography
+            variant="h1"
+            sx={{
               ...TEXT_VARIANTS.display.medium,
               color: AI4U_PALETTE.black,
               mb: 3,
@@ -115,7 +126,7 @@ const PropuestaElBarril: React.FC = () => {
             <br />
             <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.orange }}>Infraestructura que escala en 6 meses.</Box>
           </Typography>
-          
+
           <Stack direction="row" spacing={2} alignItems="center" sx={{ mt: 4 }}>
             <Box sx={{ width: 40, height: 2, bgcolor: AI4U_PALETTE.black }} />
             <Typography variant="h6" sx={{ color: AI4U_PALETTE.gray[700], fontWeight: 500 }}>
@@ -131,7 +142,7 @@ const PropuestaElBarril: React.FC = () => {
           <Paper elevation={0} sx={{ p: 4, bgcolor: AI4U_PALETTE.gray[50], borderRadius: 4, mb: 6, borderLeft: `6px solid ${AI4U_PALETTE.accentColors.orange}`, border: `1px solid ${AI4U_PALETTE.gray[200]}` }}>
             <Typography variant="h5" sx={{ fontWeight: 900, mb: 2, color: AI4U_PALETTE.black }}>Modelo de Consultoría Modular</Typography>
             <Typography sx={{ fontSize: '1.1rem', color: AI4U_PALETTE.black, lineHeight: 1.6, fontWeight: 500 }}>
-              Esta propuesta está diseñada como un plan integral de 6 meses para transformar a Asadores El Barril en una compañía AI-First. 
+              Esta propuesta está diseñada como un plan integral de 6 meses para transformar a Asadores El Barril en una compañía AI-First.
               <br /><br />
               <Box component="span" sx={{ fontWeight: 800 }}>Nota:</Box> Aunque se recomienda el ciclo completo para asegurar la integración, cada servicio se puede contratar de forma independiente según las prioridades del negocio.
             </Typography>
@@ -203,12 +214,12 @@ const PropuestaElBarril: React.FC = () => {
                 color: AI4U_PALETTE.accentColors.orange
               }
             ].map((service) => (
-              <Paper 
+              <Paper
                 key={service.id}
-                elevation={0} 
-                sx={{ 
-                  p: 4, 
-                  borderRadius: 4, 
+                elevation={0}
+                sx={{
+                  p: 4,
+                  borderRadius: 4,
                   border: `1px solid ${AI4U_PALETTE.gray[200]}`,
                   bgcolor: service.id === '3' ? alpha(AI4U_PALETTE.black, 0.02) : AI4U_PALETTE.white,
                   position: 'relative',
@@ -264,11 +275,11 @@ const PropuestaElBarril: React.FC = () => {
         {/* ═══════════════════════════════════════════ */}
         {/* TOTAL INVERSION                             */}
         {/* ═══════════════════════════════════════════ */}
-        <Box sx={{ 
-          mb: 12, 
-          p: { xs: 4, md: 6 }, 
-          bgcolor: AI4U_PALETTE.black, 
-          borderRadius: 6, 
+        <Box sx={{
+          mb: 12,
+          p: { xs: 4, md: 6 },
+          bgcolor: AI4U_PALETTE.black,
+          borderRadius: 6,
           color: AI4U_PALETTE.white,
           boxShadow: `0 30px 60px ${alpha(AI4U_PALETTE.black, 0.4)}`,
           textAlign: 'center'
@@ -283,8 +294,8 @@ const PropuestaElBarril: React.FC = () => {
         {/* ═══════════════════════════════════════════ */}
         {/* GARANTÍA + CTA                              */}
         {/* ═══════════════════════════════════════════ */}
-        <Box sx={{ 
-          py: { xs: 8, md: 10 }, 
+        <Box sx={{
+          py: { xs: 8, md: 10 },
           px: { xs: 4, md: 8 },
           borderRadius: 6,
           background: `linear-gradient(135deg, ${AI4U_PALETTE.black} 0%, ${AI4U_PALETTE.gray[900]} 100%)`,
@@ -309,14 +320,14 @@ const PropuestaElBarril: React.FC = () => {
           </Typography>
 
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="center">
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               size="large"
               endIcon={<NextIcon />}
               href={`https://${APP_CONFIG.CONTACT.CALENDLY}`}
               target="_blank"
-              sx={{ 
-                bgcolor: AI4U_PALETTE.accentColors.orange, 
+              sx={{
+                bgcolor: AI4U_PALETTE.accentColors.orange,
                 color: AI4U_PALETTE.white,
                 px: 6, py: 2.5, borderRadius: 3,
                 fontSize: '1.15rem',
@@ -329,14 +340,14 @@ const PropuestaElBarril: React.FC = () => {
             >
               Agendar Diagnóstico ($0)
             </Button>
-            <Button 
-              variant="outlined" 
+            <Button
+              variant="outlined"
               size="large"
               startIcon={<WhatsAppIcon />}
               href={`https://wa.me/${APP_CONFIG.CONTACT.PHONE.replace(/\s+/g, '')}`}
               target="_blank"
-              sx={{ 
-                borderColor: alpha(AI4U_PALETTE.white, 0.4), 
+              sx={{
+                borderColor: alpha(AI4U_PALETTE.white, 0.4),
                 color: AI4U_PALETTE.white,
                 px: 6, py: 2.5, borderRadius: 3,
                 fontSize: '1.15rem',
