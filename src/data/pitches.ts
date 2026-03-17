@@ -392,8 +392,8 @@ export const getThemeStyles = (themeName: SlideTheme) => {
         case 'BANCOLOMBIA_PRIMARY':
             return {
                 bg: '#FDDA24',
-                text: '#000000',
-                accent: '#000000',
+                text: '#171717',
+                accent: '#171717',
                 logoMode: 'light' as const
             };
         case 'GRAY_MODERN':
@@ -419,7 +419,7 @@ export const getThemeStyles = (themeName: SlideTheme) => {
             };
         case 'GREEN_FRESH':
             return {
-                bg: AI4U_PALETTE.accentColors.green,
+                bg: AI4U_PALETTE.accentColors.mint,
                 text: AI4U_PALETTE.black,
                 accent: AI4U_PALETTE.black,
                 logoMode: 'light' as const

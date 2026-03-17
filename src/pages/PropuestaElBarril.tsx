@@ -68,7 +68,7 @@ const PropuestaElBarril: React.FC = () => {
         width: 500,
         height: 500,
         borderRadius: '50%',
-        background: `radial-gradient(circle, ${alpha(AI4U_PALETTE.accentColors.green, 0.05)} 0%, transparent 70%)`,
+        background: `radial-gradient(circle, ${alpha(AI4U_PALETTE.accentColors.mint, 0.05)} 0%, transparent 70%)`,
         zIndex: 0
       }} />
 
@@ -188,7 +188,7 @@ const PropuestaElBarril: React.FC = () => {
                 desc: 'Diseñamos tu primer agente entrenado con la voz de Asadores El Barril. Genera guiones, copy, storyboards e ideas de recetas. Incluye acceso básico (Correo, WhatsApp, Calendar, Drive) y 10 horas de vibe coding para enseñarte a entrenarlo. Las posibilidades son ilimitadas: asesor de catering, community manager, vendedor o coordinador.',
                 duration: 'Implementación + Entrenamiento',
                 icon: <SuperAIIcon />,
-                color: AI4U_PALETTE.accentColors.green
+                color: AI4U_PALETTE.accentColors.mint
               },
               {
                 id: '4',
@@ -291,8 +291,8 @@ const PropuestaElBarril: React.FC = () => {
           boxShadow: `0 30px 60px ${alpha(AI4U_PALETTE.black, 0.4)}`,
           textAlign: 'center'
         }}>
-          <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, letterSpacing: 2 }}>Inversión Semestral Sugerida</Typography>
-          <Typography variant="h2" sx={{ fontWeight: 900, mb: 2, color: AI4U_PALETTE.white }}>$23.074.000 <Typography component="span" variant="h4" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 800 }}>COP</Typography></Typography>
+          <Typography variant="overline" sx={{ color: AI4U_PALETTE.accentColors.mint, fontWeight: 900, letterSpacing: 2 }}>Inversión Semestral Sugerida</Typography>
+          <Typography variant="h2" sx={{ fontWeight: 900, mb: 2, color: AI4U_PALETTE.white }}>$23.074.000 <Typography component="span" variant="h4" sx={{ color: AI4U_PALETTE.accentColors.mint, fontWeight: 800 }}>COP</Typography></Typography>
           <Typography variant="h6" sx={{ color: alpha(AI4U_PALETTE.white, 0.7), fontWeight: 400, maxWidth: 600, mx: 'auto' }}>
             Un equipo completo de IA y una cultura de automatización operando por menos de lo que cuesta un solo empleado senior.
           </Typography>
@@ -311,10 +311,10 @@ const PropuestaElBarril: React.FC = () => {
           boxShadow: `0 40px 80px ${alpha(AI4U_PALETTE.black, 0.4)}`,
           border: `1px solid ${alpha(AI4U_PALETTE.white, 0.1)}`
         }}>
-          <Box sx={{ mb: 8, p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.green, 0.3)}`, maxWidth: 600, mx: 'auto' }}>
+          <Box sx={{ mb: 8, p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.mint, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.mint, 0.3)}`, maxWidth: 600, mx: 'auto' }}>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" sx={{ mb: 2 }}>
-              <ShieldIcon sx={{ color: AI4U_PALETTE.accentColors.green }} />
-              <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.green }}>Garantía AI4U</Typography>
+              <ShieldIcon sx={{ color: AI4U_PALETTE.accentColors.mint }} />
+              <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.accentColors.mint }}>Garantía AI4U</Typography>
             </Stack>
             <Typography variant="body2" sx={{ color: alpha(AI4U_PALETTE.white, 0.9), lineHeight: 1.7, fontWeight: 500 }}>
               Si en los primeros 30 días del Sprint Inicial no demostramos un impacto tangible en la agilidad de tu equipo, ajustamos el enfoque sin costo adicional. No entregamos código, entregamos resultados.

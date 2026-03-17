@@ -40,7 +40,7 @@ const SuperCategoryFilter: React.FC<SuperCategoryFilterProps> = ({
             size="medium"
             onClick={() => onValueChange(option.value)}
             sx={{
-              borderRadius: 0,
+              borderRadius: '9999px',
               background: selectedValue === option.value 
                 ? colors.contrast.text.primary 
                 : 'transparent',

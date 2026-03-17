@@ -273,7 +273,7 @@ const WhyAI4U = () => {
                     fontSize: '1.2rem',
                     borderColor: colors.palette.white,
                     color: colors.palette.white,
-                    borderRadius: 0,
+                    borderRadius: '9999px',
                     '&:hover': {
                       bgcolor: colors.palette.white,
                       color: colors.palette.black,
@@ -328,7 +328,7 @@ const WhyAI4U = () => {
       {/* Benefits Section - Inspiración GREEN_FRESH */}
       <Box sx={{ 
         py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.accentColors.green,
+        bgcolor: colors.palette.accentColors.mint,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
@@ -337,7 +337,7 @@ const WhyAI4U = () => {
         {/* Linea asimétrica de fondo */}
         <Box sx={{ position: 'absolute', top: '20%', left: 0, width: '100%', height: '1px', bgcolor: 'rgba(0,0,0,0.1)', transform: 'rotate(-2deg)' }} />
 
-        <SurfaceProvider surface="green">
+        <SurfaceProvider surface="mint">
           <Container maxWidth="xl">
             <H1 sx={{ 
               mb: 12, 
@@ -350,7 +350,7 @@ const WhyAI4U = () => {
               letterSpacing: '-0.04em'
             }}>
               ¿Qué nos hace <br/>
-              <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.accentColors.green, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
+              <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.accentColors.mint, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
             </H1>
 
             <Grid container spacing={4} alignItems="stretch">
@@ -506,7 +506,7 @@ const WhyAI4U = () => {
                 sx={{
                   bgcolor: colors.palette.black,
                   color: colors.palette.white,
-                  borderRadius: 0,
+                  borderRadius: '9999px',
                   width: 60,
                   height: 60,
                   '&:hover': { bgcolor: colors.palette.accentColors.orange }
@@ -520,7 +520,7 @@ const WhyAI4U = () => {
                 sx={{
                   bgcolor: colors.palette.black,
                   color: colors.palette.white,
-                  borderRadius: 0,
+                  borderRadius: '9999px',
                   width: 60,
                   height: 60,
                   '&:hover': { bgcolor: colors.palette.accentColors.orange }
@@ -630,14 +630,14 @@ const WhyAI4U = () => {
                 direction={{ xs: 'column', sm: 'row' }} 
                 spacing={4} 
               >
-                <DiagnosticCTA sx={{ 
+                <DiagnosticCTA sx={{
                   height: 'auto',
                   py: 4,
-                  px: 10, 
-                  fontSize: '1.8rem', 
-                  bgcolor: colors.palette.black, 
+                  px: 10,
+                  fontSize: '1.8rem',
+                  bgcolor: colors.palette.black,
                   color: colors.palette.white,
-                  borderRadius: 0,
+                  borderRadius: '9999px',
                   fontWeight: 400,
                   '&:hover': {
                     bgcolor: colors.palette.accentColors.orange,
@@ -653,9 +653,9 @@ const WhyAI4U = () => {
                     px: 10, 
                     fontSize: '1.8rem', 
                     borderWidth: '2px', 
-                    borderColor: colors.palette.black, 
+                    borderColor: colors.palette.black,
                     color: colors.palette.black,
-                    borderRadius: 0,
+                    borderRadius: '9999px',
                     fontWeight: 400,
                     '&:hover': {
                       bgcolor: colors.palette.black,

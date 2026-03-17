@@ -95,7 +95,7 @@ const PageLayout = ({
             {title && (
               <H1 sx={{ 
                 mb: { xs: 4, md: 6 },
-                color: variant === 'futuristic' ? '#FFFFFF' : '#000000',
+                color: variant === 'futuristic' ? '#FFFFFF' : '#171717',
               }}>
                 {title}
               </H1>

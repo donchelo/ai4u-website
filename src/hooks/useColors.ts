@@ -63,10 +63,10 @@ export const useColors = () => {
         // Acentos mínimos (solo para casos excepcionales)
         accent: effectiveMode === 'light' ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         // Garantizar contraste mínimo
-        highContrast: effectiveMode === 'light' ? '#000000' : '#FFFFFF',
+        highContrast: effectiveMode === 'light' ? '#171717' : '#FFFFFF',
         mediumContrast: effectiveMode === 'light' ? '#333333' : '#F0F0F0',
         // Contraste máximo para modo dark
-        darkHighContrast: effectiveMode === 'dark' ? '#FFFFFF' : '#000000',
+        darkHighContrast: effectiveMode === 'dark' ? '#FFFFFF' : '#171717',
         darkMediumContrast: effectiveMode === 'dark' ? '#E8E8E8' : '#333333',
       },
       
@@ -119,7 +119,7 @@ export const useContrastPair = () => {
     },
     // Fondo oscuro → Texto claro
     dark: {
-      background: mode === 'dark' ? contrast.background : '#000000',
+      background: mode === 'dark' ? contrast.background : '#171717',
       text: mode === 'dark' ? contrast.text.primary : '#FFFFFF',
     },
   }), [mode, contrast]);

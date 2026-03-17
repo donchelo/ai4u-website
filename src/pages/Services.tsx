@@ -102,7 +102,7 @@ const Services: React.FC = () => {
       subtitle: 'Infraestructura IA',
       description: 'Diseñada para escalar.',
       color: colors.palette.black,
-      bgColor: colors.palette.accentColors.green,
+      bgColor: colors.palette.accentColors.mint,
       textColor: colors.palette.black,
       accentColor: colors.palette.black
     }
@@ -197,7 +197,7 @@ const Services: React.FC = () => {
                     sx={{ 
                       borderColor: 'rgba(255,255,255,0.2)',
                       color: colors.palette.white,
-                      borderRadius: 0,
+                      borderRadius: '9999px',
                       px: 4,
                       py: 2,
                       textTransform: 'none',
@@ -348,9 +348,9 @@ const Services: React.FC = () => {
                     <Button 
                       variant="outline"
                       sx={{ 
-                        borderColor: axis.textColor, 
+                        borderColor: axis.textColor,
                         color: axis.textColor,
-                        borderRadius: 0,
+                        borderRadius: '9999px',
                         px: 6,
                         py: 3,
                         fontSize: '1.2rem',
@@ -550,12 +550,12 @@ const Services: React.FC = () => {
               ¿Empezamos?
             </Giant>
             <DiagnosticCTA 
-              sx={{ 
+              sx={{
                 height: 'auto',
                 py: 4,
-                px: 12, 
+                px: 12,
                 fontSize: '2rem',
-                borderRadius: 0,
+                borderRadius: '9999px',
                 bgcolor: colors.palette.black,
                 color: colors.palette.white,
                 border: 'none',

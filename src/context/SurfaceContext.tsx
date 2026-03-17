@@ -64,7 +64,7 @@ export const SurfaceProvider: React.FC<SurfaceProviderProps> = ({ children, surf
         MuiButton: {
           styleOverrides: {
             root: {
-              borderRadius: 0,
+              borderRadius: '9999px',
               textTransform: 'none',
             },
             containedPrimary: {

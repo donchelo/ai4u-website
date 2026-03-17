@@ -9,7 +9,7 @@ export const BRAND_IDENTITY = {
   visualIdentity: {
     colors: {
       primary: {
-        neonBlaze: "#FF5C00",
+        neonBlaze: "#ff6e00",
         description: "Más ácido, más intenso. Ideal para dark UI y botones activos"
       },
       secondary: {
@@ -20,7 +20,7 @@ export const BRAND_IDENTITY = {
       },
       accent: {
         techSlate: "#7D848B",
-        cyberOlive: "#B6CA40",
+        cyberOlive: "#eaf4eb",
         deepNeuralTeal: "#2B7A78"
       },
       usage: {
@@ -121,7 +121,7 @@ export const BRAND_IDENTITY = {
   },
   interactiveElements: {
     buttons: {
-      primary: "Fondo naranja (#FF5C00), texto blanco",
+      primary: "Fondo naranja (#ff6e00), texto blanco",
       secondary: "Borde naranja, texto naranja",
       hover: "Efectos sutiles de transición"
     },

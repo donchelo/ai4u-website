@@ -1,9 +1,9 @@
-// Sistema de colores AI4U - Minimalista
-// Paleta principal: blanco, negro y gris (sin naranja como primario)
+// Sistema de colores AI4U - Brand Manual
+// Paleta principal: Erie black, mint cream, orange, moderate blue
 export const AI4U_PALETTE = {
-  // Colores base (paleta minimalista)
+  // Colores base
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#171717',  // Erie black
   gray: {
     50: '#FAFAFA',
     100: '#F5F5F5',
@@ -17,18 +17,17 @@ export const AI4U_PALETTE = {
     900: '#171717',
   },
   
-  // Acentos mínimos (solo para casos excepcionales)
-  // El naranja ya no es el color primario - usar solo cuando sea absolutamente necesario
+  // Colores de marca AI4U (Brand Manual)
   accentColors: {
-    // Mantener disponible pero no como primario
-    orange: '#FF5C00',  // Uso mínimo - solo para casos excepcionales
-    green: '#B6CA40',   // Uso mínimo - solo para casos excepcionales
+    orange: '#ff6e00',      // orange de marca
+    mint: '#eaf4eb',        // mint cream (reemplaza green)
+    green: '#eaf4eb',       // alias legacy → mint (para compatibilidad)
+    blue: '#3daed1',        // moderate blue
+    cadetGray: '#94989b',   // cadet gray
   },
-  
-  // Compatibilidad hacia atrás: mantener accent como string para componentes existentes
-  // NOTA: Este es un valor legacy. Nuevos componentes NO deben usar esto.
-  // Usar accentColors.orange o accentColors.green explícitamente, o mejor aún, usar la paleta minimalista
-  accent: '#FF5C00' as const,
+
+  // Compatibilidad hacia atrás
+  accent: '#ff6e00' as const,
   
   // Estados funcionales
   success: '#10B981',
@@ -80,9 +79,21 @@ export const SURFACE_PRESETS = {
     divider: 'rgba(0,0,0,0.06)',
     effectiveMode: 'dark' as const,
   },
+  mint: {
+    background: AI4U_PALETTE.accentColors.mint,
+    surface: AI4U_PALETTE.accentColors.mint,
+    text: {
+      primary: AI4U_PALETTE.black,
+      secondary: AI4U_PALETTE.gray[800],
+      disabled: AI4U_PALETTE.gray[600],
+    },
+    border: 'none',
+    divider: 'rgba(0,0,0,0.06)',
+    effectiveMode: 'light' as const,
+  },
   green: {
-    background: AI4U_PALETTE.accentColors.green,
-    surface: AI4U_PALETTE.accentColors.green,
+    background: AI4U_PALETTE.accentColors.mint,
+    surface: AI4U_PALETTE.accentColors.mint,
     text: {
       primary: AI4U_PALETTE.black,
       secondary: AI4U_PALETTE.gray[800],

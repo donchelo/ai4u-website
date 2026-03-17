@@ -143,7 +143,7 @@ const ServicesFilter: React.FC<ServicesFilterProps> = ({
               fontSize: '0.9rem',
               fontWeight: 400,
               textTransform: 'none',
-              borderRadius: 0,
+              borderRadius: '9999px',
               mx: 0.5,
               transition: 'all 0.1s ease',
               color: colors.contrast.text.primary,

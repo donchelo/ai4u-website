@@ -414,7 +414,7 @@ export const services: Service[] = [
       video: '/assets/videos/data-entry-automatico.mp4',
       poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
-    color: AI4U_PALETTE.accentColors.green,
+    color: AI4U_PALETTE.accentColors.mint,
     tags: ['super-ai', 'autonomía', 'eje:transformation', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
@@ -434,7 +434,7 @@ export const services: Service[] = [
     category: ServiceCategory.CONSULTING,
     priority: 2,
     featured: false,
-    color: AI4U_PALETTE.accentColors.green,
+    color: AI4U_PALETTE.accentColors.mint,
     tags: ['metodología', 'futuro', 'eje:transformation', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/metodologia-ai-first.png',

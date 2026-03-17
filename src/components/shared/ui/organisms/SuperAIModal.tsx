@@ -50,7 +50,7 @@ const SuperAIModal: React.FC<SuperAIModalProps> = ({ open, onClose }) => {
           zIndex: 10,
           bgcolor: colors.palette.black,
           border: `1px solid ${colors.palette.gray[800]}`,
-          borderRadius: 0,
+          borderRadius: '9999px',
           '&:hover': {
             bgcolor: colors.palette.gray[900],
             borderColor: colors.palette.white,

@@ -81,7 +81,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiButton: {
 			styleOverrides: {
 				root: ({ theme }) => ({
-					borderRadius: 0,
+					borderRadius: '9999px',
 					fontWeight: 400,
 					textTransform: 'none',
 					boxShadow: 'none',
@@ -180,7 +180,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiChip: {
 			styleOverrides: {
 				root: {
-					borderRadius: 0,
+					borderRadius: '9999px',
 					backgroundColor: isLight ? AI4U_PALETTE.gray[100] : AI4U_PALETTE.gray[800],
 					border: 'none',
 					color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,

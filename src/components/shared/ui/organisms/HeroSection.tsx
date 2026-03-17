@@ -205,7 +205,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 px: { xs: 4, md: 8 }, 
                 fontSize: { xs: '0.9rem', md: '1.5rem' },
                 fontWeight: 400,
-                borderRadius: 0,
+                borderRadius: '9999px',
                 bgcolor: colors.palette.white,
                 color: colors.palette.black,
                 border: 'none',

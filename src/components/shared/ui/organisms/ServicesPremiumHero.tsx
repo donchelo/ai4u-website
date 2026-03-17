@@ -99,14 +99,14 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                     fontSize: '1.25rem',
                     fontWeight: 400,
                     textTransform: 'none',
-                    color: idx === activeIndex 
-                      ? (service.color === '#FFFFFF' || service.color === '#FF5C00' || service.color === '#B6CA40' || service.color === '#3B82F6' 
-                          ? colors.palette.black 
-                          : colors.palette.white) 
+                    color: idx === activeIndex
+                      ? (service.color === '#FFFFFF' || service.color === '#ff6e00' || service.color === '#eaf4eb' || service.color === '#3B82F6'
+                          ? colors.palette.black
+                          : colors.palette.white)
                       : colors.palette.white,
                     background: idx === activeIndex ? service.color : 'transparent',
                     border: `4px solid ${idx === activeIndex ? service.color : colors.palette.white}`,
-                    borderRadius: 0,
+                    borderRadius: '9999px',
                     cursor: 'pointer',
                     transition: 'all 0.1s ease',
                     whiteSpace: 'nowrap',

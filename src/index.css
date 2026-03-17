@@ -1,14 +1,23 @@
 /* AI4U Global Styles - Migrated from Tailwind to CSS */
 /* Fuentes cargadas vía index.html con display=swap para no bloquear render */
 
+/* Necto Mono - Fuente monospace de marca (números, código) */
+@font-face {
+  font-family: 'Necto Mono';
+  src: url('/fonts/NectoMono-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* CSS Variables - AI4U Colors (Sincronizadas con tokens/palette.ts) */
 /* NOTA: Estas variables están sincronizadas con el sistema de tokens TypeScript */
 /* Para nuevos componentes, usar useColors() hook o tokens directamente */
 :root {
-  /* Colores base - Minimalista */
+  /* Colores base */
   --ai4u-white: #FFFFFF;
-  --ai4u-black: #000000;
-  
+  --ai4u-black: #171717;  /* Erie black - color negro de marca */
+
   /* Escala de grises */
   --ai4u-gray-50: #FAFAFA;
   --ai4u-gray-100: #F5F5F5;
@@ -20,11 +29,13 @@
   --ai4u-gray-700: #404040;
   --ai4u-gray-800: #262626;
   --ai4u-gray-900: #171717;
-  
-  /* Acentos mínimos (uso excepcional) */
-  --ai4u-orange: #FF5C00;  /* accentColors.orange - Uso mínimo */
-  --ai4u-green: #B6CA40;   /* accentColors.green - Uso mínimo */
-  
+
+  /* Colores de marca AI4U */
+  --ai4u-orange: #ff6e00;       /* accentColors.orange */
+  --ai4u-mint: #eaf4eb;         /* accentColors.mint - mint cream */
+  --ai4u-blue: #3daed1;         /* moderate blue */
+  --ai4u-cadet-gray: #94989b;   /* cadet gray */
+
   /* Estados funcionales */
   --ai4u-success: #10B981;
   --ai4u-error: #EF4444;
@@ -55,7 +66,7 @@ body {
 
 /* Numeric font class */
 .numeric {
-  font-family: 'Fira Mono', monospace;
+  font-family: 'Necto Mono', monospace;
 }
 
 /* Component Styles - Migrated from Tailwind */
@@ -100,12 +111,12 @@ body {
 /* Button styles - DEPRECATED: Usar componente Button de src/components/shared/ui/atoms/Button.tsx */
 /* Estas clases se mantienen solo para compatibilidad legacy */
 .ai4u-button {
-  background-color: var(--ai4u-black); /* Primario ahora es negro (no naranja) */
+  background-color: var(--ai4u-black);
   color: var(--ai4u-white);
   font-family: 'Red Hat Display', sans-serif;
   font-weight: 400;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -121,7 +132,7 @@ body {
   font-family: 'Red Hat Display', sans-serif;
   font-weight: 400;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -137,8 +148,8 @@ body {
   font-family: 'Red Hat Display', sans-serif;
   font-weight: 400;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  border: 2px solid var(--ai4u-gray-400); /* Borde gris (no naranja) */
+  border-radius: 9999px;
+  border: 2px solid var(--ai4u-gray-400);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -192,7 +203,7 @@ body {
 }
 
 .ai4u-code {
-  font-family: 'Fira Mono', monospace;
+  font-family: 'Necto Mono', monospace;
   font-size: clamp(14px, 1vw, 16px);
   color: var(--ai4u-black);
   line-height: 1.6;

@@ -22,7 +22,7 @@ const StyledButton = styled(MuiButton, {
   
   // Estilos base modernos y limpios
   const baseStyles = {
-    borderRadius: 0, // Ángulos rectos
+    borderRadius: '9999px', // Pill shape
     fontWeight: 400, // Regular
     textTransform: 'none' as const,
     fontFamily: '"Red Hat Display", sans-serif',

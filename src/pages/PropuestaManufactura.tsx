@@ -85,7 +85,7 @@ const PropuestaManufactura: React.FC = () => {
                     >
                         Su fábrica produce datos masivos.
                         <br />
-                        <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.green, filter: 'brightness(0.7)' }}>Super AI los convierte en decisiones ejecutivas.</Box>
+                        <Box component="span" sx={{ color: AI4U_PALETTE.accentColors.mint, filter: 'brightness(0.7)' }}>Super AI los convierte en decisiones ejecutivas.</Box>
                     </Typography>
 
                     <Stack direction="row" spacing={2} alignItems="center" sx={{ mt: 4 }}>
@@ -158,12 +158,12 @@ const PropuestaManufactura: React.FC = () => {
                     position: 'relative'
                 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                        <SuperAIIcon sx={{ color: AI4U_PALETTE.accentColors.green, fontSize: 40 }} />
+                        <SuperAIIcon sx={{ color: AI4U_PALETTE.accentColors.mint, fontSize: 40 }} />
                         <Typography variant="h3" sx={{ fontWeight: 900, letterSpacing: -1, color: AI4U_PALETTE.white }}>
                             2. Super AI: Executive Orchestrator
                         </Typography>
                     </Box>
-                    <Typography variant="h6" sx={{ mb: 5, color: AI4U_PALETTE.accentColors.green, fontWeight: 700 }}>
+                    <Typography variant="h6" sx={{ mb: 5, color: AI4U_PALETTE.accentColors.mint, fontWeight: 700 }}>
                         No es un software más; es la capa de inteligencia que orquesta su infraestructura actual.
                     </Typography>
 
@@ -176,7 +176,7 @@ const PropuestaManufactura: React.FC = () => {
                             <Grid item xs={12} key={i}>
                                 <Box sx={{ p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.white, 0.05), border: `1px solid ${alpha(AI4U_PALETTE.white, 0.1)}` }}>
                                     <Stack direction="row" spacing={3} alignItems="flex-start">
-                                        <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.1), color: AI4U_PALETTE.accentColors.green }}>
+                                        <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: alpha(AI4U_PALETTE.accentColors.mint, 0.1), color: AI4U_PALETTE.accentColors.mint }}>
                                             {skill.icon}
                                         </Box>
                                         <Box>
@@ -189,7 +189,7 @@ const PropuestaManufactura: React.FC = () => {
                         ))}
                     </Grid>
 
-                    <Box sx={{ p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.green, 0.3)}` }}>
+                    <Box sx={{ p: 4, borderRadius: 4, bgcolor: alpha(AI4U_PALETTE.accentColors.mint, 0.1), border: `1px solid ${alpha(AI4U_PALETTE.accentColors.mint, 0.3)}` }}>
                         <Typography variant="subtitle1" sx={{ fontWeight: 900, color: AI4U_PALETTE.white, mb: 2 }}>Métrica Clave para el CEO: El ROI de la Atención</Typography>
                         <Grid container spacing={3}>
                             {[
@@ -198,7 +198,7 @@ const PropuestaManufactura: React.FC = () => {
                                 { label: 'Precisión de Data', val: '99.9%', desc: 'Eliminación del error humano en la captura y reporte.' }
                             ].map((m, i) => (
                                 <Grid item xs={12} sm={4} key={i}>
-                                    <Typography variant="h4" sx={{ color: AI4U_PALETTE.accentColors.green, fontWeight: 900, mb: 0.5 }}>{m.val}</Typography>
+                                    <Typography variant="h4" sx={{ color: AI4U_PALETTE.accentColors.mint, fontWeight: 900, mb: 0.5 }}>{m.val}</Typography>
                                     <Typography variant="caption" sx={{ color: AI4U_PALETTE.white, fontWeight: 700, display: 'block', mb: 0.5 }}>{m.label}</Typography>
                                     <Typography variant="caption" sx={{ color: alpha(AI4U_PALETTE.white, 0.6), lineHeight: 1.2 }}>{m.desc}</Typography>
                                 </Grid>
@@ -251,7 +251,7 @@ const PropuestaManufactura: React.FC = () => {
                                     ].map((item) => (
                                         <ListItem key={item} disableGutters sx={{ py: 0.5 }}>
                                             <ListItemIcon sx={{ minWidth: 32 }}>
-                                                <CheckIcon sx={{ color: AI4U_PALETTE.accentColors.green }} />
+                                                <CheckIcon sx={{ color: AI4U_PALETTE.accentColors.mint }} />
                                             </ListItemIcon>
                                             <ListItemText primary={item} primaryTypographyProps={{ variant: 'body2', fontWeight: 600 }} />
                                         </ListItem>
@@ -282,13 +282,13 @@ const PropuestaManufactura: React.FC = () => {
                             href={`https://${APP_CONFIG.CONTACT.CALENDLY}`}
                             target="_blank"
                             sx={{
-                                bgcolor: AI4U_PALETTE.accentColors.green,
+                                bgcolor: AI4U_PALETTE.accentColors.mint,
                                 color: AI4U_PALETTE.black,
                                 px: 6, py: 2, borderRadius: 3,
                                 fontWeight: 900,
                                 fontSize: '1.1rem',
                                 textTransform: 'none',
-                                '&:hover': { bgcolor: alpha(AI4U_PALETTE.accentColors.green, 0.8) }
+                                '&:hover': { bgcolor: alpha(AI4U_PALETTE.accentColors.mint, 0.8) }
                             }}
                         >
                             Agendar Sesión Ejecutiva

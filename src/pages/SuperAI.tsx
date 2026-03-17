@@ -347,7 +347,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 letterSpacing: '-0.02em',
                 fontSize: isModal ? { xs: '3rem', md: '5rem' } : { xs: '3.5rem', md: '8rem' },
                 '& span': {
-                  color: colors.palette.accentColors.green,
+                  color: colors.palette.accentColors.mint,
                   display: 'inline-block',
                   transform: 'rotate(1deg)',
                   fontWeight: 500
@@ -384,7 +384,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   fontWeight: 400,
                   bgcolor: colors.palette.white,
                   color: colors.palette.black,
-                  borderRadius: 0,
+                  borderRadius: '9999px',
                   '&:hover': {
                     bgcolor: colors.palette.accentColors.orange,
                     color: colors.palette.black,
@@ -863,7 +863,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                     {tier.period && <Typography sx={{ color: 'rgba(255,255,255,0.3)', ml: 1, fontWeight: 400, fontSize: '0.9rem' }}>{tier.period}</Typography>}
                   </Box>
                   {tier.price !== 'Gratis' && (
-                    <Typography sx={{ color: colors.palette.accentColors.green, fontSize: '0.75rem', mb: 2, ...TEXT_VARIANTS.ui.code }}>
+                    <Typography sx={{ color: colors.palette.accentColors.mint, fontSize: '0.75rem', mb: 2, ...TEXT_VARIANTS.ui.code }}>
                       // precio de lanzamiento
                     </Typography>
                   )}
@@ -898,7 +898,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                       height: 'auto',
                       py: 2.5,
                       fontWeight: 400,
-                      borderRadius: 0,
+                      borderRadius: '9999px',
                       fontSize: '1rem',
                       borderColor: tier.highlight ? colors.palette.accentColors.orange : 'rgba(255,255,255,0.3)',
                       bgcolor: tier.highlight ? colors.palette.accentColors.orange : 'transparent',
@@ -1071,7 +1071,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   fontWeight: 400,
                   bgcolor: colors.palette.accentColors.orange,
                   color: colors.palette.black,
-                  borderRadius: 0,
+                  borderRadius: '9999px',
                   '&:hover': {
                     bgcolor: colors.palette.white,
                     color: colors.palette.black,

@@ -112,15 +112,15 @@ const Home = () => {
         primaryButtonText="Desplegar mi agente"
       />
 
-      {/* Features Section - Inspiración GREEN_FRESH */}
-      <Box sx={{ 
+      {/* Features Section */}
+      <Box sx={{
         py: COMPONENT_SPACING.layout.section,
-        bgcolor: colors.palette.accentColors.green,
+        bgcolor: '#eaf4eb',
         color: colors.palette.black,
         position: 'relative',
         overflow: 'hidden'
       }}>
-        <SurfaceProvider surface="green">
+        <SurfaceProvider surface="mint">
           <Container maxWidth="xl">
             <Grid container spacing={4} sx={{ position: 'relative', zIndex: 2 }}>
               <Grid item xs={12} lg={8}>
@@ -133,7 +133,7 @@ const Home = () => {
                   lineHeight: 0.9,
                   letterSpacing: '-0.05em'
                 }}>
-                  ¿Cuántas horas <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.accentColors.green, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>pierdes</Box> al día?
+                  ¿Cuántas horas <Box component="span" sx={{ bgcolor: colors.palette.black, color: '#eaf4eb', px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>pierdes</Box> al día?
                 </H1>
               </Grid>
               
@@ -354,19 +354,19 @@ const Home = () => {
                   component={Link}
                   to={ROUTES.SERVICES}
                   onClick={() => scrollToTop()}
-                  sx={{ 
+                  sx={{
                     height: 'auto',
-                    py: 3, 
-                    px: 6, 
+                    py: 3,
+                    px: 6,
                     fontSize: '1.2rem',
                     fontWeight: 400,
                     textTransform: 'none',
-                    borderRadius: 0,
+                    borderRadius: '9999px',
                     border: `2px solid ${colors.palette.black}`,
-                    boxShadow: `8px 8px 0px ${colors.palette.gray[200]}`,
+                    boxShadow: `4px 4px 0px ${colors.palette.gray[400]}`,
                     '&:hover': {
                       transform: 'translate(-2px, -2px)',
-                      boxShadow: `12px 12px 0px ${colors.palette.black}`,
+                      boxShadow: `8px 8px 0px ${colors.palette.black}`,
                     }
                   }}
                 >
@@ -507,15 +507,15 @@ const Home = () => {
               spacing={4} 
               alignItems="flex-start"
             >
-              <DiagnosticCTA sx={{ 
+              <DiagnosticCTA sx={{
                 height: 'auto',
-                py: 4, 
-                px: 10, 
-                fontSize: '1.8rem', 
-                fontWeight: 400, 
-                bgcolor: colors.palette.white, 
+                py: 4,
+                px: 10,
+                fontSize: '1.8rem',
+                fontWeight: 400,
+                bgcolor: colors.palette.white,
                 color: colors.palette.black,
-                borderRadius: 0,
+                borderRadius: '9999px',
                 textTransform: 'none',
                 '&:hover': {
                   bgcolor: colors.palette.accentColors.orange,
@@ -523,18 +523,18 @@ const Home = () => {
                   transform: 'translateY(-10px)'
                 }
               }} />
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 component={Link}
                 to={ROUTES.SERVICES}
                 onClick={() => scrollToTop()}
-                sx={{ 
+                sx={{
                   height: 'auto',
-                  py: 4, 
-                  px: 10, 
-                  fontSize: '1.8rem', 
-                  fontWeight: 400, 
-                  borderRadius: 0,
+                  py: 4,
+                  px: 10,
+                  fontSize: '1.8rem',
+                  fontWeight: 400,
+                  borderRadius: '9999px',
                   borderColor: colors.palette.white,
                   color: colors.palette.white,
                   borderWidth: '2px',

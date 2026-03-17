@@ -44,7 +44,7 @@ const ExpandableSection = ({
             transition: 'all 0.1s ease',
             '&:hover': {
               transform: 'translate(-4px, -4px)',
-              boxShadow: isDarkMode ? '6px 6px 0px #FFFFFF' : '6px 6px 0px #000000',
+              boxShadow: isDarkMode ? '6px 6px 0px #FFFFFF' : '6px 6px 0px #171717',
             }
           }
         };

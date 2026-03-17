@@ -265,7 +265,7 @@ const getThemeStyles = (themeName: SlideTheme) => {
       };
     case 'GREEN_FRESH':
       return {
-        bg: AI4U_PALETTE.accentColors.green,
+        bg: AI4U_PALETTE.accentColors.mint,
         text: AI4U_PALETTE.black,
         accent: AI4U_PALETTE.black,
         logoMode: 'light' as const
