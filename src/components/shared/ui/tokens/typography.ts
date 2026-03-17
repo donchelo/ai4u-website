@@ -71,6 +71,13 @@ export const TEXT_VARIANTS = {
       lineHeight: 0.95,
       letterSpacing: '-0.03em',
     },
+    number: {
+      fontSize: { xs: '5rem', md: '12rem', lg: '18rem' },
+      fontWeight: 900,
+      lineHeight: 0.8,
+      letterSpacing: '-0.06em',
+      fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code, // Monospace for numbers
+    },
   },
   
   // Etiquetas industriales (Abloh Signature)

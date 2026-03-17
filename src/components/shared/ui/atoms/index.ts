@@ -17,3 +17,4 @@ export { default as IntelligentImagePreloader } from './IntelligentImagePreloade
 export { default as ContextualLink } from './ContextualLink';
 export { default as NavigationDot } from './NavigationDot';
 export { default as ServiceThumbnail } from './ServiceThumbnail';
+export { default as GiantNumber } from './GiantNumber';

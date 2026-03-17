@@ -22,7 +22,8 @@ import {
   Button, GeometricIcon, SEOHead,
   Logo,
   NavigationDot,
-  ServiceThumbnail
+  ServiceThumbnail,
+  GiantNumber
 } from '../components/shared/ui/atoms';
 import { Card, MetricCard, BudgetCard, Breadcrumb } from '../components/shared/ui/molecules';
 import { HeroSection } from '../components/shared/ui/organisms';
@@ -50,6 +51,7 @@ const DesignSystem = () => {
     { id: 'atomos', label: 'Átomos', icon: <ExtensionIcon fontSize="small" /> },
     { id: 'moleculas', label: 'Moléculas', icon: <MenuIcon fontSize="small" /> },
     { id: 'organismos', label: 'Organismos', icon: <MenuIcon fontSize="small" /> },
+    { id: 'numeros', label: 'Números Gigantes', icon: <ExtensionIcon fontSize="small" /> },
     { id: 'tokens', label: 'Tokens', icon: <CodeText># </CodeText> },
   ];
 
@@ -333,9 +335,51 @@ const DesignSystem = () => {
           </Container>
         </Box>
 
+        {/* ─── Section: Números Gigantes (Industrial Scale) ─── */}
+        <Box id="numeros" sx={{ py: 15, bgcolor: AI4U_PALETTE.black, color: AI4U_PALETTE.white }}>
+          <Container maxWidth="lg">
+            <Typography sx={{ ...TEXT_VARIANTS.label.main, color: AI4U_PALETTE.accentColors.mint, mb: 10 }}>
+              "Phase 06: Giant Numbers"
+            </Typography>
+            
+            <Stack spacing={8}>
+              <Box>
+                <Typography sx={{ ...TEXT_VARIANTS.label.secondary, color: colors.palette.gray[500], mb: 2 }}>
+                  // Primary Numeric Variant
+                </Typography>
+                <GiantNumber>88.2%</GiantNumber>
+              </Box>
+              
+              <Box>
+                <Typography sx={{ ...TEXT_VARIANTS.label.secondary, color: colors.palette.gray[500], mb: 2 }}>
+                  // Outline Numeric Variant
+                </Typography>
+                <GiantNumber numberVariant="outline">2,500+</GiantNumber>
+              </Box>
+
+              <Grid container spacing={4}>
+                <Grid item xs={12} md={6}>
+                  <Box sx={{ p: 4, border: `1px solid ${colors.palette.gray[800]}` }}>
+                    <Typography sx={{ ...TEXT_VARIANTS.label.secondary, mb: 2 }}>[Composition Sample]</Typography>
+                    <GiantNumber sx={{ fontSize: '8rem' }}>12</GiantNumber>
+                    <Typography sx={{ ...TEXT_VARIANTS.label.main }}>Agentes operativos</Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                   <Box sx={{ p: 4, border: `1px solid ${colors.palette.gray[800]}` }}>
+                    <Typography sx={{ ...TEXT_VARIANTS.label.secondary, mb: 2 }}>[Composition Sample]</Typography>
+                    <GiantNumber numberVariant="outline" sx={{ fontSize: '8rem' }}>99%</GiantNumber>
+                    <Typography sx={{ ...TEXT_VARIANTS.label.main }}>Precisión de datos</Typography>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Stack>
+          </Container>
+        </Box>
+
         <Box id="tokens" sx={{ py: 15, borderTop: `4px solid ${colors.helpers.text.primary}` }}>
           <Container maxWidth="lg">
-            <Typography sx={{ ...TEXT_VARIANTS.label.main, mb: 10 }}>"Phase 06: System Tokens"</Typography>
+            <Typography sx={{ ...TEXT_VARIANTS.label.main, mb: 10 }}>"Phase 07: System Tokens"</Typography>
             
             <Grid container spacing={10}>
               <Grid item xs={12} md={6}>
