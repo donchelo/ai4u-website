@@ -1,46 +1,54 @@
 import React from 'react';
-import { Card, Box, Typography, styled } from '@mui/material';
+import { Card, Box, Typography, styled, alpha } from '@mui/material';
 import { GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
+import { TEXT_VARIANTS } from '../tokens/typography';
 
 type IconType = 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
-type CardVariant = 'default' | 'elevated' | 'outlined';
 
 interface MetricCardProps {
   title: string;
   value: string | number;
   subtitle?: string;
-  icon?: React.ReactNode;
   iconType?: IconType;
-  variant?: CardVariant;
   trend?: 'up' | 'down' | 'neutral';
   size?: 'compact' | 'normal' | 'large';
   onClick?: () => void;
-  colorMode?: 'light' | 'dark';
+  label?: string; // Metadata label e.g. "DATA_POINT"
 }
 
 const MetricValue = styled(Typography, {
-  shouldForwardProp: (prop) => prop !== 'metricSize' && prop !== 'isDarkMode',
-})<{ metricSize: string; isDarkMode?: boolean }>(({ metricSize, theme }) => ({
+  shouldForwardProp: (prop) => prop !== 'metricSize',
+})<{ metricSize: string }>(({ metricSize, theme }) => ({
   fontSize: metricSize === 'compact'
-    ? '4rem'
+    ? '3rem'
     : metricSize === 'large'
-      ? '8rem'
-      : '6rem',
-  fontWeight: 400,
-  lineHeight: 0.8,
+      ? '7rem'
+      : '5rem',
+  fontWeight: 900, // Brutalist impact
+  lineHeight: 0.85,
   fontFamily: '"Red Hat Display", sans-serif',
   letterSpacing: '-0.05em',
   margin: 0,
   padding: 0,
   color: 'inherit',
+  textTransform: 'uppercase',
   [theme.breakpoints.down('sm')]: {
     fontSize: metricSize === 'compact'
-      ? '3rem'
+      ? '2.5rem'
       : metricSize === 'large'
-        ? '5rem'
-        : '4rem',
+        ? '4rem'
+        : '3.5rem',
   },
+}));
+
+const LabelText = styled(Box)(({ theme }) => ({
+  ...TEXT_VARIANTS.label.secondary,
+  fontSize: '0.65rem',
+  position: 'absolute',
+  top: 10,
+  left: 10,
+  opacity: 0.5,
 }));
 
 const MetricCard: React.FC<MetricCardProps> = (props) => {
@@ -48,94 +56,106 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
     title,
     value,
     subtitle,
-    iconType = 'circle',
-    variant = 'elevated',
+    iconType = 'dot',
     trend = 'neutral',
     size = 'normal',
     onClick,
+    label = "METRIC_SYSTEM"
   } = props;
   const colors = useColors();
-  const isDarkMode = colors.effectiveMode === 'dark';
+  const actsAsDark = colors.effectiveMode === 'dark';
 
   const getTrendColor = () => {
     switch (trend) {
       case 'up':
-        return colors.palette.accentColors.orange;
+        return colors.palette.accentColors.mint; // Volt green for positive
       case 'down':
-        return isDarkMode ? colors.palette.white : colors.palette.black;
+        return colors.palette.accentColors.orange; // Safety orange for negative/caution
       default:
-        return isDarkMode ? colors.palette.white : colors.palette.black;
+        return 'inherit';
     }
   };
   
   return (
     <Card 
-      variant={variant}
       onClick={onClick}
       sx={{
         cursor: onClick ? 'pointer' : 'default',
-        minHeight: (theme) => size === 'compact' ? theme.spacing(25) : size === 'large' ? theme.spacing(45) : theme.spacing(30),
+        minHeight: (theme) => size === 'compact' ? theme.spacing(20) : size === 'large' ? theme.spacing(40) : theme.spacing(25),
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        p: size === 'compact' ? 4 : size === 'large' ? 8 : 6,
+        alignItems: 'flex-start', // Functional left alignment
+        p: 4,
         position: 'relative',
         overflow: 'hidden',
-        border: 'none',
-        bgcolor: isDarkMode ? colors.palette.gray[900] : colors.palette.white,
-        color: isDarkMode ? colors.palette.white : colors.palette.black,
+        bgcolor: colors.helpers.background.primary,
+        color: colors.helpers.text.primary,
         borderRadius: 0,
-        boxShadow: isDarkMode ? '0 10px 30px rgba(0,0,0,0.3)' : '0 10px 30px rgba(0,0,0,0.05)',
+        border: `2px solid ${colors.helpers.text.primary}`, // Radical Industrial Border
+        transition: 'all 0.15s steps(4, end)',
         '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: isDarkMode ? '0 20px 40px rgba(0,0,0,0.4)' : '0 20px 40px rgba(0,0,0,0.1)',
+          transform: onClick ? 'translate(-4px, -4px)' : 'none',
+          boxShadow: onClick ? `8px 8px 0px 0px ${colors.helpers.text.primary}` : 'none',
+          '& .metric-bg': { opacity: 0.1 }
         }
       }}
     >
+      {/* Abloh Label */}
+      <LabelText>"{label}"</LabelText>
+
+      {/* Background Graphic Element */}
+      <Box 
+        className="metric-bg"
+        sx={{
+          position: 'absolute',
+          bottom: -20,
+          right: -10,
+          opacity: 0.05,
+          fontSize: '10rem',
+          fontWeight: 900,
+          pointerEvents: 'none',
+          transition: 'all 0.3s'
+        }}
+      >
+        {iconType === 'dot' ? '•' : '#'}
+      </Box>
+
       {/* Main metric value */}
-      <Box sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        mb: 3,
-        width: '100%'
-      }}>
-        <MetricValue
-          metricSize={size}
-          isDarkMode={isDarkMode}
-        >
+      <Box sx={{ mt: 2, mb: 1, width: '100%', position: 'relative', zIndex: 1 }}>
+        <MetricValue metricSize={size}>
           {typeof value === 'number' ? value.toLocaleString() : value}
         </MetricValue>
       </Box>
 
-      {/* Title and icon */}
+      {/* Title and Trend */}
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: 2,
-        mb: 2,
+        gap: 1.5,
+        mb: 1,
+        width: '100%',
+        position: 'relative',
+        zIndex: 1
       }}>
         <Typography
           sx={{
-            fontSize: size === 'compact' ? '0.875rem' : '1.125rem',
-            fontWeight: 400,
-            letterSpacing: '0.15em',
-            textTransform: 'none',
+            ...TEXT_VARIANTS.label.main,
             color: 'inherit',
           }}
         >
           {title}
         </Typography>
-        {iconType && (
-          <GeometricIcon
-            type={iconType}
-            size="small"
-            color={getTrendColor()}
-            variant="filled"
-          />
+        {trend !== 'neutral' && (
+          <Box sx={{ color: getTrendColor(), display: 'flex' }}>
+            <GeometricIcon
+              type={trend === 'up' ? 'triangle' : 'triangle'} // triangle up/down via rotate
+              size="small"
+              color="inherit"
+              variant="filled"
+              sx={{ transform: trend === 'down' ? 'rotate(180deg)' : 'none' }}
+            />
+          </Box>
         )}
       </Box>
 
@@ -143,18 +163,30 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
       {subtitle && (
         <Typography
           sx={{
-            fontSize: '1rem',
+            ...TEXT_VARIANTS.body.small,
             color: 'inherit',
-            opacity: 0.7,
-            textAlign: 'center',
-            lineHeight: 1.4,
-            fontWeight: 400,
+            opacity: 0.6,
             maxWidth: '90%',
+            position: 'relative',
+            zIndex: 1
           }}
         >
           {subtitle}
         </Typography>
       )}
+
+      {/* Industrial Footer Element */}
+      <Box 
+        sx={{ 
+          position: 'absolute', 
+          bottom: 0, 
+          left: 0, 
+          width: '100%', 
+          height: 4, 
+          bgcolor: trend !== 'neutral' ? getTrendColor() : 'transparent',
+          opacity: 0.8
+        }} 
+      />
     </Card>
   );
 };

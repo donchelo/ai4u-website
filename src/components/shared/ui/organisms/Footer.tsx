@@ -34,7 +34,8 @@ const Footer = () => {
     { name: 'Inicio', path: ROUTES.HOME },
     { name: 'Servicios', path: ROUTES.SERVICES },
     { name: 'Portafolio', path: ROUTES.PORTFOLIO },
-    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U }
+    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
+    { name: 'Design System', path: ROUTES.DESIGN_SYSTEM }
   ];
 
   return (

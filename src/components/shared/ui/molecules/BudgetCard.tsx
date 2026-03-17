@@ -4,16 +4,18 @@ import {
   CardContent, 
   IconButton, 
   Avatar,
-  Divider
+  Divider,
+  Typography,
+  styled
 } from '@mui/material';
 import { 
-  MoreVert as MoreVertIcon,
   Add as AddIcon,
   AccountBalance as AccountBalanceIcon
 } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
-import { H3, H4, BodyText, SmallText } from '../atoms';
+import { H3, BodyText, SmallText } from '../atoms';
 import Card from './Card';
+import { TEXT_VARIANTS } from '../tokens/typography';
 
 interface BudgetCategory {
   name: string;
@@ -28,8 +30,26 @@ interface BudgetCardProps {
   categories: BudgetCategory[];
   totalAmount?: number;
   onAddCategory?: () => void;
-  variant?: 'default' | 'elevated' | 'outlined';
+  variant?: 'default' | 'elevated' | 'outlined' | 'industrial';
 }
+
+const CategoryItem = styled(Box)(({ theme }) => {
+  const isLight = theme.palette.mode === 'light';
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '16px',
+    marginBottom: '8px',
+    border: `1px solid ${isLight ? '#000' : '#fff'}`,
+    transition: 'all 0.1s steps(2)',
+    '&:hover': {
+      backgroundColor: isLight ? '#000' : '#fff',
+      color: isLight ? '#fff' : '#000',
+      transform: 'translateX(4px)',
+    }
+  };
+});
 
 const BudgetCard: React.FC<BudgetCardProps> = ({
   title,
@@ -37,271 +57,118 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
   categories,
   totalAmount = 0,
   onAddCategory = () => {},
-  variant = 'elevated'
+  variant = 'industrial'
 }) => {
   const colors = useColors();
-
-  // Configuración de variantes según el sistema AI4U minimalista
-  const getVariantStyles = () => {
-    switch (variant) {
-      case 'outlined':
-        return {
-          card: {
-            background: 'transparent',
-            border: `1px solid ${colors.contrast.divider}`,
-            color: colors.contrast.text.primary
-          },
-          surface: {
-            background: colors.contrast.surface,
-            border: `1px solid ${colors.contrast.divider}`
-          }
-        };
-      case 'elevated':
-        return {
-          card: {
-            background: colors.contrast.surface,
-            border: 'none',
-            color: colors.contrast.text.primary
-          },
-          surface: {
-            background: colors.contrast.background,
-            border: `1px solid ${colors.contrast.divider}`
-          }
-        };
-      default: // default
-        return {
-          card: {
-            background: colors.contrast.surface,
-            border: `1px solid ${colors.contrast.divider}`,
-            color: colors.contrast.text.primary
-          },
-          surface: {
-            background: colors.contrast.background,
-            border: `1px solid ${colors.contrast.divider}`
-          }
-        };
-    }
-  };
-
-  const variantStyles = getVariantStyles();
+  const isLight = colors.effectiveMode === 'light';
 
   return (
     <Card
-      variant={variant as 'default' | 'elevated' | 'outlined'}
+      variant={variant}
+      label="FINANCE_CORE_V1"
       sx={{
-        borderRadius: 4,
-        maxWidth: 400,
+        maxWidth: 450,
         margin: '0 auto',
-        transition: 'all 0.3s ease',
-        '&:hover': {
-          transform: 'translateY(-2px)',
-        },
-        ...variantStyles.card
       }}
     >
-      <CardContent sx={{ p: 3 }}>
-        {/* Header */}
-        <Box sx={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between', 
-          mb: 3 
-        }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Avatar sx={{ 
-              width: 48,
-              height: 48,
-              background: variantStyles.surface.background,
-              border: variantStyles.surface.border,
-              backdropFilter: 'blur(10px)'
-            }}>
-              <AccountBalanceIcon sx={{ 
-                color: colors.helpers.text.primary,
-                fontSize: 24
-              }} />
-            </Avatar>
-            <Box>
-              <H4 sx={{ 
-                color: colors.helpers.text.primary,
-                mb: 0.5
-              }}>
-                {title}
-              </H4>
-              {subtitle && (
-                <SmallText sx={{ 
-                  color: colors.helpers.text.secondary
-                }}>
-                  {subtitle}
-                </SmallText>
-              )}
-            </Box>
+      {/* Header */}
+      <Box sx={{ mb: 4 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+          <Box sx={{ 
+            width: 48, 
+            height: 48, 
+            border: `2px solid ${isLight ? '#000' : '#fff'}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: isLight ? '#000' : '#fff',
+            color: isLight ? '#fff' : '#000'
+          }}>
+            <AccountBalanceIcon />
           </Box>
-          <IconButton 
-            size="small"
-            sx={{ 
-              color: colors.helpers.text.secondary,
+          <Box>
+            <Typography sx={{ ...TEXT_VARIANTS.display.medium, fontSize: '1.5rem', mb: 0 }}>
+              {title}
+            </Typography>
+            {subtitle && (
+              <Typography sx={{ ...TEXT_VARIANTS.label.secondary }}>
+                // {subtitle}
+              </Typography>
+            )}
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Main Stats */}
+      <Box sx={{ 
+        p: 3, 
+        border: `4px solid ${isLight ? '#000' : '#fff'}`,
+        mb: 4,
+        position: 'relative'
+      }}>
+        <Typography sx={{ ...TEXT_VARIANTS.label.main, mb: 1 }}>
+          "TOTAL_BUDGET"
+        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <H3 sx={{ fontSize: '3rem', fontWeight: 900, mb: 0 }}>
+            ${totalAmount?.toLocaleString()}
+          </H3>
+          <IconButton
+            onClick={onAddCategory}
+            sx={{
+              borderRadius: 0,
+              border: `2px solid ${isLight ? '#000' : '#fff'}`,
+              bgcolor: colors.palette.accentColors.mint,
+              color: '#000',
               '&:hover': {
-                background: colors.helpers.state.hover
+                bgcolor: colors.palette.accentColors.orange,
               }
             }}
           >
-            <MoreVertIcon />
+            <AddIcon />
           </IconButton>
         </Box>
+      </Box>
 
-        {/* Main Budget Section */}
-        <Box sx={{ 
-          p: 3,
-          borderRadius: 3,
-          mb: 3,
-          ...variantStyles.surface,
-          backdropFilter: 'blur(10px)'
-        }}>
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between', 
-            mb: 2 
-          }}>
-            <SmallText sx={{ 
-              fontWeight: 400,
-              color: colors.helpers.text.primary,
-              textTransform: 'none',
-              letterSpacing: 0.5
-            }}>
-              Presupuesto Total
-            </SmallText>
-            <H3 sx={{ 
-              color: colors.helpers.text.primary,
-              fontWeight: 400
-            }}>
-              ${totalAmount?.toFixed(1) || '0.0'}
-            </H3>
-          </Box>
-          
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            mb: 2 
-          }}>
-            <IconButton
-              onClick={onAddCategory}
-              sx={{
-                width: 40,
-                height: 40,
-                background: colors.palette.accent,
-                color: colors.palette.white,
-                '&:hover': {
-                  background: '#E54A00',
-                  transform: 'scale(1.05)'
-                },
-                transition: 'all 0.2s ease'
-              }}
-            >
-              <AddIcon />
-            </IconButton>
-          </Box>
-          
-          <SmallText sx={{ 
-            textAlign: 'center',
-            color: colors.helpers.text.secondary,
-            textTransform: 'none',
-            letterSpacing: 0.5
-          }}>
-            Agregar categoría
-          </SmallText>
-        </Box>
-
-        {/* Categories List */}
-        <Box sx={{ mb: 3 }}>
-          {categories.map((category, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                p: 2,
-                mb: 1.5,
-                borderRadius: 2,
-                background: variantStyles.surface.background,
-                border: variantStyles.surface.border,
-                backdropFilter: 'blur(10px)',
-                transition: 'all 0.2s ease',
-                '&:hover': {
-                  background: colors.helpers.state.hover,
-                  transform: 'translateX(4px)'
-                }
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                {category.icon && (
-                  <Box sx={{ 
-                    width: 32,
-                    height: 32,
-                    borderRadius: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: colors.palette.accent + '20',
-                    color: colors.palette.accent
-                  }}>
-                    {category.icon}
-                  </Box>
-                )}
-                <BodyText sx={{ 
-                  fontWeight: 400,
-                  color: colors.helpers.text.primary
-                }}>
-                  {category.name}
-                </BodyText>
-              </Box>
-              <H4 sx={{ 
-                fontWeight: 400,
-                color: colors.helpers.text.primary
-              }}>
-                ${category.amount.toFixed(1)}
-              </H4>
+      {/* Categories */}
+      <Typography sx={{ ...TEXT_VARIANTS.label.main, mb: 2 }}>
+        "DISTRIBUTION_LOG"
+      </Typography>
+      <Box sx={{ mb: 4 }}>
+        {categories.map((category, index) => (
+          <CategoryItem key={index}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Typography sx={{ ...TEXT_VARIANTS.label.secondary, opacity: 0.5 }}>
+                {String(index + 1).padStart(2, '0')}
+              </Typography>
+              <Typography sx={{ fontWeight: 700, textTransform: 'uppercase' }}>
+                {category.name}
+              </Typography>
             </Box>
-          ))}
-        </Box>
+            <Typography sx={{ fontWeight: 900, fontFamily: 'monospace' }}>
+              ${category.amount.toLocaleString()}
+            </Typography>
+          </CategoryItem>
+        ))}
+      </Box>
 
-        {/* Total Summary */}
-        {totalAmount && (
-          <>
-            <Divider sx={{ 
-              mb: 3,
-              borderColor: colors.helpers.border.secondary + '40'
-            }} />
-            <Box sx={{ 
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              p: 2,
-              borderRadius: 2,
-              background: variantStyles.surface.background,
-              border: variantStyles.surface.border,
-              backdropFilter: 'blur(10px)'
-            }}>
-              <H4 sx={{ 
-                fontWeight: 400,
-                color: colors.helpers.text.primary
-              }}>
-                Total Disponible
-              </H4>
-              <H3 sx={{ 
-                fontWeight: 400,
-                color: colors.palette.accent
-              }}>
-                ${totalAmount.toFixed(1)}
-              </H3>
-            </Box>
-          </>
-        )}
-      </CardContent>
+      {/* Industrial Footer */}
+      <Box sx={{ 
+        pt: 2, 
+        borderTop: `1px dashed ${isLight ? '#000' : '#fff'}`,
+        opacity: 0.5,
+        display: 'flex',
+        justifyContent: 'space-between'
+      }}>
+        <Typography sx={{ ...TEXT_VARIANTS.label.secondary }}>
+          SYSTEM_VERSION_2.0.4
+        </Typography>
+        <Typography sx={{ ...TEXT_VARIANTS.label.secondary }}>
+          {new Date().toLocaleDateString()}
+        </Typography>
+      </Box>
     </Card>
   );
 };
 
-export default BudgetCard; 
+export default BudgetCard;

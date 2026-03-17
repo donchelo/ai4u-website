@@ -1,11 +1,11 @@
 // Sistema de colores AI4U - Brand Manual
 // Paleta principal: Erie black, mint cream, orange, moderate blue
 export const AI4U_PALETTE = {
-  // Colores base
+  // Colores base - Absolute Industrial
   white: '#FFFFFF',
-  black: '#1B1B1B',  // Eerie black
+  black: '#000000',  // Pure Black
   gray: {
-    50: '#FAFAFA',
+    50: '#F9F9F9',
     100: '#F5F5F5',
     200: '#E5E5E5',
     300: '#D4D4D4',
@@ -13,84 +13,84 @@ export const AI4U_PALETTE = {
     500: '#737373',
     600: '#525252',
     700: '#404040',
-    800: '#262626',
-    900: '#171717',
+    800: '#171717',
+    900: '#0A0A0A',
   },
   
-  // Colores de marca AI4U (Brand Manual)
+  // Colores de marca AI4U - Industrial "Abloh" Accents
   accentColors: {
-    orange: '#ff6e00',      // orange (minimized)
-    mint: '#D1FFDC',        // Virgil Mint (modern and clean)
-    blue: '#3daed1',        
-    cadetGray: '#94989b',   
+    orange: '#FF5C00',      // Safety Orange (More vibrant/neon)
+    mint: '#E0FF00',        // "VOLT" / Safety Green (replacing soft mint)
+    blue: '#0047FF',        // Electric Blue
+    cadetGray: '#808080',   // Neutral Industrial Gray
   },
 
   // Compatibilidad hacia atrás
-  accent: '#ff6e00' as const,
+  accent: '#FF5C00' as const,
   
-  // Estados funcionales
-  success: '#10B981',
-  error: '#EF4444',
-  warning: '#F59E0B',
-  info: '#3B82F6',
+  // Estados funcionales - Industrialized
+  success: '#00FF47',       // Neon Success
+  error: '#FF0000',         // Pure Error
+  warning: '#FFFB00',       // Warning Yellow
+  info: '#0047FF',
 } as const;
 
-// Sistema de contraste simplificado - Inversión Estricta
+// Sistema de contraste simplificado - Radical Inversion
 export const CONTRAST_PAIRS = {
-  // Modo claro - Mint de fondo, Black de texto
+  // Modo claro - White de fondo, Black de texto (Gallery Style)
   light: {
-    background: AI4U_PALETTE.accentColors.mint,
-    surface: AI4U_PALETTE.accentColors.mint,
+    background: AI4U_PALETTE.white,
+    surface: AI4U_PALETTE.white,
     text: {
       primary: AI4U_PALETTE.black,
-      secondary: AI4U_PALETTE.gray[700],
+      secondary: AI4U_PALETTE.gray[600],
       disabled: AI4U_PALETTE.gray[400],
     },
     border: AI4U_PALETTE.black,
-    divider: 'rgba(27, 27, 27, 0.1)',
+    divider: 'rgba(0, 0, 0, 0.1)',
   },
   
-  // Modo oscuro - Black de fondo, Mint de texto
+  // Modo oscuro - Black de fondo, White de texto (Industrial Style)
   dark: {
     background: AI4U_PALETTE.black,
     surface: AI4U_PALETTE.black,
     text: {
-      primary: AI4U_PALETTE.accentColors.mint,
+      primary: AI4U_PALETTE.white,
       secondary: AI4U_PALETTE.gray[400],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: AI4U_PALETTE.accentColors.mint,
-    divider: 'rgba(209, 255, 220, 0.2)',
+    border: AI4U_PALETTE.white,
+    divider: 'rgba(255, 255, 255, 0.2)',
   },
 } as const;
 
-// Presets de superficie para bloques de marca con colores fijos
+// Presets de superficie para bloques de marca con colores fijos - Radical Industrial
 export const SURFACE_PRESETS = {
   black: {
     background: AI4U_PALETTE.black,
     surface: AI4U_PALETTE.black,
     text: {
-      primary: AI4U_PALETTE.accentColors.mint,
+      primary: AI4U_PALETTE.white,
       secondary: AI4U_PALETTE.gray[400],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: AI4U_PALETTE.accentColors.mint,
-    divider: 'rgba(209, 255, 220, 0.1)',
+    border: AI4U_PALETTE.white,
+    divider: 'rgba(255, 255, 255, 0.1)',
     effectiveMode: 'dark' as const,
   },
-  mint: {
-    background: AI4U_PALETTE.accentColors.mint,
-    surface: AI4U_PALETTE.accentColors.mint,
+  white: {
+    background: AI4U_PALETTE.white,
+    surface: AI4U_PALETTE.white,
     text: {
       primary: AI4U_PALETTE.black,
-      secondary: AI4U_PALETTE.gray[700],
+      secondary: AI4U_PALETTE.gray[600],
       disabled: AI4U_PALETTE.gray[400],
     },
     border: AI4U_PALETTE.black,
-    divider: 'rgba(0,0,0,0.06)',
+    divider: 'rgba(0,0,0,0.1)',
     effectiveMode: 'light' as const,
   },
-  green: {
+  volt: {
     background: AI4U_PALETTE.accentColors.mint,
     surface: AI4U_PALETTE.accentColors.mint,
     text: {
@@ -98,20 +98,20 @@ export const SURFACE_PRESETS = {
       secondary: AI4U_PALETTE.gray[800],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: 'none',
-    divider: 'rgba(0,0,0,0.06)',
+    border: AI4U_PALETTE.black,
+    divider: 'rgba(0,0,0,0.1)',
     effectiveMode: 'light' as const,
   },
   orange: {
-    background: AI4U_PALETTE.accentColors.mint,
-    surface: AI4U_PALETTE.accentColors.mint,
+    background: AI4U_PALETTE.accentColors.orange,
+    surface: AI4U_PALETTE.accentColors.orange,
     text: {
       primary: AI4U_PALETTE.black,
       secondary: AI4U_PALETTE.gray[800],
       disabled: AI4U_PALETTE.gray[600],
     },
-    border: 'none',
-    divider: 'rgba(0,0,0,0.06)',
+    border: AI4U_PALETTE.black,
+    divider: 'rgba(0,0,0,0.1)',
     effectiveMode: 'light' as const,
   },
 } as const;

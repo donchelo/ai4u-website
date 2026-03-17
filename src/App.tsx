@@ -32,76 +32,84 @@ function App() {
                 }}
               >
                 <ScrollToTop />
-                <Layout>
-                  <Routes>
-                    {/* Home Route */}
-                    <Route
-                      path={ROUTES.HOME}
-                      element={<Home />}
-                    />
+                <Routes>
+                  {/* Standalone Routes */}
+                  <Route
+                    path={ROUTES.DESIGN_SYSTEM}
+                    element={<DesignSystem />}
+                  />
 
-                    {/* Services Route */}
-                    <Route
-                      path={ROUTES.SERVICES}
-                      element={<Services />}
-                    />
+                  {/* Main Application Layout Routes */}
+                  <Route
+                    path="*"
+                    element={
+                      <Layout>
+                        <Routes>
+                          {/* Home Route */}
+                          <Route
+                            path={ROUTES.HOME}
+                            element={<Home />}
+                          />
 
-                    {/* Why AI4U Route (Merged with Cases) */}
-                    <Route
-                      path={ROUTES.WHY_AI4U}
-                      element={<WhyAI4U />}
-                    />
+                          {/* Services Route */}
+                          <Route
+                            path={ROUTES.SERVICES}
+                            element={<Services />}
+                          />
 
-                    {/* Portfolio Route */}
-                    <Route
-                      path={ROUTES.PORTFOLIO}
-                      element={<Portfolio />}
-                    />
+                          {/* Why AI4U Route (Merged with Cases) */}
+                          <Route
+                            path={ROUTES.WHY_AI4U}
+                            element={<WhyAI4U />}
+                          />
 
-                    {/* Redirect Success Cases to Why AI4U */}
-                    <Route
-                      path="/casos-de-uso"
-                      element={<Navigate to={ROUTES.WHY_AI4U} replace />}
-                    />
+                          {/* Portfolio Route */}
+                          <Route
+                            path={ROUTES.PORTFOLIO}
+                            element={<Portfolio />}
+                          />
 
-                    {/* SuperAI Route */}
-                    <Route
-                      path={ROUTES.SUPER_AI}
-                      element={<SuperAI />}
-                    />
+                          {/* Redirect Success Cases to Why AI4U */}
+                          <Route
+                            path="/casos-de-uso"
+                            element={<Navigate to={ROUTES.WHY_AI4U} replace />}
+                          />
 
-                    {/* Design System Route - Debe estar antes del fallback */}
-                    <Route
-                      path={ROUTES.DESIGN_SYSTEM}
-                      element={<DesignSystem />}
-                    />
+                          {/* SuperAI Route */}
+                          <Route
+                            path={ROUTES.SUPER_AI}
+                            element={<SuperAI />}
+                          />
 
-                    <Route
-                      path={ROUTES.PITCH}
-                      element={<Pitch />}
-                    />
+                          <Route
+                            path={ROUTES.PITCH}
+                            element={<Pitch />}
+                          />
 
-                    {/* Pitch Bancolombia Route */}
-                    <Route
-                      path={ROUTES.PITCH_BANCOLOMBIA}
-                      element={<PitchBancolombia />}
-                    />
+                          {/* Pitch Bancolombia Route */}
+                          <Route
+                            path={ROUTES.PITCH_BANCOLOMBIA}
+                            element={<PitchBancolombia />}
+                          />
 
-                    <Route
-                      path={ROUTES.PROPUESTA_EL_BARRIL}
-                      element={<PropuestaElBarril />}
-                    />
+                          <Route
+                            path={ROUTES.PROPUESTA_EL_BARRIL}
+                            element={<PropuestaElBarril />}
+                          />
 
-                    {/* Propuesta Manufactura Route */}
-                    <Route
-                      path={ROUTES.PROPUESTA_MANUFACTURA}
-                      element={<PropuestaManufactura />}
-                    />
+                          {/* Propuesta Manufactura Route */}
+                          <Route
+                            path={ROUTES.PROPUESTA_MANUFACTURA}
+                            element={<PropuestaManufactura />}
+                          />
 
-                    {/* Fallback Route - Siempre al final */}
-                    <Route path="*" element={<Home />} />
-                  </Routes>
-                </Layout>
+                          {/* Fallback Route - Siempre al final */}
+                          <Route path="*" element={<Home />} />
+                        </Routes>
+                      </Layout>
+                    }
+                  />
+                </Routes>
               </Router>
             </BasicLoadingWrapper>
           </ServicesProvider>

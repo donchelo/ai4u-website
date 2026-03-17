@@ -1,4 +1,4 @@
-// Tokens de tipografía AI4U - Minimalista
+// Tokens de tipografía AI4U - Radical Industrial (Inspired by Abloh)
 export const TYPOGRAPHY_TOKENS = {
   // Familias de fuentes
   fontFamily: {
@@ -6,119 +6,125 @@ export const TYPOGRAPHY_TOKENS = {
     code: '"Necto Mono", monospace',
   },
   
-  // Pesos de fuente (más ligeros para minimalismo)
+  // Pesos de fuente - Bold & Minimal
   fontWeight: {
     light: 300,
     regular: 400,
-    medium: 400,
-    semiBold: 400,
-    bold: 400,
+    medium: 500,
+    semiBold: 700,
+    bold: 900, // Extra bold for impact
   },
   
-  // Tamaños de fuente (escala más dramática para estilo moderno/brutalista)
+  // Tamaños de fuente - Dramatic Scale
   fontSize: {
-    xs: '0.875rem',    // 14px
-    sm: '1rem',        // 16px
-    base: '1.25rem',   // 20px (aumentado)
-    lg: '1.5rem',      // 24px
-    xl: '2rem',        // 32px
-    '2xl': '3rem',     // 48px
-    '3xl': '4.5rem',   // 72px
-    '4xl': '6rem',     // 96px
-    '5xl': '8rem',     // 128px
-    '6xl': '10rem',    // 160px
-    '7xl': '12rem',    // 192px (gigante)
+    xs: '0.75rem',     // 12px
+    sm: '0.875rem',    // 14px
+    base: '1rem',      // 16px
+    lg: '1.25rem',     // 20px
+    xl: '1.5rem',      // 24px
+    '2xl': '2.25rem',  // 36px
+    '3xl': '3.5rem',   // 56px
+    '4xl': '5rem',     // 80px
+    '5xl': '7rem',     // 112px
+    '6xl': '9rem',     // 144px
+    '7xl': '11rem',    // 176px
   },
   
-  // Alturas de línea (más espaciadas)
+  // Alturas de línea - Functional
   lineHeight: {
-    tight: 1.2,
-    snug: 1.4,
-    normal: 1.6,
+    tight: 0.9,
+    snug: 1.1,
+    normal: 1.5,
     relaxed: 1.8,
-    loose: 2.2,
   },
   
-  // Espaciado de letras (más amplio)
+  // Espaciado de letras - Aggressive
   letterSpacing: {
-    tighter: '-0.02em',
-    tight: '-0.01em',
+    tighter: '-0.05em',
+    tight: '-0.02em',
     normal: '0em',
-    wide: '0.01em',
-    wider: '0.02em',
-    widest: '0.05em',
+    wide: '0.05em',
+    wider: '0.1em',
+    widest: '0.2em',
   },
 } as const;
 
-// Variantes de texto minimalistas/brutalistas
+// Variantes de texto Industrial/Abloh
 export const TEXT_VARIANTS = {
-  // Títulos principales (gigantes y dramáticos pero legibles en PC)
+  // Títulos "DECONSTRUCTED"
   display: {
     giant: {
-      fontSize: { xs: '3.5rem', md: '6rem', lg: '9rem' }, // Reducido de 12rem
-      fontWeight: 400,
-      lineHeight: 0.95,
-      letterSpacing: '-0.04em',
-      textTransform: 'none' as const,
+      fontSize: { xs: '3rem', md: '7rem', lg: '10rem' },
+      fontWeight: 900,
+      lineHeight: 0.85,
+      letterSpacing: '-0.05em',
     },
     large: {
-      fontSize: { xs: '2.5rem', md: '4.5rem', lg: '6.5rem' }, // Reducido de 8rem
-      fontWeight: 400,
-      lineHeight: 1.0,
-      letterSpacing: '-0.03em',
+      fontSize: { xs: '2.5rem', md: '5rem', lg: '7rem' },
+      fontWeight: 700,
+      lineHeight: 0.9,
+      letterSpacing: '-0.04em',
     },
     medium: {
-      fontSize: { xs: '2rem', md: '3.5rem', lg: '4.5rem' }, // Reducido de 5rem
-      fontWeight: 400,
-      lineHeight: 1.1,
-      letterSpacing: '-0.02em',
-    },
-    small: {
-      fontSize: { xs: '1.75rem', md: '2.25rem', lg: '2.75rem' }, // Reducido de 3rem
-      fontWeight: 400,
-      lineHeight: 1.2,
-      letterSpacing: '-0.01em',
+      fontSize: { xs: '2rem', md: '3.5rem', lg: '5rem' },
+      fontWeight: 700,
+      lineHeight: 0.95,
+      letterSpacing: '-0.03em',
     },
   },
   
-  // Texto de cuerpo (espacioso y moderno)
+  // Etiquetas industriales (Abloh Signature)
+  label: {
+    main: {
+      fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code,
+      fontSize: '0.875rem',
+      fontWeight: 400,
+      letterSpacing: '0.1em',
+      opacity: 0.8,
+    },
+    secondary: {
+      fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code,
+      fontSize: '0.75rem',
+      fontWeight: 400,
+      letterSpacing: '0.05em',
+      textTransform: 'lowercase' as const,
+      opacity: 0.6,
+    },
+  },
+
+  // Texto de cuerpo
   body: {
-    large: {
-      fontSize: { xs: '1.25rem', md: '1.5rem' },
-      fontWeight: 400,
-      lineHeight: 1.8,
-      letterSpacing: '-0.01em',
-    },
     regular: {
-      fontSize: { xs: '1.125rem', md: '1.25rem' },
-      fontWeight: 400,
-      lineHeight: 1.7,
-    },
-    small: {
-      fontSize: '1rem',
+      fontSize: { xs: '1rem', md: '1.125rem' },
       fontWeight: 400,
       lineHeight: 1.6,
+      letterSpacing: '-0.01em',
+    },
+    small: {
+      fontSize: '0.875rem',
+      fontWeight: 400,
+      lineHeight: 1.5,
     },
   },
   
   // Texto de interfaz
   ui: {
     button: {
-      fontSize: '1rem',
-      fontWeight: 400,
-      lineHeight: 1.4,
-      letterSpacing: '0.01em',
+      fontSize: '0.875rem',
+      fontWeight: 700,
+      lineHeight: 1,
+      letterSpacing: '0.15em',
     },
     caption: {
-      fontSize: '0.875rem',
+      fontSize: TYPOGRAPHY_TOKENS.fontSize.xs,
       fontWeight: 400,
-      lineHeight: 1.4,
+      lineHeight: 1.2,
     },
     code: {
       fontSize: '0.875rem',
       fontWeight: 400,
       lineHeight: 1.4,
-      fontFamily: '"Necto Mono", monospace',
+      fontFamily: TYPOGRAPHY_TOKENS.fontFamily.code,
     },
   },
 } as const;
@@ -127,18 +133,10 @@ export const TEXT_VARIANTS = {
 export const TYPOGRAPHY_UTILITIES = {
   // Clases de texto para uso directo
   text: {
-    display: 'font-light leading-tight tracking-tight',
-    heading: 'font-medium leading-snug',
+    display: 'font-black leading-none tracking-tighter',
+    heading: 'font-bold leading-tight',
     body: 'font-normal leading-relaxed',
-    caption: 'font-normal text-sm leading-normal',
-  },
-  
-  // Espaciado de texto
-  spacing: {
-    tight: 'space-y-2',
-    normal: 'space-y-4',
-    relaxed: 'space-y-6',
-    loose: 'space-y-8',
+    label: 'font-mono text-sm leading-normal tracking-widest',
   },
 } as const;
 

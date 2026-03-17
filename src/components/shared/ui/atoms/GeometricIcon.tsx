@@ -8,6 +8,7 @@ interface GeometricIconProps {
   color?: string;
   variant?: 'filled' | 'outline' | 'minimal';
   onClick?: () => void;
+  sx?: any;
 }
 
 const IconContainer = styled(Box, {
@@ -52,7 +53,8 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
     size = 'medium',
     color,
     variant = 'filled',
-    onClick
+    onClick,
+    sx
   } = props;
   
   const colors = useColors();
@@ -140,7 +142,7 @@ const GeometricIcon: React.FC<GeometricIconProps> = (props) => {
       iconSize={size}
       isClickable={!!onClick}
       onClick={onClick}
-      sx={getIconStyles()}
+      sx={{ ...getIconStyles(), ...sx }}
     >
       {renderIcon()}
     </IconContainer>

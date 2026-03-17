@@ -1,25 +1,45 @@
-// Configuración principal del tema AI4U
-import { AI4U_PALETTE, CONTRAST_PAIRS, COMPONENT_VARIANTS } from './palette';
+// Configuración principal del tema AI4U - Industrial / Brutalist
+import { AI4U_PALETTE, CONTRAST_PAIRS } from './palette';
 import { TYPOGRAPHY_TOKENS, TEXT_VARIANTS } from './typography';
 import { SPACING_TOKENS } from './spacing';
 
-// Configuración de sombras
+// Configuración de sombras - "Hard" & Industrial
 export const SHADOW_TOKENS = {
   none: '0 0 #0000',
-  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-  default: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-  md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-  xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-  '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-  inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+  // Sombras duras estilo brutalista
+  sm: '2px 2px 0px 0px rgba(0, 0, 0, 1)',
+  default: '4px 4px 0px 0px rgba(0, 0, 0, 1)',
+  md: '8px 8px 0px 0px rgba(0, 0, 0, 1)',
+  lg: '12px 12px 0px 0px rgba(0, 0, 0, 1)',
   
-  // Sombras AI4U específicas - Modernas y suaves
+  // Variantes para modo oscuro (sombras blancas)
+  dark: {
+    sm: '2px 2px 0px 0px rgba(255, 255, 255, 1)',
+    default: '4px 4px 0px 0px rgba(255, 255, 255, 1)',
+    md: '8px 8px 0px 0px rgba(255, 255, 255, 1)',
+  },
+
   ai4u: {
-    card: '0 4px 20px rgba(0,0,0,0.06)',
-    cardDark: '0 8px 30px rgba(0,0,0,0.3)',
-    button: '0 4px 12px rgba(0, 0, 0, 0.08)',
-    glow: '0 0 20px rgba(0, 0, 0, 0.05)',
+    card: '0px 0px 0px 1px rgba(0,0,0,1)', // Solo borde como sombra
+    button: '4px 4px 0px 0px rgba(0,0,0,1)',
+    glow: '0 0 40px rgba(224, 255, 0, 0.3)', // Glow volt
+  },
+} as const;
+
+// Configuración de bordes - Industrial
+export const BORDER_TOKENS = {
+  width: {
+    none: '0',
+    thin: '1px',
+    medium: '2px',
+    thick: '4px',
+  },
+  radius: {
+    none: '0px', // Radical sharp edges
+    sm: '0px',
+    md: '0px',
+    lg: '0px',
+    full: '9999px', // Solo para elementos circulares específicos
   },
 } as const;
 
@@ -35,32 +55,21 @@ export const Z_INDEX_TOKENS = {
   toast: 1080,
 } as const;
 
-// Configuración de transiciones
+// Configuración de transiciones - Snappy
 export const TRANSITION_TOKENS = {
   duration: {
-    fast: '150ms',
+    fast: '100ms',
     normal: '200ms',
-    slow: '300ms',
-    slower: '500ms',
+    slow: '400ms',
   },
-  
   easing: {
-    ease: 'ease',
-    easeIn: 'ease-in',
-    easeOut: 'ease-out',
-    easeInOut: 'ease-in-out',
     linear: 'linear',
-  },
-  
-  // Transiciones comunes
-  common: {
-    button: 'all 200ms ease-in-out',
-    card: 'all 300ms ease',
-    hover: 'all 150ms ease-out',
+    step: 'steps(4, end)', // Industrial step feel
+    easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
 } as const;
 
-// Breakpoints para responsive design
+// Breakpoints
 export const BREAKPOINT_TOKENS = {
   xs: 0,
   sm: 600,
@@ -73,11 +82,11 @@ export const BREAKPOINT_TOKENS = {
 export const AI4U_DESIGN_TOKENS = {
   palette: AI4U_PALETTE,
   contrast: CONTRAST_PAIRS,
-  components: COMPONENT_VARIANTS,
   typography: TYPOGRAPHY_TOKENS,
   textVariants: TEXT_VARIANTS,
   spacing: SPACING_TOKENS,
   shadows: SHADOW_TOKENS,
+  borders: BORDER_TOKENS,
   zIndex: Z_INDEX_TOKENS,
   transitions: TRANSITION_TOKENS,
   breakpoints: BREAKPOINT_TOKENS,
@@ -89,15 +98,8 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
   colors: {
     mode,
     primary: {
-      // Primario ahora es negro (no naranja)
       main: AI4U_PALETTE.black,
-      light: AI4U_PALETTE.gray[700],
-      dark: AI4U_PALETTE.black,
-    },
-    secondary: {
-      main: AI4U_PALETTE.gray[600],
-      light: AI4U_PALETTE.gray[400],
-      dark: AI4U_PALETTE.gray[800],
+      contrastText: AI4U_PALETTE.white,
     },
     background: {
       default: CONTRAST_PAIRS[mode].background,
@@ -109,12 +111,23 @@ export const createAI4UTokens = (mode: 'light' | 'dark') => ({
       disabled: CONTRAST_PAIRS[mode].text.disabled,
     },
     divider: CONTRAST_PAIRS[mode].divider,
-    surface: {
-      default: CONTRAST_PAIRS[mode].surface,
-      hover: mode === 'light' ? '#F0F0F0' : '#1E1E1E',
-      paper: CONTRAST_PAIRS[mode].surface,
-    },
+    border: CONTRAST_PAIRS[mode].border,
   },
+  // Helpers para acceso rápido
+  helpers: {
+    border: {
+      primary: CONTRAST_PAIRS[mode].border,
+      secondary: CONTRAST_PAIRS[mode].divider,
+    },
+    background: {
+      primary: CONTRAST_PAIRS[mode].background,
+      secondary: mode === 'light' ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
+    },
+    text: {
+      primary: CONTRAST_PAIRS[mode].text.primary,
+      secondary: CONTRAST_PAIRS[mode].text.secondary,
+    }
+  }
 });
 
 export default AI4U_DESIGN_TOKENS;

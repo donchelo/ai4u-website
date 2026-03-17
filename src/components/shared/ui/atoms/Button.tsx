@@ -1,13 +1,14 @@
 import React, { ReactNode } from 'react';
-import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
+import { Button as MuiButton, ButtonProps as MuiButtonProps, styled, Box } from '@mui/material';
 import { useColors } from '../../../../hooks';
-import { AI4U_PALETTE, COMPONENT_VARIANTS } from '../tokens/palette';
-import { SHADOW_TOKENS } from '../tokens/theme';
+import { AI4U_PALETTE } from '../tokens/palette';
+import { TEXT_VARIANTS } from '../tokens/typography';
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'minimal';
+  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'minimal' | 'industrial';
   size?: 'small' | 'medium' | 'large';
   children?: ReactNode;
+  label?: string; // Metadata label like "ACTION" or "PRESS"
   href?: string;
   target?: string;
   component?: any;
@@ -16,38 +17,48 @@ interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   sx?: any;
 }
 
-// Botón minimalista usando sistema de tokens
 const StyledButton = styled(MuiButton, {
   shouldForwardProp: (prop) => prop !== 'customVariant',
-})<{ customVariant?: ButtonProps['variant'] }>(({ theme, customVariant, size }) => {
+})<{ customVariant?: ButtonProps['variant'] }>(({ theme, customVariant }) => {
   const isLight = theme.palette.mode === 'light';
-  const buttonVariants = COMPONENT_VARIANTS.button;
   
-  // Estilos base modernos y limpios
   const baseStyles = {
-    borderRadius: '9999px', // Pill shape
-    fontWeight: 400, // Regular
-    textTransform: 'none' as const,
+    borderRadius: 0, // Heavy Industrial Sharp Edges
+    fontWeight: 700,
+    letterSpacing: '0.15em',
+    fontSize: '0.875rem',
     fontFamily: '"Red Hat Display", sans-serif',
-    transition: theme.transitions.create(['background-color', 'border-color', 'color', 'transform', 'box-shadow'], {
-      duration: '0.2s',
-      easing: theme.transitions.easing.easeInOut,
-    }),
+    transition: 'all 0.2s steps(4, end)', // Industrial "Snap" transition
     border: 'none',
+    padding: '12px 24px',
+    boxShadow: 'none',
+    position: 'relative' as const,
+    overflow: 'hidden',
   };
 
-  // Variantes usando tokens del sistema
   switch (customVariant) {
     case 'primary':
       return {
         ...baseStyles,
         backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
         color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-        boxShadow: SHADOW_TOKENS.ai4u.button,
         '&:hover': {
-          backgroundColor: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[100],
-          boxShadow: SHADOW_TOKENS.md,
-          transform: 'translateY(-2px)',
+          backgroundColor: isLight ? AI4U_PALETTE.gray[800] : AI4U_PALETTE.gray[200],
+          transform: 'translate(-2px, -2px)',
+          boxShadow: `4px 4px 0px 0px ${isLight ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)'}`,
+        },
+      };
+    
+    case 'industrial':
+      return {
+        ...baseStyles,
+        backgroundColor: AI4U_PALETTE.accentColors.mint, // Safety Green
+        color: AI4U_PALETTE.black,
+        border: `2px solid ${AI4U_PALETTE.black}`,
+        '&:hover': {
+          backgroundColor: AI4U_PALETTE.accentColors.orange, // Warning Orange
+          transform: 'translate(-4px, -4px)',
+          boxShadow: `8px 8px 0px 0px ${AI4U_PALETTE.black}`,
         },
       };
     
@@ -56,34 +67,20 @@ const StyledButton = styled(MuiButton, {
         ...baseStyles,
         backgroundColor: 'transparent',
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        border: `1px solid ${isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)'}`,
+        border: `2px solid ${isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white}`,
         '&:hover': {
-          backgroundColor: isLight ? 'rgba(0,0,0,0.04)' : 'rgba(255,255,255,0.04)',
-          borderColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+          backgroundColor: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
+          color: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
         },
       };
-    
+
     case 'minimal':
       return {
         ...baseStyles,
-        backgroundColor: buttonVariants.minimal.background,
-        color: isLight ? buttonVariants.minimal.text : AI4U_PALETTE.white,
-        border: buttonVariants.minimal.border,
-        '&:hover': {
-          ...baseStyles['&:hover'],
-          backgroundColor: isLight ? buttonVariants.minimal.hover : AI4U_PALETTE.gray[900],
-        },
-      };
-    
-    case 'text':
-      return {
-        ...baseStyles,
-        backgroundColor: 'transparent',
+        backgroundColor: isLight ? AI4U_PALETTE.gray[100] : AI4U_PALETTE.gray[900],
         color: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
-        border: 'none',
         '&:hover': {
-          ...baseStyles['&:hover'],
-          backgroundColor: isLight ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
+          backgroundColor: isLight ? AI4U_PALETTE.gray[200] : AI4U_PALETTE.gray[800],
         },
       };
     
@@ -92,10 +89,20 @@ const StyledButton = styled(MuiButton, {
   }
 });
 
+const LabelText = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: 2,
+  right: 6,
+  ...TEXT_VARIANTS.label.secondary,
+  fontSize: '0.65rem',
+  pointerEvents: 'none',
+}));
+
 export const Button = ({
   children,
   variant = 'primary',
   size = 'medium',
+  label,
   className,
   sx,
   ...props
@@ -108,9 +115,10 @@ export const Button = ({
       sx={sx}
       {...props}
     >
+      {label && <LabelText>{label}</LabelText>}
       {children}
     </StyledButton>
   );
 };
 
-export default Button; 
+export default Button;
