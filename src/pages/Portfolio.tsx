@@ -3,13 +3,12 @@ import {
   Container, 
   Grid, 
   Box, 
-  useTheme,
-  useMediaQuery,
-  alpha
+  useTheme, 
+  useMediaQuery, 
+  Stack
 } from '@mui/material';
-import { H1, H2, BodyText, SEOHead } from '../components/shared/ui/atoms';
-import { Card, RelatedPages } from '../components/shared/ui/molecules';
-import { SurfaceProvider } from '../context';
+import { Giant, H2, BodyText, SmallText, CodeText, SEOHead, GeometricIcon } from '../components/shared/ui/atoms';
+import { RelatedPages } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
@@ -30,7 +29,10 @@ const Portfolio = () => {
 
   return (
     <Box sx={{ 
-      bgcolor: colors.contrast.background
+      bgcolor: colors.contrast.background,
+      color: colors.contrast.text.primary,
+      minHeight: '100vh',
+      transition: 'all 0.3s ease'
     }}>
       {/* SEO Head con meta tags optimizados */}
       <SEOHead
@@ -40,140 +42,193 @@ const Portfolio = () => {
         canonical="https://ai4u.com.co/portafolio"
       />
 
-      {/* Portafolio de Innovación Section */}
+      {/* Header Section / Technical Label */}
       <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'relative',
-        minHeight: '100vh'
+        pt: { xs: 12, md: 20 },
+        pb: 4,
+        borderBottom: `1px solid ${colors.contrast.border}`
       }}>
-        {/* Grilla de fondo brutalista */}
-        <Box sx={{ position: 'absolute', top: 0, left: '25%', width: '1px', height: '100%', bgcolor: 'rgba(255,255,255,0.05)' }} />
-        <Box sx={{ position: 'absolute', top: 0, left: '50%', width: '1px', height: '100%', bgcolor: 'rgba(255,255,255,0.05)' }} />
-        <Box sx={{ position: 'absolute', top: 0, left: '75%', width: '1px', height: '100%', bgcolor: 'rgba(255,255,255,0.05)' }} />
-
-        <SurfaceProvider surface="black">
-          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-            <Box sx={{ mb: 12 }}>
-              <H1 sx={{ 
+        <Container maxWidth="lg">
+          <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
+            <Box>
+              <SmallText sx={{ 
+                color: colors.contrast.text.secondary, 
+                ...TEXT_VARIANTS.ui.code,
+                mb: 1,
+                textTransform: 'lowercase'
+              }}>
+                // portfolio.v3.2026
+              </SmallText>
+              <Giant sx={{ 
                 fontWeight: 400, 
-                textTransform: 'none', 
-                color: colors.palette.white, 
-                fontSize: { xs: '3.5rem', md: '7rem' },
-                lineHeight: 0.85,
-                letterSpacing: '-0.05em',
-                mb: 4
+                color: colors.contrast.text.primary,
+                lineHeight: 0.9,
+                mb: 0
               }}>
-                Portafolio de <br/>
-                <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>innovación</Box>
-              </H1>
-              <BodyText sx={{ 
-                fontSize: { xs: '1.2rem', md: '1.8rem' }, 
-                maxWidth: '800px',
-                opacity: 0.7,
-                lineHeight: 1.4
-              }}>
-                Explora cómo la Inteligencia Artificial está transformando industrias reales hoy.
-              </BodyText>
+                "portafolio"
+              </Giant>
             </Box>
+            {!isMobile && (
+              <CodeText sx={{ mb: 1, color: colors.contrast.text.secondary, textTransform: 'lowercase' }}>
+                [ index_08_cases ]
+              </CodeText>
+            )}
+          </Stack>
+        </Container>
+      </Box>
 
-            <Grid container spacing={4}>
-              {featuredProjects.map((project) => (
-                <Grid item xs={12} key={project.id}>
-                  <Card 
-                    variant="default" 
-                    component="a"
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{ 
-                      height: { xs: '450px', md: '80vh' },
-                      display: 'flex',
-                      flexDirection: 'column',
-                      p: 0,
-                      borderRadius: 0,
-                      border: `1px solid rgba(255,255,255,0.05)`,
-                      bgcolor: colors.palette.black,
-                      transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      textDecoration: 'none',
-                      '&:hover': {
-                        borderColor: colors.palette.accentColors.orange,
-                        '& .project-image': {
-                          transform: 'scale(1.05)',
-                          filter: 'grayscale(0%) brightness(0.4)'
-                        },
-                        '& .project-info': {
-                          opacity: 1,
-                          transform: 'translate(-50%, -50%)'
-                        }
+      {/* Introduction Section */}
+      <Box sx={{ py: 8, bgcolor: theme.palette.mode === 'light' ? colors.palette.gray[50] : colors.palette.gray[900] }}>
+        <Container maxWidth="lg">
+          <Grid container>
+            <Grid item xs={12} md={7}>
+              <BodyText sx={{ 
+                fontSize: { xs: '1.25rem', md: '1.75rem' }, 
+                lineHeight: 1.3,
+                color: colors.contrast.text.primary,
+                fontWeight: 300
+              }}>
+                Exploración de sistemas inteligentes y arquitecturas digitales aplicadas a problemas industriales de alta complejidad.
+              </BodyText>
+            </Grid>
+            <Grid item xs={12} md={5} sx={{ mt: { xs: 4, md: 0 }, display: 'flex', justifyContent: { md: 'flex-end' }, alignItems: 'center' }}>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <GeometricIcon type="circle" variant="outline" size="small" />
+                <SmallText sx={{ color: colors.contrast.text.secondary, ...TEXT_VARIANTS.ui.code, textTransform: 'lowercase' }}>
+                  ai4u_system_log
+                </SmallText>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Projects Grid Section */}
+      <Box sx={{ 
+        py: COMPONENT_SPACING.layout.section,
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Grilla técnica de fondo */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0, 
+          zIndex: 0,
+          backgroundImage: `linear-gradient(${theme.palette.mode === 'light' ? colors.palette.gray[100] : colors.palette.gray[800]} 1px, transparent 1px), linear-gradient(90deg, ${theme.palette.mode === 'light' ? colors.palette.gray[100] : colors.palette.gray[800]} 1px, transparent 1px)`,
+          backgroundSize: '100px 100px',
+          opacity: 0.3
+        }} />
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Grid container spacing={0} sx={{ 
+            borderTop: `1px solid ${colors.contrast.border}`, 
+            borderLeft: `1px solid ${colors.contrast.border}` 
+          }}>
+            {featuredProjects.map((project, index) => (
+              <Grid item xs={12} md={6} key={project.id} sx={{ 
+                borderRight: `1px solid ${colors.contrast.border}`, 
+                borderBottom: `1px solid ${colors.contrast.border}`,
+                position: 'relative'
+              }}>
+                <Box 
+                  component="a"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ 
+                    display: 'block',
+                    textDecoration: 'none',
+                    p: 4,
+                    height: '100%',
+                    transition: 'all 0.4s ease',
+                    bgcolor: 'transparent',
+                    '&:hover': {
+                      bgcolor: theme.palette.mode === 'light' ? colors.palette.gray[50] : colors.palette.gray[900],
+                      '& .project-image-container': {
+                        filter: 'grayscale(0%)'
+                      },
+                      '& .project-title': {
+                        color: colors.palette.accentColors.orange
                       }
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={project.image}
-                      alt={project.title}
-                      className="project-image"
-                      sx={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover',
-                        filter: 'grayscale(100%)',
-                        transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
-                      }}
-                    />
-                    
-                    {/* Información del proyecto - Solo visible en hover o siempre en móvil */}
-                    <Box 
-                      className="project-info"
-                      sx={{ 
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: { xs: 'translate(-50%, -50%)', md: 'translate(-50%, -40%)' },
-                        width: '90%',
-                        textAlign: 'center',
-                        opacity: { xs: 1, md: 0 },
-                        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                        zIndex: 2,
-                        pointerEvents: 'none'
-                      }}
-                    >
-                      <H2 sx={{ 
-                        fontSize: { xs: '3rem', md: '6rem' },
-                        fontWeight: 400, 
-                        textTransform: 'none', 
-                        color: colors.palette.white,
-                        lineHeight: 1,
-                        mb: 2,
-                        textShadow: '0 10px 30px rgba(0,0,0,0.5)'
-                      }}>
-                        {project.title}
-                      </H2>
-                      <BodyText sx={{ 
-                        color: colors.palette.accentColors.orange,
-                        fontSize: { xs: '1.2rem', md: '2rem' },
-                        ...TEXT_VARIANTS.ui.code,
+                    }
+                  }}
+                >
+                  <Stack spacing={3}>
+                    {/* Technical Header */}
+                    <Stack direction="row" justifyContent="space-between" alignItems="center">
+                      <SmallText sx={{ ...TEXT_VARIANTS.ui.code, color: colors.contrast.text.primary }}>
+                        0{index + 1} //
+                      </SmallText>
+                      <CodeText sx={{ fontSize: '0.7rem', textTransform: 'lowercase' }}>
+                        [{project.category.replace(/ /g, '_').toLowerCase()}]
+                      </CodeText>
+                    </Stack>
+
+                    {/* Title */}
+                    <H2 className="project-title" sx={{ 
+                      fontWeight: 400, 
+                      fontSize: { xs: '2rem', md: '3rem' },
+                      transition: 'color 0.3s ease'
+                    }}>
+                      {project.title}
+                    </H2>
+
+                    {/* Image Container */}
+                    <Box className="project-image-container" sx={{ 
+                      width: '100%',
+                      aspectRatio: '16/9',
+                      bgcolor: theme.palette.mode === 'light' ? colors.palette.gray[100] : colors.palette.gray[800],
+                      overflow: 'hidden',
+                      filter: 'grayscale(100%)',
+                      transition: 'filter 0.6s ease',
+                      border: `1px solid ${colors.contrast.border}`
+                    }}>
+                      <Box
+                        component="img"
+                        src={project.image}
+                        alt={project.title}
+                        sx={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'cover'
+                        }}
+                      />
+                    </Box>
+
+                    {/* Description */}
+                    <BodyText sx={{ 
+                      color: colors.contrast.text.secondary,
+                      fontSize: '1rem',
+                      minHeight: '3.5em'
+                    }}>
+                      {project.description}
+                    </BodyText>
+
+                    {/* Footer Link */}
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <SmallText sx={{ 
+                        ...TEXT_VARIANTS.ui.code, 
+                        color: colors.contrast.text.primary, 
+                        borderBottom: `1px solid ${colors.contrast.border}`,
                         textTransform: 'lowercase'
                       }}>
-                        {project.category}
-                      </BodyText>
-                    </Box>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </SurfaceProvider>
+                        explore_case_study
+                      </SmallText>
+                      <GeometricIcon type="plus" size="small" variant="minimal" />
+                    </Stack>
+                  </Stack>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </Box>
 
       {/* Enlaces Relacionados - SEO Internal Linking */}
-      <Box sx={{ py: 10, bgcolor: colors.contrast.background }}>
+      <Box sx={{ py: 10, bgcolor: colors.contrast.background, borderTop: `1px solid ${colors.contrast.border}` }}>
         <Container maxWidth="lg">
           <RelatedPages 
             pages={relatedLinks}
