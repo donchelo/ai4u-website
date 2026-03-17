@@ -177,46 +177,32 @@ const WhyAI4U = () => {
         canonical="https://ai4u.com.co/por-que-ai4u"
       />
 
-      {/* Mariano Section - Inspiración BLACK_MODERN */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.black, 
-        color: colors.palette.white,
+      {/* Mariano Section */}
+      <Box sx={{
+        py: COMPONENT_SPACING.layout.section,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        <Box sx={{
-          position: 'absolute',
-          top: '5%',
-          right: '5%',
-          fontSize: '15rem',
-          fontWeight: 400,
-          color: colors.palette.white,
-          opacity: 0.03,
-          zIndex: 1,
-          userSelect: 'none',
-          pointerEvents: 'none'
-        }}>
-          human
-        </Box>
-
-        <SurfaceProvider surface="black">
+        <SurfaceProvider surface="theme">
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
             <Grid container spacing={0} alignItems="center">
               <Grid item xs={12} md={7} sx={{ pr: { md: 10 } }}>
                 <Box sx={{ textAlign: 'left' }}>
-                  <H1 sx={{ 
-                    mb: 6, 
+                  <H1 sx={{
+                    mb: 6,
                     fontWeight: 400,
                     textTransform: 'none',
-                    color: colors.palette.white,
+                    color: colors.contrast.text.primary,
                     lineHeight: 0.85,
                     fontSize: { xs: '3.5rem', md: '7rem' },
                     letterSpacing: '-0.05em'
                   }}>
-                    La parte <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>humana</Box> de la IA
+                    La parte <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>humana</Box> de la IA
                   </H1>
                   
                   <Stack spacing={6} sx={{ mb: 10 }}>
@@ -225,16 +211,16 @@ const WhyAI4U = () => {
                       'Cofundador de Matt Movilidad',
                       'Especialista en Automatización'
                     ].map((text, idx) => (
-                      <Box key={idx} sx={{ 
-                        borderLeft: `1px solid ${colors.palette.accentColors.orange}`, 
+                      <Box key={idx} sx={{
+                        borderLeft: `1px solid ${colors.contrast.text.primary}`,
                         pl: 4,
-                        transform: `translateX(${idx * 20}px)` // Escalonado asimétrico
+                        transform: `translateX(${idx * 20}px)`
                       }}>
-                        <BodyText sx={{ 
-                          fontSize: '1.5rem', 
-                          fontWeight: 400, 
-                          textTransform: 'none', 
-                          color: colors.palette.white,
+                        <BodyText sx={{
+                          fontSize: '1.5rem',
+                          fontWeight: 400,
+                          textTransform: 'none',
+                          color: colors.contrast.text.primary,
                           opacity: 0.8
                         }}>
                           {text}
@@ -243,15 +229,15 @@ const WhyAI4U = () => {
                     ))}
                   </Stack>
                   
-                  <Box sx={{ 
-                    p: 4, 
-                    bgcolor: 'rgba(255,255,255,0.03)', 
-                    border: '1px solid rgba(255,255,255,0.2)',
+                  <Box sx={{
+                    p: 4,
+                    bgcolor: 'transparent',
+                    border: `1px solid ${colors.contrast.text.primary}`,
                     maxWidth: '500px',
                     mb: 6
                   }}>
-                    <BodyText sx={{ 
-                      color: colors.palette.white,
+                    <BodyText sx={{
+                      color: colors.contrast.text.primary,
                       fontSize: '1.2rem',
                       lineHeight: 1.4,
                       fontWeight: 400,
@@ -271,12 +257,12 @@ const WhyAI4U = () => {
                     py: 3,
                     px: 8,
                     fontSize: '1.2rem',
-                    borderColor: colors.palette.white,
-                    color: colors.palette.white,
+                    borderColor: colors.contrast.text.primary,
+                    color: colors.contrast.text.primary,
                     borderRadius: '9999px',
                     '&:hover': {
-                      bgcolor: colors.palette.white,
-                      color: colors.palette.black,
+                      bgcolor: colors.contrast.text.primary,
+                      color: colors.contrast.background,
                       transform: 'translateY(-5px)'
                     }
                   }}
@@ -289,8 +275,8 @@ const WhyAI4U = () => {
             </Grid>
             
             <Grid item xs={12} md={5} sx={{ mt: { xs: 8, md: 0 } }}>
-              <Box sx={{ 
-                border: `1px solid ${colors.palette.white}`,
+              <Box sx={{
+                border: `1px solid ${colors.contrast.text.primary}`,
                 p: 2,
                 position: 'relative'
               }}>
@@ -325,10 +311,10 @@ const WhyAI4U = () => {
         </SurfaceProvider>
       </Box>
 
-      {/* Benefits Section - Inspiración GREEN_FRESH */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.accentColors.mint,
+      {/* Benefits Section */}
+      <Box sx={{
+        py: COMPONENT_SPACING.layout.section,
+        bgcolor: colors.contrast.background,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
@@ -337,20 +323,20 @@ const WhyAI4U = () => {
         {/* Linea asimétrica de fondo */}
         <Box sx={{ position: 'absolute', top: '20%', left: 0, width: '100%', height: '1px', bgcolor: 'rgba(0,0,0,0.1)', transform: 'rotate(-2deg)' }} />
 
-        <SurfaceProvider surface="mint">
+        <SurfaceProvider surface="theme">
           <Container maxWidth="xl">
-            <H1 sx={{ 
-              mb: 12, 
+            <H1 sx={{
+              mb: 12,
               textAlign: 'left',
               fontWeight: 400,
               textTransform: 'none',
-              color: colors.palette.black,
+              color: colors.contrast.text.primary,
               fontSize: { xs: '3.5rem', md: '6.5rem' },
               lineHeight: 0.9,
               letterSpacing: '-0.04em'
             }}>
               ¿Qué nos hace <br/>
-              <Box component="span" sx={{ bgcolor: colors.palette.black, color: colors.palette.accentColors.mint, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
+              <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
             </H1>
 
             <Grid container spacing={4} alignItems="stretch">
@@ -369,22 +355,16 @@ const WhyAI4U = () => {
                 }
               ].map((benefit, idx) => (
                 <Grid item xs={12} sm={6} md={4} key={idx} sx={{ mt: { md: idx * 6 } }}>
-                  <Card variant="default" sx={{ 
+                  <Card variant="default" sx={{
                     height: '100%',
                     p: 6,
                     borderRadius: 0,
-                    bgcolor: idx === 1 ? colors.palette.black : colors.palette.white,
-                    color: idx === 1 ? colors.palette.white : colors.palette.black,
-                    border: `2px solid ${colors.palette.black}`,
-                    boxShadow: idx === 1 ? `15px 15px 0px ${colors.palette.white}` : `15px 15px 0px ${colors.palette.black}`,
-                    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                    '&:hover': {
-                      transform: 'translate(-5px, -5px)',
-                      boxShadow: idx === 1 ? `25px 25px 0px ${colors.palette.white}` : `25px 25px 0px ${colors.palette.black}`,
-                    }
+                    bgcolor: 'transparent',
+                    color: colors.contrast.text.primary,
+                    border: `1px solid ${colors.contrast.text.primary}`,
                   }}>
                     <Typography sx={{ ...TEXT_VARIANTS.ui.code, mb: 4, opacity: 0.5 }}>
-                      // 0{idx + 1}
+                      // beneficio0{idx + 1}
                     </Typography>
                     <H3 sx={{ 
                       fontSize: '2.5rem',
@@ -408,10 +388,11 @@ const WhyAI4U = () => {
       </Box>
 
       {/* Clients Carousel Section (REPLACE de UseCases) */}
-      <Box sx={{ 
+      <Box sx={{
         py: COMPONENT_SPACING.layout.section,
-        bgcolor: colors.palette.white,
-        color: colors.palette.black,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative'
@@ -421,17 +402,17 @@ const WhyAI4U = () => {
         <Box sx={{ position: 'absolute', top: 0, left: '66%', width: '1px', height: '100%', bgcolor: 'rgba(0,0,0,0.03)' }} />
 
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-          <H1 sx={{ 
-            mb: 12, 
+          <H1 sx={{
+            mb: 12,
             fontWeight: 400,
             textTransform: 'none',
-            color: colors.palette.black,
+            color: colors.contrast.text.primary,
             fontSize: { xs: '3.5rem', md: '6.5rem' },
             lineHeight: 0.9,
             letterSpacing: '-0.04em'
           }}>
             Nuestros <br/>
-            <Box component="span" sx={{ bgcolor: colors.palette.accentColors.orange, color: colors.palette.white, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>clientes</Box>
+            <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>clientes</Box>
           </H1>
 
           <Box sx={{ position: 'relative', mb: 10 }}>
@@ -466,13 +447,13 @@ const WhyAI4U = () => {
                       flexDirection: 'column',
                       p: 6,
                       borderRadius: 0,
-                      border: `1px solid ${colors.palette.gray[100]}`,
-                      bgcolor: colors.palette.white,
+                      border: `1px solid ${colors.contrast.text.primary}`,
+                      bgcolor: 'transparent',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        bgcolor: colors.palette.black,
-                        borderColor: colors.palette.black,
-                        color: colors.palette.white,
+                        bgcolor: colors.contrast.text.primary,
+                        borderColor: colors.contrast.text.primary,
+                        color: colors.contrast.background,
                         zIndex: 5,
                         '& img': { filter: 'brightness(0) invert(1)' }
                       }
@@ -504,12 +485,12 @@ const WhyAI4U = () => {
               <IconButton
                 onClick={handlePrevious}
                 sx={{
-                  bgcolor: colors.palette.black,
-                  color: colors.palette.white,
+                  bgcolor: colors.contrast.text.primary,
+                  color: colors.contrast.background,
                   borderRadius: '9999px',
                   width: 60,
                   height: 60,
-                  '&:hover': { bgcolor: colors.palette.accentColors.orange }
+                  '&:hover': { opacity: 0.7 }
                 }}
               >
                 <ChevronLeftIcon />
@@ -518,12 +499,12 @@ const WhyAI4U = () => {
               <IconButton
                 onClick={handleNext}
                 sx={{
-                  bgcolor: colors.palette.black,
-                  color: colors.palette.white,
+                  bgcolor: colors.contrast.text.primary,
+                  color: colors.contrast.background,
                   borderRadius: '9999px',
                   width: 60,
                   height: 60,
-                  '&:hover': { bgcolor: colors.palette.accentColors.orange }
+                  '&:hover': { opacity: 0.7 }
                 }}
               >
                 <ChevronRightIcon />
@@ -538,26 +519,16 @@ const WhyAI4U = () => {
       </Box>
 
       {/* Results Section (Desde UseCases) */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
+      <Box sx={{
+        py: COMPONENT_SPACING.layout.section,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative'
       }}>
-        {/* Textura de fondo sutil */}
-        <Box sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0)`,
-          backgroundSize: '30px 30px',
-        }} />
-
-        <SurfaceProvider surface="black">
+        <SurfaceProvider surface="theme">
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
             <Grid container spacing={0} alignItems="stretch">
             <Grid item xs={12} md={5} sx={{ mb: { xs: 8, md: 0 } }}>
@@ -570,7 +541,7 @@ const WhyAI4U = () => {
                 letterSpacing: '-0.05em'
               }}>
                 Resultados que <br/>
-                <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2, display: 'inline-block' }}>hablan</Box>
+                <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block' }}>hablan</Box>
               </H1>
               <BodyText sx={{ fontSize: '2rem', fontWeight: 400, lineHeight: 1.1, opacity: 0.9 }}>
                 IA que genera crecimiento real y tangible.
@@ -585,7 +556,7 @@ const WhyAI4U = () => {
                   { label: 'Disponibilidad continua', value: '24/7' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ 
-                    borderBottom: idx === 2 ? 'none' : '1px solid rgba(255,255,255,0.1)', 
+                    borderBottom: idx === 2 ? 'none' : `1px solid ${colors.contrast.text.primary}`,
                     py: 6,
                     pl: { md: 10 },
                     display: 'flex',
@@ -593,7 +564,7 @@ const WhyAI4U = () => {
                     alignItems: { md: 'center' },
                     gap: { xs: 2, md: 10 }
                   }}>
-                    <H2 sx={{ fontWeight: 400, fontSize: '4rem', lineHeight: 1, color: colors.palette.accentColors.orange }}>{item.value}</H2>
+                    <H2 sx={{ fontWeight: 400, fontSize: '4rem', lineHeight: 1, color: colors.contrast.text.primary }}>{item.value}</H2>
                     <BodyText sx={{ fontWeight: 400, textTransform: 'none', fontSize: '1.5rem', opacity: 0.9 }}>{item.label}</BodyText>
                   </Box>
                 ))}
@@ -605,10 +576,10 @@ const WhyAI4U = () => {
       </Box>
 
       {/* Final CTA Section - Actualizado */}
-      <Box sx={{ 
-        py: 25, 
-        bgcolor: colors.palette.white,
-        color: colors.palette.black,
+      <Box sx={{
+        py: 25,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative'
@@ -616,15 +587,15 @@ const WhyAI4U = () => {
         <SurfaceProvider surface="theme">
           <Container maxWidth="lg">
             <Stack spacing={10} textAlign="left" alignItems="flex-start">
-              <Giant sx={{ 
-                color: colors.palette.black, 
+              <Giant sx={{
+                color: colors.contrast.text.primary,
                 fontSize: { xs: '4rem', md: '9rem' },
                 lineHeight: 0.8,
                 fontWeight: 400,
                 letterSpacing: '-0.05em'
               }}>
                 ¿Listo para ser <br/>
-                el próximo <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>éxito</Box>?
+                el próximo <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>éxito</Box>?
               </Giant>
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
@@ -635,31 +606,30 @@ const WhyAI4U = () => {
                   py: 4,
                   px: 10,
                   fontSize: '1.8rem',
-                  bgcolor: colors.palette.black,
-                  color: colors.palette.white,
+                  bgcolor: colors.contrast.text.primary,
+                  color: colors.contrast.background,
                   borderRadius: '9999px',
                   fontWeight: 400,
                   '&:hover': {
-                    bgcolor: colors.palette.accentColors.orange,
-                    color: colors.palette.black,
+                    opacity: 0.8,
                     transform: 'translateY(-10px)'
                   }
                 }} />
                 <ServicesButton
                   variant="outline"
-                  sx={{ 
+                  sx={{
                     height: 'auto',
                     py: 4,
-                    px: 10, 
-                    fontSize: '1.8rem', 
-                    borderWidth: '2px', 
-                    borderColor: colors.palette.black,
-                    color: colors.palette.black,
+                    px: 10,
+                    fontSize: '1.8rem',
+                    borderWidth: '2px',
+                    borderColor: colors.contrast.text.primary,
+                    color: colors.contrast.text.primary,
                     borderRadius: '9999px',
                     fontWeight: 400,
                     '&:hover': {
-                      bgcolor: colors.palette.black,
-                      color: colors.palette.white
+                      bgcolor: colors.contrast.text.primary,
+                      color: colors.contrast.background
                     }
                   }}
                   text="Ver soluciones"

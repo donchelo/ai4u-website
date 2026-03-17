@@ -42,57 +42,53 @@ const Home = () => {
   
   // Obtener enlaces contextuales para la página Home
   const relatedLinks = getRelatedLinks('/');
-
-  // Features estáticas en español
-  const features = [
+  // Pillars Section - Reframed for Team & Value
+  const pillars = [
     {
-      title: 'Cada hora cuenta',
-      description: 'Automatiza lo operativo. Enfócate en lo estratégico.'
+      id: 'time',
+      title: 'El tiempo es oro',
+      subtitle: 'filosofia01',
+      description: 'No vendemos software. Vendemos el activo más valioso de tu vida: tu tiempo. Recupera el control.',
+      icon: 'clock'
     },
     {
-      title: 'Compra tiempo, no software',
-      description: 'Resultados medibles desde el primer mes.'
+      id: 'agents',
+      title: 'Equipo digital',
+      subtitle: 'equipoAgentes02',
+      description: 'Crea, entrena y gestiona tu propio equipo de agentes que trabajan mientras tú lideras.',
+      icon: 'groups'
     },
     {
-      title: 'Tu competencia ya empezó',
-      description: 'Nuestros agentes trabajan mientras tú decides.'
-    },
+      id: 'infrastructure',
+      title: 'Infraestructura',
+      subtitle: 'infraestructura03',
+      description: 'El sistema nervioso privado donde orquestamos cada acción de tu nueva fuerza laboral.',
+      icon: 'terminal'
+    }
   ];
 
-  // Categorías de servicios en español
-  const serviceCategories = [
+  // Features Section - Skills & Orchestration
+  const coreFeatures = [
     {
-      id: ServiceSuperCategory.OPERATION,
-      title: 'Operación',
-      description: 'Sistemas que trabajan 24/7 por ti.'
+      label: 'administracion01',
+      title: 'Gestión de agentes',
+      description: 'Supervisa y escala tu equipo digital desde un único centro de mando.'
     },
     {
-      id: ServiceSuperCategory.STRATEGY,
-      title: 'Estrategia',
-      description: 'Decisiones basadas en datos reales.'
+      label: 'habilidades02',
+      title: 'Creación de habilidades',
+      description: 'Tus agentes aprenden tus protocolos únicos. Si es estratégico para ti, es enseñable para ellos.'
     },
     {
-      id: ServiceSuperCategory.EDUCATION,
-      title: 'Educación',
-      description: 'Tu equipo dominando la IA.'
-    },
-    {
-      id: ServiceSuperCategory.TRANSFORMATION,
-      title: 'Transformación',
-      description: 'Infraestructura inteligente y escalable.'
-    },
-  ];
-
-  // Características del robot en español
-  const robotFeatures = [
-    'Resultados desde el mes uno',
-    'Evoluciona con tu negocio',
-    'Integración con tus sistemas'
+      label: 'ejecucion03',
+      title: 'Ejecución autónoma',
+      description: 'Agentes que operan tus sistemas (CRM, ERP, Email) con precisión industrial.'
+    }
   ];
 
   return (
-    <Box>
-      {/* SEO Head con meta tags optimizados */}
+    <Box sx={{ bgcolor: colors.contrast.background, minHeight: '100vh', color: colors.contrast.text.primary }}>
+      {/* SEO Head */}
       <SEOHead
         title={metaTags.title}
         description={metaTags.description}
@@ -102,465 +98,251 @@ const Home = () => {
       />
 
       <Helmet>
-        <link rel="preload" as="image" href="/assets/images/hero-image.png" fetchpriority="high" />
+        <link rel="preload" as="image" href="/assets/images/hero-image.png" fetchPriority="high" />
       </Helmet>
 
       {/* Hero Section */}
       <HeroSection 
-        customTitle="¿Cuánto vale tu tiempo?"
-        customSubtitle="Implementamos IA que recupera tus horas más valiosas."
-        primaryButtonText="Desplegar mi agente"
+        customTitle="Compra tiempo, no software."
+        customSubtitle="Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa."
+        primaryButtonText="Recuperar tiempo"
+        sx={{
+          bgcolor: colors.contrast.background,
+          borderColor: colors.contrast.text.primary,
+          '& .MuiTypography-h1': {
+            fontFamily: '"Red Hat Display", sans-serif',
+            fontWeight: 400,
+            letterSpacing: '-0.05em',
+            fontSize: { xs: '3rem', md: '7rem' },
+            color: colors.contrast.text.primary
+          },
+          '& .MuiTypography-h2': {
+             opacity: 0.6,
+             letterSpacing: '0.05em',
+             fontSize: '1rem',
+             color: colors.contrast.text.primary
+          }
+        }}
       />
 
-      {/* Features Section */}
+      {/* Pillars Section */}
       <Box sx={{
-        py: COMPONENT_SPACING.layout.section,
-        bgcolor: '#eaf4eb',
-        color: colors.palette.black,
+        py: 0,
+        bgcolor: colors.contrast.background, 
+        color: colors.contrast.text.primary,
         position: 'relative',
-        overflow: 'hidden'
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
+        borderBottom: `1px solid ${colors.contrast.text.primary}`,
       }}>
-        <SurfaceProvider surface="mint">
-          <Container maxWidth="xl">
-            <Grid container spacing={4} sx={{ position: 'relative', zIndex: 2 }}>
-              <Grid item xs={12} lg={8}>
-                <H1 sx={{ 
-                  mb: 8, 
-                  fontWeight: 400, 
-                  color: colors.palette.black, 
-                  textTransform: 'none', 
-                  fontSize: { xs: '3rem', md: '5.5rem' },
-                  lineHeight: 0.9,
-                  letterSpacing: '-0.05em'
+        <SurfaceProvider surface="theme">
+          <Container maxWidth={false} sx={{ px: 0 }}>
+            <Grid container spacing={0} sx={{ borderLeft: `1px solid ${colors.contrast.text.primary}` }}>
+              {pillars.map((pillar, idx) => (
+                <Grid item xs={12} md={4} key={idx} sx={{ 
+                  borderRight: `1px solid ${colors.contrast.text.primary}`,
+                  borderBottom: { xs: `1px solid ${colors.contrast.text.primary}`, md: 'none' },
+                  p: 8,
+                  minHeight: '400px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    bgcolor: colors.mode === 'light' ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)'
+                  }
                 }}>
-                  ¿Cuántas horas <Box component="span" sx={{ bgcolor: colors.palette.black, color: '#eaf4eb', px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>pierdes</Box> al día?
-                </H1>
-              </Grid>
-              
-              <Grid item xs={12}>
-                <Grid container spacing={4} alignItems="stretch">
-                  {features.map((feature, idx) => (
-                    <Grid item xs={12} md={idx === 1 ? 5 : 3.5} key={idx} sx={{ 
-                      mt: { md: idx * 8 }, // Offset vertical asimétrico
-                      mb: { md: idx === 1 ? -8 : 0 }
+                  <Box>
+                    <Typography sx={{ 
+                      ...TEXT_VARIANTS.ui.code, 
+                      fontSize: '0.9rem',
+                      letterSpacing: '0.1em',
+                      mb: 6,
+                      color: 'inherit',
+                      opacity: 0.6,
+                      textTransform: 'none'
                     }}>
-                      <Card 
-                        variant="default"
-                        sx={{ 
-                          height: '100%',
-                          p: 6,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          bgcolor: idx === 1 ? colors.palette.black : colors.palette.white,
-                          color: idx === 1 ? colors.palette.white : colors.palette.black,
-                          borderRadius: 0,
-                          border: `2px solid ${colors.palette.black}`,
-                          boxShadow: idx === 1 ? `15px 15px 0px ${colors.palette.white}` : `15px 15px 0px ${colors.palette.black}`,
-                          transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                          '&:hover': {
-                            transform: 'translate(-5px, -5px)',
-                            boxShadow: idx === 1 ? `25px 25px 0px ${colors.palette.white}` : `25px 25px 0px ${colors.palette.black}`,
-                          }
-                        }}
-                      >
-                        <Typography sx={{ 
-                          ...TEXT_VARIANTS.ui.code, 
-                          mb: 4, 
-                          fontSize: '1.2rem',
-                          opacity: 0.5
-                        }}>
-                          // 0{idx + 1}
-                        </Typography>
-                        <H3 sx={{ 
-                          mb: 3,
-                          fontWeight: 400,
-                          textTransform: 'none',
-                          color: 'inherit',
-                          fontSize: '2.5rem',
-                          lineHeight: 1
-                        }}>
-                          {feature.title}
-                        </H3>
-                        <BodyText sx={{ ...TEXT_VARIANTS.body.large, color: 'inherit', fontWeight: 400 }}>
-                          {feature.description}
-                        </BodyText>
-                      </Card>
-                    </Grid>
-                  ))}
+                      {pillar.subtitle}
+                    </Typography>
+                    <H2 sx={{ 
+                      mb: 4,
+                      fontWeight: 400,
+                      color: 'inherit',
+                      fontSize: '3rem',
+                      lineHeight: 0.9,
+                      letterSpacing: '-0.04em'
+                    }}>
+                      {pillar.title}
+                    </H2>
+                  </Box>
+                  <BodyText sx={{ ...TEXT_VARIANTS.body.regular, color: 'inherit', maxWidth: '300px', opacity: 0.8 }}>
+                    {pillar.description}
+                  </BodyText>
                 </Grid>
-              </Grid>
+              ))}
             </Grid>
           </Container>
         </SurfaceProvider>
-        
-        {/* Elemento decorativo asimétrico */}
-        <Box sx={{
-          position: 'absolute',
-          bottom: -50,
-          left: '10%',
-          width: '40%',
-          height: '2px',
-          bgcolor: colors.palette.black,
-          transform: 'rotate(-5deg)',
-          opacity: 0.2
-        }} />
       </Box>
 
-      {/* Robot Section - Inspiración BLACK_MODERN / SUPER_AI_NEON */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section,
-        bgcolor: colors.palette.black, 
-        color: colors.palette.white,
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        justifyContent: 'center',
-        borderTop: `10px solid ${colors.palette.black}`,
-        borderBottom: `10px solid ${colors.palette.black}`
-      }}>
-        {/* Big Background Number inspired by Pitch.tsx */}
-        <Typography 
-          sx={{ 
-            position: 'absolute', 
-            top: '50%', 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)',
-            fontSize: { xs: '20rem', md: '50rem' }, 
-            fontWeight: 400, 
-            color: colors.palette.white, 
-            opacity: 0.02,
-            zIndex: 1,
-            pointerEvents: 'none',
-            userSelect: 'none',
-            lineHeight: 1
-          }}
-        >
-          Force
-        </Typography>
-
-        <SurfaceProvider surface="black">
-          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-          <Stack direction="column" spacing={10}>
-            <Giant sx={{ 
-              color: colors.palette.white, 
-              maxWidth: '1200px', 
-              lineHeight: 0.85,
-              fontSize: { xs: '3.5rem', md: '8rem' },
-              fontWeight: 400,
-              textTransform: 'none',
-              letterSpacing: '-0.06em'
-            }}>
-              Fuerza de trabajo <br/>
-              <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>inteligente</Box>
-            </Giant>
-            
-            <Grid container spacing={0}>
-              <Grid item xs={12} md={8} sx={{ borderLeft: `1px solid rgba(255,255,255,0.1)`, pl: { md: 8 } }}>
-                <Stack spacing={8}>
-                  {robotFeatures.map((feature, idx) => (
-                    <Box key={idx} sx={{ position: 'relative' }}>
-                      <Typography sx={{ 
-                        position: 'absolute', 
-                        left: -40, 
-                        top: 0, 
-                        ...TEXT_VARIANTS.ui.code, 
-                        color: colors.palette.accentColors.orange,
-                        display: { xs: 'none', md: 'block' }
-                      }}>
-                        [{idx + 1}]
-                      </Typography>
-                      <H2 sx={{ 
-                        color: colors.palette.white,
-                        fontSize: { xs: '2.5rem', md: '4.5rem' },
-                        fontWeight: 400,
-                        textTransform: 'none',
-                        lineHeight: 0.9,
-                        letterSpacing: '-0.04em',
-                      }}>
-                        {feature}
-                      </H2>
-                    </Box>
-                  ))}
-                </Stack>
-              </Grid>
-              <Grid item xs={12} md={4} sx={{ mt: { xs: 8, md: 0 } }}>
-                <Box sx={{ 
-                  p: 6, 
-                  bgcolor: colors.palette.accentColors.orange,
-                  color: colors.palette.black,
-                  height: 'fit-content',
-                  transform: { md: 'translateY(100px) rotate(2deg)' }, // Offset asimétrico
-                }}>
-                    <BodyText sx={{ 
-                    color: colors.palette.black, 
-                    fontSize: '1.8rem',
-                    lineHeight: 1.1,
-                    fontWeight: 400,
-                    letterSpacing: '-0.04em',
-                    textTransform: 'none'
-                  }}>
-                    "IA que ejecuta por ti."
-                  </BodyText>
-                  <Box sx={{ mt: 4, width: 40, height: 4, bgcolor: colors.palette.black }} />
-                </Box>
-              </Grid>
-            </Grid>
-          </Stack>
+      {/* Main Philosophy Quote */}
+      <Box sx={{ py: 21, textAlign: 'center', bgcolor: colors.contrast.background, color: colors.contrast.text.primary }}>
+        <Container maxWidth="lg">
+          <Typography sx={{ 
+            fontSize: { xs: '2.5rem', md: '5.5rem' },
+            lineHeight: 0.9,
+            letterSpacing: '-0.04em',
+            fontWeight: 400
+          }}>
+            "No lidera máquinas, <br/>
+            orquesta <Box component="span" sx={{ opacity: 0.5 }}>libertad</Box> estratégica."
+          </Typography>
         </Container>
-        </SurfaceProvider>
       </Box>
 
-      {/* Services Section - Inspiración WHITE_MINIMAL (Optimizado) */}
+      {/* WorkForce Section */}
       <Box sx={{ 
         py: COMPONENT_SPACING.layout.section,
-        bgcolor: colors.palette.white,
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'relative'
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
       }}>
-        {/* Lineas de fondo brutalistas */}
-        <Box sx={{ position: 'absolute', top: 0, left: '33.33%', width: '1px', height: '100%', bgcolor: colors.palette.gray[100] }} />
-        <Box sx={{ position: 'absolute', top: 0, left: '66.66%', width: '1px', height: '100%', bgcolor: colors.palette.gray[100] }} />
-
-        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-          <Grid container spacing={0}>
-            {/* Título Columna Izquierda */}
-            <Grid item xs={12} lg={4} sx={{ mb: { xs: 8, lg: 0 } }}>
-              <Box sx={{ position: { lg: 'sticky' }, top: 150, pr: { lg: 8 } }}>
+        <SurfaceProvider surface="theme">
+          <Container maxWidth="xl">
+            <Stack direction="column" spacing={12}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: `1px solid ${colors.contrast.text.primary}`, pb: 4 }}>
                 <H1 sx={{ 
-                  fontWeight: 400, 
-                  textTransform: 'none', 
-                  color: colors.palette.black, 
-                  fontSize: { xs: '3.5rem', md: '5rem' },
-                  lineHeight: 0.85,
-                  mb: 4,
-                  letterSpacing: '-0.05em'
+                  lineHeight: 0.8,
+                  fontSize: { xs: '3.5rem', md: '7rem' },
+                  fontWeight: 400,
+                  letterSpacing: '-0.05em',
+                  color: colors.contrast.text.primary
                 }}>
-                  Servicios que <br/>
-                  <Box component="span" sx={{ 
-                    color: colors.palette.white, 
-                    bgcolor: colors.palette.black,
-                    px: 1,
-                    display: 'inline-block',
-                    mt: 1
-                  }}>transforman</Box>
+                  controlEquipo
                 </H1>
-                <BodyText sx={{ fontSize: '1.2rem', fontWeight: 400, color: colors.palette.black, maxWidth: '350px', mb: 6, opacity: 0.7 }}>
-                  Sistemas inteligentes diseñados para escalar tu operación sin aumentar tu nómina.
-                </BodyText>
-                <Button 
-                  variant="primary" 
-                  size="large"
-                  component={Link}
-                  to={ROUTES.SERVICES}
-                  onClick={() => scrollToTop()}
-                  sx={{
-                    height: 'auto',
-                    py: 3,
-                    px: 6,
-                    fontSize: '1.2rem',
-                    fontWeight: 400,
-                    textTransform: 'none',
-                    borderRadius: '9999px',
-                    border: `2px solid ${colors.palette.black}`,
-                    boxShadow: `4px 4px 0px ${colors.palette.gray[400]}`,
-                    '&:hover': {
-                      transform: 'translate(-2px, -2px)',
-                      boxShadow: `8px 8px 0px ${colors.palette.black}`,
-                    }
-                  }}
-                >
-                  Explorar catálogo
-                </Button>
+                <Typography sx={{ ...TEXT_VARIANTS.ui.code, mb: 1, opacity: 0.6, textTransform: 'none' }}>[ ver2.0 ]</Typography>
               </Box>
-            </Grid>
-
-            {/* Cards Columna Derecha - Bento Grid Style Asimétrico */}
-            <Grid item xs={12} lg={8}>
-              <Grid container spacing={2}>
-                {serviceCategories.map((cat, idx) => (
-                  <Grid item xs={12} md={idx % 3 === 0 ? 12 : 6} key={idx}>
-                    <Card 
-                      variant="default"
-                      sx={{ 
-                        height: '100%',
-                        p: 6,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        bgcolor: colors.palette.white,
-                        color: colors.palette.black,
-                        borderRadius: 0,
-                        border: `1px solid ${colors.palette.gray[200]}`,
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        '&:hover': {
-                          bgcolor: colors.palette.black,
-                          color: colors.palette.white,
-                          borderColor: colors.palette.black,
-                          zIndex: 10,
-                          transform: 'scale(1.02)',
-                          '& .arrow': { transform: 'translateX(10px)', color: colors.palette.accentColors.orange }
-                        }
-                      }}
-                    >
-                      <Box>
-                        <Typography 
-                          sx={{ 
-                            ...TEXT_VARIANTS.ui.code,
-                            fontSize: '1rem', 
-                            fontWeight: 400, 
-                            color: colors.palette.accentColors.orange,
-                            mb: 2,
-                          }}
-                        >
-                          // 0{idx + 1}
-                        </Typography>
-                        <H3 sx={{ 
-                          fontWeight: 400,
-                          fontSize: idx % 3 === 0 ? '3.5rem' : '2.2rem',
-                          mb: 3,
-                          lineHeight: 1,
-                          textTransform: 'none',
-                          letterSpacing: '-0.02em'
-                        }}>
-                          {cat.title}
-                        </H3>
-                        <BodyText sx={{ fontSize: '1.1rem', opacity: 0.8, mb: 4, maxWidth: '500px' }}>
-                          {cat.description}
-                        </BodyText>
-                      </Box>
-                      
-                      <Box 
-                        component={Link}
-                        to={`/servicios#${cat.id}`}
-                        sx={{ 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          gap: 2,
-                          mt: 4,
-                          textDecoration: 'none',
-                          color: 'inherit',
-                        }}
-                      >
-                        <Box className="arrow" sx={{ transition: 'transform 0.3s ease' }}>
-                          <GeometricIcon type="arrow-right" size="medium" color="inherit" />
-                        </Box>
-                        <Typography sx={{ ...TEXT_VARIANTS.ui.caption, fontWeight: 400, textTransform: 'none', letterSpacing: '0.2em' }}>
-                          Detalles
-                        </Typography>
-                      </Box>
-                    </Card>
+              
+              <Grid container spacing={0}>
+                {coreFeatures.map((feature, idx) => (
+                  <Grid item xs={12} md={4} key={idx} sx={{ 
+                    p: 4, 
+                    borderRight: idx < 2 ? { md: `1px solid ${colors.contrast.text.primary}` } : 'none',
+                    borderBottom: { xs: `1px solid ${colors.contrast.text.primary}`, md: 'none' }
+                  }}>
+                    <Typography sx={{ 
+                      ...TEXT_VARIANTS.ui.code, 
+                      mb: 4,
+                      fontSize: '0.8rem',
+                      opacity: 0.5,
+                      color: colors.contrast.text.primary,
+                      textTransform: 'none'
+                    }}>
+                      //{feature.label}
+                    </Typography>
+                    <H3 sx={{ 
+                      fontSize: '2.5rem',
+                      fontWeight: 400,
+                      lineHeight: 0.9,
+                      letterSpacing: '-0.04em',
+                      mb: 3,
+                      color: colors.contrast.text.primary
+                    }}>
+                      {feature.title}
+                    </H3>
+                    <BodyText sx={{ opacity: 0.8, color: colors.contrast.text.primary }}>
+                      {feature.description}
+                    </BodyText>
                   </Grid>
                 ))}
               </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* CTA Section - Brutalista */}
-      <Box sx={{ 
-        py: 20,
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <Box sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }} />
-        
-        <SurfaceProvider surface="black">
-          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-            <Box sx={{ textAlign: 'left' }}>
-            <Giant sx={{ 
-              mb: 10, 
-              color: colors.palette.white, 
-              lineHeight: 0.8,
-              fontSize: { xs: '4rem', md: '10rem' },
-              fontWeight: 400,
-              textTransform: 'none',
-              letterSpacing: '-0.05em'
-            }}>
-              ¿Listo para el <br/>
-              <Box component="span" sx={{ 
-                color: colors.palette.black, 
-                bgcolor: colors.palette.accentColors.orange,
-                px: 2,
-                display: 'inline-block',
-                transform: 'rotate(-1deg)'
-              }}>futuro?</Box>
-            </Giant>
-            
-            <Stack 
-              direction={{ xs: 'column', md: 'row' }} 
-              spacing={4} 
-              alignItems="flex-start"
-            >
-              <DiagnosticCTA sx={{
-                height: 'auto',
-                py: 4,
-                px: 10,
-                fontSize: '1.8rem',
-                fontWeight: 400,
-                bgcolor: colors.palette.white,
-                color: colors.palette.black,
-                borderRadius: '9999px',
-                textTransform: 'none',
-                '&:hover': {
-                  bgcolor: colors.palette.accentColors.orange,
-                  color: colors.palette.black,
-                  transform: 'translateY(-10px)'
-                }
-              }} />
-              <Button
-                variant="outline"
-                component={Link}
-                to={ROUTES.SERVICES}
-                onClick={() => scrollToTop()}
-                sx={{
-                  height: 'auto',
-                  py: 4,
-                  px: 10,
-                  fontSize: '1.8rem',
-                  fontWeight: 400,
-                  borderRadius: '9999px',
-                  borderColor: colors.palette.white,
-                  color: colors.palette.white,
-                  borderWidth: '2px',
-                  textTransform: 'none',
-                  '&:hover': {
-                    bgcolor: colors.palette.white,
-                    color: colors.palette.black,
-                    borderColor: colors.palette.white
-                  }
-                }}
-              >
-                Soluciones
-              </Button>
             </Stack>
-          </Box>
-        </Container>
+          </Container>
         </SurfaceProvider>
       </Box>
 
-      {/* Enlaces Relacionados - SEO Internal Linking */}
-      <Container maxWidth="lg">
-        <RelatedPages 
-          pages={relatedLinks}
-          variant="horizontal"
-        />
-      </Container>
+      {/* Final Action */}
+      <Box sx={{ 
+        py: 30,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        textAlign: 'center',
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
+      }}>
+        <Container maxWidth="lg">
+          <Typography sx={{ 
+            ...TEXT_VARIANTS.ui.code, 
+            mb: 8,
+            letterSpacing: '0.1em',
+            color: 'inherit',
+            opacity: 0.6,
+            textTransform: 'none'
+          }}>
+            listoParaDespegar
+          </Typography>
+          
+          <Giant sx={{ 
+            mb: 12, 
+            color: 'inherit', 
+            lineHeight: 0.8,
+            fontSize: { xs: '4rem', md: '12rem' },
+            fontWeight: 400,
+            letterSpacing: '-0.06em'
+          }}>
+            Crea tu equipo
+          </Giant>
+          
+          <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} justifyContent="center" alignItems="center">
+            <DiagnosticCTA 
+              variant="primary"
+              size="large"
+              text="Agendar diagnóstico"
+              sx={{
+                bgcolor: colors.contrast.text.primary,
+                color: colors.contrast.background,
+                borderRadius: 0,
+                border: 'none',
+                height: '70px',
+                px: 8,
+                fontSize: '1.2rem',
+                fontWeight: 400,
+                fontFamily: '"Red Hat Display", sans-serif',
+                letterSpacing: '0.05em',
+                '&:hover': {
+                  bgcolor: colors.contrast.text.primary,
+                  opacity: 0.9,
+                  transform: 'scale(1.05)'
+                }
+              }}
+            />
+            <Button
+              variant="outline"
+              component={Link}
+              to={ROUTES.SUPER_AI}
+              onClick={() => scrollToTop()}
+              sx={{
+                height: '70px',
+                border: `1px solid ${colors.contrast.text.primary}`,
+                borderRadius: 0,
+                color: colors.contrast.text.primary,
+                px: 8,
+                fontSize: '1.2rem',
+                letterSpacing: '0.05em',
+                '&:hover': {
+                  bgcolor: colors.mode === 'light' ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)',
+                }
+              }}
+            >
+              Explorar SuperAI
+            </Button>
+          </Stack>
+        </Container>
+      </Box>
+
+      {relatedLinks.length > 0 && (
+        <Box sx={{ borderTop: `1px solid ${colors.contrast.divider}` }}>
+          <RelatedPages pages={relatedLinks} />
+        </Box>
+      )}
     </Box>
   );
 };

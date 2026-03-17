@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps, styled } from '@mui/material';
-import { useColors } from '../../../hooks';
+import { useColors } from '../../../../hooks';
 import { AI4U_PALETTE, COMPONENT_VARIANTS } from '../tokens/palette';
 import { SHADOW_TOKENS } from '../tokens/theme';
 
@@ -11,6 +11,9 @@ interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   href?: string;
   target?: string;
   component?: any;
+  to?: any;
+  className?: string;
+  sx?: any;
 }
 
 // Botón minimalista usando sistema de tokens
@@ -93,12 +96,16 @@ export const Button = ({
   children,
   variant = 'primary',
   size = 'medium',
+  className,
+  sx,
   ...props
 }: ButtonProps) => {
   return (
     <StyledButton
       customVariant={variant}
       size={size}
+      className={className}
+      sx={sx}
       {...props}
     >
       {children}

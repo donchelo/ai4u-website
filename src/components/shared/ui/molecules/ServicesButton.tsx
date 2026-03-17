@@ -12,6 +12,7 @@ interface ServicesButtonProps {
   showIcon?: boolean;
   text?: string;
   className?: string;
+  sx?: any;
 }
 
 export const ServicesButton = ({
@@ -20,6 +21,7 @@ export const ServicesButton = ({
   showIcon = false,
   text = 'Nuestros Servicios',
   className,
+  sx,
 }: ServicesButtonProps) => {
   const navigate = useNavigate();
   
@@ -38,6 +40,7 @@ export const ServicesButton = ({
       onClick={handleClick}
       startIcon={showIcon ? <WorkIcon /> : undefined}
       className={className}
+      sx={sx}
     >
       {text}
     </Button>

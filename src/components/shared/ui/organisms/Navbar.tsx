@@ -15,7 +15,10 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useColors } from '../../../../hooks';
+import { useColorMode } from '../../../../context/ThemeContext';
 import { Logo, GoogleTranslateWidget } from '../atoms';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
@@ -27,14 +30,14 @@ const StyledNavButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== 'colors' && prop !== 'isScrolled'
 })<{ colors: ReturnType<typeof useColors>; isScrolled: boolean }>(({ theme, colors, isScrolled }) => ({
   marginX: theme.spacing(0.5),
-  color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+  color: colors.contrast.text.primary,
   fontWeight: 400,
   textTransform: 'none',
   fontSize: TEXT_VARIANTS.ui.caption.fontSize,
   transition: 'all 0.3s ease-in-out',
   position: 'relative',
-  border: 'none', // Eliminar el borde global del tema
-  padding: theme.spacing(1, 1.5), // Ajustar el padding excesivo del tema
+  border: 'none',
+  padding: theme.spacing(1, 1.5),
   '&::after': {
     content: '""',
     position: 'absolute',
@@ -42,15 +45,15 @@ const StyledNavButton = styled(Button, {
     left: '50%',
     width: 0,
     height: '2px',
-    backgroundColor: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+    backgroundColor: colors.contrast.text.primary,
     transition: 'all 0.3s ease-in-out',
     transform: 'translateX(-50%)',
   },
   '&:hover': {
     backgroundColor: 'transparent',
-    color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+    color: colors.contrast.text.primary,
     opacity: 0.8,
-    border: 'none', // Asegurar que no aparezca en hover
+    border: 'none',
     '&::after': {
       width: '60%',
     },
@@ -72,6 +75,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const colors = useColors();
   const navigate = useNavigate();
+  const { mode, toggleColorMode } = useColorMode();
 
   // Detectar scroll para cambiar apariencia
   useEffect(() => {
@@ -125,6 +129,7 @@ const Navbar = () => {
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* Logo - Desktop */}
+          {/* Logo - Desktop */}
           <Box
             component={RouterLink as React.ElementType}
             to={ROUTES.HOME}
@@ -136,7 +141,7 @@ const Navbar = () => {
               alignItems: 'center',
             }}
           >
-            <Logo variant="desktop" light={!isScrolled} />
+            <Logo variant="desktop" light={colors.mode === 'dark'} />
           </Box>
 
           {/* Mobile Menu */}
@@ -148,9 +153,9 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{
-                color: isScrolled ? colors.contrast.text.primary : '#FFFFFF',
+                color: colors.contrast.text.primary,
                 transition: 'color 0.3s ease-in-out',
-                border: 'none', // Asegurar que no tenga bordes del tema
+                border: 'none',
                 '&:hover': {
                   backgroundColor: 'transparent',
                   opacity: 0.7,
@@ -184,17 +189,17 @@ const Navbar = () => {
             >
               {navItems.map((item) => (
                 <MenuItem 
-                  key={item.name} 
-                  onClick={() => handleNavigate(item.path)}
-                  component={RouterLink as React.ElementType}
-                  to={item.path}
-                  sx={{
-                    color: colors.contrast.text.primary,
-                    '&:hover': {
-                      backgroundColor: colors.helpers.state.hover,
-                      color: colors.palette.black,
-                    },
-                  }}
+                   key={item.name} 
+                   onClick={() => handleNavigate(item.path)}
+                   component={RouterLink as React.ElementType}
+                   to={item.path}
+                   sx={{
+                     color: colors.contrast.text.primary,
+                     '&:hover': {
+                       backgroundColor: colors.helpers.state.hover,
+                       color: colors.palette.black,
+                     },
+                   }}
                 >
                   <MuiTypography textAlign="center">{item.name}</MuiTypography>
                 </MenuItem>
@@ -212,8 +217,22 @@ const Navbar = () => {
                 }}
               >
                 <Box sx={{ width: '100%', maxWidth: (theme) => theme.spacing(25) }}>
-                  <GoogleTranslateWidget light={false} />
+                  <GoogleTranslateWidget light={colors.mode === 'dark'} />
                 </Box>
+              </MenuItem>
+              {/* Theme Toggle en menú móvil */}
+              <MenuItem
+                onClick={toggleColorMode}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: 1,
+                  color: colors.contrast.text.primary,
+                  '&:hover': { backgroundColor: colors.helpers.state.hover },
+                }}
+              >
+                {mode === 'light' ? <DarkModeIcon fontSize="small" /> : <LightModeIcon fontSize="small" />}
+                <MuiTypography>{mode === 'light' ? 'Modo oscuro' : 'Modo claro'}</MuiTypography>
               </MenuItem>
             </Menu>
           </Box>
@@ -232,7 +251,7 @@ const Navbar = () => {
               justifyContent: 'center',
             }}
           >
-            <Logo variant="mobile" light={!isScrolled} />
+            <Logo variant="mobile" light={colors.mode === 'dark'} />
           </Box>
 
           {/* Desktop Menu */}
@@ -251,16 +270,30 @@ const Navbar = () => {
             ))}
             
             {/* Google Translate Widget */}
-            <Box 
-              sx={{ 
-                ml: { xs: 0.5, md: 1 }, 
-                display: 'flex', 
+            <Box
+              sx={{
+                ml: { xs: 0.5, md: 1 },
+                display: 'flex',
                 alignItems: 'center',
                 flexShrink: 0,
               }}
             >
-              <GoogleTranslateWidget light={!isScrolled} />
+              <GoogleTranslateWidget light={colors.mode === 'dark'} />
             </Box>
+
+            {/* Theme Toggle */}
+            <IconButton
+              onClick={toggleColorMode}
+              size="small"
+              sx={{
+                ml: 1,
+                color: colors.contrast.text.primary,
+                border: 'none',
+                '&:hover': { backgroundColor: 'transparent', opacity: 0.7 },
+              }}
+            >
+              {mode === 'light' ? <DarkModeIcon fontSize="small" /> : <LightModeIcon fontSize="small" />}
+            </IconButton>
           </StyledDesktopMenuBox>
         </Toolbar>
       </Container>

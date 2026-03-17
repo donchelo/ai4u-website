@@ -3,6 +3,7 @@ import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/st
 import { SurfaceType, SURFACE_PRESETS, AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
 import { TYPOGRAPHY_TOKENS } from '../components/shared/ui/tokens/typography';
+import { useColorMode } from './ThemeContext';
 
 // Import createAI4UTheme logic or just create a local version to avoid circular deps
 // Since createAI4UTheme is in ThemeContext.tsx which might import this context, 
@@ -23,15 +24,16 @@ interface SurfaceProviderProps {
 
 export const SurfaceProvider: React.FC<SurfaceProviderProps> = ({ children, surface }) => {
   const parentContext = useContext(SurfaceContext);
-  
+  const { mode: globalMode } = useColorMode();
+
   // Si no se proporciona una superficie, se hereda la del padre
   const currentSurface = surface || parentContext.surface;
 
   // Determinar el modo efectivo para esta superficie
   const effectiveMode = useMemo(() => {
-    if (currentSurface === 'theme') return 'light'; // Por defecto global es light
+    if (currentSurface === 'theme') return globalMode;
     return SURFACE_PRESETS[currentSurface].effectiveMode;
-  }, [currentSurface]);
+  }, [currentSurface, globalMode]);
 
   // Crear un sub-tema MUI que refleje el modo de la superficie
   // Esto permite que componentes estándar de MUI y nuestros atoms que usan theme.palette.mode
@@ -47,8 +49,8 @@ export const SurfaceProvider: React.FC<SurfaceProviderProps> = ({ children, surf
           contrastText: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
         },
         background: {
-          default: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-          paper: isLight ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
+          default: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.black,
+          paper: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.gray[900],
         },
         text: {
           primary: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,

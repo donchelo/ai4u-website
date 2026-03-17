@@ -138,9 +138,9 @@ export const getBreadcrumbStructuredData = (breadcrumbs: Array<{name: string, ur
 export const getPageMetaTags = (page: string) => {
   const metaTags = {
     home: {
-      title: "AI4U - Inteligencia Artificial para tu Negocio",
-      description: "Soluciones de Inteligencia Artificial personalizadas. Implementamos IA real a través de nuestros 4 ejes: Operación, Estrategia, Educación y Transformación.",
-      keywords: "inteligencia artificial, IA, automatización, GPT personalizado, SuperAI, AI empresarial, Colombia"
+      title: "AI4U - Recupera tu Tiempo con Equipos de Agentes de IA",
+      description: "El tiempo es oro. Te ayudamos a crear y administrar tu equipo de agentes de IA para orquestar tu libertad operativa. Infraestructura privada y segura.",
+      keywords: "infraestructura IA, agentes de IA, orquestación IA, digital workforce, AI4U, SuperAI, automatización empresarial, Colombia"
     },
     services: {
       title: "Servicios de Inteligencia Artificial | AI4U",

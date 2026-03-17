@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, ReactNode } from 'react';
+import React, { createContext, useContext, useMemo, useState, useCallback, useEffect, ReactNode } from 'react';
 import { ThemeProvider as MuiThemeProvider, createTheme, PaletteMode, Theme, Components, Shadows } from '@mui/material/styles';
 import { TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -130,7 +130,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 			styleOverrides: {
 				root: {
 					borderRadius: 12, // Bordes redondeados para cards
-					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.gray[900],
+					backgroundColor: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.gray[900],
 					border: 'none',
 					boxShadow: SHADOW_TOKENS.ai4u.card,
 					'&:hover': {
@@ -163,7 +163,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiPaper: {
 			styleOverrides: {
 				root: {
-					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.gray[900],
+					backgroundColor: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.gray[900],
 					backgroundImage: 'none',
 				},
 			},
@@ -171,7 +171,7 @@ const getComponentsOverrides = (mode: PaletteMode): Components<Theme> => {
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					backgroundColor: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
+					backgroundColor: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.black,
 					boxShadow: 'none',
 					borderBottom: 'none',
 				},
@@ -224,8 +224,8 @@ const getPalette = (mode: PaletteMode) => {
 			contrastText: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
 		},
 		background: {
-			default: isLight ? AI4U_PALETTE.white : AI4U_PALETTE.black,
-			paper: isLight ? AI4U_PALETTE.gray[50] : AI4U_PALETTE.gray[900],
+			default: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.black,
+			paper: isLight ? AI4U_PALETTE.accentColors.mint : AI4U_PALETTE.gray[900],
 		},
 		text: {
 			primary: isLight ? AI4U_PALETTE.black : AI4U_PALETTE.white,
@@ -293,24 +293,43 @@ const createAI4UTheme = (mode: PaletteMode): Theme => {
 	});
 };
 
-// Interface para el contexto (solo light mode)
+// Interface para el contexto
 interface ThemeContextType {
 	mode: PaletteMode;
+	toggleColorMode: () => void;
 }
 
 // Crear contexto
 export const ColorModeContext = createContext<ThemeContextType>({
 	mode: 'light',
+	toggleColorMode: () => {},
 });
 
-// Hook personalizado para usar el modo de color (siempre 'light')
+// Hook personalizado para usar el modo de color
 export const useColorMode = () => useContext(ColorModeContext);
 
-// Proveedor del tema - siempre light mode
+// Proveedor del tema con toggle
 export const ThemeProvider: React.FC<{children?: ReactNode}> = ({ children }) => {
-	const mode: PaletteMode = 'light';
-	const colorMode = useMemo(() => ({ mode }), []);
-	const theme = useMemo(() => createAI4UTheme('light'), []);
+	const [mode, setMode] = useState<PaletteMode>(() => {
+		const saved = localStorage.getItem('ai4u-theme-mode');
+		return (saved === 'dark' || saved === 'light') ? saved : 'light';
+	});
+
+	const toggleColorMode = useCallback(() => {
+		setMode(prev => {
+			const next = prev === 'light' ? 'dark' : 'light';
+			localStorage.setItem('ai4u-theme-mode', next);
+			document.documentElement.setAttribute('data-theme', next);
+			return next;
+		});
+	}, []);
+
+	useEffect(() => {
+		document.documentElement.setAttribute('data-theme', mode);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+	const colorMode = useMemo(() => ({ mode, toggleColorMode }), [mode, toggleColorMode]);
+	const theme = useMemo(() => createAI4UTheme(mode), [mode]);
 
 	return (
 		<ColorModeContext.Provider value={colorMode}>

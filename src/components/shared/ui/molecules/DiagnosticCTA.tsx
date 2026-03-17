@@ -15,6 +15,7 @@ interface DiagnosticCTAProps {
   showIcon?: boolean;
   text?: string;
   className?: string;
+  sx?: any;
 }
 
 export const DiagnosticCTA = ({
@@ -23,6 +24,7 @@ export const DiagnosticCTA = ({
   showIcon = false,
   text,
   className,
+  sx,
 }: DiagnosticCTAProps) => {
   const defaultText = 'Diagnóstico gratis';
   return (
@@ -35,6 +37,7 @@ export const DiagnosticCTA = ({
       }}
       startIcon={showIcon ? <CalendarMonthIcon /> : undefined}
       className={className}
+      sx={sx}
     >
       {text || defaultText}
     </Button>

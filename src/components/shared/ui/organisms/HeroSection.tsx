@@ -12,13 +12,15 @@ interface HeroSectionProps {
   customSubtitle?: string;
   primaryButtonText?: string;
   secondaryButtonText?: string;
+  sx?: any;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   customTitle = 'Tu tiempo es oro',
   customSubtitle = 'IA que potencia tu productividad.',
   primaryButtonText = 'Recupera tu tiempo',
-  secondaryButtonText = 'Calcula tu ROI'
+  secondaryButtonText = 'Calcula tu ROI',
+  sx
 }) => {
   const theme = useTheme();
   const colors = useColors();
@@ -59,9 +61,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-start', // Cambio a alineación a la izquierda
-        bgcolor: colors.palette.black,
-        py: { xs: 4, sm: 6, md: 12 }
+        justifyContent: 'flex-start',
+        bgcolor: colors.contrast.background,
+        py: { xs: 4, sm: 6, md: 12 },
+        ...sx
       }}
     >
       {/* Fondo Minimalista con Alto Contraste */}
@@ -77,7 +80,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             content: '""',
             position: 'absolute',
             inset: 0,
-            backgroundColor: alpha(colors.palette.black, 0.4), // Overlay más suave
+            backgroundColor: alpha(colors.contrast.background, 0.6),
             zIndex: 1
           }
         }}
@@ -92,9 +95,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: idx === currentImage ? 0.7 : 0, // Un poco más de opacidad para la imagen
+                opacity: idx === currentImage ? 0.5 : 0,
                 transition: 'opacity 1.5s ease-in-out, transform 10s ease-out',
-                filter: 'grayscale(100%) contrast(1.2)', // Más contraste en el fondo
+                filter: 'grayscale(100%) contrast(1.2)',
                 transform: idx === currentImage ? 'scale(1.1)' : 'scale(1)',
               }}
             />
@@ -102,32 +105,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         ))}
       </Box>
 
-      {/* Texto de fondo asimétrico */}
-      <Typography
-        sx={{
-          position: 'absolute',
-          top: '10%',
-          right: '-5%',
-          fontSize: { xs: '10rem', md: '25rem' },
-          fontWeight: 400,
-          color: colors.palette.white,
-          opacity: 0.05,
-          zIndex: 1,
-          lineHeight: 0.8,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          whiteSpace: 'nowrap'
-        }}
-      >
-        AI 4U
-      </Typography>
 
       <Container 
         maxWidth="xl" 
         sx={{ 
           position: 'relative',
           zIndex: 5,
-          px: { xs: 2, sm: 3, md: 10, lg: 15 }, // Ajuste de padding para asimetría
+          px: { xs: 2, sm: 3, md: 10, lg: 15 },
           display: 'flex',
           justifyContent: 'flex-start'
         }}
@@ -135,46 +119,42 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <Stack
           direction="column"
           spacing={{ xs: 2, sm: 3, md: 4 }}
-          alignItems="flex-start" // Alineación a la izquierda
+          alignItems="flex-start"
           sx={{ width: '100%', maxWidth: '900px', textAlign: 'left' }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             <Box 
               sx={{ 
-                bgcolor: colors.palette.accentColors.orange, 
-                color: colors.palette.black,
+                border: `1px solid ${colors.contrast.text.primary}`, 
+                color: colors.contrast.text.primary,
                 px: 2,
                 py: 0.5,
                 mb: 4,
                 ...TEXT_VARIANTS.ui.code,
                 fontSize: '0.9rem',
-                transform: 'rotate(-2deg)' // Toque asimétrico
+                letterSpacing: '0.1em'
               }}
             >
-              Estrategia + IA
+              strategySystemV2.0
             </Box>
             <Giant 
               sx={{ 
-                color: colors.palette.white,
+                color: colors.contrast.text.primary,
                 mb: { xs: 1, sm: 1.5, md: 2 },
                 maxWidth: '850px',
-                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '6rem', lg: '8rem' }, // Más grande para impacto
+                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '6rem', lg: '8rem' },
                 lineHeight: 0.9,
                 letterSpacing: '-0.04em',
                 textAlign: 'left',
                 fontWeight: 400
               }}
             >
-              {customTitle.split(' ').map((word, i) => (
-                <span key={i} style={{ display: 'inline-block', marginRight: '0.2em' }}>
-                  {word}
-                </span>
-              ))}
+              Compra tiempo, no software.
             </Giant>
             
             <H1 
               sx={{ 
-                color: colors.palette.white,
+                color: colors.contrast.text.primary,
                 maxWidth: '600px',
                 mb: { xs: 4, sm: 5, md: 6 },
                 opacity: 0.9,
@@ -182,11 +162,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 fontSize: { xs: '1rem', sm: '1.2rem', md: '2rem' },
                 lineHeight: 1.1,
                 textAlign: 'left',
-                borderLeft: `4px solid ${colors.palette.white}`,
+                borderLeft: `4px solid ${colors.contrast.text.primary}`,
                 pl: 3
               }}
             >
-              {customSubtitle}
+              Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa.
             </H1>
           </Box>
 
@@ -197,7 +177,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           >
             <DiagnosticCTA 
               variant="primary" 
-              text={primaryButtonText} 
+              text="Recuperar tiempo" 
               size="large"
               showIcon={false}
               sx={{ 
@@ -205,15 +185,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 px: { xs: 4, md: 8 }, 
                 fontSize: { xs: '0.9rem', md: '1.5rem' },
                 fontWeight: 400,
-                borderRadius: '9999px',
-                bgcolor: colors.palette.white,
-                color: colors.palette.black,
+                borderRadius: 0,
+                bgcolor: colors.contrast.text.primary,
+                color: colors.contrast.background,
                 border: 'none',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: colors.palette.accentColors.orange,
-                  color: colors.palette.black,
-                  transform: 'translateY(-5px) rotate(1deg)'
+                  bgcolor: colors.contrast.text.primary,
+                  opacity: 0.9,
+                  transform: 'scale(1.02)'
                 }
               }}
             />
@@ -224,7 +204,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             }}>
               <BodyText 
                 sx={{ 
-                  color: colors.palette.white,
+                  color: colors.contrast.text.primary,
                   fontWeight: 400,
                   fontSize: { xs: '0.8rem', md: '1.2rem' },
                   letterSpacing: '0.1em',
@@ -234,7 +214,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   opacity: 0.6
                 }}
               >
-                // {humanElementText}
+                // IA con enfoque humano
               </BodyText>
             </Box>
           </Stack>

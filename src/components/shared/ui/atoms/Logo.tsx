@@ -7,8 +7,8 @@ interface LogoProps extends Omit<BoxProps, 'component'> {
   onClick?: () => void;
 }
 
-const LOGO_LIGHT_BG_PATH = '/assets/images/ai4u-logo-for-light-background.png';
-const LOGO_DARK_BG_PATH = '/assets/images/ai4u-logo-for-dark-background.png';
+const LOGO_LIGHT_BG_PATH = '/assets/images/logo-v2-negro.png';
+const LOGO_DARK_BG_PATH = '/assets/images/logo-v2-crema.png';
 
 const Logo: React.FC<LogoProps> = ({ 
   variant = 'desktop', 
@@ -51,4 +51,4 @@ const Logo: React.FC<LogoProps> = ({
   );
 };
 
-export default Logo; 
+export default Logo;

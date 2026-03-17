@@ -43,14 +43,31 @@
   --ai4u-info: #3B82F6;
 }
 
+/* Semantic theme variables */
+[data-theme="light"], :root {
+  --ai4u-bg-default: #eaf4eb;
+  --ai4u-bg-surface: #eaf4eb;
+  --ai4u-text-primary: #171717;
+  --ai4u-text-secondary: #525252;
+  --ai4u-border-color: #E5E5E5;
+}
+
+[data-theme="dark"] {
+  --ai4u-bg-default: #171717;
+  --ai4u-bg-surface: #262626;
+  --ai4u-text-primary: #FFFFFF;
+  --ai4u-text-secondary: #D4D4D4;
+  --ai4u-border-color: #404040;
+}
+
 /* Base Styles */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--ai4u-gray-50);
-  color: var(--ai4u-black);
+  background-color: var(--ai4u-bg-default);
+  color: var(--ai4u-text-primary);
   font-family: 'Red Hat Display', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

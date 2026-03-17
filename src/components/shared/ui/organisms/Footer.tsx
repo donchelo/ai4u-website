@@ -17,7 +17,6 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { ROUTES } from '../../../../utils/constants';
 import { scrollToTop } from '../../../../utils/helpers';
 
-const FOOTER_LOGO_PATH = '/assets/images/Isotipo Crema.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,48 +40,51 @@ const Footer = () => {
   return (
     <Box 
       sx={{ 
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
         borderTop: 1,
-        borderColor: colors.contrast.divider
+        borderColor: colors.contrast.divider,
+        py: 8
       }}
     >
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Grid container spacing={4}>
+      <Container maxWidth="lg">
+        <Grid container spacing={8}>
           <Grid item xs={12} md={4}>
             <Box 
               component="img"
-              src={FOOTER_LOGO_PATH}
+              src={colors.mode === 'light' ? '/assets/images/isotipo-negro.png' : '/assets/images/isotipo-crema.png'}
               alt="AI4U Logo"
               sx={{ 
-                height: (theme) => theme.spacing(5.25),
+                height: 150,
                 width: 'auto',
-                mb: 2
+                mb: 4
               }}
             />
-            <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
-              IA para tu negocio.
+            <MuiTypography variant="body2" sx={{ color: 'inherit', opacity: 0.8 }}>
+              Inteligencia artificial para tu negocio.
             </MuiTypography>
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
+            <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
               Enlaces rápidos
             </MuiTypography>
-            <Box component="nav" aria-label="Enlaces Rápidos">
+            <Box component="nav" aria-label="Enlaces rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                 {quickLinks.map((link) => (
-                  <Box component="li" key={link.name} sx={{ mb: 1 }}>
+                  <Box component="li" key={link.name} sx={{ mb: 2 }}>
                     <Box
                       component={Link}
                       to={link.path}
                       onClick={() => scrollToTop()}
                       sx={{
-                        color: colors.contrast.text.secondary,
+                        color: 'inherit',
+                        opacity: 0.7,
                         textDecoration: 'none',
                         cursor: 'pointer',
                         display: 'block',
-                        '&:hover': { color: colors.palette.white }
+                        transition: 'opacity 0.2s',
+                        '&:hover': { opacity: 1 }
                       }}
                     >
                       {link.name}
@@ -94,25 +96,25 @@ const Footer = () => {
           </Grid>
           
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 2, color: colors.palette.white }}>
+            <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
               Contacto
             </MuiTypography>
-            <Stack spacing={2}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <EmailIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
-                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
+            <Stack spacing={2.5}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <EmailIcon sx={{ color: 'inherit', fontSize: '1.2rem', opacity: 0.8 }} />
+                <MuiTypography variant="body2" sx={{ color: 'inherit', opacity: 0.7 }}>
                   hola@ai4u.com.co
                 </MuiTypography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <WhatsAppIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
-                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <WhatsAppIcon sx={{ color: 'inherit', fontSize: '1.2rem', opacity: 0.8 }} />
+                <MuiTypography variant="body2" sx={{ color: 'inherit', opacity: 0.7 }}>
                   +57 321 817 5744
                 </MuiTypography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <LocationOnIcon sx={{ color: colors.palette.white, fontSize: (theme) => theme.typography.body1.fontSize }} />
-                <MuiTypography variant="body2" sx={{ color: colors.contrast.text.secondary }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <LocationOnIcon sx={{ color: 'inherit', fontSize: '1.2rem', opacity: 0.8 }} />
+                <MuiTypography variant="body2" sx={{ color: 'inherit', opacity: 0.7 }}>
                   Medellín, Colombia
                 </MuiTypography>
               </Box>
@@ -120,24 +122,24 @@ const Footer = () => {
           </Grid>
         </Grid>
 
-        <Divider sx={{ my: 4, borderColor: colors.contrast.divider }} />
+        <Divider sx={{ my: 6, borderColor: colors.contrast.divider, opacity: 0.1 }} />
 
         <Box sx={{ 
           display: 'flex', 
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
-          alignItems: { xs: 'center', md: 'flex-end' },
-          gap: 2
+          alignItems: { xs: 'center', md: 'center' },
+          gap: 4
         }}>
-          <Stack spacing={0.5} alignItems={{ xs: 'center', md: 'flex-start' }}>
-            <SmallText sx={{ color: colors.contrast.text.secondary }}>
+          <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
+            <SmallText sx={{ color: 'inherit', opacity: 0.6 }}>
               {`© ${currentYear} AI4U. Todos los derechos reservados.`}
             </SmallText>
             <MuiTypography 
               sx={{ 
-                color: colors.palette.white,
-                opacity: 0.9,
-                fontSize: TEXT_VARIANTS.ui.caption.fontSize,
+                color: 'inherit',
+                opacity: 0.5,
+                fontSize: '0.75rem',
                 letterSpacing: '0.05em',
                 fontWeight: 400,
                 ...TEXT_VARIANTS.ui.code
@@ -147,7 +149,7 @@ const Footer = () => {
             </MuiTypography>
           </Stack>
           
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={2}>
             {socialLinks.map((social, index) => (
               <IconButton
                 key={index}
@@ -156,10 +158,11 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  color: colors.contrast.text.secondary,
+                  color: 'inherit',
+                  opacity: 0.6,
                   '&:hover': {
-                    color: colors.palette.white,
-                    transform: (theme) => `translateY(-${theme.spacing(0.25)})`,
+                    opacity: 1,
+                    transform: 'translateY(-2px)',
                   },
                   transition: 'all 0.2s ease-in-out',
                 }}

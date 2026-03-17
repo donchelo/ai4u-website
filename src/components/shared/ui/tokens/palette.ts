@@ -3,7 +3,7 @@
 export const AI4U_PALETTE = {
   // Colores base
   white: '#FFFFFF',
-  black: '#171717',  // Erie black
+  black: '#1B1B1B',  // Eerie black
   gray: {
     50: '#FAFAFA',
     100: '#F5F5F5',
@@ -19,11 +19,10 @@ export const AI4U_PALETTE = {
   
   // Colores de marca AI4U (Brand Manual)
   accentColors: {
-    orange: '#ff6e00',      // orange de marca
-    mint: '#eaf4eb',        // mint cream (reemplaza green)
-    green: '#eaf4eb',       // alias legacy → mint (para compatibilidad)
-    blue: '#3daed1',        // moderate blue
-    cadetGray: '#94989b',   // cadet gray
+    orange: '#ff6e00',      // orange (minimized)
+    mint: '#D1FFDC',        // Virgil Mint (modern and clean)
+    blue: '#3daed1',        
+    cadetGray: '#94989b',   
   },
 
   // Compatibilidad hacia atrás
@@ -36,32 +35,32 @@ export const AI4U_PALETTE = {
   info: '#3B82F6',
 } as const;
 
-// Sistema de contraste simplificado
+// Sistema de contraste simplificado - Inversión Estricta
 export const CONTRAST_PAIRS = {
-  // Modo claro - Texto oscuro sobre fondo claro
+  // Modo claro - Mint de fondo, Black de texto
   light: {
-    background: AI4U_PALETTE.white,
-    surface: AI4U_PALETTE.gray[50],
+    background: AI4U_PALETTE.accentColors.mint,
+    surface: AI4U_PALETTE.accentColors.mint,
     text: {
       primary: AI4U_PALETTE.black,
-      secondary: AI4U_PALETTE.gray[600],
+      secondary: AI4U_PALETTE.gray[700],
       disabled: AI4U_PALETTE.gray[400],
     },
-    border: AI4U_PALETTE.gray[200],
-    divider: AI4U_PALETTE.gray[300],
+    border: AI4U_PALETTE.black,
+    divider: 'rgba(27, 27, 27, 0.1)',
   },
   
-  // Modo oscuro - Texto claro sobre fondo oscuro
+  // Modo oscuro - Black de fondo, Mint de texto
   dark: {
     background: AI4U_PALETTE.black,
-    surface: AI4U_PALETTE.gray[900],
+    surface: AI4U_PALETTE.black,
     text: {
-      primary: AI4U_PALETTE.white,
-      secondary: AI4U_PALETTE.gray[300],
-      disabled: AI4U_PALETTE.gray[500],
+      primary: AI4U_PALETTE.accentColors.mint,
+      secondary: AI4U_PALETTE.gray[400],
+      disabled: AI4U_PALETTE.gray[600],
     },
-    border: AI4U_PALETTE.gray[800],
-    divider: AI4U_PALETTE.gray[700],
+    border: AI4U_PALETTE.accentColors.mint,
+    divider: 'rgba(209, 255, 220, 0.2)',
   },
 } as const;
 
@@ -69,14 +68,14 @@ export const CONTRAST_PAIRS = {
 export const SURFACE_PRESETS = {
   black: {
     background: AI4U_PALETTE.black,
-    surface: AI4U_PALETTE.gray[900],
+    surface: AI4U_PALETTE.black,
     text: {
-      primary: AI4U_PALETTE.white,
-      secondary: AI4U_PALETTE.gray[300],
-      disabled: AI4U_PALETTE.gray[500],
+      primary: AI4U_PALETTE.accentColors.mint,
+      secondary: AI4U_PALETTE.gray[400],
+      disabled: AI4U_PALETTE.gray[600],
     },
-    border: 'none',
-    divider: 'rgba(0,0,0,0.06)',
+    border: AI4U_PALETTE.accentColors.mint,
+    divider: 'rgba(209, 255, 220, 0.1)',
     effectiveMode: 'dark' as const,
   },
   mint: {
@@ -84,10 +83,10 @@ export const SURFACE_PRESETS = {
     surface: AI4U_PALETTE.accentColors.mint,
     text: {
       primary: AI4U_PALETTE.black,
-      secondary: AI4U_PALETTE.gray[800],
-      disabled: AI4U_PALETTE.gray[600],
+      secondary: AI4U_PALETTE.gray[700],
+      disabled: AI4U_PALETTE.gray[400],
     },
-    border: 'none',
+    border: AI4U_PALETTE.black,
     divider: 'rgba(0,0,0,0.06)',
     effectiveMode: 'light' as const,
   },
@@ -104,8 +103,8 @@ export const SURFACE_PRESETS = {
     effectiveMode: 'light' as const,
   },
   orange: {
-    background: AI4U_PALETTE.accentColors.orange,
-    surface: AI4U_PALETTE.accentColors.orange,
+    background: AI4U_PALETTE.accentColors.mint,
+    surface: AI4U_PALETTE.accentColors.mint,
     text: {
       primary: AI4U_PALETTE.black,
       secondary: AI4U_PALETTE.gray[800],

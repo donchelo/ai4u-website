@@ -71,40 +71,40 @@ const Services: React.FC = () => {
       title: 'Operación',
       subtitle: 'Eficiencia continua',
       description: 'Optimiza tiempo y recursos.',
-      color: colors.palette.black,
-      bgColor: colors.palette.accentColors.orange,
-      textColor: colors.palette.black,
-      accentColor: colors.palette.black
+      color: colors.contrast.text.primary,
+      bgColor: colors.contrast.background,
+      textColor: colors.contrast.text.primary,
+      accentColor: colors.contrast.text.primary
     },
     {
       id: ServiceSuperCategory.STRATEGY,
       title: 'Estrategia',
       subtitle: 'Data real',
       description: 'Decisiones con ventaja competitiva.',
-      color: colors.palette.black,
-      bgColor: colors.palette.info,
-      textColor: colors.palette.white,
-      accentColor: colors.palette.white
+      color: colors.contrast.text.primary,
+      bgColor: colors.contrast.background,
+      textColor: colors.contrast.text.primary,
+      accentColor: colors.contrast.text.primary
     },
     {
       id: ServiceSuperCategory.EDUCATION,
       title: 'Educación',
       subtitle: 'Evolución humana',
       description: 'Tu equipo dominando la IA.',
-      color: colors.palette.white,
-      bgColor: colors.palette.black,
-      textColor: colors.palette.white,
-      accentColor: colors.palette.accentColors.orange
+      color: colors.contrast.text.primary,
+      bgColor: colors.contrast.background,
+      textColor: colors.contrast.text.primary,
+      accentColor: colors.contrast.text.primary
     },
     {
       id: ServiceSuperCategory.TRANSFORMATION,
       title: 'Transformación',
       subtitle: 'Infraestructura IA',
       description: 'Diseñada para escalar.',
-      color: colors.palette.black,
-      bgColor: colors.palette.accentColors.mint,
-      textColor: colors.palette.black,
-      accentColor: colors.palette.black
+      color: colors.contrast.text.primary,
+      bgColor: colors.contrast.background,
+      textColor: colors.contrast.text.primary,
+      accentColor: colors.contrast.text.primary
     }
   ];
 
@@ -123,38 +123,22 @@ const Services: React.FC = () => {
       />
 
       {/* Hero Section - Los 4 Ejes de AI4U */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
+      <Box sx={{
+        py: COMPONENT_SPACING.layout.section,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Decorative Element */}
-        <Typography 
-          sx={{ 
-            position: 'absolute', 
-            top: -12, 
-            right: -6, 
-            fontSize: { xs: '20rem', md: '35rem' }, 
-            fontWeight: 400, 
-            color: colors.palette.white, 
-            opacity: 0.03,
-            zIndex: 0,
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-        >
-          04
-        </Typography>
-
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={0} alignItems="center">
             <Grid item xs={12} lg={8} sx={{ pr: { lg: 10 } }}>
-              <Typography 
-                sx={{ 
-                  color: colors.palette.accentColors.orange, 
-                  fontWeight: 400, 
+              <Typography
+                sx={{
+                  color: colors.contrast.text.primary,
+                  opacity: 0.6,
+                  fontWeight: 400,
                   letterSpacing: 4,
                   fontSize: '1.2rem',
                   mb: 4,
@@ -164,8 +148,8 @@ const Services: React.FC = () => {
               >
                 // ai4u lab // 2026
               </Typography>
-              <Giant sx={{ 
-                color: colors.palette.white, 
+              <Giant sx={{
+                color: colors.contrast.text.primary,
                 mb: 6,
                 lineHeight: 0.85,
                 fontSize: { xs: '3.5rem', md: '8rem' },
@@ -173,12 +157,12 @@ const Services: React.FC = () => {
                 fontWeight: 400,
                 maxWidth: '1000px'
               }}>
-                Nuestros 4 <Box component="span" sx={{ color: colors.palette.accentColors.orange }}>ejes</Box> de servicio
+                Nuestros 4 <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>ejes</Box> de servicio
               </Giant>
-              <BodyText sx={{ 
-                fontSize: '1.8rem', 
-                fontWeight: 400, 
-                color: colors.palette.white,
+              <BodyText sx={{
+                fontSize: '1.8rem',
+                fontWeight: 400,
+                color: colors.contrast.text.primary,
                 maxWidth: '800px',
                 mb: 10,
                 lineHeight: 1.1,
@@ -190,22 +174,22 @@ const Services: React.FC = () => {
               {/* Quick Links to Axes */}
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: { xs: 8, lg: 0 } }}>
                 {axes.map((axis) => (
-                  <Button 
+                  <Button
                     key={axis.id}
                     variant="outline"
                     onClick={() => toggleAxis(axis.id)}
-                    sx={{ 
-                      borderColor: 'rgba(255,255,255,0.2)',
-                      color: colors.palette.white,
+                    sx={{
+                      borderColor: `${colors.contrast.text.primary}40`,
+                      color: colors.contrast.text.primary,
                       borderRadius: '9999px',
                       px: 4,
                       py: 2,
                       textTransform: 'none',
                       fontSize: '1.1rem',
                       '&:hover': {
-                        borderColor: axis.bgColor,
-                        bgcolor: axis.bgColor,
-                        color: axis.textColor,
+                        borderColor: colors.contrast.text.primary,
+                        bgcolor: colors.contrast.text.primary,
+                        color: colors.contrast.background,
                         transform: 'translateY(-5px)'
                       }
                     }}
@@ -217,45 +201,45 @@ const Services: React.FC = () => {
             </Grid>
 
             <Grid item xs={12} lg={4} sx={{ mt: { xs: 8, lg: 0 } }}>
-              <Box sx={{ 
-                p: 6, 
-                bgcolor: 'rgba(255,255,255,0.02)', 
-                border: '1px solid rgba(255,255,255,0.1)',
+              <Box sx={{
+                p: 6,
+                bgcolor: 'transparent',
+                border: `1px solid ${colors.contrast.text.primary}`,
                 position: 'relative'
               }}>
-                <Box sx={{ position: 'absolute', top: -1, left: -1, width: 40, height: 40, borderTop: '1px solid orange', borderLeft: '1px solid orange' }} />
                 <Stack spacing={6}>
                   {axes.map((axis, idx) => (
-                    <Box 
-                      key={axis.id} 
+                    <Box
+                      key={axis.id}
                       onClick={() => toggleAxis(axis.id)}
-                      sx={{ 
-                        display: 'flex', 
-                        gap: 4, 
+                      sx={{
+                        display: 'flex',
+                        gap: 4,
                         alignItems: 'flex-start',
                         cursor: 'pointer',
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           transform: 'translateX(15px)',
-                          '& .idx': { color: colors.palette.accentColors.orange }
+                          '& .idx': { opacity: 1 }
                         }
                       }}
                     >
-                      <Typography className="idx" sx={{ 
-                        fontWeight: 400, 
-                        fontSize: '1.2rem', 
-                        color: 'rgba(255,255,255,0.7)',
+                      <Typography className="idx" sx={{
+                        fontWeight: 400,
+                        fontSize: '1.2rem',
+                        color: colors.contrast.text.primary,
+                        opacity: 0.5,
                         fontFamily: '"Necto Mono", monospace',
                         mt: 0.5,
-                        transition: 'color 0.3s ease'
+                        transition: 'opacity 0.3s ease'
                       }}>
                         0{idx + 1}
                       </Typography>
                       <Box>
-                        <Typography sx={{ fontSize: '1.5rem', fontWeight: 400, color: colors.palette.white, textTransform: 'none', mb: 1, lineHeight: 1 }}>
+                        <Typography sx={{ fontSize: '1.5rem', fontWeight: 400, color: colors.contrast.text.primary, textTransform: 'none', mb: 1, lineHeight: 1 }}>
                           {axis.title}
                         </Typography>
-                        <Typography sx={{ color: colors.palette.white, opacity: 0.95, fontWeight: 400, fontSize: '1rem' }}>
+                        <Typography sx={{ color: colors.contrast.text.primary, opacity: 0.7, fontWeight: 400, fontSize: '1rem' }}>
                           {axis.description}
                         </Typography>
                       </Box>
@@ -273,13 +257,14 @@ const Services: React.FC = () => {
         const axisServices = getServicesBySuperCategory(axis.id);
         
         return (
-          <Box 
+          <Box
             key={axis.id}
             id={axis.id}
-            sx={{ 
-              py: COMPONENT_SPACING.layout.section, 
+            sx={{
+              py: COMPONENT_SPACING.layout.section,
               bgcolor: axis.bgColor,
               color: axis.textColor,
+              borderTop: `1px solid ${colors.contrast.text.primary}`,
               display: 'flex',
               justifyContent: 'center',
               position: 'relative',
@@ -287,15 +272,15 @@ const Services: React.FC = () => {
             }}
           >
             {/* Background Number */}
-            <Typography 
-              sx={{ 
-                position: 'absolute', 
-                top: -6, 
-                right: 2.5, 
-                fontSize: { xs: '15rem', md: '25rem' }, 
-                fontWeight: 400, 
-                color: axis.accentColor, 
-                opacity: expandedAxes[axis.id] ? 0.2 : 0.1,
+            <Typography
+              sx={{
+                position: 'absolute',
+                top: -6,
+                right: 2.5,
+                fontSize: { xs: '15rem', md: '25rem' },
+                fontWeight: 400,
+                color: axis.accentColor,
+                opacity: expandedAxes[axis.id] ? 0.08 : 0.04,
                 zIndex: 0,
                 pointerEvents: 'none',
                 userSelect: 'none',
@@ -310,10 +295,11 @@ const Services: React.FC = () => {
                 {/* Header del Eje */}
                 <Grid item xs={12} lg={4} sx={{ pr: { lg: 10 }, mb: { xs: 8, lg: 0 } }}>
                   <Box sx={{ position: { lg: 'sticky' }, top: 150 }}>
-                    <Typography 
-                      sx={{ 
-                        color: axis.accentColor, 
-                        fontWeight: 400, 
+                    <Typography
+                      sx={{
+                        color: axis.accentColor,
+                        opacity: 0.6,
+                        fontWeight: 400,
                         letterSpacing: 4,
                         fontSize: '1rem',
                         mb: 4,
@@ -440,7 +426,7 @@ const Services: React.FC = () => {
                         textAlign: 'center'
                       }}>
                         <Typography sx={{ fontWeight: 400, letterSpacing: 4, fontSize: '0.9rem', ...TEXT_VARIANTS.ui.code }}>
-                          // CLICK PARA EXPLORAR //
+                          // clickParaExplorar //
                         </Typography>
                       </Box>
                     </Box>
@@ -452,42 +438,28 @@ const Services: React.FC = () => {
         );
       })}
 
-      {/* Proceso Section (Mantenida pero adaptada) */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section, 
-        bgcolor: colors.palette.black,
-        color: colors.palette.white,
+      {/* Proceso Section */}
+      <Box sx={{
+        py: COMPONENT_SPACING.layout.section,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Decorative */}
-        <Box sx={{ 
-          position: 'absolute', 
-          bottom: '10%', 
-          left: '5%', 
-          fontSize: '12rem', 
-          fontWeight: 400, 
-          color: 'rgba(255,255,255,0.03)',
-          zIndex: 0,
-          userSelect: 'none',
-          pointerEvents: 'none'
-        }}>
-          método
-        </Box>
-
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={12}>
-            <H1 sx={{ 
-              fontWeight: 400, 
-              textTransform: 'none', 
+            <H1 sx={{
+              fontWeight: 400,
+              textTransform: 'none',
               fontSize: { xs: '3.5rem', md: '7rem' },
               lineHeight: 0.85,
               letterSpacing: '-0.05em',
-              color: colors.palette.white
+              color: colors.contrast.text.primary
             }}>
-              Método <Box component="span" sx={{ bgcolor: colors.palette.white, color: colors.palette.black, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
+              Método <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
             </H1>
             <Grid container spacing={0}>
               {[
@@ -497,23 +469,22 @@ const Services: React.FC = () => {
                 { n: '04', t: 'Despliegue', d: 'Integración + Soporte.' }
               ].map((step, idx) => (
                 <Grid item xs={12} sm={6} md={3} key={idx}>
-                  <Box sx={{ 
-                    borderLeft: `1px solid rgba(255,255,255,0.1)`, 
+                  <Box sx={{
+                    borderLeft: `1px solid ${colors.contrast.text.primary}`,
                     p: 6,
                     height: '100%',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      bgcolor: 'rgba(255,255,255,0.02)',
-                      borderColor: colors.palette.accentColors.orange
+                      bgcolor: `${colors.contrast.text.primary}08`,
                     }
                   }}>
-                    <Typography sx={{ color: colors.palette.accentColors.orange, fontSize: '1.2rem', mb: 4, ...TEXT_VARIANTS.ui.code }}>
+                    <Typography sx={{ color: colors.contrast.text.primary, opacity: 0.6, fontSize: '1.2rem', mb: 4, ...TEXT_VARIANTS.ui.code }}>
                       // {step.n}
                     </Typography>
-                    <Typography sx={{ fontSize: '2rem', fontWeight: 400, mb: 2, color: colors.palette.white, textTransform: 'none', lineHeight: 1 }}>
+                    <Typography sx={{ fontSize: '2rem', fontWeight: 400, mb: 2, color: colors.contrast.text.primary, textTransform: 'none', lineHeight: 1 }}>
                       {step.t}
                     </Typography>
-                    <BodyText sx={{ fontWeight: 400, color: colors.palette.white, opacity: 0.8, fontSize: '1.1rem' }}>
+                    <BodyText sx={{ fontWeight: 400, color: colors.contrast.text.primary, opacity: 0.8, fontSize: '1.1rem' }}>
                       {step.d}
                     </BodyText>
                   </Box>
@@ -525,23 +496,20 @@ const Services: React.FC = () => {
       </Box>
 
       {/* CTA Final */}
-      <Box sx={{ 
-        py: 30, 
-        bgcolor: colors.palette.accentColors.orange,
-        color: colors.palette.black,
+      <Box sx={{
+        py: 30,
+        bgcolor: colors.contrast.background,
+        color: colors.contrast.text.primary,
+        borderTop: `1px solid ${colors.contrast.text.primary}`,
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Background Decoration */}
-        <Box sx={{ position: 'absolute', top: '10%', right: '10%', width: 300, height: 300, border: '1px solid rgba(0,0,0,0.1)', transform: 'rotate(15deg)' }} />
-        <Box sx={{ position: 'absolute', bottom: '10%', left: '10%', width: 200, height: 200, border: '1px solid rgba(0,0,0,0.1)', transform: 'rotate(-10deg)' }} />
-
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={10} alignItems="center" textAlign="center">
-            <Giant sx={{ 
-              color: colors.palette.black,
+            <Giant sx={{
+              color: colors.contrast.text.primary,
               fontSize: { xs: '4rem', md: '10rem' },
               lineHeight: 0.8,
               fontWeight: 400,
@@ -549,20 +517,20 @@ const Services: React.FC = () => {
             }}>
               ¿Empezamos?
             </Giant>
-            <DiagnosticCTA 
+            <DiagnosticCTA
               sx={{
                 height: 'auto',
                 py: 4,
                 px: 12,
                 fontSize: '2rem',
                 borderRadius: '9999px',
-                bgcolor: colors.palette.black,
-                color: colors.palette.white,
+                bgcolor: colors.contrast.text.primary,
+                color: colors.contrast.background,
                 border: 'none',
                 fontWeight: 400,
                 '&:hover': {
-                  transform: 'scale(1.05) translateY(-10px)',
-                  boxShadow: `0px 20px 40px rgba(0,0,0,0.2)`
+                  opacity: 0.8,
+                  transform: 'scale(1.05) translateY(-10px)'
                 }
               }}
               text="Agendar consulta gratuita"
