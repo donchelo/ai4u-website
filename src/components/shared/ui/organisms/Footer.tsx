@@ -39,8 +39,8 @@ const Footer = () => {
   ];
 
   return (
-    <Box 
-      sx={{ 
+    <Box
+      sx={{
         bgcolor: colors.contrast.background,
         color: colors.contrast.text.primary,
         borderTop: 1,
@@ -51,21 +51,21 @@ const Footer = () => {
       <Container maxWidth="lg">
         <Grid container spacing={8}>
           <Grid item xs={12} md={4}>
-            <Box 
+            <Box
               component="img"
               src={colors.mode === 'light' ? '/assets/images/isotipo-negro.png' : '/assets/images/isotipo-crema.png'}
               alt="AI4U Logo"
-              sx={{ 
-                height: 150,
+              sx={{
+                height: 50,
                 width: 'auto',
                 mb: 4
               }}
             />
             <MuiTypography variant="body2" sx={{ color: 'inherit', opacity: 0.8 }}>
-              Inteligencia artificial para tu negocio.
+              Inteligencia para tu negocio.
             </MuiTypography>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
               Enlaces rápidos
@@ -95,7 +95,7 @@ const Footer = () => {
               </Box>
             </Box>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
             <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
               Contacto
@@ -125,8 +125,8 @@ const Footer = () => {
 
         <Divider sx={{ my: 6, borderColor: colors.contrast.divider, opacity: 0.1 }} />
 
-        <Box sx={{ 
-          display: 'flex', 
+        <Box sx={{
+          display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
           alignItems: { xs: 'center', md: 'center' },
@@ -136,8 +136,8 @@ const Footer = () => {
             <SmallText sx={{ color: 'inherit', opacity: 0.6 }}>
               {`© ${currentYear} AI4U. Todos los derechos reservados.`}
             </SmallText>
-            <MuiTypography 
-              sx={{ 
+            <MuiTypography
+              sx={{
                 color: 'inherit',
                 opacity: 0.5,
                 fontSize: '0.75rem',
@@ -149,7 +149,7 @@ const Footer = () => {
               Architecture by <Box component="span" sx={{ fontWeight: 400 }}>Mariano | 마리아노</Box>
             </MuiTypography>
           </Stack>
-          
+
           <Stack direction="row" spacing={2}>
             {socialLinks.map((social, index) => (
               <IconButton

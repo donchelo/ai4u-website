@@ -71,6 +71,12 @@ export const TEXT_VARIANTS = {
       lineHeight: 0.95,
       letterSpacing: '-0.03em',
     },
+    small: {
+      fontSize: { xs: '1.5rem', md: '2.5rem', lg: '3.5rem' },
+      fontWeight: 700,
+      lineHeight: 1,
+      letterSpacing: '-0.02em',
+    },
     number: {
       fontSize: { xs: '5rem', md: '12rem', lg: '18rem' },
       fontWeight: 900,
@@ -101,6 +107,12 @@ export const TEXT_VARIANTS = {
 
   // Texto de cuerpo
   body: {
+    large: {
+      fontSize: { xs: '1.125rem', md: '1.25rem' },
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '-0.01em',
+    },
     regular: {
       fontSize: { xs: '1rem', md: '1.125rem' },
       fontWeight: 400,

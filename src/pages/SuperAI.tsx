@@ -668,11 +668,11 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 fontWeight: 400,
                 letterSpacing: '-0.02em'
               }}>
-                Librería de Skills: <br />
-                <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>Capacidades Corporativas</Box> listas para desplegar
+                Ejemplos de Skills: <br />
+                <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>Capacidades que podemos desarrollar</Box> para tu negocio
               </H1>
               <BodyText sx={{ color: colors.contrast.text.primary, mt: 4, opacity: 0.6, maxWidth: '700px' }}>
-                Tu agente no tiene límites: si existe un proceso documentado o una interfaz digital, tu agente puede aprender el Skill para operarlo con precisión empresarial.
+                Tu agente no tiene límites: cada skill es una capacidad única que desarrollamos a medida de tus procesos. Estos son algunos ejemplos de lo que podemos construir juntos.
               </BodyText>
             </Box>
 
