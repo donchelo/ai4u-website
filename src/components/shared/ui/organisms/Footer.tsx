@@ -31,11 +31,11 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Inicio', path: ROUTES.HOME },
-    { name: 'Servicios', path: ROUTES.SERVICES },
-    { name: 'Portafolio', path: ROUTES.PORTFOLIO },
-    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
-    { name: 'Design System', path: ROUTES.DESIGN_SYSTEM }
+    { name: 'inicio', path: ROUTES.HOME },
+    { name: 'servicios', path: ROUTES.SERVICES },
+    { name: 'portafolio', path: ROUTES.PORTFOLIO },
+    { name: 'porqueAi4u', path: ROUTES.WHY_AI4U },
+    { name: 'designSystem', path: ROUTES.DESIGN_SYSTEM }
   ];
 
   return (
@@ -67,8 +67,8 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
-              Enlaces rápidos
+            <MuiTypography sx={{ ...TEXT_VARIANTS.label.main, mb: 3 }}>
+              enlacesRapidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
@@ -97,8 +97,8 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <MuiTypography variant="h6" sx={{ mb: 3, color: 'inherit', fontWeight: 600 }}>
-              Contacto
+            <MuiTypography sx={{ ...TEXT_VARIANTS.label.main, mb: 3 }}>
+              contactoDirecto
             </MuiTypography>
             <Stack spacing={2.5}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -134,20 +134,33 @@ const Footer = () => {
         }}>
           <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
             <SmallText sx={{ color: 'inherit', opacity: 0.6 }}>
-              {`© ${currentYear} AI4U. Todos los derechos reservados.`}
+              {`© ${currentYear} AI4U. todosLosDerechosReservados.`}
             </SmallText>
-            <MuiTypography
-              sx={{
-                color: 'inherit',
-                opacity: 0.5,
-                fontSize: '0.75rem',
-                letterSpacing: '0.05em',
-                fontWeight: 400,
-                ...TEXT_VARIANTS.ui.code
-              }}
-            >
-              Architecture by <Box component="span" sx={{ fontWeight: 400 }}>Mariano | 마리아노</Box>
-            </MuiTypography>
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+              <MuiTypography
+                sx={{
+                  color: 'inherit',
+                  opacity: 0.5,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.1em',
+                  ...TEXT_VARIANTS.ui.code
+                }}
+              >
+                REV_2.1 // {new Date().getTime().toString(2).slice(-16)}
+              </MuiTypography>
+              <MuiTypography
+                sx={{
+                  color: 'inherit',
+                  opacity: 0.5,
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.05em',
+                  fontWeight: 400,
+                  ...TEXT_VARIANTS.ui.code
+                }}
+              >
+                architectureBy <Box component="span" sx={{ fontWeight: 400 }}>mariano | 마리아노</Box>
+              </MuiTypography>
+            </Box>
           </Stack>
 
           <Stack direction="row" spacing={2}>
