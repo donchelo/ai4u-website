@@ -1,3 +1,16 @@
+## Manifiesto AI4U: Industrial Software Aesthetics
+
+Este sistema de diseño no es solo una guía visual; es un manifiesto técnico y estético que dicta la coherencia de toda nuestra infraestructura.
+
+### 📜 Reglas de Oro
+
+1.  **camelCase por Excelencia**: Todas las etiquetas técnicas, IDs de elementos y labels de UI deben seguir la convención `camelCase`. Evitamos el `PascalCase` en etiquetas y prohibimos el `ALL CAPS` (mayúsculas sostenidas).
+2.  **Estética de Deconstrucción (Virgil Abloh)**: Usamos metadatos expuestos, etiquetas de "fase" y referencias industriales. El diseño debe sentirse como un plano técnico en ejecución.
+3.  **Recursos de Software**: El código binario (`101010`), los cursores de consola y las fuentes monoespaciadas son recursos gráficos de primer nivel, no solo decorativos.
+4.  **Minimalismo Radical**: Blanco, negro y un solo color de acento por contexto. El espacio negativo es una herramienta funcional.
+
+---
+
 ## Renovación y Aplicación del Sistema de Diseño AI4U
 
 Este plan consiste en formalizar y aplicar los 7 principios universales del buen diseño (Énfasis, Balance, Contraste, Repetición, Alineación, Espacio Negativo y Unidad) en todo el sitio, actualizando la documentación y la página del sistema de diseño para que sirva como una guía interactiva y consistente.

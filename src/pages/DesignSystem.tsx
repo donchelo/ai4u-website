@@ -45,6 +45,7 @@ const DesignSystem = () => {
   };
 
   const sections = [
+    { id: 'manifiesto', label: 'Manifiesto', icon: <CodeText># </CodeText> },
     { id: 'principios', label: 'Principios', icon: <InfoIcon fontSize="small" /> },
     { id: 'identidad', label: 'Identidad', icon: <PaletteIcon fontSize="small" /> },
     { id: 'tipografia', label: 'Tipografía', icon: <FontSizeIcon fontSize="small" /> },
@@ -169,11 +170,73 @@ const DesignSystem = () => {
               </Box>
             </Stack>
           </Container>
+          {/* Binary Overlay Pattern */}
+          <Box sx={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            opacity: 0.05, 
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            fontFamily: 'monospace',
+            fontSize: '10px',
+            lineHeight: 1,
+            wordBreak: 'break-all',
+            userSelect: 'none'
+          }}>
+            {Array.from({ length: 50 }).map((_, i) => (
+              <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
+            ))}
+          </Box>
           {/* Industrial Metadata */}
           <Box sx={{ position: 'absolute', bottom: 20, right: 40, textAlign: 'right', opacity: 0.3 }}>
             <CodeText sx={{ fontSize: '0.7rem' }}>COORD: 40.7128° N, 74.0060° W</CodeText>
             <CodeText sx={{ fontSize: '0.7rem' }}>TS: {new Date().getTime()}</CodeText>
           </Box>
+        </Box>
+
+        <Box id="manifiesto" sx={{ py: 15, borderBottom: `2px solid ${colors.helpers.text.primary}` }}>
+          <Container maxWidth="lg">
+            <Typography sx={{ ...TEXT_VARIANTS.label.main, mb: 10 }}>"Phase 00: Manifesto"</Typography>
+            <Grid container spacing={6}>
+              <Grid item xs={12} md={6}>
+                <Stack spacing={4}>
+                  <Typography sx={{ ...TEXT_VARIANTS.display.medium, fontSize: '2.5rem' }}>camelCase por excelencia.</Typography>
+                  <BodyText>
+                    En AI4U, la coherencia técnica se traduce en armonía visual. 
+                    Todas nuestras etiquetas de UI y metadatos deben seguir la convención 
+                    <CodeText>camelCase</CodeText>, eliminando el uso de mayúsculas sostenidas 
+                    para una legibilidad humana y de sistema óptima.
+                  </BodyText>
+                  <Box sx={{ p: 4, border: `1px dashed ${colors.helpers.text.primary}` }}>
+                    <Typography sx={{ ...TEXT_VARIANTS.label.secondary, mb: 2 }}>[Correct Usage]</Typography>
+                    <Stack direction="row" spacing={2}>
+                      <Typography sx={{ ...TEXT_VARIANTS.label.main }}>primaryAction</Typography>
+                      <Typography sx={{ ...TEXT_VARIANTS.label.main }}>userProfile</Typography>
+                      <Typography sx={{ ...TEXT_VARIANTS.label.main }}>systemStatus</Typography>
+                    </Stack>
+                  </Box>
+                </Stack>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Stack spacing={4}>
+                  <Typography sx={{ ...TEXT_VARIANTS.display.medium, fontSize: '2.5rem' }}>Software as a resource.</Typography>
+                  <BodyText>
+                    No ocultamos nuestra naturaleza. Los recursos de software como el código binario, 
+                    los metadatos expuestos y las fuentes monoespaciadas son pilares de nuestra estética.
+                  </BodyText>
+                  <Box sx={{ height: 120, bgcolor: colors.palette.gray[900], p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                    <CodeText sx={{ color: AI4U_PALETTE.accentColors.mint, fontSize: '0.8rem', opacity: 0.5 }}>
+                      1010101010101010101010101010101010101010101010101010101010101010
+                      1010101010101010101010101010101010101010101010101010101010101010
+                    </CodeText>
+                  </Box>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Container>
         </Box>
 
         <Box id="principios" sx={{ py: 15, borderBottom: `2px solid ${colors.helpers.text.primary}` }}>
