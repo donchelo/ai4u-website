@@ -18,23 +18,58 @@ AI4U es el equipo que trabaja sin parar — en procesos, operación y tareas del
 
 **Tono:** Titulares en camelCase (estética de marca, Virgil Abloh-inspired). Cuerpo en español natural, cálido y directo.
 
+**Excepción intencional al camelCase:** Los titulares `más tiempo para lo que importa.` (Hero) y `empieza a recuperar tu tiempo hoy.` (CTA final) se renderizan en minúsculas naturales de forma deliberada para aumentar el impacto emocional. No son errores — es una decisión de diseño.
+
 **Audiencia primaria:** Dueños de PyME (10–100 empleados) y ejecutivos/gerentes en empresas medianas. Dolor compartido: demasiado tiempo en operación, poco tiempo para liderar y crecer.
 
 ---
 
 ## Cambios por Sección
 
-### 01 — Hero Section (`HeroSection.tsx`)
+### 01 — Hero Section
 
-| Campo | Valor actual | Valor propuesto |
+**Archivos:** `src/components/shared/ui/organisms/HeroSection.tsx` + `src/pages/Home.tsx`
+
+#### 1a — Badge (hardcodeado en `HeroSection.tsx` línea 167)
+
+Agregar prop `badge?: string` al componente con default `'strategySystemV2.0'`. Pasar desde `Home.tsx`.
+
+```tsx
+// HeroSection.tsx — agregar a la interfaz:
+badge?: string;
+
+// HeroSection.tsx línea 167 — cambiar de:
+strategySystemV2.0
+// a:
+{badge ?? 'strategySystemV2.0'}
+
+// Home.tsx — pasar el prop:
+<HeroSection
+  badge="ai4u.equipo // siempre activo"
+  ...
+/>
+```
+
+#### 1b — Título y Subtítulo (props en `Home.tsx`)
+
+| Prop | Valor actual | Valor propuesto |
 |---|---|---|
-| Badge/tag | `strategySystemV2.0` | `ai4u.equipo // siempre activo` |
 | `customTitle` | `compraTiempoNoSoftware` | `más tiempo para lo que importa.` |
 | `customSubtitle` | `Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa.` | `Somos el equipo que trabaja sin parar — en tus procesos, tu operación, tu día a día — para que tú tengas tiempo para lo que verdaderamente importa.` |
-| CTA primario | `Recuperar tiempo` | `hablar con el equipo` |
-| Tag lateral | `// ia con enfoque humano` | `//iaConEnfoqueHumano` *(sin cambio funcional)* |
 
-**Nota de implementación:** El badge `strategySystemV2.0` está hardcodeado en `HeroSection.tsx` (línea 167). Debe parametrizarse o editarse directamente.
+#### 1c — CTA Primario (requiere fix de prop + cambio de valor)
+
+El prop `primaryButtonText` está declarado en la interfaz de `HeroSection.tsx` pero **no está siendo usado** — el texto `"Recuperar tiempo"` está hardcodeado en la línea 208. Hay que corregir ambas cosas:
+
+```tsx
+// HeroSection.tsx línea 208 — cambiar de:
+text="Recuperar tiempo"
+// a:
+text={primaryButtonText}
+
+// Home.tsx — cambiar el valor del prop:
+primaryButtonText="hablar con el equipo"
+```
 
 ---
 
@@ -65,6 +100,8 @@ AI4U es el equipo que trabaja sin parar — en procesos, operación y tareas del
 
 ### 03 — Cita Filosófica Central (`Home.tsx`)
 
+Localización: `<Typography>` inline dentro del bloque "Main Philosophy Quote" (~línea 196).
+
 | Campo | Valor actual | Valor propuesto |
 |---|---|---|
 | Texto | `"no Lidera máquinas, orquesta libertad estratégica."` | `"trabaja en lo que solo tú puedes hacer. nosotros nos encargamos del resto."` |
@@ -93,7 +130,7 @@ AI4U es el equipo que trabaja sin parar — en procesos, operación y tareas del
 
 ---
 
-### 05 — Sección WorkForce / Header (`Home.tsx`)
+### 05 — Sección WorkForce Header (`Home.tsx`)
 
 | Campo | Valor actual | Valor propuesto |
 |---|---|---|
@@ -103,22 +140,55 @@ AI4U es el equipo que trabaja sin parar — en procesos, operación y tareas del
 
 ### 06 — CTA Final (`Home.tsx`)
 
+Localización: bloque "Final Action" (~línea 263–339).
+
+**Cambios de texto existente:**
+
 | Campo | Valor actual | Valor propuesto |
 |---|---|---|
-| Label código | `listoParaDespegar` | `// ¿cuántas horas a la semana podrías recuperar?` |
-| Giant texto | `creaTuEquipo` | `empieza a recuperar tu tiempo hoy.` |
-| Párrafo nuevo | *(no existe)* | `Hablamos 30 minutos. Te mostramos exactamente qué tareas de tu operación podemos tomar nosotros.` |
-| CTA primario | `agendarDiagnostico` | `agendar 30 minutos` |
+| Label código (`<Typography>`) | `listoParaDespegar` | `// ¿cuántas horas a la semana podrías recuperar?` |
+| Giant (`<Giant>`) | `creaTuEquipo` | `empieza a recuperar tu tiempo hoy.` *(excepción intencional al camelCase — ver Principio Rector)* |
+| CTA primario (`DiagnosticCTA` prop `text`) | `agendarDiagnostico` | `agendar 30 minutos` |
 | CTA secundario | `explorarSuperAI` | `explorarSuperAI` *(sin cambio)* |
 
-**Nota de implementación:** Agregar un `<BodyText>` explicativo entre el Giant y los botones en la sección CTA final.
+**Inserción JSX nueva:** Agregar un `<BodyText>` entre el `<Giant>` y el `<Stack>` de botones:
+
+```tsx
+<Giant sx={{ ... }}>
+  empieza a recuperar tu tiempo hoy.
+</Giant>
+
+{/* INSERTAR AQUÍ: */}
+<BodyText sx={{
+  opacity: 0.6,
+  maxWidth: '480px',
+  mx: 'auto',
+  mb: 4,
+  fontSize: '1.1rem',
+  lineHeight: 1.5,
+  color: 'inherit'
+}}>
+  Hablamos 30 minutos. Te mostramos exactamente qué tareas de tu operación podemos tomar nosotros.
+</BodyText>
+
+<Stack direction={{ xs: 'column', md: 'row' }} ...>
+```
 
 ---
 
 ## Archivos a Modificar
 
-1. `src/pages/Home.tsx` — arrays `pillars`, `coreFeatures`, y secciones inline (quote, CTA final)
-2. `src/components/shared/ui/organisms/HeroSection.tsx` — badge hardcodeado en línea 167
+1. **`src/pages/Home.tsx`**
+   - Array `pillars` (títulos y descripciones de los 3 pilares)
+   - Array `coreFeatures` (títulos y descripciones de las 3 features)
+   - Cita filosófica central inline (~línea 196)
+   - Prop `badge` en `<HeroSection>` (nuevo prop)
+   - Prop `primaryButtonText` en `<HeroSection>` (valor actualizado)
+   - Sección CTA Final: label, Giant, inserción de `<BodyText>`, CTA text
+
+2. **`src/components/shared/ui/organisms/HeroSection.tsx`**
+   - Agregar prop `badge?: string` a la interfaz y usar en línea 167
+   - Conectar prop `primaryButtonText` al `DiagnosticCTA` en línea 208
 
 ## Fuera de Alcance
 
