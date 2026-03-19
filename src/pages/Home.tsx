@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Container, Grid, Box, Stack, Typography } from '@mui/material';
 import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { HeroSection } from '../components/shared/ui/organisms';
+import { HeroSection, ScrollRevealHero } from '../components/shared/ui/organisms';
 import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { SurfaceProvider } from '../context';
 import { useColors } from '../hooks';
@@ -46,23 +46,23 @@ const Home = () => {
   const pillars = [
     {
       id: 'time',
-      title: 'El tiempo es oro',
+      title: 'elTiempoEsLoÚnicoQueNoSeRecupera',
       subtitle: 'filosofia01',
-      description: 'No vendemos software. Vendemos el activo más valioso de tu vida: tu tiempo. Recupera el control.',
+      description: 'Por eso nos tomamos en serio cada hora que puedes dejar de gastar en tareas que no te necesitan a ti.',
       icon: 'clock'
     },
     {
       id: 'agents',
-      title: 'Equipo digital',
+      title: 'tuEquipoNuncaParaDeTrabajar',
       subtitle: 'equipoAgentes02',
-      description: 'Crea, entrena y gestiona tu propio equipo de agentes que trabajan mientras tú lideras.',
+      description: 'Tus agentes están activos antes de que llegues, y siguen cuando te vas. Sin interrupciones, sin olvidos.',
       icon: 'groups'
     },
     {
       id: 'infrastructure',
-      title: 'Infraestructura',
+      title: 'infraestructuraDiseñadaParaEscalarContigo',
       subtitle: 'infraestructura03',
-      description: 'El sistema nervioso privado donde orquestamos cada acción de tu nueva fuerza laboral.',
+      description: 'La base técnica que mantiene a tu equipo funcionando — y crece cuando tú lo necesitas.',
       icon: 'terminal'
     }
   ];
@@ -71,18 +71,18 @@ const Home = () => {
   const coreFeatures = [
     {
       label: 'administracion01',
-      title: 'Gestión de agentes',
-      description: 'Supervisa y escala tu equipo digital desde un único centro de mando.'
+      title: 'tuEquipoEnUnSoloLugar',
+      description: 'Ve qué hace cada agente, ajusta prioridades y amplía el equipo cuando lo necesites — todo desde un solo panel.'
     },
     {
       label: 'habilidades02',
-      title: 'Creación de habilidades',
-      description: 'Tus agentes aprenden tus protocolos únicos. Si es estratégico para ti, es enseñable para ellos.'
+      title: 'agentesQueAprendenCómoTrabajásTú',
+      description: 'Cada agente se entrena con tus procesos, tu voz y tu lógica. No es tecnología genérica — es tu manera de operar, automatizada.'
     },
     {
       label: 'ejecucion03',
-      title: 'Ejecución autónoma',
-      description: 'Agentes que operan tus sistemas (CRM, ERP, Email) con precisión industrial.'
+      title: 'operanTusHerramientas',
+      description: 'Tus agentes trabajan en tu CRM, correo, reportes y flujos — como un miembro más del equipo que nunca olvida un paso.'
     }
   ];
 
@@ -102,27 +102,11 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <HeroSection 
-        customTitle="Compra tiempo, no software."
-        customSubtitle="Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa."
-        primaryButtonText="Recuperar tiempo"
-        sx={{
-          bgcolor: colors.contrast.background,
-          borderColor: colors.contrast.text.primary,
-          '& .MuiTypography-h1': {
-            fontFamily: '"Red Hat Display", sans-serif',
-            fontWeight: 400,
-            letterSpacing: '-0.05em',
-            fontSize: { xs: '3rem', md: '7rem' },
-            color: colors.contrast.text.primary
-          },
-          '& .MuiTypography-h2': {
-             opacity: 0.6,
-             letterSpacing: '0.05em',
-             fontSize: '1rem',
-             color: colors.contrast.text.primary
-          }
-        }}
+      <ScrollRevealHero
+        badge="ai4u.equipo // siempre activo"
+        title="más tiempo para lo que importa."
+        subtitle="Somos el equipo que trabaja sin parar — en tus procesos, tu operación, tu día a día — para que tú tengas tiempo para lo que verdaderamente importa."
+        primaryButtonText="hablar con el equipo"
       />
 
       {/* Pillars Section */}
@@ -193,8 +177,10 @@ const Home = () => {
             letterSpacing: '-0.04em',
             fontWeight: 400
           }}>
-            "No lidera máquinas, <br/>
-            orquesta <Box component="span" sx={{ opacity: 0.5 }}>libertad</Box> estratégica."
+            "trabaja en lo que solo{' '}
+            <Box component="span" sx={{ opacity: 0.5 }}>tú</Box>{' '}
+            puedes hacer.<br/>
+            nosotros nos encargamos del resto."
           </Typography>
         </Container>
       </Box>
@@ -277,25 +263,37 @@ const Home = () => {
             opacity: 0.6,
             textTransform: 'none'
           }}>
-            listoParaDespegar
+            // ¿cuántas horas a la semana podrías recuperar?
           </Typography>
-          
-          <Giant sx={{ 
-            mb: 12, 
-            color: 'inherit', 
+
+          <Giant sx={{
+            mb: 6,
+            color: 'inherit',
             lineHeight: 0.8,
             fontSize: { xs: '4rem', md: '12rem' },
             fontWeight: 400,
             letterSpacing: '-0.06em'
           }}>
-            Crea tu equipo
+            empieza a recuperar tu tiempo hoy.
           </Giant>
-          
+
+          <BodyText sx={{
+            opacity: 0.6,
+            maxWidth: '480px',
+            mx: 'auto',
+            mb: 8,
+            fontSize: '1.1rem',
+            lineHeight: 1.5,
+            color: 'inherit'
+          }}>
+            Hablamos 30 minutos. Te mostramos exactamente qué tareas de tu operación podemos tomar nosotros.
+          </BodyText>
+
           <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} justifyContent="center" alignItems="center">
-            <DiagnosticCTA 
+            <DiagnosticCTA
               variant="primary"
               size="large"
-              text="Agendar diagnóstico"
+              text="agendar 30 minutos"
               sx={{
                 bgcolor: colors.contrast.text.primary,
                 color: colors.contrast.background,
@@ -332,7 +330,7 @@ const Home = () => {
                 }
               }}
             >
-              Explorar SuperAI
+              explorarSuperAI
             </Button>
           </Stack>
         </Container>
