@@ -1,15 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Box, Container, Stack, Typography, alpha } from '@mui/material';
-import { Giant, CodeText, LazyImage } from '../atoms';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { Box, alpha } from '@mui/material';
+import { CodeText, LazyImage } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
-import { TEXT_VARIANTS } from '../tokens/typography';
 import { AI4U_PALETTE } from '../tokens/palette';
 
 interface ScrollRevealHeroProps {
   badge?: string;
-  title?: string;
-  subtitle?: string;
+  lines?: string[];
   primaryButtonText?: string;
 }
 
@@ -19,248 +17,211 @@ const IMAGES = [
   '/assets/images/hero-image3.png',
 ];
 
+const DEFAULT_LINES = [
+  'agentes.',
+  'orquestación',
+  'de agentes.',
+  'empleados ia.',
+  'automatizaciones.',
+  'conexión con',
+  'tus sistemas.',
+];
+
 const ScrollRevealHero: React.FC<ScrollRevealHeroProps> = ({
-  badge = 'strategySystemV2.0',
-  title = 'compraTiempoNoSoftware',
-  subtitle = 'Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa.',
-  primaryButtonText = 'Recuperar tiempo',
+  badge = 'ai4u // siempre activo',
+  lines = DEFAULT_LINES,
+  primaryButtonText = 'hablar con el equipo',
 }) => {
   const colors = useColors();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [seenLines, setSeenLines] = useState<Set<number>>(new Set());
   const [currentImage, setCurrentImage] = useState(0);
-
-  const words = subtitle.split(' ');
+  const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Rotate background images every 5s
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % IMAGES.length);
-    }, 5000);
+    const interval = setInterval(() => setCurrentImage(p => (p + 1) % IMAGES.length), 5000);
     return () => clearInterval(interval);
   }, []);
 
-  // Scroll-driven word highlight
+  // IntersectionObserver — mark each line as seen when it enters viewport
   useEffect(() => {
-    const handleScroll = () => {
-      const section = sectionRef.current;
-      if (!section) return;
+    const observers: IntersectionObserver[] = [];
 
-      const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
+    lineRefs.current.forEach((el, idx) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setSeenLines(prev => new Set(prev).add(idx));
+          }
+        },
+        { threshold: 0.3 },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
 
-      const scrolled = -rect.top;
-      const scrollable = sectionHeight - viewportHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollable));
-      const index = Math.round(progress * (words.length - 1));
-      setActiveIndex(index);
-    };
+    return () => observers.forEach(obs => obs.disconnect());
+  }, [lines.length]);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length]);
+  const setLineRef = useCallback((el: HTMLDivElement | null, idx: number) => {
+    lineRefs.current[idx] = el;
+  }, []);
+
+  const lastSeenIdx = seenLines.size > 0 ? Math.max(...seenLines) : -1;
+  const progress = (seenLines.size / lines.length) * 100;
 
   return (
-    <Box
-      ref={sectionRef}
-      sx={{
-        position: 'relative',
-        height: '300vh',
-        bgcolor: colors.contrast.background,
-      }}
-    >
-      {/* Sticky viewport */}
-      <Box
-        sx={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          overflow: 'hidden',
-        }}
-      >
-        {/* ── Background image carousel ── */}
-        <Box sx={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-          {IMAGES.map((img, idx) => (
-            <Box key={idx} sx={{ position: 'absolute', inset: 0 }}>
-              <LazyImage
-                src={img}
-                alt={`Background ${idx + 1}`}
-                priority={idx === 0}
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  opacity: idx === currentImage ? 0.45 : 0,
-                  transition: 'opacity 1.5s ease-in-out, transform 10s ease-out',
-                  filter: 'grayscale(100%) contrast(1.2)',
-                  transform: idx === currentImage ? 'scale(1.08)' : 'scale(1)',
-                }}
-              />
-            </Box>
-          ))}
-          {/* Dark scrim so text stays legible */}
-          <Box sx={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: alpha(colors.contrast.background, 0.55),
-          }} />
-        </Box>
+    <Box sx={{ position: 'relative', overflow: 'hidden' }}>
 
-        {/* ── Binary noise overlay ── */}
+      {/* ── BACKGROUND — covers full section height ── */}
+      <Box sx={{ position: 'absolute', inset: 0, height: '100%', zIndex: 0 }}>
+        {IMAGES.map((img, idx) => (
+          <Box key={idx} sx={{ position: 'absolute', inset: 0, height: '100%' }}>
+            <LazyImage
+              src={img}
+              alt=""
+              priority={idx === 0}
+              sx={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: idx === currentImage ? 0.35 : 0,
+                transition: 'opacity 2s ease-in-out, transform 12s ease-out',
+                filter: 'grayscale(100%) contrast(1.1)',
+                transform: idx === currentImage ? 'scale(1.06)' : 'scale(1)',
+              }}
+            />
+          </Box>
+        ))}
         <Box sx={{
           position: 'absolute',
           inset: 0,
-          opacity: 0.04,
-          overflow: 'hidden',
-          pointerEvents: 'none',
-          fontFamily: 'monospace',
-          fontSize: '10px',
-          lineHeight: 1,
-          wordBreak: 'break-all',
-          userSelect: 'none',
-          color: colors.contrast.text.primary,
-          zIndex: 1,
-        }}>
-          {Array.from({ length: 50 }).map((_, i) => (
-            <Box key={i}>{(Math.random() * 1e16).toString(2)}</Box>
-          ))}
-        </Box>
-
-        {/* ── Industrial metadata ── */}
-        <Box sx={{
-          position: 'absolute',
-          bottom: 24,
-          right: 40,
-          textAlign: 'right',
-          opacity: 0.25,
-          zIndex: 3,
-        }}>
-          <CodeText sx={{ fontSize: '0.6rem' }}>COORD: 6.2442° N, 75.5812° W</CodeText>
-          <CodeText sx={{ fontSize: '0.6rem' }}>strategySystem_v2.0</CodeText>
-        </Box>
-
-        {/* ── Orange scroll progress bar ── */}
-        <Box sx={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          height: '2px',
-          bgcolor: AI4U_PALETTE.accentColors.orange,
-          width: `${((activeIndex + 1) / words.length) * 100}%`,
-          transition: 'width 0.2s ease',
-          zIndex: 4,
+          height: '100%',
+          backgroundColor: alpha(colors.contrast.background, 0.55),
         }} />
+      </Box>
 
-        {/* ── Content ── */}
-        <Container maxWidth="xl" sx={{ px: { xs: 3, md: 10, lg: 15 }, position: 'relative', zIndex: 2 }}>
-          <Stack spacing={{ xs: 4, md: 5 }} alignItems="flex-start" sx={{ maxWidth: '950px' }}>
+      {/* ── CONTENT ── */}
+      <Box sx={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        px: { xs: 3, md: 8, lg: 12 },
+        pt: { xs: 10, md: 12 },
+        pb: 0,
+      }}>
 
-            {/* Version tag */}
-            <Box sx={{
-              border: `1px solid ${colors.contrast.text.primary}`,
-              color: colors.contrast.text.primary,
-              px: 2,
-              py: 0.5,
-              ...TEXT_VARIANTS.ui.code,
-              fontSize: '0.85rem',
-              letterSpacing: '0.1em',
-              opacity: 0.7,
-            }}>
-              {badge}
-            </Box>
+        {/* Top row: badge | coordinates */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: { xs: 10, md: 16 } }}>
+          <Box sx={{
+            border: `1px solid ${colors.contrast.text.primary}`,
+            color: colors.contrast.text.primary,
+            px: 1.5,
+            py: 0.4,
+            fontFamily: 'monospace',
+            fontSize: '0.72rem',
+            letterSpacing: '0.08em',
+            opacity: 0.65,
+          }}>
+            {badge}
+          </Box>
+          <Box sx={{ textAlign: 'right', opacity: 0.35 }}>
+            <CodeText sx={{ fontSize: '0.65rem', display: 'block' }}>
+              6.2442° N, 75.5812° W
+            </CodeText>
+          </Box>
+        </Box>
 
-            {/* Hero title — large, same as original */}
-            <Giant sx={{
-              color: colors.contrast.text.primary,
-              fontSize: { xs: '2.8rem', sm: '4rem', md: '6.5rem', lg: '9rem' },
-              lineHeight: 0.88,
-              letterSpacing: '-0.05em',
-              fontWeight: 400,
-            }}>
-              {title}
-            </Giant>
+        {/* Small intro label */}
+        <Box sx={{
+          fontFamily: 'monospace',
+          fontSize: '0.65rem',
+          letterSpacing: '0.1em',
+          opacity: 0.4,
+          mb: { xs: 3, md: 4 },
+        }}>
+          // lo que hacemos
+        </Box>
 
-            {/* Scroll-animated subtitle — reel: one word per line, slides as you scroll */}
-            <Box sx={{
-              overflow: 'hidden',
-              // window shows ~2.8 lines: active word + glimpse of prev/next
-              height: { xs: '7.5rem', sm: '10rem', md: '14rem', lg: '18rem' },
-              maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)',
-              width: '100%',
-            }}>
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                // Shift list so active word sits in center of the window.
-                // Each word ~1 line-height unit. Window center = 50% - 0.5 word.
-                // translateY = -(activeIndex - 0.9) * lineHeightPx
-                // We use a CSS custom property trick via inline style instead.
-                transform: `translateY(calc(${-activeIndex} * var(--word-h) + var(--offset)))`,
-                transition: 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                // --word-h and --offset set per breakpoint via sx aren't possible directly,
-                // so we handle with a wrapper approach below.
-              }}>
-                {words.map((word, i) => {
-                  const isActive = i === activeIndex;
-                  const dist = Math.abs(i - activeIndex);
-                  return (
-                    <Box
-                      component="span"
-                      key={i}
-                      sx={{
-                        display: 'block',
-                        fontSize: { xs: '2.8rem', sm: '4rem', md: '5.5rem', lg: '7rem' },
-                        lineHeight: 1,
-                        letterSpacing: '-0.04em',
-                        fontWeight: isActive ? 700 : 300,
-                        color: isActive ? AI4U_PALETTE.accentColors.orange : colors.contrast.text.primary,
-                        opacity: isActive ? 1 : dist === 1 ? 0.45 : 0.15,
-                        transition: 'color 0.3s ease, opacity 0.3s ease',
-                        // Fixed height per word = font-size * lineHeight to keep reel uniform
-                        height: { xs: '2.8rem', sm: '4rem', md: '5.5rem', lg: '7rem' },
-                        overflow: 'visible',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {word}
-                    </Box>
-                  );
-                })}
+        {/* ── GIANT STACKED LINES ── */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0, md: 0 } }}>
+          {lines.map((line, idx) => {
+            const isSeen = seenLines.has(idx);
+            const isActive = idx === lastSeenIdx;
+            const opacity = !isSeen ? 0.12 : isActive ? 1 : 0.55;
+            const color = isActive
+              ? AI4U_PALETTE.accentColors.orange
+              : colors.contrast.text.primary;
+
+            return (
+              <Box
+                key={idx}
+                ref={el => setLineRef(el as HTMLDivElement | null, idx)}
+                component="h1"
+                sx={{
+                  m: 0,
+                  fontSize: 'clamp(3.5rem, 13vw, 16rem)',
+                  lineHeight: 0.88,
+                  letterSpacing: '-0.05em',
+                  fontWeight: 300,
+                  fontFamily: '"Red Hat Display", sans-serif',
+                  color,
+                  opacity,
+                  transition: 'opacity 0.5s ease, color 0.5s ease',
+                }}
+              >
+                {line}
               </Box>
-            </Box>
+            );
+          })}
+        </Box>
 
-            {/* CTA */}
+        {/* ── BOTTOM CTA ── */}
+        <Box sx={{ mt: { xs: 10, md: 14 } }}>
+          <Box sx={{ borderTop: `1px solid ${alpha(colors.contrast.text.primary, 0.2)}`, mb: { xs: 4, md: 5 } }} />
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', pb: { xs: 6, md: 8 } }}>
             <DiagnosticCTA
               variant="primary"
               text={primaryButtonText}
               size="large"
               showIcon={false}
               sx={{
-                height: { xs: '55px', md: '90px' },
-                px: { xs: 4, md: 8 },
-                fontSize: { xs: '0.9rem', md: '1.5rem' },
+                height: { xs: '48px', md: '52px' },
+                px: { xs: 4, md: 6 },
+                fontSize: { xs: '0.8rem', md: '0.85rem' },
                 fontWeight: 400,
+                fontFamily: 'monospace',
+                letterSpacing: '0.05em',
                 borderRadius: 0,
-                bgcolor: colors.contrast.text.primary,
-                color: colors.contrast.background,
-                border: 'none',
+                bgcolor: 'transparent',
+                color: colors.contrast.text.primary,
+                border: `1px solid ${colors.contrast.text.primary}`,
                 transition: 'all 0.3s ease',
                 '&:hover': {
                   bgcolor: AI4U_PALETTE.accentColors.orange,
+                  borderColor: AI4U_PALETTE.accentColors.orange,
                   color: '#fff',
-                  transform: 'scale(1.02)',
                 },
               }}
             />
-          </Stack>
-        </Container>
+          </Box>
+        </Box>
       </Box>
+
+      {/* ── PROGRESS BAR — sticky to viewport bottom while in section ── */}
+      <Box sx={{ position: 'sticky', bottom: 0, zIndex: 6 }}>
+        <Box sx={{ height: '1px', bgcolor: alpha(colors.contrast.text.primary, 0.1) }}>
+          <Box sx={{
+            height: '100%',
+            bgcolor: AI4U_PALETTE.accentColors.orange,
+            width: `${progress}%`,
+            transition: 'width 0.4s ease',
+          }} />
+        </Box>
+      </Box>
+
     </Box>
   );
 };

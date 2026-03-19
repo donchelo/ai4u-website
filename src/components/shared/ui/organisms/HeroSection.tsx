@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Box, Stack, Typography, IconButton, useTheme, useMediaQuery, alpha, Container } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Giant, H1, BodyText, LazyImage } from '../atoms';
+import { Giant, H1, BodyText, LazyImage, CodeText } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
 import { TEXT_VARIANTS } from '../tokens/typography';
+import { AI4U_PALETTE } from '../tokens/palette';
 
 interface HeroSectionProps {
   customTitle?: string;
@@ -106,6 +107,34 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </Box>
 
 
+      {/* Binary Overlay Pattern */}
+      <Box sx={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        opacity: 0.05, 
+        overflow: 'hidden',
+        pointerEvents: 'none',
+        fontFamily: 'monospace',
+        fontSize: '10px',
+        lineHeight: 1,
+        wordBreak: 'break-all',
+        userSelect: 'none',
+        zIndex: 1
+      }}>
+        {Array.from({ length: 40 }).map((_, i) => (
+          <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
+        ))}
+      </Box>
+
+      {/* Industrial Metadata */}
+      <Box sx={{ position: 'absolute', bottom: 20, right: 40, textAlign: 'right', opacity: 0.3, zIndex: 6 }}>
+        <CodeText sx={{ fontSize: '0.6rem' }}>COORD: 6.2442° N, 75.5812° W</CodeText>
+        <CodeText sx={{ fontSize: '0.6rem' }}>SYS_LOAD: {(Math.random() * 100).toFixed(2)}%</CodeText>
+      </Box>
+
       <Container 
         maxWidth="xl" 
         sx={{ 
@@ -149,7 +178,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 fontWeight: 400
               }}
             >
-              Compra tiempo, no software.
+              {customTitle}
             </Giant>
             
             <H1 
@@ -166,7 +195,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 pl: 3
               }}
             >
-              Desplegamos el equipo de agentes de inteligencia artificial que orquesta tu libertad operativa.
+              {customSubtitle}
             </H1>
           </Box>
 
@@ -214,7 +243,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   opacity: 0.6
                 }}
               >
-                // IA con enfoque humano
+                // {humanElementText.toLowerCase().replace(/\s+/g, '')}
               </BodyText>
             </Box>
           </Stack>
