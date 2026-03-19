@@ -1,94 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { Container, Grid, Box, Stack, Typography } from '@mui/material';
-import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, SEOHead } from '../components/shared/ui/atoms';
-import { HeroSection, ScrollRevealHero } from '../components/shared/ui/organisms';
-import { Card, DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
-import { SurfaceProvider } from '../context';
+import { Box, Container, Grid, Stack, alpha } from '@mui/material';
+import { H2, BodyText, CodeText, SEOHead } from '../components/shared/ui/atoms';
+import { HeroFullscreen } from '../components/shared/ui/organisms';
+import { DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
 import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
-import { ServiceSuperCategory } from '../types/service';
 import { ROUTES } from '../utils/constants';
 import { scrollToTop } from '../utils/helpers';
-import { SHADOW_TOKENS } from '../components/shared/ui/tokens/theme';
-import { COMPONENT_SPACING, SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
-import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
+import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
 
 const Home = () => {
   const colors = useColors();
-  
-  // Monitoreo automático de performance para la página de inicio
-  usePerformanceMonitoring('home', {
-    lcp: 2000, // Home debe cargar rápido (2s)
-    fcp: 1500  // First paint crítico (1.5s)
-  });
 
-  // Error tracking para componentes críticos
-  const { captureError, addContext } = useErrorTracking();
-  
-  // Agregar contexto útil para debugging
+  usePerformanceMonitoring('home', { lcp: 2000, fcp: 1500 });
+
+  const { addContext } = useErrorTracking();
   React.useEffect(() => {
     addContext('page', 'home');
     addContext('userAgent', navigator.userAgent.substring(0, 100));
   }, [addContext]);
 
-  // Obtener meta tags optimizados para la página de inicio
   const metaTags = getPageMetaTags('home');
   const structuredData = getHomeStructuredData();
-  
-  // Obtener enlaces contextuales para la página Home
   const relatedLinks = getRelatedLinks('/');
-  // Pillars Section - Reframed for Team & Value
-  const pillars = [
-    {
-      id: 'time',
-      title: 'elTiempoEsLoÚnicoQueNoSeRecupera',
-      subtitle: 'filosofia01',
-      description: 'Por eso nos tomamos en serio cada hora que puedes dejar de gastar en tareas que no te necesitan a ti.',
-      icon: 'clock'
-    },
-    {
-      id: 'agents',
-      title: 'tuEquipoNuncaParaDeTrabajar',
-      subtitle: 'equipoAgentes02',
-      description: 'Tus agentes están activos antes de que llegues, y siguen cuando te vas. Sin interrupciones, sin olvidos.',
-      icon: 'groups'
-    },
-    {
-      id: 'infrastructure',
-      title: 'infraestructuraDiseñadaParaEscalarContigo',
-      subtitle: 'infraestructura03',
-      description: 'La base técnica que mantiene a tu equipo funcionando — y crece cuando tú lo necesitas.',
-      icon: 'terminal'
-    }
-  ];
 
-  // Features Section - Skills & Orchestration
-  const coreFeatures = [
-    {
-      label: 'administracion01',
-      title: 'tuEquipoEnUnSoloLugar',
-      description: 'Ve qué hace cada agente, ajusta prioridades y amplía el equipo cuando lo necesites — todo desde un solo panel.'
-    },
-    {
-      label: 'habilidades02',
-      title: 'agentesQueAprendenCómoTrabajásTú',
-      description: 'Cada agente se entrena con tus procesos, tu voz y tu lógica. No es tecnología genérica — es tu manera de operar, automatizada.'
-    },
-    {
-      label: 'ejecucion03',
-      title: 'operanTusHerramientas',
-      description: 'Tus agentes trabajan en tu CRM, correo, reportes y flujos — como un miembro más del equipo que nunca olvida un paso.'
-    }
-  ];
+  const divider = `1px solid ${alpha(colors.contrast.text.primary, 0.1)}`;
+  const muted = alpha(colors.contrast.text.primary, 0.38);
 
   return (
-    <Box sx={{ bgcolor: colors.contrast.background, minHeight: '100vh', color: colors.contrast.text.primary }}>
-      {/* SEO Head */}
+    <Box sx={{ bgcolor: colors.contrast.background, color: colors.contrast.text.primary, minHeight: '100vh' }}>
       <SEOHead
         title={metaTags.title}
         description={metaTags.description}
@@ -97,247 +41,290 @@ const Home = () => {
         structuredData={structuredData}
       />
 
-      <Helmet>
-        <link rel="preload" as="image" href="/assets/images/hero-image.png" fetchPriority="high" />
-      </Helmet>
-
-      {/* Hero Section */}
-      <ScrollRevealHero
+      {/* ── HERO ── */}
+      <HeroFullscreen
         badge="ai4u.equipo // siempre activo"
-        title="más tiempo para lo que importa."
-        subtitle="Somos el equipo que trabaja sin parar — en tus procesos, tu operación, tu día a día — para que tú tengas tiempo para lo que verdaderamente importa."
         primaryButtonText="hablar con el equipo"
       />
 
-      {/* Pillars Section */}
-      <Box sx={{
-        py: 0,
-        bgcolor: colors.contrast.background, 
-        color: colors.contrast.text.primary,
-        position: 'relative',
-        borderTop: `1px solid ${colors.contrast.text.primary}`,
-        borderBottom: `1px solid ${colors.contrast.text.primary}`,
-      }}>
-        <SurfaceProvider surface="theme">
-          <Container maxWidth={false} sx={{ px: 0 }}>
-            <Grid container spacing={0} sx={{ borderLeft: `1px solid ${colors.contrast.text.primary}` }}>
-              {pillars.map((pillar, idx) => (
-                <Grid item xs={12} md={4} key={idx} sx={{ 
-                  borderRight: `1px solid ${colors.contrast.text.primary}`,
-                  borderBottom: { xs: `1px solid ${colors.contrast.text.primary}`, md: 'none' },
-                  p: 8,
-                  minHeight: '400px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    bgcolor: colors.mode === 'light' ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)'
-                  }
-                }}>
-                  <Box>
-                    <Typography sx={{ 
-                      ...TEXT_VARIANTS.ui.code, 
-                      fontSize: '0.9rem',
-                      letterSpacing: '0.1em',
-                      mb: 6,
-                      color: 'inherit',
-                      opacity: 0.6,
-                      textTransform: 'none'
-                    }}>
-                      {pillar.subtitle}
-                    </Typography>
-                    <H2 sx={{ 
-                      mb: 4,
-                      fontWeight: 400,
-                      color: 'inherit',
-                      fontSize: '3rem',
-                      lineHeight: 0.9,
-                      letterSpacing: '-0.04em'
-                    }}>
-                      {pillar.title}
-                    </H2>
-                  </Box>
-                  <BodyText sx={{ ...TEXT_VARIANTS.body.regular, color: 'inherit', maxWidth: '300px', opacity: 0.8 }}>
-                    {pillar.description}
-                  </BodyText>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </SurfaceProvider>
-      </Box>
-
-      {/* Main Philosophy Quote */}
-      <Box sx={{ py: 21, textAlign: 'center', bgcolor: colors.contrast.background, color: colors.contrast.text.primary }}>
-        <Container maxWidth="lg">
-          <Typography sx={{ 
-            fontSize: { xs: '2.5rem', md: '5.5rem' },
-            lineHeight: 0.9,
-            letterSpacing: '-0.04em',
-            fontWeight: 400
+      {/* ── WHY ── */}
+      <Box sx={{ borderTop: divider }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
+          <CodeText sx={{
+            fontSize: '0.72rem', letterSpacing: '0.25em',
+            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
           }}>
-            "trabaja en lo que solo{' '}
-            <Box component="span" sx={{ opacity: 0.5 }}>tú</Box>{' '}
-            puedes hacer.<br/>
-            nosotros nos encargamos del resto."
-          </Typography>
+            // why
+          </CodeText>
+          <Grid container spacing={{ xs: 6, md: 12 }} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Box
+                component="h2"
+                sx={{
+                  m: 0,
+                  fontSize: { xs: '2rem', md: 'clamp(2rem, 3.5vw, 3.2rem)' },
+                  fontWeight: 300,
+                  fontFamily: '"Red Hat Display", sans-serif',
+                  lineHeight: 0.92,
+                  letterSpacing: '-0.03em',
+                  color: colors.contrast.text.primary,
+                }}
+              >
+                cada hora en operación<br />
+                es una hora que{' '}
+                <Box component="em" sx={{ fontStyle: 'italic', color: muted }}>
+                  no estás liderando.
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <BodyText sx={{
+                fontSize: '0.95rem',
+                fontWeight: 300,
+                lineHeight: 1.7,
+                color: muted,
+                maxWidth: '420px',
+              }}>
+                Tu negocio necesita tu visión — no tu tiempo en tareas que se pueden automatizar.
+                <br /><br />
+                <Box component="strong" sx={{ color: colors.contrast.text.primary, fontWeight: 400 }}>
+                  Nosotros nos encargamos de lo que no te necesita a ti.
+                </Box>
+              </BodyText>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
-      {/* WorkForce Section */}
-      <Box sx={{ 
-        py: COMPONENT_SPACING.layout.section,
-        bgcolor: colors.contrast.background,
-        color: colors.contrast.text.primary,
-        borderTop: `1px solid ${colors.contrast.text.primary}`,
-      }}>
-        <SurfaceProvider surface="theme">
-          <Container maxWidth="xl">
-            <Stack direction="column" spacing={12}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: `1px solid ${colors.contrast.text.primary}`, pb: 4 }}>
-                <H1 sx={{ 
-                  lineHeight: 0.8,
-                  fontSize: { xs: '3.5rem', md: '7rem' },
-                  fontWeight: 400,
-                  letterSpacing: '-0.05em',
-                  color: colors.contrast.text.primary
+      {/* ── HOW ── */}
+      <Box sx={{ borderTop: divider }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
+          <CodeText sx={{
+            fontSize: '0.72rem', letterSpacing: '0.25em',
+            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+          }}>
+            // how
+          </CodeText>
+          <Box
+            component="h2"
+            sx={{
+              m: 0,
+              mb: { xs: 6, md: 8 },
+              fontSize: { xs: '2rem', md: 'clamp(2rem, 3.5vw, 3.2rem)' },
+              fontWeight: 300,
+              fontFamily: '"Red Hat Display", sans-serif',
+              lineHeight: 0.92,
+              letterSpacing: '-0.03em',
+              color: colors.contrast.text.primary,
+            }}
+          >
+            agentes que trabajan<br />
+            como parte de tu equipo.
+          </Box>
+
+          <Grid container spacing={0}>
+            {[
+              {
+                num: '01 ─ entendemos',
+                title: 'mapeamos\ntu operación',
+                body: 'Identificamos qué tareas pueden automatizarse sin perder calidad ni control.',
+              },
+              {
+                num: '02 ─ construimos',
+                title: 'entrenamos\ntus agentes',
+                body: 'Cada agente aprende tu voz, tus procesos y tu forma de trabajar.',
+              },
+              {
+                num: '03 ─ operamos',
+                title: 'activos\ndesde el día uno',
+                body: 'Tu equipo digital corre 24/7 mientras tú te enfocas en lo que importa.',
+              },
+            ].map((step, idx) => (
+              <Grid
+                item xs={12} md={4} key={idx}
+                sx={{
+                  pt: { xs: 4, md: 0 },
+                  pr: { md: idx < 2 ? 5 : 0 },
+                  pl: { md: idx > 0 ? 5 : 0 },
+                  borderRight: { md: idx < 2 ? divider : 'none' },
+                  borderTop: { xs: idx > 0 ? divider : 'none', md: 'none' },
+                }}
+              >
+                <CodeText sx={{
+                  fontSize: '0.65rem', letterSpacing: '0.15em',
+                  color: AI4U_PALETTE.accentColors.orange, mb: 2, display: 'block',
                 }}>
-                  controlEquipo
-                </H1>
-                <Typography sx={{ ...TEXT_VARIANTS.ui.code, mb: 1, opacity: 0.6, textTransform: 'none' }}>[ ver2.0 ]</Typography>
-              </Box>
-              
-              <Grid container spacing={0}>
-                {coreFeatures.map((feature, idx) => (
-                  <Grid item xs={12} md={4} key={idx} sx={{ 
-                    p: 4, 
-                    borderRight: idx < 2 ? { md: `1px solid ${colors.contrast.text.primary}` } : 'none',
-                    borderBottom: { xs: `1px solid ${colors.contrast.text.primary}`, md: 'none' }
-                  }}>
-                    <Typography sx={{ 
-                      ...TEXT_VARIANTS.ui.code, 
-                      mb: 4,
-                      fontSize: '0.8rem',
-                      opacity: 0.5,
-                      color: colors.contrast.text.primary,
-                      textTransform: 'none'
-                    }}>
-                      //{feature.label}
-                    </Typography>
-                    <H3 sx={{ 
-                      fontSize: '2.5rem',
-                      fontWeight: 400,
-                      lineHeight: 0.9,
-                      letterSpacing: '-0.04em',
-                      mb: 3,
-                      color: colors.contrast.text.primary
-                    }}>
-                      {feature.title}
-                    </H3>
-                    <BodyText sx={{ opacity: 0.8, color: colors.contrast.text.primary }}>
-                      {feature.description}
-                    </BodyText>
-                  </Grid>
-                ))}
+                  {step.num}
+                </CodeText>
+                <H2 sx={{
+                  fontSize: '1.2rem', fontWeight: 300,
+                  lineHeight: 1.15, letterSpacing: '-0.02em',
+                  mb: 1.5, whiteSpace: 'pre-line',
+                }}>
+                  {step.title}
+                </H2>
+                <BodyText sx={{ fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.6, color: muted }}>
+                  {step.body}
+                </BodyText>
               </Grid>
-            </Stack>
-          </Container>
-        </SurfaceProvider>
+            ))}
+          </Grid>
+        </Container>
       </Box>
 
-      {/* Final Action */}
-      <Box sx={{ 
-        py: 30,
-        bgcolor: colors.contrast.background,
-        color: colors.contrast.text.primary,
-        textAlign: 'center',
-        borderTop: `1px solid ${colors.contrast.text.primary}`,
-      }}>
-        <Container maxWidth="lg">
-          <Typography sx={{ 
-            ...TEXT_VARIANTS.ui.code, 
-            mb: 8,
-            letterSpacing: '0.1em',
-            color: 'inherit',
-            opacity: 0.6,
-            textTransform: 'none'
+      {/* ── WHAT ── */}
+      <Box sx={{ borderTop: divider }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
+          <CodeText sx={{
+            fontSize: '0.72rem', letterSpacing: '0.25em',
+            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
           }}>
-            // ¿cuántas horas a la semana podrías recuperar?
-          </Typography>
+            // what
+          </CodeText>
 
-          <Giant sx={{
-            mb: 6,
-            color: 'inherit',
-            lineHeight: 0.8,
-            fontSize: { xs: '4rem', md: '12rem' },
-            fontWeight: 400,
-            letterSpacing: '-0.06em'
+          {/* Header row */}
+          <Box sx={{
+            display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+            pb: 3, mb: 0, borderBottom: divider,
           }}>
-            empieza a recuperar tu tiempo hoy.
-          </Giant>
-
-          <BodyText sx={{
-            opacity: 0.6,
-            maxWidth: '480px',
-            mx: 'auto',
-            mb: 8,
-            fontSize: '1.1rem',
-            lineHeight: 1.5,
-            color: 'inherit'
-          }}>
-            Hablamos 30 minutos. Te mostramos exactamente qué tareas de tu operación podemos tomar nosotros.
-          </BodyText>
-
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} justifyContent="center" alignItems="center">
-            <DiagnosticCTA
-              variant="primary"
-              size="large"
-              text="agendar 30 minutos"
+            <Box
+              component="h2"
               sx={{
-                bgcolor: colors.contrast.text.primary,
-                color: colors.contrast.background,
-                borderRadius: 0,
-                border: 'none',
-                height: '70px',
-                px: 8,
-                fontSize: '1.2rem',
-                fontWeight: 400,
+                m: 0,
+                fontSize: { xs: '2rem', md: 'clamp(2rem, 3vw, 2.8rem)' },
+                fontWeight: 300,
                 fontFamily: '"Red Hat Display", sans-serif',
-                letterSpacing: '0.05em',
-                '&:hover': {
-                  bgcolor: colors.contrast.text.primary,
-                  opacity: 0.9,
-                  transform: 'scale(1.05)'
-                }
-              }}
-            />
-            <Button
-              variant="outline"
-              component={Link}
-              to={ROUTES.SUPER_AI}
-              onClick={() => scrollToTop()}
-              sx={{
-                height: '70px',
-                border: `1px solid ${colors.contrast.text.primary}`,
-                borderRadius: 0,
-                color: colors.contrast.text.primary,
-                px: 8,
-                fontSize: '1.2rem',
-                letterSpacing: '0.05em',
-                '&:hover': {
-                  bgcolor: colors.mode === 'light' ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)',
-                }
+                lineHeight: 0.9,
+                letterSpacing: '-0.03em',
               }}
             >
-              explorarSuperAI
-            </Button>
-          </Stack>
+              lo que hacemos.
+            </Box>
+            <CodeText sx={{ fontSize: '0.65rem', letterSpacing: '0.15em', color: muted, pb: '3px' }}>
+              orquestación de agentes.
+            </CodeText>
+          </Box>
+
+          {/* Service rows */}
+          {[
+            {
+              num: '01',
+              name: 'educación',
+              desc: 'Tu equipo aprende a trabajar con agentes. La ventaja no es tener la tecnología — es saber usarla.',
+            },
+            {
+              num: '02',
+              name: 'transformación',
+              desc: 'Rediseñamos tus procesos para que los agentes los puedan ejecutar. Del caos operativo al flujo orquestado.',
+            },
+            {
+              num: '03',
+              name: 'operación',
+              desc: 'Desplegamos y mantenemos tu ecosistema de agentes activo. Siempre corriendo. Siempre mejorando.',
+            },
+            {
+              num: '04',
+              name: 'estrategia',
+              desc: 'Diseñamos qué automatizar primero, cómo orquestar y cómo escalar tu infraestructura de agentes.',
+            },
+          ].map((svc) => (
+            <Box
+              key={svc.num}
+              sx={{
+                display: 'flex', alignItems: 'center', gap: { xs: 2, md: 4 },
+                py: { xs: 3, md: 3.5 },
+                borderBottom: divider,
+                cursor: 'default',
+                transition: 'gap 0.25s',
+                '&:hover .svc-arrow': { opacity: 1, color: AI4U_PALETTE.accentColors.orange },
+              }}
+            >
+              <CodeText sx={{ fontSize: '0.7rem', color: AI4U_PALETTE.accentColors.orange, width: '24px', flexShrink: 0 }}>
+                {svc.num}
+              </CodeText>
+              <Box sx={{
+                flex: 1,
+                fontSize: { xs: '1.5rem', md: 'clamp(1.6rem, 3vw, 2.8rem)' },
+                fontWeight: 300,
+                fontFamily: '"Red Hat Display", sans-serif',
+                letterSpacing: '-0.03em',
+                lineHeight: 1,
+              }}>
+                {svc.name}
+              </Box>
+              <BodyText sx={{
+                fontSize: '0.78rem', fontWeight: 300, lineHeight: 1.4,
+                color: muted, maxWidth: '200px', textAlign: 'right',
+                display: { xs: 'none', md: 'block' },
+              }}>
+                {svc.desc}
+              </BodyText>
+              <Box className="svc-arrow" sx={{
+                fontSize: '1.1rem', color: muted, opacity: 0,
+                transition: 'all 0.2s', display: { xs: 'none', md: 'block' },
+              }}>
+                →
+              </Box>
+            </Box>
+          ))}
+        </Container>
+      </Box>
+
+      {/* ── FINAL CTA ── */}
+      <Box sx={{ borderTop: divider }}>
+        <Container maxWidth="xl">
+          <Box sx={{
+            py: { xs: 10, md: 14 },
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: { xs: 'flex-start', md: 'center' },
+            justifyContent: 'space-between',
+            gap: 6,
+          }}>
+            <Box
+              component="h2"
+              sx={{
+                m: 0,
+                fontSize: { xs: '2.5rem', md: 'clamp(2.5rem, 5vw, 5rem)' },
+                fontWeight: 300,
+                fontFamily: '"Red Hat Display", sans-serif',
+                lineHeight: 0.88,
+                letterSpacing: '-0.04em',
+              }}
+            >
+              empieza a recuperar<br />tu tiempo hoy.
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'center' }, gap: 1.5, flexShrink: 0 }}>
+              <DiagnosticCTA
+                variant="primary"
+                text="agendar 30 minutos"
+                size="large"
+                showIcon={false}
+                sx={{
+                  height: '52px',
+                  px: 5,
+                  fontSize: '0.85rem',
+                  fontWeight: 400,
+                  fontFamily: 'monospace',
+                  letterSpacing: '0.05em',
+                  borderRadius: 0,
+                  bgcolor: AI4U_PALETTE.accentColors.orange,
+                  color: '#fff',
+                  border: 'none',
+                  transition: 'opacity 0.2s',
+                  '&:hover': { bgcolor: AI4U_PALETTE.accentColors.orange, opacity: 0.85 },
+                }}
+              />
+              <CodeText sx={{ fontSize: '0.65rem', letterSpacing: '0.15em', color: muted }}>
+                // sin compromiso. sin pitch.
+              </CodeText>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
       {relatedLinks.length > 0 && (
-        <Box sx={{ borderTop: `1px solid ${colors.contrast.divider}` }}>
+        <Box sx={{ borderTop: `1px solid ${alpha(colors.contrast.divider, 0.5)}` }}>
           <RelatedPages pages={relatedLinks} />
         </Box>
       )}

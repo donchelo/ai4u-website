@@ -12,3 +12,4 @@ export { default as ModelingInterface } from './ModelingInterface';
 export { default as Navbar } from './Navbar';
 export { default as SuperAIModal } from './SuperAIModal';
 export { default as ScrollRevealHero } from './ScrollRevealHero';
+export { default as HeroFullscreen } from './HeroFullscreen';

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4U — Landing v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;1,300&family=Red+Hat+Mono:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --orange: #FF5C00;
+    --black: #0a0a0a;
+    --white: #F5F2EE;
+    --divider: rgba(245,242,238,0.1);
+    --muted: rgba(245,242,238,0.38);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Red Hat Display', sans-serif; overflow-x: hidden; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 40px;
+  }
+  .nav-logo { font-family: 'Red Hat Mono', monospace; font-size: 13px; letter-spacing: 2px; color: var(--white); }
+  .nav-cta {
+    font-family: 'Red Hat Mono', monospace; font-size: 10px; letter-spacing: 1.5px;
+    color: var(--white); opacity: 0.45; text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; height: 100vh; min-height: 600px;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+
+  /* Image rotation with ken-burns */
+  .hero-images { position: absolute; inset: 0; }
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    filter: grayscale(100%) contrast(1.1);
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 2s ease-in-out;
+  }
+  .hero-img.active {
+    opacity: 0.38;
+    animation: kenburns 12s ease-out forwards;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,10,10,0.05) 0%,
+      rgba(10,10,10,0.2)  35%,
+      rgba(10,10,10,0.72) 72%,
+      rgba(10,10,10,0.93) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 40px 44px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+  }
+
+  .hero-badge {
+    font-family: 'Red Hat Mono', monospace; font-size: 9.5px;
+    letter-spacing: 2.5px; color: var(--orange); margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: clamp(52px, 8.5vw, 104px); font-weight: 300;
+    line-height: 0.86; letter-spacing: -0.045em; color: var(--white);
+  }
+
+  .hero-right {
+    display: flex; flex-direction: column; align-items: flex-end;
+    justify-content: flex-end; gap: 18px; flex-shrink: 0; padding-bottom: 4px;
+  }
+  .hero-services { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+  .hero-svc {
+    font-family: 'Red Hat Mono', monospace; font-size: 9px;
+    letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase;
+  }
+  .hero-cta {
+    display: inline-block; background: var(--white); color: var(--black);
+    font-family: 'Red Hat Mono', monospace; font-size: 10px; letter-spacing: 1.5px;
+    padding: 13px 26px; cursor: pointer; border: none;
+    transition: opacity 0.2s; text-decoration: none;
+  }
+  .hero-cta:hover { opacity: 0.82; }
+
+  /* corner badge */
+  .hero-coords {
+    position: absolute; top: 22px; right: 40px; z-index: 3;
+    font-family: 'Red Hat Mono', monospace; font-size: 9px;
+    color: var(--muted); letter-spacing: 1px; opacity: 0.5;
+  }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+    z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 5px;
+    font-family: 'Red Hat Mono', monospace; font-size: 8px;
+    color: rgba(245,242,238,0.2); letter-spacing: 2px;
+    animation: breathe 2.5s ease-in-out infinite;
+  }
+  .scroll-hint-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(245,242,238,0.18), transparent); }
+  @keyframes breathe { 0%,100%{opacity:0.25} 50%{opacity:0.6} }
+
+  /* ── SHARED SECTION ── */
+  section { border-top: 1px solid var(--divider); }
+  .inner { max-width: 1160px; margin: 0 auto; padding: 88px 40px; }
+  .tag {
+    font-family: 'Red Hat Mono', monospace; font-size: 9px; letter-spacing: 3px;
+    color: var(--orange); margin-bottom: 40px; display: flex; align-items: center; gap: 10px;
+  }
+  .tag::after { content:''; width: 36px; height: 1px; background: rgba(255,92,0,0.35); }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .why-hl {
+    font-size: clamp(30px, 3.8vw, 52px); font-weight: 300;
+    line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .why-hl em { font-style: italic; color: var(--muted); }
+  .why-body { font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--muted); }
+  .why-body strong { color: var(--white); font-weight: 400; }
+
+  /* ── HOW ── */
+  .how-hl {
+    font-size: clamp(30px, 3.8vw, 52px); font-weight: 300;
+    line-height: 0.9; letter-spacing: -0.03em; margin-bottom: 48px;
+  }
+  .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+  .step { padding: 32px 36px 32px 0; border-right: 1px solid var(--divider); }
+  .step:last-child { border-right: none; padding-right: 0; padding-left: 36px; }
+  .step:nth-child(2) { padding-left: 36px; }
+  .step-n { font-family: 'Red Hat Mono', monospace; font-size: 9px; color: var(--orange); letter-spacing: 2px; margin-bottom: 16px; }
+  .step-t { font-size: 18px; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.15; }
+  .step-b { font-size: 13px; font-weight: 300; line-height: 1.55; color: rgba(245,242,238,0.38); }
+
+  /* ── WHAT ── */
+  .what-hdr {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding-bottom: 24px; border-bottom: 1px solid var(--divider); margin-bottom: 0;
+  }
+  .what-hl { font-size: clamp(28px, 3.2vw, 44px); font-weight: 300; line-height: 0.9; letter-spacing: -0.03em; }
+  .what-sub { font-family: 'Red Hat Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1.5px; padding-bottom: 3px; }
+
+  .svc-row {
+    display: flex; align-items: center; gap: 28px;
+    padding: 26px 0; border-bottom: 1px solid var(--divider);
+    cursor: pointer; transition: gap 0.25s;
+  }
+  .svc-row:hover { gap: 34px; }
+  .svc-row:hover .svc-arr { opacity: 1; color: var(--orange); }
+  .svc-i { font-family: 'Red Hat Mono', monospace; font-size: 9px; color: var(--orange); width: 22px; flex-shrink: 0; }
+  .svc-n { font-size: clamp(22px, 3.5vw, 46px); font-weight: 300; letter-spacing: -0.03em; flex: 1; }
+  .svc-d { font-size: 12px; font-weight: 300; line-height: 1.45; color: var(--muted); max-width: 220px; text-align: right; }
+  .svc-arr { font-size: 18px; color: var(--muted); opacity: 0; transition: all 0.2s; }
+
+  /* ── FINAL CTA ── */
+  .cta-wrap {
+    padding: 96px 40px; max-width: 1160px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .cta-hl {
+    font-size: clamp(34px, 5vw, 72px); font-weight: 300;
+    line-height: 0.88; letter-spacing: -0.04em;
+  }
+  .cta-box { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .cta-btn {
+    display: block; background: var(--orange); color: var(--white);
+    font-family: 'Red Hat Mono', monospace; font-size: 11px; letter-spacing: 1.5px;
+    padding: 16px 36px; cursor: pointer; border: none; transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+  .cta-note { font-family: 'Red Hat Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ai4u™</div>
+  <a href="#" class="nav-cta">hablar con el equipo →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" style="border:none">
+
+  <!-- Rotating images with ken-burns -->
+  <div class="hero-images" id="heroImages">
+    <img class="hero-img active" id="img0"
+         src="file:///home/magnus/Software/AI4U/public/assets/images/hero-image.png" alt="">
+    <img class="hero-img" id="img1"
+         src="file:///home/magnus/Software/AI4U/public/assets/images/hero-image2.png" alt="">
+    <img class="hero-img" id="img2"
+         src="file:///home/magnus/Software/AI4U/public/assets/images/hero-image3.png" alt="">
+  </div>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-coords">6.2442° N, 75.5812° W</div>
+
+  <div class="scroll-hint">
+    scroll
+    <div class="scroll-hint-line"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">ai4u.equipo // siempre activo</div>
+      <div class="hero-title">más tiempo<br/>para lo que<br/>importa.</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-services">
+        <div class="hero-svc">agentes</div>
+        <div class="hero-svc">entrenamiento</div>
+        <div class="hero-svc">automatizaciones</div>
+      </div>
+      <a href="#why" class="hero-cta">hablar con el equipo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY ── -->
+<section id="why">
+  <div class="inner">
+    <div class="tag">// why</div>
+    <div class="why-grid">
+      <div class="why-hl">
+        cada hora en operación<br/>
+        es una hora que<br/>
+        <em>no estás liderando.</em>
+      </div>
+      <div class="why-body">
+        Tu negocio necesita tu visión — no tu tiempo en tareas que se pueden automatizar.
+        <br/><br/>
+        <strong>Nosotros nos encargamos de lo que no te necesita a ti.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW ── -->
+<section id="how">
+  <div class="inner">
+    <div class="tag">// how</div>
+    <div class="how-hl">agentes que trabajan<br/>como parte de tu equipo.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01 ─ entendemos</div>
+        <div class="step-t">mapeamos<br/>tu operación</div>
+        <div class="step-b">Identificamos qué tareas pueden automatizarse sin perder calidad ni control.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02 ─ construimos</div>
+        <div class="step-t">entrenamos<br/>tus agentes</div>
+        <div class="step-b">Cada agente aprende tu voz, tus procesos y tu forma de trabajar.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03 ─ operamos</div>
+        <div class="step-t">activos<br/>desde el día uno</div>
+        <div class="step-b">Tu equipo digital corre 24/7 mientras tú te enfocas en lo que importa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT ── -->
+<section id="what">
+  <div class="inner">
+    <div class="tag">// what</div>
+    <div class="what-hdr">
+      <div class="what-hl">lo que hacemos.</div>
+      <div class="what-sub">tres servicios. un objetivo.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-i">01</div>
+      <div class="svc-n">agentes</div>
+      <div class="svc-d">Tu equipo digital. Nunca para. Nunca olvida.</div>
+      <div class="svc-arr">→</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-i">02</div>
+      <div class="svc-n">entrenamiento de agentes</div>
+      <div class="svc-d">Los hacemos trabajar como tú trabajarías.</div>
+      <div class="svc-arr">→</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-i">03</div>
+      <div class="svc-n">automatizaciones</div>
+      <div class="svc-d">Tus flujos, sin fricción. Sin errores.</div>
+      <div class="svc-arr">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section>
+  <div class="cta-wrap">
+    <div class="cta-hl">empieza a recuperar<br/>tu tiempo hoy.</div>
+    <div class="cta-box">
+      <button class="cta-btn">agendar 30 minutos →</button>
+      <div class="cta-note">// sin compromiso. sin pitch.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Image rotation — same logic as ScrollRevealHero.tsx
+  const imgs = document.querySelectorAll('.hero-img');
+  let current = 0;
+  setInterval(() => {
+    imgs[current].classList.remove('active');
+    current = (current + 1) % imgs.length;
+    // Reset animation
+    imgs[current].style.animation = 'none';
+    imgs[current].offsetHeight; // reflow
+    imgs[current].style.animation = '';
+    imgs[current].classList.add('active');
+  }, 5000);
+</script>
+</body>
+</html>
