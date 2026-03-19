@@ -28,7 +28,7 @@ import { TEXT_VARIANTS } from '../tokens/typography';
 // Styled components usando tokens del sistema
 const StyledNavButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== 'colors' && prop !== 'isScrolled'
-})<{ colors: ReturnType<typeof useColors>; isScrolled: boolean }>(({ theme, colors, isScrolled }) => ({
+})<{ colors: ReturnType<typeof useColors>; isScrolled: boolean; component?: any; to?: string }>(({ theme, colors, isScrolled }) => ({
   marginX: theme.spacing(0.5),
   color: colors.contrast.text.primary,
   fontWeight: 400,
@@ -88,11 +88,11 @@ const Navbar = () => {
 
   // Items de navegación estáticos en español
   const navItems = [
-    { name: 'Inicio', path: ROUTES.HOME },
-    { name: 'Servicios', path: ROUTES.SERVICES },
-    { name: 'SuperAI', path: ROUTES.SUPER_AI },
-    { name: '¿Por qué AI4U?', path: ROUTES.WHY_AI4U },
-    { name: 'Portafolio', path: ROUTES.PORTFOLIO }
+    { name: 'inicio', path: ROUTES.HOME },
+    { name: 'servicios', path: ROUTES.SERVICES },
+    { name: 'superAI', path: ROUTES.SUPER_AI },
+    { name: 'porqueAi4u', path: ROUTES.WHY_AI4U },
+    { name: 'portafolio', path: ROUTES.PORTFOLIO }
   ];
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -183,7 +183,7 @@ const Navbar = () => {
                 '& .MuiPaper-root': {
                   backgroundColor: colors.contrast.surface,
                   border: `1px solid ${colors.contrast.border}`,
-                  boxShadow: SHADOW_TOKENS.xl,
+                  boxShadow: SHADOW_TOKENS.lg,
                 },
               }}
             >
@@ -201,7 +201,7 @@ const Navbar = () => {
                      },
                    }}
                 >
-                  <MuiTypography textAlign="center">{item.name}</MuiTypography>
+                  <MuiTypography sx={{ ...TEXT_VARIANTS.label.main }}>{item.name}</MuiTypography>
                 </MenuItem>
               ))}
               {/* Google Translate en menú móvil */}
@@ -264,6 +264,7 @@ const Navbar = () => {
                 onClick={() => scrollToTop()}
                 component={RouterLink as React.ElementType}
                 to={item.path}
+                sx={{ ...TEXT_VARIANTS.label.secondary, letterSpacing: '0.1em' }}
               >
                 {item.name}
               </StyledNavButton>

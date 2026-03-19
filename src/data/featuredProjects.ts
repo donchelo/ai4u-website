@@ -14,7 +14,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Ecosistema de IA humanística que transforma recursos operativos en ventaja estratégica.',
     image: '/assets/images/cases/screenshots/ai4u.png',
     link: 'https://www.ai4u.com.co',
-    category: 'IA & Automatización'
+    category: 'iaYAutomatizacion'
   },
   {
     id: 'la-magdalena',
@@ -22,7 +22,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Storytelling de impacto social y ambiental.',
     image: '/assets/images/cases/screenshots/la-magdalena.png',
     link: 'https://donchelo.github.io/www.lamagdalena.com/#inicio',
-    category: 'Impact Storytelling'
+    category: 'impactStorytelling'
   },
   {
     id: 'rascal',
@@ -30,7 +30,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Ecosistema digital de movilidad eléctrica.',
     image: '/assets/images/cases/screenshots/rascal.png',
     link: 'https://rascal-three.vercel.app/',
-    category: 'E-Mobility'
+    category: 'eMobility'
   },
   {
     id: 'ebook-apasofirme',
@@ -38,7 +38,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Coaching y neurociencia para desarrollo personal.',
     image: '/assets/images/cases/screenshots/ebook-apasofirme.png',
     link: 'http://ebookapasofirme.com/',
-    category: 'Bienestar & Educación'
+    category: 'bienestarYEducacion'
   },
   {
     id: 'dream-house',
@@ -46,7 +46,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Renders arquitectónicos con IA en segundos.',
     image: '/assets/images/cases/screenshots/dream-house.png',
     link: 'https://dream-house-liard.vercel.app/',
-    category: 'Arquitectura & Diseño'
+    category: 'arquitecturaYDiseno'
   },
   {
     id: 'true-vton',
@@ -54,7 +54,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Probadores virtuales y diseño generativo de moda.',
     image: '/assets/images/cases/screenshots/true-vton.png',
     link: 'https://true-vton.vercel.app/',
-    category: 'Fashion Tech'
+    category: 'fashionTech'
   },
   {
     id: 'flyer-studio',
@@ -62,7 +62,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Piezas gráficas para eventos con IA.',
     image: '/assets/images/cases/screenshots/flyer-studio.png',
     link: 'https://flyer-studio-phi.vercel.app/',
-    category: 'Eventos & Branding'
+    category: 'eventosYBranding'
   },
   {
     id: 'gourmet-ai',
@@ -70,6 +70,6 @@ export const featuredProjects: FeaturedProject[] = [
     description: 'Visualización gastronómica con IA.',
     image: '/assets/images/cases/screenshots/gourmet-ai.png',
     link: 'https://gourmet-ai-ten.vercel.app/',
-    category: 'Gastronomía'
+    category: 'gastronomia'
   }
 ];

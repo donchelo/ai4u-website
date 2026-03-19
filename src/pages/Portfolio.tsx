@@ -57,7 +57,7 @@ const Portfolio = () => {
                 mb: 1,
                 textTransform: 'lowercase'
               }}>
-                // portfolio.v3.2026
+                // portafolio.v3.2026
               </SmallText>
               <Giant sx={{ 
                 fontWeight: 400, 
@@ -65,7 +65,7 @@ const Portfolio = () => {
                 lineHeight: 0.9,
                 mb: 0
               }}>
-                "portafolio"
+                portafolio
               </Giant>
             </Box>
             {!isMobile && (

@@ -4,7 +4,9 @@ export const BRAND_IDENTITY = {
     tagline: "Te devolvemos tu tiempo para que lo uses en lo que verdaderamente importa",
     philosophy: "time is gold",
     mission: "Transformar recursos operativos en ventaja estratégica mediante arquitecturas integrales de Inteligencia Artificial",
-    essence: "Automatización cálida y cercana, no fría ni distante"
+    essence: "Automatización cálida y cercana, no fría ni distante",
+    namingConvention: "camelCase",
+    aestheticInspiration: ["Virgil Abloh", "Industrial Minimalism", "Software Architecture", "Binary Core"]
   },
   visualIdentity: {
     colors: {
@@ -63,7 +65,8 @@ export const BRAND_IDENTITY = {
       futuristicElements: "Elementos futuristas pero cálidos",
       progressBars: "Barras de progreso y elementos de carga",
       geometricShapes: "Formas geométricas simples",
-      arrows: "Flechas direccionales"
+      arrows: "Flechas direccionales",
+      binaryOverlays: "Capas de código binario (101010) como textura técnica"
     },
     photography: {
       style: "Futurista pero cálido",

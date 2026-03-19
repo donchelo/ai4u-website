@@ -5,8 +5,8 @@ export const services: Service[] = [
   // --- EJE 1: OPERACIÓN (ORANGE) ---
   {
     id: 'fashion-agent',
-    title: 'CoutureLab',
-    subtitle: 'De figurines a ecommerce real',
+    title: 'coutureLab',
+    subtitle: 'deFigurinesAEcommerceReal',
     description: 'Fotos de producto con modelos IA.',
     benefits: [
       'Modelos personalizados',
@@ -28,8 +28,8 @@ export const services: Service[] = [
   },
   {
     id: 'data-entry-automatico',
-    title: 'Data Entry Automático',
-    subtitle: 'Automatización de digitación',
+    title: 'dataEntryAutomatico',
+    subtitle: 'automatizacionDeDigitacion',
     description: 'De PDF e imágenes a tu ERP, automático.',
     benefits: [
       'Minimiza errores operativos',
@@ -52,8 +52,8 @@ export const services: Service[] = [
   },
   {
     id: 'chatbot-inteligente',
-    title: 'Chatbots WhatsApp',
-    subtitle: 'Gestión de pedidos 24/7',
+    title: 'chatbotsWhatsApp',
+    subtitle: 'gestionDePedidos247',
     description: 'Ventas y atención por WhatsApp 24/7.',
     benefits: [
       'Atención continua real',
@@ -112,8 +112,8 @@ export const services: Service[] = [
   },
   {
     id: 'desarrollo-web',
-    title: 'Desarrollo Web',
-    subtitle: 'Arquitectura digital pro',
+    title: 'desarrolloWeb',
+    subtitle: 'arquitecturaDigitalPro',
     description: 'Plataformas web de alto rendimiento.',
     benefits: [
       'Optimización SEO/LCP',
@@ -397,8 +397,8 @@ export const services: Service[] = [
   // --- EJE 4: TRANSFORMACIÓN DIGITAL (GREEN) ---
   {
     id: 'super-ai',
-    title: 'SuperAI',
-    subtitle: 'Tu Primer Empleado IA (Agent v1.0)',
+    title: 'superAI',
+    subtitle: 'tuPrimerEmpleadoIA',
     description: 'No es software, es tu primer empleado digital. Un agente autónomo que entrenamos y al que le enseñamos "Skills" para que ejecute tu operación.',
     benefits: [
       'Skills base incluidos según plan',
