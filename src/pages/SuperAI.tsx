@@ -50,18 +50,18 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const colors = useColors();
 
   const problems = [
-    { title: 'Incapacidad de Escalar', desc: 'Tu operación depende de procesos manuales que no pueden crecer sin contratar más personal.' },
-    { title: 'Silos de Información', desc: 'Datos dispersos en múltiples plataformas que no se comunican entre sí, causando errores.' },
-    { title: 'Costos Operativos Altos', desc: 'Tareas repetitivas consumen el 70% del tiempo de tu equipo senior.' },
-    { title: 'Falta de Trazabilidad', desc: 'Dificultad para auditar decisiones y acciones tomadas en procesos críticos de negocio.' }
+    { title: 'incapacidadDeEscalar', desc: 'Tu operación depende de procesos manuales que no pueden crecer sin contratar más personal.' },
+    { title: 'silosDeInformacion', desc: 'Datos dispersos en múltiples plataformas que no se comunican entre sí, causando errores.' },
+    { title: 'costosOperativosAltos', desc: 'Tareas repetitivas consumen el 70% del tiempo de tu equipo senior.' },
+    { title: 'faltaDeTrazabilidad', desc: 'Dificultad para auditar decisiones y acciones tomadas en procesos críticos de negocio.' }
   ];
 
   const benefits = [
-    { icon: Bolt, title: 'Agentes Ejecutores', description: 'No solo responden dudas; tienen autonomía para operar en tus sistemas (Email, CRM, ERP).' },
-    { icon: Autorenew, title: 'Optimización de Procesos', description: 'Diseñamos y refinamos el protocolo operativo de cada área de tu empresa.' },
-    { icon: RocketLaunch, title: 'Integración vía Skills', description: 'Conectamos tu infraestructura actual con capacidades avanzadas de IA sin cambiar tu software.' },
-    { icon: Psychology, title: 'Gobernanza de Datos', description: 'Toda la ejecución ocurre bajo protocolos de seguridad privados y auditables.' },
-    { icon: IntegrationInstructions, title: 'Arquitectura a Medida', description: 'Construimos la infraestructura de IA específica para los KPIs de tu negocio.' }
+    { icon: Bolt, title: 'agentesEjecutores', description: 'No solo responden dudas; tienen autonomía para operar en tus sistemas (Email, CRM, ERP).' },
+    { icon: Autorenew, title: 'optimizacionDeProcesos', description: 'Diseñamos y refinamos el protocolo operativo de cada área de tu empresa.' },
+    { icon: RocketLaunch, title: 'integracionViaSkills', description: 'Conectamos tu infraestructura actual con capacidades avanzadas de IA sin cambiar tu software.' },
+    { icon: Psychology, title: 'gobernanzaDeDatos', description: 'Toda la ejecución ocurre bajo protocolos de seguridad privados y auditables.' },
+    { icon: IntegrationInstructions, title: 'arquitecturaAMedida', description: 'Construimos la infraestructura de IA específica para los KPIs de tu negocio.' }
   ];
 
   const results = [
@@ -74,19 +74,19 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   const steps = [
     {
       num: '01',
-      title: 'Diagnóstico & Viabilidad',
+      title: 'diagnosticoYViabilidad',
       subtitle: 'Sesión Inicial',
       description: 'Analizamos tus procesos actuales y definimos el potencial de retorno de inversión (ROI).'
     },
     {
       num: '02',
-      title: 'Implementación de Protocolo',
+      title: 'implementacionDeProtocolo',
       subtitle: 'Semanas 1-4',
       description: 'Configuramos la infraestructura y entrenamos los primeros agentes ejecutores.'
     },
     {
       num: '03',
-      title: 'Escalamiento de Skills',
+      title: 'escalamientoDeSkills',
       subtitle: 'Recurrente',
       description: 'Auditoría mensual y despliegue de nuevas habilidades según el crecimiento del negocio.'
     }
@@ -129,29 +129,29 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
   const skillsLibrary = [
     {
-      category: 'Recursos Humanos',
+      category: 'recursosHumanos',
       icon: Groups,
-      skills: ['Filtro inteligente de CVs', 'Coordinación de entrevistas', 'Onboarding de nuevos ingresos', 'Gestión de consultas internas', 'Asistente de nómina', 'Análisis de clima laboral']
+      skills: ['filtroInteligenteCVs', 'coordinacionDeEntrevistas', 'onboardingIngresos', 'gestionConsultasInternas', 'asistenteDeNomina', 'analisisClimaLaboral']
     },
     {
-      category: 'Producción & Planta',
+      category: 'produccionYPlanta',
       icon: PrecisionManufacturing,
-      skills: ['Control de inventario en tiempo real', 'Monitoreo de máquinas (IoT)', 'Gestión de órdenes de producción', 'Optimización de rutas logísticas', 'Reportes de eficiencia (OEE)', 'Alertas de mantenimiento']
+      skills: ['inventarioTiempoReal', 'monitoreoMaquinasIOT', 'gestionOrdenesProduccion', 'optimizacionRutas', 'reportesEficienciaOEE', 'alertasMantenimiento']
     },
     {
-      category: 'Ventas & CRM',
+      category: 'ventasYCRM',
       icon: TrendingUp,
-      skills: ['Cualificación de prospectos', 'Actualización automática del CRM', 'Booking de citas comerciales', 'Seguimiento proactivo de ofertas', 'Análisis de competencia', 'Resumen de reuniones']
+      skills: ['cualificacionProspectos', 'actualizacionCRM', 'bookingCitas', 'seguimientoProactivo', 'analisisCompetencia', 'resumenReuniones']
     },
     {
-      category: 'Finanzas',
+      category: 'finanzas',
       icon: BusinessCenter,
-      skills: ['Conciliación bancaria', 'Procesamiento de facturas (OCR)', 'Control de gastos y viáticos', 'Proyección de flujo de caja', 'Preparación para auditoría', 'Alertas de morosidad']
+      skills: ['conciliacionBancaria', 'procesamientoFacturasOCR', 'controlGastosViaticos', 'proyeccionFlujoCaja', 'preparacionAuditoria', 'alertasMorosidad']
     },
     {
-      category: 'Atención al Cliente',
+      category: 'atencionAlCliente',
       icon: Chat,
-      skills: ['Resolución de dudas 24/7', 'Triage de tickets de soporte', 'Seguimiento de pedidos', 'Análisis de satisfacción', 'Base de conocimientos viva', 'Escalamiento inteligente']
+      skills: ['resolucionDudas247', 'triageTicketsSoporte', 'seguimientoPedidos', 'analisisSatisfaccion', 'baseConocimientosViva', 'escalamientoInteligente']
     }
   ];
 
@@ -274,6 +274,28 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
           borderBottom: `1px solid ${colors.contrast.text.primary}`
         }}
       >
+        {/* Binary Overlay Pattern */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0, 
+          opacity: 0.03, 
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          fontFamily: 'monospace',
+          fontSize: '10px',
+          lineHeight: 1,
+          wordBreak: 'break-all',
+          userSelect: 'none',
+          zIndex: 0
+        }}>
+          {Array.from({ length: 100 }).map((_, i) => (
+            <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
+          ))}
+        </Box>
+
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={4} alignItems="center" textAlign="center">
             <Box
@@ -345,7 +367,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 }
               }}
             >
-              Tu primer <span>empleado AI</span> corporativo
+              tuPrimer <span>empleadoAI</span> corporativo
             </Giant>
 
             <BodyText
@@ -382,7 +404,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   },
                 }}
               >
-                Contratar mi Agente
+                contratarMiAgente
               </Button>
             </Stack>
           </Stack>
@@ -403,7 +425,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 mb: 6
               }}>
                 Claridad absoluta. <br />
-                <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>Cero fricción.</Box>
+                <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>ceroFriccion.</Box>
               </H1>
               <BodyText sx={{ color: colors.contrast.text.primary, fontSize: '1.8rem', fontWeight: 400, mb: 6, opacity: 0.9 }}>
                 Deja de pelear con hojas de cálculo y sistemas que no se hablan. Dale a tu equipo la inteligencia que merece.
@@ -463,7 +485,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 mb: 4
               }}>
                 El Protocolo: <br />
-                <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5, fontWeight: 500 }}>Tu Empleado Digital</Box>
+                <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5, fontWeight: 500 }}>tuEmpleadoDigital</Box>
               </H1>
               <BodyText sx={{ color: colors.contrast.text.primary, fontSize: '2rem', fontWeight: 400, opacity: 0.5 }}>
                 Le podemos enseñar a que haga lo que queramos, con acceso controlado.
@@ -587,7 +609,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
               mb: 4
             }}>
               Onboarding en <br />
-              <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5, fontWeight: 500 }}>tiempo récord</Box>
+              <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5, fontWeight: 500 }}>tiempoRecord</Box>
             </H1>
           </Box>
           <Grid container spacing={0}>
@@ -741,7 +763,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                 fontWeight: 400,
                 letterSpacing: '-0.05em'
               }}>
-                Es tu primer <br />empleado AI.
+                Es tu primer <br />empleadoAI.
               </H1>
             </Grid>
 

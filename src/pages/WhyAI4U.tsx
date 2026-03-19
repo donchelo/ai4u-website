@@ -188,6 +188,27 @@ const WhyAI4U = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
+        {/* Binary Overlay Pattern */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0, 
+          opacity: 0.03, 
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          fontFamily: 'monospace',
+          fontSize: '10px',
+          lineHeight: 1,
+          wordBreak: 'break-all',
+          userSelect: 'none',
+          zIndex: 0
+        }}>
+          {Array.from({ length: 100 }).map((_, i) => (
+            <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
+          ))}
+        </Box>
         <SurfaceProvider surface="theme">
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
             <Grid container spacing={0} alignItems="center">
@@ -202,7 +223,7 @@ const WhyAI4U = () => {
                     fontSize: { xs: '3.5rem', md: '7rem' },
                     letterSpacing: '-0.05em'
                   }}>
-                    La parte <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>humana</Box> de la IA
+                    laParte <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>humana</Box> de laIA
                   </H1>
                   
                   <Stack spacing={6} sx={{ mb: 10 }}>
@@ -269,7 +290,7 @@ const WhyAI4U = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LinkedIn
+                  linkedIn
                 </Button>
               </Box>
             </Grid>
@@ -335,7 +356,7 @@ const WhyAI4U = () => {
               lineHeight: 0.9,
               letterSpacing: '-0.04em'
             }}>
-              ¿Qué nos hace <br/>
+              ¿quéNosHace <br/>
               <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
             </H1>
 
@@ -411,7 +432,7 @@ const WhyAI4U = () => {
             lineHeight: 0.9,
             letterSpacing: '-0.04em'
           }}>
-            Nuestros <br/>
+            nuestros <br/>
             <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>clientes</Box>
           </H1>
 
@@ -540,7 +561,7 @@ const WhyAI4U = () => {
                 fontSize: { xs: '3.5rem', md: '7.5rem' },
                 letterSpacing: '-0.05em'
               }}>
-                Resultados que <br/>
+                resultadosQue <br/>
                 <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block' }}>hablan</Box>
               </H1>
               <BodyText sx={{ fontSize: '2rem', fontWeight: 400, lineHeight: 1.1, opacity: 0.9 }}>
@@ -594,8 +615,8 @@ const WhyAI4U = () => {
                 fontWeight: 400,
                 letterSpacing: '-0.05em'
               }}>
-                ¿Listo para ser <br/>
-                el próximo <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>éxito</Box>?
+                ¿listoParaSer <br/>
+                elPróximo <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>éxito</Box>?
               </Giant>
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 

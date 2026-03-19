@@ -131,6 +131,27 @@ const Services: React.FC = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
+        {/* Binary Overlay Pattern */}
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0, 
+          opacity: 0.03, 
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          fontFamily: 'monospace',
+          fontSize: '10px',
+          lineHeight: 1,
+          wordBreak: 'break-all',
+          userSelect: 'none',
+          zIndex: 0
+        }}>
+          {Array.from({ length: 100 }).map((_, i) => (
+            <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
+          ))}
+        </Box>
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={0} alignItems="center">
             <Grid item xs={12} lg={8} sx={{ pr: { lg: 10 } }}>
@@ -146,7 +167,7 @@ const Services: React.FC = () => {
                   ...TEXT_VARIANTS.ui.code
                 }}
               >
-                // ai4u lab // 2026
+                // ai4u.lab // 2026.v3
               </Typography>
               <Giant sx={{
                 color: colors.contrast.text.primary,
@@ -157,7 +178,7 @@ const Services: React.FC = () => {
                 fontWeight: 400,
                 maxWidth: '1000px'
               }}>
-                Nuestros 4 <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>ejes</Box> de servicio
+                nuestros4 <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>ejes</Box> deServicio
               </Giant>
               <BodyText sx={{
                 fontSize: '1.8rem',
@@ -318,7 +339,7 @@ const Services: React.FC = () => {
                       mb: 6,
                       color: 'inherit'
                     }}>
-                      {axis.title}
+                      {axis.title.toLowerCase()}
                     </H1>
                     <BodyText sx={{ 
                       fontSize: '1.5rem', 
@@ -354,7 +375,7 @@ const Services: React.FC = () => {
                       }}
                       onClick={() => toggleAxis(axis.id)}
                     >
-                      {expandedAxes[axis.id] ? 'Cerrar eje' : 'Explorar soluciones'}
+                      {expandedAxes[axis.id] ? 'cerrarEje' : 'explorarSoluciones'}
                       <Box sx={{ 
                         display: 'flex', 
                         transform: expandedAxes[axis.id] ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -459,7 +480,7 @@ const Services: React.FC = () => {
               letterSpacing: '-0.05em',
               color: colors.contrast.text.primary
             }}>
-              Método <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
+              método <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
             </H1>
             <Grid container spacing={0}>
               {[
@@ -515,7 +536,7 @@ const Services: React.FC = () => {
               fontWeight: 400,
               letterSpacing: '-0.05em'
             }}>
-              ¿Empezamos?
+              ¿empezamos?
             </Giant>
             <DiagnosticCTA
               sx={{
@@ -527,13 +548,13 @@ const Services: React.FC = () => {
                 bgcolor: colors.contrast.text.primary,
                 color: colors.contrast.background,
                 border: 'none',
-                fontWeight: 400,
+               fontWeight: 400,
                 '&:hover': {
                   opacity: 0.8,
                   transform: 'scale(1.05) translateY(-10px)'
                 }
               }}
-              text="Agendar consulta gratuita"
+              text="agendarConsultaGratuita"
             />
           </Stack>
         </Container>
