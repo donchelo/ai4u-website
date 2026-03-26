@@ -17,6 +17,8 @@ import Pitch from './pages/Pitch';
 import PitchBancolombia from './pages/PitchBancolombia';
 import PropuestaElBarril from './pages/PropuestaElBarril';
 import PropuestaManufactura from './pages/PropuestaManufactura';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
   return (
@@ -101,6 +103,16 @@ function App() {
                           <Route
                             path={ROUTES.PROPUESTA_MANUFACTURA}
                             element={<PropuestaManufactura />}
+                          />
+
+                          <Route
+                            path={ROUTES.PRIVACY_POLICY}
+                            element={<PrivacyPolicy />}
+                          />
+
+                          <Route
+                            path={ROUTES.TERMS_OF_SERVICE}
+                            element={<TermsOfService />}
                           />
 
                           {/* Fallback Route - Siempre al final */}
