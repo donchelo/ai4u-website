@@ -19,6 +19,7 @@ import PropuestaElBarril from './pages/PropuestaElBarril';
 import PropuestaManufactura from './pages/PropuestaManufactura';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import DataDeletion from './pages/DataDeletion';
 
 function App() {
   return (
@@ -113,6 +114,11 @@ function App() {
                           <Route
                             path={ROUTES.TERMS_OF_SERVICE}
                             element={<TermsOfService />}
+                          />
+
+                          <Route
+                            path={ROUTES.DATA_DELETION}
+                            element={<DataDeletion />}
                           />
 
                           {/* Fallback Route - Siempre al final */}

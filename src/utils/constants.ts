@@ -12,7 +12,8 @@ export const ROUTES = {
   PROPUESTA_EL_BARRIL: '/propuesta-el-barril',
   PROPUESTA_MANUFACTURA: '/propuesta-manufactura',
   PRIVACY_POLICY: '/politica-de-privacidad',
-  TERMS_OF_SERVICE: '/condiciones-de-servicio'
+  TERMS_OF_SERVICE: '/condiciones-de-servicio',
+  DATA_DELETION: '/eliminacion-de-datos'
 } as const;
 
 // Configuración de la aplicación
