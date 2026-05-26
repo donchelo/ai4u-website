@@ -1,10 +1,8 @@
 import { logger } from './logger';
 
-// Configuración de la API para Make.com
+// Configuración de la API de automatización
 const MAKE_API_CONFIG = {
-  // URL del webhook de Make.com
   webhookUrl: import.meta.env.VITE_MAKE_WEBHOOK_URL || '',
-  // Token de autenticación (si es necesario)
   apiToken: import.meta.env.VITE_MAKE_API_TOKEN || '',
 };
 

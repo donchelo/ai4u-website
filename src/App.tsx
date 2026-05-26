@@ -15,6 +15,7 @@ import SuperAI from './pages/SuperAI';
 import DesignSystem from './pages/DesignSystem';
 import Pitch from './pages/Pitch';
 import PitchBancolombia from './pages/PitchBancolombia';
+import PitchFondoEmprender from './pages/PitchFondoEmprender';
 import PropuestaElBarril from './pages/PropuestaElBarril';
 import PropuestaManufactura from './pages/PropuestaManufactura';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -93,6 +94,11 @@ function App() {
                           <Route
                             path={ROUTES.PITCH_BANCOLOMBIA}
                             element={<PitchBancolombia />}
+                          />
+
+                          <Route
+                            path={ROUTES.PITCH_FONDO_EMPRENDER}
+                            element={<PitchFondoEmprender />}
                           />
 
                           <Route
