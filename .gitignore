@@ -149,3 +149,6 @@ claude.md
 # Design source files (logos, fuentes originales, brand assets)
 # Los assets que sirve el sitio van en public/ — estos son solo insumos de diseño
 assets/Marca/
+
+# Experimentos locales — cada uno tiene su propio repo
+experiments/
