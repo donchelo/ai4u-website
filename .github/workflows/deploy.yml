@@ -35,8 +35,14 @@ jobs:
         run: npm run validate-translations || true
         continue-on-error: true
 
+      - name: Install Playwright (prerender)
+        run: npx playwright install --with-deps chromium
+
       - name: Build
         run: npm run build
+
+      - name: Prerender rutas públicas
+        run: node scripts/prerender.mjs
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

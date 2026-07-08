@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Stack, Typography, IconButton, useTheme, useMediaQuery, alpha, Container } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Giant, H1, BodyText, LazyImage, CodeText } from '../atoms';
+import { Giant, H1, BodyText, LazyImage, CodeText, BinaryOverlay } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
 import { TEXT_VARIANTS } from '../tokens/typography';
@@ -108,26 +108,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
 
       {/* Binary Overlay Pattern */}
-      <Box sx={{ 
-        position: 'absolute', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        bottom: 0, 
-        opacity: 0.05, 
-        overflow: 'hidden',
-        pointerEvents: 'none',
-        fontFamily: 'monospace',
-        fontSize: '10px',
-        lineHeight: 1,
-        wordBreak: 'break-all',
-        userSelect: 'none',
-        zIndex: 1
-      }}>
-        {Array.from({ length: 40 }).map((_, i) => (
-          <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
-        ))}
-      </Box>
+      <BinaryOverlay lines={40} opacity={0.05} zIndex={1} />
 
       {/* Industrial Metadata */}
       <Box sx={{ position: 'absolute', bottom: 20, right: 40, textAlign: 'right', opacity: 0.3, zIndex: 6 }}>

@@ -49,14 +49,6 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       trackingLabel: 'home_to_why',
       priority: 'high',
       semantic: 'evidence'
-    },
-    {
-      to: '/super-ai',
-      label: 'Nuestra tecnología',
-      context: 'Conoce SuperAI Infrastructure',
-      trackingLabel: 'home_to_superai',
-      priority: 'medium',
-      semantic: 'related'
     }
   ],
 
@@ -77,14 +69,6 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       trackingLabel: 'services_to_why',
       priority: 'high',
       semantic: 'evidence'
-    },
-    {
-      to: '/super-ai',
-      label: 'Tecnología SuperAI',
-      context: 'La infraestructura detrás de la IA',
-      trackingLabel: 'services_to_superai',
-      priority: 'medium',
-      semantic: 'related'
     },
     {
       to: '/',
@@ -115,14 +99,6 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       semantic: 'progression'
     },
     {
-      to: '/super-ai',
-      label: 'SuperAI Infrastructure',
-      context: 'Nuestra tecnología de vanguardia',
-      trackingLabel: 'why_to_superai',
-      priority: 'medium',
-      semantic: 'related'
-    },
-    {
       to: '/',
       label: 'Comenzar ahora',
       context: 'Agendar diagnóstico gratuito',
@@ -149,14 +125,6 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
       trackingLabel: 'portfolio_to_why',
       priority: 'high',
       semantic: 'evidence'
-    },
-    {
-      to: '/super-ai',
-      label: 'SuperAI Infrastructure',
-      context: 'La tecnología que lo hace posible',
-      trackingLabel: 'portfolio_to_superai',
-      priority: 'medium',
-      semantic: 'related'
     }
   ]
 };
@@ -165,7 +133,7 @@ export const INTERNAL_LINKS_MAP: Record<string, InternalLink[]> = {
 export const SERVICE_CROSS_REFERENCES: Record<string, ServiceCrossReference> = {
   'superai-empresarial': {
     serviceSlug: 'superai-empresarial',
-    serviceName: 'SuperAI Empresarial',
+    serviceName: 'Capa de Inteligencia Empresarial',
     description: 'Arquitectura integral de IA que transforma recursos operativos en ventaja estratégica',
     relatedCases: [
       { client: 'True', sector: 'Fashion', slug: 'fashion' },
@@ -212,7 +180,7 @@ export const CONTEXTUAL_CTA_LINKS = {
   },
   featuresSection: {
     automation: { to: '/servicios#automatizacion-inteligente', label: 'Automatización Inteligente' },
-    ai: { to: '/servicios#superai-empresarial', label: 'SuperAI Empresarial' },
+    ai: { to: '/servicios#superai-empresarial', label: 'Capa de Inteligencia Empresarial' },
     personalization: { to: '/servicios#gpt-personalizado', label: 'GPT Personalizado' }
   },
   socialProof: {

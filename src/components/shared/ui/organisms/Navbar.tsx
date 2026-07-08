@@ -90,8 +90,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'inicio', path: ROUTES.HOME },
     { name: 'servicios', path: ROUTES.SERVICES },
-    { name: 'superAI', path: ROUTES.SUPER_AI },
-    { name: 'porqueAi4u', path: ROUTES.WHY_AI4U },
+    { name: 'por qué ai4u', path: ROUTES.WHY_AI4U },
     { name: 'portafolio', path: ROUTES.PORTFOLIO }
   ];
 

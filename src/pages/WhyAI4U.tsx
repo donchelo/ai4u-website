@@ -11,7 +11,7 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
-import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead } from '../components/shared/ui/atoms';
+import { Giant, H1, H2, H3, BodyText, Button, GeometricIcon, PixelArtImage, SEOHead, BinaryOverlay } from '../components/shared/ui/atoms';
 import { Card, DiagnosticCTA, ServicesButton, RelatedPages, ExpandableSection } from '../components/shared/ui/molecules';
 import { SurfaceProvider } from '../context';
 import { useColors, usePerformanceMonitoring } from '../hooks';
@@ -174,7 +174,7 @@ const WhyAI4U = () => {
         title={metaTags.title}
         description={metaTags.description}
         keywords={metaTags.keywords}
-        canonical="https://ai4u.com.co/por-que-ai4u"
+        canonical="https://www.ai4u.com.co/por-que-ai4u"
       />
 
       {/* Mariano Section */}
@@ -189,26 +189,7 @@ const WhyAI4U = () => {
         overflow: 'hidden'
       }}>
         {/* Binary Overlay Pattern */}
-        <Box sx={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          right: 0, 
-          bottom: 0, 
-          opacity: 0.03, 
-          overflow: 'hidden',
-          pointerEvents: 'none',
-          fontFamily: 'monospace',
-          fontSize: '10px',
-          lineHeight: 1,
-          wordBreak: 'break-all',
-          userSelect: 'none',
-          zIndex: 0
-        }}>
-          {Array.from({ length: 100 }).map((_, i) => (
-            <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
-          ))}
-        </Box>
+        <BinaryOverlay />
         <SurfaceProvider surface="theme">
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
             <Grid container spacing={0} alignItems="center">
@@ -223,7 +204,7 @@ const WhyAI4U = () => {
                     fontSize: { xs: '3.5rem', md: '7rem' },
                     letterSpacing: '-0.05em'
                   }}>
-                    laParte <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>humana</Box> de laIA
+                    la parte <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>humana</Box> de la IA
                   </H1>
                   
                   <Stack spacing={6} sx={{ mb: 10 }}>
@@ -346,7 +327,7 @@ const WhyAI4U = () => {
 
         <SurfaceProvider surface="theme">
           <Container maxWidth="xl">
-            <H1 sx={{
+            <H2 sx={{
               mb: 12,
               textAlign: 'left',
               fontWeight: 400,
@@ -356,9 +337,9 @@ const WhyAI4U = () => {
               lineHeight: 0.9,
               letterSpacing: '-0.04em'
             }}>
-              ¿quéNosHace <br/>
+              ¿qué nos hace <br/>
               <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>diferentes</Box>?
-            </H1>
+            </H2>
 
             <Grid container spacing={4} alignItems="stretch">
               {[
@@ -423,7 +404,7 @@ const WhyAI4U = () => {
         <Box sx={{ position: 'absolute', top: 0, left: '66%', width: '1px', height: '100%', bgcolor: 'rgba(0,0,0,0.03)' }} />
 
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
-          <H1 sx={{
+          <H2 sx={{
             mb: 12,
             fontWeight: 400,
             textTransform: 'none',
@@ -434,7 +415,7 @@ const WhyAI4U = () => {
           }}>
             nuestros <br/>
             <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(-1deg)' }}>clientes</Box>
-          </H1>
+          </H2>
 
           <Box sx={{ position: 'relative', mb: 10 }}>
             <Box
@@ -494,9 +475,14 @@ const WhyAI4U = () => {
                         }}
                       />
                     </Box>
-                    <BodyText sx={{ textAlign: 'center', fontSize: '1rem', opacity: 0.9, mt: 2 }}>
-                      {client.sector}
-                    </BodyText>
+                    <Box sx={{ textAlign: 'center', mt: 2 }}>
+                      <BodyText sx={{ fontSize: '1.15rem', fontWeight: 400 }}>
+                        {client.name}
+                      </BodyText>
+                      <BodyText sx={{ fontSize: '0.85rem', opacity: 0.6 }}>
+                        {client.sector}
+                      </BodyText>
+                    </Box>
                   </Card>
                 </Box>
               ))}
@@ -505,6 +491,7 @@ const WhyAI4U = () => {
             <Stack direction="row" spacing={2} sx={{ mt: 6, justifyContent: 'flex-end' }}>
               <IconButton
                 onClick={handlePrevious}
+                aria-label="Cliente anterior"
                 sx={{
                   bgcolor: colors.contrast.text.primary,
                   color: colors.contrast.background,
@@ -519,6 +506,7 @@ const WhyAI4U = () => {
 
               <IconButton
                 onClick={handleNext}
+                aria-label="Cliente siguiente"
                 sx={{
                   bgcolor: colors.contrast.text.primary,
                   color: colors.contrast.background,
@@ -553,17 +541,17 @@ const WhyAI4U = () => {
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
             <Grid container spacing={0} alignItems="stretch">
             <Grid item xs={12} md={5} sx={{ mb: { xs: 8, md: 0 } }}>
-              <H1 sx={{ 
-                fontWeight: 400, 
-                textTransform: 'none', 
-                mb: 6, 
+              <H2 sx={{
+                fontWeight: 400,
+                textTransform: 'none',
+                mb: 6,
                 lineHeight: 0.85,
                 fontSize: { xs: '3.5rem', md: '7.5rem' },
                 letterSpacing: '-0.05em'
               }}>
-                resultadosQue <br/>
+                resultados que <br/>
                 <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block' }}>hablan</Box>
-              </H1>
+              </H2>
               <BodyText sx={{ fontSize: '2rem', fontWeight: 400, lineHeight: 1.1, opacity: 0.9 }}>
                 IA que genera crecimiento real y tangible.
               </BodyText>
@@ -571,10 +559,11 @@ const WhyAI4U = () => {
             
             <Grid item xs={12} md={7}>
               <Stack spacing={0}>
+                {/* Sin promesas numéricas: hechos cualitativos y verdaderos */}
                 {[
-                  { label: 'Optimización tiempo operativo', value: 'Alta' },
-                  { label: 'Incremento eficiencia', value: 'Significativo' },
-                  { label: 'Disponibilidad continua', value: '24/7' }
+                  { label: 'agentes trabajando, incluso mientras tú no estás', value: '24/7' },
+                  { label: 'tiempo en tareas repetitivas: tu equipo se enfoca en lo que importa', value: 'menos' },
+                  { label: 'la información de tu negocio, lista para decidir', value: 'en vivo' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ 
                     borderBottom: idx === 2 ? 'none' : `1px solid ${colors.contrast.text.primary}`,
@@ -615,8 +604,8 @@ const WhyAI4U = () => {
                 fontWeight: 400,
                 letterSpacing: '-0.05em'
               }}>
-                ¿listoParaSer <br/>
-                elPróximo <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>éxito</Box>?
+                ¿listo para ser <br/>
+                el próximo <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>éxito</Box>?
               </Giant>
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 

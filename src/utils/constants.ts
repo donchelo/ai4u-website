@@ -24,6 +24,8 @@ export const APP_CONFIG = {
   CONTACT: {
     EMAIL: 'contacto@ai4u.com.co',
     PHONE: '+57 321 817 5744',
+    WHATSAPP: '573218175744',
+    WHATSAPP_MESSAGE: 'hola, quiero recuperar mi tiempo con ai4u',
     CALENDLY: 'calendly.com/mgarciap333/ai4u'
   },
   SOCIAL: {

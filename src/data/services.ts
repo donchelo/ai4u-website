@@ -397,8 +397,8 @@ export const services: Service[] = [
   // --- EJE 4: TRANSFORMACIÓN DIGITAL (GREEN) ---
   {
     id: 'super-ai',
-    title: 'superAI',
-    subtitle: 'tuPrimerEmpleadoIA',
+    title: 'capa de inteligencia',
+    subtitle: 'tu primer empleado IA',
     description: 'No es software, es tu primer empleado digital. Un agente autónomo que entrenamos y al que le enseñamos "Skills" para que ejecute tu operación.',
     benefits: [
       'Skills base incluidos según plan',

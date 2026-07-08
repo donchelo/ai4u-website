@@ -8,6 +8,7 @@ import {
   ListItemText,
   Typography
 } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 import { H3, BodyText, GeometricIcon, SEOHead, ServiceThumbnail } from '../atoms';
 import { useColors } from '@/hooks';
 import { AI4U_PALETTE } from '@/components/shared/ui/tokens/palette';
@@ -47,11 +48,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <>
-      {/* Structured Data para este servicio específico */}
-      <SEOHead
-        structuredData={serviceStructuredData}
-        noIndex={true}
-      />
+      {/* Structured Data para este servicio específico.
+          OJO: solo el script JSON-LD — un SEOHead completo aquí pisaba el
+          title/description de la página y la marcaba noindex (bug SEO). */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(serviceStructuredData)}
+        </script>
+      </Helmet>
       
       <Box sx={{
         height: '100%',

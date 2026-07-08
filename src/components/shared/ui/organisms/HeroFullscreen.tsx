@@ -15,11 +15,13 @@ const SERVICES = ['agentes', 'entrenamiento', 'automatizaciones'];
 
 interface HeroFullscreenProps {
   badge?: string;
+  subtitle?: string;
   primaryButtonText?: string;
 }
 
 const HeroFullscreen: React.FC<HeroFullscreenProps> = ({
   badge = 'ai4u.equipo // siempre activo',
+  subtitle,
   primaryButtonText = 'hablar con el equipo',
 }) => {
   const colors = useColors();
@@ -163,6 +165,20 @@ const HeroFullscreen: React.FC<HeroFullscreenProps> = ({
             para lo que<br />
             importa.
           </Box>
+          {subtitle && (
+            <Box sx={{
+              mt: 2.5,
+              fontSize: { xs: '0.95rem', md: '1.1rem' },
+              fontWeight: 300,
+              fontFamily: '"Red Hat Display", sans-serif',
+              letterSpacing: '0.01em',
+              color: colors.contrast.text.primary,
+              opacity: 0.75,
+              maxWidth: '420px',
+            }}>
+              {subtitle}
+            </Box>
+          )}
         </Box>
 
         {/* RIGHT: services + CTA */}

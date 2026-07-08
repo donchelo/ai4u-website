@@ -240,8 +240,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
 
   const faqs = [
     {
-      q: '¿Qué es SuperAI y por qué es un "empleado"?',
-      a: 'A diferencia de una herramienta estática, SuperAI aprende tus procesos, se conecta a tus sistemas y actúa de forma autónoma. Es el primer miembro digital de tu equipo que nunca olvida y siempre está disponible.'
+      q: '¿Qué es la capa de inteligencia y por qué es un "empleado"?',
+      a: 'A diferencia de una herramienta estática, la capa de inteligencia de ai4u aprende tus procesos, se conecta a tus sistemas y actúa de forma autónoma. Es el primer miembro digital de tu equipo que nunca olvida y siempre está disponible.'
     },
     {
       q: '¿Realmente le puedo enseñar lo que yo quiera?',
@@ -260,8 +260,8 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
   return (
     <SurfaceProvider surface="theme">
       <Helmet>
-        <title>SuperAI - Tu Primer Empleado AI | AI4U</title>
-        <meta name="description" content="SuperAI: Tu primer empleado AI que chatea con tu empresa, se conecta a tus sistemas (ERP, CRM, MRP) y aprende a ejecutar tus procesos." />
+        <title>Tu Primer Empleado AI | AI4U</title>
+        <meta name="description" content="Tu primer empleado AI que chatea con tu empresa, se conecta a tus sistemas (ERP, CRM, MRP) y aprende a ejecutar tus procesos." />
       </Helmet>
 
       {/* Hero Section */}
@@ -313,7 +313,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
             >
               <OptimizedImage
                 src="/assets/images/bancolombia/AI4U 4rt (19).png"
-                alt="SuperAI Protagonist"
+                alt="Empleado digital AI4U"
                 priority
                 sx={{
                   width: '100%',
@@ -346,7 +346,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
                   textTransform: 'none'
                 }}
               >
-                  SuperAI // digitalEmployeeV1
+                  ai4u // digitalEmployeeV1
               </Typography>
             </Box>
 
@@ -1108,7 +1108,7 @@ const SuperAI: React.FC<SuperAIProps> = ({ isModal = false }) => {
       {/* Footer Branding */}
       <Box sx={{ py: 6, bgcolor: colors.contrast.background, borderTop: `1px solid ${colors.contrast.text.primary}`, textAlign: 'center' }}>
         <Container maxWidth="lg">
-          <H2 sx={{ color: colors.contrast.text.primary, opacity: 0.3, fontWeight: 400 }}>SuperAI</H2>
+          <H2 sx={{ color: colors.contrast.text.primary, opacity: 0.3, fontWeight: 400 }}>ai4u</H2>
         </Container>
       </Box>
     </SurfaceProvider>
