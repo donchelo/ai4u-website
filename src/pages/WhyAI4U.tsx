@@ -559,11 +559,11 @@ const WhyAI4U = () => {
             
             <Grid item xs={12} md={7}>
               <Stack spacing={0}>
-                {/* TODO(mariano): validar cifras publicables con los tenants antes de ajustar */}
+                {/* Sin promesas numéricas: hechos cualitativos y verdaderos */}
                 {[
-                  { label: 'plantas de manufactura operando con agentes en producción', value: '2' },
-                  { label: 'de correo del cliente a pedido creado en SAP, sin digitación', value: 'minutos' },
-                  { label: 'agentes activos procesando pedidos, KPIs y alertas', value: '24/7' }
+                  { label: 'agentes trabajando, incluso mientras tú no estás', value: '24/7' },
+                  { label: 'tiempo en tareas repetitivas: tu equipo se enfoca en lo que importa', value: 'menos' },
+                  { label: 'la información de tu negocio, lista para decidir', value: 'en vivo' }
                 ].map((item, idx) => (
                   <Box key={idx} sx={{ 
                     borderBottom: idx === 2 ? 'none' : `1px solid ${colors.contrast.text.primary}`,

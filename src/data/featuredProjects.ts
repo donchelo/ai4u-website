@@ -12,7 +12,7 @@ export const featuredProjects: FeaturedProject[] = [
   {
     id: 'agentes-manufactura',
     title: 'Agentes en Manufactura',
-    description: 'Un agente lee los correos de los clientes y crea los pedidos en SAP, sin digitación. La capa de inteligencia opera 24/7 en dos plantas de empaques.',
+    description: 'Un agente lee los correos de los clientes y crea los pedidos en SAP, sin digitación. La capa de inteligencia opera 24/7 en plantas de manufactura reales.',
     image: '/assets/images/cases/screenshots/ai4u.png',
     link: 'https://www.ai4u.com.co/por-que-ai4u',
     category: 'manufactura'
