@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from '../atoms';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { analytics } from '../../../../utils/analytics';
 import { APP_CONFIG } from '../../../../utils/constants';
 
-const CALENDLY_URL = `https://${APP_CONFIG.CONTACT.CALENDLY}`;
+const WHATSAPP_URL = `https://wa.me/${APP_CONFIG.CONTACT.WHATSAPP}?text=${encodeURIComponent(
+  APP_CONFIG.CONTACT.WHATSAPP_MESSAGE
+)}`;
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline';
 type ButtonSize = 'small' | 'medium' | 'large';
@@ -26,16 +28,16 @@ export const DiagnosticCTA = ({
   className,
   sx,
 }: DiagnosticCTAProps) => {
-  const defaultText = 'Diagnóstico gratis';
+  const defaultText = 'hablemos por WhatsApp';
   return (
     <Button
       variant={variant as ButtonVariant}
       size={size as ButtonSize}
       onClick={() => {
-        analytics.trackConsultationRequest('calendly', 'diagnostic');
-        window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+        analytics.trackConsultationRequest('whatsapp', 'diagnostic');
+        window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer');
       }}
-      startIcon={showIcon ? <CalendarMonthIcon /> : undefined}
+      startIcon={showIcon ? <WhatsAppIcon /> : undefined}
       className={className}
       sx={sx}
     >

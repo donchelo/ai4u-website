@@ -10,7 +10,7 @@ import {
   Collapse,
   alpha
 } from '@mui/material';
-import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon } from '@/components/shared/ui/atoms';
+import { Giant, H1, H2, BodyText, Button, SEOHead, GeometricIcon, BinaryOverlay } from '@/components/shared/ui/atoms';
 import { ServiceCard, DiagnosticCTA, RelatedPages } from '@/components/shared/ui/molecules';
 import { SuperAIModal } from '@/components/shared/ui/organisms';
 import { AI4U_PALETTE } from '@/components/shared/ui/tokens/palette';
@@ -118,7 +118,7 @@ const Services: React.FC = () => {
         title={metaTags.title}
         description={metaTags.description}
         keywords={metaTags.keywords}
-        canonical="https://ai4u.com.co/servicios"
+        canonical="https://www.ai4u.com.co/servicios"
         structuredData={structuredData}
       />
 
@@ -132,26 +132,7 @@ const Services: React.FC = () => {
         overflow: 'hidden'
       }}>
         {/* Binary Overlay Pattern */}
-        <Box sx={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          right: 0, 
-          bottom: 0, 
-          opacity: 0.03, 
-          overflow: 'hidden',
-          pointerEvents: 'none',
-          fontFamily: 'monospace',
-          fontSize: '10px',
-          lineHeight: 1,
-          wordBreak: 'break-all',
-          userSelect: 'none',
-          zIndex: 0
-        }}>
-          {Array.from({ length: 100 }).map((_, i) => (
-            <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
-          ))}
-        </Box>
+        <BinaryOverlay />
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={0} alignItems="center">
             <Grid item xs={12} lg={8} sx={{ pr: { lg: 10 } }}>
@@ -178,7 +159,7 @@ const Services: React.FC = () => {
                 fontWeight: 400,
                 maxWidth: '1000px'
               }}>
-                nuestros4 <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>ejes</Box> deServicio
+                nuestros 4 <Box component="span" sx={{ color: colors.contrast.text.primary, opacity: 0.5 }}>ejes</Box> de servicio
               </Giant>
               <BodyText sx={{
                 fontSize: '1.8rem',
@@ -189,7 +170,7 @@ const Services: React.FC = () => {
                 lineHeight: 1.1,
                 opacity: 0.9
               }}>
-                En AI4U, abordamos la Inteligencia Artificial desde cuatro frentes clave para transformar tu operación, potenciar tu estrategia, educar a tu equipo y escalar tu infraestructura.
+                Cuatro frentes. Un objetivo: que tu operación trabaje sola.
               </BodyText>
 
               {/* Quick Links to Axes */}
@@ -330,9 +311,9 @@ const Services: React.FC = () => {
                     >
                       // {axis.subtitle}
                     </Typography>
-                    <H1 sx={{ 
-                      fontWeight: 400, 
-                      textTransform: 'none', 
+                    <H2 sx={{
+                      fontWeight: 400,
+                      textTransform: 'none',
                       fontSize: { xs: '3.5rem', md: '6.5rem' },
                       lineHeight: 0.85,
                       letterSpacing: '-0.05em',
@@ -340,7 +321,7 @@ const Services: React.FC = () => {
                       color: 'inherit'
                     }}>
                       {axis.title.toLowerCase()}
-                    </H1>
+                    </H2>
                     <BodyText sx={{ 
                       fontSize: '1.5rem', 
                       fontWeight: 400, 
@@ -375,7 +356,7 @@ const Services: React.FC = () => {
                       }}
                       onClick={() => toggleAxis(axis.id)}
                     >
-                      {expandedAxes[axis.id] ? 'cerrarEje' : 'explorarSoluciones'}
+                      {expandedAxes[axis.id] ? 'cerrar eje' : 'explorar soluciones'}
                       <Box sx={{ 
                         display: 'flex', 
                         transform: expandedAxes[axis.id] ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -472,7 +453,7 @@ const Services: React.FC = () => {
       }}>
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Stack spacing={12}>
-            <H1 sx={{
+            <H2 sx={{
               fontWeight: 400,
               textTransform: 'none',
               fontSize: { xs: '3.5rem', md: '7rem' },
@@ -481,7 +462,7 @@ const Services: React.FC = () => {
               color: colors.contrast.text.primary
             }}>
               método <Box component="span" sx={{ bgcolor: colors.contrast.text.primary, color: colors.contrast.background, px: 2, display: 'inline-block', transform: 'rotate(1deg)' }}>directo</Box>
-            </H1>
+            </H2>
             <Grid container spacing={0}>
               {[
                 { n: '01', t: 'Diagnóstico', d: 'Oportunidades reales.' },
@@ -554,7 +535,7 @@ const Services: React.FC = () => {
                   transform: 'scale(1.05) translateY(-10px)'
                 }
               }}
-              text="agendarConsultaGratuita"
+              text="hablemos por WhatsApp"
             />
           </Stack>
         </Container>

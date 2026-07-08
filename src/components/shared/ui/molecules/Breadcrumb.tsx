@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { SEOHead } from '../atoms';
+import { Helmet } from 'react-helmet-async';
 import { getBreadcrumbStructuredData } from '../../../../utils/seo';
 
 interface BreadcrumbItem {
@@ -30,7 +30,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const breadcrumbData = getBreadcrumbStructuredData(
     breadcrumbItems.map(item => ({
       name: item.name,
-      url: `https://ai4u.com.co${item.path}`
+      url: `https://www.ai4u.com.co${item.path}`
     }))
   );
 
@@ -40,7 +40,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <Box>
-      <SEOHead structuredData={breadcrumbData} />
+      {/* Solo el JSON-LD — un SEOHead completo aquí pisaba el title de la página */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbData)}
+        </script>
+      </Helmet>
       <Box
         component="nav"
         aria-label="Breadcrumb"

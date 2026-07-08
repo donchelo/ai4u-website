@@ -24,18 +24,18 @@ const Footer = () => {
   const colors = useColors();
 
   const socialLinks = [
-    { icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
-    { icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
-    { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' },
-    { icon: <XIcon />, url: 'https://x.com/_ai4u_' }
+    { name: 'Instagram', icon: <InstagramIcon />, url: 'https://www.instagram.com/ai.4.u_/' },
+    { name: 'Facebook', icon: <FacebookIcon />, url: 'https://www.facebook.com/artificial.intelligence.4.you/' },
+    { name: 'LinkedIn', icon: <LinkedInIcon />, url: 'https://www.linkedin.com/company/ai4u-com-co' },
+    { name: 'X', icon: <XIcon />, url: 'https://x.com/_ai4u_' }
   ];
 
   const quickLinks = [
     { name: 'inicio', path: ROUTES.HOME },
     { name: 'servicios', path: ROUTES.SERVICES },
     { name: 'portafolio', path: ROUTES.PORTFOLIO },
-    { name: 'porqueAi4u', path: ROUTES.WHY_AI4U },
-    { name: 'designSystem', path: ROUTES.DESIGN_SYSTEM }
+    { name: 'por qué ai4u', path: ROUTES.WHY_AI4U },
+    { name: 'design system', path: ROUTES.DESIGN_SYSTEM }
   ];
 
   return (
@@ -68,7 +68,7 @@ const Footer = () => {
 
           <Grid item xs={12} md={4}>
             <MuiTypography sx={{ ...TEXT_VARIANTS.label.main, mb: 3 }}>
-              enlacesRapidos
+              enlaces rápidos
             </MuiTypography>
             <Box component="nav" aria-label="Enlaces rápidos">
               <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
@@ -98,7 +98,7 @@ const Footer = () => {
 
           <Grid item xs={12} md={4}>
             <MuiTypography sx={{ ...TEXT_VARIANTS.label.main, mb: 3 }}>
-              contactoDirecto
+              contacto directo
             </MuiTypography>
             <Stack spacing={2.5}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -134,7 +134,7 @@ const Footer = () => {
         }}>
           <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
             <SmallText sx={{ color: 'inherit', opacity: 0.6 }}>
-              {`© ${currentYear} AI4U. todosLosDerechosReservados.`}
+              {`© ${currentYear} AI4U. todos los derechos reservados.`}
             </SmallText>
             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               <MuiTypography
@@ -171,6 +171,7 @@ const Footer = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={social.name}
                 sx={{
                   color: 'inherit',
                   opacity: 0.6,

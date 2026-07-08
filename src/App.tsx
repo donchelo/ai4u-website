@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout, ScrollToTop, BasicLoadingWrapper } from './components/shared/ui/layouts';
@@ -6,21 +6,21 @@ import { ErrorBoundary } from './components/shared/ui/molecules';
 import { ThemeProvider, ServicesProvider } from '@/context';
 import { ROUTES } from './utils/constants';
 import './utils/errorTracking';
-// Importar directamente sin lazy loading para debugging
+// Home se importa directo (ruta crítica / LCP); el resto va lazy para partir el bundle
 import Home from './pages/Home';
-import Services from './pages/Services';
-import WhyAI4U from './pages/WhyAI4U';
-import Portfolio from './pages/Portfolio';
-import SuperAI from './pages/SuperAI';
-import DesignSystem from './pages/DesignSystem';
-import Pitch from './pages/Pitch';
-import PitchBancolombia from './pages/PitchBancolombia';
-import PitchFondoEmprender from './pages/PitchFondoEmprender';
-import PropuestaElBarril from './pages/PropuestaElBarril';
-import PropuestaManufactura from './pages/PropuestaManufactura';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import DataDeletion from './pages/DataDeletion';
+
+const Services = lazy(() => import('./pages/Services'));
+const WhyAI4U = lazy(() => import('./pages/WhyAI4U'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const DesignSystem = lazy(() => import('./pages/DesignSystem'));
+const Pitch = lazy(() => import('./pages/Pitch'));
+const PitchBancolombia = lazy(() => import('./pages/PitchBancolombia'));
+const PitchFondoEmprender = lazy(() => import('./pages/PitchFondoEmprender'));
+const PropuestaElBarril = lazy(() => import('./pages/PropuestaElBarril'));
+const PropuestaManufactura = lazy(() => import('./pages/PropuestaManufactura'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const DataDeletion = lazy(() => import('./pages/DataDeletion'));
 
 function App() {
   return (
@@ -36,6 +36,7 @@ function App() {
                 }}
               >
                 <ScrollToTop />
+                <Suspense fallback={null}>
                 <Routes>
                   {/* Standalone Routes */}
                   <Route
@@ -79,10 +80,10 @@ function App() {
                             element={<Navigate to={ROUTES.WHY_AI4U} replace />}
                           />
 
-                          {/* SuperAI Route */}
+                          {/* Redirect legacy SuperAI page — todo es ai4u */}
                           <Route
                             path={ROUTES.SUPER_AI}
-                            element={<SuperAI />}
+                            element={<Navigate to={ROUTES.HOME} replace />}
                           />
 
                           <Route
@@ -134,6 +135,7 @@ function App() {
                     }
                   />
                 </Routes>
+                </Suspense>
               </Router>
             </BasicLoadingWrapper>
           </ServicesProvider>

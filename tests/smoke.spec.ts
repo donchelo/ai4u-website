@@ -45,8 +45,58 @@ test.describe('AI4U Smoke Test', () => {
     // Verificar que existan elementos básicos de accesibilidad
     const root = page.locator('#root');
     await expect(root).toBeVisible();
-    
+
     const nav = page.locator('nav');
     await expect(nav).toBeVisible();
+  });
+
+  test('should set per-route titles (SEO)', async ({ page }) => {
+    await page.goto('/servicios');
+    await expect(page).toHaveTitle(/Servicios de Inteligencia Artificial/);
+
+    await page.goto('/portafolio');
+    await expect(page).toHaveTitle(/Portafolio/);
+
+    await page.goto('/por-que-ai4u');
+    await expect(page).toHaveTitle(/Por qué AI4U/);
+  });
+
+  test('should not mark pages as noindex', async ({ page }) => {
+    // Bug histórico: ServiceCard inyectaba noindex en /servicios
+    await page.goto('/servicios');
+    await page.waitForSelector('#root :first-child');
+    const robots = await page.locator('meta[name="robots"]').first().getAttribute('content');
+    expect(robots).not.toContain('noindex');
+  });
+
+  test('social icons should have accessible names', async ({ page }) => {
+    await page.goto('/');
+    for (const name of ['Instagram', 'Facebook', 'LinkedIn']) {
+      await expect(page.getByRole('link', { name }).first()).toBeVisible();
+    }
+  });
+
+  test('should not mention superAI brand in nav', async ({ page }) => {
+    await page.goto('/');
+    const nav = page.locator('nav').first();
+    await expect(nav).not.toContainText(/superAI/i);
+  });
+
+  test('legacy /super-ai route should redirect home', async ({ page }) => {
+    await page.goto('/super-ai');
+    await expect(page).toHaveURL(/\/$/);
+  });
+
+  test('primary CTA should point to WhatsApp', async ({ page, context }) => {
+    await page.goto('/');
+    const cta = page.getByRole('button', { name: /hablar con el equipo/i }).first();
+    await expect(cta).toBeVisible();
+    const [popup] = await Promise.all([
+      context.waitForEvent('page'),
+      cta.click(),
+    ]);
+    // wa.me redirige a api.whatsapp.com — validamos el número en cualquiera de las dos formas
+    expect(popup.url()).toContain('573218175744');
+    await popup.close();
   });
 });

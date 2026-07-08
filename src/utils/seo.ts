@@ -140,12 +140,12 @@ export const getPageMetaTags = (page: string) => {
     home: {
       title: "AI4U - Recupera tu Tiempo con Equipos de Agentes de IA",
       description: "El tiempo es oro. Te ayudamos a crear y administrar tu equipo de agentes de IA para orquestar tu libertad operativa. Infraestructura privada y segura.",
-      keywords: "infraestructura IA, agentes de IA, orquestación IA, digital workforce, AI4U, SuperAI, automatización empresarial, Colombia"
+      keywords: "infraestructura IA, agentes de IA, orquestación IA, digital workforce, AI4U, capa de inteligencia, automatización empresarial, Colombia"
     },
     services: {
       title: "Servicios de Inteligencia Artificial | AI4U",
       description: "Soluciones de IA organizadas en 4 ejes: Operación, Estrategia, Educación y Transformación. IA diseñada para resolver problemas reales.",
-      keywords: "servicios IA, operación IA, estrategia IA, educación IA, transformación digital IA, SuperAI"
+      keywords: "servicios IA, operación IA, estrategia IA, educación IA, transformación digital IA, agentes de IA"
     },
     why: {
       title: "¿Por qué AI4U? | Casos de Éxito e Infraestructura de IA",

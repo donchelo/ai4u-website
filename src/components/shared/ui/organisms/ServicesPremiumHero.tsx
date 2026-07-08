@@ -225,7 +225,7 @@ const ServicesPremiumHero: React.FC<ServicesPremiumHeroProps> = ({
                         }
                       }}
                     >
-                      Conocer SuperAI
+                      Conocer la capa de inteligencia
                     </Button>
                   ) : (
                     <DiagnosticCTA 

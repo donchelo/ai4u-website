@@ -97,7 +97,7 @@ export const BRAND_IDENTITY = {
       },
       sections: [
         "Time is Gold (filosofía)",
-        "Nuestros Servicios (SuperAI Empresarial, GPT Personalizado, etc.)",
+        "Nuestros Servicios (Capa de Inteligencia Empresarial, GPT Personalizado, etc.)",
         "¿Por qué AI4U? (diferenciadores)",
         "Casos de Uso",
         "Contacto"

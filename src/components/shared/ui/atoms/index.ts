@@ -18,3 +18,4 @@ export { default as ContextualLink } from './ContextualLink';
 export { default as NavigationDot } from './NavigationDot';
 export { default as ServiceThumbnail } from './ServiceThumbnail';
 export { default as GiantNumber } from './GiantNumber';
+export { default as BinaryOverlay } from './BinaryOverlay';

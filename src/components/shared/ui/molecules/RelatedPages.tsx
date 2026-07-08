@@ -65,7 +65,7 @@ const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
                   to={page.to}
                   variant="subtle"
                   trackingLabel={page.trackingLabel || `related_${page.to.replace('/', '')}`}
-                  ariaLabel={page.context || page.label}
+                  ariaLabel={page.context ? `${page.label} — ${page.context}` : page.label}
                 >
                   <SmallText sx={{ fontWeight: 400, fontSize: '0.875rem' }}>
                     {page.label}
@@ -101,7 +101,7 @@ const RelatedPages: React.FC<RelatedPagesProps> = (props) => {
               to={page.to}
               variant="subtle"
               trackingLabel={page.trackingLabel || `related_${page.to.replace('/', '')}`}
-              ariaLabel={page.context || page.label}
+              ariaLabel={page.context ? `${page.label} — ${page.context}` : page.label}
             >
               <SmallText sx={{ fontWeight: 400, fontSize: '0.875rem' }}>
                 {page.label}

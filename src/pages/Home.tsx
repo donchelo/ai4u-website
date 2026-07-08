@@ -9,6 +9,7 @@ import { usePerformanceMonitoring } from '../hooks/usePerformanceMonitoring';
 import { useErrorTracking } from '../hooks';
 import { getHomeStructuredData, getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
+import { clients } from '../data/clients';
 import { ROUTES } from '../utils/constants';
 import { scrollToTop } from '../utils/helpers';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
@@ -29,7 +30,8 @@ const Home = () => {
   const relatedLinks = getRelatedLinks('/');
 
   const divider = `1px solid ${alpha(colors.contrast.text.primary, 0.1)}`;
-  const muted = alpha(colors.contrast.text.primary, 0.38);
+  // 0.55 mantiene el look atenuado pero pasa contraste AA (0.38 fallaba en Lighthouse)
+  const muted = alpha(colors.contrast.text.primary, 0.55);
 
   return (
     <Box sx={{ bgcolor: colors.contrast.background, color: colors.contrast.text.primary, minHeight: '100vh' }}>
@@ -37,13 +39,14 @@ const Home = () => {
         title={metaTags.title}
         description={metaTags.description}
         keywords={metaTags.keywords}
-        canonical="https://ai4u.com.co"
+        canonical="https://www.ai4u.com.co/"
         structuredData={structuredData}
       />
 
       {/* ── HERO ── */}
       <HeroFullscreen
         badge="ai4u.equipo // siempre activo"
+        subtitle="la primera capa de inteligencia de tu empresa."
         primaryButtonText="hablar con el equipo"
       />
 
@@ -270,6 +273,42 @@ const Home = () => {
         </Container>
       </Box>
 
+      {/* ── CLIENTES ── */}
+      <Box sx={{ borderTop: divider }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 8, md: 10 } }}>
+          <CodeText sx={{
+            fontSize: '0.72rem', letterSpacing: '0.25em',
+            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+          }}>
+            // quiénes ya trabajan con agentes
+          </CodeText>
+          <Box sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            columnGap: { xs: 3, md: 6 },
+            rowGap: 2.5,
+            alignItems: 'baseline',
+          }}>
+            {clients.filter(c => c.id !== 'ai4u').map(client => (
+              <Box key={client.id} sx={{ display: 'flex', alignItems: 'baseline', gap: 1.5 }}>
+                <Box sx={{
+                  fontSize: { xs: '1.3rem', md: '1.7rem' },
+                  fontWeight: 300,
+                  fontFamily: '"Red Hat Display", sans-serif',
+                  letterSpacing: '-0.02em',
+                  color: colors.contrast.text.primary,
+                }}>
+                  {client.name}
+                </Box>
+                <CodeText sx={{ fontSize: '0.6rem', letterSpacing: '0.12em', color: muted, display: { xs: 'none', md: 'inline' } }}>
+                  {client.sector.toLowerCase()}
+                </CodeText>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
       {/* ── FINAL CTA ── */}
       <Box sx={{ borderTop: divider }}>
         <Container maxWidth="xl">
@@ -297,9 +336,9 @@ const Home = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', md: 'center' }, gap: 1.5, flexShrink: 0 }}>
               <DiagnosticCTA
                 variant="primary"
-                text="agendar 30 minutos"
+                text="escríbenos por WhatsApp"
                 size="large"
-                showIcon={false}
+                showIcon={true}
                 sx={{
                   height: '52px',
                   px: 5,

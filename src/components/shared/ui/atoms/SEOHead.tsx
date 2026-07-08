@@ -15,8 +15,8 @@ interface SEOHeadProps {
 
 const SEOHead: React.FC<SEOHeadProps> = ({
   title = 'AI4U - Inteligencia Artificial para tu Negocio',
-  description = 'Soluciones de Inteligencia Artificial personalizadas para tu negocio. Automatización inteligente, GPT personalizado, SuperAI empresarial.',
-  keywords = 'inteligencia artificial, IA, automatización, GPT personalizado, SuperAI, AI empresarial, Colombia',
+  description = 'AI4U es la primera capa de inteligencia de tu empresa. Equipos de agentes de IA que trabajan como parte de tu equipo.',
+  keywords = 'inteligencia artificial, IA, automatización, agentes de IA, capa de inteligencia, AI empresarial, Colombia',
   canonical,
   ogImage = '/assets/images/ai4u-logo.png',
   ogType = 'website',

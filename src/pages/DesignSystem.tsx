@@ -23,7 +23,8 @@ import {
   Logo,
   NavigationDot,
   ServiceThumbnail,
-  GiantNumber
+  GiantNumber,
+  BinaryOverlay
 } from '../components/shared/ui/atoms';
 import { Card, MetricCard, BudgetCard, Breadcrumb } from '../components/shared/ui/molecules';
 import { HeroSection } from '../components/shared/ui/organisms';
@@ -171,25 +172,7 @@ const DesignSystem = () => {
             </Stack>
           </Container>
           {/* Binary Overlay Pattern */}
-          <Box sx={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0, 
-            opacity: 0.05, 
-            overflow: 'hidden',
-            pointerEvents: 'none',
-            fontFamily: 'monospace',
-            fontSize: '10px',
-            lineHeight: 1,
-            wordBreak: 'break-all',
-            userSelect: 'none'
-          }}>
-            {Array.from({ length: 50 }).map((_, i) => (
-              <Box key={i}>{Math.random().toString(2).slice(2)}</Box>
-            ))}
-          </Box>
+          <BinaryOverlay lines={50} opacity={0.05} />
           {/* Industrial Metadata */}
           <Box sx={{ position: 'absolute', bottom: 20, right: 40, textAlign: 'right', opacity: 0.3 }}>
             <CodeText sx={{ fontSize: '0.7rem' }}>COORD: 40.7128° N, 74.0060° W</CodeText>
