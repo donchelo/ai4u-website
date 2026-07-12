@@ -284,7 +284,7 @@ const Home = () => {
         <Container maxWidth="xl" sx={{ py: { xs: 8, md: 10 } }}>
           <CodeText sx={{
             fontSize: '0.72rem', letterSpacing: '0.25em',
-            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+            color: BRAND_ORANGE, mb: 5, display: 'block',
           }}>
             // quiénes ya trabajan con agentes
           </CodeText>
