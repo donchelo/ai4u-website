@@ -30,6 +30,7 @@ import { Card, MetricCard, BudgetCard, Breadcrumb } from '../components/shared/u
 import { HeroSection } from '../components/shared/ui/organisms';
 import { useColors } from '../hooks';
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { BRAND_ORANGE } from '../components/shared/ui/tokens/brandAccent';
 import { SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
 import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 
@@ -64,7 +65,7 @@ const DesignSystem = () => {
         { name: 'Pure Black', value: AI4U_PALETTE.black, description: '#000000 - Absolute contrast.' },
         { name: 'Pure White', value: AI4U_PALETTE.white, description: '#FFFFFF - Gallery background.' },
         { name: 'Volt Green', value: AI4U_PALETTE.accentColors.mint, description: 'Safety Green / Neon.' },
-        { name: 'Safety Orange', value: AI4U_PALETTE.accentColors.orange, description: 'Caution / Action.' },
+        { name: 'Safety Orange', value: BRAND_ORANGE, description: 'Caution / Action.' },
       ]
     },
     {
@@ -434,7 +435,7 @@ const DesignSystem = () => {
                   {[4, 8, 16, 24, 32, 48, 64].map((s) => (
                     <Stack key={s} direction="row" alignItems="center" spacing={4}>
                       <Typography sx={{ ...TEXT_VARIANTS.label.secondary, minWidth: 60 }}>T-{s}</Typography>
-                      <Box sx={{ width: s * 2, height: 20, bgcolor: AI4U_PALETTE.accentColors.orange }} />
+                      <Box sx={{ width: s * 2, height: 20, bgcolor: BRAND_ORANGE }} />
                       <Typography sx={{ ...TEXT_VARIANTS.label.secondary }}>{s}PX</Typography>
                     </Stack>
                   ))}

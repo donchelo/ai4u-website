@@ -18,6 +18,7 @@ import { useColors, usePerformanceMonitoring } from '../hooks';
 import { getPageMetaTags } from '../utils/seo';
 import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { clients } from '../data/clients';
+import { BRAND_ORANGE } from '../components/shared/ui/tokens/brandAccent';
 import { COMPONENT_SPACING, SPACING_TOKENS } from '../components/shared/ui/tokens/spacing';
 import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -289,8 +290,8 @@ const WhyAI4U = () => {
                   left: -20, 
                   width: 100, 
                   height: 100, 
-                  borderTop: `2px solid ${colors.palette.accentColors.orange}`,
-                  borderLeft: `2px solid ${colors.palette.accentColors.orange}`,
+                  borderTop: `2px solid ${BRAND_ORANGE}`,
+                  borderLeft: `2px solid ${BRAND_ORANGE}`,
                   zIndex: 3
                 }} />
                 

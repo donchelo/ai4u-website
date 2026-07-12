@@ -3,6 +3,7 @@ import { Card, Box, Typography, styled, alpha } from '@mui/material';
 import { GeometricIcon } from '../atoms';
 import { useColors } from '../../../../hooks';
 import { TEXT_VARIANTS } from '../tokens/typography';
+import { BRAND_ORANGE } from '../tokens/brandAccent';
 
 type IconType = 'arrow-up' | 'arrow-down' | 'arrow-right' | 'arrow-left' | 'plus' | 'minus' | 'circle' | 'square' | 'triangle' | 'cross' | 'line' | 'dot';
 
@@ -70,7 +71,7 @@ const MetricCard: React.FC<MetricCardProps> = (props) => {
       case 'up':
         return colors.palette.accentColors.mint; // Volt green for positive
       case 'down':
-        return colors.palette.accentColors.orange; // Safety orange for negative/caution
+        return BRAND_ORANGE; // Safety orange for negative/caution
       default:
         return 'inherit';
     }
