@@ -13,6 +13,7 @@ import {
   AccountBalance as AccountBalanceIcon
 } from '@mui/icons-material';
 import { useColors } from '../../../../hooks';
+import { BRAND_ORANGE } from '../tokens/brandAccent';
 import { H3, BodyText, SmallText } from '../atoms';
 import Card from './Card';
 import { TEXT_VARIANTS } from '../tokens/typography';
@@ -121,7 +122,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
               bgcolor: colors.palette.accentColors.mint,
               color: '#000',
               '&:hover': {
-                bgcolor: colors.palette.accentColors.orange,
+                bgcolor: BRAND_ORANGE,
               }
             }}
           >

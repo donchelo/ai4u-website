@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Container, Grid, Stack, alpha } from '@mui/material';
-import { H2, BodyText, CodeText, SEOHead } from '../components/shared/ui/atoms';
+import { H2, BodyText, CodeText, SEOHead, GeometricIcon } from '../components/shared/ui/atoms';
 import { HeroFullscreen } from '../components/shared/ui/organisms';
 import { DiagnosticCTA, RelatedPages } from '../components/shared/ui/molecules';
 import { useColors } from '../hooks';
@@ -12,7 +12,7 @@ import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { clients } from '../data/clients';
 import { ROUTES } from '../utils/constants';
 import { scrollToTop } from '../utils/helpers';
-import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { BRAND_ORANGE } from '../components/shared/ui/tokens/brandAccent';
 
 const Home = () => {
   const colors = useColors();
@@ -55,7 +55,7 @@ const Home = () => {
         <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
           <CodeText sx={{
             fontSize: '0.72rem', letterSpacing: '0.25em',
-            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+            color: BRAND_ORANGE, mb: 5, display: 'block',
           }}>
             // why
           </CodeText>
@@ -104,7 +104,7 @@ const Home = () => {
         <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
           <CodeText sx={{
             fontSize: '0.72rem', letterSpacing: '0.25em',
-            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+            color: BRAND_ORANGE, mb: 5, display: 'block',
           }}>
             // how
           </CodeText>
@@ -131,16 +131,19 @@ const Home = () => {
                 num: '01 ─ entendemos',
                 title: 'mapeamos\ntu operación',
                 body: 'Identificamos qué tareas pueden automatizarse sin perder calidad ni control.',
+                icon: 'circle' as const,
               },
               {
                 num: '02 ─ construimos',
                 title: 'entrenamos\ntus agentes',
                 body: 'Cada agente aprende tu voz, tus procesos y tu forma de trabajar.',
+                icon: 'square' as const,
               },
               {
                 num: '03 ─ operamos',
                 title: 'activos\ndesde el día uno',
                 body: 'Tu equipo digital corre 24/7 mientras tú te enfocas en lo que importa.',
+                icon: 'triangle' as const,
               },
             ].map((step, idx) => (
               <Grid
@@ -153,12 +156,15 @@ const Home = () => {
                   borderTop: { xs: idx > 0 ? divider : 'none', md: 'none' },
                 }}
               >
-                <CodeText sx={{
-                  fontSize: '0.65rem', letterSpacing: '0.15em',
-                  color: AI4U_PALETTE.accentColors.orange, mb: 2, display: 'block',
-                }}>
-                  {step.num}
-                </CodeText>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2 }}>
+                  <GeometricIcon type={step.icon} variant="outline" size="small" color={BRAND_ORANGE} />
+                  <CodeText sx={{
+                    fontSize: '0.65rem', letterSpacing: '0.15em',
+                    color: BRAND_ORANGE, display: 'block',
+                  }}>
+                    {step.num}
+                  </CodeText>
+                </Box>
                 <H2 sx={{
                   fontSize: '1.2rem', fontWeight: 300,
                   lineHeight: 1.15, letterSpacing: '-0.02em',
@@ -180,7 +186,7 @@ const Home = () => {
         <Container maxWidth="xl" sx={{ py: { xs: 10, md: 14 } }}>
           <CodeText sx={{
             fontSize: '0.72rem', letterSpacing: '0.25em',
-            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+            color: BRAND_ORANGE, mb: 5, display: 'block',
           }}>
             // what
           </CodeText>
@@ -239,10 +245,10 @@ const Home = () => {
                 borderBottom: divider,
                 cursor: 'default',
                 transition: 'gap 0.25s',
-                '&:hover .svc-arrow': { opacity: 1, color: AI4U_PALETTE.accentColors.orange },
+                '&:hover .svc-arrow': { opacity: 1, color: BRAND_ORANGE },
               }}
             >
-              <CodeText sx={{ fontSize: '0.7rem', color: AI4U_PALETTE.accentColors.orange, width: '24px', flexShrink: 0 }}>
+              <CodeText sx={{ fontSize: '0.7rem', color: BRAND_ORANGE, width: '24px', flexShrink: 0 }}>
                 {svc.num}
               </CodeText>
               <Box sx={{
@@ -278,7 +284,7 @@ const Home = () => {
         <Container maxWidth="xl" sx={{ py: { xs: 8, md: 10 } }}>
           <CodeText sx={{
             fontSize: '0.72rem', letterSpacing: '0.25em',
-            color: AI4U_PALETTE.accentColors.orange, mb: 5, display: 'block',
+            color: BRAND_ORANGE, mb: 5, display: 'block',
           }}>
             // quiénes ya trabajan con agentes
           </CodeText>
@@ -347,11 +353,11 @@ const Home = () => {
                   fontFamily: 'monospace',
                   letterSpacing: '0.05em',
                   borderRadius: 0,
-                  bgcolor: AI4U_PALETTE.accentColors.orange,
+                  bgcolor: BRAND_ORANGE,
                   color: '#fff',
                   border: 'none',
                   transition: 'opacity 0.2s',
-                  '&:hover': { bgcolor: AI4U_PALETTE.accentColors.orange, opacity: 0.85 },
+                  '&:hover': { bgcolor: BRAND_ORANGE, opacity: 0.85 },
                 }}
               />
               <CodeText sx={{ fontSize: '0.65rem', letterSpacing: '0.15em', color: muted }}>

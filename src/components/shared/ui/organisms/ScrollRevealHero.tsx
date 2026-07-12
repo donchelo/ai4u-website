@@ -3,7 +3,7 @@ import { Box, alpha } from '@mui/material';
 import { CodeText, LazyImage } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
-import { AI4U_PALETTE } from '../tokens/palette';
+import { BRAND_ORANGE } from '../tokens/brandAccent';
 
 interface ScrollRevealHeroProps {
   badge?: string;
@@ -152,7 +152,7 @@ const ScrollRevealHero: React.FC<ScrollRevealHeroProps> = ({
             const isActive = idx === lastSeenIdx;
             const opacity = !isSeen ? 0.12 : isActive ? 1 : 0.55;
             const color = isActive
-              ? AI4U_PALETTE.accentColors.orange
+              ? BRAND_ORANGE
               : colors.contrast.text.primary;
 
             return (
@@ -200,8 +200,8 @@ const ScrollRevealHero: React.FC<ScrollRevealHeroProps> = ({
                 border: `1px solid ${colors.contrast.text.primary}`,
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: AI4U_PALETTE.accentColors.orange,
-                  borderColor: AI4U_PALETTE.accentColors.orange,
+                  bgcolor: BRAND_ORANGE,
+                  borderColor: BRAND_ORANGE,
                   color: '#fff',
                 },
               }}
@@ -215,7 +215,7 @@ const ScrollRevealHero: React.FC<ScrollRevealHeroProps> = ({
         <Box sx={{ height: '1px', bgcolor: alpha(colors.contrast.text.primary, 0.1) }}>
           <Box sx={{
             height: '100%',
-            bgcolor: AI4U_PALETTE.accentColors.orange,
+            bgcolor: BRAND_ORANGE,
             width: `${progress}%`,
             transition: 'width 0.4s ease',
           }} />

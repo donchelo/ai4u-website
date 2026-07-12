@@ -1,4 +1,5 @@
 import { AI4U_PALETTE } from '../components/shared/ui/tokens/palette';
+import { BRAND_ORANGE } from '../components/shared/ui/tokens/brandAccent';
 import { Service, ServiceCategory, ServiceStatus, ServiceSuperCategory } from '../types/service';
 
 export const services: Service[] = [
@@ -21,7 +22,7 @@ export const services: Service[] = [
       poster: '/assets/images/services-thumbnails/fashion-agent.png'
     },
     thumbnail: '/assets/images/services-thumbnails/fashion-agent.png',
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['fashion', 'ecommerce', 'ai', 'eje:operation', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-11', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -45,7 +46,7 @@ export const services: Service[] = [
       poster: '/assets/images/services-thumbnails/data-entry-automatico.png'
     },
     thumbnail: '/assets/images/services-thumbnails/data-entry-automatico.png',
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['ocr', 'erp', 'automatización', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     metadata: { createdAt: '2025-08-09', updatedAt: '2025-02-03', version: '1.1', author: 'AI4U Team' }
@@ -64,7 +65,7 @@ export const services: Service[] = [
     category: ServiceCategory.AI_ASSISTANT,
     priority: 3,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['chatbot', 'whatsapp', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/chatbot-inteligente.png',
@@ -84,7 +85,7 @@ export const services: Service[] = [
     category: ServiceCategory.ANALYTICS,
     priority: 4,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['auditoría', 'control', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/auditoria-ia.png',
@@ -104,7 +105,7 @@ export const services: Service[] = [
     category: ServiceCategory.AUTOMATION,
     priority: 5,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['visión', 'seguridad', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/vision-computadora.png',
@@ -123,7 +124,7 @@ export const services: Service[] = [
     category: ServiceCategory.ECOMMERCE,
     priority: 6,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['web', 'desarrollo', 'ux', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/sitios-web-ia.png',
@@ -143,7 +144,7 @@ export const services: Service[] = [
     category: ServiceCategory.AUTOMATION,
     priority: 7,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['cotizaciones', 'voz', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/cotizador-automatico.png',
@@ -163,7 +164,7 @@ export const services: Service[] = [
     category: ServiceCategory.AUTOMATION,
     priority: 8,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['pedidos', 'erp', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/gestor-pedidos.png',
@@ -183,7 +184,7 @@ export const services: Service[] = [
     category: ServiceCategory.ECOMMERCE,
     priority: 9,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange,
+    color: BRAND_ORANGE,
     tags: ['shopify', 'ecommerce', 'eje:operation'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-builder.png',
@@ -347,7 +348,7 @@ export const services: Service[] = [
     category: ServiceCategory.TRAINING,
     priority: 1,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
+    color: BRAND_ORANGE, // Naranja para contrastar sobre fondo negro
     tags: ['líderes', 'masterclass', 'eje:education', 'eje:strategy'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-master.png',
@@ -367,7 +368,7 @@ export const services: Service[] = [
     category: ServiceCategory.TRAINING,
     priority: 2,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
+    color: BRAND_ORANGE, // Naranja para contrastar sobre fondo negro
     tags: ['chatgpt', 'productividad', 'eje:education'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-mentor.png',
@@ -387,7 +388,7 @@ export const services: Service[] = [
     category: ServiceCategory.TRAINING,
     priority: 3,
     featured: false,
-    color: AI4U_PALETTE.accentColors.orange, // Naranja para contrastar sobre fondo negro
+    color: BRAND_ORANGE, // Naranja para contrastar sobre fondo negro
     tags: ['midjourney', 'diseño', 'eje:education'],
     status: ServiceStatus.ACTIVE,
     thumbnail: '/assets/images/services-thumbnails/the-artist.png',

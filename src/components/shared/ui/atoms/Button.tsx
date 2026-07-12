@@ -3,6 +3,7 @@ import { Button as MuiButton, ButtonProps as MuiButtonProps, styled, Box } from 
 import { useColors } from '../../../../hooks';
 import { AI4U_PALETTE } from '../tokens/palette';
 import { TEXT_VARIANTS } from '../tokens/typography';
+import { BRAND_ORANGE } from '../tokens/brandAccent';
 
 interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'minimal' | 'industrial';
@@ -56,7 +57,7 @@ const StyledButton = styled(MuiButton, {
         color: AI4U_PALETTE.black,
         border: `2px solid ${AI4U_PALETTE.black}`,
         '&:hover': {
-          backgroundColor: AI4U_PALETTE.accentColors.orange, // Warning Orange
+          backgroundColor: BRAND_ORANGE, // Warning Orange
           transform: 'translate(-4px, -4px)',
           boxShadow: `8px 8px 0px 0px ${AI4U_PALETTE.black}`,
         },

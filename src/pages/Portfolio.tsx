@@ -15,6 +15,7 @@ import { getRelatedLinks } from '../data/internalLinkingStrategy';
 import { featuredProjects } from '../data/featuredProjects';
 import { COMPONENT_SPACING } from '../components/shared/ui/tokens/spacing';
 import { TEXT_VARIANTS } from '../components/shared/ui/tokens/typography';
+import { BRAND_ORANGE } from '../components/shared/ui/tokens/brandAccent';
 
 const Portfolio = () => {
   const colors = useColors();
@@ -151,7 +152,7 @@ const Portfolio = () => {
                         filter: 'grayscale(0%)'
                       },
                       '& .project-title': {
-                        color: colors.palette.accentColors.orange
+                        color: BRAND_ORANGE
                       }
                     }
                   }}
