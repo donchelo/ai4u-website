@@ -3,7 +3,7 @@ import { Box, alpha } from '@mui/material';
 import { LazyImage, CodeText } from '../atoms';
 import { DiagnosticCTA } from '../molecules';
 import { useColors } from '../../../../hooks';
-import { AI4U_PALETTE } from '../tokens/palette';
+import { BRAND_ORANGE } from '../tokens/brandAccent';
 
 const IMAGES = [
   '/assets/images/hero-image.png',
@@ -143,7 +143,7 @@ const HeroFullscreen: React.FC<HeroFullscreenProps> = ({
           <CodeText sx={{
             fontSize: '0.72rem',
             letterSpacing: '0.15em',
-            color: AI4U_PALETTE.accentColors.orange,
+            color: BRAND_ORANGE,
             mb: 2,
             display: 'block',
           }}>
@@ -154,7 +154,7 @@ const HeroFullscreen: React.FC<HeroFullscreenProps> = ({
             sx={{
               m: 0,
               fontSize: { xs: 'clamp(3rem, 12vw, 5rem)', md: 'clamp(4rem, 8vw, 7rem)' },
-              fontWeight: 300,
+              fontWeight: 900,
               fontFamily: '"Red Hat Display", sans-serif',
               lineHeight: 0.87,
               letterSpacing: '-0.045em',
@@ -221,7 +221,7 @@ const HeroFullscreen: React.FC<HeroFullscreenProps> = ({
               border: 'none',
               transition: 'all 0.25s ease',
               '&:hover': {
-                bgcolor: AI4U_PALETTE.accentColors.orange,
+                bgcolor: BRAND_ORANGE,
                 color: '#fff',
               },
             }}
